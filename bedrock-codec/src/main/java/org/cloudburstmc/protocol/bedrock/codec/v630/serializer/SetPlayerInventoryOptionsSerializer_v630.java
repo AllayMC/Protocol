@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryTabRight;
 import org.cloudburstmc.protocol.bedrock.packet.SetPlayerInventoryOptionsPacket;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
-public class SetPlayerInventoryOptionsSerializer_v360 implements BedrockPacketSerializer<SetPlayerInventoryOptionsPacket> {
+public class SetPlayerInventoryOptionsSerializer_v630 implements BedrockPacketSerializer<SetPlayerInventoryOptionsPacket> {
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, SetPlayerInventoryOptionsPacket packet) {
