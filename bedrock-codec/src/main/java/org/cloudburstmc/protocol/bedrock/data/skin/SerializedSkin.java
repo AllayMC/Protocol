@@ -305,6 +305,7 @@ public class SerializedSkin {
 
         public SerializedSkin build() {
             if (playFabId == null) playFabId = "";
+            if (animations == null) animations = Collections.emptyList();
             if (animationData == null) animationData = "";
             if (capeData == null) capeData = ImageData.EMPTY;
             if (capeId == null) capeId = "";
