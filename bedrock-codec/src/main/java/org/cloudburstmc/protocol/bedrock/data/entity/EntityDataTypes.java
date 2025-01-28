@@ -276,4 +276,12 @@ public class EntityDataTypes {
      * @since v685
      */
     public static final EntityDataType<Long> VISIBLE_MOB_EFFECTS = new EntityDataType<>(Long.class, "VISIBLE_MOB_EFFECTS");
+    /**
+     * @since v776
+     */
+    public static final EntityDataType<String> FILTERED_NAME = new EntityDataType<>(String.class, "FILTERED_NAME");
+    /**
+     * @since v776
+     */
+    public static final EntityDataType<Vector3f> BED_ENTER_POSITION = new EntityDataType<>(Vector3f.class, "BED_ENTER_POSITION"); // TODO: need to check type
 }

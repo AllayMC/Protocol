@@ -16,6 +16,10 @@ import java.util.List;
 public class CameraAimAssistPresetsPacket implements BedrockPacket {
     private final List<CameraAimAssistCategories> categories = new ObjectArrayList<>();
     private final List<CameraAimAssistPresetDefinition> presets = new ObjectArrayList<>();
+    /**
+     * @since v776
+     */
+    private byte operation; // TODO: probably an enum
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

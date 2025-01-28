@@ -37,10 +37,7 @@ public class StartGameSerializer_v388 extends StartGameSerializer_v361 {
         // cache palette for fast writing
         helper.writeTag(buffer, packet.getBlockPalette());
 
-        helper.writeArray(buffer, packet.getItemDefinitions(), (buf, h, entry) -> {
-            h.writeString(buf, entry.getIdentifier());
-            buf.writeShortLE(entry.getRuntimeId());
-        });
+        this.writeItemDefinitions(buffer, helper, packet.getItemDefinitions());
 
         helper.writeString(buffer, packet.getMultiplayerCorrelationId());
 
@@ -67,11 +64,7 @@ public class StartGameSerializer_v388 extends StartGameSerializer_v361 {
 
         packet.setBlockPalette(helper.readTag(buffer, NbtList.class));
 
-        helper.readArray(buffer, packet.getItemDefinitions(), (buf, packetHelper) -> {
-            String identifier = packetHelper.readString(buf);
-            short id = buf.readShortLE();
-            return new SimpleItemDefinition(identifier, id, false);
-        });
+        this.readItemDefinitions(buffer, helper, packet.getItemDefinitions());
 
         packet.setMultiplayerCorrelationId(helper.readString(buffer));
     }

@@ -77,21 +77,21 @@ public class CameraAimAssistPresetsSerializer_v766 implements BedrockPacketSeria
         return preset;
     }
 
-    private void writePriority(ByteBuf buffer, BedrockCodecHelper helper, CameraAimAssistPriority priority) {
+    protected void writePriority(ByteBuf buffer, BedrockCodecHelper helper, CameraAimAssistPriority priority) {
         helper.writeString(buffer, priority.getName());
         buffer.writeIntLE(priority.getPriority());
     }
 
-    private CameraAimAssistPriority readPriority(ByteBuf buffer, BedrockCodecHelper helper) {
+    protected CameraAimAssistPriority readPriority(ByteBuf buffer, BedrockCodecHelper helper) {
         return new CameraAimAssistPriority(helper.readString(buffer), buffer.readIntLE());
     }
 
-    private void writeItemSetting(ByteBuf buffer, BedrockCodecHelper helper, CameraAimAssistItemSettings settings) {
+    protected void writeItemSetting(ByteBuf buffer, BedrockCodecHelper helper, CameraAimAssistItemSettings settings) {
         helper.writeString(buffer, settings.getItemId());
         helper.writeString(buffer, settings.getCategory());
     }
 
-    private CameraAimAssistItemSettings readItemSetting(ByteBuf buffer, BedrockCodecHelper helper) {
+    protected CameraAimAssistItemSettings readItemSetting(ByteBuf buffer, BedrockCodecHelper helper) {
         return new CameraAimAssistItemSettings(helper.readString(buffer), helper.readString(buffer));
     }
 }

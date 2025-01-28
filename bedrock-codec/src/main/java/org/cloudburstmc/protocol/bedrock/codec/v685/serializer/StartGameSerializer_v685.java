@@ -1,10 +1,13 @@
 package org.cloudburstmc.protocol.bedrock.codec.v685.serializer;
 
 import io.netty.buffer.ByteBuf;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v671.serializer.StartGameSerializer_v671;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StartGameSerializer_v685 extends StartGameSerializer_v671 {
     public static final StartGameSerializer_v685 INSTANCE = new StartGameSerializer_v685();
 

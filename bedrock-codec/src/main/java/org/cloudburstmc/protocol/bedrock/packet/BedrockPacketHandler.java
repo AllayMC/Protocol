@@ -879,4 +879,12 @@ public interface BedrockPacketHandler extends PacketHandler {
     default PacketSignal handle(CameraAimAssistPresetsPacket packet) {
         return PacketSignal.UNHANDLED;
     }
+
+    default PacketSignal handle(CameraAimAssistInstructionPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(MovementPredictionSyncPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
 }

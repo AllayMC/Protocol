@@ -77,7 +77,7 @@ public class StructureBlockUpdateSerializer_v291 implements BedrockPacketSeriali
         StructureSettings settings = new StructureSettings("", ignoreEntities, ignoreBlocks, true, size, offset,
                 -1, rotation, mirror, StructureAnimationMode.NONE, 0f,
                 structureIntegrity, integritySeed, Vector3f.ZERO);
-        StructureEditorData editorData = new StructureEditorData(name, dataField, includePlayers, boundingBoxVisible,
+        StructureEditorData editorData = new StructureEditorData(name, "", dataField, includePlayers, boundingBoxVisible,
                 structureType, settings, StructureRedstoneSaveMode.SAVES_TO_DISK);
 
         packet.setEditorData(editorData);

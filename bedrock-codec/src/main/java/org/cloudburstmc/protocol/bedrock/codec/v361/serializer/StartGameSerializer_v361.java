@@ -10,6 +10,7 @@ import org.cloudburstmc.nbt.NbtType;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v332.serializer.StartGameSerializer_v332;
 import org.cloudburstmc.protocol.bedrock.data.GameType;
+import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
 import org.cloudburstmc.protocol.common.util.VarInts;
@@ -46,10 +47,7 @@ public class StartGameSerializer_v361 extends StartGameSerializer_v332 {
             buffer.writeShortLE(entry.getShort("id"));
         }
 
-        helper.writeArray(buffer, packet.getItemDefinitions(), (buf, entry) -> {
-            helper.writeString(buf, entry.getIdentifier());
-            buf.writeShortLE(entry.getRuntimeId());
-        });
+        this.writeItemDefinitions(buffer, helper, packet.getItemDefinitions());
 
         helper.writeString(buffer, packet.getMultiplayerCorrelationId());
 
@@ -85,11 +83,7 @@ public class StartGameSerializer_v361 extends StartGameSerializer_v332 {
         }
         packet.setBlockPalette(new NbtList<>(NbtType.COMPOUND, palette));
 
-        helper.readArray(buffer, packet.getItemDefinitions(), (buf, packetHelper) -> {
-            String identifier = packetHelper.readString(buf);
-            short id = buf.readShortLE();
-            return new SimpleItemDefinition(identifier, id, false);
-        });
+       this.readItemDefinitions(buffer, helper, packet.getItemDefinitions());
 
         packet.setMultiplayerCorrelationId(helper.readString(buffer));
     }
@@ -106,5 +100,20 @@ public class StartGameSerializer_v361 extends StartGameSerializer_v332 {
         super.writeLevelSettings(buffer, helper, packet);
 
         buffer.writeBoolean(packet.isOnlySpawningV1Villagers());
+    }
+
+    protected void writeItemDefinitions(ByteBuf buffer, BedrockCodecHelper helper, List<ItemDefinition> definitions) {
+        helper.writeArray(buffer, definitions, (buf, entry) -> {
+            helper.writeString(buf, entry.getIdentifier());
+            buf.writeShortLE(entry.getRuntimeId());
+        });
+    }
+
+    protected void readItemDefinitions(ByteBuf buffer, BedrockCodecHelper helper, List<ItemDefinition> definitions) {
+        helper.readArray(buffer, definitions, (buf, packetHelper) -> {
+            String identifier = packetHelper.readString(buf);
+            short id = buf.readShortLE();
+            return new SimpleItemDefinition(identifier, id, false);
+        });
     }
 }

@@ -41,11 +41,7 @@ public class StartGameSerializer_v428 extends StartGameSerializer_v419 {
             packetHelper.writeTag(buf, block.getProperties());
         });
 
-        helper.writeArray(buffer, packet.getItemDefinitions(), (buf, packetHelper, entry) -> {
-            packetHelper.writeString(buf, entry.getIdentifier());
-            buf.writeShortLE(entry.getRuntimeId());
-            buf.writeBoolean(entry.isComponentBased());
-        });
+        this.writeItemDefinitions(buffer, helper, packet.getItemDefinitions());
 
         helper.writeString(buffer, packet.getMultiplayerCorrelationId());
         buffer.writeBoolean(packet.isInventoriesServerAuthoritative());
@@ -75,12 +71,7 @@ public class StartGameSerializer_v428 extends StartGameSerializer_v419 {
             return new BlockPropertyData(name, properties);
         });
 
-        helper.readArray(buffer, packet.getItemDefinitions(), (buf, packetHelper) -> {
-            String identifier = packetHelper.readString(buf);
-            short id = buf.readShortLE();
-            boolean componentBased = buf.readBoolean();
-            return new SimpleItemDefinition(identifier, id, componentBased);
-        });
+        this.readItemDefinitions(buffer, helper, packet.getItemDefinitions());
 
         packet.setMultiplayerCorrelationId(helper.readString(buffer));
         packet.setInventoriesServerAuthoritative(buffer.readBoolean());

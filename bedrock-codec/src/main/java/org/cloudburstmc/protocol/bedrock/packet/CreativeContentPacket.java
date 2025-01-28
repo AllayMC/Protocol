@@ -1,10 +1,15 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.cloudburstmc.protocol.bedrock.data.inventory.CreativeItemData;
+import org.cloudburstmc.protocol.bedrock.data.inventory.CreativeItemGroup;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
+import java.util.List;
 
 
 /**
@@ -16,12 +21,8 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CreativeContentPacket implements BedrockPacket {
-    /**
-     * Item entries for the creative menu. Each item must have a unique ID for the net ID manager
-     *
-     * @see ItemData#setNetId(int)
-     */
-    private ItemData[] contents;
+    private final List<CreativeItemGroup> groups = new ObjectArrayList<>();
+    private final List<CreativeItemData> contents = new ObjectArrayList<>();
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

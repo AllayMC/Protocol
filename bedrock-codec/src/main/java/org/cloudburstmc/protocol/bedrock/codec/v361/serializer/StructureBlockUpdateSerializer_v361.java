@@ -37,7 +37,7 @@ public class StructureBlockUpdateSerializer_v361 implements BedrockPacketSeriali
         boolean boundingBoxVisible = buffer.readBoolean();
         StructureBlockType type = StructureBlockType.from(VarInts.readInt(buffer));
         StructureSettings settings = helper.readStructureSettings(buffer);
-        return new StructureEditorData(name, dataField, includingPlayers, boundingBoxVisible, type, settings,
+        return new StructureEditorData(name, "", dataField, includingPlayers, boundingBoxVisible, type, settings,
                 StructureRedstoneSaveMode.SAVES_TO_DISK);
     }
 

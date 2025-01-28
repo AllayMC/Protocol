@@ -13,6 +13,7 @@ public class BossEventPacket implements BedrockPacket {
     private Action action;
     private long playerUniqueEntityId;
     private String title;
+    private String filteredTitle = "";
     private float healthPercentage;
     private int darkenSky;
     private int color;

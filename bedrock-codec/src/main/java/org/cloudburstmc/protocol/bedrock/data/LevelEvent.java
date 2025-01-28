@@ -113,6 +113,7 @@ public enum LevelEvent implements LevelEventType {
     PARTICLE_SMASH_ATTACK_GROUND_DUST,
     /**
      * @since v766
+     * @deprecated since v776
      */
     PARTICLE_CREAKING_HEART_TRIAL,
 

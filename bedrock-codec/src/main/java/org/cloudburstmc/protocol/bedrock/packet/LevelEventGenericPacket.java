@@ -12,7 +12,14 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class LevelEventGenericPacket implements BedrockPacket {
     private LevelEventType type;
+    /**
+     * @deprecated since v776
+     */
     private Object tag;
+    /**
+     * @since v776
+     */
+    private byte data;
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

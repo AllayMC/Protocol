@@ -149,5 +149,9 @@ public enum EntityFlag {
     /**
      * @since v671
      */
-    BODY_ROTATION_BLOCKED
+    BODY_ROTATION_BLOCKED,
+    /**
+     * @since v776
+     */
+    RENDER_WHEN_INVISIBLE
 }

@@ -5,6 +5,7 @@ import lombok.Value;
 @Value
 public class StructureEditorData {
     private final String name;
+    private final String filteredName;
     private final String dataField;
     private final boolean includingPlayers;
     private final boolean boundingBoxVisible;

@@ -7,10 +7,13 @@ import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.*;
+import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 import org.cloudburstmc.protocol.common.util.VarInts;
+
+import java.util.List;
 
 @SuppressWarnings("DuplicatedCode")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -44,11 +47,7 @@ public class StartGameSerializer_v419 implements BedrockPacketSerializer<StartGa
             packetHelper.writeTag(buf, block.getProperties());
         });
 
-        helper.writeArray(buffer, packet.getItemDefinitions(), (buf, packetHelper, entry) -> {
-            packetHelper.writeString(buf, entry.getIdentifier());
-            buf.writeShortLE(entry.getRuntimeId());
-            buf.writeBoolean(entry.isComponentBased());
-        });
+        this.writeItemDefinitions(buffer, helper, packet.getItemDefinitions());
 
         helper.writeString(buffer, packet.getMultiplayerCorrelationId());
         buffer.writeBoolean(packet.isInventoriesServerAuthoritative());
@@ -78,12 +77,7 @@ public class StartGameSerializer_v419 implements BedrockPacketSerializer<StartGa
             return new BlockPropertyData(name, properties);
         });
 
-        helper.readArray(buffer, packet.getItemDefinitions(), (buf, packetHelper) -> {
-            String identifier = packetHelper.readString(buf);
-            short id = buf.readShortLE();
-            boolean componentBased = buf.readBoolean();
-            return new SimpleItemDefinition(identifier, id, componentBased);
-        });
+        this.readItemDefinitions(buffer, helper, packet.getItemDefinitions());
 
         packet.setMultiplayerCorrelationId(helper.readString(buffer));
         packet.setInventoriesServerAuthoritative(buffer.readBoolean());
@@ -184,5 +178,22 @@ public class StartGameSerializer_v419 implements BedrockPacketSerializer<StartGa
 
     protected void writeSeed(ByteBuf buffer, long seed) {
         VarInts.writeInt(buffer, (int) seed);
+    }
+
+    protected void writeItemDefinitions(ByteBuf buffer, BedrockCodecHelper helper, List<ItemDefinition> definitions) {
+        helper.writeArray(buffer, definitions, (buf, entry) -> {
+            helper.writeString(buf, entry.getIdentifier());
+            buf.writeShortLE(entry.getRuntimeId());
+            buf.writeBoolean(entry.isComponentBased());
+        });
+    }
+
+    protected void readItemDefinitions(ByteBuf buffer, BedrockCodecHelper helper, List<ItemDefinition> definitions) {
+        helper.readArray(buffer, definitions, (buf, packetHelper) -> {
+            String identifier = packetHelper.readString(buf);
+            short id = buf.readShortLE();
+            boolean componentBased = buf.readBoolean();
+            return new SimpleItemDefinition(identifier, id, componentBased);
+        });
     }
 }

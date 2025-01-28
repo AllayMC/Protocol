@@ -22,7 +22,11 @@ public enum Ability {
     /**
      * @since v575
      */
-    PRIVILEGED_BUILDER;
+    PRIVILEGED_BUILDER,
+    /**
+     * @since v776
+     */
+    VERTICAL_SPEED;
 
     public enum Type {
         NONE,

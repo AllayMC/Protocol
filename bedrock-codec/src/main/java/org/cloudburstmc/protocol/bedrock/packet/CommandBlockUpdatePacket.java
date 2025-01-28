@@ -20,6 +20,7 @@ public class CommandBlockUpdatePacket implements BedrockPacket {
     private String command;
     private String lastOutput;
     private String name;
+    private String filteredName;
     private boolean outputTracked;
     private long tickDelay;
     private boolean executingOnFirstTick;

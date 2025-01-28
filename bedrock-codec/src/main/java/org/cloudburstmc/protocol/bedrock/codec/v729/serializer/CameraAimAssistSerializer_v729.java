@@ -5,13 +5,14 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
+import org.cloudburstmc.protocol.bedrock.data.camera.AimAssistAction;
 import org.cloudburstmc.protocol.bedrock.packet.CameraAimAssistPacket;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class CameraAimAssistSerializer_v729 implements BedrockPacketSerializer<CameraAimAssistPacket> {
     public static final CameraAimAssistSerializer_v729 INSTANCE = new CameraAimAssistSerializer_v729();
 
-    protected static final CameraAimAssistPacket.Action[] ACTIONS = CameraAimAssistPacket.Action.values();
+    protected static final AimAssistAction[] ACTIONS = AimAssistAction.values();
     protected static final CameraAimAssistPacket.TargetMode[] TARGET_MODES = CameraAimAssistPacket.TargetMode.values();
 
     @Override
