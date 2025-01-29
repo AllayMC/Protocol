@@ -14,22 +14,7 @@ public class UpdateEquipPacket implements BedrockPacket {
     private short windowType;
     private int size; // Couldn't find anything on this one. Looks like it isn't used?
     private long uniqueEntityId;
-    /**
-     * @deprecated since v776
-     */
     private NbtMap tag;
-    /**
-     * @since v776
-     */
-    private byte aByte;
-    /**
-     * @since v776
-     */
-    private String aString;
-    /**
-     * @since v776
-     */
-    private byte aByte2;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

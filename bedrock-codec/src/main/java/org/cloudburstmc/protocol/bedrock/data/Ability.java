@@ -26,7 +26,7 @@ public enum Ability {
     /**
      * @since v776
      */
-    VERTICAL_SPEED;
+    VERTICAL_FLY_SPEED;
 
     public enum Type {
         NONE,

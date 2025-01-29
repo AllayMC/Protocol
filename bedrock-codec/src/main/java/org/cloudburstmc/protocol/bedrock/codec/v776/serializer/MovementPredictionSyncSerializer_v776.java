@@ -16,7 +16,7 @@ public class MovementPredictionSyncSerializer_v776 implements BedrockPacketSeria
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, MovementPredictionSyncPacket packet) {
         helper.writeLargeVarIntFlags(buffer, packet.getFlags(), EntityFlag.class);
-        helper.writeVector3f(buffer, packet.getBoundingBox()); // TODO:
+        helper.writeVector3f(buffer, packet.getBoundingBox());
         buffer.writeFloatLE(packet.getSpeed());
         buffer.writeFloatLE(packet.getUnderwaterSpeed());
         buffer.writeFloatLE(packet.getLavaSpeed());
@@ -29,7 +29,7 @@ public class MovementPredictionSyncSerializer_v776 implements BedrockPacketSeria
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, MovementPredictionSyncPacket packet) {
         helper.readLargeVarIntFlags(buffer, packet.getFlags(), EntityFlag.class);
-        packet.setBoundingBox(helper.readVector3f(buffer)); // TODO:
+        packet.setBoundingBox(helper.readVector3f(buffer));
         packet.setSpeed(buffer.readFloatLE());
         packet.setUnderwaterSpeed(buffer.readFloatLE());
         packet.setLavaSpeed(buffer.readFloatLE());

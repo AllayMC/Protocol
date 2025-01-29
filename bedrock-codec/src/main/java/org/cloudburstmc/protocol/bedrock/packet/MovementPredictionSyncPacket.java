@@ -17,7 +17,7 @@ public class MovementPredictionSyncPacket implements BedrockPacket {
     private long runtimeEntityId;
 
     private final Set<EntityFlag> flags = new ObjectOpenHashSet<>();
-    private Vector3f boundingBox; // TODO: verify
+    private Vector3f boundingBox;
 
     private float speed;
     private float underwaterSpeed;

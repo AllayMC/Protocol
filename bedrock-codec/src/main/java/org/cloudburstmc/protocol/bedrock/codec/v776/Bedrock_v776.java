@@ -2,22 +2,7 @@ package org.cloudburstmc.protocol.bedrock.codec.v776;
 
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
 import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
-import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LevelEventSerializer_v291;
-import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LevelSoundEvent1Serializer_v291;
-import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.UpdateEquipSerializer_v291;
-import org.cloudburstmc.protocol.bedrock.codec.v313.serializer.LevelSoundEvent2Serializer_v313;
-import org.cloudburstmc.protocol.bedrock.codec.v332.serializer.LevelSoundEventSerializer_v332;
-import org.cloudburstmc.protocol.bedrock.codec.v354.serializer.UpdateTradeSerializer_v354;
-import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.LevelEventGenericSerializer_v361;
-import org.cloudburstmc.protocol.bedrock.codec.v486.serializer.BossEventSerializer_v486;
-import org.cloudburstmc.protocol.bedrock.codec.v568.Bedrock_v568;
-import org.cloudburstmc.protocol.bedrock.codec.v662.Bedrock_v662;
-import org.cloudburstmc.protocol.bedrock.codec.v671.Bedrock_v671;
-import org.cloudburstmc.protocol.bedrock.codec.v685.serializer.StartGameSerializer_v685;
-import org.cloudburstmc.protocol.bedrock.codec.v748.Bedrock_v748;
-import org.cloudburstmc.protocol.bedrock.codec.v766.BedrockCodecHelper_v766;
 import org.cloudburstmc.protocol.bedrock.codec.v766.Bedrock_v766;
-import org.cloudburstmc.protocol.bedrock.codec.v766.serializer.*;
 import org.cloudburstmc.protocol.bedrock.codec.v776.serializer.*;
 import org.cloudburstmc.protocol.bedrock.data.*;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataFormat;
@@ -28,11 +13,6 @@ import org.cloudburstmc.protocol.bedrock.transformer.FlagTransformer;
 import org.cloudburstmc.protocol.common.util.TypeMap;
 
 public class Bedrock_v776 extends Bedrock_v766 {
-
-    protected static final TypeMap<LevelEventType> LEVEL_EVENTS = Bedrock_v766.LEVEL_EVENTS.toBuilder()
-            .insert(LEVEL_EVENT_PARTICLE_TYPE, PARTICLE_TYPES)
-            .remove(9816)
-            .build();
 
     protected static final TypeMap<EntityFlag> ENTITY_FLAGS = Bedrock_v766.ENTITY_FLAGS
             .toBuilder()
@@ -49,7 +29,7 @@ public class Bedrock_v776 extends Bedrock_v766 {
 
     protected static final TypeMap<Ability> PLAYER_ABILITIES = Bedrock_v766.PLAYER_ABILITIES
             .toBuilder()
-            .insert(19, Ability.VERTICAL_SPEED)
+            .insert(19, Ability.VERTICAL_FLY_SPEED)
             .build();
 
     public static final BedrockCodec CODEC = Bedrock_v766.CODEC.toBuilder()
@@ -62,13 +42,10 @@ public class Bedrock_v776 extends Bedrock_v766 {
             .updateSerializer(CommandBlockUpdatePacket.class, CommandBlockUpdateSerializer_v776.INSTANCE)
             .updateSerializer(CreativeContentPacket.class, CreativeContentSerializer_v776.INSTANCE)
             .updateSerializer(ItemComponentPacket.class, ItemComponentSerializer_v776.INSTANCE)
-            .updateSerializer(LevelEventGenericPacket.class, new LevelEventGenericSerializer_v776(LEVEL_EVENTS)) // TODO: verify the removal of NBT
             .updateSerializer(StartGamePacket.class, StartGameSerializer_v776.INSTANCE)
-            .updateSerializer(UpdateEquipPacket.class, UpdateEquipSerializer_v776.INSTANCE) // TODO: get correct property names
-            .updateSerializer(UpdateTradePacket.class, UpdateTradeSerializer_v776.INSTANCE) // TODO: I do not trust the docs here. check it pls
             .updateSerializer(CameraPresetsPacket.class, CameraPresetsSerializer_v776.INSTANCE)
             .updateSerializer(StructureBlockUpdatePacket.class, StructureBlockUpdateSerializer_v776.INSTANCE)
             .registerPacket(CameraAimAssistInstructionPacket::new, CameraAimAssistInstructionSerializer_v776.INSTANCE, 321, PacketRecipient.CLIENT)
-            .registerPacket(MovementPredictionSyncPacket::new, MovementPredictionSyncSerializer_v776.INSTANCE, 322, PacketRecipient.CLIENT) // TODO: is this client or server?
+            .registerPacket(MovementPredictionSyncPacket::new, MovementPredictionSyncSerializer_v776.INSTANCE, 322, PacketRecipient.SERVER)
             .build();
 }

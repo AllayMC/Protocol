@@ -13,16 +13,18 @@ import org.cloudburstmc.protocol.bedrock.packet.CameraAimAssistPresetsPacket;
 public class CameraAimAssistPresetsSerializer_v776 extends CameraAimAssistPresetsSerializer_v766 {
     public static final CameraAimAssistPresetsSerializer_v776 INSTANCE = new CameraAimAssistPresetsSerializer_v776();
 
+    private static final CameraAimAssistOperation[] OPERATIONS = CameraAimAssistOperation.values();
+
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, CameraAimAssistPresetsPacket packet) {
         super.serialize(buffer, helper, packet);
-        buffer.writeByte(packet.getOperation());
+        buffer.writeByte(packet.getOperation().ordinal());
     }
 
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, CameraAimAssistPresetsPacket packet) {
         super.deserialize(buffer, helper, packet);
-        packet.setOperation(buffer.readByte());
+        packet.setOperation(OPERATIONS[buffer.readUnsignedByte()]);
     }
 
     @Override

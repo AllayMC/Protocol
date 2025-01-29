@@ -283,5 +283,5 @@ public class EntityDataTypes {
     /**
      * @since v776
      */
-    public static final EntityDataType<Vector3f> BED_ENTER_POSITION = new EntityDataType<>(Vector3f.class, "BED_ENTER_POSITION"); // TODO: need to check type
+    public static final EntityDataType<Vector3f> BED_ENTER_POSITION = new EntityDataType<>(Vector3f.class, "BED_ENTER_POSITION");
 }
