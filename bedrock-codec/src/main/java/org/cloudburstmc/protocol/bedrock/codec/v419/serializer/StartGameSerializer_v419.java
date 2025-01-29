@@ -193,7 +193,7 @@ public class StartGameSerializer_v419 implements BedrockPacketSerializer<StartGa
             String identifier = packetHelper.readString(buf);
             short id = buf.readShortLE();
             boolean componentBased = buf.readBoolean();
-            return new SimpleItemDefinition(identifier, id, componentBased);
+            return new SimpleItemDefinition(identifier, id, 0, componentBased, componentBased ? NbtMap.EMPTY : null);
         });
     }
 }

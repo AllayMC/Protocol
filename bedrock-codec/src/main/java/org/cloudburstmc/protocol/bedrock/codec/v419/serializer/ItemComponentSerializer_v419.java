@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
-import org.cloudburstmc.protocol.bedrock.data.inventory.ComponentItemData;
+import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.ItemComponentPacket;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -17,8 +17,8 @@ public class ItemComponentSerializer_v419 implements BedrockPacketSerializer<Ite
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ItemComponentPacket packet) {
         helper.writeArray(buffer, packet.getItems(), (buf, packetHelper, item) -> {
-            packetHelper.writeString(buf, item.getName());
-            packetHelper.writeTag(buf, item.getData());
+            packetHelper.writeString(buf, item.getIdentifier());
+            packetHelper.writeTag(buf, item.getComponentData());
         });
     }
 
@@ -27,7 +27,7 @@ public class ItemComponentSerializer_v419 implements BedrockPacketSerializer<Ite
         helper.readArray(buffer, packet.getItems(), (buf, packetHelper) -> {
             String name = packetHelper.readString(buf);
             NbtMap data = packetHelper.readTag(buf, NbtMap.class);
-            return ComponentItemData.fromLegacyItem(name, data);
+            return new SimpleItemDefinition(name, 0, 0, true, data);
         });
     }
 }

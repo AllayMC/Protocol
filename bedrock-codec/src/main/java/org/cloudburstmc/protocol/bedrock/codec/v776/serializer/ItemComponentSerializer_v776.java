@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
-import org.cloudburstmc.protocol.bedrock.data.inventory.ComponentItemData;
+import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.ItemComponentPacket;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
@@ -17,11 +17,15 @@ public class ItemComponentSerializer_v776 implements BedrockPacketSerializer<Ite
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ItemComponentPacket packet) {
         helper.writeArray(buffer, packet.getItems(), (buf, packetHelper, item) -> {
-            packetHelper.writeString(buf, item.getName());
-            buf.writeShortLE(item.getItemId());
+            packetHelper.writeString(buf, item.getIdentifier());
+            buf.writeShortLE(item.getRuntimeId());
             buf.writeBoolean(item.isComponentBased());
             VarInts.writeInt(buffer, item.getVersion());
-            packetHelper.writeTag(buf, item.getData());
+            if (item.isComponentBased()) {
+                packetHelper.writeTag(buf, item.getComponentData());
+            } else {
+                packetHelper.writeTag(buf, NbtMap.EMPTY);
+            }
         });
     }
 
@@ -33,7 +37,7 @@ public class ItemComponentSerializer_v776 implements BedrockPacketSerializer<Ite
             boolean componentBased = buf.readBoolean();
             int version = VarInts.readInt(buffer);
             NbtMap data = packetHelper.readTag(buf, NbtMap.class);
-            return new ComponentItemData(name, data, itemId, componentBased, version);
+            return new SimpleItemDefinition(name, itemId, version, componentBased, data);
         });
     }
 }
