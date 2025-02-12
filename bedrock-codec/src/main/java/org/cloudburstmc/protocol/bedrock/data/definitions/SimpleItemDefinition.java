@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 import org.cloudburstmc.nbt.NbtMap;
+import org.cloudburstmc.protocol.bedrock.data.inventory.ItemVersion;
 
 @Value
 @NonFinal
@@ -11,7 +12,7 @@ import org.cloudburstmc.nbt.NbtMap;
 public class SimpleItemDefinition implements ItemDefinition {
     String identifier;
     int runtimeId;
-    int version;
+    ItemVersion version;
     boolean componentBased;
     NbtMap componentData;
 
@@ -20,7 +21,7 @@ public class SimpleItemDefinition implements ItemDefinition {
         this.identifier = identifier;
         this.runtimeId = runtimeId;
         this.componentBased = componentBased;
-        this.version = 0;
+        this.version = ItemVersion.LEGACY;
         this.componentData = null;
     }
 }

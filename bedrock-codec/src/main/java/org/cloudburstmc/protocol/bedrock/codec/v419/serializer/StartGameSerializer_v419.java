@@ -9,6 +9,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.*;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
+import org.cloudburstmc.protocol.bedrock.data.inventory.ItemVersion;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 import org.cloudburstmc.protocol.common.util.VarInts;
@@ -193,7 +194,7 @@ public class StartGameSerializer_v419 implements BedrockPacketSerializer<StartGa
             String identifier = packetHelper.readString(buf);
             short id = buf.readShortLE();
             boolean componentBased = buf.readBoolean();
-            return new SimpleItemDefinition(identifier, id, 0, componentBased, componentBased ? NbtMap.EMPTY : null);
+            return new SimpleItemDefinition(identifier, id, ItemVersion.LEGACY, componentBased, componentBased ? NbtMap.EMPTY : null);
         });
     }
 }

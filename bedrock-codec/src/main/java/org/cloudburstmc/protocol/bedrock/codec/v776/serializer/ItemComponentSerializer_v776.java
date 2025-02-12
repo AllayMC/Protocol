@@ -7,6 +7,7 @@ import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
+import org.cloudburstmc.protocol.bedrock.data.inventory.ItemVersion;
 import org.cloudburstmc.protocol.bedrock.packet.ItemComponentPacket;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
@@ -20,8 +21,8 @@ public class ItemComponentSerializer_v776 implements BedrockPacketSerializer<Ite
             packetHelper.writeString(buf, item.getIdentifier());
             buf.writeShortLE(item.getRuntimeId());
             buf.writeBoolean(item.isComponentBased());
-            VarInts.writeInt(buffer, item.getVersion());
-            if (item.isComponentBased()) {
+            VarInts.writeInt(buffer, item.getVersion().ordinal());
+            if (item.getComponentData() != null) { // We should check for isComponentBased() instead, but for some reason there can be non-data driven items with component data
                 packetHelper.writeTag(buf, item.getComponentData());
             } else {
                 packetHelper.writeTag(buf, NbtMap.EMPTY);
@@ -37,7 +38,7 @@ public class ItemComponentSerializer_v776 implements BedrockPacketSerializer<Ite
             boolean componentBased = buf.readBoolean();
             int version = VarInts.readInt(buffer);
             NbtMap data = packetHelper.readTag(buf, NbtMap.class);
-            return new SimpleItemDefinition(name, itemId, version, componentBased, data);
+            return new SimpleItemDefinition(name, itemId, ItemVersion.from(version), componentBased, data);
         });
     }
 }

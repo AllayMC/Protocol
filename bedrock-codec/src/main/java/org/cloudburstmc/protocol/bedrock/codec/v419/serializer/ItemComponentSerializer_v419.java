@@ -7,6 +7,7 @@ import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
+import org.cloudburstmc.protocol.bedrock.data.inventory.ItemVersion;
 import org.cloudburstmc.protocol.bedrock.packet.ItemComponentPacket;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -27,7 +28,7 @@ public class ItemComponentSerializer_v419 implements BedrockPacketSerializer<Ite
         helper.readArray(buffer, packet.getItems(), (buf, packetHelper) -> {
             String name = packetHelper.readString(buf);
             NbtMap data = packetHelper.readTag(buf, NbtMap.class);
-            return new SimpleItemDefinition(name, 0, 0, true, data);
+            return new SimpleItemDefinition(name, 0, ItemVersion.LEGACY, true, data);
         });
     }
 }
