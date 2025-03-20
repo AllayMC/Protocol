@@ -25,6 +25,7 @@ public class MovementPredictionSyncPacket implements BedrockPacket {
     private float jumpStrength;
     private float health;
     private float hunger;
+    private boolean flying;
 
 
     @Override

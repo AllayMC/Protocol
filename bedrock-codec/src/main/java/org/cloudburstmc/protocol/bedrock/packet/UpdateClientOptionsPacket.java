@@ -3,21 +3,14 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
+import org.cloudburstmc.protocol.bedrock.data.GraphicsMode;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
-public class LevelSoundEventPacket implements BedrockPacket {
-    private SoundEvent sound;
-    private Vector3f position;
-    private int extraData;
-    private String identifier;
-    private boolean babySound;
-    private boolean relativeVolumeDisabled;
-    private long entityUniqueId;
+public class UpdateClientOptionsPacket implements BedrockPacket {
+    private GraphicsMode graphicsMode;
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {
@@ -26,13 +19,13 @@ public class LevelSoundEventPacket implements BedrockPacket {
 
     @Override
     public BedrockPacketType getPacketType() {
-        return BedrockPacketType.LEVEL_SOUND_EVENT;
+        return BedrockPacketType.UPDATE_CLIENT_OPTIONS;
     }
 
     @Override
-    public LevelSoundEventPacket clone() {
+    public BedrockPacket clone() {
         try {
-            return (LevelSoundEventPacket) super.clone();
+            return (UpdateClientOptionsPacket) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
