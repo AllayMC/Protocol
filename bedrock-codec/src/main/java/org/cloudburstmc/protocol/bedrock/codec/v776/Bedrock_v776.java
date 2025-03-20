@@ -45,7 +45,7 @@ public class Bedrock_v776 extends Bedrock_v766 {
             .updateSerializer(StartGamePacket.class, StartGameSerializer_v776.INSTANCE)
             .updateSerializer(CameraPresetsPacket.class, CameraPresetsSerializer_v776.INSTANCE)
             .updateSerializer(StructureBlockUpdatePacket.class, StructureBlockUpdateSerializer_v776.INSTANCE)
-            .registerPacket(CameraAimAssistInstructionPacket::new, CameraAimAssistInstructionSerializer_v776.INSTANCE, 321, PacketRecipient.CLIENT)
+            .registerPacket(CameraAimAssistInstructionPacket::new, CameraAimAssistInstructionSerializer_v776.INSTANCE, 321, PacketRecipient.SERVER)
             .registerPacket(MovementPredictionSyncPacket::new, MovementPredictionSyncSerializer_v776.INSTANCE, 322, PacketRecipient.SERVER)
             .build();
 }
