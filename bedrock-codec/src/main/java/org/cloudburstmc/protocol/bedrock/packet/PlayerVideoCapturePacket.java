@@ -9,8 +9,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayerVideoCapturePacket implements BedrockPacket {
-    private Action captureAction;
-    private boolean action;
+    private Action action;
     private int frameRate;
     private String filePrefix;
 
@@ -34,8 +33,8 @@ public class PlayerVideoCapturePacket implements BedrockPacket {
     }
 
     public enum Action {
-        START_VIDEO_CAPTURE,
         STOP_VIDEO_CAPTURE,
+        START_VIDEO_CAPTURE,
         UNKNOWN
     }
 }

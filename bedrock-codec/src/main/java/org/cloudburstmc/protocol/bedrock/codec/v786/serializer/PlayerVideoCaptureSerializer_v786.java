@@ -11,27 +11,29 @@ import org.cloudburstmc.protocol.bedrock.packet.PlayerVideoCapturePacket;
 public class PlayerVideoCaptureSerializer_v786 implements BedrockPacketSerializer<PlayerVideoCapturePacket> {
     public static final PlayerVideoCaptureSerializer_v786 INSTANCE = new PlayerVideoCaptureSerializer_v786();
 
+    private static final PlayerVideoCapturePacket.Action[] ACTIONS = PlayerVideoCapturePacket.Action.values();
+
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, PlayerVideoCapturePacket packet) {
-        if (packet.getCaptureAction().equals(PlayerVideoCapturePacket.Action.START_VIDEO_CAPTURE)) {
-            buffer.writeBoolean(packet.isAction());
+        buffer.writeByte(packet.getAction().ordinal());
+        if (packet.getAction().equals(PlayerVideoCapturePacket.Action.START_VIDEO_CAPTURE)) {
             buffer.writeIntLE(packet.getFrameRate());
             helper.writeString(buffer, packet.getFilePrefix());
-        } else if (packet.getCaptureAction().equals(PlayerVideoCapturePacket.Action.STOP_VIDEO_CAPTURE)) {
-            buffer.writeBoolean(packet.isAction());
         }
     }
 
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, PlayerVideoCapturePacket packet) {
-        if (buffer.readableBytes() > 1) {
-            packet.setAction(buffer.readBoolean());
+        int index = buffer.readByte();
+        if (index >= ACTIONS.length) {
+            packet.setAction(PlayerVideoCapturePacket.Action.UNKNOWN);
+        } else {
+            packet.setAction(ACTIONS[index]);
+        }
+
+        if (packet.getAction().equals(PlayerVideoCapturePacket.Action.START_VIDEO_CAPTURE)) {
             packet.setFrameRate(buffer.readIntLE());
             packet.setFilePrefix(helper.readString(buffer));
-        } else if (buffer.readableBytes() == 1) {
-            packet.setAction(buffer.readBoolean());
-        } else {
-            packet.setCaptureAction(PlayerVideoCapturePacket.Action.UNKNOWN);
         }
     }
 }
