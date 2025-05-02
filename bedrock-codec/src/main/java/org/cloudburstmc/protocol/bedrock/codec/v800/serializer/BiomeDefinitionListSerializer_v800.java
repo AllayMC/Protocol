@@ -1,8 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.codec.v800.serializer;
 
 import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.ints.IntObjectPair;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.AccessLevel;
@@ -44,7 +42,7 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, BiomeDefinitionListPacket packet) {
         List<IntObjectPair<BiomeDefinitionData>> biomeDefinitions = new ArrayList<>();
         helper.readArray(buffer, biomeDefinitions, (byteBuf, bedrockCodecHelper) -> {
-            int index = byteBuf.readShortLE();
+            int index = byteBuf.readUnsignedShortLE();
             return IntObjectPair.of(index, readDefinition(byteBuf, bedrockCodecHelper));
         });
         List<String> biomeNames = new ArrayList<>();
@@ -252,8 +250,8 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
         int minValue = buffer.readShortLE();
         int maxValueType = VarInts.readInt(buffer);
         int maxValue = buffer.readShortLE();
-        int gridOffset = buffer.readIntLE();
-        int gridStepSize = buffer.readIntLE();
+        long gridOffset = buffer.readUnsignedIntLE();
+        long gridStepSize = buffer.readUnsignedIntLE();
         int distribution = VarInts.readInt(buffer);
 
         return new BiomeCoordinateData(minValueType, minValue, maxValueType,
@@ -326,12 +324,12 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
     }
 
     protected BiomeSurfaceMaterialData readSurfaceMaterial(ByteBuf buffer, BedrockCodecHelper helper) {
-        BlockDefinition topBlock = helper.readOptional(buffer, null, this::readBlock);
-        BlockDefinition midBlock = helper.readOptional(buffer, null, byteBuf -> readBlock(byteBuf, helper));
-        BlockDefinition seaFloorBlock = helper.readOptional(buffer, null, byteBuf -> readBlock(byteBuf, helper));
-        BlockDefinition foundationBlock = helper.readOptional(buffer, null, byteBuf -> readBlock(byteBuf, helper));
-        BlockDefinition seaBlock = helper.readOptional(buffer, null, byteBuf -> readBlock(byteBuf, helper));
-        BlockDefinition seaFloorDepth = helper.readOptional(buffer, null, byteBuf -> readBlock(byteBuf, helper));
+        BlockDefinition topBlock = this.readBlock(buffer, helper);
+        BlockDefinition midBlock = this.readBlock(buffer, helper);
+        BlockDefinition seaFloorBlock = this.readBlock(buffer, helper);
+        BlockDefinition foundationBlock = this.readBlock(buffer, helper);
+        BlockDefinition seaBlock = this.readBlock(buffer, helper);
+        BlockDefinition seaFloorDepth = this.readBlock(buffer, helper);
 
         return new BiomeSurfaceMaterialData(topBlock, midBlock, seaFloorBlock, foundationBlock, seaBlock, seaFloorDepth);
     }
