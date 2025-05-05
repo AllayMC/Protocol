@@ -319,7 +319,7 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
         this.writeBlock(buffer, helper, surfaceMaterial.getSeaFloorBlock());
         this.writeBlock(buffer, helper, surfaceMaterial.getFoundationBlock());
         this.writeBlock(buffer, helper, surfaceMaterial.getSeaBlock());
-        this.writeBlock(buffer, helper, surfaceMaterial.getSeaFloorDepth());
+        buffer.writeIntLE(surfaceMaterial.getSeaFloorDepth());
     }
 
     protected BiomeSurfaceMaterialData readSurfaceMaterial(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -328,7 +328,7 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
         BlockDefinition seaFloorBlock = this.readBlock(buffer, helper);
         BlockDefinition foundationBlock = this.readBlock(buffer, helper);
         BlockDefinition seaBlock = this.readBlock(buffer, helper);
-        BlockDefinition seaFloorDepth = this.readBlock(buffer, helper);
+        int seaFloorDepth = buffer.readIntLE();
 
         return new BiomeSurfaceMaterialData(topBlock, midBlock, seaFloorBlock, foundationBlock, seaBlock, seaFloorDepth);
     }
@@ -471,11 +471,19 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
     }
 
     protected void writeBlock(ByteBuf buffer, BedrockCodecHelper helper, BlockDefinition blockDefinition) {
+        if (blockDefinition == null) {
+            buffer.writeIntLE(-1);
+            return;
+        }
         helper.getBlockDefinitions().isRegistered(blockDefinition);
         buffer.writeIntLE(blockDefinition.getRuntimeId());
     }
 
     protected BlockDefinition readBlock(ByteBuf buffer, BedrockCodecHelper helper) {
-        return helper.getBlockDefinitions().getDefinition(buffer.readIntLE());
+        int runtimeId = buffer.readIntLE();
+        if (runtimeId == -1) {
+            return null;
+        }
+        return helper.getBlockDefinitions().getDefinition(runtimeId);
     }
 }
