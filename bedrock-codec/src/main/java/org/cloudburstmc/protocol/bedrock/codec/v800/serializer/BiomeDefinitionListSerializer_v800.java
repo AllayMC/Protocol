@@ -10,6 +10,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.biome.*;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.BiomeDefinitionListPacket;
+import org.cloudburstmc.protocol.common.util.DefinitionUtils;
 import org.cloudburstmc.protocol.common.util.Preconditions;
 import org.cloudburstmc.protocol.common.util.TriConsumer;
 import org.cloudburstmc.protocol.common.util.VarInts;
@@ -475,7 +476,7 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
             buffer.writeIntLE(-1);
             return;
         }
-        helper.getBlockDefinitions().isRegistered(blockDefinition);
+        DefinitionUtils.checkDefinition(helper.getBlockDefinitions(), blockDefinition);
         buffer.writeIntLE(blockDefinition.getRuntimeId());
     }
 
