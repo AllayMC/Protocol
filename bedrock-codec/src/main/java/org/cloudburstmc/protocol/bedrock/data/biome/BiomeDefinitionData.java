@@ -1,17 +1,14 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
-import it.unimi.dsi.fastutil.ints.IntList;
 import lombok.Value;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.awt.*;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 @Value
 public class BiomeDefinitionData {
-    OptionalInt id;
+    @Nullable
+    Integer id;
     float temperature;
     float downfall;
     float redSporeDensity;

@@ -61,8 +61,7 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
     }
 
     protected void writeDefinition(ByteBuf buffer, BedrockCodecHelper helper, BiomeDefinitionData definition) {
-        //noinspection OptionalGetWithoutIsPresent
-        helper.writeOptional(buffer, OptionalInt::isPresent, definition.getId(), (buf, optionalInt) -> buf.writeShortLE(optionalInt.getAsInt()));
+        helper.writeOptional(buffer, Objects::nonNull, definition.getId(), ByteBuf::writeShortLE);
         buffer.writeFloatLE(definition.getTemperature());
         buffer.writeFloatLE(definition.getDownfall());
         buffer.writeFloatLE(definition.getRedSporeDensity());
@@ -85,7 +84,7 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
     }
 
     protected BiomeDefinitionData readDefinition(ByteBuf buffer, BedrockCodecHelper helper) {
-        OptionalInt id = helper.readOptional(buffer, OptionalInt.empty(), buf -> OptionalInt.of(buf.readUnsignedShortLE()));
+        Integer id = helper.readOptional(buffer, null, ByteBuf::readUnsignedShortLE);
         float temperature = buffer.readFloatLE();
         float downfall = buffer.readFloatLE();
         float redSporeDensity = buffer.readFloatLE();
