@@ -4,14 +4,14 @@ import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.v766.serializer.CameraPresetsSerializer_v766;
+import org.cloudburstmc.protocol.bedrock.codec.v776.serializer.CameraPresetsSerializer_v776;
 import org.cloudburstmc.protocol.bedrock.data.ControlScheme;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistPreset;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAudioListener;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraPreset;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 
-public class CameraPresetsSerializer_v800 extends CameraPresetsSerializer_v766 {
+public class CameraPresetsSerializer_v800 extends CameraPresetsSerializer_v776 {
 
     public static final CameraPresetsSerializer_v800 INSTANCE = new CameraPresetsSerializer_v800();
 
