@@ -1,5 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class BiomeScatterParamData {
     @Getter(AccessLevel.NONE)
     transient Indexable<String> iterations;
 
+    @JsonCreator
     public BiomeScatterParamData(List<BiomeCoordinateData> coordinates, CoordinateEvaluationOrder evalOrder,
                                  ExpressionOp chancePercentType, String chancePercent, int chanceNumerator,
                                  int changeDenominator, ExpressionOp iterationsType, String iterations) {

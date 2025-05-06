@@ -1,5 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ public class BiomeConditionalTransformationData {
     transient Indexable<String> conditionJson;
     long minPassingNeighbors;
 
+    @JsonCreator
     public BiomeConditionalTransformationData(List<BiomeWeightedData> weightedBiomes, String conditionJson,
                                               long minPassingNeighbors) {
         this.weightedBiomes = weightedBiomes;

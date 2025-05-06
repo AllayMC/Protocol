@@ -1,5 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ public class BiomeWeightedData {
     transient Indexable<String> biome;
     int weight;
 
+    @JsonCreator
     public BiomeWeightedData(String biome, int weight) {
         this.biome = new Unindexed<>(biome);
         this.weight = weight;

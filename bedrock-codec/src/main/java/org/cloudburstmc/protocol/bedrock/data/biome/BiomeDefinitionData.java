@@ -1,5 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,7 @@ public class BiomeDefinitionData {
     @Nullable
     BiomeDefinitionChunkGenData chunkGenData;
 
+    @JsonCreator
     public BiomeDefinitionData(@Nullable String id, float temperature, float downfall, float redSporeDensity,
                             float blueSporeDensity, float ashDensity, float whiteAshDensity, float depth,
                             float scale, Color mapWaterColor, boolean rain, @Nullable List<String> tags,

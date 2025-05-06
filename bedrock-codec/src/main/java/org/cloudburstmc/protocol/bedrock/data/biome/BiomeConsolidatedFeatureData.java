@@ -1,5 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class BiomeConsolidatedFeatureData {
     transient Indexable<String> pass;
     boolean internalUse;
 
+    @JsonCreator
     public BiomeConsolidatedFeatureData(BiomeScatterParamData scatter, String feature, String identifier, String pass,
             boolean internalUse) {
         this.scatter = scatter;

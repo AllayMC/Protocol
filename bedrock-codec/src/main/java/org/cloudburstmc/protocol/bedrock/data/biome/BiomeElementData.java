@@ -1,5 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class BiomeElementData {
     transient Indexable<String> heightMax;
     BiomeSurfaceMaterialData adjustedMaterials;
 
+    @JsonCreator
     public BiomeElementData(float noiseFrequencyScale, float noiseLowerBound, float noiseUpperBound,
                             ExpressionOp heightMinType, String heightMin, ExpressionOp heightMaxType,
                             String heightMax, BiomeSurfaceMaterialData adjustedMaterials) {
