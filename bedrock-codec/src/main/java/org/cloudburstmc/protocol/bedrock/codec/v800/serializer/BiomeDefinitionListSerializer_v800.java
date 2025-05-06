@@ -87,7 +87,7 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
     }
 
     protected BiomeDefinitionData readDefinition(ByteBuf buffer, BedrockCodecHelper helper, List<String> strings) {
-        Indexable<String> id = helper.readOptional(buffer, null,
+        Indexed<String> id = helper.readOptional(buffer, null,
                 (buf, aHelper) -> new Indexed<>(strings, buf.readUnsignedShortLE()));
         float temperature = buffer.readFloatLE();
         float downfall = buffer.readFloatLE();

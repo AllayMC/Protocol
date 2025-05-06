@@ -14,10 +14,10 @@ import org.cloudburstmc.protocol.common.util.index.Unindexed;
 public class BiomeCoordinateData {
     ExpressionOp minValueType;
     @Getter(AccessLevel.NONE)
-    Indexable<String> minValue;
+    transient Indexable<String> minValue;
     ExpressionOp maxValueType;
     @Getter(AccessLevel.NONE)
-    Indexable<String> maxValue;
+    transient Indexable<String> maxValue;
     long gridOffset;
     long gridStepSize;
     RandomDistributionType distribution;

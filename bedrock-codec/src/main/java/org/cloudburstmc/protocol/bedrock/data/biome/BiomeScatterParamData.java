@@ -19,12 +19,12 @@ public class BiomeScatterParamData {
     CoordinateEvaluationOrder evalOrder;
     ExpressionOp chancePercentType;
     @Getter(AccessLevel.NONE)
-    Indexable<String> chancePercent;
+    transient Indexable<String> chancePercent;
     int chanceNumerator;
     int changeDenominator;
     ExpressionOp iterationsType;
     @Getter(AccessLevel.NONE)
-    Indexable<String> iterations;
+    transient Indexable<String> iterations;
 
     public BiomeScatterParamData(List<BiomeCoordinateData> coordinates, CoordinateEvaluationOrder evalOrder,
                                  ExpressionOp chancePercentType, String chancePercent, int chanceNumerator,

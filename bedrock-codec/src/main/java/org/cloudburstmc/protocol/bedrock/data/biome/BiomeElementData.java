@@ -16,10 +16,10 @@ public class BiomeElementData {
     float noiseUpperBound;
     ExpressionOp heightMinType;
     @Getter(AccessLevel.NONE)
-    Indexable<String> heightMin;
+    transient Indexable<String> heightMin;
     ExpressionOp heightMaxType;
     @Getter(AccessLevel.NONE)
-    Indexable<String> heightMax;
+    transient Indexable<String> heightMax;
     BiomeSurfaceMaterialData adjustedMaterials;
 
     public BiomeElementData(float noiseFrequencyScale, float noiseLowerBound, float noiseUpperBound,
