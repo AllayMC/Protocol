@@ -46,7 +46,7 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
             byteBuf.writeShortLE(strings.addAndGetIndex(name));
             writeDefinition(byteBuf, aHelper, definition, strings);
         });
-        helper.writeArray(buffer, biomes.keySet(), (byteBuf, bedrockCodecHelper, biomeName) -> bedrockCodecHelper.writeString(byteBuf, biomeName));
+        helper.writeArray(buffer, strings, (byteBuf, bedrockCodecHelper, biomeName) -> bedrockCodecHelper.writeString(byteBuf, biomeName));
     }
 
     @Override
