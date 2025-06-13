@@ -23,11 +23,6 @@ public class SubChunkPacket extends AbstractReferenceCounted implements BedrockP
     private Vector3i centerPosition;
     private List<SubChunkData> subChunks = new ObjectArrayList<>();
 
-    /**
-     *
-     *
-     */
-
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
         return handler.handle(this);

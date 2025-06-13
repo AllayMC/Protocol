@@ -10,7 +10,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- *
+ * Sends debug geometry to the client. Meant for script debugging purposes.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
