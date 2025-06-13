@@ -180,20 +180,6 @@ public class EncryptionUtils {
         }
         return clientData.getUnverifiedPayloadBytes();
     }
-    
-    @Nullable
-    private static List<String> getChain(String certificateJson) throws JoseException {
-        Map<String, Object> certificate = JsonUtil.parseJson(certificateJson);
-        Object chainObj = certificate.get("chain");
-        if (chainObj instanceof List) {
-            List<String> chain = (List<String>) chainObj;
-            if (chain.isEmpty()) {
-                throw new IllegalStateException("Certificate chain is empty");
-            }
-            return chain;
-        }
-        return null;
-    }
 
     public static ChainValidationResult validatePayload(AuthPayload payload)
             throws JoseException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidJwtException {
