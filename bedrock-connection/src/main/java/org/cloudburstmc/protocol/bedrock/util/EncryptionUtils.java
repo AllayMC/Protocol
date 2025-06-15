@@ -1,7 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.util;
 
 import lombok.experimental.UtilityClass;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.auth.AuthPayload;
 import org.cloudburstmc.protocol.bedrock.data.auth.AuthType;
 import org.cloudburstmc.protocol.bedrock.data.auth.CertificateChainPayload;
@@ -20,7 +19,6 @@ import org.jose4j.jwt.consumer.JwtConsumer;
 import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 import org.jose4j.jwt.consumer.JwtContext;
 import org.jose4j.jwx.HeaderParameterNames;
-import org.jose4j.jwx.JsonWebStructure;
 import org.jose4j.keys.resolvers.HttpsJwksVerificationKeyResolver;
 import org.jose4j.lang.JoseException;
 
@@ -61,15 +59,17 @@ public class EncryptionUtils {
     private static final JSONParser JSON_PARSER = new JSONParser();
 
     private static final Map<String, Object> DISCOVERY_DATA = getDiscoveryData();
-    private static final String AUTH_ENDPOINT = getIssuerEndpoint();
-    private static final String CERT_URL = AUTH_ENDPOINT + "/.well-known/jwks.json";
-    private static final HttpsJwks JWKS = new HttpsJwks(CERT_URL);
+    private static final Map<String, Object> OPENID_CONFIGURATION = getOpenIdConfiguration();
+    private static final String JWKS_URL = getJwksUrl();
+    private static final String ISSUER = getIssuer();
+    private static final HttpsJwks JWKS = new HttpsJwks(JWKS_URL);
     private static final HttpsJwksVerificationKeyResolver RESOLVER = new HttpsJwksVerificationKeyResolver(JWKS);
     private static final JwtConsumer MOJANG_CONSUMER = new JwtConsumerBuilder()
             .setVerificationKeyResolver(RESOLVER)
             .setRequireExpirationTime()
             .setRequireSubject()
             .setExpectedAudience(true, "api://auth-minecraft-services/multiplayer")
+            .setExpectedIssuer(ISSUER)
             .build();
 
     private static final JwtConsumer OFFLINE_CONSUMER = new JwtConsumerBuilder()
@@ -137,10 +137,51 @@ public class EncryptionUtils {
         return prodEnv;
     }
 
-    private static String getIssuerEndpoint() {
-        String issuer = (String) getAuthEnvironment().get("issuer");
+    private static String getServiceUri() {
+        String issuer = (String) getAuthEnvironment().get("serviceUri");
         if (issuer == null) {
             throw new AssertionError("Discovery data does not contain 'issuer' key in 'prod' environment");
+        }
+        return issuer;
+    }
+
+    private static Map<String, Object> getOpenIdConfiguration() {
+        String serviceUri = getServiceUri();
+
+        String openIdConfigUrl = serviceUri + "/.well-known/openid-configuration";
+        try {
+            URL url = new URL(openIdConfigUrl);
+            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+            connection.connect();
+            if (connection.getResponseCode() != 200) {
+                throw new IOException("Failed to fetch OpenID configuration: " + connection.getResponseMessage());
+            }
+            try (InputStream stream = connection.getInputStream();
+                 InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
+                //noinspection unchecked
+                return (Map<String, Object>) JSON_PARSER.parse(reader);
+            }
+        } catch (ParseException | IOException e) {
+            throw new AssertionError("Unable to fetch OpenID configuration from " + openIdConfigUrl, e);
+        }
+    }
+
+    private static String getJwksUrl() {
+        String jwksUrl = (String) OPENID_CONFIGURATION.get("jwks_uri");
+        if (jwksUrl == null || jwksUrl.isEmpty()) {
+            throw new AssertionError("OpenID configuration does not contain 'jwks_uri' key: " + OPENID_CONFIGURATION);
+        }
+        return jwksUrl;
+    }
+
+    private static String getIssuer() {
+        String issuer = (String) OPENID_CONFIGURATION.get("issuer");
+        if (issuer == null || issuer.isEmpty()) {
+            throw new AssertionError("OpenID configuration does not contain 'issuer' key: " + OPENID_CONFIGURATION);
         }
         return issuer;
     }
