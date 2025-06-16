@@ -8,16 +8,15 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
+import org.cloudburstmc.protocol.bedrock.data.auth.AuthPayload;
 import org.cloudburstmc.protocol.bedrock.data.auth.CertificateChainPayload;
 import org.cloudburstmc.protocol.bedrock.packet.LoginPacket;
 import org.cloudburstmc.protocol.common.util.VarInts;
-import org.jose4j.json.internal.json_simple.JSONArray;
-import org.jose4j.json.internal.json_simple.JSONObject;
-import org.jose4j.json.internal.json_simple.JSONValue;
+import org.jose4j.json.JsonUtil;
+import org.jose4j.lang.JoseException;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 
@@ -27,15 +26,9 @@ public class LoginSerializer_v291 implements BedrockPacketSerializer<LoginPacket
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, LoginPacket packet) {
-        checkArgument(packet.getAuthPayload() instanceof CertificateChainPayload, "This client only supports CertificateChainPayload for login");
         buffer.writeInt(packet.getProtocolVersion());
-        JSONArray array = new JSONArray();
-        array.addAll(((CertificateChainPayload) packet.getAuthPayload()).getChain());
 
-        JSONObject json = new JSONObject();
-        json.put("chain", array);
-
-        writeJwts(buffer, json.toJSONString(), packet.getClientJwt());
+        writeJwts(buffer, writeAuthJwt(packet.getAuthPayload()), packet.getClientJwt());
     }
 
     @Override
@@ -44,20 +37,39 @@ public class LoginSerializer_v291 implements BedrockPacketSerializer<LoginPacket
 
         ByteBuf jwt = buffer.readSlice(VarInts.readUnsignedInt(buffer)); // Get the JWT.
 
-        Object json = JSONValue.parse(readString(jwt));
-        checkArgument(json instanceof JSONObject && ((JSONObject) json).containsKey("chain"), "Invalid login chain");
-        Object chain = ((JSONObject) json).get("chain");
-        checkArgument(chain instanceof JSONArray, "Expected JSON array for login chain");
-
-        List<String> chainList = new ObjectArrayList<>(3);
-        for (Object node : (JSONArray) chain) {
-            checkArgument(node instanceof String, "Expected String in login chain");
-            chainList.add((String) node);
-        }
-        packet.setAuthPayload(new CertificateChainPayload(chainList));
+        String authJwt = readString(jwt);
+        packet.setAuthPayload(readAuthJwt(authJwt));
 
         String value = (String) jwt.readCharSequence(jwt.readIntLE(), StandardCharsets.UTF_8);
         packet.setClientJwt(value);
+    }
+
+    protected String writeAuthJwt(AuthPayload payload) {
+        checkArgument(payload instanceof CertificateChainPayload, "This client only supports CertificateChainPayload for login");
+
+        Map<String, Object> json = new HashMap<>();
+        json.put("chain", ((CertificateChainPayload) payload).getChain());
+
+        return JsonUtil.toJson(json);
+    }
+
+    protected AuthPayload readAuthJwt(String authJwt) {
+        try {
+            Map<String, Object> json = JsonUtil.parseJson(authJwt);
+            checkArgument(json != null && json.containsKey("chain") && json.get("chain") instanceof List,
+                    "Invalid login chain");
+            //noinspection unchecked
+            List<Object> chain = (List<Object>) json.get("chain");
+
+            List<String> chainList = new ObjectArrayList<>(3);
+            for (Object node : chain) {
+                checkArgument(node instanceof String, "Expected String in login chain");
+                chainList.add((String) node);
+            }
+            return new CertificateChainPayload(chainList);
+        } catch (JoseException e) {
+            throw new IllegalArgumentException("Failed to parse auth payload", e);
+        }
     }
 
     protected void writeJwts(ByteBuf buffer, String authJwt, String clientJwt) {

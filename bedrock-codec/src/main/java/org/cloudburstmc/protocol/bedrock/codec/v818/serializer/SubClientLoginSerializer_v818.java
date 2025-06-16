@@ -1,12 +1,13 @@
 package org.cloudburstmc.protocol.bedrock.codec.v818.serializer;
 
-import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LoginSerializer_v291;
+import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.SubClientLoginSerializer_v291;
 import org.cloudburstmc.protocol.bedrock.data.auth.AuthPayload;
 import org.cloudburstmc.protocol.bedrock.data.auth.AuthType;
 import org.cloudburstmc.protocol.bedrock.data.auth.CertificateChainPayload;
 import org.cloudburstmc.protocol.bedrock.data.auth.TokenPayload;
 import org.jose4j.json.JsonUtil;
 import org.jose4j.lang.JoseException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +15,9 @@ import java.util.Objects;
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 
-public class LoginSerializer_v818 extends LoginSerializer_v291 {
+public class SubClientLoginSerializer_v818 extends SubClientLoginSerializer_v291 {
 
-    public static final LoginSerializer_v818 INSTANCE = new LoginSerializer_v818();
+    public static final SubClientLoginSerializer_v818 INSTANCE = new SubClientLoginSerializer_v818();
 
     @Override
     protected String writeAuthJwt(AuthPayload payload) {

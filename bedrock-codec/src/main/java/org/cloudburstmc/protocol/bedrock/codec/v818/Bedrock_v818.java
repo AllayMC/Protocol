@@ -46,6 +46,7 @@ public class Bedrock_v818 extends Bedrock_v800 {
             .helper(() -> new BedrockCodecHelper_v776(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
             .deregisterPacket(SetMovementAuthorityPacket.class)
             .updateSerializer(LoginPacket.class, LoginSerializer_v818.INSTANCE)
+            .updateSerializer(SubClientLoginPacket.class, SubClientLoginSerializer_v818.INSTANCE)
             .updateSerializer(LevelSoundEventPacket.class, new LevelSoundEventSerializer_v786(SOUND_EVENTS))
             .updateSerializer(ResourcePacksInfoPacket.class, ResourcePacksInfoSerializer_v818.INSTANCE)
             .updateSerializer(SubChunkPacket.class, SubChunkSerializer_v818.INSTANCE)
