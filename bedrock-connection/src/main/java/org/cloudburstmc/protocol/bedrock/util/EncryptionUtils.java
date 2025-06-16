@@ -224,20 +224,20 @@ public class EncryptionUtils {
 
     public static ChainValidationResult validatePayload(AuthPayload payload)
             throws JoseException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidJwtException {
-        if (payload instanceof TokenPayload) {
-            TokenPayload tokenPayload = (TokenPayload) payload;
-            String token = tokenPayload.getToken();
-            if (token == null || token.isEmpty()) {
-                throw new IllegalStateException("Token is empty");
-            }
-            return validateToken(payload.getAuthType(), token);
-        } else if (payload instanceof CertificateChainPayload) {
+        if (payload instanceof CertificateChainPayload) {
             CertificateChainPayload chainPayload = (CertificateChainPayload) payload;
             List<String> chain = chainPayload.getChain();
             if (chain == null || chain.isEmpty()) {
                 throw new IllegalStateException("Certificate chain is empty");
             }
             return validateChain(chain);
+        } else if (payload instanceof TokenPayload) {
+            TokenPayload tokenPayload = (TokenPayload) payload;
+            String token = tokenPayload.getToken();
+            if (token == null || token.isEmpty()) {
+                throw new IllegalStateException("Token is empty");
+            }
+            return validateToken(payload.getAuthType(), token);
         } else {
             throw new IllegalArgumentException("Unsupported AuthPayload type: " + payload.getClass().getName());
         }
