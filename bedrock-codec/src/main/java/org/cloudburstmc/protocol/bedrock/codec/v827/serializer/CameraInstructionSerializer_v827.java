@@ -2,12 +2,12 @@ package org.cloudburstmc.protocol.bedrock.codec.v827.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.v748.serializer.CameraInstructionSerializer_v748;
+import org.cloudburstmc.protocol.bedrock.codec.v818.serializer.CameraInstructionSerializer_v818;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraEase;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraFovInstruction;
 import org.cloudburstmc.protocol.bedrock.packet.CameraInstructionPacket;
 
-public class CameraInstructionSerializer_v827 extends CameraInstructionSerializer_v748 {
+public class CameraInstructionSerializer_v827 extends CameraInstructionSerializer_v818 {
 
     public static final CameraInstructionSerializer_v827 INSTANCE = new CameraInstructionSerializer_v827();
 
