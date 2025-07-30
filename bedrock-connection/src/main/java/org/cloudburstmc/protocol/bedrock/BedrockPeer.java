@@ -20,6 +20,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v428.Bedrock_v428;
 import org.cloudburstmc.protocol.bedrock.data.PacketCompressionAlgorithm;
 import org.cloudburstmc.protocol.bedrock.netty.BedrockPacketWrapper;
+import org.cloudburstmc.protocol.bedrock.netty.codec.BlackholeInboundAdapter;
 import org.cloudburstmc.protocol.bedrock.netty.codec.FrameIdCodec;
 import org.cloudburstmc.protocol.bedrock.netty.codec.batch.BedrockBatchDecoder;
 import org.cloudburstmc.protocol.bedrock.netty.codec.compression.BatchCompression;
@@ -267,6 +268,12 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         if (evt instanceof RakDisconnectReason) {
             onRakNetDisconnect(ctx, (RakDisconnectReason) evt);
+        }
+    }
+
+    protected void blackholeInboundPackets() {
+        if (this.channel.pipeline().get(BlackholeInboundAdapter.class) == null) {
+            this.channel.pipeline().addFirst(BlackholeInboundAdapter.NAME, BlackholeInboundAdapter.INSTANCE);
         }
     }
 }
