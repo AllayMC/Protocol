@@ -1,19 +1,33 @@
 package org.cloudburstmc.protocol.bedrock.codec.v843;
 
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
+import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
 import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LevelEventSerializer_v291;
 import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.LevelEventGenericSerializer_v361;
-import org.cloudburstmc.protocol.bedrock.codec.v766.Bedrock_v766;
 import org.cloudburstmc.protocol.bedrock.codec.v786.serializer.LevelSoundEventSerializer_v786;
 import org.cloudburstmc.protocol.bedrock.codec.v827.Bedrock_v827;
 import org.cloudburstmc.protocol.bedrock.codec.v843.serializer.BiomeDefinitionListSerializer_v843;
 import org.cloudburstmc.protocol.bedrock.codec.v843.serializer.PlayerArmorDamageSerializer_v843;
 import org.cloudburstmc.protocol.bedrock.codec.v843.serializer.ServerboundPackSettingChangeSerializer_v843;
 import org.cloudburstmc.protocol.bedrock.data.*;
+import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
+import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.cloudburstmc.protocol.bedrock.packet.*;
+import org.cloudburstmc.protocol.bedrock.transformer.FlagTransformer;
 import org.cloudburstmc.protocol.common.util.TypeMap;
 
 public class Bedrock_v843 extends Bedrock_v827 {
+
+    protected static final TypeMap<EntityFlag> ENTITY_FLAGS = Bedrock_v827.ENTITY_FLAGS
+            .toBuilder()
+            .insert(125, EntityFlag.CAN_USE_VERTICAL_MOVEMENT_ACTION)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v827.ENTITY_DATA
+            .toBuilder()
+            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
+            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
+            .build();
 
     protected static final TypeMap<SoundEvent> SOUND_EVENTS = Bedrock_v827.SOUND_EVENTS
             .toBuilder()
@@ -23,11 +37,11 @@ public class Bedrock_v843 extends Bedrock_v827 {
             .insert(566, SoundEvent.UNDEFINED)
             .build();
 
-    protected static final TypeMap<ParticleType> PARTICLE_TYPES = Bedrock_v766.PARTICLE_TYPES.toBuilder()
+    protected static final TypeMap<ParticleType> PARTICLE_TYPES = Bedrock_v827.PARTICLE_TYPES.toBuilder()
             .insert(98, ParticleType.GREEN_FLAME)
             .build();
 
-    protected static final TypeMap<LevelEventType> LEVEL_EVENTS = Bedrock_v766.LEVEL_EVENTS.toBuilder()
+    protected static final TypeMap<LevelEventType> LEVEL_EVENTS = Bedrock_v827.LEVEL_EVENTS.toBuilder()
             .insert(LEVEL_EVENT_PARTICLE_TYPE, PARTICLE_TYPES)
             .build();
 

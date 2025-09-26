@@ -174,5 +174,9 @@ public enum EntityFlag {
     /**
      * @since v818
      */
-    BODY_ROTATION_ALWAYS_FOLLOWS_HEAD
+    BODY_ROTATION_ALWAYS_FOLLOWS_HEAD,
+    /**
+     * @since v843
+     */
+    CAN_USE_VERTICAL_MOVEMENT_ACTION
 }
