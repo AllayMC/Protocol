@@ -168,7 +168,7 @@ public class BiomeDefinitionListSerializer_v800 implements BedrockPacketSerializ
 
         return new BiomeDefinitionChunkGenData(climate, consolidatedFeatures,
                 mountainParams, surfaceMaterialAdjustment,
-                surfaceMaterial, hasSwampSurface,
+                surfaceMaterial, false, hasSwampSurface,
                 hasFrozenOceanSurface, hasTheEndSurface,
                 mesaSurface, cappedSurface,
                 overworldGenRules, multinoiseGenRules,

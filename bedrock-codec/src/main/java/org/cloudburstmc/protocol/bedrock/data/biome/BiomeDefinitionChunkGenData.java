@@ -17,6 +17,7 @@ public class BiomeDefinitionChunkGenData {
     BiomeSurfaceMaterialAdjustmentData surfaceMaterialAdjustment;
     @Nullable
     BiomeSurfaceMaterialData surfaceMaterial;
+    boolean hasDefaultOverworldSurface;
     boolean hasSwampSurface;
     boolean hasFrozenOceanSurface;
     boolean hasTheEndSurface;
