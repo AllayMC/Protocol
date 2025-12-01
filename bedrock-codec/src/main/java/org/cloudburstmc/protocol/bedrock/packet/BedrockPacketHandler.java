@@ -923,4 +923,8 @@ public interface BedrockPacketHandler extends PacketHandler {
     default PacketSignal handle(ServerPlayerPostMovePositionPacket packet) {
         return PacketSignal.UNHANDLED;
     }
+
+    default PacketSignal handle(ServerboundDataStorePacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
 }
