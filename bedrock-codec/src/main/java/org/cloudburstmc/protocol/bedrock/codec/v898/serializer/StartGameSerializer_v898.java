@@ -1,13 +1,13 @@
-package org.cloudburstmc.protocol.bedrock.codec.v897.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v898.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v827.serializer.StartGameSerializer_v827;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
 
-public class StartGameSerializer_v897 extends StartGameSerializer_v827 {
+public class StartGameSerializer_v898 extends StartGameSerializer_v827 {
 
-    public static final StartGameSerializer_v897 INSTANCE = new StartGameSerializer_v897();
+    public static final StartGameSerializer_v898 INSTANCE = new StartGameSerializer_v898();
 
     @Override
     protected void readBeforeNetworkPermissions(ByteBuf buffer, BedrockCodecHelper helper, StartGamePacket packet) {

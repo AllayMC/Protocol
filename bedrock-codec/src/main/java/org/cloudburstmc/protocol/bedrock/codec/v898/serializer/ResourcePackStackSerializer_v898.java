@@ -1,13 +1,13 @@
-package org.cloudburstmc.protocol.bedrock.codec.v897.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v898.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v671.serializer.ResourcePackStackSerializer_v671;
 import org.cloudburstmc.protocol.bedrock.packet.ResourcePackStackPacket;
 
-public class ResourcePackStackSerializer_v897 extends ResourcePackStackSerializer_v671 {
+public class ResourcePackStackSerializer_v898 extends ResourcePackStackSerializer_v671 {
 
-    public static final ResourcePackStackSerializer_v897 INSTANCE = new ResourcePackStackSerializer_v897();
+    public static final ResourcePackStackSerializer_v898 INSTANCE = new ResourcePackStackSerializer_v898();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ResourcePackStackPacket packet) {

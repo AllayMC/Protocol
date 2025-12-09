@@ -1,27 +1,22 @@
-package org.cloudburstmc.protocol.bedrock.codec.v897.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v898.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.v671.serializer.EventSerializer_v671;
 import org.cloudburstmc.protocol.bedrock.codec.v685.serializer.EventSerializer_v685;
 import org.cloudburstmc.protocol.bedrock.data.event.EventData;
 import org.cloudburstmc.protocol.bedrock.data.event.EventDataType;
-import org.cloudburstmc.protocol.bedrock.data.event.ItemUsedEventData;
-import org.cloudburstmc.protocol.bedrock.data.event.SlashCommandExecutedEventData;
 import org.cloudburstmc.protocol.bedrock.packet.EventPacket;
 import org.cloudburstmc.protocol.common.util.Preconditions;
 import org.cloudburstmc.protocol.common.util.TriConsumer;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.BiFunction;
 
-public class EventSerializer_v897 extends EventSerializer_v685 {
+public class EventSerializer_v898 extends EventSerializer_v685 {
 
-    public static final EventSerializer_v897 INSTANCE = new EventSerializer_v897();
+    public static final EventSerializer_v898 INSTANCE = new EventSerializer_v898();
 
-    public EventSerializer_v897() {
+    public EventSerializer_v898() {
         super();
         this.readers.put(EventDataType.SLASH_COMMAND_EXECUTED, this::readSlashCommandExecuted);
         this.writers.put(EventDataType.SLASH_COMMAND_EXECUTED, this::writeSlashCommandExecuted);

@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v897.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v898.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
@@ -8,9 +8,9 @@ import org.cloudburstmc.protocol.common.util.VarInts;
 
 import static org.cloudburstmc.protocol.bedrock.packet.AnimatePacket.Action;
 
-public class AnimateSerializer_v897 extends AnimateSerializer_v859 {
+public class AnimateSerializer_v898 extends AnimateSerializer_v859 {
 
-    public static final AnimateSerializer_v897 INSTANCE = new AnimateSerializer_v897();
+    public static final AnimateSerializer_v898 INSTANCE = new AnimateSerializer_v898();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, AnimatePacket packet) {

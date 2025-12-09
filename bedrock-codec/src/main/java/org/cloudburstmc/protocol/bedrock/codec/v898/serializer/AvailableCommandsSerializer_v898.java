@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v897.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v898.serializer;
 
 import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.longs.LongObjectPair;
@@ -15,11 +15,11 @@ import java.util.function.Consumer;
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 
-public class AvailableCommandsSerializer_v897 extends AvailableCommandsSerializer_v594 {
+public class AvailableCommandsSerializer_v898 extends AvailableCommandsSerializer_v594 {
 
     private static final List<String> PERMISSION_LEVEL = Arrays.asList("any", "gamedirectors", "admin", "host", "owner", "internal");
 
-    public AvailableCommandsSerializer_v897(TypeMap<CommandParam> paramTypeMap) {
+    public AvailableCommandsSerializer_v898(TypeMap<CommandParam> paramTypeMap) {
         super(paramTypeMap);
     }
 

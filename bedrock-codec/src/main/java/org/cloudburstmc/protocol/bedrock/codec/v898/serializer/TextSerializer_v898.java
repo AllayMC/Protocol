@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v897.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v898.serializer;
 
 import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -8,9 +8,9 @@ import org.cloudburstmc.protocol.bedrock.codec.v685.serializer.TextSerializer_v6
 import org.cloudburstmc.protocol.bedrock.packet.TextPacket;
 import org.cloudburstmc.protocol.common.util.TextConverter;
 
-public class TextSerializer_v897 extends TextSerializer_v685 {
+public class TextSerializer_v898 extends TextSerializer_v685 {
 
-    public static final TextSerializer_v897 INSTANCE = new TextSerializer_v897();
+    public static final TextSerializer_v898 INSTANCE = new TextSerializer_v898();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, TextPacket packet) {
