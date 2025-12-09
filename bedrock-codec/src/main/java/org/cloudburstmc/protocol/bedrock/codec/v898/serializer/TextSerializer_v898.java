@@ -38,7 +38,12 @@ public class TextSerializer_v898 extends TextSerializer_v685 {
                 helper.writeString(buffer, "textObject");
                 buffer.writeByte(type.ordinal());
                 text = converter.serialize(message);
-                if (text.isEmpty()) text = " ";
+                if (text.isEmpty()) {
+                    text = " ";
+                    if (log.isDebugEnabled()) {
+                        log.debug("TextPacket of " + type + " with empty message");
+                    }
+                }
                 helper.writeString(buffer, text);
                 break;
             case JSON:
