@@ -49,6 +49,7 @@ public class Bedrock_v898 extends Bedrock_v860 {
             .updateSerializer(LevelSoundEventPacket.class, new LevelSoundEventSerializer_v786(SOUND_EVENTS))
             .updateSerializer(MobEffectPacket.class, MobEffectSerializer_v898.INSTANCE)
             .updateSerializer(ResourcePackStackPacket.class, ResourcePackStackSerializer_v898.INSTANCE)
+            .updateSerializer(SpawnParticleEffectPacket.class, SpawnParticleEffectSerializer_v898.INSTANCE)
             .updateSerializer(StartGamePacket.class, StartGameSerializer_v898.INSTANCE)
             .updateSerializer(TextPacket.class, TextSerializer_v898.INSTANCE)
             .registerPacket(ClientboundDataStorePacket::new, ClientboundDataStoreSerializer_v898.INSTANCE, 330, PacketRecipient.CLIENT)
