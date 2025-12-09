@@ -3,20 +3,23 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.bedrock.data.datastore.DataStoreUpdate;
+import org.cloudburstmc.protocol.bedrock.data.datastore.DataStoreAction;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Applies a single update to the server data store from the client
+ * Sends a list of data store properties from the server to the client
  *
  * @since v897
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
-public class ServerboundDataStorePacket implements BedrockPacket {
+public class ClientboundDataStorePacket implements BedrockPacket {
 
-    private DataStoreUpdate update = new DataStoreUpdate();
+    private List<DataStoreAction> updates = new ArrayList<>();
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {
@@ -25,13 +28,13 @@ public class ServerboundDataStorePacket implements BedrockPacket {
 
     @Override
     public BedrockPacketType getPacketType() {
-        return BedrockPacketType.SERVERBOUND_DATA_STORE;
+        return BedrockPacketType.CLIENTBOUND_DATA_STORE;
     }
 
     @Override
-    public ServerboundDataStorePacket clone() {
+    public ClientboundDataStorePacket clone() {
         try {
-            return (ServerboundDataStorePacket) super.clone();
+            return (ClientboundDataStorePacket) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
