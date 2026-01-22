@@ -303,4 +303,16 @@ public class EntityDataTypes {
      * @since v800
      */
     public static final EntityDataType<Float> SEAT_CAMERA_RELAX_DISTANCE_SMOOTHING = new EntityDataType<>(Float.class, "SEAT_CAMERA_RELAX_DISTANCE_SMOOTHING");
+    /**
+     * @since v924
+     */
+    public static final EntityDataType<Integer> AIM_ASSIST_PRIORITY_PRESET_ID = new EntityDataType<>(Integer.class, "AIM_ASSIST_PRIORITY_PRESET_ID");
+    /**
+     * @since v924
+     */
+    public static final EntityDataType<Integer> AIM_ASSIST_PRIORITY_CATEGORY_ID = new EntityDataType<>(Integer.class, "AIM_ASSIST_PRIORITY_CATEGORY_ID");
+    /**
+     * @since v924
+     */
+    public static final EntityDataType<Integer> AIM_ASSIST_PRIORITY_ACTOR_ID = new EntityDataType<>(Integer.class, "AIM_ASSIST_PRIORITY_ACTOR_ID");
 }

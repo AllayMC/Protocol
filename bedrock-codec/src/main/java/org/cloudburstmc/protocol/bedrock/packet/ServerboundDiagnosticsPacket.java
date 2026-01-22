@@ -3,7 +3,11 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.cloudburstmc.protocol.bedrock.data.MemoryCategoryCounter;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
@@ -18,6 +22,7 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket{
     private float avgEndFrameTimeMS;
     private float avgRemainderTimePercent;
     private float avgUnaccountedTimePercent;
+    private final List<MemoryCategoryCounter> memoryCategoryValues = new ArrayList<>();
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

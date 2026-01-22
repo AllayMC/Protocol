@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v859.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v924.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.math.vector.Vector3f;
@@ -14,9 +14,9 @@ import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CameraInstructionSerializer_v859 extends CameraInstructionSerializer_v827 {
+public class CameraInstructionSerializer_v924 extends CameraInstructionSerializer_v827 { // v827 intentional
 
-    public static final CameraInstructionSerializer_v859 INSTANCE = new CameraInstructionSerializer_v859();
+    public static final CameraInstructionSerializer_v924 INSTANCE = new CameraInstructionSerializer_v924();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, CameraInstructionPacket packet) {
@@ -28,6 +28,7 @@ public class CameraInstructionSerializer_v859 extends CameraInstructionSerialize
             helper.writeArray(buf, splineInstruction.getProgressKeyFrames(), (buf2, frame) -> {
                 buf2.writeFloatLE(frame.getValue());
                 buf2.writeFloatLE(frame.getTime());
+                buf2.writeIntLE(frame.getEasingFunc().ordinal());
             });
             helper.writeArray(buf, splineInstruction.getRotationOption(), (buf2, rotationOption) -> {
                 helper.writeVector3f(buf2, rotationOption.getKeyFrameValues());
@@ -50,7 +51,8 @@ public class CameraInstructionSerializer_v859 extends CameraInstructionSerialize
             helper.readArray(buf, progressKeyFrames, buf2 -> {
                 float value = buf2.readFloatLE();
                 float time = buf2.readFloatLE();
-                return new CameraSplineInstruction.SplineProgressOption(value, time, CameraEase.LINEAR);
+                CameraEase easingFunc = CameraEase.values()[buf2.readIntLE()];
+                return new CameraSplineInstruction.SplineProgressOption(value, time, easingFunc);
             });
             List<CameraSplineInstruction.SplineRotationOption> rotationOption = new ArrayList<>();
             helper.readArray(buf, rotationOption, buf2 -> {

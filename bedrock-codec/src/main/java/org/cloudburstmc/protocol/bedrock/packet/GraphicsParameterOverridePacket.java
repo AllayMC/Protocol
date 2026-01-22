@@ -23,6 +23,14 @@ public class GraphicsParameterOverridePacket implements BedrockPacket {
     private GraphicsOverrideParameterType parameterType;
     private Map<Float, Vector3f> values;
     private boolean reset;
+    /**
+     * @since v924
+     */
+    private float floatValue;
+    /**
+     * @since v924
+     */
+    private Vector3f vec3Value;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

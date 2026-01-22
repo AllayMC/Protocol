@@ -196,6 +196,14 @@ public class StartGamePacket implements BedrockPacket {
      * @since v827
      */
     private boolean tickDeathSystemsEnabled;
+    /**
+     * @since v924
+     */
+    private boolean hasServerJoinInformation;
+    /**
+     * @since v924
+     */
+    private ServerTelemetryData serverTelemetryData = ServerTelemetryData.EMPTY;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
