@@ -38,7 +38,6 @@ public class StartGameSerializer_v924 extends StartGameSerializer_v898 {
                 helper.readString(buffer),
                 helper.readString(buffer)
         ));
-        System.out.println(packet);
     }
 
     @Override

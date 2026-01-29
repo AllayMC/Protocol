@@ -931,4 +931,32 @@ public interface BedrockPacketHandler extends PacketHandler {
     default PacketSignal handle(ClientboundDataStorePacket packet) {
         return PacketSignal.UNHANDLED;
     }
+
+    default PacketSignal handle(CameraAimAssistActorPriorityPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(CameraSplinePacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(ClientboundDataDrivenUICloseAllScreensPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(ClientboundDataDrivenUIReloadPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(ClientboundDataDrivenUIShowScreenPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(ClientboundTextureShiftPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(VoxelShapesPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
 }

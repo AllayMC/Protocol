@@ -91,7 +91,7 @@ public class TextSerializer_v924 extends TextSerializer_v898 {
         helper.writeString(buffer, packet.getXuid());
         helper.writeString(buffer, packet.getPlatformChatId());
         String filtered = converter.serialize(packet.getFilteredMessage(CharSequence.class));
-        helper.writeString(buffer, filtered);
+        helper.writeOptional(buffer, (s -> !s.isEmpty()), filtered, (buf, codecHelper, s) -> codecHelper.writeString(buf, s));
     }
 
     @Override
@@ -130,7 +130,7 @@ public class TextSerializer_v924 extends TextSerializer_v898 {
 
         packet.setXuid(helper.readString(buffer));
         packet.setPlatformChatId(helper.readString(buffer));
-        String filtered = helper.readString(buffer);
+        String filtered = helper.readOptional(buffer, "", (buf, codecHelper) -> codecHelper.readString(buf));
         packet.setFilteredMessage(converter.deserialize(filtered, needsTranslation));
     }
 }
