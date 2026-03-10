@@ -19,10 +19,10 @@ public class StartGameSerializer_v924 extends StartGameSerializer_v898 {
         if (packet.isHasServerJoinInformation()) {
             buffer.writeBoolean(false); // TODO
         }
-        helper.writeString(buffer, packet.getServerTelemetryData().getServerId());
-        helper.writeString(buffer, packet.getServerTelemetryData().getScenarioId());
-        helper.writeString(buffer, packet.getServerTelemetryData().getWorldId());
-        helper.writeString(buffer, packet.getServerTelemetryData().getOwnerId());
+        helper.writeString(buffer, packet.getServerId());
+        helper.writeString(buffer, packet.getScenarioId());
+        helper.writeString(buffer, packet.getWorldId());
+        helper.writeString(buffer, packet.getOwnerId());
     }
 
     @Override
@@ -32,12 +32,10 @@ public class StartGameSerializer_v924 extends StartGameSerializer_v898 {
         if (packet.isHasServerJoinInformation()) {
             buffer.readBoolean(); // TODO
         }
-        packet.setServerTelemetryData(new ServerTelemetryData(
-                helper.readString(buffer),
-                helper.readString(buffer),
-                helper.readString(buffer),
-                helper.readString(buffer)
-        ));
+        packet.setServerId(helper.readString(buffer));
+        packet.setScenarioId(helper.readString(buffer));
+        packet.setWorldId(helper.readString(buffer));
+        packet.setOwnerId(helper.readString(buffer));
     }
 
     @Override

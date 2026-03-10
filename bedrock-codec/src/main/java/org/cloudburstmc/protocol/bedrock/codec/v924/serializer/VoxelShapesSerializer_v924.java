@@ -22,13 +22,11 @@ public class VoxelShapesSerializer_v924 implements BedrockPacketSerializer<Voxel
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, VoxelShapesPacket packet) {
         helper.writeArray(buffer, packet.getShapes(), (buf, shape) -> {
-            helper.writeArray(buf, shape.getCells(), (buf2, frame) -> {
-                buf2.writeByte(frame.getXSize());
-                buf2.writeByte(frame.getYSize());
-                buf2.writeByte(frame.getZSize());
+            buf.writeByte(shape.getCells().getXSize());
+            buf.writeByte(shape.getCells().getYSize());
+            buf.writeByte(shape.getCells().getZSize());
 
-                helper.writeArray(buf2, frame.getStorage(), (buf3, value) -> buf3.writeByte(value));
-            });
+            helper.writeArray(buf, shape.getCells().getStorage(), (buf2, value) -> buf2.writeByte(value));
 
             helper.writeArray(buf, shape.getXCoordinates(), ByteBuf::writeFloatLE);
             helper.writeArray(buf, shape.getYCoordinates(), ByteBuf::writeFloatLE);
@@ -38,7 +36,7 @@ public class VoxelShapesSerializer_v924 implements BedrockPacketSerializer<Voxel
         VarInts.writeUnsignedInt(buffer, packet.getNameMap().size());
         packet.getNameMap().forEach((k, v) -> {
             helper.writeString(buffer, k);
-            buffer.getUnsignedShortLE(v);
+            buffer.writeShortLE(v);
         });
     }
 
@@ -47,18 +45,14 @@ public class VoxelShapesSerializer_v924 implements BedrockPacketSerializer<Voxel
         List<SerializableVoxelShape> shapes = new ArrayList<>();
 
         helper.readArray(buffer, shapes, (buf, h) -> {
-            List<SerializableVoxelShape.SerializableCells> cells = new ArrayList<>();
+            short xSize = buf.readUnsignedByte();
+            short ySize = buf.readUnsignedByte();
+            short zSize = buf.readUnsignedByte();
 
-            helper.readArray(buf, cells, buf2 -> {
-                short xSize = buf2.readUnsignedByte();
-                short ySize = buf2.readUnsignedByte();
-                short zSize = buf2.readUnsignedByte();
+            List<Short> storage = new ArrayList<>();
+            helper.readArray(buf, storage, (ByteBuf::readUnsignedByte));
 
-                List<Short> storage = new ArrayList<>();
-                helper.readArray(buf2, storage, (ByteBuf::readUnsignedByte));
-
-                return new SerializableVoxelShape.SerializableCells(xSize, ySize, zSize, storage);
-            });
+            SerializableVoxelShape.SerializableCells cells = new SerializableVoxelShape.SerializableCells(xSize, ySize, zSize, storage);
 
             List<Float> xCoordinates = new ArrayList<>();
             helper.readArray(buf, xCoordinates, (ByteBuf::readFloatLE));

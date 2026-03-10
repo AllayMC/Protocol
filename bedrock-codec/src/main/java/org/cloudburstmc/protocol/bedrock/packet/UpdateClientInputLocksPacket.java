@@ -13,6 +13,9 @@ import static org.cloudburstmc.protocol.bedrock.packet.BedrockPacketType.*;
 @ToString(doNotUseGetters = true)
 public class UpdateClientInputLocksPacket implements BedrockPacket {
     private int lockComponentData;
+    /**
+     * @deprecated since v944
+     */
     private Vector3f serverPosition;
 
     @Override

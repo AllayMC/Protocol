@@ -28,4 +28,96 @@ public enum GraphicsOverrideParameterType {
     MIDTONES_CONTRAST,
     HIGHLIGHTS_CONTRAST,
     SHADOWS_CONTRAST,
+    /**
+     * @since v944
+     */
+    HIGHLIGHTS_GAIN,
+    /**
+     * @since v944
+     */
+    HIGHLIGHTS_GAMMA,
+    /**
+     * @since v944
+     */
+    HIGHLIGHTS_OFFSET,
+    /**
+     * @since v944
+     */
+    HIGHLIGHTS_SATURATION,
+    /**
+     * @since v944
+     */
+    MIDTONES_GAIN,
+    /**
+     * @since v944
+     */
+    MIDTONES_GAMMA,
+    /**
+     * @since v944
+     */
+    MIDTONES_OFFSET,
+    /**
+     * @since v944
+     */
+    MIDTONES_SATURATION,
+    /**
+     * @since v944
+     */
+    SHADOWS_GAIN,
+    /**
+     * @since v944
+     */
+    SHADOWS_GAMMA,
+    /**
+     * @since v944
+     */
+    SHADOWS_OFFSET,
+    /**
+     * @since v944
+     */
+    SHADOWS_SATURATION,
+    /**
+     * @since v944
+     */
+    HIGHLIGHTS_MIN,
+    /**
+     * @since v944
+     */
+    SHADOWS_MAX,
+    /**
+     * @since v944
+     */
+    TEMPERATURE,
+    /**
+     * @since v944
+     */
+    SUN_COLOR,
+    /**
+     * @since v944
+     */
+    SUN_ILLUMINANCE,
+    /**
+     * @since v944
+     */
+    MOON_COLOR,
+    /**
+     * @since v944
+     */
+    MOON_ILLUMINANCE,
+    /**
+     * @since v944
+     */
+    FLASH_COLOR,
+    /**
+     * @since v944
+     */
+    FLASH_ILLUMINANCE,
+    /**
+     * @since v944
+     */
+    AMBIENT_COLOR,
+    /**
+     * @since v944
+     */
+    AMBIENT_ILLUMINANCE,
 }

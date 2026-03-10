@@ -8,9 +8,7 @@ import org.cloudburstmc.protocol.bedrock.data.ParticleType;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 
 import java.util.EnumMap;
-import java.util.EnumSet;
 import java.util.Map;
-import java.util.Set;
 
 @UtilityClass
 public class EntityDataTypes {
@@ -315,4 +313,7 @@ public class EntityDataTypes {
      * @since v924
      */
     public static final EntityDataType<Integer> AIM_ASSIST_PRIORITY_ACTOR_ID = new EntityDataType<>(Integer.class, "AIM_ASSIST_PRIORITY_ACTOR_ID");
+    public static final EntityDataType<Long> ARROW_SHOOTER_ID = new EntityDataType<>(Long.class, "ARROW_SHOOTER_ID");
+    public static final EntityDataType<Long> FIREWORK_SHOOTER_ID = new EntityDataType<>(Long.class, "FIREWORK_SHOOTER_ID");
+    public static final EntityDataType<Vector3f> FIREWORK_DIRECTION = new EntityDataType<>(Vector3f.class, "FIREWORK_DIRECTION");
 }

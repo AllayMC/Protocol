@@ -7,7 +7,7 @@ import java.util.List;
 @Value
 public class SerializableVoxelShape {
 
-    List<SerializableCells> cells;
+    SerializableCells cells;
     List<Float> xCoordinates;
     List<Float> yCoordinates;
     List<Float> zCoordinates;
