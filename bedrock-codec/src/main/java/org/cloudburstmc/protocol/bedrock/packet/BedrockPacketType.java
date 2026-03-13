@@ -235,12 +235,18 @@ public class BedrockPacketType {
     public static final BedrockPacketType SERVERBOUND_DATA_STORE = new BedrockPacketType("SERVERBOUND_DATA_STORE");
     public static final BedrockPacketType CLIENTBOUND_DATA_STORE = new BedrockPacketType("CLIENTBOUND_DATA_STORE");
     public static final BedrockPacketType CLIENTBOUND_DATA_DRIVEN_UI_SHOW_SCREEN = new BedrockPacketType("CLIENTBOUND_DATA_DRIVEN_UI_SHOW_SCREEN");
-    public static final BedrockPacketType CLIENTBOUND_DATA_DRIVEN_UI_CLOSE_ALL_SCREENS = new BedrockPacketType("CLIENTBOUND_DATA_DRIVEN_UI_CLOSE_ALL_SCREENS");
+    public static final BedrockPacketType CLIENTBOUND_DATA_DRIVEN_UI_CLOSE_SCREEN = new BedrockPacketType("CLIENTBOUND_DATA_DRIVEN_UI_CLOSE_SCREEN");
     public static final BedrockPacketType CLIENTBOUND_DATA_DRIVEN_UI_RELOAD = new BedrockPacketType("CLIENTBOUND_DATA_DRIVEN_UI_RELOAD");
     public static final BedrockPacketType CLIENTBOUND_TEXTURE_SHIFT = new BedrockPacketType("CLIENTBOUND_TEXTURE_SHIFT");
     public static final BedrockPacketType VOXEL_SHAPES = new BedrockPacketType("VOXEL_SHAPES");
     public static final BedrockPacketType CAMERA_SPLINE = new BedrockPacketType("CAMERA_SPLINE");
     public static final BedrockPacketType CAMERA_AIM_ASSIST_ACTOR_PRIORITY = new BedrockPacketType("CAMERA_AIM_ASSIST_ACTOR_PRIORITY");
+    public static final BedrockPacketType RESOURCE_PACKS_READY_FOR_VALIDATION = new BedrockPacketType("RESOURCE_PACKS_READY_FOR_VALIDATION");
+    public static final BedrockPacketType LOCATOR_BAR = new BedrockPacketType("LOCATOR_BAR");
+    public static final BedrockPacketType PARTY_CHANGED = new BedrockPacketType("PARTY_CHANGED");
+    public static final BedrockPacketType SERVERBOUND_DATA_DRIVEN_SCREEN_CLOSED = new BedrockPacketType("SERVERBOUND_DATA_DRIVEN_SCREEN_CLOSED");
+    public static final BedrockPacketType SYNC_WORLD_CLOCKS = new BedrockPacketType("SYNC_WORLD_CLOCKS");
+    public static final BedrockPacketType CLIENTBOUND_ATTRIBUTE_LAYER_SYNC = new BedrockPacketType("CLIENTBOUND_ATTRIBUTE_LAYER_SYNC");
 
     @Getter
     private final String name;

@@ -15,10 +15,8 @@ public class StartGameSerializer_v924 extends StartGameSerializer_v898 {
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, StartGamePacket packet) {
         super.serialize(buffer, helper, packet);
-        buffer.writeBoolean(packet.isHasServerJoinInformation());
-        if (packet.isHasServerJoinInformation()) {
-            buffer.writeBoolean(false); // TODO
-        }
+        writeServerJoinInformation(buffer, helper, packet);
+
         helper.writeString(buffer, packet.getServerId());
         helper.writeString(buffer, packet.getScenarioId());
         helper.writeString(buffer, packet.getWorldId());
@@ -28,10 +26,8 @@ public class StartGameSerializer_v924 extends StartGameSerializer_v898 {
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, StartGamePacket packet) {
         super.deserialize(buffer, helper, packet);
-        packet.setHasServerJoinInformation(buffer.readBoolean());
-        if (packet.isHasServerJoinInformation()) {
-            buffer.readBoolean(); // TODO
-        }
+        readServerJoinInformation(buffer, helper, packet);
+
         packet.setServerId(helper.readString(buffer));
         packet.setScenarioId(helper.readString(buffer));
         packet.setWorldId(helper.readString(buffer));
@@ -150,5 +146,21 @@ public class StartGameSerializer_v924 extends StartGameSerializer_v898 {
         packet.setForceExperimentalGameplay(helper.readOptional(buffer, OptionalBoolean.empty(), buf -> OptionalBoolean.of(buf.readBoolean())));
         packet.setChatRestrictionLevel(ChatRestrictionLevel.values()[buffer.readByte()]);
         packet.setDisablingPlayerInteractions(buffer.readBoolean());
+    }
+
+    protected void writeServerJoinInformation(ByteBuf buffer, BedrockCodecHelper helper, StartGamePacket packet) {
+        buffer.writeBoolean(packet.isHasServerJoinInformation());
+
+        if (packet.isHasServerJoinInformation()) {
+            buffer.writeBoolean(false); // TODO
+        }
+    }
+
+    protected void readServerJoinInformation(ByteBuf buffer, BedrockCodecHelper helper, StartGamePacket packet) {
+        packet.setHasServerJoinInformation(buffer.readBoolean());
+
+        if (packet.isHasServerJoinInformation()) {
+            buffer.readBoolean(); // TODO
+        }
     }
 }

@@ -6,10 +6,9 @@ import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LevelEventSeriali
 import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.LevelEventGenericSerializer_v361;
 import org.cloudburstmc.protocol.bedrock.codec.v786.serializer.LevelSoundEventSerializer_v786;
 import org.cloudburstmc.protocol.bedrock.codec.v924.Bedrock_v924;
-import org.cloudburstmc.protocol.bedrock.codec.v944.serializer.PlayerAuthInputSerializer_v944;
-import org.cloudburstmc.protocol.bedrock.codec.v944.serializer.UpdateClientInputLocksSerializer_v944;
-import org.cloudburstmc.protocol.bedrock.codec.v944.serializer.VoxelShapesSerializer_v944;
+import org.cloudburstmc.protocol.bedrock.codec.v944.serializer.*;
 import org.cloudburstmc.protocol.bedrock.data.LevelEventType;
+import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.ParticleType;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataFormat;
@@ -56,11 +55,20 @@ public class Bedrock_v944 extends Bedrock_v924 {
             .protocolVersion(944)
             .minecraftVersion("1.26.10")
             .helper(() -> new BedrockCodecHelper_v944(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
+            .updateSerializer(ClientboundDataDrivenUICloseScreenPacket.class, ClientboundDataDrivenUICloseScreenSerializer_v944.INSTANCE)
+            .updateSerializer(ClientboundDataDrivenUIShowScreenPacket.class, ClientboundDataDrivenUIShowScreenSerializer_v944.INSTANCE)
             .updateSerializer(LevelEventPacket.class, new LevelEventSerializer_v291(LEVEL_EVENTS))
             .updateSerializer(LevelEventGenericPacket.class, new LevelEventGenericSerializer_v361(LEVEL_EVENTS))
             .updateSerializer(LevelSoundEventPacket.class, new LevelSoundEventSerializer_v786(SOUND_EVENTS))
             .updateSerializer(PlayerAuthInputPacket.class, PlayerAuthInputSerializer_v944.INSTANCE)
+            .updateSerializer(StartGamePacket.class, StartGameSerializer_v944.INSTANCE)
             .updateSerializer(UpdateClientInputLocksPacket.class, UpdateClientInputLocksSerializer_v944.INSTANCE)
             .updateSerializer(VoxelShapesPacket.class, VoxelShapesSerializer_v944.INSTANCE)
+            .registerPacket(ResourcePacksReadyForValidationPacket::new, ResourcePacksReadyForValidationSerializer_v944.INSTANCE, 340, PacketRecipient.SERVER)
+            .registerPacket(LocatorBarPacket::new, LocatorBarSerializer_v944.INSTANCE, 341, PacketRecipient.CLIENT)
+            .registerPacket(PartyChangedPacket::new, PartyChangedSerializer_v944.INSTANCE, 342, PacketRecipient.SERVER)
+            .registerPacket(ServerboundDataDrivenScreenClosedPacket::new, ServerboundDataDrivenScreenClosedSerializer_v944.INSTANCE, 343, PacketRecipient.SERVER)
+            .registerPacket(SyncWorldClocksPacket::new, SyncWorldClocksSerializer_v944.INSTANCE, 344, PacketRecipient.CLIENT)
+            .registerPacket(ClientboundAttributeLayerSyncPacket::new, ClientboundAttributeLayerSyncSerializer_v944.INSTANCE, 345, PacketRecipient.CLIENT)
             .build();
 }

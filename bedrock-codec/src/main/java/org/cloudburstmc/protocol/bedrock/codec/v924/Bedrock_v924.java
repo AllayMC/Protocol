@@ -64,7 +64,7 @@ public class Bedrock_v924 extends Bedrock_v898 {
             .updateSerializer(StartGamePacket.class, StartGameSerializer_v924.INSTANCE)
             .updateSerializer(TextPacket.class, TextSerializer_v924.INSTANCE)
             .registerPacket(ClientboundDataDrivenUIShowScreenPacket::new, ClientboundDataDrivenUIShowScreenSerializer_v924.INSTANCE, 333, PacketRecipient.CLIENT)
-            .registerPacket(ClientboundDataDrivenUICloseAllScreensPacket::new, ClientboundDataDrivenUICloseAllScreensSerializer_v924.INSTANCE, 334, PacketRecipient.CLIENT)
+            .registerPacket(ClientboundDataDrivenUICloseScreenPacket::new, ClientboundDataDrivenUICloseScreenSerializer_v924.INSTANCE, 334, PacketRecipient.CLIENT)
             .registerPacket(ClientboundDataDrivenUIReloadPacket::new, ClientboundDataDrivenUIReloadSerializer_v924.INSTANCE, 335, PacketRecipient.CLIENT)
             .registerPacket(ClientboundTextureShiftPacket::new, ClientboundTextureShiftSerializer_v924.INSTANCE, 336, PacketRecipient.CLIENT)
             .registerPacket(VoxelShapesPacket::new, VoxelShapesSerializer_v924.INSTANCE, 337, PacketRecipient.CLIENT)

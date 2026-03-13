@@ -3,6 +3,7 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.GraphicsOverrideParameterType;
 import org.cloudburstmc.protocol.common.PacketSignal;
@@ -26,10 +27,12 @@ public class GraphicsParameterOverridePacket implements BedrockPacket {
     /**
      * @since v924
      */
-    private float floatValue;
+    @Nullable
+    private Float floatValue;
     /**
      * @since v924
      */
+    @Nullable
     private Vector3f vec3Value;
 
     @Override

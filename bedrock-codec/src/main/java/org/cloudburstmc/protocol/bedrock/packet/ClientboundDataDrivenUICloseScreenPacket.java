@@ -7,29 +7,22 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Allows the server to tell the client to show a Data Driven UI screen.
+ * Allows the server to tell the client to close all the Data Driven UI screens.
+ * Previously ClientboundDataDrivenUICloseAllScreensPacket
  *
  * @since v924
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
-public class ClientboundDataDrivenUIShowScreenPacket implements BedrockPacket {
-
-    private String screenId;
+public class ClientboundDataDrivenUICloseScreenPacket implements BedrockPacket {
 
     /**
-     * The unique id of this instance of the form for tracking in scripting
-     * @since v944
-     */
-    private int formId;
-
-    /**
-     * The optional id of the data associated with this screen
+     * The unique id of th form to close. If not supplied, this will close all forms
      * @since v944
      */
     @Nullable
-    private Integer dataInstanceId;
+    private Integer formId;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
@@ -37,13 +30,13 @@ public class ClientboundDataDrivenUIShowScreenPacket implements BedrockPacket {
     }
 
     public BedrockPacketType getPacketType() {
-        return BedrockPacketType.CLIENTBOUND_DATA_DRIVEN_UI_SHOW_SCREEN;
+        return BedrockPacketType.CLIENTBOUND_DATA_DRIVEN_UI_CLOSE_SCREEN;
     }
 
     @Override
-    public ClientboundDataDrivenUIShowScreenPacket clone() {
+    public ClientboundDataDrivenUICloseScreenPacket clone() {
         try {
-            return (ClientboundDataDrivenUIShowScreenPacket) super.clone();
+            return (ClientboundDataDrivenUICloseScreenPacket) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }

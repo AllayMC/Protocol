@@ -26,13 +26,13 @@ public class ClientboundDataStoreSerializer_v924 extends ClientboundDataStoreSer
 
                     Object value = ((DataStoreUpdate) action).getData();
 
-                    int type = value instanceof Double ? 0 : value instanceof Boolean ? 1 : value instanceof String ? 2 : -1;
+                    int type = value instanceof Number ? 0 : value instanceof Boolean ? 1 : value instanceof String ? 2 : -1;
 
                     VarInts.writeUnsignedInt(buffer, type);
 
                     switch (type) {
                         case 0:
-                            buffer.writeDoubleLE((double) value);
+                            buffer.writeDoubleLE(((Number) value).doubleValue());
                             break;
                         case 1:
                             buffer.writeBoolean((boolean) value);
@@ -41,7 +41,7 @@ public class ClientboundDataStoreSerializer_v924 extends ClientboundDataStoreSer
                             helper.writeString(buffer, (String) value);
                             break;
                         default:
-                            throw new IllegalStateException("Invalid data store data type");
+                            throw new IllegalStateException("Invalid data store data type " + type);
                     }
 
                     buffer.writeIntLE(((DataStoreUpdate) action).getUpdateCount());
@@ -51,26 +51,7 @@ public class ClientboundDataStoreSerializer_v924 extends ClientboundDataStoreSer
                     helper.writeString(buffer, ((DataStoreChange) action).getDataStoreName());
                     helper.writeString(buffer, ((DataStoreChange) action).getProperty());
                     buffer.writeIntLE(((DataStoreChange) action).getUpdateCount());
-
-                    value = ((DataStoreChange) action).getNewValue();
-
-                    type = value instanceof Double ? 0 : value instanceof Boolean ? 1 : value instanceof String ? 2 : -1;
-
-                    VarInts.writeUnsignedInt(buffer, type);
-
-                    switch (type) {
-                        case 0:
-                            buffer.writeDoubleLE((double) value);
-                            break;
-                        case 1:
-                            buffer.writeBoolean((boolean) value);
-                            break;
-                        case 2:
-                            helper.writeString(buffer, (String) value);
-                            break;
-                        default:
-                            throw new IllegalStateException("Invalid data store data type");
-                    }
+                    writeDataStoreChange(buffer, helper, ((DataStoreChange) action).getNewValue());
                     break;
                 case 2:
                     helper.writeString(buf, ((DataStoreRemoval) action).getDataStoreName());
@@ -115,22 +96,7 @@ public class ClientboundDataStoreSerializer_v924 extends ClientboundDataStoreSer
                     change.setDataStoreName(helper.readString(buf));
                     change.setProperty(helper.readString(buffer));
                     change.setUpdateCount((int) buffer.readUnsignedIntLE());
-
-                    type = VarInts.readUnsignedInt(buffer);
-
-                    switch (type) {
-                        case 0:
-                            change.setNewValue(buffer.readDoubleLE());
-                            break;
-                        case 1:
-                            change.setNewValue(buffer.readBoolean());
-                            break;
-                        case 2:
-                            change.setNewValue(helper.readString(buffer));
-                            break;
-                        default:
-                            throw new IllegalStateException("Invalid data store data type: " + type);
-                    }
+                    change.setNewValue(readDataStoreChange(buffer, helper));
                     return change;
                 case 2:
                     DataStoreRemoval removal = new DataStoreRemoval();
