@@ -6,12 +6,12 @@ import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LevelEventSeriali
 import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.LevelEventGenericSerializer_v361;
 import org.cloudburstmc.protocol.bedrock.codec.v786.serializer.LevelSoundEventSerializer_v786;
 import org.cloudburstmc.protocol.bedrock.codec.v924.Bedrock_v924;
+import org.cloudburstmc.protocol.bedrock.codec.v924.serializer.CameraInstructionSerializer_v924;
 import org.cloudburstmc.protocol.bedrock.codec.v944.serializer.*;
 import org.cloudburstmc.protocol.bedrock.data.LevelEventType;
 import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.ParticleType;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
-import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataFormat;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.packet.*;
@@ -34,9 +34,6 @@ public class Bedrock_v944 extends Bedrock_v924 {
 
     protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v924.ENTITY_DATA
             .toBuilder()
-            .insert(EntityDataTypes.ARROW_SHOOTER_ID, 17, EntityDataFormat.LONG)
-            .insert(EntityDataTypes.FIREWORK_DIRECTION, 17, EntityDataFormat.VECTOR3F)
-            .insert(EntityDataTypes.FIREWORK_SHOOTER_ID, 18, EntityDataFormat.LONG)
             .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
             .build();
 
@@ -55,6 +52,8 @@ public class Bedrock_v944 extends Bedrock_v924 {
             .protocolVersion(944)
             .minecraftVersion("1.26.10")
             .helper(() -> new BedrockCodecHelper_v944(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
+            .updateSerializer(CameraInstructionPacket.class, CameraInstructionSerializer_v944.INSTANCE)
+            .updateSerializer(CameraSplinePacket.class, CameraSplineSerializer_v944.INSTANCE)
             .updateSerializer(ClientboundDataDrivenUICloseScreenPacket.class, ClientboundDataDrivenUICloseScreenSerializer_v944.INSTANCE)
             .updateSerializer(ClientboundDataDrivenUIShowScreenPacket.class, ClientboundDataDrivenUIShowScreenSerializer_v944.INSTANCE)
             .updateSerializer(LevelEventPacket.class, new LevelEventSerializer_v291(LEVEL_EVENTS))

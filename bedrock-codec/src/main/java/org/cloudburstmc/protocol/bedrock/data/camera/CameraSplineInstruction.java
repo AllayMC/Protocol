@@ -15,7 +15,18 @@ public class CameraSplineInstruction {
     private List<Vector3f> curve;
     private List<SplineProgressOption> progressKeyFrames;
     private List<SplineRotationOption> rotationOption;
-    // TODO: what's "splineIdentifier and loadFromJson flag" from 916?
+    private String splineIdentifier;
+    private boolean loadFromJson;
+
+    public CameraSplineInstruction(float totalTime, CameraSplineType type, List<Vector3f> curve, List<SplineProgressOption> progressKeyFrames, List<SplineRotationOption> rotationOption) {
+        this.totalTime = totalTime;
+        this.type = type;
+        this.curve = curve;
+        this.progressKeyFrames = progressKeyFrames;
+        this.rotationOption = rotationOption;
+        this.splineIdentifier = "";
+        this.loadFromJson = false;
+    }
 
     @Data
     @AllArgsConstructor
@@ -23,7 +34,7 @@ public class CameraSplineInstruction {
 
         private float value;
         private float time;
-        private CameraEase easingFunc;
+        private CameraEase ease;
     }
 
     @Data
@@ -32,5 +43,6 @@ public class CameraSplineInstruction {
 
         private Vector3f keyFrameValues;
         private float keyFrameTimes;
+        private CameraEase ease;
     }
 }

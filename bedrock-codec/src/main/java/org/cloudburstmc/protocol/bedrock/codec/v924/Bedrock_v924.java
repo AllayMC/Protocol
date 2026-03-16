@@ -17,6 +17,9 @@ public class Bedrock_v924 extends Bedrock_v898 {
 
     protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v898.ENTITY_DATA
             .toBuilder()
+            .insert(EntityDataTypes.ARROW_SHOOTER_ID, 17, EntityDataFormat.LONG)
+            .insert(EntityDataTypes.FIREWORK_DIRECTION, 17, EntityDataFormat.VECTOR3F)
+            .insert(EntityDataTypes.FIREWORK_SHOOTER_ID, 18, EntityDataFormat.LONG)
             .insert(EntityDataTypes.AIM_ASSIST_PRIORITY_PRESET_ID, 136, EntityDataFormat.INT)
             .insert(EntityDataTypes.AIM_ASSIST_PRIORITY_CATEGORY_ID, 137, EntityDataFormat.INT)
             .insert(EntityDataTypes.AIM_ASSIST_PRIORITY_ACTOR_ID, 138, EntityDataFormat.INT)

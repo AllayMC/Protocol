@@ -1,11 +1,9 @@
-package org.cloudburstmc.protocol.bedrock.codec.v924.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v944.serializer;
 
 import io.netty.buffer.ByteBuf;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
+import org.cloudburstmc.protocol.bedrock.codec.v924.serializer.CameraSplineSerializer_v924;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraEase;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSplineDefinition;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSplineInstruction;
@@ -15,10 +13,9 @@ import org.cloudburstmc.protocol.bedrock.packet.CameraSplinePacket;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-public class CameraSplineSerializer_v924 implements BedrockPacketSerializer<CameraSplinePacket> {
+public class CameraSplineSerializer_v944 extends CameraSplineSerializer_v924 {
 
-    public static final CameraSplineSerializer_v924 INSTANCE = new CameraSplineSerializer_v924();
+    public static final CameraSplineSerializer_v944 INSTANCE = new CameraSplineSerializer_v944();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, CameraSplinePacket packet) {
@@ -37,6 +34,8 @@ public class CameraSplineSerializer_v924 implements BedrockPacketSerializer<Came
                 buf2.writeFloatLE(rotationOption.getKeyFrameTimes());
                 helper.writeString(buf2, rotationOption.getEase().getSerializeName());
             });
+            helper.writeString(buffer, spline.getInstruction().getSplineIdentifier());
+            buffer.writeBoolean(spline.getInstruction().isLoadFromJson());
         });
     }
 
@@ -64,7 +63,9 @@ public class CameraSplineSerializer_v924 implements BedrockPacketSerializer<Came
                 CameraEase ease = CameraEase.fromName(helper.readString(buf2));
                 return new CameraSplineInstruction.SplineRotationOption(keyFrameValues, keyFrameTimes, ease);
             });
-            return new CameraSplineDefinition(name, new CameraSplineInstruction(totalTime, type, curve, progressKeyFrames, rotationOption));
+            String splineIdentifier = helper.readString(buffer);
+            boolean loadFromJson = buffer.readBoolean();
+            return new CameraSplineDefinition(name, new CameraSplineInstruction(totalTime, type, curve, progressKeyFrames, rotationOption, splineIdentifier, loadFromJson));
         });
 
         packet.setSplines(splines);
