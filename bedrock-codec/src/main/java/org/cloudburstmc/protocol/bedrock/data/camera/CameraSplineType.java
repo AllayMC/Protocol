@@ -15,6 +15,9 @@ public enum CameraSplineType {
         }
     }
 
+    /**
+     * @since v924
+     */
     private final String serializeName;
 
     CameraSplineType(String serializeName) {

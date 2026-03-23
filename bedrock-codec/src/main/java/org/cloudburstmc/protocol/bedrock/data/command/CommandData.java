@@ -14,6 +14,10 @@ public class CommandData {
     private final Set<Flag> flags;
     private final CommandPermission permission;
     private final CommandEnumData aliases;
+
+    /**
+     * @since v594
+     */
     private final List<ChainedSubCommandData> subcommands;
     private final CommandOverloadData[] overloads;
 

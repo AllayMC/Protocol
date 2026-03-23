@@ -14,7 +14,14 @@ public class ItemDescriptorWithCount {
 
     public static final ItemDescriptorWithCount EMPTY = new ItemDescriptorWithCount(InvalidDescriptor.INSTANCE, 0);
 
+    /**
+     * @since v361
+     */
     private final ItemDescriptor descriptor;
+
+    /**
+     * @since v361
+     */
     private final int count;
 
     public ItemData toItem() {

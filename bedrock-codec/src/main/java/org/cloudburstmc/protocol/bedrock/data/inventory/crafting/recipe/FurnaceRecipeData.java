@@ -16,6 +16,10 @@ public class FurnaceRecipeData implements TaggedCraftingData {
     private final int inputId;
     private final int inputData;
     private final ItemData result;
+
+    /**
+     * @since v354
+     */
     private final String tag;
 
     public boolean hasData() {

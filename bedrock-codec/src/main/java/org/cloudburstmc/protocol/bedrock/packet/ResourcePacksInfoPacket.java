@@ -90,7 +90,7 @@ public class ResourcePacksInfoPacket implements BedrockPacket {
         private boolean addonPack;
 
         /**
-         * @since v748
+         * @since v618
          */
         private String cdnUrl;
     }

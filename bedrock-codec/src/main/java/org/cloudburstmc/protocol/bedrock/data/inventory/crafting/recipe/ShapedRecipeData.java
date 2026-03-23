@@ -18,14 +18,30 @@ import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 public class ShapedRecipeData implements CraftingRecipeData {
 
     private final CraftingDataType type;
+
+    /**
+     * @since v361
+     */
     private final String id;
     private final int width;
     private final int height;
     private final List<ItemDescriptorWithCount> ingredients;
     private final List<ItemData> results;
     private final UUID uuid;
+
+    /**
+     * @since v354
+     */
     private final String tag;
+
+    /**
+     * @since v361
+     */
     private final int priority;
+
+    /**
+     * @since v407
+     */
     private final int netId;
     /**
      * @since v671

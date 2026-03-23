@@ -70,7 +70,14 @@ public class PlayerListPacket implements BedrockPacket {
          */
         private boolean trustedSkin;
 
+        /**
+         * @since v649
+         */
         private boolean subClient;
+
+        /**
+         * @since v800
+         */
         private Color color;
 
         public String getName() {

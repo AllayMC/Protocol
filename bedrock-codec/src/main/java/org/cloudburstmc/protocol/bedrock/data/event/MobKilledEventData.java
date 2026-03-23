@@ -11,6 +11,10 @@ import lombok.experimental.NonFinal;
 public class MobKilledEventData implements EventData {
     private final long killerUniqueEntityId;
     private final long victimUniqueEntityId;
+
+    /**
+     * @since v388
+     */
     private final int killerEntityType;
     private final int entityDamageCause;
     @NonFinal

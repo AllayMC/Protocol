@@ -14,9 +14,21 @@ public class SubChunkData extends AbstractReferenceCounted {
     private SubChunkRequestResult result;
     private HeightMapDataType heightMapType;
     private ByteBuf heightMapData;
+
+    /**
+     * @since v818
+     */
     private HeightMapDataType renderHeightMapType;
+
+    /**
+     * @since v818
+     */
     private ByteBuf renderHeightMapData;
     private boolean cacheEnabled;
+
+    /**
+     * @since v475
+     */
     private long blobId;
 
     @Override

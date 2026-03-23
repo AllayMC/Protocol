@@ -12,6 +12,10 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescripto
 public class SmithingTransformRecipeData implements TaggedCraftingData, IdentifiableRecipeData, NetworkRecipeData {
 
     private final String id;
+
+    /**
+     * @since v582
+     */
     private final ItemDescriptorWithCount template;
     private final ItemDescriptorWithCount base;
     private final ItemDescriptorWithCount addition;
