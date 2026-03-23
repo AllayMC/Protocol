@@ -76,10 +76,10 @@ public class AnimatePacket implements BedrockPacket {
             }
         }
 
-        @Getter
         /**
          * @since v898
          */
+        @Getter
         private final String name;
 
         SwingSource(String name) {
