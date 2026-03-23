@@ -46,21 +46,15 @@ public class BossEventPacket implements BedrockPacket {
         REMOVE,
         /** Unregisters a player from a boss fight. */
         UNREGISTER_PLAYER,
-        /**
-         * Appears not to be implemented. Currently bar percentage only appears to change in response to
-         * the target entity's health.
-         */
+        /** Updates the boss bar percentage. */
         UPDATE_PERCENTAGE,
-        /**
-         * Also appears to not be implemented. Title clientside sticks as the target entity's nametag,
-         * or their entity transactionType name if not set.
-         */
+        /** Updates the boss bar title. */
         UPDATE_NAME,
         /** Darken the sky when the boss bar is shown. */
         UPDATE_PROPERTIES,
         /**
-         * Not implemented :( Intended to alter bar appearance, but these currently produce no effect on
-         * clientside whatsoever.
+         * Intended to alter the boss bar appearance, but these currently produce no visible effect on
+         * the client.
          */
         UPDATE_STYLE,
         QUERY
