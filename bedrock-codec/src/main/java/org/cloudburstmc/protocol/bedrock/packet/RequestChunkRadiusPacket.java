@@ -5,32 +5,37 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client to the server to update the server on the chunk view radius that it has set in
+ * the settings. The server may respond with a ChunkRadiusUpdated packet with either the chunk
+ * radius requested, or a different chunk radius if the server chooses so.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class RequestChunkRadiusPacket implements BedrockPacket {
-    private int radius;
-    /**
-     * @since v582
-     */
-    private int maxRadius;
+  private int radius;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v582
+   */
+  private int maxRadius;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.REQUEST_CHUNK_RADIUS;
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public RequestChunkRadiusPacket clone() {
-        try {
-            return (RequestChunkRadiusPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.REQUEST_CHUNK_RADIUS;
+  }
+
+  @Override
+  public RequestChunkRadiusPacket clone() {
+    try {
+      return (RequestChunkRadiusPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

@@ -6,33 +6,37 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to change the client-side velocity of an entity. It is usually used in
+ * combination with server-side movement calculation.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetEntityMotionPacket implements BedrockPacket {
-    private long runtimeEntityId;
-    private Vector3f motion;
-    /**
-     * @since v662
-     */
-    private long tick;
+  private long runtimeEntityId;
+  private Vector3f motion;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v662
+   */
+  private long tick;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.SET_ENTITY_MOTION;
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public SetEntityMotionPacket clone() {
-        try {
-            return (SetEntityMotionPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.SET_ENTITY_MOTION;
+  }
+
+  @Override
+  public SetEntityMotionPacket clone() {
+    try {
+      return (SetEntityMotionPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

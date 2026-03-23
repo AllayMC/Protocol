@@ -6,33 +6,36 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to move an entity to an absolute position. It is typically used for movements
+ * where high accuracy isn't needed, such as for long range teleporting.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MoveEntityAbsolutePacket implements BedrockPacket {
-    private long runtimeEntityId;
-    private Vector3f position;
-    private Vector3f rotation;
-    private boolean onGround;
-    private boolean teleported;
-    private boolean forceMove;
+  private long runtimeEntityId;
+  private Vector3f position;
+  private Vector3f rotation;
+  private boolean onGround;
+  private boolean teleported;
+  private boolean forceMove;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.MOVE_ENTITY_ABSOLUTE;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.MOVE_ENTITY_ABSOLUTE;
+  }
 
-    @Override
-    public MoveEntityAbsolutePacket clone() {
-        try {
-            return (MoveEntityAbsolutePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public MoveEntityAbsolutePacket clone() {
+    try {
+      return (MoveEntityAbsolutePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

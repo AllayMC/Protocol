@@ -5,28 +5,32 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client in response to a PlayStatus packet with the status set to 3. The packet marks
+ * the moment at which the client is fully initialised and can receive any packet without discarding
+ * it.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetLocalPlayerAsInitializedPacket implements BedrockPacket {
-    private long runtimeEntityId;
+  private long runtimeEntityId;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.SET_LOCAL_PLAYER_AS_INITIALIZED;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.SET_LOCAL_PLAYER_AS_INITIALIZED;
+  }
 
-    @Override
-    public SetLocalPlayerAsInitializedPacket clone() {
-        try {
-            return (SetLocalPlayerAsInitializedPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public SetLocalPlayerAsInitializedPacket clone() {
+    try {
+      return (SetLocalPlayerAsInitializedPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

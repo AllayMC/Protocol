@@ -5,33 +5,37 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to transfer a player from the current server to another. Doing so will fully
+ * disconnect the client, bring it back to the main menu and make it connect to the next server.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class TransferPacket implements BedrockPacket {
-    private String address;
-    private int port;
-    /**
-     * @since v729
-     */
-    private boolean reloadWorld;
+  private String address;
+  private int port;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v729
+   */
+  private boolean reloadWorld;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.TRANSFER;
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public TransferPacket clone() {
-        try {
-            return (TransferPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.TRANSFER;
+  }
+
+  @Override
+  public TransferPacket clone() {
+    try {
+      return (TransferPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

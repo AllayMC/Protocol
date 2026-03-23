@@ -7,53 +7,59 @@ import org.cloudburstmc.protocol.bedrock.annotation.Incompressible;
 import org.cloudburstmc.protocol.bedrock.data.PacketCompressionAlgorithm;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update a variety of network settings. These settings modify the way packets
+ * are sent over the network stack.
+ */
 @Data
 @Incompressible
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class NetworkSettingsPacket implements BedrockPacket {
-    /**
-     * The smallest amount of bytes that should be compressed by the client. 0-65535
-     */
-    private int compressionThreshold;
-    /**
-     * Set the compression type to be used on the connection.
-     *
-     * @since v551
-     */
-    private PacketCompressionAlgorithm compressionAlgorithm;
-    /**
-     * Enable client throttling of players out of the threshold. Players out of the threshold will not be ticked on the
-     * client, reducing the performance hit on lower end devices when in densely populated areas.
-     *
-     * @since v554
-     */
-    private boolean clientThrottleEnabled;
-    /**
-     * @since v554
-     */
-    private int clientThrottleThreshold;
-    /**
-     * @since v554
-     */
-    private float clientThrottleScalar;
+  /** The smallest amount of bytes that should be compressed by the client. 0-65535 */
+  private int compressionThreshold;
 
-    @Override
-    public PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * Set the compression type to be used on the connection.
+   *
+   * @since v551
+   */
+  private PacketCompressionAlgorithm compressionAlgorithm;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.NETWORK_SETTINGS;
-    }
+  /**
+   * Enable client throttling of players out of the threshold. Players out of the threshold will not
+   * be ticked on the client, reducing the performance hit on lower end devices when in densely
+   * populated areas.
+   *
+   * @since v554
+   */
+  private boolean clientThrottleEnabled;
 
-    @Override
-    public NetworkSettingsPacket clone() {
-        try {
-            return (NetworkSettingsPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  /**
+   * @since v554
+   */
+  private int clientThrottleThreshold;
+
+  /**
+   * @since v554
+   */
+  private float clientThrottleScalar;
+
+  @Override
+  public PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
+
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.NETWORK_SETTINGS;
+  }
+
+  @Override
+  public NetworkSettingsPacket clone() {
+    try {
+      return (NetworkSettingsPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

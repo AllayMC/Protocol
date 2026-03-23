@@ -7,29 +7,31 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update data of a block entity client-side, for example the data of a chest.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class BlockEntityDataPacket implements BedrockPacket {
-    private Vector3i blockPosition;
-    private NbtMap data;
+  private Vector3i blockPosition;
+  private NbtMap data;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.BLOCK_ENTITY_DATA;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.BLOCK_ENTITY_DATA;
+  }
 
-    @Override
-    public BlockEntityDataPacket clone() {
-        try {
-            return (BlockEntityDataPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public BlockEntityDataPacket clone() {
+    try {
+      return (BlockEntityDataPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

@@ -6,28 +6,29 @@ import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/** Sent by the server to let the client know all the rules for jigsaw structures. */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class JigsawStructureDataPacket implements BedrockPacket {
-    private NbtMap jigsawStructureDataTag;
+  private NbtMap jigsawStructureDataTag;
 
-    @Override
-    public PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.JIGSAW_STRUCTURE_DATA;
-    }
+  @Override
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.JIGSAW_STRUCTURE_DATA;
+  }
 
-    @Override
-    public JigsawStructureDataPacket clone() {
-        try {
-            return (JigsawStructureDataPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public JigsawStructureDataPacket clone() {
+    try {
+      return (JigsawStructureDataPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }

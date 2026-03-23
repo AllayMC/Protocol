@@ -5,33 +5,37 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it tries to pick an entity, so that it gets a spawn egg which can spawn
+ * that entity.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EntityPickRequestPacket implements BedrockPacket {
-    private long runtimeEntityId;
-    private int hotbarSlot;
-    /**
-     * @since v465
-     */
-    private boolean withData;
+  private long runtimeEntityId;
+  private int hotbarSlot;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v465
+   */
+  private boolean withData;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.ENTITY_PICK_REQUEST;
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public EntityPickRequestPacket clone() {
-        try {
-            return (EntityPickRequestPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.ENTITY_PICK_REQUEST;
+  }
+
+  @Override
+  public EntityPickRequestPacket clone() {
+    try {
+      return (EntityPickRequestPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

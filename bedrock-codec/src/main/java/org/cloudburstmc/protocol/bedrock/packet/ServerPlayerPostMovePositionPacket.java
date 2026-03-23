@@ -6,27 +6,28 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/** Sent by the server to communicate the player's post-move position. */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ServerPlayerPostMovePositionPacket implements BedrockPacket {
-    private Vector3f position;
+  private Vector3f position;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.SERVER_PLAYER_POST_MOVE_POSITION;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.SERVER_PLAYER_POST_MOVE_POSITION;
+  }
 
-    @Override
-    public ServerPlayerPostMovePositionPacket clone() {
-        try {
-            return (ServerPlayerPostMovePositionPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+  @Override
+  public ServerPlayerPostMovePositionPacket clone() {
+    try {
+      return (ServerPlayerPostMovePositionPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError();
     }
+  }
 }

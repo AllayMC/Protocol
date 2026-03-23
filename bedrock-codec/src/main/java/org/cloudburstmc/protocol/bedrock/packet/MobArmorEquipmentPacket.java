@@ -6,36 +6,40 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to the client to update the armor an entity is wearing. It is sent for both
+ * players and other entities, such as zombies.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MobArmorEquipmentPacket implements BedrockPacket {
-    private long runtimeEntityId;
-    private ItemData helmet;
-    private ItemData chestplate;
-    private ItemData leggings;
-    private ItemData boots;
-    /**
-     * @since v712
-     */
-    private ItemData body;
+  private long runtimeEntityId;
+  private ItemData helmet;
+  private ItemData chestplate;
+  private ItemData leggings;
+  private ItemData boots;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v712
+   */
+  private ItemData body;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.MOB_ARMOR_EQUIPMENT;
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public MobArmorEquipmentPacket clone() {
-        try {
-            return (MobArmorEquipmentPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.MOB_ARMOR_EQUIPMENT;
+  }
+
+  @Override
+  public MobArmorEquipmentPacket clone() {
+    try {
+      return (MobArmorEquipmentPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

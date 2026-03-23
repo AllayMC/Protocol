@@ -1,6 +1,7 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -10,37 +11,41 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.PotionMixData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.RecipeData;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-import java.util.List;
-
+/**
+ * Sent by the server to let the client know all crafting data that the server maintains. This
+ * includes shapeless crafting, crafting table recipes, furnace recipes etc. Each crafting station's
+ * recipes are included in it.
+ */
 @Data
 @ToString(doNotUseGetters = true)
 @EqualsAndHashCode(doNotUseGetters = true)
 public class CraftingDataPacket implements BedrockPacket {
-    private final List<RecipeData> craftingData = new ObjectArrayList<>();
-    private final List<PotionMixData> potionMixData = new ObjectArrayList<>();
-    private final List<ContainerMixData> containerMixData = new ObjectArrayList<>();
-    /**
-     * @since v465
-     */
-    private final List<MaterialReducer> materialReducers = new ObjectArrayList<>();
-    private boolean cleanRecipes;
+  private final List<RecipeData> craftingData = new ObjectArrayList<>();
+  private final List<PotionMixData> potionMixData = new ObjectArrayList<>();
+  private final List<ContainerMixData> containerMixData = new ObjectArrayList<>();
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v465
+   */
+  private final List<MaterialReducer> materialReducers = new ObjectArrayList<>();
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.CRAFTING_DATA;
-    }
+  private boolean cleanRecipes;
 
-    @Override
-    public CraftingDataPacket clone() {
-        try {
-            return (CraftingDataPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
+
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.CRAFTING_DATA;
+  }
+
+  @Override
+  public CraftingDataPacket clone() {
+    try {
+      return (CraftingDataPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

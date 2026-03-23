@@ -6,28 +6,29 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.AuthoritativeMovementMode;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/** Sent by the server to the client to change its movement mode. */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetMovementAuthorityPacket implements BedrockPacket {
-    private AuthoritativeMovementMode movementMode;
+  private AuthoritativeMovementMode movementMode;
 
-    @Override
-    public PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.SET_MOVEMENT_AUTHORITY;
-    }
+  @Override
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.SET_MOVEMENT_AUTHORITY;
+  }
 
-    @Override
-    public SetMovementAuthorityPacket clone() {
-        try {
-            return (SetMovementAuthorityPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public SetMovementAuthorityPacket clone() {
+    try {
+      return (SetMovementAuthorityPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }

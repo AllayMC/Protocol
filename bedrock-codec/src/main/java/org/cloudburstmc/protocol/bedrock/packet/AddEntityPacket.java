@@ -1,6 +1,7 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -12,51 +13,55 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityLinkData;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityProperties;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-import java.util.List;
-
+/**
+ * Sent by the server to the client to spawn an entity to the player. It is used for every entity
+ * except other players, for which the AddPlayer packet is used.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AddEntityPacket implements BedrockPacket {
-    private List<AttributeData> attributes = new ObjectArrayList<>();
-    private EntityDataMap metadata = new EntityDataMap();
-    private List<EntityLinkData> entityLinks = new ObjectArrayList<>();
-    private long uniqueEntityId;
-    private long runtimeEntityId;
-    private String identifier;
-    private int entityType;
-    private Vector3f position;
-    private Vector3f motion;
-    private Vector2f rotation;
-    /**
-     * @since v534
-     */
-    private float headRotation;
-    /**
-     * @since v534
-     */
-    private float bodyRotation;
-    /**
-     * @since v557
-     */
-    private final EntityProperties properties = new EntityProperties();
+  private List<AttributeData> attributes = new ObjectArrayList<>();
+  private EntityDataMap metadata = new EntityDataMap();
+  private List<EntityLinkData> entityLinks = new ObjectArrayList<>();
+  private long uniqueEntityId;
+  private long runtimeEntityId;
+  private String identifier;
+  private int entityType;
+  private Vector3f position;
+  private Vector3f motion;
+  private Vector2f rotation;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v534
+   */
+  private float headRotation;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.ADD_ENTITY;
-    }
+  /**
+   * @since v534
+   */
+  private float bodyRotation;
 
-    @Override
-    public AddEntityPacket clone() {
-        try {
-            return (AddEntityPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  /**
+   * @since v557
+   */
+  private final EntityProperties properties = new EntityProperties();
+
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
+
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.ADD_ENTITY;
+  }
+
+  @Override
+  public AddEntityPacket clone() {
+    try {
+      return (AddEntityPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

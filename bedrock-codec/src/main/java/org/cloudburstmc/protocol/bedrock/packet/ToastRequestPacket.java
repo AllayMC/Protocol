@@ -5,47 +5,51 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * A packet sent from the server to the client to display a toast to the top of the screen. These
+ * toasts are the same as the ones seen when, for example, loading a new resource pack or obtaining
+ * an achievement.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ToastRequestPacket implements BedrockPacket {
 
-    private CharSequence title;
-    private CharSequence content;
+  private CharSequence title;
+  private CharSequence content;
 
-    @Override
-    public PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.TOAST_REQUEST;
-    }
+  @Override
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.TOAST_REQUEST;
+  }
 
-    @Override
-    public ToastRequestPacket clone() {
-        try {
-            return (ToastRequestPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public ToastRequestPacket clone() {
+    try {
+      return (ToastRequestPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 
-    public String getTitle() {
-        return getTitle(String.class);
-    }
+  public String getTitle() {
+    return getTitle(String.class);
+  }
 
-    public <T extends CharSequence> T getTitle(Class<T> type) {
-        return type.cast(title);
-    }
+  public <T extends CharSequence> T getTitle(Class<T> type) {
+    return type.cast(title);
+  }
 
-    public String getContent() {
-        return getContent(String.class);
-    }
+  public String getContent() {
+    return getContent(String.class);
+  }
 
-    public <T extends CharSequence> T getContent(Class<T> type) {
-        return type.cast(content);
-    }
+  public <T extends CharSequence> T getContent(Class<T> type) {
+    return type.cast(content);
+  }
 }
-

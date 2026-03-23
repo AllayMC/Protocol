@@ -6,28 +6,29 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.GraphicsMode;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/** Sent by the client when some of the client's options are updated, such as the graphics mode. */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateClientOptionsPacket implements BedrockPacket {
-    private GraphicsMode graphicsMode;
+  private GraphicsMode graphicsMode;
 
-    @Override
-    public PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.UPDATE_CLIENT_OPTIONS;
-    }
+  @Override
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.UPDATE_CLIENT_OPTIONS;
+  }
 
-    @Override
-    public BedrockPacket clone() {
-        try {
-            return (UpdateClientOptionsPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public BedrockPacket clone() {
+    try {
+      return (UpdateClientOptionsPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }

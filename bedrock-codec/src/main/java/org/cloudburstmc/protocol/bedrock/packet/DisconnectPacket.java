@@ -6,50 +6,54 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.DisconnectFailReason;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * May be sent by the server to disconnect the client using an optional message to send as the
+ * disconnect screen.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class DisconnectPacket implements BedrockPacket {
-    private DisconnectFailReason reason = DisconnectFailReason.UNKNOWN;
-    private boolean messageSkipped;
-    private CharSequence kickMessage;
-    /**
-     * @since v712
-     */
-    private CharSequence filteredMessage = "";
+  private DisconnectFailReason reason = DisconnectFailReason.UNKNOWN;
+  private boolean messageSkipped;
+  private CharSequence kickMessage;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v712
+   */
+  private CharSequence filteredMessage = "";
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.DISCONNECT;
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public DisconnectPacket clone() {
-        try {
-            return (DisconnectPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.DISCONNECT;
+  }
 
-    public String getKickMessage() {
-        return getKickMessage(String.class);
+  @Override
+  public DisconnectPacket clone() {
+    try {
+      return (DisconnectPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 
-    public <T extends CharSequence> T getKickMessage(Class<T> type) {
-        return type.cast(kickMessage);
-    }
+  public String getKickMessage() {
+    return getKickMessage(String.class);
+  }
 
-    public String getFilteredMessage() {
-        return getFilteredMessage(String.class);
-    }
+  public <T extends CharSequence> T getKickMessage(Class<T> type) {
+    return type.cast(kickMessage);
+  }
 
-    public <T extends CharSequence> T getFilteredMessage(Class<T> type) {
-        return type.cast(filteredMessage);
-    }
+  public String getFilteredMessage() {
+    return getFilteredMessage(String.class);
+  }
+
+  public <T extends CharSequence> T getFilteredMessage(Class<T> type) {
+    return type.cast(filteredMessage);
+  }
 }
-

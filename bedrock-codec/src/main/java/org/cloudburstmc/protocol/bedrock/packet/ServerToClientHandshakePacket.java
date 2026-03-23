@@ -6,30 +6,32 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.annotation.NoEncryption;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-
+/**
+ * Sent by the server to the client to complete the key exchange in order to initialise encryption
+ * on client and server side. It is followed up by a ClientToServerHandshake packet from the client.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 @NoEncryption // This is sent in plain text to complete the Diffie Hellman key exchange.
 public class ServerToClientHandshakePacket implements BedrockPacket {
-    private String jwt;
+  private String jwt;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.SERVER_TO_CLIENT_HANDSHAKE;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.SERVER_TO_CLIENT_HANDSHAKE;
+  }
 
-    @Override
-    public ServerToClientHandshakePacket clone() {
-        try {
-            return (ServerToClientHandshakePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public ServerToClientHandshakePacket clone() {
+    try {
+      return (ServerToClientHandshakePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

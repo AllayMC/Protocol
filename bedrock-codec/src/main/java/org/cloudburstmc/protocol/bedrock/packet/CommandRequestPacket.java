@@ -6,34 +6,39 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandOriginData;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client to request the execution of a server-side command. Although some servers
+ * support sending commands using the Text packet, this packet is guaranteed to have the correct
+ * result.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CommandRequestPacket implements BedrockPacket {
-    private String command;
-    private CommandOriginData commandOriginData;
-    private boolean internal;
-    /**
-     * @since v567
-     */
-    private int version;
+  private String command;
+  private CommandOriginData commandOriginData;
+  private boolean internal;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v567
+   */
+  private int version;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.COMMAND_REQUEST;
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public CommandRequestPacket clone() {
-        try {
-            return (CommandRequestPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.COMMAND_REQUEST;
+  }
+
+  @Override
+  public CommandRequestPacket clone() {
+    try {
+      return (CommandRequestPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

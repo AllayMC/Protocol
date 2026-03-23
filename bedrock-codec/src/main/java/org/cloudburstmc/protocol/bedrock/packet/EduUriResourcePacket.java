@@ -6,29 +6,29 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.EduSharedUriResource;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/** A packet that transmits education resource settings to all clients. */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EduUriResourcePacket implements BedrockPacket {
-    private EduSharedUriResource eduSharedUriResource;
+  private EduSharedUriResource eduSharedUriResource;
 
-    @Override
-    public PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.EDU_URI_RESOURCE;
-    }
+  @Override
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.EDU_URI_RESOURCE;
+  }
 
-    @Override
-    public EduUriResourcePacket clone() {
-        try {
-            return (EduUriResourcePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public EduUriResourcePacket clone() {
+    try {
+      return (EduUriResourcePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

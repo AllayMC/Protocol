@@ -5,72 +5,78 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to make a title, subtitle or action bar shown to a player. It has several
+ * fields that allow setting the duration of the titles.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetTitlePacket implements BedrockPacket {
-    private Type type;
-    private CharSequence text;
-    private int fadeInTime;
-    private int stayTime;
-    private int fadeOutTime;
-    /**
-     * @since v448
-     */
-    private String xuid;
-    /**
-     * @since v448
-     */
-    private String platformOnlineId;
-    /**
-     * @since v712
-     */
-    private CharSequence filteredTitleText = "";
+  private Type type;
+  private CharSequence text;
+  private int fadeInTime;
+  private int stayTime;
+  private int fadeOutTime;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v448
+   */
+  private String xuid;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.SET_TITLE;
-    }
+  /**
+   * @since v448
+   */
+  private String platformOnlineId;
 
-    public enum Type {
-        CLEAR,
-        RESET,
-        TITLE,
-        SUBTITLE,
-        ACTIONBAR,
-        TIMES,
-        TITLE_JSON,
-        SUBTITLE_JSON,
-        ACTIONBAR_JSON
-    }
+  /**
+   * @since v712
+   */
+  private CharSequence filteredTitleText = "";
 
-    @Override
-    public SetTitlePacket clone() {
-        try {
-            return (SetTitlePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public String getText() {
-        return getText(String.class);
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.SET_TITLE;
+  }
 
-    public <T extends CharSequence> T getText(Class<T> type) {
-        return type.cast(text);
-    }
+  public enum Type {
+    CLEAR,
+    RESET,
+    TITLE,
+    SUBTITLE,
+    ACTIONBAR,
+    TIMES,
+    TITLE_JSON,
+    SUBTITLE_JSON,
+    ACTIONBAR_JSON
+  }
 
-    public String getFilteredTitleText() {
-        return getFilteredTitleText(String.class);
+  @Override
+  public SetTitlePacket clone() {
+    try {
+      return (SetTitlePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 
-    public <T extends CharSequence> T getFilteredTitleText(Class<T> type) {
-        return type.cast(filteredTitleText);
-    }
+  public String getText() {
+    return getText(String.class);
+  }
+
+  public <T extends CharSequence> T getText(Class<T> type) {
+    return type.cast(text);
+  }
+
+  public String getFilteredTitleText() {
+    return getFilteredTitleText(String.class);
+  }
+
+  public <T extends CharSequence> T getFilteredTitleText(Class<T> type) {
+    return type.cast(filteredTitleText);
+  }
 }
-

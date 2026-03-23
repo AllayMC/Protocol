@@ -7,31 +7,38 @@ import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureTemplateResponseType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to send data of a structure to the client in response to a
+ * StructureTemplateDataRequest packet.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class StructureTemplateDataResponsePacket implements BedrockPacket {
-    private String name;
-    private boolean save;
-    private NbtMap tag;
-    private StructureTemplateResponseType type;
+  private String name;
+  private boolean save;
+  private NbtMap tag;
 
-    @Override
-    public PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v388
+   */
+  private StructureTemplateResponseType type;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.STRUCTURE_TEMPLATE_DATA_EXPORT_RESPONSE;
-    }
+  @Override
+  public PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public StructureTemplateDataResponsePacket clone() {
-        try {
-            return (StructureTemplateDataResponsePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.STRUCTURE_TEMPLATE_DATA_EXPORT_RESPONSE;
+  }
+
+  @Override
+  public StructureTemplateDataResponsePacket clone() {
+    try {
+      return (StructureTemplateDataResponsePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

@@ -5,28 +5,32 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update the current time client-side. The client actually advances time
+ * client-side by itself, so this packet does not need to be sent each tick. It is merely a means of
+ * synchronising time between server and client.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetTimePacket implements BedrockPacket {
-    private int time;
+  private int time;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.SET_TIME;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.SET_TIME;
+  }
 
-    @Override
-    public SetTimePacket clone() {
-        try {
-            return (SetTimePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public SetTimePacket clone() {
+    try {
+      return (SetTimePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

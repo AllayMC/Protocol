@@ -7,63 +7,69 @@ import org.cloudburstmc.protocol.bedrock.data.camera.*;
 import org.cloudburstmc.protocol.common.PacketSignal;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 
+/** Gives a custom camera specific instructions to operate. */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CameraInstructionPacket implements BedrockPacket {
-    private CameraSetInstruction setInstruction;
-    private CameraFadeInstruction fadeInstruction;
-    private OptionalBoolean clear = OptionalBoolean.empty();
-    /**
-     * @since v712
-     */
-    private CameraTargetInstruction targetInstruction;
-    /**
-     * @since v712
-     */
-    private OptionalBoolean removeTarget = OptionalBoolean.empty();
-    /**
-     * @since v827
-     */
-    private CameraFovInstruction fovInstruction;
-    /**
-     * @since v859
-     */
-    private CameraSplineInstruction splineInstruction;
-    /**
-     * @since v859
-     */
-    private CameraAttachToEntityInstruction attachInstruction;
-    /**
-     * @since v859
-     */
-    private OptionalBoolean detachFromEntity = OptionalBoolean.empty();
+  private CameraSetInstruction setInstruction;
+  private CameraFadeInstruction fadeInstruction;
+  private OptionalBoolean clear = OptionalBoolean.empty();
 
-    @Override
-    public PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v712
+   */
+  private CameraTargetInstruction targetInstruction;
 
-    @Override
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.CAMERA_INSTRUCTION;
-    }
+  /**
+   * @since v712
+   */
+  private OptionalBoolean removeTarget = OptionalBoolean.empty();
 
-    public void setClear(boolean value) {
-        this.clear = OptionalBoolean.of(value);
-    }
+  /**
+   * @since v827
+   */
+  private CameraFovInstruction fovInstruction;
 
-    public void setClear(OptionalBoolean clear) {
-        this.clear = clear;
-    }
+  /**
+   * @since v859
+   */
+  private CameraSplineInstruction splineInstruction;
 
-    @Override
-    public CameraInstructionPacket clone() {
-        try {
-            return (CameraInstructionPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  /**
+   * @since v859
+   */
+  private CameraAttachToEntityInstruction attachInstruction;
+
+  /**
+   * @since v859
+   */
+  private OptionalBoolean detachFromEntity = OptionalBoolean.empty();
+
+  @Override
+  public PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
+
+  @Override
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.CAMERA_INSTRUCTION;
+  }
+
+  public void setClear(boolean value) {
+    this.clear = OptionalBoolean.of(value);
+  }
+
+  public void setClear(OptionalBoolean clear) {
+    this.clear = clear;
+  }
+
+  @Override
+  public CameraInstructionPacket clone() {
+    try {
+      return (CameraInstructionPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

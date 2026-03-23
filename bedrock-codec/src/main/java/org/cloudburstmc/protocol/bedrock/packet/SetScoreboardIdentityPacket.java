@@ -1,49 +1,53 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.UUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-import java.util.List;
-import java.util.UUID;
-
+/**
+ * Sent by the server to change the identity type of one of the entries on a scoreboard. This is
+ * used to change, for example, an entry pointing to a player, to a fake player when it leaves the
+ * server, and to change it back to a real player when it joins again. In non-vanilla situations,
+ * the packet is quite useless.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetScoreboardIdentityPacket implements BedrockPacket {
-    private final List<Entry> entries = new ObjectArrayList<>();
-    private Action action;
+  private final List<Entry> entries = new ObjectArrayList<>();
+  private Action action;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.SET_SCOREBOARD_IDENTITY;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.SET_SCOREBOARD_IDENTITY;
+  }
 
-    public enum Action {
-        ADD,
-        REMOVE
-    }
+  public enum Action {
+    ADD,
+    REMOVE
+  }
 
-    @Value
-    public static class Entry {
-        private final long scoreboardId;
-        private final UUID uuid;
-    }
+  @Value
+  public static class Entry {
+    private final long scoreboardId;
+    private final UUID uuid;
+  }
 
-    @Override
-    public SetScoreboardIdentityPacket clone() {
-        try {
-            return (SetScoreboardIdentityPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public SetScoreboardIdentityPacket clone() {
+    try {
+      return (SetScoreboardIdentityPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

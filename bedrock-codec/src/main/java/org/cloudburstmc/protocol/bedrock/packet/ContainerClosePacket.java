@@ -6,33 +6,38 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to close a container the player currently has opened, which was opened using
+ * the ContainerOpen packet, or by the client to tell the server it closed a particular container,
+ * such as the crafting grid.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ContainerClosePacket implements BedrockPacket {
-    private byte id;
-    private boolean serverInitiated;
-    /**
-     * @since v685
-     */
-    private ContainerType type;
+  private byte id;
+  private boolean serverInitiated;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v685
+   */
+  private ContainerType type;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.CONTAINER_CLOSE;
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public ContainerClosePacket clone() {
-        try {
-            return (ContainerClosePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.CONTAINER_CLOSE;
+  }
+
+  @Override
+  public ContainerClosePacket clone() {
+    try {
+      return (ContainerClosePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

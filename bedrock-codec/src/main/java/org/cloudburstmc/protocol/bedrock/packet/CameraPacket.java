@@ -5,29 +5,32 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to use an Education Edition camera on a player. It produces an image client-
+ * side.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CameraPacket implements BedrockPacket {
-    private long cameraUniqueEntityId;
-    private long playerUniqueEntityId;
+  private long cameraUniqueEntityId;
+  private long playerUniqueEntityId;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.CAMERA;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.CAMERA;
+  }
 
-    @Override
-    public CameraPacket clone() {
-        try {
-            return (CameraPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public CameraPacket clone() {
+    try {
+      return (CameraPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

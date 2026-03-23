@@ -15,21 +15,21 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientboundDataDrivenUIReloadPacket implements BedrockPacket {
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.CLIENTBOUND_DATA_DRIVEN_UI_RELOAD;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.CLIENTBOUND_DATA_DRIVEN_UI_RELOAD;
+  }
 
-    @Override
-    public ClientboundDataDrivenUIReloadPacket clone() {
-        try {
-            return (ClientboundDataDrivenUIReloadPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public ClientboundDataDrivenUIReloadPacket clone() {
+    try {
+      return (ClientboundDataDrivenUIReloadPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }

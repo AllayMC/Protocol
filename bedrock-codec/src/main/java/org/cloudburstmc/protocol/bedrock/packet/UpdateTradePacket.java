@@ -7,46 +7,59 @@ import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update the trades offered by a villager to a player. It is sent at the
+ * moment that a player interacts with a villager.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateTradePacket implements BedrockPacket {
-    private int containerId;
-    private ContainerType containerType;
-    private int size; // Hardcoded to 0
-    private int tradeTier;
-    private long traderUniqueEntityId;
-    private long playerUniqueEntityId;
-    private CharSequence displayName;
-    private NbtMap offers;
-    private boolean newTradingUi;
-    private boolean recipeAddedOnUpdate;
-    private boolean usingEconomyTrade;
+  private int containerId;
+  private ContainerType containerType;
+  private int size; // Hardcoded to 0
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v313
+   */
+  private int tradeTier;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.UPDATE_TRADE;
-    }
+  private long traderUniqueEntityId;
+  private long playerUniqueEntityId;
+  private CharSequence displayName;
+  private NbtMap offers;
 
-    @Override
-    public UpdateTradePacket clone() {
-        try {
-            return (UpdateTradePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
-    }
+  /**
+   * @since v313
+   */
+  private boolean newTradingUi;
 
-    public String getDisplayName() {
-        return getDisplayName(String.class);
-    }
+  private boolean recipeAddedOnUpdate;
+  private boolean usingEconomyTrade;
 
-    public <T extends CharSequence> T getDisplayName(Class<T> type) {
-        return type.cast(displayName);
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
+
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.UPDATE_TRADE;
+  }
+
+  @Override
+  public UpdateTradePacket clone() {
+    try {
+      return (UpdateTradePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
+
+  public String getDisplayName() {
+    return getDisplayName(String.class);
+  }
+
+  public <T extends CharSequence> T getDisplayName(Class<T> type) {
+    return type.cast(displayName);
+  }
 }
-

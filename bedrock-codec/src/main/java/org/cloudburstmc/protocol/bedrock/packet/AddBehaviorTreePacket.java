@@ -5,28 +5,28 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/** Sent by the server to the client. The packet is currently unused by both client and server. */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AddBehaviorTreePacket implements BedrockPacket {
-    private String behaviorTreeJson;
+  private String behaviorTreeJson;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.ADD_BEHAVIOR_TREE;
-    }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.ADD_BEHAVIOR_TREE;
+  }
 
-    @Override
-    public AddBehaviorTreePacket clone() {
-        try {
-            return (AddBehaviorTreePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public AddBehaviorTreePacket clone() {
+    try {
+      return (AddBehaviorTreePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

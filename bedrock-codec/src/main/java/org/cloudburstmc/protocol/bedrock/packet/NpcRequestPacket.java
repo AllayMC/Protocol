@@ -6,35 +6,39 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.NpcRequestType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it interacts with an NPC. The packet is specifically made for Education
+ * Edition, where NPCs are available to use.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class NpcRequestPacket implements BedrockPacket {
-    private long runtimeEntityId;
-    private NpcRequestType requestType;
-    private String command;
-    private int actionType;
-    /**
-     * @since v448
-     */
-    private String sceneName;
+  private long runtimeEntityId;
+  private NpcRequestType requestType;
+  private String command;
+  private int actionType;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v448
+   */
+  private String sceneName;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.NPC_REQUEST;
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public NpcRequestPacket clone() {
-        try {
-            return (NpcRequestPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.NPC_REQUEST;
+  }
+
+  @Override
+  public NpcRequestPacket clone() {
+    try {
+      return (NpcRequestPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

@@ -5,48 +5,53 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to apply an effect to the player, for example an effect like poison. It may
+ * also be used to modify existing effects, or removing them completely.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MobEffectPacket implements BedrockPacket {
-    private long runtimeEntityId;
-    private Event event;
-    private int effectId;
-    private int amplifier;
-    private boolean particles;
-    private int duration;
-    /**
-     * @since v662
-     */
-    private long tick;
-    /**
-     * @since v897
-     */
-    private boolean ambient;
+  private long runtimeEntityId;
+  private Event event;
+  private int effectId;
+  private int amplifier;
+  private boolean particles;
+  private int duration;
 
-    @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v662
+   */
+  private long tick;
 
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.MOB_EFFECT;
-    }
+  /**
+   * @since v897
+   */
+  private boolean ambient;
 
-    public enum Event {
-        NONE,
-        ADD,
-        MODIFY,
-        REMOVE,
-    }
+  @Override
+  public final PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public MobEffectPacket clone() {
-        try {
-            return (MobEffectPacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.MOB_EFFECT;
+  }
+
+  public enum Event {
+    NONE,
+    ADD,
+    MODIFY,
+    REMOVE,
+  }
+
+  @Override
+  public MobEffectPacket clone() {
+    try {
+      return (MobEffectPacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-

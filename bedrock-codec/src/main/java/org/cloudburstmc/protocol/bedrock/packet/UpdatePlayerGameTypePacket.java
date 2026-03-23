@@ -6,34 +6,38 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.GameType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to change the game mode of a player. It is functionally identical to the
+ * SetPlayerGameType packet.
+ */
 @Data
 @EqualsAndHashCode
 @ToString(doNotUseGetters = true)
 public class UpdatePlayerGameTypePacket implements BedrockPacket {
-    private GameType gameType;
-    private long entityId;
-    /**
-     * @since v671
-     */
-    private long tick;
+  private GameType gameType;
+  private long entityId;
 
-    @Override
-    public PacketSignal handle(BedrockPacketHandler handler) {
-        return handler.handle(this);
-    }
+  /**
+   * @since v671
+   */
+  private long tick;
 
-    @Override
-    public BedrockPacketType getPacketType() {
-        return BedrockPacketType.UPDATE_PLAYER_GAME_TYPE;
-    }
+  @Override
+  public PacketSignal handle(BedrockPacketHandler handler) {
+    return handler.handle(this);
+  }
 
-    @Override
-    public UpdatePlayerGameTypePacket clone() {
-        try {
-            return (UpdatePlayerGameTypePacket) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e);
-        }
+  @Override
+  public BedrockPacketType getPacketType() {
+    return BedrockPacketType.UPDATE_PLAYER_GAME_TYPE;
+  }
+
+  @Override
+  public UpdatePlayerGameTypePacket clone() {
+    try {
+      return (UpdatePlayerGameTypePacket) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new AssertionError(e);
     }
+  }
 }
-
