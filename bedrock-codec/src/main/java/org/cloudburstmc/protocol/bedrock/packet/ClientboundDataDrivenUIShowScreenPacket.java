@@ -30,9 +30,6 @@ public class ClientboundDataDrivenUIShowScreenPacket implements BedrockPacket {
      * @since v944
      */
     @Nullable
-    /**
-     * @since v944
-     */
     private Integer dataInstanceId;
 
     @Override

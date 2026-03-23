@@ -25,9 +25,6 @@ public class ModalFormResponsePacket implements BedrockPacket {
      * @since v544
      */
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
-    /**
-     * @since v544
-     */
     private Optional<ModalFormCancelReason> cancelReason;
 
     @Override

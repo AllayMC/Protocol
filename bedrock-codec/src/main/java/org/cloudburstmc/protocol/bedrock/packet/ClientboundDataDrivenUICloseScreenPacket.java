@@ -22,9 +22,6 @@ public class ClientboundDataDrivenUICloseScreenPacket implements BedrockPacket {
      * @since v944
      */
     @Nullable
-    /**
-     * @since v944
-     */
     private Integer formId;
 
     @Override

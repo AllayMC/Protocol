@@ -27,18 +27,12 @@ public class GraphicsParameterOverridePacket implements BedrockPacket {
      * @since v924
      */
     @Nullable
-    /**
-     * @since v924
-     */
     private Float floatValue;
 
     /**
      * @since v924
      */
     @Nullable
-    /**
-     * @since v924
-     */
     private Vector3f vec3Value;
 
     @Override
