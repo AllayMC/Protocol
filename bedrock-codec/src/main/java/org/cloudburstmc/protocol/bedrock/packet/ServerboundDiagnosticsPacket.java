@@ -10,7 +10,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to tell the server about the performance diagnostics of the client. It is sent
- * by the client roughly every 500ms or 10 in-game ticks when the "Creator > Enable Client
+ * by the client roughly every 500ms or 10 in-game ticks when the "Creator &gt; Enable Client
  * Diagnostics" setting is enabled.
  */
 @Data

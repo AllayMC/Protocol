@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.javadoc.Javadoc
+import org.gradle.external.javadoc.StandardJavadocDocletOptions
 import org.gradle.kotlin.dsl.compileJava
 import org.gradle.kotlin.dsl.invoke
 
@@ -29,6 +31,9 @@ subprojects {
         compileJava {
             options.encoding = Charsets.UTF_8.name();
             options.compilerArgs.add("-parameters")
+        }
+        withType<Javadoc>().configureEach {
+            (options as StandardJavadocDocletOptions).addBooleanOption("Xdoclint:-missing", true)
         }
         test {
             useJUnitPlatform()
