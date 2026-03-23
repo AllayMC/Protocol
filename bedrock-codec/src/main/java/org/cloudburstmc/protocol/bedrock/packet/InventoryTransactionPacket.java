@@ -25,6 +25,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class InventoryTransactionPacket implements BedrockPacket {
+    /**
+     * @since v407
+     */
     private int legacyRequestId;
     private final List<LegacySetItemSlotData> legacySlots = new ObjectArrayList<>();
     private final List<InventoryActionData> actions = new ObjectArrayList<>();
@@ -48,6 +51,7 @@ public class InventoryTransactionPacket implements BedrockPacket {
     /**
      * Block definition of block being picked. ItemUseInventoryTransaction only
      *
+     * @since v340
      * @param blockDefinition block definition of block
      * @return block definition of block
      */

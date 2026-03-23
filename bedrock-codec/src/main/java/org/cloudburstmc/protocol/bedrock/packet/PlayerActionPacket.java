@@ -20,7 +20,7 @@ public class PlayerActionPacket implements BedrockPacket {
     private Vector3i blockPosition;
 
     /**
-     * @since v526
+     * @since v527
      */
     private Vector3i resultPosition;
 

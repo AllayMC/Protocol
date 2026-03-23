@@ -39,7 +39,15 @@ public class AddPlayerPacket implements BedrockPacket, PlayerAbilityHolder {
     private ItemData hand;
     private AdventureSettingsPacket adventureSettings = new AdventureSettingsPacket();
     private String deviceId;
+
+    /**
+     * @since v388
+     */
     private int buildPlatform;
+
+    /**
+     * @since v503
+     */
     private GameType gameType;
 
     /**

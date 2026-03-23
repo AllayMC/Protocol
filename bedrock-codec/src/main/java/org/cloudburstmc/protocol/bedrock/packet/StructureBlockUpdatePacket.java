@@ -22,7 +22,7 @@ public class StructureBlockUpdatePacket implements BedrockPacket {
     private boolean powered;
 
     /**
-     * @since v553
+     * @since v554
      */
     private boolean waterlogged;
 

@@ -29,7 +29,7 @@ public class AnimatePacket implements BedrockPacket {
     private float data;
 
     /**
-     * @since v897
+     * @since v898
      */
     private SwingSource swingSource = SwingSource.NONE;
 

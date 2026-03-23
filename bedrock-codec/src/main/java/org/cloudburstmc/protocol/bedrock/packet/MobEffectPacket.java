@@ -26,7 +26,7 @@ public class MobEffectPacket implements BedrockPacket {
     private long tick;
 
     /**
-     * @since v897
+     * @since v898
      */
     private boolean ambient;
 

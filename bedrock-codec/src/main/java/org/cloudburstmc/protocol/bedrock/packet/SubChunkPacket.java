@@ -16,10 +16,14 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class SubChunkPacket extends AbstractReferenceCounted implements BedrockPacket {
     private int dimension;
+
+    /**
+     * @since v475
+     */
     private boolean cacheEnabled;
 
     /**
-     * @since v485
+     * @since v486
      */
     private Vector3i centerPosition;
 

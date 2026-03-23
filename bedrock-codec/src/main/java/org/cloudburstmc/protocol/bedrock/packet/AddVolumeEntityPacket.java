@@ -19,12 +19,12 @@ public class AddVolumeEntityPacket implements BedrockPacket {
     private String engineVersion;
 
     /**
-     * @since v485
+     * @since v486
      */
     private String identifier;
 
     /**
-     * @since v485
+     * @since v486
      */
     private String instanceName;
 

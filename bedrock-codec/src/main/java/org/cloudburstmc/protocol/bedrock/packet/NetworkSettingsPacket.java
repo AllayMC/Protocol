@@ -22,7 +22,7 @@ public class NetworkSettingsPacket implements BedrockPacket {
     /**
      * Set the compression type to be used on the connection.
      *
-     * @since v551
+     * @since v554
      */
     private PacketCompressionAlgorithm compressionAlgorithm;
 

@@ -35,7 +35,15 @@ public class StartGamePacket implements BedrockPacket {
     private Vector2f rotation;
     // Level settings start
     private long seed;
+
+    /**
+     * @since v407
+     */
     private SpawnBiomeType spawnBiomeType;
+
+    /**
+     * @since v407
+     */
     private String customBiomeName;
     private int dimensionId;
     private int generatorId;
@@ -46,9 +54,17 @@ public class StartGamePacket implements BedrockPacket {
     private int dayCycleStopTime;
     private int eduEditionOffers;
     private boolean eduFeaturesEnabled;
+
+    /**
+     * @since v407
+     */
     private String educationProductionId;
     private float rainLevel;
     private float lightningLevel;
+
+    /**
+     * @since v332
+     */
     private boolean platformLockedContentConfirmed;
     private boolean multiplayerGame;
     private boolean broadcastingToLan;
@@ -57,6 +73,10 @@ public class StartGamePacket implements BedrockPacket {
     private boolean commandsEnabled;
     private boolean texturePacksRequired;
     private final List<ExperimentData> experiments = new ObjectArrayList<>();
+
+    /**
+     * @since v419
+     */
     private boolean experimentsPreviouslyToggled;
     private boolean bonusChestEnabled;
     private boolean startingWithMap;
@@ -67,12 +87,40 @@ public class StartGamePacket implements BedrockPacket {
     private boolean resourcePackLocked;
     private boolean fromLockedWorldTemplate;
     private boolean usingMsaGamertagsOnly;
+
+    /**
+     * @since v313
+     */
     private boolean fromWorldTemplate;
+
+    /**
+     * @since v332
+     */
     private boolean worldTemplateOptionLocked;
+
+    /**
+     * @since v361
+     */
     private boolean onlySpawningV1Villagers;
+
+    /**
+     * @since v388
+     */
     private String vanillaVersion;
+
+    /**
+     * @since v407
+     */
     private int limitedWorldWidth;
+
+    /**
+     * @since v407
+     */
     private int limitedWorldHeight;
+
+    /**
+     * @since v407
+     */
     private boolean netherType;
 
     /**

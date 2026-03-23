@@ -17,7 +17,15 @@ import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 @ToString(doNotUseGetters = true)
 public class EducationSettingsPacket implements BedrockPacket {
     private String codeBuilderUri;
+
+    /**
+     * @since v407
+     */
     private String codeBuilderTitle;
+
+    /**
+     * @since v407
+     */
     private boolean canResizeCodeBuilder;
 
     /**

@@ -26,15 +26,15 @@ public class AddEntityPacket implements BedrockPacket {
     private List<EntityLinkData> entityLinks = new ObjectArrayList<>();
     private long uniqueEntityId;
     private long runtimeEntityId;
+
+    /**
+     * @since v313
+     */
     private String identifier;
     private int entityType;
     private Vector3f position;
     private Vector3f motion;
     private Vector2f rotation;
-
-    /**
-     * @since v534
-     */
     private float headRotation;
 
     /**

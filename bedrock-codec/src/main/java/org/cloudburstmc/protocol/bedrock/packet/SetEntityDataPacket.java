@@ -17,6 +17,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class SetEntityDataPacket implements BedrockPacket {
     private EntityDataMap metadata = new EntityDataMap();
     private long runtimeEntityId;
+
+    /**
+     * @since v419
+     */
     private long tick;
 
     /**

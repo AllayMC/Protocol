@@ -16,6 +16,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ContainerClosePacket implements BedrockPacket {
     private byte id;
+
+    /**
+     * @since v419
+     */
     private boolean serverInitiated;
 
     /**

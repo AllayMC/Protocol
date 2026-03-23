@@ -20,8 +20,16 @@ public class ResourcePackStackPacket implements BedrockPacket {
     private boolean forcedToAccept;
     private final List<Entry> behaviorPacks = new ObjectArrayList<>();
     private final List<Entry> resourcePacks = new ObjectArrayList<>();
+
+    /**
+     * @since v388
+     */
     private String gameVersion;
     private final List<ExperimentData> experiments = new ObjectArrayList<>();
+
+    /**
+     * @since v419
+     */
     private boolean experimentsPreviouslyToggled;
 
     /**

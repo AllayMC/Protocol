@@ -22,8 +22,19 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
     private int deltaY;
     private int deltaZ;
 
+    /**
+     * @since v419
+     */
     private float x;
+
+    /**
+     * @since v419
+     */
     private float y;
+
+    /**
+     * @since v419
+     */
     private float z;
 
     private float pitch;
