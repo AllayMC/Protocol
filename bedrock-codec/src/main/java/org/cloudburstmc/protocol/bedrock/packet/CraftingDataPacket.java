@@ -20,32 +20,32 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 @EqualsAndHashCode(doNotUseGetters = true)
 public class CraftingDataPacket implements BedrockPacket {
-  private final List<RecipeData> craftingData = new ObjectArrayList<>();
-  private final List<PotionMixData> potionMixData = new ObjectArrayList<>();
-  private final List<ContainerMixData> containerMixData = new ObjectArrayList<>();
+    private final List<RecipeData> craftingData = new ObjectArrayList<>();
+    private final List<PotionMixData> potionMixData = new ObjectArrayList<>();
+    private final List<ContainerMixData> containerMixData = new ObjectArrayList<>();
 
-  /**
-   * @since v465
-   */
-  private final List<MaterialReducer> materialReducers = new ObjectArrayList<>();
+    /**
+     * @since v465
+     */
+    private final List<MaterialReducer> materialReducers = new ObjectArrayList<>();
 
-  private boolean cleanRecipes;
+    private boolean cleanRecipes;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CRAFTING_DATA;
-  }
-
-  @Override
-  public CraftingDataPacket clone() {
-    try {
-      return (CraftingDataPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CRAFTING_DATA;
+    }
+
+    @Override
+    public CraftingDataPacket clone() {
+        try {
+            return (CraftingDataPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

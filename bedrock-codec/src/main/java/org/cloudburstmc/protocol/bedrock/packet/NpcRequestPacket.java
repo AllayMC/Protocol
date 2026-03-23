@@ -14,31 +14,31 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class NpcRequestPacket implements BedrockPacket {
-  private long runtimeEntityId;
-  private NpcRequestType requestType;
-  private String command;
-  private int actionType;
+    private long runtimeEntityId;
+    private NpcRequestType requestType;
+    private String command;
+    private int actionType;
 
-  /**
-   * @since v448
-   */
-  private String sceneName;
+    /**
+     * @since v448
+     */
+    private String sceneName;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.NPC_REQUEST;
-  }
-
-  @Override
-  public NpcRequestPacket clone() {
-    try {
-      return (NpcRequestPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.NPC_REQUEST;
+    }
+
+    @Override
+    public NpcRequestPacket clone() {
+        try {
+            return (NpcRequestPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

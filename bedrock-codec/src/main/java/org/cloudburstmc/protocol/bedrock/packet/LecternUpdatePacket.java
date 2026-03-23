@@ -14,35 +14,35 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class LecternUpdatePacket implements BedrockPacket {
-  private int page;
+    private int page;
 
-  /**
-   * @since v354
-   */
-  private int totalPages;
+    /**
+     * @since v354
+     */
+    private int totalPages;
 
-  private Vector3i blockPosition;
+    private Vector3i blockPosition;
 
-  /**
-   * @deprecated since v662
-   */
-  @Deprecated private boolean droppingBook;
+    /**
+     * @deprecated since v662
+     */
+    @Deprecated private boolean droppingBook;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.LECTERN_UPDATE;
-  }
-
-  @Override
-  public LecternUpdatePacket clone() {
-    try {
-      return (LecternUpdatePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.LECTERN_UPDATE;
+    }
+
+    @Override
+    public LecternUpdatePacket clone() {
+        try {
+            return (LecternUpdatePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

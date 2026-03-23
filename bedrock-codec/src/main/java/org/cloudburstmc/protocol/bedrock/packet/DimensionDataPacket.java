@@ -21,24 +21,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class DimensionDataPacket implements BedrockPacket {
-  private final List<DimensionDefinition> definitions = new ObjectArrayList<>();
+    private final List<DimensionDefinition> definitions = new ObjectArrayList<>();
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.DIMENSION_DATA;
-  }
-
-  @Override
-  public DimensionDataPacket clone() {
-    try {
-      return (DimensionDataPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.DIMENSION_DATA;
+    }
+
+    @Override
+    public DimensionDataPacket clone() {
+        try {
+            return (DimensionDataPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

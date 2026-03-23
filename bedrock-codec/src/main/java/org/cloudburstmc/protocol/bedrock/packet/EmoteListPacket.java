@@ -18,25 +18,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EmoteListPacket implements BedrockPacket {
-  private long runtimeEntityId;
-  private final List<UUID> pieceIds = new ObjectArrayList<>();
+    private long runtimeEntityId;
+    private final List<UUID> pieceIds = new ObjectArrayList<>();
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.EMOTE_LIST;
-  }
-
-  @Override
-  public EmoteListPacket clone() {
-    try {
-      return (EmoteListPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.EMOTE_LIST;
+    }
+
+    @Override
+    public EmoteListPacket clone() {
+        try {
+            return (EmoteListPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

@@ -14,22 +14,22 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientboundCloseFormPacket implements BedrockPacket {
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CLIENTBOUND_CLOSE_FORM;
-  }
-
-  @Override
-  public ClientboundCloseFormPacket clone() {
-    try {
-      return (ClientboundCloseFormPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CLIENTBOUND_CLOSE_FORM;
+    }
+
+    @Override
+    public ClientboundCloseFormPacket clone() {
+        try {
+            return (ClientboundCloseFormPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

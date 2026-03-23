@@ -17,24 +17,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateSoftEnumPacket implements BedrockPacket {
-  private CommandEnumData softEnum;
-  private SoftEnumUpdateType type;
+    private CommandEnumData softEnum;
+    private SoftEnumUpdateType type;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.UPDATE_SOFT_ENUM;
-  }
-
-  @Override
-  public UpdateSoftEnumPacket clone() {
-    try {
-      return (UpdateSoftEnumPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.UPDATE_SOFT_ENUM;
+    }
+
+    @Override
+    public UpdateSoftEnumPacket clone() {
+        try {
+            return (UpdateSoftEnumPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

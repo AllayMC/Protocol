@@ -16,37 +16,37 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(
-    doNotUseGetters = true,
-    exclude = {"data"})
+        doNotUseGetters = true,
+        exclude = {"data"})
 public class ResourcePackChunkDataPacket extends AbstractReferenceCounted implements BedrockPacket {
-  private UUID packId;
-  private String packVersion;
-  private int chunkIndex;
-  private long progress;
-  private ByteBuf data;
+    private UUID packId;
+    private String packVersion;
+    private int chunkIndex;
+    private long progress;
+    private ByteBuf data;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
+    }
 
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.RESOURCE_PACK_CHUNK_DATA;
-  }
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.RESOURCE_PACK_CHUNK_DATA;
+    }
 
-  @Override
-  protected void deallocate() {
-    this.data.release();
-  }
+    @Override
+    protected void deallocate() {
+        this.data.release();
+    }
 
-  @Override
-  public ResourcePackChunkDataPacket touch(Object hint) {
-    data.touch(hint);
-    return this;
-  }
+    @Override
+    public ResourcePackChunkDataPacket touch(Object hint) {
+        data.touch(hint);
+        return this;
+    }
 
-  @Override
-  public ResourcePackChunkDataPacket clone() {
-    throw new UnsupportedOperationException("Can not clone reference counted packet");
-  }
+    @Override
+    public ResourcePackChunkDataPacket clone() {
+        throw new UnsupportedOperationException("Can not clone reference counted packet");
+    }
 }

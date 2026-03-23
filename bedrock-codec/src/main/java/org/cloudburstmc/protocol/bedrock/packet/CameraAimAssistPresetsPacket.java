@@ -19,39 +19,39 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CameraAimAssistPresetsPacket implements BedrockPacket {
-  /**
-   * @deprecated since v800 (1.21.80). Use {@link #categoryDefinitions} instead.
-   */
-  private final List<CameraAimAssistCategories> categories = new ObjectArrayList<>();
+    /**
+     * @deprecated since v800 (1.21.80). Use {@link #categoryDefinitions} instead.
+     */
+    private final List<CameraAimAssistCategories> categories = new ObjectArrayList<>();
 
-  /**
-   * @since v800 (1.21.80)
-   */
-  private final List<CameraAimAssistCategory> categoryDefinitions = new ObjectArrayList<>();
+    /**
+     * @since v800 (1.21.80)
+     */
+    private final List<CameraAimAssistCategory> categoryDefinitions = new ObjectArrayList<>();
 
-  private final List<CameraAimAssistPresetDefinition> presets = new ObjectArrayList<>();
+    private final List<CameraAimAssistPresetDefinition> presets = new ObjectArrayList<>();
 
-  /**
-   * @since v776
-   */
-  private CameraAimAssistOperation operation;
+    /**
+     * @since v776
+     */
+    private CameraAimAssistOperation operation;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CAMERA_AIM_ASSIST_PRESETS;
-  }
-
-  @Override
-  public CameraAimAssistPresetsPacket clone() {
-    try {
-      return (CameraAimAssistPresetsPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CAMERA_AIM_ASSIST_PRESETS;
+    }
+
+    @Override
+    public CameraAimAssistPresetsPacket clone() {
+        try {
+            return (CameraAimAssistPresetsPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

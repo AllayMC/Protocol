@@ -13,28 +13,28 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EditorNetworkPacket implements BedrockPacket {
-  private Object payload; // NBT like
+    private Object payload; // NBT like
 
-  /**
-   * @since v712
-   */
-  private boolean routeToManager;
+    /**
+     * @since v712
+     */
+    private boolean routeToManager;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.EDITOR_NETWORK;
-  }
-
-  @Override
-  public EditorNetworkPacket clone() {
-    try {
-      return (EditorNetworkPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.EDITOR_NETWORK;
+    }
+
+    @Override
+    public EditorNetworkPacket clone() {
+        try {
+            return (EditorNetworkPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

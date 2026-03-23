@@ -16,23 +16,23 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class RiderJumpPacket implements BedrockPacket {
-  private int jumpStrength;
+    private int jumpStrength;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.RIDER_JUMP;
-  }
-
-  @Override
-  public RiderJumpPacket clone() {
-    try {
-      return (RiderJumpPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.RIDER_JUMP;
+    }
+
+    @Override
+    public RiderJumpPacket clone() {
+        try {
+            return (RiderJumpPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

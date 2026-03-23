@@ -15,24 +15,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SpawnExperienceOrbPacket implements BedrockPacket {
-  private Vector3f position;
-  private int amount;
+    private Vector3f position;
+    private int amount;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SPAWN_EXPERIENCE_ORB;
-  }
-
-  @Override
-  public SpawnExperienceOrbPacket clone() {
-    try {
-      return (SpawnExperienceOrbPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SPAWN_EXPERIENCE_ORB;
+    }
+
+    @Override
+    public SpawnExperienceOrbPacket clone() {
+        try {
+            return (SpawnExperienceOrbPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

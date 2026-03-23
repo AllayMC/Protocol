@@ -14,25 +14,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ResourcePackChunkRequestPacket implements BedrockPacket {
-  private UUID packId;
-  private String packVersion;
-  private int chunkIndex;
+    private UUID packId;
+    private String packVersion;
+    private int chunkIndex;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.RESOURCE_PACK_CHUNK_REQUEST;
-  }
-
-  @Override
-  public ResourcePackChunkRequestPacket clone() {
-    try {
-      return (ResourcePackChunkRequestPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.RESOURCE_PACK_CHUNK_REQUEST;
+    }
+
+    @Override
+    public ResourcePackChunkRequestPacket clone() {
+        try {
+            return (ResourcePackChunkRequestPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

@@ -16,35 +16,35 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CodeBuilderSourcePacket implements BedrockPacket {
-  private CodeBuilderOperationType operation;
-  private CodeBuilderCategoryType category;
+    private CodeBuilderOperationType operation;
+    private CodeBuilderCategoryType category;
 
-  /**
-   * @deprecated since v685
-   */
-  private String value;
+    /**
+     * @deprecated since v685
+     */
+    private String value;
 
-  /**
-   * @since v685
-   */
-  private CodeBuilderCodeStatus codeStatus;
+    /**
+     * @since v685
+     */
+    private CodeBuilderCodeStatus codeStatus;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CODE_BUILDER_SOURCE;
-  }
-
-  @Override
-  public CodeBuilderSourcePacket clone() {
-    try {
-      return (CodeBuilderSourcePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CODE_BUILDER_SOURCE;
+    }
+
+    @Override
+    public CodeBuilderSourcePacket clone() {
+        try {
+            return (CodeBuilderSourcePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

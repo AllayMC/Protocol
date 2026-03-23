@@ -15,41 +15,41 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ClientboundDataDrivenUIShowScreenPacket implements BedrockPacket {
-  private String screenId;
+    private String screenId;
 
-  /**
-   * The unique id of this instance of the form for tracking in scripting
-   *
-   * @since v944
-   */
-  private int formId;
+    /**
+     * The unique id of this instance of the form for tracking in scripting
+     *
+     * @since v944
+     */
+    private int formId;
 
-  /**
-   * The optional id of the data associated with this screen
-   *
-   * @since v944
-   */
-  @Nullable
-  /**
-   * @since v944
-   */
-  private Integer dataInstanceId;
+    /**
+     * The optional id of the data associated with this screen
+     *
+     * @since v944
+     */
+    @Nullable
+    /**
+     * @since v944
+     */
+    private Integer dataInstanceId;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CLIENTBOUND_DATA_DRIVEN_UI_SHOW_SCREEN;
-  }
-
-  @Override
-  public ClientboundDataDrivenUIShowScreenPacket clone() {
-    try {
-      return (ClientboundDataDrivenUIShowScreenPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CLIENTBOUND_DATA_DRIVEN_UI_SHOW_SCREEN;
+    }
+
+    @Override
+    public ClientboundDataDrivenUIShowScreenPacket clone() {
+        try {
+            return (ClientboundDataDrivenUIShowScreenPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

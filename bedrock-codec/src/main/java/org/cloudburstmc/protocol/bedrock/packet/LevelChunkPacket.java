@@ -16,59 +16,59 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  */
 @Data
 @ToString(
-    doNotUseGetters = true,
-    exclude = {"data"})
+        doNotUseGetters = true,
+        exclude = {"data"})
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class LevelChunkPacket extends AbstractReferenceCounted implements BedrockPacket {
-  private int chunkX;
-  private int chunkZ;
-  private int subChunksLength;
-  private boolean cachingEnabled;
+    private int chunkX;
+    private int chunkZ;
+    private int subChunksLength;
+    private boolean cachingEnabled;
 
-  /**
-   * @since v471
-   */
-  private boolean requestSubChunks;
+    /**
+     * @since v471
+     */
+    private boolean requestSubChunks;
 
-  /**
-   * @since v485
-   */
-  private int subChunkLimit;
+    /**
+     * @since v485
+     */
+    private int subChunkLimit;
 
-  /**
-   * @since v361
-   */
-  private final LongList blobIds = new LongArrayList();
+    /**
+     * @since v361
+     */
+    private final LongList blobIds = new LongArrayList();
 
-  private ByteBuf data;
+    private ByteBuf data;
 
-  /**
-   * @since v649
-   */
-  private int dimension;
+    /**
+     * @since v649
+     */
+    private int dimension;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
+    }
 
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.LEVEL_CHUNK;
-  }
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.LEVEL_CHUNK;
+    }
 
-  @Override
-  public LevelChunkPacket touch(Object hint) {
-    this.data.touch(hint);
-    return this;
-  }
+    @Override
+    public LevelChunkPacket touch(Object hint) {
+        this.data.touch(hint);
+        return this;
+    }
 
-  @Override
-  protected void deallocate() {
-    this.data.release();
-  }
+    @Override
+    protected void deallocate() {
+        this.data.release();
+    }
 
-  @Override
-  public LevelChunkPacket clone() {
-    throw new UnsupportedOperationException("Can not clone reference counted packet");
-  }
+    @Override
+    public LevelChunkPacket clone() {
+        throw new UnsupportedOperationException("Can not clone reference counted packet");
+    }
 }

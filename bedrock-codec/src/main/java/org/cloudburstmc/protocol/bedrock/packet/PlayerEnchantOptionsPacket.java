@@ -21,24 +21,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(callSuper = false)
 @ToString(doNotUseGetters = true)
 public class PlayerEnchantOptionsPacket implements BedrockPacket {
-  private final List<EnchantOptionData> options = new ArrayList<>();
+    private final List<EnchantOptionData> options = new ArrayList<>();
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.PLAYER_ENCHANT_OPTIONS;
-  }
-
-  @Override
-  public PlayerEnchantOptionsPacket clone() {
-    try {
-      return (PlayerEnchantOptionsPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.PLAYER_ENCHANT_OPTIONS;
+    }
+
+    @Override
+    public PlayerEnchantOptionsPacket clone() {
+        try {
+            return (PlayerEnchantOptionsPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

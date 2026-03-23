@@ -17,25 +17,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ExplodePacket implements BedrockPacket {
-  private final List<Vector3i> records = new ObjectArrayList<>();
-  private Vector3f position;
-  private float radius;
+    private final List<Vector3i> records = new ObjectArrayList<>();
+    private Vector3f position;
+    private float radius;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.EXPLODE;
-  }
-
-  @Override
-  public ExplodePacket clone() {
-    try {
-      return (ExplodePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.EXPLODE;
+    }
+
+    @Override
+    public ExplodePacket clone() {
+        try {
+            return (ExplodePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

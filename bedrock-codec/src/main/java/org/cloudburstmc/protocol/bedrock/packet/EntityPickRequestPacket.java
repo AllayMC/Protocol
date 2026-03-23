@@ -13,29 +13,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EntityPickRequestPacket implements BedrockPacket {
-  private long runtimeEntityId;
-  private int hotbarSlot;
+    private long runtimeEntityId;
+    private int hotbarSlot;
 
-  /**
-   * @since v465
-   */
-  private boolean withData;
+    /**
+     * @since v465
+     */
+    private boolean withData;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.ENTITY_PICK_REQUEST;
-  }
-
-  @Override
-  public EntityPickRequestPacket clone() {
-    try {
-      return (EntityPickRequestPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.ENTITY_PICK_REQUEST;
+    }
+
+    @Override
+    public EntityPickRequestPacket clone() {
+        try {
+            return (EntityPickRequestPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

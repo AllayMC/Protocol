@@ -19,23 +19,23 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class SyncWorldClocksPacket implements BedrockPacket {
 
-  private SyncWorldClocksPayload data;
+    private SyncWorldClocksPayload data;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SYNC_WORLD_CLOCKS;
-  }
-
-  @Override
-  public SyncWorldClocksPacket clone() {
-    try {
-      return (SyncWorldClocksPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SYNC_WORLD_CLOCKS;
+    }
+
+    @Override
+    public SyncWorldClocksPacket clone() {
+        try {
+            return (SyncWorldClocksPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

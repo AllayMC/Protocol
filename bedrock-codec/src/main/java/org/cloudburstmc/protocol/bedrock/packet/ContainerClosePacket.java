@@ -15,29 +15,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ContainerClosePacket implements BedrockPacket {
-  private byte id;
-  private boolean serverInitiated;
+    private byte id;
+    private boolean serverInitiated;
 
-  /**
-   * @since v685
-   */
-  private ContainerType type;
+    /**
+     * @since v685
+     */
+    private ContainerType type;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CONTAINER_CLOSE;
-  }
-
-  @Override
-  public ContainerClosePacket clone() {
-    try {
-      return (ContainerClosePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CONTAINER_CLOSE;
+    }
+
+    @Override
+    public ContainerClosePacket clone() {
+        try {
+            return (ContainerClosePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

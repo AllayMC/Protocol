@@ -19,39 +19,39 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateBlockPacket implements BedrockPacket {
-  public static final Set<Flag> FLAG_ALL =
-      Collections.unmodifiableSet(EnumSet.of(Flag.NEIGHBORS, Flag.NETWORK));
-  public static final Set<Flag> FLAG_ALL_PRIORITY =
-      Collections.unmodifiableSet(EnumSet.of(Flag.NEIGHBORS, Flag.NETWORK, Flag.PRIORITY));
+    public static final Set<Flag> FLAG_ALL =
+            Collections.unmodifiableSet(EnumSet.of(Flag.NEIGHBORS, Flag.NETWORK));
+    public static final Set<Flag> FLAG_ALL_PRIORITY =
+            Collections.unmodifiableSet(EnumSet.of(Flag.NEIGHBORS, Flag.NETWORK, Flag.PRIORITY));
 
-  final Set<Flag> flags = EnumSet.noneOf(Flag.class);
-  Vector3i blockPosition;
-  BlockDefinition definition;
-  int dataLayer;
+    final Set<Flag> flags = EnumSet.noneOf(Flag.class);
+    Vector3i blockPosition;
+    BlockDefinition definition;
+    int dataLayer;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.UPDATE_BLOCK;
-  }
-
-  public enum Flag {
-    NEIGHBORS,
-    NETWORK,
-    NO_GRAPHIC,
-    UNUSED,
-    PRIORITY
-  }
-
-  @Override
-  public UpdateBlockPacket clone() {
-    try {
-      return (UpdateBlockPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.UPDATE_BLOCK;
+    }
+
+    public enum Flag {
+        NEIGHBORS,
+        NETWORK,
+        NO_GRAPHIC,
+        UNUSED,
+        PRIORITY
+    }
+
+    @Override
+    public UpdateBlockPacket clone() {
+        try {
+            return (UpdateBlockPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

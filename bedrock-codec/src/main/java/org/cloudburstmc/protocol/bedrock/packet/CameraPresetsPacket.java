@@ -13,24 +13,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CameraPresetsPacket implements BedrockPacket {
-  private final List<CameraPreset> presets = new ObjectArrayList<>();
+    private final List<CameraPreset> presets = new ObjectArrayList<>();
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CAMERA_PRESETS;
-  }
-
-  @Override
-  public CameraPresetsPacket clone() {
-    try {
-      return (CameraPresetsPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CAMERA_PRESETS;
+    }
+
+    @Override
+    public CameraPresetsPacket clone() {
+        try {
+            return (CameraPresetsPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

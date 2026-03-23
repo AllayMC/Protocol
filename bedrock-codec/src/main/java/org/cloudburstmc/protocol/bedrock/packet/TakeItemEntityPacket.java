@@ -13,24 +13,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class TakeItemEntityPacket implements BedrockPacket {
-  private long itemRuntimeEntityId;
-  private long runtimeEntityId;
+    private long itemRuntimeEntityId;
+    private long runtimeEntityId;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.TAKE_ITEM_ENTITY;
-  }
-
-  @Override
-  public TakeItemEntityPacket clone() {
-    try {
-      return (TakeItemEntityPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.TAKE_ITEM_ENTITY;
+    }
+
+    @Override
+    public TakeItemEntityPacket clone() {
+        try {
+            return (TakeItemEntityPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

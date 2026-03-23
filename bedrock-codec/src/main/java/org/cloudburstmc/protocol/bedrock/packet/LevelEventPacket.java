@@ -15,25 +15,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class LevelEventPacket implements BedrockPacket {
-  private LevelEventType type;
-  private Vector3f position;
-  private int data;
+    private LevelEventType type;
+    private Vector3f position;
+    private int data;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.LEVEL_EVENT;
-  }
-
-  @Override
-  public LevelEventPacket clone() {
-    try {
-      return (LevelEventPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.LEVEL_EVENT;
+    }
+
+    @Override
+    public LevelEventPacket clone() {
+        try {
+            return (LevelEventPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

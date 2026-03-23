@@ -16,38 +16,38 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientboundTextureShiftPacket implements BedrockPacket {
 
-  private Action action;
-  private String collectionName;
-  private String fromStep;
-  private String toStep;
-  private List<String> allSteps;
-  private long currentLengthTicks;
-  private long totalLengthTicks;
-  private boolean enabled;
+    private Action action;
+    private String collectionName;
+    private String fromStep;
+    private String toStep;
+    private List<String> allSteps;
+    private long currentLengthTicks;
+    private long totalLengthTicks;
+    private boolean enabled;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CLIENTBOUND_TEXTURE_SHIFT;
-  }
-
-  @Override
-  public ClientboundTextureShiftPacket clone() {
-    try {
-      return (ClientboundTextureShiftPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
 
-  public enum Action {
-    INVALID,
-    INITIALIZE,
-    START,
-    SET_ENABLED,
-    SYNC
-  }
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CLIENTBOUND_TEXTURE_SHIFT;
+    }
+
+    @Override
+    public ClientboundTextureShiftPacket clone() {
+        try {
+            return (ClientboundTextureShiftPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
+
+    public enum Action {
+        INVALID,
+        INITIALIZE,
+        START,
+        SET_ENABLED,
+        SYNC
+    }
 }

@@ -16,23 +16,23 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ItemFrameDropItemPacket implements BedrockPacket {
-  private Vector3i blockPosition;
+    private Vector3i blockPosition;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.ITEM_FRAME_DROP_ITEM;
-  }
-
-  @Override
-  public ItemFrameDropItemPacket clone() {
-    try {
-      return (ItemFrameDropItemPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.ITEM_FRAME_DROP_ITEM;
+    }
+
+    @Override
+    public ItemFrameDropItemPacket clone() {
+        try {
+            return (ItemFrameDropItemPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

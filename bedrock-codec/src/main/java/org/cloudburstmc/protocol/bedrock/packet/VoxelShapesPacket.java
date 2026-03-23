@@ -19,29 +19,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class VoxelShapesPacket implements BedrockPacket {
-  private List<SerializableVoxelShape> shapes;
-  private Map<String, Integer> nameMap;
+    private List<SerializableVoxelShape> shapes;
+    private Map<String, Integer> nameMap;
 
-  /**
-   * @since v944
-   */
-  private int customShapeCount;
+    /**
+     * @since v944
+     */
+    private int customShapeCount;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.VOXEL_SHAPES;
-  }
-
-  @Override
-  public VoxelShapesPacket clone() {
-    try {
-      return (VoxelShapesPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.VOXEL_SHAPES;
+    }
+
+    @Override
+    public VoxelShapesPacket clone() {
+        try {
+            return (VoxelShapesPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

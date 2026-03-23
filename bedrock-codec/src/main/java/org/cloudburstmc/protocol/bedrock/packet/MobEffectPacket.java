@@ -13,45 +13,45 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MobEffectPacket implements BedrockPacket {
-  private long runtimeEntityId;
-  private Event event;
-  private int effectId;
-  private int amplifier;
-  private boolean particles;
-  private int duration;
+    private long runtimeEntityId;
+    private Event event;
+    private int effectId;
+    private int amplifier;
+    private boolean particles;
+    private int duration;
 
-  /**
-   * @since v662
-   */
-  private long tick;
+    /**
+     * @since v662
+     */
+    private long tick;
 
-  /**
-   * @since v897
-   */
-  private boolean ambient;
+    /**
+     * @since v897
+     */
+    private boolean ambient;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.MOB_EFFECT;
-  }
-
-  public enum Event {
-    NONE,
-    ADD,
-    MODIFY,
-    REMOVE,
-  }
-
-  @Override
-  public MobEffectPacket clone() {
-    try {
-      return (MobEffectPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.MOB_EFFECT;
+    }
+
+    public enum Event {
+        NONE,
+        ADD,
+        MODIFY,
+        REMOVE,
+    }
+
+    @Override
+    public MobEffectPacket clone() {
+        try {
+            return (MobEffectPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

@@ -11,25 +11,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class PlayerStartItemCooldownPacket implements BedrockPacket {
 
-  private String itemCategory;
-  private int cooldownDuration;
+    private String itemCategory;
+    private int cooldownDuration;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.PLAYER_START_ITEM_COOLDOWN;
-  }
-
-  @Override
-  public PlayerStartItemCooldownPacket clone() {
-    try {
-      return (PlayerStartItemCooldownPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.PLAYER_START_ITEM_COOLDOWN;
+    }
+
+    @Override
+    public PlayerStartItemCooldownPacket clone() {
+        try {
+            return (PlayerStartItemCooldownPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

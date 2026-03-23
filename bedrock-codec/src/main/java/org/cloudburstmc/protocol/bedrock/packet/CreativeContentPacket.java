@@ -18,29 +18,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CreativeContentPacket implements BedrockPacket {
-  /**
-   * @since v776
-   */
-  private final List<CreativeItemGroup> groups = new ObjectArrayList<>();
+    /**
+     * @since v776
+     */
+    private final List<CreativeItemGroup> groups = new ObjectArrayList<>();
 
-  private final List<CreativeItemData> contents = new ObjectArrayList<>();
+    private final List<CreativeItemData> contents = new ObjectArrayList<>();
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CREATIVE_CONTENT;
-  }
-
-  @Override
-  public CreativeContentPacket clone() {
-    try {
-      return (CreativeContentPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CREATIVE_CONTENT;
+    }
+
+    @Override
+    public CreativeContentPacket clone() {
+        try {
+            return (CreativeContentPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

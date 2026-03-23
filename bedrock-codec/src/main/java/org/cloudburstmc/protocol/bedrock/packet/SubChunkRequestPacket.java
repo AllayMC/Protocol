@@ -13,29 +13,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SubChunkRequestPacket implements BedrockPacket {
-  private int dimension;
-  private Vector3i subChunkPosition;
+    private int dimension;
+    private Vector3i subChunkPosition;
 
-  /**
-   * @since v485
-   */
-  private List<Vector3i> positionOffsets = new ObjectArrayList<>();
+    /**
+     * @since v485
+     */
+    private List<Vector3i> positionOffsets = new ObjectArrayList<>();
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SUB_CHUNK_REQUEST;
-  }
-
-  @Override
-  public SubChunkRequestPacket clone() {
-    try {
-      return (SubChunkRequestPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SUB_CHUNK_REQUEST;
+    }
+
+    @Override
+    public SubChunkRequestPacket clone() {
+        try {
+            return (SubChunkRequestPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

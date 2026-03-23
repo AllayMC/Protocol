@@ -12,42 +12,42 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CameraAimAssistPacket implements BedrockPacket {
-  private Vector2f viewAngle;
-  private float distance;
-  private TargetMode targetMode;
-  private AimAssistAction action;
+    private Vector2f viewAngle;
+    private float distance;
+    private TargetMode targetMode;
+    private AimAssistAction action;
 
-  /**
-   * @since v766
-   */
-  private String presetId;
+    /**
+     * @since v766
+     */
+    private String presetId;
 
-  /**
-   * @since v827
-   */
-  private boolean showDebugRender;
+    /**
+     * @since v827
+     */
+    private boolean showDebugRender;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CAMERA_AIM_ASSIST;
-  }
-
-  @Override
-  public CameraAimAssistPacket clone() {
-    try {
-      return (CameraAimAssistPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
 
-  public enum TargetMode {
-    ANGLE,
-    DISTANCE
-  }
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CAMERA_AIM_ASSIST;
+    }
+
+    @Override
+    public CameraAimAssistPacket clone() {
+        try {
+            return (CameraAimAssistPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
+
+    public enum TargetMode {
+        ANGLE,
+        DISTANCE
+    }
 }

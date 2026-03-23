@@ -10,23 +10,23 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AddBehaviorTreePacket implements BedrockPacket {
-  private String behaviorTreeJson;
+    private String behaviorTreeJson;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.ADD_BEHAVIOR_TREE;
-  }
-
-  @Override
-  public AddBehaviorTreePacket clone() {
-    try {
-      return (AddBehaviorTreePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.ADD_BEHAVIOR_TREE;
+    }
+
+    @Override
+    public AddBehaviorTreePacket clone() {
+        try {
+            return (AddBehaviorTreePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

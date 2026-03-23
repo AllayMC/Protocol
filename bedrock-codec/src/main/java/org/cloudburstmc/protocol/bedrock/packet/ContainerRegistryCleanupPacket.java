@@ -13,25 +13,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ContainerRegistryCleanupPacket implements BedrockPacket {
-  /** A list of full containers to cleanup. */
-  private final List<FullContainerName> containers = new ObjectArrayList<>();
+    /** A list of full containers to cleanup. */
+    private final List<FullContainerName> containers = new ObjectArrayList<>();
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CONTAINER_REGISTRY_CLEANUP;
-  }
-
-  @Override
-  public ContainerRegistryCleanupPacket clone() {
-    try {
-      return (ContainerRegistryCleanupPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CONTAINER_REGISTRY_CLEANUP;
+    }
+
+    @Override
+    public ContainerRegistryCleanupPacket clone() {
+        try {
+            return (ContainerRegistryCleanupPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

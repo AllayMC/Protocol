@@ -24,27 +24,27 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientCheatAbilityPacket implements BedrockPacket, PlayerAbilityHolder {
 
-  private long uniqueEntityId;
-  private PlayerPermission playerPermission;
-  private CommandPermission commandPermission;
-  private List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
+    private long uniqueEntityId;
+    private PlayerPermission playerPermission;
+    private CommandPermission commandPermission;
+    private List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
 
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CLIENT_CHEAT_ABILITY;
-  }
-
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public ClientCheatAbilityPacket clone() {
-    try {
-      return (ClientCheatAbilityPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CLIENT_CHEAT_ABILITY;
     }
-  }
+
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
+    }
+
+    @Override
+    public ClientCheatAbilityPacket clone() {
+        try {
+            return (ClientCheatAbilityPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

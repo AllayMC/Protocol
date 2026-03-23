@@ -13,26 +13,26 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CreatePhotoPacket implements BedrockPacket {
-  private long id;
-  private String photoName;
-  private String photoItemName;
+    private long id;
+    private String photoName;
+    private String photoItemName;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CREATE_PHOTO;
-  }
-
-  @Override
-  public CreatePhotoPacket clone() {
-    try {
-      return (CreatePhotoPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CREATE_PHOTO;
+    }
+
+    @Override
+    public CreatePhotoPacket clone() {
+        try {
+            return (CreatePhotoPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

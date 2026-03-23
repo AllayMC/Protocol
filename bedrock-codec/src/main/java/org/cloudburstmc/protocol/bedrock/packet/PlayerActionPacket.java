@@ -15,32 +15,32 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayerActionPacket implements BedrockPacket {
-  private long runtimeEntityId;
-  private PlayerActionType action;
-  private Vector3i blockPosition;
+    private long runtimeEntityId;
+    private PlayerActionType action;
+    private Vector3i blockPosition;
 
-  /**
-   * @since v526
-   */
-  private Vector3i resultPosition;
+    /**
+     * @since v526
+     */
+    private Vector3i resultPosition;
 
-  private int face;
+    private int face;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.PLAYER_ACTION;
-  }
-
-  @Override
-  public PlayerActionPacket clone() {
-    try {
-      return (PlayerActionPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.PLAYER_ACTION;
+    }
+
+    @Override
+    public PlayerActionPacket clone() {
+        try {
+            return (PlayerActionPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

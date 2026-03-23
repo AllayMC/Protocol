@@ -13,26 +13,26 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class StructureTemplateDataRequestPacket implements BedrockPacket {
-  private String name;
-  private Vector3i position;
-  private StructureSettings settings;
-  private StructureTemplateRequestOperation operation;
+    private String name;
+    private Vector3i position;
+    private StructureSettings settings;
+    private StructureTemplateRequestOperation operation;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.STRUCTURE_TEMPLATE_DATA_EXPORT_REQUEST;
-  }
-
-  @Override
-  public StructureTemplateDataRequestPacket clone() {
-    try {
-      return (StructureTemplateDataRequestPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.STRUCTURE_TEMPLATE_DATA_EXPORT_REQUEST;
+    }
+
+    @Override
+    public StructureTemplateDataRequestPacket clone() {
+        try {
+            return (StructureTemplateDataRequestPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

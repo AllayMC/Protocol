@@ -16,29 +16,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AddItemEntityPacket implements BedrockPacket {
-  private EntityDataMap metadata = new EntityDataMap();
-  private long uniqueEntityId;
-  private long runtimeEntityId;
-  private ItemData itemInHand;
-  private Vector3f position;
-  private Vector3f motion;
-  private boolean fromFishing;
+    private EntityDataMap metadata = new EntityDataMap();
+    private long uniqueEntityId;
+    private long runtimeEntityId;
+    private ItemData itemInHand;
+    private Vector3f position;
+    private Vector3f motion;
+    private boolean fromFishing;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.ADD_ITEM_ENTITY;
-  }
-
-  @Override
-  public AddItemEntityPacket clone() {
-    try {
-      return (AddItemEntityPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.ADD_ITEM_ENTITY;
+    }
+
+    @Override
+    public AddItemEntityPacket clone() {
+        try {
+            return (AddItemEntityPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

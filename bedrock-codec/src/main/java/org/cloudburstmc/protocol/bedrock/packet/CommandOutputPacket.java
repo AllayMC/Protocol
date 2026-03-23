@@ -23,27 +23,27 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CommandOutputPacket implements BedrockPacket {
-  private final List<CommandOutputMessage> messages = new ObjectArrayList<>();
-  private CommandOriginData commandOriginData;
-  private CommandOutputType type;
-  private int successCount;
-  @Nullable private String data;
+    private final List<CommandOutputMessage> messages = new ObjectArrayList<>();
+    private CommandOriginData commandOriginData;
+    private CommandOutputType type;
+    private int successCount;
+    @Nullable private String data;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.COMMAND_OUTPUT;
-  }
-
-  @Override
-  public CommandOutputPacket clone() {
-    try {
-      return (CommandOutputPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.COMMAND_OUTPUT;
+    }
+
+    @Override
+    public CommandOutputPacket clone() {
+        try {
+            return (CommandOutputPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

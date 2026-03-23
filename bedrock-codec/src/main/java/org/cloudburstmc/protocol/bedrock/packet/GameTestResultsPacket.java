@@ -13,26 +13,26 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)
 public class GameTestResultsPacket implements BedrockPacket {
-  private boolean successful;
-  private String error;
-  private String testName;
+    private boolean successful;
+    private String error;
+    private String testName;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.GAME_TEST_RESULTS;
-  }
-
-  @Override
-  public GameTestResultsPacket clone() {
-    try {
-      return (GameTestResultsPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.GAME_TEST_RESULTS;
+    }
+
+    @Override
+    public GameTestResultsPacket clone() {
+        try {
+            return (GameTestResultsPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

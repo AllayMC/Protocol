@@ -13,29 +13,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ShowCreditsPacket implements BedrockPacket {
-  private long runtimeEntityId;
-  private Status status;
+    private long runtimeEntityId;
+    private Status status;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SHOW_CREDITS;
-  }
-
-  public enum Status {
-    START_CREDITS,
-    END_CREDITS
-  }
-
-  @Override
-  public ShowCreditsPacket clone() {
-    try {
-      return (ShowCreditsPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SHOW_CREDITS;
+    }
+
+    public enum Status {
+        START_CREDITS,
+        END_CREDITS
+    }
+
+    @Override
+    public ShowCreditsPacket clone() {
+        try {
+            return (ShowCreditsPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

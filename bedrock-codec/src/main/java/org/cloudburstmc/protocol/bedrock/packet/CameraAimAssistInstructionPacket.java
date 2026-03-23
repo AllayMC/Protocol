@@ -14,26 +14,26 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CameraAimAssistInstructionPacket implements BedrockPacket {
-  private String presetId;
-  private AimAssistAction action;
-  private boolean allowAimAssist;
+    private String presetId;
+    private AimAssistAction action;
+    private boolean allowAimAssist;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CAMERA_AIM_ASSIST_INSTRUCTION;
-  }
-
-  @Override
-  public CameraAimAssistInstructionPacket clone() {
-    try {
-      return (CameraAimAssistInstructionPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CAMERA_AIM_ASSIST_INSTRUCTION;
+    }
+
+    @Override
+    public CameraAimAssistInstructionPacket clone() {
+        try {
+            return (CameraAimAssistInstructionPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

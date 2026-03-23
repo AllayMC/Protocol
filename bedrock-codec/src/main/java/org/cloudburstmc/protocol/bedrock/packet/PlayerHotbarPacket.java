@@ -15,25 +15,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayerHotbarPacket implements BedrockPacket {
-  private int selectedHotbarSlot;
-  private int containerId;
-  private boolean selectHotbarSlot;
+    private int selectedHotbarSlot;
+    private int containerId;
+    private boolean selectHotbarSlot;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.PLAYER_HOTBAR;
-  }
-
-  @Override
-  public PlayerHotbarPacket clone() {
-    try {
-      return (PlayerHotbarPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.PLAYER_HOTBAR;
+    }
+
+    @Override
+    public PlayerHotbarPacket clone() {
+        try {
+            return (PlayerHotbarPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

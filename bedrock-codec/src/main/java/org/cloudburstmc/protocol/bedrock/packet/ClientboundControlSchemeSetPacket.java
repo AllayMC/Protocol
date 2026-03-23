@@ -16,24 +16,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientboundControlSchemeSetPacket implements BedrockPacket {
 
-  private ControlScheme scheme;
+    private ControlScheme scheme;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CLIENTBOUND_CONTROL_SCHEME_SET;
-  }
-
-  @Override
-  public BedrockPacket clone() {
-    try {
-      return (ClientboundControlSchemeSetPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CLIENTBOUND_CONTROL_SCHEME_SET;
+    }
+
+    @Override
+    public BedrockPacket clone() {
+        try {
+            return (ClientboundControlSchemeSetPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

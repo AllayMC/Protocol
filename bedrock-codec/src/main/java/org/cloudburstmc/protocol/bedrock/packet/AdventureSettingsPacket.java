@@ -26,26 +26,26 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AdventureSettingsPacket implements BedrockPacket {
-  private final Set<AdventureSetting> settings = EnumSet.noneOf(AdventureSetting.class);
-  private CommandPermission commandPermission = CommandPermission.ANY;
-  private PlayerPermission playerPermission = PlayerPermission.VISITOR;
-  private long uniqueEntityId;
+    private final Set<AdventureSetting> settings = EnumSet.noneOf(AdventureSetting.class);
+    private CommandPermission commandPermission = CommandPermission.ANY;
+    private PlayerPermission playerPermission = PlayerPermission.VISITOR;
+    private long uniqueEntityId;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.ADVENTURE_SETTINGS;
-  }
-
-  @Override
-  public AdventureSettingsPacket clone() {
-    try {
-      return (AdventureSettingsPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.ADVENTURE_SETTINGS;
+    }
+
+    @Override
+    public AdventureSettingsPacket clone() {
+        try {
+            return (AdventureSettingsPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

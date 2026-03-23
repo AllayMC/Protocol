@@ -14,29 +14,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ChangeMobPropertyPacket implements BedrockPacket {
-  private long uniqueEntityId;
-  private String property;
-  private boolean boolValue;
-  private String stringValue;
-  private int intValue;
-  private float floatValue;
+    private long uniqueEntityId;
+    private String property;
+    private boolean boolValue;
+    private String stringValue;
+    private int intValue;
+    private float floatValue;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CHANGE_MOB_PROPERTY;
-  }
-
-  @Override
-  public ChangeMobPropertyPacket clone() {
-    try {
-      return (ChangeMobPropertyPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CHANGE_MOB_PROPERTY;
+    }
+
+    @Override
+    public ChangeMobPropertyPacket clone() {
+        try {
+            return (ChangeMobPropertyPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

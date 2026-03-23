@@ -13,25 +13,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class DebugInfoPacket implements BedrockPacket {
-  private long uniqueEntityId;
-  private String data;
+    private long uniqueEntityId;
+    private String data;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.DEBUG_INFO;
-  }
-
-  @Override
-  public DebugInfoPacket clone() {
-    try {
-      return (DebugInfoPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.DEBUG_INFO;
+    }
+
+    @Override
+    public DebugInfoPacket clone() {
+        try {
+            return (DebugInfoPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

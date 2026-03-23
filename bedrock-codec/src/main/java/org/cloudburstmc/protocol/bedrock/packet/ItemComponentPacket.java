@@ -14,24 +14,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ItemComponentPacket implements BedrockPacket {
 
-  private final List<ItemDefinition> items = new ObjectArrayList<>();
+    private final List<ItemDefinition> items = new ObjectArrayList<>();
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.ITEM_COMPONENT;
-  }
-
-  @Override
-  public ItemComponentPacket clone() {
-    try {
-      return (ItemComponentPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.ITEM_COMPONENT;
+    }
+
+    @Override
+    public ItemComponentPacket clone() {
+        try {
+            return (ItemComponentPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

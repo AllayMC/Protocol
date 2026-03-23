@@ -16,29 +16,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateAttributesPacket implements BedrockPacket {
-  private long runtimeEntityId;
-  private List<AttributeData> attributes = new ObjectArrayList<>();
+    private long runtimeEntityId;
+    private List<AttributeData> attributes = new ObjectArrayList<>();
 
-  /**
-   * @since v419
-   */
-  private long tick;
+    /**
+     * @since v419
+     */
+    private long tick;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.UPDATE_ATTRIBUTES;
-  }
-
-  @Override
-  public UpdateAttributesPacket clone() {
-    try {
-      return (UpdateAttributesPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.UPDATE_ATTRIBUTES;
+    }
+
+    @Override
+    public UpdateAttributesPacket clone() {
+        try {
+            return (UpdateAttributesPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

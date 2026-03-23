@@ -14,24 +14,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class OpenSignPacket implements BedrockPacket {
-  private Vector3i position;
-  private boolean frontSide;
+    private Vector3i position;
+    private boolean frontSide;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.OPEN_SIGN;
-  }
-
-  @Override
-  public OpenSignPacket clone() {
-    try {
-      return (OpenSignPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.OPEN_SIGN;
+    }
+
+    @Override
+    public OpenSignPacket clone() {
+        try {
+            return (OpenSignPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

@@ -18,25 +18,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetHudPacket implements BedrockPacket {
-  private final Set<HudElement> elements = new ObjectOpenHashSet<>();
-  private HudVisibility visibility;
+    private final Set<HudElement> elements = new ObjectOpenHashSet<>();
+    private HudVisibility visibility;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SET_HUD;
-  }
-
-  @Override
-  public SetHudPacket clone() {
-    try {
-      return (SetHudPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SET_HUD;
+    }
+
+    @Override
+    public SetHudPacket clone() {
+        try {
+            return (SetHudPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

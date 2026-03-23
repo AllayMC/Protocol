@@ -14,23 +14,23 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetLocalPlayerAsInitializedPacket implements BedrockPacket {
-  private long runtimeEntityId;
+    private long runtimeEntityId;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SET_LOCAL_PLAYER_AS_INITIALIZED;
-  }
-
-  @Override
-  public SetLocalPlayerAsInitializedPacket clone() {
-    try {
-      return (SetLocalPlayerAsInitializedPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SET_LOCAL_PLAYER_AS_INITIALIZED;
+    }
+
+    @Override
+    public SetLocalPlayerAsInitializedPacket clone() {
+        try {
+            return (SetLocalPlayerAsInitializedPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

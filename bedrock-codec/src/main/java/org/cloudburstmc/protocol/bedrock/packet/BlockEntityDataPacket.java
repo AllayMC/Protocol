@@ -14,24 +14,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class BlockEntityDataPacket implements BedrockPacket {
-  private Vector3i blockPosition;
-  private NbtMap data;
+    private Vector3i blockPosition;
+    private NbtMap data;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.BLOCK_ENTITY_DATA;
-  }
-
-  @Override
-  public BlockEntityDataPacket clone() {
-    try {
-      return (BlockEntityDataPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.BLOCK_ENTITY_DATA;
+    }
+
+    @Override
+    public BlockEntityDataPacket clone() {
+        try {
+            return (BlockEntityDataPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

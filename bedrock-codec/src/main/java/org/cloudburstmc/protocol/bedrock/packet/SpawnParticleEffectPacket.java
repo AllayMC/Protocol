@@ -17,36 +17,36 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public class SpawnParticleEffectPacket implements BedrockPacket {
-  private int dimensionId;
+    private int dimensionId;
 
-  /**
-   * @since v332
-   */
-  private long uniqueEntityId = -1;
+    /**
+     * @since v332
+     */
+    private long uniqueEntityId = -1;
 
-  private Vector3f position;
-  private String identifier;
+    private Vector3f position;
+    private String identifier;
 
-  /**
-   * @since v503
-   */
-  private Optional<String> molangVariablesJson;
+    /**
+     * @since v503
+     */
+    private Optional<String> molangVariablesJson;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SPAWN_PARTICLE_EFFECT;
-  }
-
-  @Override
-  public SpawnParticleEffectPacket clone() {
-    try {
-      return (SpawnParticleEffectPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SPAWN_PARTICLE_EFFECT;
+    }
+
+    @Override
+    public SpawnParticleEffectPacket clone() {
+        try {
+            return (SpawnParticleEffectPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

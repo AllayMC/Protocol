@@ -16,41 +16,41 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EmotePacket implements BedrockPacket {
-  private long runtimeEntityId;
+    private long runtimeEntityId;
 
-  /**
-   * @since v589
-   */
-  private String xuid;
+    /**
+     * @since v589
+     */
+    private String xuid;
 
-  /**
-   * @since v589
-   */
-  private String platformId;
+    /**
+     * @since v589
+     */
+    private String platformId;
 
-  private String emoteId;
-  private final Set<EmoteFlag> flags = EnumSet.noneOf(EmoteFlag.class);
+    private String emoteId;
+    private final Set<EmoteFlag> flags = EnumSet.noneOf(EmoteFlag.class);
 
-  /**
-   * @since v729
-   */
-  private int emoteDuration;
+    /**
+     * @since v729
+     */
+    private int emoteDuration;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.EMOTE;
-  }
-
-  @Override
-  public EmotePacket clone() {
-    try {
-      return (EmotePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.EMOTE;
+    }
+
+    @Override
+    public EmotePacket clone() {
+        try {
+            return (EmotePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

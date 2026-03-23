@@ -22,42 +22,42 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ClientboundMapItemDataPacket implements BedrockPacket {
-  private final LongList trackedEntityIds = new LongArrayList();
-  private final List<MapTrackedObject> trackedObjects = new ObjectArrayList<>();
-  private final List<MapDecoration> decorations = new ObjectArrayList<>();
-  private long uniqueMapId;
-  private int dimensionId;
-  private boolean locked;
+    private final LongList trackedEntityIds = new LongArrayList();
+    private final List<MapTrackedObject> trackedObjects = new ObjectArrayList<>();
+    private final List<MapDecoration> decorations = new ObjectArrayList<>();
+    private long uniqueMapId;
+    private int dimensionId;
+    private boolean locked;
 
-  /**
-   * The world-relative position of the map's origin.
-   *
-   * @since v544
-   */
-  private Vector3i origin;
+    /**
+     * The world-relative position of the map's origin.
+     *
+     * @since v544
+     */
+    private Vector3i origin;
 
-  private int scale;
-  private int height;
-  private int width;
-  private int xOffset;
-  private int yOffset;
-  private int[] colors;
+    private int scale;
+    private int height;
+    private int width;
+    private int xOffset;
+    private int yOffset;
+    private int[] colors;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CLIENTBOUND_MAP_ITEM_DATA;
-  }
-
-  @Override
-  public ClientboundMapItemDataPacket clone() {
-    try {
-      return (ClientboundMapItemDataPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CLIENTBOUND_MAP_ITEM_DATA;
+    }
+
+    @Override
+    public ClientboundMapItemDataPacket clone() {
+        try {
+            return (ClientboundMapItemDataPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

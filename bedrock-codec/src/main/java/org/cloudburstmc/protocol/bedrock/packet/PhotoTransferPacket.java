@@ -16,45 +16,45 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PhotoTransferPacket implements BedrockPacket {
-  private String name;
-  private byte[] data;
-  private String bookId;
+    private String name;
+    private byte[] data;
+    private String bookId;
 
-  /**
-   * @since v465
-   */
-  private PhotoType photoType;
+    /**
+     * @since v465
+     */
+    private PhotoType photoType;
 
-  /**
-   * @since v465
-   */
-  private PhotoType sourceType;
+    /**
+     * @since v465
+     */
+    private PhotoType sourceType;
 
-  /**
-   * @since v465
-   */
-  private long ownerId;
+    /**
+     * @since v465
+     */
+    private long ownerId;
 
-  /**
-   * @since v465
-   */
-  private String newPhotoName;
+    /**
+     * @since v465
+     */
+    private String newPhotoName;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.PHOTO_TRANSFER;
-  }
-
-  @Override
-  public PhotoTransferPacket clone() {
-    try {
-      return (PhotoTransferPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.PHOTO_TRANSFER;
+    }
+
+    @Override
+    public PhotoTransferPacket clone() {
+        try {
+            return (PhotoTransferPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

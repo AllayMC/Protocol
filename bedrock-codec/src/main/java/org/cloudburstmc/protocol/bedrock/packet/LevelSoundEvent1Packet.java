@@ -20,28 +20,28 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class LevelSoundEvent1Packet implements BedrockPacket {
-  private SoundEvent sound;
-  private Vector3f position;
-  private int extraData;
-  private int pitch;
-  private boolean babySound;
-  private boolean relativeVolumeDisabled;
+    private SoundEvent sound;
+    private Vector3f position;
+    private int extraData;
+    private int pitch;
+    private boolean babySound;
+    private boolean relativeVolumeDisabled;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.LEVEL_SOUND_EVENT_1;
-  }
-
-  @Override
-  public LevelSoundEvent1Packet clone() {
-    try {
-      return (LevelSoundEvent1Packet) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.LEVEL_SOUND_EVENT_1;
+    }
+
+    @Override
+    public LevelSoundEvent1Packet clone() {
+        try {
+            return (LevelSoundEvent1Packet) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

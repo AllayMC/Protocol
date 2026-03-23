@@ -14,29 +14,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetEntityMotionPacket implements BedrockPacket {
-  private long runtimeEntityId;
-  private Vector3f motion;
+    private long runtimeEntityId;
+    private Vector3f motion;
 
-  /**
-   * @since v662
-   */
-  private long tick;
+    /**
+     * @since v662
+     */
+    private long tick;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SET_ENTITY_MOTION;
-  }
-
-  @Override
-  public SetEntityMotionPacket clone() {
-    try {
-      return (SetEntityMotionPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SET_ENTITY_MOTION;
+    }
+
+    @Override
+    public SetEntityMotionPacket clone() {
+        try {
+            return (SetEntityMotionPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

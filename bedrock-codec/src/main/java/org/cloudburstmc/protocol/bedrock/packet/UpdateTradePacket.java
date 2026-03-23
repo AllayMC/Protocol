@@ -15,51 +15,51 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateTradePacket implements BedrockPacket {
-  private int containerId;
-  private ContainerType containerType;
-  private int size; // Hardcoded to 0
+    private int containerId;
+    private ContainerType containerType;
+    private int size; // Hardcoded to 0
 
-  /**
-   * @since v313
-   */
-  private int tradeTier;
+    /**
+     * @since v313
+     */
+    private int tradeTier;
 
-  private long traderUniqueEntityId;
-  private long playerUniqueEntityId;
-  private CharSequence displayName;
-  private NbtMap offers;
+    private long traderUniqueEntityId;
+    private long playerUniqueEntityId;
+    private CharSequence displayName;
+    private NbtMap offers;
 
-  /**
-   * @since v313
-   */
-  private boolean newTradingUi;
+    /**
+     * @since v313
+     */
+    private boolean newTradingUi;
 
-  private boolean recipeAddedOnUpdate;
-  private boolean usingEconomyTrade;
+    private boolean recipeAddedOnUpdate;
+    private boolean usingEconomyTrade;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.UPDATE_TRADE;
-  }
-
-  @Override
-  public UpdateTradePacket clone() {
-    try {
-      return (UpdateTradePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
 
-  public String getDisplayName() {
-    return getDisplayName(String.class);
-  }
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.UPDATE_TRADE;
+    }
 
-  public <T extends CharSequence> T getDisplayName(Class<T> type) {
-    return type.cast(displayName);
-  }
+    @Override
+    public UpdateTradePacket clone() {
+        try {
+            return (UpdateTradePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
+
+    public String getDisplayName() {
+        return getDisplayName(String.class);
+    }
+
+    public <T extends CharSequence> T getDisplayName(Class<T> type) {
+        return type.cast(displayName);
+    }
 }

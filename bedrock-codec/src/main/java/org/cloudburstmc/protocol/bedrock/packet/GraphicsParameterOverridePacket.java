@@ -18,44 +18,44 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class GraphicsParameterOverridePacket implements BedrockPacket {
-  private String biomeIdentifier;
-  private GraphicsOverrideParameterType parameterType;
-  private Map<Float, Vector3f> values;
-  private boolean reset;
+    private String biomeIdentifier;
+    private GraphicsOverrideParameterType parameterType;
+    private Map<Float, Vector3f> values;
+    private boolean reset;
 
-  /**
-   * @since v924
-   */
-  @Nullable
-  /**
-   * @since v924
-   */
-  private Float floatValue;
+    /**
+     * @since v924
+     */
+    @Nullable
+    /**
+     * @since v924
+     */
+    private Float floatValue;
 
-  /**
-   * @since v924
-   */
-  @Nullable
-  /**
-   * @since v924
-   */
-  private Vector3f vec3Value;
+    /**
+     * @since v924
+     */
+    @Nullable
+    /**
+     * @since v924
+     */
+    private Vector3f vec3Value;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.GRAPHICS_PARAMETER_OVERRIDE_PACKET;
-  }
-
-  @Override
-  public GraphicsParameterOverridePacket clone() {
-    try {
-      return (GraphicsParameterOverridePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.GRAPHICS_PARAMETER_OVERRIDE_PACKET;
+    }
+
+    @Override
+    public GraphicsParameterOverridePacket clone() {
+        try {
+            return (GraphicsParameterOverridePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

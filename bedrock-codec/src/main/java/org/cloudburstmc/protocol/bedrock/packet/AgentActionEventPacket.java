@@ -16,30 +16,30 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AgentActionEventPacket implements BedrockPacket {
-  private String requestId;
-  private AgentActionType actionType;
+    private String requestId;
+    private AgentActionType actionType;
 
-  /**
-   * @see AgentActionType for type specific JSON
-   */
-  private String responseJson;
+    /**
+     * @see AgentActionType for type specific JSON
+     */
+    private String responseJson;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.AGENT_ACTION_EVENT;
-  }
-
-  @Override
-  public AgentActionEventPacket clone() {
-    try {
-      return (AgentActionEventPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.AGENT_ACTION_EVENT;
+    }
+
+    @Override
+    public AgentActionEventPacket clone() {
+        try {
+            return (AgentActionEventPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

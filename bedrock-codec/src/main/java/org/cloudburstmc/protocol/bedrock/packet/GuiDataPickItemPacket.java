@@ -13,25 +13,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class GuiDataPickItemPacket implements BedrockPacket {
-  private String description;
-  private String itemEffects;
-  private int hotbarSlot;
+    private String description;
+    private String itemEffects;
+    private int hotbarSlot;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.GUI_DATA_PICK_ITEM;
-  }
-
-  @Override
-  public GuiDataPickItemPacket clone() {
-    try {
-      return (GuiDataPickItemPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.GUI_DATA_PICK_ITEM;
+    }
+
+    @Override
+    public GuiDataPickItemPacket clone() {
+        try {
+            return (GuiDataPickItemPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

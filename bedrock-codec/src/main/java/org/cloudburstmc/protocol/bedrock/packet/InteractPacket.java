@@ -14,35 +14,35 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class InteractPacket implements BedrockPacket {
-  private Action action;
-  private long runtimeEntityId;
-  private Vector3f mousePosition;
+    private Action action;
+    private long runtimeEntityId;
+    private Vector3f mousePosition;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.INTERACT;
-  }
-
-  public enum Action {
-    NONE,
-    INTERACT,
-    DAMAGE,
-    LEAVE_VEHICLE,
-    MOUSEOVER,
-    NPC_OPEN,
-    OPEN_INVENTORY
-  }
-
-  @Override
-  public InteractPacket clone() {
-    try {
-      return (InteractPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.INTERACT;
+    }
+
+    public enum Action {
+        NONE,
+        INTERACT,
+        DAMAGE,
+        LEAVE_VEHICLE,
+        MOUSEOVER,
+        NPC_OPEN,
+        OPEN_INVENTORY
+    }
+
+    @Override
+    public InteractPacket clone() {
+        try {
+            return (InteractPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

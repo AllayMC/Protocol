@@ -13,70 +13,70 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetTitlePacket implements BedrockPacket {
-  private Type type;
-  private CharSequence text;
-  private int fadeInTime;
-  private int stayTime;
-  private int fadeOutTime;
+    private Type type;
+    private CharSequence text;
+    private int fadeInTime;
+    private int stayTime;
+    private int fadeOutTime;
 
-  /**
-   * @since v448
-   */
-  private String xuid;
+    /**
+     * @since v448
+     */
+    private String xuid;
 
-  /**
-   * @since v448
-   */
-  private String platformOnlineId;
+    /**
+     * @since v448
+     */
+    private String platformOnlineId;
 
-  /**
-   * @since v712
-   */
-  private CharSequence filteredTitleText = "";
+    /**
+     * @since v712
+     */
+    private CharSequence filteredTitleText = "";
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SET_TITLE;
-  }
-
-  public enum Type {
-    CLEAR,
-    RESET,
-    TITLE,
-    SUBTITLE,
-    ACTIONBAR,
-    TIMES,
-    TITLE_JSON,
-    SUBTITLE_JSON,
-    ACTIONBAR_JSON
-  }
-
-  @Override
-  public SetTitlePacket clone() {
-    try {
-      return (SetTitlePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
 
-  public String getText() {
-    return getText(String.class);
-  }
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SET_TITLE;
+    }
 
-  public <T extends CharSequence> T getText(Class<T> type) {
-    return type.cast(text);
-  }
+    public enum Type {
+        CLEAR,
+        RESET,
+        TITLE,
+        SUBTITLE,
+        ACTIONBAR,
+        TIMES,
+        TITLE_JSON,
+        SUBTITLE_JSON,
+        ACTIONBAR_JSON
+    }
 
-  public String getFilteredTitleText() {
-    return getFilteredTitleText(String.class);
-  }
+    @Override
+    public SetTitlePacket clone() {
+        try {
+            return (SetTitlePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 
-  public <T extends CharSequence> T getFilteredTitleText(Class<T> type) {
-    return type.cast(filteredTitleText);
-  }
+    public String getText() {
+        return getText(String.class);
+    }
+
+    public <T extends CharSequence> T getText(Class<T> type) {
+        return type.cast(text);
+    }
+
+    public String getFilteredTitleText() {
+        return getFilteredTitleText(String.class);
+    }
+
+    public <T extends CharSequence> T getFilteredTitleText(Class<T> type) {
+        return type.cast(filteredTitleText);
+    }
 }

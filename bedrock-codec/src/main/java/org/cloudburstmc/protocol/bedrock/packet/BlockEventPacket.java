@@ -51,45 +51,45 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class BlockEventPacket implements BedrockPacket {
-  /**
-   * Position to execute block event.
-   *
-   * @param blockPosition block event position
-   * @return block event position
-   */
-  private Vector3i blockPosition;
+    /**
+     * Position to execute block event.
+     *
+     * @param blockPosition block event position
+     * @return block event position
+     */
+    private Vector3i blockPosition;
 
-  /**
-   * Block event type to execute
-   *
-   * @param eventType block event type
-   * @return block event type
-   */
-  private int eventType;
+    /**
+     * Block event type to execute
+     *
+     * @param eventType block event type
+     * @return block event type
+     */
+    private int eventType;
 
-  /**
-   * Data used by event (if applicable)
-   *
-   * @param eventData data for event
-   * @return data for event
-   */
-  private int eventData;
+    /**
+     * Data used by event (if applicable)
+     *
+     * @param eventData data for event
+     * @return data for event
+     */
+    private int eventData;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.BLOCK_EVENT;
-  }
-
-  @Override
-  public BlockEventPacket clone() {
-    try {
-      return (BlockEventPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.BLOCK_EVENT;
+    }
+
+    @Override
+    public BlockEventPacket clone() {
+        try {
+            return (BlockEventPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

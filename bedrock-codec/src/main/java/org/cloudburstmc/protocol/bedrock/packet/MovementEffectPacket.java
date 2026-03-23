@@ -15,27 +15,27 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MovementEffectPacket implements BedrockPacket {
-  private long entityRuntimeId;
-  private MovementEffectType effectType;
-  private int duration;
-  private long tick;
+    private long entityRuntimeId;
+    private MovementEffectType effectType;
+    private int duration;
+    private long tick;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.MOVEMENT_EFFECT;
-  }
-
-  @Override
-  public MovementEffectPacket clone() {
-    try {
-      return (MovementEffectPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.MOVEMENT_EFFECT;
+    }
+
+    @Override
+    public MovementEffectPacket clone() {
+        try {
+            return (MovementEffectPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

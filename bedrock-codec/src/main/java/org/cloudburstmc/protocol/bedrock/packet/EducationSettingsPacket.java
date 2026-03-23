@@ -16,57 +16,57 @@ import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EducationSettingsPacket implements BedrockPacket {
-  private String codeBuilderUri;
-  private String codeBuilderTitle;
-  private boolean canResizeCodeBuilder;
+    private String codeBuilderUri;
+    private String codeBuilderTitle;
+    private boolean canResizeCodeBuilder;
 
-  /**
-   * @since v465
-   */
-  private boolean disableLegacyTitle;
+    /**
+     * @since v465
+     */
+    private boolean disableLegacyTitle;
 
-  /**
-   * @since v465
-   */
-  private String postProcessFilter;
+    /**
+     * @since v465
+     */
+    private String postProcessFilter;
 
-  /**
-   * @since v465
-   */
-  private String screenshotBorderPath;
+    /**
+     * @since v465
+     */
+    private String screenshotBorderPath;
 
-  /**
-   * @since v465
-   */
-  private OptionalBoolean entityCapabilities;
+    /**
+     * @since v465
+     */
+    private OptionalBoolean entityCapabilities;
 
-  /**
-   * @since v407
-   */
-  private Optional<String> overrideUri;
+    /**
+     * @since v407
+     */
+    private Optional<String> overrideUri;
 
-  private boolean quizAttached;
+    private boolean quizAttached;
 
-  /**
-   * @since v465
-   */
-  private OptionalBoolean externalLinkSettings;
+    /**
+     * @since v465
+     */
+    private OptionalBoolean externalLinkSettings;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.EDUCATION_SETTINGS;
-  }
-
-  @Override
-  public EducationSettingsPacket clone() {
-    try {
-      return (EducationSettingsPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.EDUCATION_SETTINGS;
+    }
+
+    @Override
+    public EducationSettingsPacket clone() {
+        try {
+            return (EducationSettingsPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

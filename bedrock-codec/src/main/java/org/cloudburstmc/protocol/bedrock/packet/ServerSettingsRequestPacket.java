@@ -14,21 +14,21 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ServerSettingsRequestPacket implements BedrockPacket {
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SERVER_SETTINGS_REQUEST;
-  }
-
-  @Override
-  public ServerSettingsRequestPacket clone() {
-    try {
-      return (ServerSettingsRequestPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SERVER_SETTINGS_REQUEST;
+    }
+
+    @Override
+    public ServerSettingsRequestPacket clone() {
+        try {
+            return (ServerSettingsRequestPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

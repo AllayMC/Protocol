@@ -13,23 +13,23 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetDifficultyPacket implements BedrockPacket {
-  private int difficulty;
+    private int difficulty;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SET_DIFFICULTY;
-  }
-
-  @Override
-  public SetDifficultyPacket clone() {
-    try {
-      return (SetDifficultyPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SET_DIFFICULTY;
+    }
+
+    @Override
+    public SetDifficultyPacket clone() {
+        try {
+            return (SetDifficultyPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

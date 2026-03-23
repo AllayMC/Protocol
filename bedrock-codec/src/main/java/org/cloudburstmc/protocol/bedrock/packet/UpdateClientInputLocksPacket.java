@@ -15,29 +15,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateClientInputLocksPacket implements BedrockPacket {
-  private int lockComponentData;
+    private int lockComponentData;
 
-  /**
-   * @deprecated since v944
-   */
-  private Vector3f serverPosition;
+    /**
+     * @deprecated since v944
+     */
+    private Vector3f serverPosition;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return UPDATE_CLIENT_INPUT_LOCKS;
-  }
-
-  @Override
-  public UpdateClientInputLocksPacket clone() {
-    try {
-      return (UpdateClientInputLocksPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return UPDATE_CLIENT_INPUT_LOCKS;
+    }
+
+    @Override
+    public UpdateClientInputLocksPacket clone() {
+        try {
+            return (UpdateClientInputLocksPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

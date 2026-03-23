@@ -15,32 +15,32 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ServerboundDataDrivenScreenClosedPacket implements BedrockPacket {
 
-  private Integer formId;
-  private CloseReason closeReason;
+    private Integer formId;
+    private CloseReason closeReason;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SERVERBOUND_DATA_DRIVEN_SCREEN_CLOSED;
-  }
-
-  @Override
-  public ServerboundDataDrivenScreenClosedPacket clone() {
-    try {
-      return (ServerboundDataDrivenScreenClosedPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
 
-  public enum CloseReason {
-    PROGRAMMATIC_CLOSE,
-    PROGRAMMATIC_CLOSE_ALL,
-    CLIENT_CANCELED,
-    USER_BUSY,
-    INVALID_FORM,
-  }
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SERVERBOUND_DATA_DRIVEN_SCREEN_CLOSED;
+    }
+
+    @Override
+    public ServerboundDataDrivenScreenClosedPacket clone() {
+        try {
+            return (ServerboundDataDrivenScreenClosedPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
+
+    public enum CloseReason {
+        PROGRAMMATIC_CLOSE,
+        PROGRAMMATIC_CLOSE_ALL,
+        CLIENT_CANCELED,
+        USER_BUSY,
+        INVALID_FORM,
+    }
 }

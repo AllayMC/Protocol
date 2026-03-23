@@ -16,31 +16,31 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class PlayerLocationPacket implements BedrockPacket {
 
-  private Type type;
-  private long targetEntityId;
-  private Vector3f position;
+    private Type type;
+    private long targetEntityId;
+    private Vector3f position;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.PLAYER_LOCATION;
-  }
-
-  @Override
-  public BedrockPacket clone() {
-    try {
-      return (PlayerLocationPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
 
-  public enum Type {
-    COORDINATES,
-    HIDE
-  }
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.PLAYER_LOCATION;
+    }
+
+    @Override
+    public BedrockPacket clone() {
+        try {
+            return (PlayerLocationPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
+
+    public enum Type {
+        COORDINATES,
+        HIDE
+    }
 }

@@ -13,24 +13,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CameraPacket implements BedrockPacket {
-  private long cameraUniqueEntityId;
-  private long playerUniqueEntityId;
+    private long cameraUniqueEntityId;
+    private long playerUniqueEntityId;
 
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.CAMERA;
-  }
-
-  @Override
-  public CameraPacket clone() {
-    try {
-      return (CameraPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.CAMERA;
+    }
+
+    @Override
+    public CameraPacket clone() {
+        try {
+            return (CameraPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

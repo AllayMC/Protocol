@@ -10,24 +10,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class SimulationTypePacket implements BedrockPacket {
 
-  private SimulationType type;
+    private SimulationType type;
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SIMULATION_TYPE;
-  }
-
-  @Override
-  public SimulationTypePacket clone() {
-    try {
-      return (SimulationTypePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SIMULATION_TYPE;
+    }
+
+    @Override
+    public SimulationTypePacket clone() {
+        try {
+            return (SimulationTypePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

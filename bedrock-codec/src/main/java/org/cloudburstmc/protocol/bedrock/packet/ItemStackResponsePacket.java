@@ -18,24 +18,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(callSuper = false)
 @ToString(doNotUseGetters = true)
 public class ItemStackResponsePacket implements BedrockPacket {
-  private final List<ItemStackResponse> entries = new ArrayList<>();
+    private final List<ItemStackResponse> entries = new ArrayList<>();
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.ITEM_STACK_RESPONSE;
-  }
-
-  @Override
-  public ItemStackResponsePacket clone() {
-    try {
-      return (ItemStackResponsePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.ITEM_STACK_RESPONSE;
+    }
+
+    @Override
+    public ItemStackResponsePacket clone() {
+        try {
+            return (ItemStackResponsePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

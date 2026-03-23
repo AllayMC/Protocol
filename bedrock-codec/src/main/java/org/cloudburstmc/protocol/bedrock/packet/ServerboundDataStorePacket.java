@@ -16,24 +16,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ServerboundDataStorePacket implements BedrockPacket {
 
-  private DataStoreUpdate update = new DataStoreUpdate();
+    private DataStoreUpdate update = new DataStoreUpdate();
 
-  @Override
-  public PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  @Override
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.SERVERBOUND_DATA_STORE;
-  }
-
-  @Override
-  public ServerboundDataStorePacket clone() {
-    try {
-      return (ServerboundDataStorePacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    @Override
+    public PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    @Override
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.SERVERBOUND_DATA_STORE;
+    }
+
+    @Override
+    public ServerboundDataStorePacket clone() {
+        try {
+            return (ServerboundDataStorePacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }

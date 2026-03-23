@@ -14,93 +14,93 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ResourcePacksInfoPacket implements BedrockPacket {
-  /**
-   * @deprecated since v729
-   */
-  private final List<Entry> behaviorPackInfos = new ObjectArrayList<>();
+    /**
+     * @deprecated since v729
+     */
+    private final List<Entry> behaviorPackInfos = new ObjectArrayList<>();
 
-  private final List<Entry> resourcePackInfos = new ObjectArrayList<>();
-  private boolean forcedToAccept;
+    private final List<Entry> resourcePackInfos = new ObjectArrayList<>();
+    private boolean forcedToAccept;
 
-  /**
-   * @since v662
-   */
-  private boolean hasAddonPacks;
-
-  /**
-   * @since v332
-   */
-  private boolean scriptingEnabled;
-
-  /**
-   * @since v448
-   * @deprecated since v729
-   */
-  private boolean forcingServerPacksEnabled;
-
-  /**
-   * @since v766
-   */
-  private UUID worldTemplateId;
-
-  /**
-   * @since v766
-   */
-  private String worldTemplateVersion;
-
-  /**
-   * Force the client to disable vibrant visuals, even if the client supports it.
-   *
-   * @since v818
-   */
-  private boolean vibrantVisualsForceDisabled;
-
-  @Override
-  public final PacketSignal handle(BedrockPacketHandler handler) {
-    return handler.handle(this);
-  }
-
-  public BedrockPacketType getPacketType() {
-    return BedrockPacketType.RESOURCE_PACKS_INFO;
-  }
-
-  @Data
-  @AllArgsConstructor
-  public static class Entry {
-    private UUID packId;
-    private String packVersion;
-    private long packSize;
-    private String contentKey;
-    private String subPackName;
-    private String contentId;
+    /**
+     * @since v662
+     */
+    private boolean hasAddonPacks;
 
     /**
      * @since v332
      */
-    private boolean scripting;
+    private boolean scriptingEnabled;
 
     /**
-     * @since v422
+     * @since v448
+     * @deprecated since v729
      */
-    private boolean raytracingCapable;
+    private boolean forcingServerPacksEnabled;
 
     /**
-     * @since v712
+     * @since v766
      */
-    private boolean addonPack;
+    private UUID worldTemplateId;
 
     /**
-     * @since v748
+     * @since v766
      */
-    private String cdnUrl;
-  }
+    private String worldTemplateVersion;
 
-  @Override
-  public ResourcePacksInfoPacket clone() {
-    try {
-      return (ResourcePacksInfoPacket) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
+    /**
+     * Force the client to disable vibrant visuals, even if the client supports it.
+     *
+     * @since v818
+     */
+    private boolean vibrantVisualsForceDisabled;
+
+    @Override
+    public final PacketSignal handle(BedrockPacketHandler handler) {
+        return handler.handle(this);
     }
-  }
+
+    public BedrockPacketType getPacketType() {
+        return BedrockPacketType.RESOURCE_PACKS_INFO;
+    }
+
+    @Data
+    @AllArgsConstructor
+    public static class Entry {
+        private UUID packId;
+        private String packVersion;
+        private long packSize;
+        private String contentKey;
+        private String subPackName;
+        private String contentId;
+
+        /**
+         * @since v332
+         */
+        private boolean scripting;
+
+        /**
+         * @since v422
+         */
+        private boolean raytracingCapable;
+
+        /**
+         * @since v712
+         */
+        private boolean addonPack;
+
+        /**
+         * @since v748
+         */
+        private String cdnUrl;
+    }
+
+    @Override
+    public ResourcePacksInfoPacket clone() {
+        try {
+            return (ResourcePacksInfoPacket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+    }
 }
