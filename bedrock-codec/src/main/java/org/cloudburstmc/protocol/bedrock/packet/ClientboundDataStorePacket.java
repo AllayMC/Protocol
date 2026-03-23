@@ -11,7 +11,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 /**
  * Sends a list of data store properties from the server to the client
  *
- * @since v897
+ * @since v898
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)

@@ -18,15 +18,15 @@ public class CameraAimAssistPresetDefinition {
      */
     private final List<String> exclusionList = new ObjectArrayList<>();
     /**
-     * @since v897
+     * @since v898
      */
     private final List<String> blockExclusionList = new ObjectArrayList<>();
     /**
-     * @since v897
+     * @since v898
      */
     private final List<String> blockTagExclusionList = new ObjectArrayList<>();
     /**
-     * @since v897
+     * @since v898
      */
     private final List<String> entityExclusionList = new ObjectArrayList<>();
     /**

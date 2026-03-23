@@ -50,7 +50,7 @@ public class TextPacket implements BedrockPacket {
         WHISPER_JSON,
         JSON,
         /**
-         * @since v553
+         * @since v554
          */
         ANNOUNCEMENT_JSON
     }
