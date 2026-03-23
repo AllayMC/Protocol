@@ -38,7 +38,13 @@ public class CameraPreset {
      * @since v776
      */
     private Float maxYawLimit;
+    /**
+     * @since v618
+     */
     private CameraAudioListener listener;
+    /**
+     * @since v618
+     */
     @Builder.Default
     private OptionalBoolean playEffect = OptionalBoolean.empty();
     /**

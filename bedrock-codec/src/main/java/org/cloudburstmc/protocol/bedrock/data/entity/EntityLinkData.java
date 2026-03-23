@@ -10,6 +10,9 @@ public class EntityLinkData {
     private final long to;
     private final Type type;
     private final boolean immediate;
+    /**
+     * @since v407
+     */
     private final boolean riderInitiated;
     /**
      * @since v712

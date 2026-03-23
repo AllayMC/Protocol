@@ -28,8 +28,14 @@ public class SerializedSkin {
      */
     private final String playFabId;
     private final String geometryName;
+    /**
+     * @since v388
+     */
     private final String skinResourcePatch;
     private final ImageData skinData;
+    /**
+     * @since v388
+     */
     private final List<AnimationData> animations;
     private final ImageData capeData;
     private final String geometryData;
@@ -37,20 +43,50 @@ public class SerializedSkin {
      * @since v465
      */
     private final String geometryDataEngineVersion;
+    /**
+     * @since v388
+     */
     private final String animationData;
     private final boolean premium;
+    /**
+     * @since v388
+     */
     private final boolean persona;
+    /**
+     * @since v388
+     */
     private final boolean capeOnClassic;
     /**
      * @since v465
      */
     private final boolean primaryUser;
+    /**
+     * @since v388
+     */
     private final String capeId;
+    /**
+     * @since v388
+     */
     private final String fullSkinId;
+    /**
+     * @since v390
+     */
     private final String armSize;
+    /**
+     * @since v390
+     */
     private final String skinColor;
+    /**
+     * @since v390
+     */
     private final List<PersonaPieceData> personaPieces;
+    /**
+     * @since v390
+     */
     private final List<PersonaPieceTintData> tintColors;
+    /**
+     * @since v568
+     */
     private final boolean overridingPlayerAppearance;
 
     public static SerializedSkin of(String skinId, String playFabId, ImageData skinData, ImageData capeData, String geometryName,
