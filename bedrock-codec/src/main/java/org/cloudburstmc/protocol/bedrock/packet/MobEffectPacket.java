@@ -19,12 +19,10 @@ public class MobEffectPacket implements BedrockPacket {
     private int amplifier;
     private boolean particles;
     private int duration;
-
     /**
      * @since v662
      */
     private long tick;
-
     /**
      * @since v898
      */

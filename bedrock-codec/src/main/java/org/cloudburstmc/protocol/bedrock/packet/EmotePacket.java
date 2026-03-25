@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.EnumSet;
-import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.EmoteFlag;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Sent by both the server and the client. When the client sends an emote, it sends this packet to
@@ -17,12 +17,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class EmotePacket implements BedrockPacket {
     private long runtimeEntityId;
-
     /**
      * @since v589
      */
     private String xuid;
-
     /**
      * @since v589
      */
@@ -30,7 +28,6 @@ public class EmotePacket implements BedrockPacket {
 
     private String emoteId;
     private final Set<EmoteFlag> flags = EnumSet.noneOf(EmoteFlag.class);
-
     /**
      * @since v729
      */

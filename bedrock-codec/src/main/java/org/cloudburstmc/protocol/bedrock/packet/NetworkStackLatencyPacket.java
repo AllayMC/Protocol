@@ -16,7 +16,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class NetworkStackLatencyPacket implements BedrockPacket {
     private long timestamp;
-
     /**
      * @since v332
      */

@@ -16,12 +16,10 @@ public class CameraAimAssistPacket implements BedrockPacket {
     private float distance;
     private TargetMode targetMode;
     private AimAssistAction action;
-
     /**
      * @since v766
      */
     private String presetId;
-
     /**
      * @since v827
      */

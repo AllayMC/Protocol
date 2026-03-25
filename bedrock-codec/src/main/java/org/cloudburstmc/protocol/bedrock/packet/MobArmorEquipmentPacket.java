@@ -19,7 +19,6 @@ public class MobArmorEquipmentPacket implements BedrockPacket {
     private ItemData chestplate;
     private ItemData leggings;
     private ItemData boots;
-
     /**
      * @since v712
      */

@@ -18,7 +18,6 @@ public class PlayerActionPacket implements BedrockPacket {
     private long runtimeEntityId;
     private PlayerActionType action;
     private Vector3i blockPosition;
-
     /**
      * @since v527
      */

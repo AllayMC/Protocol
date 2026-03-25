@@ -1,7 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -9,6 +8,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.FullContainerName;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sent by the server to update the full content of a particular inventory. It is usually sent for
@@ -21,19 +21,16 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class InventoryContentPacket implements BedrockPacket {
     private List<ItemData> contents = new ObjectArrayList<>();
     private int containerId;
-
     /**
      * @since v712
      */
     private FullContainerName containerNameData =
             new FullContainerName(ContainerSlotType.ANVIL_INPUT, null);
-
     /**
      * @since v729
      * @deprecated since v748. Use storageItem ItemData size instead.
      */
     private int dynamicContainerSize;
-
     /**
      * @since v748
      */

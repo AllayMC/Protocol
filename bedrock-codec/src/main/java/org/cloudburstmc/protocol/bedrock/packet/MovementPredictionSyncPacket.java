@@ -1,13 +1,13 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.Set;
 
 /**
  * Sent by the client to the server periodically if the client has received movement corrections
@@ -26,7 +26,6 @@ public class MovementPredictionSyncPacket implements BedrockPacket {
     private float jumpStrength;
     private float health;
     private float hunger;
-
     /**
      * @since v786
      */

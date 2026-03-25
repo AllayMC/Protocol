@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.datastore.DataStoreAction;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Sends a list of data store properties from the server to the client

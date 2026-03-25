@@ -15,7 +15,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class RequestChunkRadiusPacket implements BedrockPacket {
     private int radius;
-
     /**
      * @since v582
      */

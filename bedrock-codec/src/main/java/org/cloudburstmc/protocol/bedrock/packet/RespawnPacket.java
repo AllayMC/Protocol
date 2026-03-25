@@ -16,12 +16,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class RespawnPacket implements BedrockPacket {
     private Vector3f position;
-
     /**
      * @since v388
      */
     private State state;
-
     /**
      * @since v388
      */

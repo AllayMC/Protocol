@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.camera.AimAssistActorPriorityData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Camera aim-assist actor priority data sent from the server to clients. Sent by the server to

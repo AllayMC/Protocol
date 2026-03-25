@@ -17,7 +17,6 @@ public class BossEventPacket implements BedrockPacket {
     private Action action;
     private long playerUniqueEntityId;
     private CharSequence title;
-
     /**
      * @since v776
      */

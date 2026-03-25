@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSplineDefinition;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Camera custom spline data sent from server to client. Sent by the server to clients for

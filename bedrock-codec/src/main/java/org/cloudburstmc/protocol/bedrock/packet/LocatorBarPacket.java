@@ -1,14 +1,14 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 import org.cloudburstmc.protocol.bedrock.data.LocatorBarWaypoint;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Syncs LocatorBar changes on the server with the client.

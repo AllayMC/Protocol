@@ -20,7 +20,6 @@ public class DisconnectPacket implements BedrockPacket {
     private DisconnectFailReason reason = DisconnectFailReason.UNKNOWN;
     private boolean messageSkipped;
     private CharSequence kickMessage;
-
     /**
      * @since v712
      */

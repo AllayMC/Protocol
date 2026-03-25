@@ -12,7 +12,6 @@ import java.util.UUID;
 public class MultiRecipeData implements UniqueCraftingData {
 
     private final UUID uuid;
-
     /**
      * @since v407
      */

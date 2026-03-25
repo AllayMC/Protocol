@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.UUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ResourcePackType;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.UUID;
 
 /**
  * Sent by the server to the client to inform the client about the data contained in one of the
@@ -21,12 +21,10 @@ public class ResourcePackDataInfoPacket implements BedrockPacket {
     private long chunkCount;
     private long compressedPackSize;
     private byte[] hash;
-
     /**
      * @since v361
      */
     private boolean premium;
-
     /**
      * @since v361
      */

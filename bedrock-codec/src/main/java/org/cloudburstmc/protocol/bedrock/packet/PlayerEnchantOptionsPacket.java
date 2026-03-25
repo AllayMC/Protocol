@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.EnchantOptionData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Sent by the server to update the enchantment options displayed when the user opens the

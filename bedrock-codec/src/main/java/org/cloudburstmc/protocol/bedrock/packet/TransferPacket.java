@@ -15,7 +15,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class TransferPacket implements BedrockPacket {
     private String address;
     private int port;
-
     /**
      * @since v729
      */

@@ -20,7 +20,6 @@ public class StructureBlockUpdatePacket implements BedrockPacket {
     private Vector3i blockPosition;
     private StructureEditorData editorData;
     private boolean powered;
-
     /**
      * @since v554
      */

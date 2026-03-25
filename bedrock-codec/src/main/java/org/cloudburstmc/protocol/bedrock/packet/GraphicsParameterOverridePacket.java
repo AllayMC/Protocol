@@ -1,6 +1,5 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.Map;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -8,6 +7,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.GraphicsOverrideParameterType;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.Map;
 
 /**
  * Sent from the server to the client when a server script changes the rendering settings
@@ -22,13 +22,11 @@ public class GraphicsParameterOverridePacket implements BedrockPacket {
     private GraphicsOverrideParameterType parameterType;
     private Map<Float, Vector3f> values;
     private boolean reset;
-
     /**
      * @since v924
      */
     @Nullable
     private Float floatValue;
-
     /**
      * @since v924
      */

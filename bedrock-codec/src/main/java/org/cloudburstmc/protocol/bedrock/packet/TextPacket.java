@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sent by the client to the server to send chat messages, and by the server to the client to
@@ -22,7 +22,6 @@ public class TextPacket implements BedrockPacket {
     private boolean needsTranslation;
     private String xuid;
     private String platformChatId = "";
-
     /**
      * @since v685
      */

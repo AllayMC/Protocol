@@ -15,7 +15,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class EntityPickRequestPacket implements BedrockPacket {
     private long runtimeEntityId;
     private int hotbarSlot;
-
     /**
      * @since v465
      */

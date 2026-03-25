@@ -15,32 +15,26 @@ public class CameraInstructionPacket implements BedrockPacket {
     private CameraSetInstruction setInstruction;
     private CameraFadeInstruction fadeInstruction;
     private OptionalBoolean clear = OptionalBoolean.empty();
-
     /**
      * @since v712
      */
     private CameraTargetInstruction targetInstruction;
-
     /**
      * @since v712
      */
     private OptionalBoolean removeTarget = OptionalBoolean.empty();
-
     /**
      * @since v827
      */
     private CameraFovInstruction fovInstruction;
-
     /**
      * @since v859
      */
     private CameraSplineInstruction splineInstruction;
-
     /**
      * @since v859
      */
     private CameraAttachToEntityInstruction attachInstruction;
-
     /**
      * @since v859
      */

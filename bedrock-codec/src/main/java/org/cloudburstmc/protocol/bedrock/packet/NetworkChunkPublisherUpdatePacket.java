@@ -1,13 +1,13 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector2i;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sent by the server to change the point around which chunks are and remain loaded. This is useful
@@ -24,7 +24,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class NetworkChunkPublisherUpdatePacket implements BedrockPacket {
     private Vector3i position;
     private int radius;
-
     /**
      * Lets the client know which chunks have been saved, and need requesting whilst client chunk
      * generation is enabled.

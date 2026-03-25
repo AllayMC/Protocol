@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.MemoryCategoryCounter;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Sent by the client to tell the server about the performance diagnostics of the client. It is sent
@@ -26,7 +26,6 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
     private float avgEndFrameTimeMS;
     private float avgRemainderTimePercent;
     private float avgUnaccountedTimePercent;
-
     /**
      * @since v924
      */

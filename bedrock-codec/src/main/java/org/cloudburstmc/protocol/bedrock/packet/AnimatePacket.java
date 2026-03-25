@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.HashMap;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.HashMap;
 
 /**
  * Sent by the server to send a player animation from one player to all viewers of that player. It
@@ -22,12 +22,10 @@ public class AnimatePacket implements BedrockPacket {
 
     private Action action;
     private long runtimeEntityId;
-
     /**
      * @since v859
      */
     private float data;
-
     /**
      * @since v898
      */
@@ -75,7 +73,6 @@ public class AnimatePacket implements BedrockPacket {
                 BY_NAME.put(value.name, value);
             }
         }
-
         /**
          * @since v898
          */

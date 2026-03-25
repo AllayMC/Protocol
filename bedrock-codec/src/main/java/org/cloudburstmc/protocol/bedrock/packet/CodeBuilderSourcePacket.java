@@ -18,12 +18,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class CodeBuilderSourcePacket implements BedrockPacket {
     private CodeBuilderOperationType operation;
     private CodeBuilderCategoryType category;
-
     /**
      * @deprecated since v685
      */
     private String value;
-
     /**
      * @since v685
      */

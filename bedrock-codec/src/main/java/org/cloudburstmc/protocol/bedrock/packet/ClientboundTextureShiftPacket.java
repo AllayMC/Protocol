@@ -1,10 +1,10 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sends a set of update properties for the texture shift system from the server to the client.

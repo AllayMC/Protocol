@@ -1,10 +1,10 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.UUID;
 import lombok.*;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Sent by the server to inform the client on what resource packs the server has. It sends a list of
@@ -21,33 +21,27 @@ public class ResourcePacksInfoPacket implements BedrockPacket {
 
     private final List<Entry> resourcePackInfos = new ObjectArrayList<>();
     private boolean forcedToAccept;
-
-    /**
-     * @since v662
-     */
-    private boolean hasAddonPacks;
-
     /**
      * @since v332
      */
     private boolean scriptingEnabled;
-
     /**
      * @since v448
      * @deprecated since v729
      */
     private boolean forcingServerPacksEnabled;
-
+    /**
+     * @since v662
+     */
+    private boolean hasAddonPacks;
     /**
      * @since v766
      */
     private UUID worldTemplateId;
-
     /**
      * @since v766
      */
     private String worldTemplateVersion;
-
     /**
      * Force the client to disable vibrant visuals, even if the client supports it.
      *
@@ -73,26 +67,22 @@ public class ResourcePacksInfoPacket implements BedrockPacket {
         private String contentKey;
         private String subPackName;
         private String contentId;
-
         /**
          * @since v332
          */
         private boolean scripting;
-
         /**
          * @since v422
          */
         private boolean raytracingCapable;
-
-        /**
-         * @since v712
-         */
-        private boolean addonPack;
-
         /**
          * @since v618
          */
         private String cdnUrl;
+        /**
+         * @since v712
+         */
+        private boolean addonPack;
     }
 
     @Override

@@ -15,12 +15,10 @@ public class CameraSplineInstruction {
     private List<Vector3f> curve;
     private List<SplineProgressOption> progressKeyFrames;
     private List<SplineRotationOption> rotationOption;
-
     /**
      * @since v924
      */
     private String splineIdentifier;
-
     /**
      * @since v924
      */
@@ -42,7 +40,6 @@ public class CameraSplineInstruction {
 
         private float value;
         private float time;
-
         /**
          * @since v924
          */
@@ -55,7 +52,6 @@ public class CameraSplineInstruction {
 
         private Vector3f keyFrameValues;
         private float keyFrameTimes;
-
         /**
          * @since v924
          */

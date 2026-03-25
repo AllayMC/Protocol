@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /** Requests specific sub-chunks from the server using a center point. */
 @Data
@@ -15,7 +15,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class SubChunkRequestPacket implements BedrockPacket {
     private int dimension;
     private Vector3i subChunkPosition;
-
     /**
      * @since v486
      */

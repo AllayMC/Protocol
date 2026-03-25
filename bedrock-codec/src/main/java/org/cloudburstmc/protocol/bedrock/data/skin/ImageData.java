@@ -27,7 +27,6 @@ public class ImageData {
      * @since v388
      */
     private final int width;
-
     /**
      * @since v388
      */

@@ -28,7 +28,6 @@ public class UpdateTradePacket implements BedrockPacket {
     private long playerUniqueEntityId;
     private CharSequence displayName;
     private NbtMap offers;
-
     /**
      * @since v313
      */

@@ -24,7 +24,6 @@ public class MovePlayerPacket implements BedrockPacket {
     private long ridingRuntimeEntityId;
     private TeleportationCause teleportationCause;
     private int entityType;
-
     /**
      * @since v419
      */

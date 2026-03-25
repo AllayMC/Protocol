@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.UUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.UUID;
 
 /**
  * Sent by the client to the server when it updates its own skin using the in-game skin picker. It
@@ -21,7 +21,6 @@ public class PlayerSkinPacket implements BedrockPacket {
     private SerializedSkin skin;
     private String newSkinName;
     private String oldSkinName;
-
     /**
      * @since v390
      */

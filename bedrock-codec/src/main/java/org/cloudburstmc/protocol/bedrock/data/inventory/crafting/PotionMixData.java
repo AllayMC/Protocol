@@ -9,7 +9,6 @@ import lombok.Value;
 public class PotionMixData {
     // Potion to be put in
     private final int inputId;
-
     /**
      * @since v407
      */
@@ -17,7 +16,6 @@ public class PotionMixData {
 
     // Item to be added to the brewing stand to brew the output potion
     private final int reagentId;
-
     /**
      * @since v407
      */
@@ -25,7 +23,6 @@ public class PotionMixData {
 
     // Output Potion
     private final int outputId;
-
     /**
      * @since v407
      */

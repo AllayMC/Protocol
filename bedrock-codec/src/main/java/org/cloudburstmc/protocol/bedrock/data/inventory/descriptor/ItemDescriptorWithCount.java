@@ -13,12 +13,10 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 public class ItemDescriptorWithCount {
 
     public static final ItemDescriptorWithCount EMPTY = new ItemDescriptorWithCount(InvalidDescriptor.INSTANCE, 0);
-
     /**
      * @since v361
      */
     private final ItemDescriptor descriptor;
-
     /**
      * @since v361
      */

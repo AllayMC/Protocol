@@ -2,13 +2,13 @@ package org.cloudburstmc.protocol.bedrock.packet;
 
 import io.netty.util.AbstractReferenceCounted;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.SubChunkData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /** Sends data about multiple sub-chunks around a center point. */
 @Data
@@ -16,12 +16,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class SubChunkPacket extends AbstractReferenceCounted implements BedrockPacket {
     private int dimension;
-
     /**
      * @since v475
      */
     private boolean cacheEnabled;
-
     /**
      * @since v486
      */

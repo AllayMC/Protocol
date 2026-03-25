@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -11,6 +10,7 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.MapDecoration;
 import org.cloudburstmc.protocol.bedrock.data.MapTrackedObject;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sent by the server to the client to update the data of a map shown to the client. It is sent with
@@ -27,12 +27,10 @@ public class ClientboundMapItemDataPacket implements BedrockPacket {
     private final List<MapDecoration> decorations = new ObjectArrayList<>();
     private long uniqueMapId;
     private int dimensionId;
-
     /**
      * @since v354
      */
     private boolean locked;
-
     /**
      * The world-relative position of the map's origin.
      *

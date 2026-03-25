@@ -1,10 +1,10 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.EnumSet;
-import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Sent by the server to move an entity. The packet is specifically optimised to save as much space
@@ -21,17 +21,14 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
     private int deltaX;
     private int deltaY;
     private int deltaZ;
-
     /**
      * @since v419
      */
     private float x;
-
     /**
      * @since v419
      */
     private float y;
-
     /**
      * @since v419
      */

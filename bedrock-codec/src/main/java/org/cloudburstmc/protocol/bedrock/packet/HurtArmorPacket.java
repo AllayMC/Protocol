@@ -19,7 +19,6 @@ public class HurtArmorPacket implements BedrockPacket {
      */
     private int cause;
     private int damage;
-
     /**
      * @since v465
      */

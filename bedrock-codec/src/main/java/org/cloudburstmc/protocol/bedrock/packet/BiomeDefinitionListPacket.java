@@ -4,8 +4,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
+import org.cloudburstmc.protocol.bedrock.data.biome.BiomeDefinitionData;
 import org.cloudburstmc.protocol.bedrock.data.biome.BiomeDefinitions;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Sent by the server to let the client know all biomes that are available and implemented on the
@@ -21,7 +24,6 @@ public class BiomeDefinitionListPacket implements BedrockPacket {
      *     instead.
      */
     private NbtMap definitions;
-
     /**
      * @since v800 (1.21.80)
      */

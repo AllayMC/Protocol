@@ -1,7 +1,5 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.EnumSet;
-import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -9,6 +7,8 @@ import org.cloudburstmc.protocol.bedrock.data.AdventureSetting;
 import org.cloudburstmc.protocol.bedrock.data.PlayerPermission;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandPermission;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Sent by the server to update game-play related features, in particular permissions to access

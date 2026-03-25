@@ -24,23 +24,19 @@ public class CommandBlockUpdatePacket implements BedrockPacket {
     private String command;
     private String lastOutput;
     private String name;
-
-    /**
-     * @since v776
-     */
-    private String filteredName;
-
     private boolean outputTracked;
-
     /**
      * @since v361
      */
     private long tickDelay;
-
     /**
      * @since v361
      */
     private boolean executingOnFirstTick;
+    /**
+     * @since v776
+     */
+    private String filteredName;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

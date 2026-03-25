@@ -1,7 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -10,6 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.MaterialReducer
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.PotionMixData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.RecipeData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sent by the server to let the client know all crafting data that the server maintains. This
@@ -23,7 +23,6 @@ public class CraftingDataPacket implements BedrockPacket {
     private final List<RecipeData> craftingData = new ObjectArrayList<>();
     private final List<PotionMixData> potionMixData = new ObjectArrayList<>();
     private final List<ContainerMixData> containerMixData = new ObjectArrayList<>();
-
     /**
      * @since v465
      */

@@ -1,8 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.UUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -15,6 +13,8 @@ import org.cloudburstmc.protocol.bedrock.data.*;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.common.PacketSignal;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Sent by the server to send information about the world the player will be spawned in. It contains
@@ -35,12 +35,10 @@ public class StartGamePacket implements BedrockPacket {
     private Vector2f rotation;
     // Level settings start
     private long seed;
-
     /**
      * @since v407
      */
     private SpawnBiomeType spawnBiomeType;
-
     /**
      * @since v407
      */
@@ -54,14 +52,16 @@ public class StartGamePacket implements BedrockPacket {
     private int dayCycleStopTime;
     private int eduEditionOffers;
     private boolean eduFeaturesEnabled;
-
     /**
      * @since v407
      */
     private String educationProductionId;
     private float rainLevel;
     private float lightningLevel;
-
+    /**
+     * @since v313
+     */
+    private boolean fromWorldTemplate;
     /**
      * @since v332
      */
@@ -73,7 +73,6 @@ public class StartGamePacket implements BedrockPacket {
     private boolean commandsEnabled;
     private boolean texturePacksRequired;
     private final List<ExperimentData> experiments = new ObjectArrayList<>();
-
     /**
      * @since v419
      */
@@ -87,67 +86,50 @@ public class StartGamePacket implements BedrockPacket {
     private boolean resourcePackLocked;
     private boolean fromLockedWorldTemplate;
     private boolean usingMsaGamertagsOnly;
-
-    /**
-     * @since v313
-     */
-    private boolean fromWorldTemplate;
-
     /**
      * @since v332
      */
     private boolean worldTemplateOptionLocked;
-
     /**
      * @since v361
      */
     private boolean onlySpawningV1Villagers;
-
     /**
      * @since v388
      */
     private String vanillaVersion;
-
     /**
      * @since v407
      */
     private int limitedWorldWidth;
-
     /**
      * @since v407
      */
     private int limitedWorldHeight;
-
     /**
      * @since v407
      */
     private boolean netherType;
-
-    /**
-     * @since v465
-     */
-    private EduSharedUriResource eduSharedUriResource = EduSharedUriResource.EMPTY;
-
     /**
      * @since v407
      */
     private OptionalBoolean forceExperimentalGameplay;
-
+    /**
+     * @since v465
+     */
+    private EduSharedUriResource eduSharedUriResource = EduSharedUriResource.EMPTY;
     /**
      * @since v544
      */
     private ChatRestrictionLevel chatRestrictionLevel;
-
     /**
      * @since v544
      */
     private boolean disablingPlayerInteractions;
-
     /**
      * @since v544
      */
     private boolean disablingPersonas;
-
     /**
      * @since v544
      */
@@ -166,7 +148,6 @@ public class StartGamePacket implements BedrockPacket {
      *     movement mode.
      */
     private AuthoritativeMovementMode authoritativeMovementMode;
-
     /**
      * @since v428
      */
@@ -177,37 +158,27 @@ public class StartGamePacket implements BedrockPacket {
     private long currentTick;
     private int enchantmentSeed;
     private NbtList<NbtMap> blockPalette;
-
-    /**
-     * @since v419
-     */
-    private final List<BlockPropertyData> blockProperties = new ObjectArrayList<>();
-
     /**
      * @since v361
      * @deprecated since v776. Use ItemComponentPacket instead.
      */
     private List<ItemDefinition> itemDefinitions = new ObjectArrayList<>();
+    /**
+     * @since v419
+     */
+    private final List<BlockPropertyData> blockProperties = new ObjectArrayList<>();
 
     private String multiplayerCorrelationId;
-
     /**
      * @since v407
      */
     private boolean inventoriesServerAuthoritative;
-
     /**
      * The name of the server software. Used for telemetry within the Bedrock client.
      *
      * @since v440
      */
     private String serverEngine;
-
-    /**
-     * @since v527
-     */
-    private NbtMap playerPropertyData;
-
     /**
      * A XXHash64 of all block states by their compound tag. <b>The exact way this is calculated is
      * not currently known.</b>
@@ -217,29 +188,28 @@ public class StartGamePacket implements BedrockPacket {
      * @since v475
      */
     private long blockRegistryChecksum;
-
+    /**
+     * @since v527
+     */
+    private NbtMap playerPropertyData;
     /**
      * @since v527
      */
     private UUID worldTemplateId;
-
     /**
      * @since v534
      */
     private WorldType editorWorldType = WorldType.NON_EDITOR;
-
     /**
      * Enables client side chunk generation
      *
      * @since v544
      */
     private boolean clientSideGenerationEnabled;
-
     /**
      * @since v567
      */
     private boolean emoteChatMuted;
-
     /**
      * Whether block runtime IDs should be replaced by 32-bit integer hashes of NBT block state.
      * Unlike runtime IDs, this hashes should be persistent across versions and should make support
@@ -248,52 +218,42 @@ public class StartGamePacket implements BedrockPacket {
      * @since v582
      */
     private boolean blockNetworkIdsHashed;
-
     /**
      * @since v582
      */
     private boolean createdInEditor;
-
     /**
      * @since v582
      */
     private boolean exportedFromEditor;
-
     /**
      * @since v589
      */
     private NetworkPermissions networkPermissions = NetworkPermissions.DEFAULT;
-
     /**
      * @since v671
      */
     private boolean hardcore;
-
     /**
      * @since v685
      */
     private String serverId;
-
     /**
      * @since v685
      */
     private String worldId;
-
     /**
      * @since v685
      */
     private String scenarioId;
-
     /**
      * @since v818
      */
     private String ownerId;
-
     /**
      * @since v827
      */
     private boolean tickDeathSystemsEnabled;
-
     /**
      * @since v924
      */

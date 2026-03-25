@@ -18,7 +18,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class AgentActionEventPacket implements BedrockPacket {
     private String requestId;
     private AgentActionType actionType;
-
     /**
      * @see AgentActionType for type specific JSON
      */

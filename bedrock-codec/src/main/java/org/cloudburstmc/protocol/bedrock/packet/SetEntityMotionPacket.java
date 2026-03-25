@@ -16,7 +16,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class SetEntityMotionPacket implements BedrockPacket {
     private long runtimeEntityId;
     private Vector3f motion;
-
     /**
      * @since v662
      */

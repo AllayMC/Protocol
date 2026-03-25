@@ -1,10 +1,10 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.UUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.UUID;
 
 /**
  * Sent by the client to the server when it changes a setting for a specific pack in the pack

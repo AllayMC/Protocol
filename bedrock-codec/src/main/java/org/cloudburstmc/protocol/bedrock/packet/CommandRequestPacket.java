@@ -18,7 +18,6 @@ public class CommandRequestPacket implements BedrockPacket {
     private String command;
     private CommandOriginData commandOriginData;
     private boolean internal;
-
     /**
      * @since v567
      */

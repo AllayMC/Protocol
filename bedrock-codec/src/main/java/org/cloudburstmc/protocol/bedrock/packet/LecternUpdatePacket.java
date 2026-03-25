@@ -15,14 +15,12 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class LecternUpdatePacket implements BedrockPacket {
     private int page;
-
     /**
      * @since v354
      */
     private int totalPages;
 
     private Vector3i blockPosition;
-
     /**
      * @deprecated since v662
      */

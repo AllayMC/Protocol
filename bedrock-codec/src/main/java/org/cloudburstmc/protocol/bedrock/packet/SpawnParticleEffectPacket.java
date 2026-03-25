@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.Optional;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.Optional;
 
 /**
  * Sent by the server to spawn a particle effect client-side. Unlike other packets that result in
@@ -18,7 +18,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public class SpawnParticleEffectPacket implements BedrockPacket {
     private int dimensionId;
-
     /**
      * @since v332
      */
@@ -26,7 +25,6 @@ public class SpawnParticleEffectPacket implements BedrockPacket {
 
     private Vector3f position;
     private String identifier;
-
     /**
      * @since v503
      */

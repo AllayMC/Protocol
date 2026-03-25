@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequest;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Sent by the client to change item stacks in an inventory. It is essentially a replacement of the

@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.Optional;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ModalFormCancelReason;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.Optional;
 
 /**
  * Sent by the client in response to a ModalFormRequest, after the player has submitted the form
@@ -18,7 +18,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class ModalFormResponsePacket implements BedrockPacket {
     private int formId;
     private String formData;
-
     /**
      * The reason for why the form response was cancelled.
      *

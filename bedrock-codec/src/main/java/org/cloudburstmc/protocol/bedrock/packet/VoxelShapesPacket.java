@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.List;
-import java.util.Map;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.SerializableVoxelShape;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Syncs client with server voxel shape data on world join. This packet contains a copy of all
@@ -21,7 +21,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class VoxelShapesPacket implements BedrockPacket {
     private List<SerializableVoxelShape> shapes;
     private Map<String, Integer> nameMap;
-
     /**
      * @since v944
      */

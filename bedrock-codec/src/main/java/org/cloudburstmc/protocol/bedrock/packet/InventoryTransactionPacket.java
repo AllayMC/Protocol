@@ -1,7 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -14,6 +13,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.InventoryTra
 import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.ItemUseTransaction;
 import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.LegacySetItemSlotData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * A packet sent by the client. It essentially exists out of multiple sub-packets, each of which
@@ -25,6 +25,14 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class InventoryTransactionPacket implements BedrockPacket {
+    /**
+     * Block definition of block being picked. ItemUseInventoryTransaction only
+     *
+     * @since v340
+     * @param blockDefinition block definition of block
+     * @return block definition of block
+     */
+    private BlockDefinition blockDefinition;
     /**
      * @since v407
      */
@@ -41,32 +49,19 @@ public class InventoryTransactionPacket implements BedrockPacket {
     private Vector3f playerPosition;
     private Vector3f clickPosition;
     private Vector3f headPosition;
-
     /**
      * @since v407
      * @deprecated v431
      */
     @Deprecated private boolean usingNetIds;
-
-    /**
-     * Block definition of block being picked. ItemUseInventoryTransaction only
-     *
-     * @since v340
-     * @param blockDefinition block definition of block
-     * @return block definition of block
-     */
-    private BlockDefinition blockDefinition;
-
     /**
      * @since v712
      */
     private ItemUseTransaction.TriggerType triggerType;
-
     /**
      * @since v712
      */
     private ItemUseTransaction.PredictedResult clientInteractPrediction;
-
     /**
      * @since v944
      */

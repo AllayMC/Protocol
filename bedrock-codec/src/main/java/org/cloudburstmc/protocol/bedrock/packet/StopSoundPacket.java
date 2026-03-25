@@ -15,7 +15,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class StopSoundPacket implements BedrockPacket {
     private String soundName;
     private boolean stoppingAllSound;
-
     /**
      * @since v712
      */

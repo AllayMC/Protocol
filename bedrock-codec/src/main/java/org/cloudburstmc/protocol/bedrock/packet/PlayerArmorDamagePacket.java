@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.EnumSet;
-import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.PlayerArmorDamageFlag;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Sent by the server to damage the armor of a player. It is a very efficient packet, but generally

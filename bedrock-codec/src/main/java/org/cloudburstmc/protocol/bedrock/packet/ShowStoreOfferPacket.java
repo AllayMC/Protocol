@@ -19,12 +19,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ShowStoreOfferPacket implements BedrockPacket {
     private String offerId;
-
     /**
      * @since v630 deprecated
      */
     @Deprecated private boolean shownToAll;
-
     /**
      * @since v630
      */

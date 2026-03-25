@@ -1,7 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -10,6 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistCategory;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistOperation;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistPresetDefinition;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sent by the server to the client to provide a list of categories and presets that can be used
@@ -23,18 +23,15 @@ public class CameraAimAssistPresetsPacket implements BedrockPacket {
      * @deprecated since v800 (1.21.80). Use {@link #categoryDefinitions} instead.
      */
     private final List<CameraAimAssistCategories> categories = new ObjectArrayList<>();
-
-    /**
-     * @since v800 (1.21.80)
-     */
-    private final List<CameraAimAssistCategory> categoryDefinitions = new ObjectArrayList<>();
-
     private final List<CameraAimAssistPresetDefinition> presets = new ObjectArrayList<>();
-
     /**
      * @since v776
      */
     private CameraAimAssistOperation operation;
+    /**
+     * @since v800 (1.21.80)
+     */
+    private final List<CameraAimAssistCategory> categoryDefinitions = new ObjectArrayList<>();
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

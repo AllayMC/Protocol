@@ -23,7 +23,6 @@ public class LevelSoundEventPacket implements BedrockPacket {
     private String identifier;
     private boolean babySound;
     private boolean relativeVolumeDisabled;
-
     /**
      * @since v786
      */

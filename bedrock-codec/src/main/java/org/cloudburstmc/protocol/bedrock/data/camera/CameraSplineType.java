@@ -14,7 +14,6 @@ public enum CameraSplineType {
             serializeNames.put(value.getSerializeName(), value);
         }
     }
-
     /**
      * @since v924
      */

@@ -5,12 +5,10 @@ import lombok.Value;
 @Value
 public class StructureEditorData {
     private final String name;
-
     /**
      * @since v776
      */
     private final String filteredName;
-
     /**
      * @since v361
      */
@@ -19,7 +17,6 @@ public class StructureEditorData {
     private final boolean boundingBoxVisible;
     private final StructureBlockType type;
     private final StructureSettings settings;
-
     /**
      * @since v388
      */

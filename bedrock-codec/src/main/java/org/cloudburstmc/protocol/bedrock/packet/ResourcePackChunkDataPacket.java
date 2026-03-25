@@ -2,11 +2,11 @@ package org.cloudburstmc.protocol.bedrock.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.util.AbstractReferenceCounted;
-import java.util.UUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.UUID;
 
 /**
  * Sent to the client so that the client can download the resource pack. Each packet holds a chunk

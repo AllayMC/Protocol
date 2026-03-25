@@ -16,12 +16,10 @@ public class VideoStreamConnectPacket implements BedrockPacket {
     private String address;
     private float screenshotFrequency;
     private Action action;
-
     /**
      * @since v361
      */
     private int width;
-
     /**
      * @since v361
      */

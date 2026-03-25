@@ -1,13 +1,13 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 import org.cloudburstmc.protocol.bedrock.data.ExperimentData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sent by the server to send the order in which resource packs and behavior packs should be applied
@@ -20,18 +20,15 @@ public class ResourcePackStackPacket implements BedrockPacket {
     private boolean forcedToAccept;
     private final List<Entry> behaviorPacks = new ObjectArrayList<>();
     private final List<Entry> resourcePacks = new ObjectArrayList<>();
-
     /**
      * @since v388
      */
     private String gameVersion;
     private final List<ExperimentData> experiments = new ObjectArrayList<>();
-
     /**
      * @since v419
      */
     private boolean experimentsPreviouslyToggled;
-
     /**
      * @since v671
      */

@@ -1,7 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -12,6 +11,7 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataMap;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityLinkData;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityProperties;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sent by the server to the client to spawn an entity to the player. It is used for every entity
@@ -26,7 +26,6 @@ public class AddEntityPacket implements BedrockPacket {
     private List<EntityLinkData> entityLinks = new ObjectArrayList<>();
     private long uniqueEntityId;
     private long runtimeEntityId;
-
     /**
      * @since v313
      */
@@ -36,12 +35,10 @@ public class AddEntityPacket implements BedrockPacket {
     private Vector3f motion;
     private Vector2f rotation;
     private float headRotation;
-
     /**
      * @since v534
      */
     private float bodyRotation;
-
     /**
      * @since v557
      */

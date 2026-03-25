@@ -19,22 +19,18 @@ public class PhotoTransferPacket implements BedrockPacket {
     private String name;
     private byte[] data;
     private String bookId;
-
     /**
      * @since v465
      */
     private PhotoType photoType;
-
     /**
      * @since v465
      */
     private PhotoType sourceType;
-
     /**
      * @since v465
      */
     private long ownerId;
-
     /**
      * @since v465
      */

@@ -1,14 +1,14 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Sent by the server to update a block client-side, without resending the entire chunk that the

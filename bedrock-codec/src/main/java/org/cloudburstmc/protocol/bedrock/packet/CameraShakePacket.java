@@ -23,7 +23,6 @@ public class CameraShakePacket implements BedrockPacket {
      * @return shake intensity
      */
     private float intensity;
-
     /**
      * Amount of time to shake the player's camera.
      *
@@ -33,7 +32,6 @@ public class CameraShakePacket implements BedrockPacket {
     private float duration;
 
     private CameraShakeType shakeType;
-
     /**
      * @since v428
      */

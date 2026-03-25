@@ -22,34 +22,27 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class LevelChunkPacket extends AbstractReferenceCounted implements BedrockPacket {
     private int chunkX;
     private int chunkZ;
-
     /**
      * @since v361
      */
     private int subChunksLength;
-
     /**
      * @since v361
      */
     private boolean cachingEnabled;
-
-    /**
-     * @since v486
-     */
-    private boolean requestSubChunks;
-
-    /**
-     * @since v486
-     */
-    private int subChunkLimit;
-
     /**
      * @since v361
      */
     private final LongList blobIds = new LongArrayList();
-
+    /**
+     * @since v486
+     */
+    private boolean requestSubChunks;
+    /**
+     * @since v486
+     */
+    private int subChunkLimit;
     private ByteBuf data;
-
     /**
      * @since v649
      */

@@ -18,7 +18,6 @@ public class StructureTemplateDataResponsePacket implements BedrockPacket {
     private String name;
     private boolean save;
     private NbtMap tag;
-
     /**
      * @since v388
      */

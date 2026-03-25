@@ -1,8 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.UUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -17,6 +15,8 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityLinkData;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityProperties;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Sent by the server to the client to make a player entity show up client-side. It is one of the
@@ -39,22 +39,18 @@ public class AddPlayerPacket implements BedrockPacket, PlayerAbilityHolder {
     private ItemData hand;
     private AdventureSettingsPacket adventureSettings = new AdventureSettingsPacket();
     private String deviceId;
-
     /**
      * @since v388
      */
     private int buildPlatform;
-
     /**
      * @since v503
      */
     private GameType gameType;
-
     /**
      * @since v534
      */
     private List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
-
     /**
      * @since v557
      */

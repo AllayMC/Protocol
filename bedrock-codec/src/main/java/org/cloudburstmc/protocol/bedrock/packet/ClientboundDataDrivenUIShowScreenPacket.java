@@ -16,14 +16,12 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientboundDataDrivenUIShowScreenPacket implements BedrockPacket {
     private String screenId;
-
     /**
      * The unique id of this instance of the form for tracking in scripting
      *
      * @since v944
      */
     private int formId;
-
     /**
      * The optional id of the data associated with this screen
      *

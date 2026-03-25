@@ -20,19 +20,16 @@ public class InventorySlotPacket implements BedrockPacket {
     private int containerId;
     private int slot;
     private ItemData item;
-
     /**
      * @since v712
      */
     private FullContainerName containerNameData =
             new FullContainerName(ContainerSlotType.ANVIL_INPUT, null);
-
     /**
      * @since v729
      * @deprecated since v748. Use storageItem ItemData size instead.
      */
     private int dynamicContainerSize;
-
     /**
      * @since v748
      */

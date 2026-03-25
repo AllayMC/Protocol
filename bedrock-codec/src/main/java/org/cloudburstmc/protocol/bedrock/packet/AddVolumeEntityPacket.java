@@ -12,32 +12,26 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class AddVolumeEntityPacket implements BedrockPacket {
     private int id;
     private NbtMap data;
-
     /**
      * @since v465
      */
     private String engineVersion;
-
     /**
      * @since v486
      */
     private String identifier;
-
     /**
      * @since v486
      */
     private String instanceName;
-
     /**
      * @since v503
      */
     private Vector3i minBounds;
-
     /**
      * @since v503
      */
     private Vector3i maxBounds;
-
     /**
      * @since v503
      */

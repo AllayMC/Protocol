@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.AttributeData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
 
 /**
  * Sent by the server to update an amount of attributes of any entity in the world. These attributes
@@ -18,7 +18,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class UpdateAttributesPacket implements BedrockPacket {
     private long runtimeEntityId;
     private List<AttributeData> attributes = new ObjectArrayList<>();
-
     /**
      * @since v419
      */

@@ -18,7 +18,6 @@ public class ChangeDimensionPacket implements BedrockPacket {
     private int dimension;
     private Vector3f position;
     private boolean respawn;
-
     /**
      * Will be serialized as optional not present if null
      *
