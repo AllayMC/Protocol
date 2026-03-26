@@ -36,6 +36,33 @@ public class StartGamePacket implements BedrockPacket {
     // Level settings start
     private long seed;
     /**
+     * @since v313
+     */
+    private boolean fromWorldTemplate;
+    /**
+     * @since v332
+     */
+    private boolean platformLockedContentConfirmed;
+    /**
+     * @since v332
+     */
+    private boolean worldTemplateOptionLocked;
+    /**
+     * @since v361
+     * @deprecated since v776. Use ItemComponentPacket instead.
+     */
+    private List<ItemDefinition> itemDefinitions = new ObjectArrayList<>();
+    /**
+     * @since v388
+     */
+    private String vanillaVersion;
+    /**
+     * @since v388
+     * @deprecated since v818. {@link AuthoritativeMovementMode#SERVER_WITH_REWIND} is now the default
+     *     movement mode.
+     */
+    private AuthoritativeMovementMode authoritativeMovementMode;
+    /**
      * @since v407
      */
     private SpawnBiomeType spawnBiomeType;
@@ -58,14 +85,6 @@ public class StartGamePacket implements BedrockPacket {
     private String educationProductionId;
     private float rainLevel;
     private float lightningLevel;
-    /**
-     * @since v313
-     */
-    private boolean fromWorldTemplate;
-    /**
-     * @since v332
-     */
-    private boolean platformLockedContentConfirmed;
     private boolean multiplayerGame;
     private boolean broadcastingToLan;
     private GamePublishSetting xblBroadcastMode;
@@ -87,17 +106,9 @@ public class StartGamePacket implements BedrockPacket {
     private boolean fromLockedWorldTemplate;
     private boolean usingMsaGamertagsOnly;
     /**
-     * @since v332
-     */
-    private boolean worldTemplateOptionLocked;
-    /**
      * @since v361
      */
     private boolean onlySpawningV1Villagers;
-    /**
-     * @since v388
-     */
-    private String vanillaVersion;
     /**
      * @since v407
      */
@@ -115,70 +126,27 @@ public class StartGamePacket implements BedrockPacket {
      */
     private OptionalBoolean forceExperimentalGameplay;
     /**
-     * @since v465
+     * @since v407
      */
-    private EduSharedUriResource eduSharedUriResource = EduSharedUriResource.EMPTY;
-    /**
-     * @since v544
-     */
-    private ChatRestrictionLevel chatRestrictionLevel;
-    /**
-     * @since v544
-     */
-    private boolean disablingPlayerInteractions;
-    /**
-     * @since v544
-     */
-    private boolean disablingPersonas;
-    /**
-     * @since v544
-     */
-    private boolean disablingCustomSkins;
-
-    // Level settings end
-    private String levelId;
-    private CharSequence levelName;
-    private String premiumWorldTemplateId;
-    private boolean trial;
-
-    // SyncedPlayerMovementSettings start
-    /**
-     * @since v388
-     * @deprecated since v818. {@link AuthoritativeMovementMode#SERVER_WITH_REWIND} is now the default
-     *     movement mode.
-     */
-    private AuthoritativeMovementMode authoritativeMovementMode;
-    /**
-     * @since v428
-     */
-    private int rewindHistorySize;
-
-    boolean serverAuthoritativeBlockBreaking;
-    // SyncedPlayerMovementSettings end
-    private long currentTick;
-    private int enchantmentSeed;
-    private NbtList<NbtMap> blockPalette;
-    /**
-     * @since v361
-     * @deprecated since v776. Use ItemComponentPacket instead.
-     */
-    private List<ItemDefinition> itemDefinitions = new ObjectArrayList<>();
+    private boolean inventoriesServerAuthoritative;
     /**
      * @since v419
      */
     private final List<BlockPropertyData> blockProperties = new ObjectArrayList<>();
-
-    private String multiplayerCorrelationId;
     /**
-     * @since v407
+     * @since v428
      */
-    private boolean inventoriesServerAuthoritative;
+    private int rewindHistorySize;
     /**
      * The name of the server software. Used for telemetry within the Bedrock client.
      *
      * @since v440
      */
     private String serverEngine;
+    /**
+     * @since v465
+     */
+    private EduSharedUriResource eduSharedUriResource = EduSharedUriResource.EMPTY;
     /**
      * A XXHash64 of all block states by their compound tag. <b>The exact way this is calculated is
      * not currently known.</b>
@@ -200,6 +168,22 @@ public class StartGamePacket implements BedrockPacket {
      * @since v534
      */
     private WorldType editorWorldType = WorldType.NON_EDITOR;
+    /**
+     * @since v544
+     */
+    private ChatRestrictionLevel chatRestrictionLevel;
+    /**
+     * @since v544
+     */
+    private boolean disablingPlayerInteractions;
+    /**
+     * @since v544
+     */
+    private boolean disablingPersonas;
+    /**
+     * @since v544
+     */
+    private boolean disablingCustomSkins;
     /**
      * Enables client side chunk generation
      *
@@ -258,6 +242,20 @@ public class StartGamePacket implements BedrockPacket {
      * @since v924
      */
     private boolean hasServerJoinInformation;
+
+    // Level settings end
+    private String levelId;
+    private CharSequence levelName;
+    private String premiumWorldTemplateId;
+    private boolean trial;
+
+    // SyncedPlayerMovementSettings start
+    boolean serverAuthoritativeBlockBreaking;
+    // SyncedPlayerMovementSettings end
+    private long currentTick;
+    private int enchantmentSeed;
+    private NbtList<NbtMap> blockPalette;
+    private String multiplayerCorrelationId;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

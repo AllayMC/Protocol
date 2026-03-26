@@ -19,16 +19,16 @@ public class ShapelessRecipeData implements CraftingRecipeData {
 
     private final CraftingDataType type;
     /**
+     * @since v354
+     */
+    private final String tag;
+    /**
      * @since v361
      */
     private final String id;
     private final List<ItemDescriptorWithCount> ingredients;
     private final List<ItemData> results;
     private final UUID uuid;
-    /**
-     * @since v354
-     */
-    private final String tag;
     /**
      * @since v361
      */

@@ -12,6 +12,10 @@ public class SubChunkData extends AbstractReferenceCounted {
     private Vector3i position;
     private ByteBuf data;
     private SubChunkRequestResult result;
+    /**
+     * @since v475
+     */
+    private long blobId;
     private HeightMapDataType heightMapType;
     private ByteBuf heightMapData;
     /**
@@ -23,10 +27,6 @@ public class SubChunkData extends AbstractReferenceCounted {
      */
     private ByteBuf renderHeightMapData;
     private boolean cacheEnabled;
-    /**
-     * @since v475
-     */
-    private long blobId;
 
     @Override
     public SubChunkData touch(Object o) {

@@ -23,10 +23,6 @@ public class SerializedSkin {
     public static final int SKIN_128_128_SIZE = 128 * 128 * PIXEL_SIZE;
 
     private final String skinId;
-    /**
-     * @since v428
-     */
-    private final String playFabId;
     private final String geometryName;
     /**
      * @since v388
@@ -40,14 +36,9 @@ public class SerializedSkin {
     private final ImageData capeData;
     private final String geometryData;
     /**
-     * @since v465
-     */
-    private final String geometryDataEngineVersion;
-    /**
      * @since v388
      */
     private final String animationData;
-    private final boolean premium;
     /**
      * @since v388
      */
@@ -56,10 +47,6 @@ public class SerializedSkin {
      * @since v388
      */
     private final boolean capeOnClassic;
-    /**
-     * @since v465
-     */
-    private final boolean primaryUser;
     /**
      * @since v388
      */
@@ -84,6 +71,19 @@ public class SerializedSkin {
      * @since v390
      */
     private final List<PersonaPieceTintData> tintColors;
+    /**
+     * @since v428
+     */
+    private final String playFabId;
+    /**
+     * @since v465
+     */
+    private final String geometryDataEngineVersion;
+    private final boolean premium;
+    /**
+     * @since v465
+     */
+    private final boolean primaryUser;
     /**
      * @since v568
      */
