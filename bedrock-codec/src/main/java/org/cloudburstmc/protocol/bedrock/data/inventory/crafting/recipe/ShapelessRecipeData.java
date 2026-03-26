@@ -47,7 +47,7 @@ public class ShapelessRecipeData implements CraftingRecipeData {
                                          RecipeUnlockingRequirement requirement) {
         checkArgument(type == CraftingDataType.SHAPELESS || type == CraftingDataType.SHAPELESS_CHEMISTRY || type == CraftingDataType.SHULKER_BOX,
                 "type must be SHAPELESS, SHAPELESS_CHEMISTRY or SHULKER_BOX");
-        return new ShapelessRecipeData(type, id, ingredients, results, uuid, tag, priority, netId, requirement);
+        return new ShapelessRecipeData(type, tag, id, ingredients, results, uuid, priority, netId, requirement);
     }
 
     public static ShapelessRecipeData of(CraftingDataType type, String id, List<ItemDescriptorWithCount> ingredients,

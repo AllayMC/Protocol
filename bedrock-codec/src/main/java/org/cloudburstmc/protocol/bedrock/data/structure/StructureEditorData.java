@@ -21,4 +21,17 @@ public class StructureEditorData {
     private final boolean boundingBoxVisible;
     private final StructureBlockType type;
     private final StructureSettings settings;
+
+    public StructureEditorData(String name, String filteredName, String dataField, boolean includingPlayers,
+                               boolean boundingBoxVisible, StructureBlockType type, StructureSettings settings,
+                               StructureRedstoneSaveMode redstoneSaveMode) {
+        this.name = name;
+        this.dataField = dataField;
+        this.redstoneSaveMode = redstoneSaveMode;
+        this.filteredName = filteredName;
+        this.includingPlayers = includingPlayers;
+        this.boundingBoxVisible = boundingBoxVisible;
+        this.type = type;
+        this.settings = settings;
+    }
 }

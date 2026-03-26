@@ -89,6 +89,36 @@ public class SerializedSkin {
      */
     private final boolean overridingPlayerAppearance;
 
+    private SerializedSkin(String skinId, String playFabId, String geometryName, String skinResourcePatch,
+                           ImageData skinData, List<AnimationData> animations, ImageData capeData,
+                           String geometryData, String geometryDataEngineVersion, String animationData,
+                           boolean premium, boolean persona, boolean capeOnClassic, boolean primaryUser,
+                           String capeId, String fullSkinId, String armSize, String skinColor,
+                           List<PersonaPieceData> personaPieces, List<PersonaPieceTintData> tintColors,
+                           boolean overridingPlayerAppearance) {
+        this.skinId = skinId;
+        this.geometryName = geometryName;
+        this.skinResourcePatch = skinResourcePatch;
+        this.skinData = skinData;
+        this.animations = animations;
+        this.capeData = capeData;
+        this.geometryData = geometryData;
+        this.animationData = animationData;
+        this.persona = persona;
+        this.capeOnClassic = capeOnClassic;
+        this.capeId = capeId;
+        this.fullSkinId = fullSkinId;
+        this.armSize = armSize;
+        this.skinColor = skinColor;
+        this.personaPieces = personaPieces;
+        this.tintColors = tintColors;
+        this.playFabId = playFabId;
+        this.geometryDataEngineVersion = geometryDataEngineVersion;
+        this.premium = premium;
+        this.primaryUser = primaryUser;
+        this.overridingPlayerAppearance = overridingPlayerAppearance;
+    }
+
     public static SerializedSkin of(String skinId, String playFabId, ImageData skinData, ImageData capeData, String geometryName,
                                     String geometryData, boolean premiumSkin) {
         skinData.checkLegacySkinSize();
