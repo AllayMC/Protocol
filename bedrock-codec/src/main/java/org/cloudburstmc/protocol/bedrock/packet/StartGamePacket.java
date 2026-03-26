@@ -35,6 +35,47 @@ public class StartGamePacket implements BedrockPacket {
     private Vector2f rotation;
     // Level settings start
     private long seed;
+    private int dimensionId;
+    private int generatorId;
+    private GameType levelGameType;
+    private int difficulty;
+    private Vector3i defaultSpawn;
+    private boolean achievementsDisabled;
+    private int dayCycleStopTime;
+    private int eduEditionOffers;
+    private boolean eduFeaturesEnabled;
+    private float rainLevel;
+    private float lightningLevel;
+    private boolean multiplayerGame;
+    private boolean broadcastingToLan;
+    private GamePublishSetting xblBroadcastMode;
+    private GamePublishSetting platformBroadcastMode;
+    private boolean commandsEnabled;
+    private boolean texturePacksRequired;
+    private final List<ExperimentData> experiments = new ObjectArrayList<>();
+    private boolean bonusChestEnabled;
+    private boolean startingWithMap;
+    private boolean trustingPlayers;
+    private PlayerPermission defaultPlayerPermission;
+    private int serverChunkTickRange;
+    private boolean behaviorPackLocked;
+    private boolean resourcePackLocked;
+    private boolean fromLockedWorldTemplate;
+    private boolean usingMsaGamertagsOnly;
+
+    // Level settings end
+    private String levelId;
+    private CharSequence levelName;
+    private String premiumWorldTemplateId;
+    private boolean trial;
+
+    // SyncedPlayerMovementSettings start
+    boolean serverAuthoritativeBlockBreaking;
+    // SyncedPlayerMovementSettings end
+    private long currentTick;
+    private int enchantmentSeed;
+    private NbtList<NbtMap> blockPalette;
+    private String multiplayerCorrelationId;
     /**
      * @since v313
      */
@@ -53,6 +94,10 @@ public class StartGamePacket implements BedrockPacket {
      */
     private List<ItemDefinition> itemDefinitions = new ObjectArrayList<>();
     /**
+     * @since v361
+     */
+    private boolean onlySpawningV1Villagers;
+    /**
      * @since v388
      */
     private String vanillaVersion;
@@ -70,45 +115,10 @@ public class StartGamePacket implements BedrockPacket {
      * @since v407
      */
     private String customBiomeName;
-    private int dimensionId;
-    private int generatorId;
-    private GameType levelGameType;
-    private int difficulty;
-    private Vector3i defaultSpawn;
-    private boolean achievementsDisabled;
-    private int dayCycleStopTime;
-    private int eduEditionOffers;
-    private boolean eduFeaturesEnabled;
     /**
      * @since v407
      */
     private String educationProductionId;
-    private float rainLevel;
-    private float lightningLevel;
-    private boolean multiplayerGame;
-    private boolean broadcastingToLan;
-    private GamePublishSetting xblBroadcastMode;
-    private GamePublishSetting platformBroadcastMode;
-    private boolean commandsEnabled;
-    private boolean texturePacksRequired;
-    private final List<ExperimentData> experiments = new ObjectArrayList<>();
-    /**
-     * @since v419
-     */
-    private boolean experimentsPreviouslyToggled;
-    private boolean bonusChestEnabled;
-    private boolean startingWithMap;
-    private boolean trustingPlayers;
-    private PlayerPermission defaultPlayerPermission;
-    private int serverChunkTickRange;
-    private boolean behaviorPackLocked;
-    private boolean resourcePackLocked;
-    private boolean fromLockedWorldTemplate;
-    private boolean usingMsaGamertagsOnly;
-    /**
-     * @since v361
-     */
-    private boolean onlySpawningV1Villagers;
     /**
      * @since v407
      */
@@ -129,6 +139,10 @@ public class StartGamePacket implements BedrockPacket {
      * @since v407
      */
     private boolean inventoriesServerAuthoritative;
+    /**
+     * @since v419
+     */
+    private boolean experimentsPreviouslyToggled;
     /**
      * @since v419
      */
@@ -242,20 +256,6 @@ public class StartGamePacket implements BedrockPacket {
      * @since v924
      */
     private boolean hasServerJoinInformation;
-
-    // Level settings end
-    private String levelId;
-    private CharSequence levelName;
-    private String premiumWorldTemplateId;
-    private boolean trial;
-
-    // SyncedPlayerMovementSettings start
-    boolean serverAuthoritativeBlockBreaking;
-    // SyncedPlayerMovementSettings end
-    private long currentTick;
-    private int enchantmentSeed;
-    private NbtList<NbtMap> blockPalette;
-    private String multiplayerCorrelationId;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

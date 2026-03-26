@@ -1,10 +1,10 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.UUID;
 import lombok.*;
 import org.cloudburstmc.protocol.common.PacketSignal;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Sent by the server to inform the client on what resource packs the server has. It sends a list of
@@ -83,21 +83,6 @@ public class ResourcePacksInfoPacket implements BedrockPacket {
          * @since v712
          */
         private boolean addonPack;
-
-        public Entry(UUID packId, String packVersion, long packSize, String contentKey, String subPackName,
-                     String contentId, boolean scripting, boolean raytracingCapable, boolean addonPack,
-                     String cdnUrl) {
-            this.packId = packId;
-            this.packVersion = packVersion;
-            this.packSize = packSize;
-            this.contentKey = contentKey;
-            this.subPackName = subPackName;
-            this.contentId = contentId;
-            this.scripting = scripting;
-            this.raytracingCapable = raytracingCapable;
-            this.cdnUrl = cdnUrl;
-            this.addonPack = addonPack;
-        }
     }
 
     @Override

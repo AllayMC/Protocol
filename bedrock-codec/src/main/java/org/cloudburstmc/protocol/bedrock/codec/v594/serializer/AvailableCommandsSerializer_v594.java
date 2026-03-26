@@ -182,7 +182,7 @@ public class AvailableCommandsSerializer_v594 extends AvailableCommandsSerialize
                 params[i2] = readParameter(buffer, helper, enums, postfixes, softEnumParameters);
             }
         }
-        return new CommandData(name, description, flags, permissions, aliases, subcommands, overloads);
+        return new CommandData(name, description, flags, permissions, aliases, overloads, subcommands);
     }
 
     protected void writeSubCommand(ByteBuf buffer, BedrockCodecHelper helper, List<String> values, ChainedSubCommandData data) {

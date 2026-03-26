@@ -18,6 +18,9 @@ import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 public class ShapelessRecipeData implements CraftingRecipeData {
 
     private final CraftingDataType type;
+    private final List<ItemDescriptorWithCount> ingredients;
+    private final List<ItemData> results;
+    private final UUID uuid;
     /**
      * @since v354
      */
@@ -26,9 +29,6 @@ public class ShapelessRecipeData implements CraftingRecipeData {
      * @since v361
      */
     private final String id;
-    private final List<ItemDescriptorWithCount> ingredients;
-    private final List<ItemData> results;
-    private final UUID uuid;
     /**
      * @since v361
      */
@@ -47,7 +47,7 @@ public class ShapelessRecipeData implements CraftingRecipeData {
                                          RecipeUnlockingRequirement requirement) {
         checkArgument(type == CraftingDataType.SHAPELESS || type == CraftingDataType.SHAPELESS_CHEMISTRY || type == CraftingDataType.SHULKER_BOX,
                 "type must be SHAPELESS, SHAPELESS_CHEMISTRY or SHULKER_BOX");
-        return new ShapelessRecipeData(type, tag, id, ingredients, results, uuid, priority, netId, requirement);
+        return new ShapelessRecipeData(type, ingredients, results, uuid, tag, id, priority, netId, requirement);
     }
 
     public static ShapelessRecipeData of(CraftingDataType type, String id, List<ItemDescriptorWithCount> ingredients,

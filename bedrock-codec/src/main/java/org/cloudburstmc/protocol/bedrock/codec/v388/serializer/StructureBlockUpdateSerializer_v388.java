@@ -24,8 +24,8 @@ public class StructureBlockUpdateSerializer_v388 extends StructureBlockUpdateSer
         StructureBlockType type = StructureBlockType.from(VarInts.readInt(buffer));
         StructureSettings settings = helper.readStructureSettings(buffer);
         StructureRedstoneSaveMode redstoneSaveMode = StructureRedstoneSaveMode.from(VarInts.readInt(buffer));
-        return new StructureEditorData(name, "", dataField, includingPlayers, boundingBoxVisible, type, settings,
-                redstoneSaveMode);
+        return new StructureEditorData(name, includingPlayers, boundingBoxVisible, type, settings, dataField,
+                redstoneSaveMode, "");
     }
 
     @Override

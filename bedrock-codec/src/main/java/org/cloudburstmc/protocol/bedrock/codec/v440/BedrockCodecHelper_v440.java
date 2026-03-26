@@ -82,8 +82,8 @@ public class BedrockCodecHelper_v440 extends BedrockCodecHelper_v431 {
         int integritySeed = buffer.readIntLE();
         Vector3f pivot = this.readVector3f(buffer);
 
-        return new StructureSettings(paletteName, ignoringEntities, ignoringBlocks, true, size, offset, lastEditedByEntityId,
-                rotation, mirror, animationMode, animationSeconds, integrityValue, integritySeed, pivot);
+        return new StructureSettings(ignoringEntities, ignoringBlocks, size, offset, rotation, mirror, integrityValue,
+                integritySeed, paletteName, lastEditedByEntityId, pivot, animationMode, animationSeconds, true);
     }
 
     @Override
