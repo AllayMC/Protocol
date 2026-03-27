@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.SerializableVoxelShape;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 import java.util.Map;
 

@@ -6,9 +6,12 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
-/** Definitions for custom component items added to the game */
+/**
+ * Definitions for custom component items added to the game
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

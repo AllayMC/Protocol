@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 import java.util.UUID;
 

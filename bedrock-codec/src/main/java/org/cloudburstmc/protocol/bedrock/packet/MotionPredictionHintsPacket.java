@@ -6,7 +6,9 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Extension of the {@link SetEntityMotionPacket} which adds the {@link #onGround} field. */
+/**
+ * Extension of the {@link SetEntityMotionPacket} which adds the {@link #onGround} field.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

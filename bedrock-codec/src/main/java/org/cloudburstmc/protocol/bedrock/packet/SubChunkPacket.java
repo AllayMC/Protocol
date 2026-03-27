@@ -8,9 +8,12 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.SubChunkData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
-/** Sends data about multiple sub-chunks around a center point. */
+/**
+ * Sends data about multiple sub-chunks around a center point.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)

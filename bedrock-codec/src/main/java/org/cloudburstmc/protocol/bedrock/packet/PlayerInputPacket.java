@@ -12,7 +12,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  * riding an entity like a boat. If this is the case, the packet is sent roughly every tick.
  *
  * @deprecated Removed as of v800 (1.21.80). Server authoritative input is handled by {@link
- *     PlayerAuthInputPacket}
+ * PlayerAuthInputPacket}
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)

@@ -7,7 +7,9 @@ import org.cloudburstmc.protocol.bedrock.data.camera.*;
 import org.cloudburstmc.protocol.common.PacketSignal;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 
-/** Gives a custom camera specific instructions to operate. */
+/**
+ * Gives a custom camera specific instructions to operate.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

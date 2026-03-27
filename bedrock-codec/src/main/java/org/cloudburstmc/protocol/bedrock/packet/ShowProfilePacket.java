@@ -5,7 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Sent by the server to show the XBOX Live profile of one player to another. */
+/**
+ * Sent by the server to show the XBOX Live profile of one player to another.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

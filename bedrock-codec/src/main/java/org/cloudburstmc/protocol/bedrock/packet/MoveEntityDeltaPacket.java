@@ -3,6 +3,7 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -49,28 +50,28 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
 
     public String toString() {
         return "MoveEntityDeltaPacket(runtimeEntityId="
-                + runtimeEntityId
-                + ", flags="
-                + flags
-                + ", delta=("
-                + deltaX
-                + ", "
-                + deltaY
-                + ", "
-                + deltaZ
-                + "), position=("
-                + x
-                + ", "
-                + y
-                + ", "
-                + z
-                + "), rotation=("
-                + pitch
-                + ", "
-                + yaw
-                + ", "
-                + headYaw
-                + "))";
+               + runtimeEntityId
+               + ", flags="
+               + flags
+               + ", delta=("
+               + deltaX
+               + ", "
+               + deltaY
+               + ", "
+               + deltaZ
+               + "), position=("
+               + x
+               + ", "
+               + y
+               + ", "
+               + z
+               + "), rotation=("
+               + pitch
+               + ", "
+               + yaw
+               + ", "
+               + headYaw
+               + "))";
     }
 
     public enum Flag {

@@ -22,7 +22,8 @@ public class ShowStoreOfferPacket implements BedrockPacket {
     /**
      * @since v630 deprecated
      */
-    @Deprecated private boolean shownToAll;
+    @Deprecated
+    private boolean shownToAll;
     /**
      * @since v630
      */

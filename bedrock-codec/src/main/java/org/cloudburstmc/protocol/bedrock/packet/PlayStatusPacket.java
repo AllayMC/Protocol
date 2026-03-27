@@ -26,27 +26,41 @@ public class PlayStatusPacket implements BedrockPacket {
 
     public enum Status {
 
-        /** Sent to confirm login success and move onto resource pack sequence */
+        /**
+         * Sent to confirm login success and move onto resource pack sequence
+         */
         LOGIN_SUCCESS,
 
-        /** Displays outdated client disconnection screen */
+        /**
+         * Displays outdated client disconnection screen
+         */
         LOGIN_FAILED_CLIENT_OLD,
 
-        /** Displays outdated server disconnection screen */
+        /**
+         * Displays outdated server disconnection screen
+         */
         LOGIN_FAILED_SERVER_OLD,
 
-        /** Spawns player into the world */
+        /**
+         * Spawns player into the world
+         */
         PLAYER_SPAWN,
 
         LOGIN_FAILED_INVALID_TENANT,
 
-        /** Sent when a Education Edition client joins an Bedrock server */
+        /**
+         * Sent when a Education Edition client joins an Bedrock server
+         */
         LOGIN_FAILED_EDITION_MISMATCH_EDU_TO_VANILLA,
 
-        /** Sent when a Bedrock client joins an Education server */
+        /**
+         * Sent when a Bedrock client joins an Education server
+         */
         LOGIN_FAILED_EDITION_MISMATCH_VANILLA_TO_EDU,
 
-        /** Sent to a split screen player when the server is full */
+        /**
+         * Sent to a split screen player when the server is full
+         */
         FAILED_SERVER_FULL_SUB_CLIENT,
 
         EDITOR_TO_VANILLA_MISMATCH,

@@ -27,18 +27,18 @@ public class UpdateBlockSyncedPacket extends UpdateBlockPacket {
 
     public String toString() {
         return "UpdateBlockSyncedPacket(runtimeEntityId="
-                + this.runtimeEntityId
-                + ", entityBlockSyncType="
-                + this.entityBlockSyncType
-                + ", flags="
-                + this.flags
-                + ", blockPosition="
-                + this.blockPosition
-                + ", definition="
-                + this.definition
-                + ", dataLayer="
-                + this.dataLayer
-                + ")";
+               + this.runtimeEntityId
+               + ", entityBlockSyncType="
+               + this.entityBlockSyncType
+               + ", flags="
+               + this.flags
+               + ", blockPosition="
+               + this.blockPosition
+               + ", definition="
+               + this.definition
+               + ", dataLayer="
+               + this.dataLayer
+               + ")";
     }
 
     @Override

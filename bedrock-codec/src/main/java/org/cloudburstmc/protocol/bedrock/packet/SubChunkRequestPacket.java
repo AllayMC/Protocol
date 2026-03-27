@@ -6,9 +6,12 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
-/** Requests specific sub-chunks from the server using a center point. */
+/**
+ * Requests specific sub-chunks from the server using a center point.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

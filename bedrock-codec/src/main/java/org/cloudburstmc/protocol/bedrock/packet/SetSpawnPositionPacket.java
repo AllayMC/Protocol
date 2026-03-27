@@ -41,7 +41,8 @@ public class SetSpawnPositionPacket implements BedrockPacket {
      */
     private Vector3i spawnPosition = Vector3i.from(-2147483648, -2147483648, -2147483648);
 
-    @Deprecated private boolean spawnForced;
+    @Deprecated
+    private boolean spawnForced;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

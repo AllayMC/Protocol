@@ -17,6 +17,7 @@ public class ItemStackResponse {
      * success specifies if the request with the requestId below was successful. If this is the case, the
      * containers below will have information on what slots ended up changing. If not, the container info
      * will be empty.
+     *
      * @deprecated as of v419
      */
     @ToString.Exclude

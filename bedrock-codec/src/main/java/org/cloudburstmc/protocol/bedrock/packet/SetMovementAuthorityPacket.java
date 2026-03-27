@@ -6,7 +6,9 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.AuthoritativeMovementMode;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Sent by the server to the client to change its movement mode. */
+/**
+ * Sent by the server to the client to change its movement mode.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

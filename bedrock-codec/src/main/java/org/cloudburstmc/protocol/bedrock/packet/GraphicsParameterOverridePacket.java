@@ -7,6 +7,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.GraphicsOverrideParameterType;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.Map;
 
 /**

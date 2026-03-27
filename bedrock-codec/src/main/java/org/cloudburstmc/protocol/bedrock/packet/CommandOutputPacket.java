@@ -9,6 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.command.CommandOriginData;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandOutputMessage;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandOutputType;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
 /**
@@ -27,7 +28,8 @@ public class CommandOutputPacket implements BedrockPacket {
     private CommandOriginData commandOriginData;
     private CommandOutputType type;
     private int successCount;
-    @Nullable private String data;
+    @Nullable
+    private String data;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

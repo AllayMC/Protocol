@@ -9,6 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistCategory;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistOperation;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistPresetDefinition;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
 /**

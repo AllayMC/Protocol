@@ -3,7 +3,9 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Sent by the client to the server to refresh the entitlements of the player. */
+/**
+ * Sent by the client to the server to refresh the entitlements of the player.
+ */
 @Data
 public class RefreshEntitlementsPacket implements BedrockPacket {
 

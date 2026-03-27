@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.Value;
 import org.cloudburstmc.math.vector.Vector3f;
 
-import java.awt.Color;
+import java.awt.*;
 
 @Data
 public class LocatorBarWaypoint {

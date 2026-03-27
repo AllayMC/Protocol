@@ -14,7 +14,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  * <h3>Note Block</h3>
  *
  * <blockquote>
- *
+ * <p>
  * eventType: (Instrument)
  *
  * <ul>
@@ -24,7 +24,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  *   <li>3 (Drum)
  *   <li>4 (Bass)
  * </ul>
- *
+ * <p>
  * data: 0-15
  *
  * </blockquote>
@@ -32,7 +32,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  * <h3>Chest Block</h3>
  *
  * <blockquote>
- *
+ * <p>
  * eventType: 1 (Chest open/closed)<br>
  * data: 0 or 1
  *
@@ -41,7 +41,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  * <h3>End Gateway</h3>
  *
  * <blockquote>
- *
+ * <p>
  * eventType: 1 (Cool down)<br>
  * data: n/a
  *

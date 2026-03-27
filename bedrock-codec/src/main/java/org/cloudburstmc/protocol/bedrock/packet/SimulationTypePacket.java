@@ -5,7 +5,9 @@ import lombok.EqualsAndHashCode;
 import org.cloudburstmc.protocol.bedrock.data.SimulationType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** An in-progress packet. We currently do not know the use case. */
+/**
+ * An in-progress packet. We currently do not know the use case.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class SimulationTypePacket implements BedrockPacket {

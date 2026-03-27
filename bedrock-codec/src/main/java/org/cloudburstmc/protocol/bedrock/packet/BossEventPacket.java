@@ -37,19 +37,33 @@ public class BossEventPacket implements BedrockPacket {
     }
 
     public enum Action {
-        /** Creates the bossbar to the player. */
+        /**
+         * Creates the bossbar to the player.
+         */
         CREATE,
-        /** Registers a player to a boss fight. */
+        /**
+         * Registers a player to a boss fight.
+         */
         REGISTER_PLAYER,
-        /** Removes the bossbar from the client. */
+        /**
+         * Removes the bossbar from the client.
+         */
         REMOVE,
-        /** Unregisters a player from a boss fight. */
+        /**
+         * Unregisters a player from a boss fight.
+         */
         UNREGISTER_PLAYER,
-        /** Updates the boss bar percentage. */
+        /**
+         * Updates the boss bar percentage.
+         */
         UPDATE_PERCENTAGE,
-        /** Updates the boss bar title. */
+        /**
+         * Updates the boss bar title.
+         */
         UPDATE_NAME,
-        /** Darken the sky when the boss bar is shown. */
+        /**
+         * Darken the sky when the boss bar is shown.
+         */
         UPDATE_PROPERTIES,
         /**
          * Intended to alter the boss bar appearance, but these currently produce no visible effect on

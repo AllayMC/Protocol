@@ -5,8 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.auth.AuthPayload;
 import org.cloudburstmc.protocol.common.PacketSignal;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Sent when a sub-client joins the server while another client is already connected to it. The

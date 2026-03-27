@@ -5,7 +5,9 @@ import lombok.EqualsAndHashCode;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** An alternative to synced entity data. */
+/**
+ * An alternative to synced entity data.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class SyncEntityPropertyPacket implements BedrockPacket {

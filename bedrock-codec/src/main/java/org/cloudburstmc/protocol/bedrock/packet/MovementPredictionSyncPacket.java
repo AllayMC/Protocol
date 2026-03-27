@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.Set;
 
 /**

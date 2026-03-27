@@ -7,6 +7,7 @@ import org.cloudburstmc.protocol.bedrock.data.AdventureSetting;
 import org.cloudburstmc.protocol.bedrock.data.PlayerPermission;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandPermission;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ import java.util.Set;
  * update those settings.
  *
  * @deprecated Removed in 1.19.30 (553). Use {@link UpdateAbilitiesPacket} and {@link
- *     UpdateAdventureSettingsPacket} instead.
+ * UpdateAdventureSettingsPacket} instead.
  */
 @Data
 @Deprecated

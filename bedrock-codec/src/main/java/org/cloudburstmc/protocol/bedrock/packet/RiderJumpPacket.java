@@ -10,7 +10,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  * entity flag set, for example when riding a horse.
  *
  * @deprecated Removed as of v800 (1.21.80). Server authoritative jump is handled by {@link
- *     PlayerAuthInputPacket}
+ * PlayerAuthInputPacket}
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)

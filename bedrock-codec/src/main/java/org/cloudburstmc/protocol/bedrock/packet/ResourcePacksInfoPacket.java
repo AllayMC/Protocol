@@ -1,8 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 import java.util.UUID;
 

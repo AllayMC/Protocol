@@ -9,11 +9,13 @@ public enum CameraSplineType {
     LINEAR("linear");
 
     private static final Map<String, CameraSplineType> serializeNames = new HashMap<>();
+
     static {
         for (CameraSplineType value : values()) {
             serializeNames.put(value.getSerializeName(), value);
         }
     }
+
     /**
      * @since v924
      */

@@ -13,7 +13,7 @@ import org.cloudburstmc.protocol.common.util.index.Unindexed;
 import java.util.List;
 
 @Value
-@RequiredArgsConstructor(onConstructor_ = { @Deprecated })
+@RequiredArgsConstructor(onConstructor_ = {@Deprecated})
 public class BiomeScatterParamData {
 
     List<BiomeCoordinateData> coordinates;

@@ -1,6 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.response;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 /**
  * ItemEntry holds information on what item stack should be present in a specific slot.

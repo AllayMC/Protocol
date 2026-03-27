@@ -24,7 +24,8 @@ public class LecternUpdatePacket implements BedrockPacket {
     /**
      * @deprecated since v662
      */
-    @Deprecated private boolean droppingBook;
+    @Deprecated
+    private boolean droppingBook;
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

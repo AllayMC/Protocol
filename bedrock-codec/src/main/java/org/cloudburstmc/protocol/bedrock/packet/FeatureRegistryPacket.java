@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.definitions.FeatureDefinition;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
 /**

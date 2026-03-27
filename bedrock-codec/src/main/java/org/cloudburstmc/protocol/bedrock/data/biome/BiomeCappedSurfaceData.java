@@ -5,7 +5,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 
 import java.util.List;
-import java.util.Optional;
 
 @Value
 public class BiomeCappedSurfaceData {

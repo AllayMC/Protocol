@@ -6,14 +6,19 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.FullContainerName;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
-/** Sent by the server to trigger a client-side cleanup of the dynamic container registry. */
+/**
+ * Sent by the server to trigger a client-side cleanup of the dynamic container registry.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ContainerRegistryCleanupPacket implements BedrockPacket {
-    /** A list of full containers to cleanup. */
+    /**
+     * A list of full containers to cleanup.
+     */
     private final List<FullContainerName> containers = new ObjectArrayList<>();
 
     @Override

@@ -5,9 +5,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
-/** Tracks the current fog effects applied to a client */
+/**
+ * Tracks the current fog effects applied to a client
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

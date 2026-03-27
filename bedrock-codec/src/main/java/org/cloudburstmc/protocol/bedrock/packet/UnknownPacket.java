@@ -29,13 +29,13 @@ public final class UnknownPacket
     @Override
     public String toString() {
         return "UNKNOWN - "
-                + getPacketId()
-                + " - Hex: "
-                + (payload == null || payload.refCnt() == 0 ? "null" : ByteBufUtil.hexDump(payload));
+               + getPacketId()
+               + " - Hex: "
+               + (payload == null || payload.refCnt() == 0 ? "null" : ByteBufUtil.hexDump(payload));
     }
 
     @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
+    public PacketSignal handle(BedrockPacketHandler handler) {
         return PacketSignal.UNHANDLED;
     }
 

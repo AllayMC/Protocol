@@ -13,6 +13,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.InventoryTra
 import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.ItemUseTransaction;
 import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.LegacySetItemSlotData;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
 /**
@@ -28,9 +29,9 @@ public class InventoryTransactionPacket implements BedrockPacket {
     /**
      * Block definition of block being picked. ItemUseInventoryTransaction only
      *
-     * @since v340
      * @param blockDefinition block definition of block
      * @return block definition of block
+     * @since v340
      */
     private BlockDefinition blockDefinition;
     /**
@@ -53,7 +54,8 @@ public class InventoryTransactionPacket implements BedrockPacket {
      * @since v407
      * @deprecated v431
      */
-    @Deprecated private boolean usingNetIds;
+    @Deprecated
+    private boolean usingNetIds;
     /**
      * @since v712
      */

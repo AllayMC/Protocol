@@ -5,7 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Used to maintain synchronization with a server running in authoritative mode. */
+/**
+ * Used to maintain synchronization with a server running in authoritative mode.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

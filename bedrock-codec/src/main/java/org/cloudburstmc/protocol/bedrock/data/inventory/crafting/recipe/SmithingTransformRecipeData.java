@@ -31,6 +31,7 @@ public class SmithingTransformRecipeData implements TaggedCraftingData, Identifi
                                                  ItemDescriptorWithCount addition, ItemData result, String tag, int netId) {
         return new SmithingTransformRecipeData(id, base, addition, result, tag, netId, template);
     }
+
     /**
      * Pre-1.19.80
      */

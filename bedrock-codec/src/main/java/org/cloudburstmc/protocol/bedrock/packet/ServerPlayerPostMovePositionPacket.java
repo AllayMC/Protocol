@@ -6,7 +6,9 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Sent by the server to communicate the player's post-move position. */
+/**
+ * Sent by the server to communicate the player's post-move position.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

@@ -8,7 +8,9 @@ import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureTemplateRequestOperation;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Sent by the client to request data of a structure. */
+/**
+ * Sent by the client to request data of a structure.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

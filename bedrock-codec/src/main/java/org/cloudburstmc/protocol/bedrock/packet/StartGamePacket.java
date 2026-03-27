@@ -13,6 +13,7 @@ import org.cloudburstmc.protocol.bedrock.data.*;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.common.PacketSignal;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -104,7 +105,7 @@ public class StartGamePacket implements BedrockPacket {
     /**
      * @since v388
      * @deprecated since v818. {@link AuthoritativeMovementMode#SERVER_WITH_REWIND} is now the default
-     *     movement mode.
+     * movement mode.
      */
     private AuthoritativeMovementMode authoritativeMovementMode;
     /**

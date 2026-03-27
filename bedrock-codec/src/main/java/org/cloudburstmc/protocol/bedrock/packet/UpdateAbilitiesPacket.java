@@ -9,6 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.PlayerAbilityHolder;
 import org.cloudburstmc.protocol.bedrock.data.PlayerPermission;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandPermission;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
 /**

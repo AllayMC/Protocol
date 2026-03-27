@@ -10,6 +10,7 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.MapDecoration;
 import org.cloudburstmc.protocol.bedrock.data.MapTrackedObject;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.List;
 
 /**

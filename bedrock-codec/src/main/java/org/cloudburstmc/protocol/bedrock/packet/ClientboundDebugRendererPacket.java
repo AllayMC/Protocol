@@ -7,7 +7,9 @@ import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.ClientboundDebugRendererType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Sent by the server to spawn an outlined cube on client-side. */
+/**
+ * Sent by the server to spawn an outlined cube on client-side.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

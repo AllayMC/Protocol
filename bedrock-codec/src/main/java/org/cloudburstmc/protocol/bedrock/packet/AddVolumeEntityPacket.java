@@ -6,7 +6,9 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Sends a volume entity's definition and metadata from server to client. */
+/**
+ * Sends a volume entity's definition and metadata from server to client.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class AddVolumeEntityPacket implements BedrockPacket {

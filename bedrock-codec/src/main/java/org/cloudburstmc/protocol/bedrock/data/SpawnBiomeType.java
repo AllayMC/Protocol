@@ -3,7 +3,7 @@ package org.cloudburstmc.protocol.bedrock.data;
 public enum SpawnBiomeType {
     DEFAULT,
     USER_DEFINED;
-    
+
     private static final SpawnBiomeType[] VALUES = values();
 
     public static SpawnBiomeType byId(int id) {

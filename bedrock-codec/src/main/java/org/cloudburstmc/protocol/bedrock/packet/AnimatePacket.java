@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
+
 import java.util.HashMap;
 
 /**
@@ -73,6 +74,7 @@ public class AnimatePacket implements BedrockPacket {
                 BY_NAME.put(value.name, value);
             }
         }
+
         /**
          * @since v898
          */

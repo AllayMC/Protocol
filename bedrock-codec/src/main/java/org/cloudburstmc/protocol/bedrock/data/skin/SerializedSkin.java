@@ -164,8 +164,8 @@ public class SerializedSkin {
 
     private boolean isValidSkin() {
         return skinId != null && !skinId.trim().isEmpty() &&
-                skinData != null && skinData.getWidth() >= 64 && skinData.getHeight() >= 32 &&
-                skinData.getImage().length >= SINGLE_SKIN_SIZE;
+               skinData != null && skinData.getWidth() >= 64 && skinData.getHeight() >= 32 &&
+               skinData.getImage().length >= SINGLE_SKIN_SIZE;
     }
 
     public String getSkinResourcePatch() {
@@ -371,27 +371,27 @@ public class SerializedSkin {
 
         public String toString() {
             return "SerializedSkin.Builder(skinId=" + this.skinId +
-                    ", playFabId=" + this.playFabId +
-                    ", geometryName=" + this.geometryName +
-                    ", skinResourcePatch=" + this.skinResourcePatch +
-                    ", skinData=" + this.skinData +
-                    ", animations=" + this.animations +
-                    ", capeData=" + this.capeData +
-                    ", geometryData=" + this.geometryData +
-                    ", animationData=" + this.animationData +
-                    ", premium=" + this.premium +
-                    ", persona=" + this.persona +
-                    ", capeOnClassic=" + this.capeOnClassic +
-                    ", capeId=" + this.capeId +
-                    ", fullSkinId=" + this.fullSkinId +
-                    ", armSize=" + this.armSize +
-                    ", skinColor=" + this.skinColor +
-                    ", personaPieces=" + this.personaPieces +
-                    ", tintColors=" + this.tintColors +
-                    ", geometryDataEngineVersion=" + this.geometryDataEngineVersion +
-                    ", primaryUser=" + this.primaryUser +
-                    ", overridingPlayerAppearance=" + this.overridingPlayerAppearance +
-                    ")";
+                   ", playFabId=" + this.playFabId +
+                   ", geometryName=" + this.geometryName +
+                   ", skinResourcePatch=" + this.skinResourcePatch +
+                   ", skinData=" + this.skinData +
+                   ", animations=" + this.animations +
+                   ", capeData=" + this.capeData +
+                   ", geometryData=" + this.geometryData +
+                   ", animationData=" + this.animationData +
+                   ", premium=" + this.premium +
+                   ", persona=" + this.persona +
+                   ", capeOnClassic=" + this.capeOnClassic +
+                   ", capeId=" + this.capeId +
+                   ", fullSkinId=" + this.fullSkinId +
+                   ", armSize=" + this.armSize +
+                   ", skinColor=" + this.skinColor +
+                   ", personaPieces=" + this.personaPieces +
+                   ", tintColors=" + this.tintColors +
+                   ", geometryDataEngineVersion=" + this.geometryDataEngineVersion +
+                   ", primaryUser=" + this.primaryUser +
+                   ", overridingPlayerAppearance=" + this.overridingPlayerAppearance +
+                   ")";
         }
     }
 }

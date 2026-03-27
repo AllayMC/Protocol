@@ -6,7 +6,9 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.EduSharedUriResource;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** A packet that transmits education resource settings to all clients. */
+/**
+ * A packet that transmits education resource settings to all clients.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

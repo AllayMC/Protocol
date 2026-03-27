@@ -6,7 +6,9 @@ import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Sent by the server to update the available block properties. */
+/**
+ * Sent by the server to update the available block properties.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

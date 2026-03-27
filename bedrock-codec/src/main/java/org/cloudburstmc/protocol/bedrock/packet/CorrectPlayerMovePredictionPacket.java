@@ -46,12 +46,12 @@ public class CorrectPlayerMovePredictionPacket implements BedrockPacket {
     private long tick;
     /**
      * @since v649
-     *     <p>The type of prediction player sends.
+     * <p>The type of prediction player sends.
      */
     private PredictionType predictionType = PredictionType.PLAYER;
     /**
      * @since v671
-     *     <p>The rotation of the vehicle.
+     * <p>The rotation of the vehicle.
      */
     private Vector2f vehicleRotation;
     /**

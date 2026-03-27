@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.protocol.bedrock.data.camera.AimAssistAction;
 import org.cloudburstmc.protocol.common.PacketSignal;
 

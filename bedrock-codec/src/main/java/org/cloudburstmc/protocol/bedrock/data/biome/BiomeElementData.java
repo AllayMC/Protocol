@@ -10,7 +10,7 @@ import org.cloudburstmc.protocol.common.util.index.Indexable;
 import org.cloudburstmc.protocol.common.util.index.Unindexed;
 
 @Value
-@RequiredArgsConstructor(onConstructor_ = { @Deprecated })
+@RequiredArgsConstructor(onConstructor_ = {@Deprecated})
 public class BiomeElementData {
     float noiseFrequencyScale;
     float noiseLowerBound;

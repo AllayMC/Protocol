@@ -7,7 +7,9 @@ import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.protocol.bedrock.data.camera.AimAssistAction;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-/** Sent by the server to the client to set up aim assist for the client's camera. */
+/**
+ * Sent by the server to the client to set up aim assist for the client's camera.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

@@ -16,7 +16,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class NetworkSettingsPacket implements BedrockPacket {
-    /** The smallest amount of bytes that should be compressed by the client. 0-65535 */
+    /**
+     * The smallest amount of bytes that should be compressed by the client. 0-65535
+     */
     private int compressionThreshold;
     /**
      * Set the compression type to be used on the connection.
