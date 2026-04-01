@@ -1,15 +1,9 @@
-import org.gradle.api.tasks.javadoc.Javadoc
-import org.gradle.external.javadoc.StandardJavadocDocletOptions
-import org.gradle.kotlin.dsl.compileJava
-import org.gradle.kotlin.dsl.invoke
-
-@Suppress("DSL_SCOPE_VIOLATION") // https://youtrack.jetbrains.com/issue/IDEA-262280
+import com.vanniktech.maven.publish.MavenPublishBaseExtension
 
 plugins {
     id("java-library")
-    id("maven-publish")
-    id("signing")
-    alias(libs.plugins.lombok)
+    alias(libs.plugins.lombok) apply false
+    alias(libs.plugins.publish) apply false
 }
 
 tasks.jar {
@@ -17,27 +11,32 @@ tasks.jar {
 }
 
 subprojects {
+    apply(plugin = "java-library")
+    apply(plugin = rootProject.libs.plugins.lombok.get().pluginId)
+    apply(plugin = rootProject.libs.plugins.publish.get().pluginId)
 
-    apply {
-        plugin("java-library")
-        plugin("maven-publish")
-        plugin("signing")
-        plugin(rootProject.libs.plugins.lombok.get().pluginId)
-    }
-
-    group = "org.cloudburstmc.protocol"
+    group = "org.allaymc.protocol"
+    version = rootProject.version
 
     tasks {
-        compileJava {
-            options.encoding = Charsets.UTF_8.name();
+        withType<JavaCompile>().configureEach {
+            options.encoding = Charsets.UTF_8.name()
             options.compilerArgs.add("-parameters")
         }
+
         withType<Javadoc>().configureEach {
             (options as StandardJavadocDocletOptions).addBooleanOption("Xdoclint:-missing", true)
         }
+
         test {
             useJUnitPlatform()
         }
+    }
+
+    repositories {
+        mavenCentral()
+        maven("https://repo.opencollab.dev/maven-releases/")
+        maven("https://repo.opencollab.dev/maven-snapshots/")
     }
 
     dependencies {
@@ -52,57 +51,46 @@ subprojects {
         }
     }
 
-    publishing {
-        repositories {
-            maven {
-                name = "maven-deploy"
-                url = uri(
-                    System.getenv("MAVEN_DEPLOY_URL")
-                        ?: "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                )
-                credentials {
-                    username = System.getenv("MAVEN_DEPLOY_USERNAME") ?: "username"
-                    password = System.getenv("MAVEN_DEPLOY_PASSWORD") ?: "password"
+    configure<MavenPublishBaseExtension> {
+        publishToMavenCentral()
+        signAllPublications()
+
+        coordinates(
+            project.group.toString(),
+            project.name,
+            project.version.toString()
+        )
+
+        pom {
+            name.set(project.name)
+            description.set("A protocol library for Minecraft: Bedrock Edition that supports multiple versions.")
+            url.set("https://github.com/AllayMC/Protocol")
+
+            scm {
+                connection.set("scm:git:git://github.com/AllayMC/Protocol.git")
+                developerConnection.set("scm:git:ssh://github.com/AllayMC/Protocol.git")
+                url.set("https://github.com/AllayMC/Protocol")
+            }
+
+            licenses {
+                license {
+                    name.set("The Apache Software License, Version 2.0")
+                    url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
                 }
             }
-        }
 
-        publications {
-            create<MavenPublication>("maven") {
-                from(components["java"])
-                pom {
-                    packaging = "jar"
-                    url.set("https://github.com/CloudburstMC/Protocol")
-
-                    scm {
-                        connection.set("scm:git:git://github.com/CloudburstMC/Protocol.git")
-                        developerConnection.set("scm:git:ssh://github.com/CloudburstMC/Protocol.git")
-                        url.set("https://github.com/CloudburstMC/Protocol")
-                    }
-
-                    licenses {
-                        license {
-                            name.set("The Apache Software License, Version 2.0")
-                            url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-
-                    developers {
-                        developer {
-                            name.set("CloudburstMC Team")
-                            organization.set("CloudburstMC")
-                            organizationUrl.set("https://github.com/CloudburstMC")
-                        }
-                    }
+            developers {
+                developer {
+                    name.set("CloudburstMC Team")
+                    organization.set("CloudburstMC")
+                    organizationUrl.set("https://github.com/CloudburstMC")
+                }
+                developer {
+                    name.set("AllayMC Team")
+                    organization.set("AllayMC")
+                    organizationUrl.set("https://github.com/AllayMC")
                 }
             }
-        }
-    }
-
-    signing {
-        if (System.getenv("PGP_SECRET") != null && System.getenv("PGP_PASSPHRASE") != null) {
-            useInMemoryPgpKeys(System.getenv("PGP_SECRET"), System.getenv("PGP_PASSPHRASE"))
-            sign(publishing.publications["maven"])
         }
     }
 }

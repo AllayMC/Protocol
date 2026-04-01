@@ -6,9 +6,3 @@ dependencies {
     api(libs.math)
     api(libs.natives)
 }
-
-tasks.jar {
-    manifest {
-        attributes("Automatic-Module-Name" to "org.cloudburstmc.protocol.common")
-    }
-}

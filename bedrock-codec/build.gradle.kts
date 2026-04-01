@@ -10,10 +10,5 @@ dependencies {
 
     // Tests
     testImplementation(libs.junit)
-}
-
-tasks.jar {
-    manifest {
-        attributes("Automatic-Module-Name" to "org.cloudburstmc.protocol.bedrock.codec")
-    }
+    testRuntimeOnly(libs.junit.platform.launcher)
 }

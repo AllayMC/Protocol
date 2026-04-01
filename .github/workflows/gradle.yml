@@ -1,0 +1,72 @@
+name: Protocol
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - .github/workflows/gradle.yml
+      - gradle/**
+      - gradlew
+      - gradlew.bat
+      - gradle.properties
+      - settings.gradle.kts
+      - build.gradle.kts
+      - common/**
+      - bedrock-codec/**
+      - bedrock-connection/**
+  pull_request:
+    paths:
+      - .github/workflows/gradle.yml
+      - gradle/**
+      - gradlew
+      - gradlew.bat
+      - gradle.properties
+      - settings.gradle.kts
+      - build.gradle.kts
+      - common/**
+      - bedrock-codec/**
+      - bedrock-connection/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'zulu'
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v4
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: wrapper
+          cache-overwrite-existing: true
+          cache-read-only: false
+          build-scan-publish: true
+          build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
+          build-scan-terms-of-use-agree: "yes"
+
+      - name: Build
+        run: |
+          chmod +x gradlew
+          ./gradlew build
+
+      - name: Publish to Maven Central
+        if: success() && github.event_name == 'push' && github.repository == 'AllayMC/Protocol' && github.ref_name == 'main'
+        run: |
+          ./gradlew :common:publishToMavenCentral
+          ./gradlew :bedrock-codec:publishToMavenCentral
+          ./gradlew :bedrock-connection:publishToMavenCentral
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SONATYPE_SECRET_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SONATYPE_SECRET_KEY_PASSWORD }}
