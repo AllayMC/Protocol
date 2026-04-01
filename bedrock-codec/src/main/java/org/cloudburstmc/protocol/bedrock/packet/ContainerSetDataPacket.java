@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update specific data of a single container, meaning a block such as a
+ * furnace or a brewing stand. This data is usually used by the client to display certain features
+ * client-side.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -42,4 +47,3 @@ public class ContainerSetDataPacket implements BedrockPacket {
         }
     }
 }
-

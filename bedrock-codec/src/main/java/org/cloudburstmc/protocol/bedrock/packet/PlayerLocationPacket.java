@@ -6,6 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to the client to either update a player's position on the locator bar, or
+ * remove them completely. The client will determine how to render the player on the locator bar
+ * based on their own distance to Position.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

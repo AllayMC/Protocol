@@ -196,7 +196,7 @@ public class AvailableCommandsSerializer_v291 implements BedrockPacketSerializer
                 overloads[i].getOverloads()[i2] = readParameter(buffer, helper, enums, postfixes, softEnumParameters);
             }
         }
-        return new CommandData(name, description, flags, permissions, aliases, Collections.emptyList(), overloads);
+        return new CommandData(name, description, flags, permissions, aliases, overloads, Collections.emptyList());
     }
 
     protected void writeFlags(ByteBuf buffer, Set<CommandData.Flag> flags) {

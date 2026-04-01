@@ -6,6 +6,12 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.PhotoType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to transfer a photo (image) file to the client. It is typically used to
+ * transfer photos so that the client can display it in a portfolio in Education Edition. While
+ * previously usable in the default Bedrock Edition, the displaying of photos in books was disabled
+ * and the packet now has little use anymore.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -48,4 +54,3 @@ public class PhotoTransferPacket implements BedrockPacket {
         }
     }
 }
-

@@ -9,13 +9,13 @@ import org.cloudburstmc.protocol.bedrock.data.PredictionType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent to the client when the server's movement prediction system does not match what the client is sending.
+ * Sent to the client when the server's movement prediction system does not match what the client is
+ * sending.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CorrectPlayerMovePredictionPacket implements BedrockPacket {
-
     /**
      * Client's reported position by the server
      *
@@ -23,7 +23,6 @@ public class CorrectPlayerMovePredictionPacket implements BedrockPacket {
      * @return reported position
      */
     private Vector3f position;
-
     /**
      * Difference in client and server prediction
      *
@@ -31,7 +30,6 @@ public class CorrectPlayerMovePredictionPacket implements BedrockPacket {
      * @return position difference
      */
     private Vector3f delta;
-
     /**
      * If the client is on the ground. (Not falling or jumping)
      *
@@ -39,7 +37,6 @@ public class CorrectPlayerMovePredictionPacket implements BedrockPacket {
      * @return is client on the ground
      */
     private boolean onGround;
-
     /**
      * The tick which is being corrected by the server.
      *
@@ -47,21 +44,16 @@ public class CorrectPlayerMovePredictionPacket implements BedrockPacket {
      * @return to be corrected
      */
     private long tick;
-
     /**
-     * @since 649
-     *
-     * The type of prediction player sends.
+     * @since v649
+     * <p>The type of prediction player sends.
      */
     private PredictionType predictionType = PredictionType.PLAYER;
-
     /**
-     * @since 671
-     *
-     * The rotation of the vehicle.
+     * @since v671
+     * <p>The rotation of the vehicle.
      */
     private Vector2f vehicleRotation;
-
     /**
      * @since v712
      */
@@ -86,4 +78,3 @@ public class CorrectPlayerMovePredictionPacket implements BedrockPacket {
         }
     }
 }
-

@@ -13,6 +13,12 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the server to the client to update the data of a map shown to the client. It is sent with
+ * a combination of flags that specify what data is updated. The ClientBoundMapItemData packet may
+ * be used to update specific parts of the map only. It is not required to send the entire map each
+ * time when updating one part.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -22,13 +28,17 @@ public class ClientboundMapItemDataPacket implements BedrockPacket {
     private final List<MapDecoration> decorations = new ObjectArrayList<>();
     private long uniqueMapId;
     private int dimensionId;
+    /**
+     * @since v354
+     */
     private boolean locked;
     /**
      * The world-relative position of the map's origin.
      *
-     * @since 1.19.20
+     * @since v544
      */
     private Vector3i origin;
+
     private int scale;
     private int height;
     private int width;
@@ -54,4 +64,3 @@ public class ClientboundMapItemDataPacket implements BedrockPacket {
         }
     }
 }
-

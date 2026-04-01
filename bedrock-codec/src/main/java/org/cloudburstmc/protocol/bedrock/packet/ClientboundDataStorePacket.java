@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Sends a list of data store properties from the server to the client
  *
- * @since v897
+ * @since v898
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)

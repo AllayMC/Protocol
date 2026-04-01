@@ -9,6 +9,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.EnumSet;
 import java.util.Set;
 
+/**
+ * Sent by the server to damage the armor of a player. It is a very efficient packet, but generally
+ * it's much easier to just send a slot update for the damaged armor.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -35,4 +39,3 @@ public class PlayerArmorDamagePacket implements BedrockPacket {
         }
     }
 }
-

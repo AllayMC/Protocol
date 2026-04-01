@@ -10,6 +10,9 @@ public class DataStoreUpdate implements DataStoreAction {
     private String path;
     private Object data;
     private int updateCount;
+    /**
+     * @since v924
+     */
     private int pathUpdateCount;
 
     @Override

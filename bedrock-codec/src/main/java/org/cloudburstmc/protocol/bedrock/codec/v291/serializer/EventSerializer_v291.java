@@ -142,8 +142,8 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
         int entityDamageCause = VarInts.readInt(buffer);
         int villagerTradeTier = VarInts.readInt(buffer);
         String villagerDisplayName = helper.readString(buffer);
-        return new MobKilledEventData(killerUniqueEntityId, victimUniqueEntityId, -1, entityDamageCause,
-                villagerTradeTier, villagerDisplayName);
+        return new MobKilledEventData(killerUniqueEntityId, victimUniqueEntityId, entityDamageCause,
+                villagerTradeTier, villagerDisplayName, -1);
     }
 
     protected void writeMobKilled(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
@@ -172,7 +172,7 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
     protected PlayerDiedEventData readPlayerDied(ByteBuf buffer, BedrockCodecHelper helper) {
         int attackerEntityId = VarInts.readInt(buffer);
         int entityDamageCause = VarInts.readInt(buffer);
-        return new PlayerDiedEventData(attackerEntityId, -1, entityDamageCause, false);
+        return new PlayerDiedEventData(attackerEntityId, entityDamageCause, -1, false);
     }
 
     protected void writePlayerDied(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {

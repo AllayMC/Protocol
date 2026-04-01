@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.common.util.index.Indexable;
 import org.cloudburstmc.protocol.common.util.index.Unindexed;
 
 @Value
-@RequiredArgsConstructor(onConstructor_ = { @Deprecated })
+@RequiredArgsConstructor(onConstructor_ = {@Deprecated})
 public class BiomeConsolidatedFeatureData {
     BiomeScatterParamData scatter;
     @Getter(AccessLevel.NONE)
@@ -22,7 +22,7 @@ public class BiomeConsolidatedFeatureData {
 
     @JsonCreator
     public BiomeConsolidatedFeatureData(BiomeScatterParamData scatter, String feature, String identifier, String pass,
-            boolean internalUse) {
+                                        boolean internalUse) {
         this.scatter = scatter;
         this.feature = new Unindexed<>(feature);
         this.identifier = new Unindexed<>(identifier);

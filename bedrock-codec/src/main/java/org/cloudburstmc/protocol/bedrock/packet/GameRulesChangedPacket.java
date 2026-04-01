@@ -9,6 +9,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the server to the client to update client-side game rules, such as game rules like the
+ * 'showCoordinates' game rule.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -33,4 +37,3 @@ public class GameRulesChangedPacket implements BedrockPacket {
         }
     }
 }
-

@@ -8,6 +8,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the client in response to resource packets sent by the server. It is used to let the
+ * server know what action needs to be taken for the client to have all resource packs ready and
+ * set.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -41,4 +46,3 @@ public class ResourcePackClientResponsePacket implements BedrockPacket {
         }
     }
 }
-

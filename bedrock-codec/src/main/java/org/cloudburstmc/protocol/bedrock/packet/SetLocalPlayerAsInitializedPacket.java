@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client in response to a PlayStatus packet with the status set to 3. The packet marks
+ * the moment at which the client is fully initialised and can receive any packet without discarding
+ * it.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -29,4 +34,3 @@ public class SetLocalPlayerAsInitializedPacket implements BedrockPacket {
         }
     }
 }
-

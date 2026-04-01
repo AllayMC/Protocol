@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to stop a sound playing to the player, such as a playing music disk track or
+ * other long-lasting sounds.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -34,4 +38,3 @@ public class StopSoundPacket implements BedrockPacket {
         }
     }
 }
-

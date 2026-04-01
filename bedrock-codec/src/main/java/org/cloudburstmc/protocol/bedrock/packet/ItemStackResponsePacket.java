@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ItemStackResponse is sent by the server in response to an ItemStackRequest packet from the client. This
- * packet is used to either approve or reject ItemStackRequests from the client. If a request is approved, the
- * client will simply continue as normal. If rejected, the client will undo the actions so that the inventory
- * should be in sync with the server again.
+ * ItemStackResponse is sent by the server in response to an ItemStackRequest packet from the
+ * client. This packet is used to either approve or reject ItemStackRequests from the client. If a
+ * request is approved, the client will simply continue as normal. If rejected, the client will undo
+ * the actions so that the inventory should be in sync with the server again.
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -40,4 +40,3 @@ public class ItemStackResponsePacket implements BedrockPacket {
         }
     }
 }
-

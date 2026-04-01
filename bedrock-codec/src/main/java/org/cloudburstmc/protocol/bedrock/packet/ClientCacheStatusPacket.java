@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client to the server at the start of the game. It is sent to let the server know if
+ * it supports the client-side blob cache. Clients such as Nintendo Switch do not support the cache,
+ * and attempting to use it anyway will fail.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -29,4 +34,3 @@ public class ClientCacheStatusPacket implements BedrockPacket {
         }
     }
 }
-

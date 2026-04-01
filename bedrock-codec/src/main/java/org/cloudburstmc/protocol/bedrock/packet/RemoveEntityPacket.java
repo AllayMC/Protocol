@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to remove an entity that currently exists in the world from the client- side.
+ * Sending this packet if the client cannot already see this entity will have no effect.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -29,4 +33,3 @@ public class RemoveEntityPacket implements BedrockPacket {
         }
     }
 }
-

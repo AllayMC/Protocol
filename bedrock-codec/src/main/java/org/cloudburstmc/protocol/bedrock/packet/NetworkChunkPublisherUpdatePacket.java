@@ -10,6 +10,15 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the server to change the point around which chunks are and remain loaded. This is useful
+ * for mini-game servers, where only one area is ever loaded, in which case the
+ * NetworkChunkPublisherUpdate packet can be sent in the middle of it, so that no chunks ever need
+ * to be additionally sent during the course of the game. In reality, the packet is not
+ * extraordinarily useful, and most servers just send it constantly at the position of the player.
+ * If the packet is not sent at all, no chunks will be shown to the player, regardless of where they
+ * are sent.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -17,10 +26,10 @@ public class NetworkChunkPublisherUpdatePacket implements BedrockPacket {
     private Vector3i position;
     private int radius;
     /**
-     * Lets the client know which chunks have been saved, and need
-     * requesting whilst client chunk generation is enabled.
+     * Lets the client know which chunks have been saved, and need requesting whilst client chunk
+     * generation is enabled.
      *
-     * @since 1.19.20
+     * @since v544
      */
     private final List<Vector2i> savedChunks = new ObjectArrayList<>();
 
@@ -42,4 +51,3 @@ public class NetworkChunkPublisherUpdatePacket implements BedrockPacket {
         }
     }
 }
-

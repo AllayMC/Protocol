@@ -5,5 +5,5 @@ public enum AttributeOperation {
     MULTIPLY_BASE,
     MULTIPLY_TOTAL,
     CAP,
-    INVALID;
+    INVALID
 }

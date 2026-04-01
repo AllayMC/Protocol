@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * A packet sent from the server to the client to update the adventure settings of the player. It,
+ * along with the UpdateAbilities packet, are replacements of the AdventureSettings packet since
+ * v1.19.10.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -33,4 +38,3 @@ public class UpdateAdventureSettingsPacket implements BedrockPacket {
         }
     }
 }
-

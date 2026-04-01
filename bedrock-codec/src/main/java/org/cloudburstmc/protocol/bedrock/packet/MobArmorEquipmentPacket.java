@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to the client to update the armor an entity is wearing. It is sent for both
+ * players and other entities, such as zombies.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -38,4 +42,3 @@ public class MobArmorEquipmentPacket implements BedrockPacket {
         }
     }
 }
-

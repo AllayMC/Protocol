@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to transfer a player from the current server to another. Doing so will fully
+ * disconnect the client, bring it back to the main menu and make it connect to the next server.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -34,4 +38,3 @@ public class TransferPacket implements BedrockPacket {
         }
     }
 }
-

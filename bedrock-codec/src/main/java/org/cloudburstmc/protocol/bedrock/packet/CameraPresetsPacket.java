@@ -4,12 +4,14 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraPreset;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Gives the client a list of custom camera presets.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -35,4 +37,3 @@ public class CameraPresetsPacket implements BedrockPacket {
         }
     }
 }
-

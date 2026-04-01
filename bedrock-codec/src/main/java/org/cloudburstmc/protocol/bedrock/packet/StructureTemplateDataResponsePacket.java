@@ -7,6 +7,10 @@ import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureTemplateResponseType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to send data of a structure to the client in response to a
+ * StructureTemplateDataRequest packet.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -14,6 +18,9 @@ public class StructureTemplateDataResponsePacket implements BedrockPacket {
     private String name;
     private boolean save;
     private NbtMap tag;
+    /**
+     * @since v388
+     */
     private StructureTemplateResponseType type;
 
     @Override
@@ -34,4 +41,3 @@ public class StructureTemplateDataResponsePacket implements BedrockPacket {
         }
     }
 }
-

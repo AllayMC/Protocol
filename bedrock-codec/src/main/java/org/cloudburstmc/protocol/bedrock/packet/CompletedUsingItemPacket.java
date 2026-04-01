@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemUseType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to tell the client that it should be done using the item it is currently
+ * using.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -31,4 +35,3 @@ public class CompletedUsingItemPacket implements BedrockPacket {
         }
     }
 }
-

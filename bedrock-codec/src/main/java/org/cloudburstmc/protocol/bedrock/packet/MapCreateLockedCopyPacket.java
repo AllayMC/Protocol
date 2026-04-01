@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client to create a locked copy of one map into another map. In vanilla, it is used in
+ * the cartography table to create a map that is locked and cannot be modified.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -30,4 +34,3 @@ public class MapCreateLockedCopyPacket implements BedrockPacket {
         }
     }
 }
-

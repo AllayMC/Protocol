@@ -7,7 +7,9 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Deprecated since v662
+ * Sent by the client when it takes an item out of an item frame.
+ *
+ * @deprecated since v662
  */
 @Deprecated
 @Data
@@ -34,4 +36,3 @@ public class ItemFrameDropItemPacket implements BedrockPacket {
         }
     }
 }
-

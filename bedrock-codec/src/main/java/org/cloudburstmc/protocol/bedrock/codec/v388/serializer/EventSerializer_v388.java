@@ -29,8 +29,8 @@ public class EventSerializer_v388 extends EventSerializer_v354 {
         int entityDamageCause = VarInts.readInt(buffer);
         int villagerTradeTier = VarInts.readInt(buffer);
         String villagerDisplayName = helper.readString(buffer);
-        return new MobKilledEventData(killerUniqueEntityId, victimUniqueEntityId, killerEntityType, entityDamageCause,
-                villagerTradeTier, villagerDisplayName);
+        return new MobKilledEventData(killerUniqueEntityId, victimUniqueEntityId, entityDamageCause,
+                villagerTradeTier, villagerDisplayName, killerEntityType);
     }
 
     @Override

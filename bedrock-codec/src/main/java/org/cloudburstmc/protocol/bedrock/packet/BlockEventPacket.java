@@ -12,36 +12,45 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  * <h2>Examples</h2>
  *
  * <h3>Note Block</h3>
+ *
  * <blockquote>
- *     eventType: (Instrument)
- *     <ul>
- *         <li>0 (Piano)</li>
- *         <li>1 (Base Drum)</li>
- *         <li>2 (Sticks)</li>
- *         <li>3 (Drum)</li>
- *         <li>4 (Bass)</li>
- *     </ul>
- *     data: 0-15
+ * <p>
+ * eventType: (Instrument)
+ *
+ * <ul>
+ *   <li>0 (Piano)
+ *   <li>1 (Base Drum)
+ *   <li>2 (Sticks)
+ *   <li>3 (Drum)
+ *   <li>4 (Bass)
+ * </ul>
+ * <p>
+ * data: 0-15
+ *
  * </blockquote>
  *
  * <h3>Chest Block</h3>
+ *
  * <blockquote>
- *     eventType: 1 (Chest open/closed)<br>
- *     data: 0 or 1
+ * <p>
+ * eventType: 1 (Chest open/closed)<br>
+ * data: 0 or 1
+ *
  * </blockquote>
  *
  * <h3>End Gateway</h3>
- * <blockquote>
- *     eventType: 1 (Cool down)<br>
- *     data: n/a
- * </blockquote>
  *
- **/
+ * <blockquote>
+ * <p>
+ * eventType: 1 (Cool down)<br>
+ * data: n/a
+ *
+ * </blockquote>
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class BlockEventPacket implements BedrockPacket {
-
     /**
      * Position to execute block event.
      *
@@ -49,7 +58,6 @@ public class BlockEventPacket implements BedrockPacket {
      * @return block event position
      */
     private Vector3i blockPosition;
-
     /**
      * Block event type to execute
      *
@@ -57,7 +65,6 @@ public class BlockEventPacket implements BedrockPacket {
      * @return block event type
      */
     private int eventType;
-
     /**
      * Data used by event (if applicable)
      *
@@ -84,4 +91,3 @@ public class BlockEventPacket implements BedrockPacket {
         }
     }
 }
-

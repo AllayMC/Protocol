@@ -6,7 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Deprecated since v594
+ * Sent by both the client and the server. It is a way to let scripts communicate with the server,
+ * so that the client can let the server know it triggered an event, or the other way around.
+ * ScriptCustomEvent is deprecated as of 1.20.10.
+ *
+ * @deprecated since v594
  */
 @Deprecated
 @Data
@@ -34,5 +38,3 @@ public class ScriptCustomEventPacket implements BedrockPacket {
         }
     }
 }
-
-

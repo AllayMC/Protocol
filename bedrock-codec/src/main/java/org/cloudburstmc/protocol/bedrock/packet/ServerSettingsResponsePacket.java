@@ -5,6 +5,13 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Optionally sent by the server in response to a ServerSettingsRequest from the client. It is
+ * structured the same as a ModalFormRequest packet, and if filled out correctly, will show a
+ * specific tab for the server in the settings of the client. A ModalFormResponse packet is sent by
+ * the client in response to a ServerSettingsResponse, when the client fills out the settings and
+ * closes the settings again.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -30,4 +37,3 @@ public class ServerSettingsResponsePacket implements BedrockPacket {
         }
     }
 }
-

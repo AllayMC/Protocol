@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client to request photo information from the server. Deprecated: This packet was
+ * deprecated in 1.19.80.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -30,4 +34,3 @@ public class PhotoInfoRequestPacket implements BedrockPacket {
         }
     }
 }
-

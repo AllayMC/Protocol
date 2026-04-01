@@ -15,7 +15,6 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayerFogPacket implements BedrockPacket {
-
     /**
      * Fog stack containing fog effects from the /fog command
      *
@@ -43,4 +42,3 @@ public class PlayerFogPacket implements BedrockPacket {
         }
     }
 }
-

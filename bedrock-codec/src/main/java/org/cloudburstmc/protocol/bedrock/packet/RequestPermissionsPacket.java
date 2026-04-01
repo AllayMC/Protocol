@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.PlayerPermission;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * A packet sent from the client to the server to request permissions that the client does not
+ * currently have. It can only be sent by operators and host in vanilla Minecraft.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -33,4 +37,3 @@ public class RequestPermissionsPacket implements BedrockPacket {
         }
     }
 }
-

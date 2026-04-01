@@ -9,6 +9,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the server to send the contents of a scoreboard to the player. It may be used to either
+ * add, remove or edit entries on the scoreboard.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -39,4 +43,3 @@ public class SetScorePacket implements BedrockPacket {
         }
     }
 }
-

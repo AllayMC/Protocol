@@ -9,6 +9,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Essentially just UpdateBlock packet, however for a set of blocks in a sub-chunk.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -39,4 +42,3 @@ public class UpdateSubChunkBlocksPacket implements BedrockPacket {
         }
     }
 }
-

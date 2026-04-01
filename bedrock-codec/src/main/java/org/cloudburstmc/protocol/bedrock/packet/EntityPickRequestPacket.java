@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it tries to pick an entity, so that it gets a spawn egg which can spawn
+ * that entity.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -34,4 +38,3 @@ public class EntityPickRequestPacket implements BedrockPacket {
         }
     }
 }
-

@@ -9,27 +9,40 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to provide the client with a chunk of a world data (16xYx16 blocks).
+ * Typically, a certain amount of chunks is sent to the client before sending it the spawn
+ * PlayStatus packet, so that the client spawns in a loaded world.
+ */
 @Data
-@ToString(doNotUseGetters = true, exclude = {"data"})
+@ToString(
+        doNotUseGetters = true,
+        exclude = {"data"})
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class LevelChunkPacket extends AbstractReferenceCounted implements BedrockPacket {
     private int chunkX;
     private int chunkZ;
+    /**
+     * @since v361
+     */
     private int subChunksLength;
+    /**
+     * @since v361
+     */
     private boolean cachingEnabled;
     /**
-     * @since v471
+     * @since v361
+     */
+    private final LongList blobIds = new LongArrayList();
+    /**
+     * @since v486
      */
     private boolean requestSubChunks;
     /**
-     * @since v485
+     * @since v486
      */
     private int subChunkLimit;
-
-    private final LongList blobIds = new LongArrayList();
-
     private ByteBuf data;
-
     /**
      * @since v649
      */
@@ -60,4 +73,3 @@ public class LevelChunkPacket extends AbstractReferenceCounted implements Bedroc
         throw new UnsupportedOperationException("Can not clone reference counted packet");
     }
 }
-

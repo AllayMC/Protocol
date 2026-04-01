@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * A packet sent by the server to the client. It does not seem to do anything when sent to the
+ * normal client in 1.16.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -31,4 +35,3 @@ public class DebugInfoPacket implements BedrockPacket {
         }
     }
 }
-

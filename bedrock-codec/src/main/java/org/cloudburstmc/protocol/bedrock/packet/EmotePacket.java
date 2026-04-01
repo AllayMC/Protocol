@@ -9,6 +9,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.EnumSet;
 import java.util.Set;
 
+/**
+ * Sent by both the server and the client. When the client sends an emote, it sends this packet to
+ * the server, after which the server will broadcast the packet to other players online.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -19,9 +23,10 @@ public class EmotePacket implements BedrockPacket {
      */
     private String xuid;
     /**
-     * @since 589
+     * @since v589
      */
     private String platformId;
+
     private String emoteId;
     private final Set<EmoteFlag> flags = EnumSet.noneOf(EmoteFlag.class);
     /**
@@ -47,4 +52,3 @@ public class EmotePacket implements BedrockPacket {
         }
     }
 }
-

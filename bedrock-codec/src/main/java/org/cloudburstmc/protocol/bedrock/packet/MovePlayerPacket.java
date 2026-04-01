@@ -8,6 +8,10 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by players to send their movement to the server, and by the server to update the movement of
+ * player entities to other players.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -20,6 +24,9 @@ public class MovePlayerPacket implements BedrockPacket {
     private long ridingRuntimeEntityId;
     private TeleportationCause teleportationCause;
     private int entityType;
+    /**
+     * @since v419
+     */
     private long tick;
 
     @Override
@@ -45,7 +52,8 @@ public class MovePlayerPacket implements BedrockPacket {
         COMMAND,
         BEHAVIOR;
 
-        private static final InternalLogger log = InternalLoggerFactory.getInstance(TeleportationCause.class);
+        private static final InternalLogger log =
+                InternalLoggerFactory.getInstance(TeleportationCause.class);
 
         private static final TeleportationCause[] VALUES = values();
 
@@ -67,4 +75,3 @@ public class MovePlayerPacket implements BedrockPacket {
         }
     }
 }
-

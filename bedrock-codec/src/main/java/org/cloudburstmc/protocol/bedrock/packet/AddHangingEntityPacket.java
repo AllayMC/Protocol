@@ -6,6 +6,9 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to make a hanging entity show up client-side.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -33,4 +36,3 @@ public class AddHangingEntityPacket implements BedrockPacket {
         }
     }
 }
-

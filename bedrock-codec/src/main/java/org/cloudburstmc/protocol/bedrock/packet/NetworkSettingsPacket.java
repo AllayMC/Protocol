@@ -7,6 +7,10 @@ import org.cloudburstmc.protocol.bedrock.annotation.Incompressible;
 import org.cloudburstmc.protocol.bedrock.data.PacketCompressionAlgorithm;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update a variety of network settings. These settings modify the way packets
+ * are sent over the network stack.
+ */
 @Data
 @Incompressible
 @EqualsAndHashCode(doNotUseGetters = true)
@@ -19,12 +23,13 @@ public class NetworkSettingsPacket implements BedrockPacket {
     /**
      * Set the compression type to be used on the connection.
      *
-     * @since v551
+     * @since v554
      */
     private PacketCompressionAlgorithm compressionAlgorithm;
     /**
-     * Enable client throttling of players out of the threshold. Players out of the threshold will not be ticked on the
-     * client, reducing the performance hit on lower end devices when in densely populated areas.
+     * Enable client throttling of players out of the threshold. Players out of the threshold will not
+     * be ticked on the client, reducing the performance hit on lower end devices when in densely
+     * populated areas.
      *
      * @since v554
      */
@@ -56,4 +61,3 @@ public class NetworkSettingsPacket implements BedrockPacket {
         }
     }
 }
-

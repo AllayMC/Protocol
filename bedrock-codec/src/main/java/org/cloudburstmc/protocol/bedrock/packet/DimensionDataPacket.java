@@ -10,10 +10,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * Sends a list of the data-driven dimensions to the client.
- * This packet is sent before the {@link StartGamePacket} in the login sequence.
+ * Sends a list of the data-driven dimensions to the client. This packet is sent before the {@link
+ * StartGamePacket} in the login sequence.
  *
- * <b>Note:</b> The client only supports sending the <code>minecraft:overworld</code> dimension as of 1.18.30
+ * <p><b>Note:</b> The client only supports sending the <code>minecraft:overworld</code> dimension
+ * as of 1.18.30
  *
  * @since v503
  */
@@ -42,4 +43,3 @@ public class DimensionDataPacket implements BedrockPacket {
         }
     }
 }
-

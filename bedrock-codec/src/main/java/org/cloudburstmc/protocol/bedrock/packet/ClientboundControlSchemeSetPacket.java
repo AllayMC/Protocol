@@ -6,6 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ControlScheme;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server upon the client's request or the usage of the vanilla /controlscheme command.
+ * It is used to set the control scheme of the client, often used in combination with custom
+ * cameras.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

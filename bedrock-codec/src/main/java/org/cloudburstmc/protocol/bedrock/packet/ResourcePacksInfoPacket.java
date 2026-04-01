@@ -1,12 +1,19 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Sent by the server to inform the client on what resource packs the server has. It sends a list of
+ * the resource packs it has and basic information on them like the version and description.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -15,18 +22,22 @@ public class ResourcePacksInfoPacket implements BedrockPacket {
      * @deprecated since v729
      */
     private final List<Entry> behaviorPackInfos = new ObjectArrayList<>();
+
     private final List<Entry> resourcePackInfos = new ObjectArrayList<>();
     private boolean forcedToAccept;
     /**
-     * @since v662
+     * @since v332
      */
-    private boolean hasAddonPacks;
     private boolean scriptingEnabled;
     /**
      * @since v448
      * @deprecated since v729
      */
     private boolean forcingServerPacksEnabled;
+    /**
+     * @since v662
+     */
+    private boolean hasAddonPacks;
     /**
      * @since v766
      */
@@ -60,16 +71,22 @@ public class ResourcePacksInfoPacket implements BedrockPacket {
         private String contentKey;
         private String subPackName;
         private String contentId;
+        /**
+         * @since v332
+         */
         private boolean scripting;
+        /**
+         * @since v422
+         */
         private boolean raytracingCapable;
+        /**
+         * @since v618
+         */
+        private String cdnUrl;
         /**
          * @since v712
          */
         private boolean addonPack;
-        /**
-         * @since v748
-         */
-        private String cdnUrl;
     }
 
     @Override
@@ -81,4 +98,3 @@ public class ResourcePacksInfoPacket implements BedrockPacket {
         }
     }
 }
-

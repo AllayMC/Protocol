@@ -8,6 +8,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the client to the server to send chat messages, and by the server to the client to
+ * forward or send messages, which may be chat, popups, tips etc.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -46,7 +50,7 @@ public class TextPacket implements BedrockPacket {
         WHISPER_JSON,
         JSON,
         /**
-         * @since v553
+         * @since v554
          */
         ANNOUNCEMENT_JSON
     }
@@ -76,4 +80,3 @@ public class TextPacket implements BedrockPacket {
         return type.cast(filteredMessage);
     }
 }
-

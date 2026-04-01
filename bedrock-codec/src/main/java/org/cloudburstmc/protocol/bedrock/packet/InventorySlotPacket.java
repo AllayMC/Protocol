@@ -8,6 +8,11 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.FullContainerName;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update a single slot in one of the inventory windows that the client
+ * currently has opened. Usually this is the main inventory, but it may also be the off hand or, for
+ * example, a chest inventory.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -18,7 +23,8 @@ public class InventorySlotPacket implements BedrockPacket {
     /**
      * @since v712
      */
-    private FullContainerName containerNameData = new FullContainerName(ContainerSlotType.ANVIL_INPUT, null);
+    private FullContainerName containerNameData =
+            new FullContainerName(ContainerSlotType.ANVIL_INPUT, null);
     /**
      * @since v729
      * @deprecated since v748. Use storageItem ItemData size instead.
@@ -47,4 +53,3 @@ public class InventorySlotPacket implements BedrockPacket {
         }
     }
 }
-

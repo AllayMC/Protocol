@@ -6,6 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.MultiplayerMode;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client to update multi-player related settings server-side and sent back to online
+ * players by the server. The MultiPlayerSettings packet is a Minecraft: Education Edition packet.
+ * It has no functionality for the base game.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -30,4 +35,3 @@ public class MultiplayerSettingsPacket implements BedrockPacket {
         }
     }
 }
-

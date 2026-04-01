@@ -7,6 +7,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.EnumSet;
 import java.util.Set;
 
+/**
+ * Sent by the server to move an entity. The packet is specifically optimised to save as much space
+ * as possible, by only writing non-zero fields. As of 1.16.100, this packet no longer actually
+ * contains any deltas.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 public class MoveEntityDeltaPacket implements BedrockPacket {
@@ -17,9 +22,17 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
     private int deltaX;
     private int deltaY;
     private int deltaZ;
-
+    /**
+     * @since v419
+     */
     private float x;
+    /**
+     * @since v419
+     */
     private float y;
+    /**
+     * @since v419
+     */
     private float z;
 
     private float pitch;
@@ -36,10 +49,29 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
     }
 
     public String toString() {
-        return "MoveEntityDeltaPacket(runtimeEntityId=" + runtimeEntityId +
-                ", flags=" + flags + ", delta=(" + deltaX + ", " + deltaY + ", " + deltaZ +
-                "), position=(" + x + ", " + y + ", " + z +
-                "), rotation=(" + pitch + ", " + yaw + ", " + headYaw + "))";
+        return "MoveEntityDeltaPacket(runtimeEntityId="
+               + runtimeEntityId
+               + ", flags="
+               + flags
+               + ", delta=("
+               + deltaX
+               + ", "
+               + deltaY
+               + ", "
+               + deltaZ
+               + "), position=("
+               + x
+               + ", "
+               + y
+               + ", "
+               + z
+               + "), rotation=("
+               + pitch
+               + ", "
+               + yaw
+               + ", "
+               + headYaw
+               + "))";
     }
 
     public enum Flag {
@@ -63,4 +95,3 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
         }
     }
 }
-

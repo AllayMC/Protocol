@@ -10,12 +10,14 @@ public interface ItemDefinition extends NamedDefinition {
 
     /**
      * Whether this item is data driven.
+     *
      * @return true if this item is data driven, false if it is not.
      */
     boolean isComponentBased();
 
     /**
      * Get the component data NBT for this item.
+     *
      * @return the component data NBT, or null if this item is not data driven.
      */
     default NbtMap getComponentData() {

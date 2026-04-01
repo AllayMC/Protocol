@@ -6,7 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.annotation.NoEncryption;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-
+/**
+ * Sent by the server to the client to complete the key exchange in order to initialise encryption
+ * on client and server side. It is followed up by a ClientToServerHandshake packet from the client.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -32,4 +35,3 @@ public class ServerToClientHandshakePacket implements BedrockPacket {
         }
     }
 }
-

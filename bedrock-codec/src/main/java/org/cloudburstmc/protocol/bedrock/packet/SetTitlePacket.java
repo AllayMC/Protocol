@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to make a title, subtitle or action bar shown to a player. It has several
+ * fields that allow setting the duration of the titles.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -73,4 +77,3 @@ public class SetTitlePacket implements BedrockPacket {
         return type.cast(filteredTitleText);
     }
 }
-

@@ -8,6 +8,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.UUID;
 
+/**
+ * Sent by the server to the client to inform the client about the data contained in one of the
+ * resource packs that are about to be sent.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -18,7 +22,13 @@ public class ResourcePackDataInfoPacket implements BedrockPacket {
     private long chunkCount;
     private long compressedPackSize;
     private byte[] hash;
+    /**
+     * @since v361
+     */
     private boolean premium;
+    /**
+     * @since v361
+     */
     private ResourcePackType type;
 
     @Override
@@ -39,4 +49,3 @@ public class ResourcePackDataInfoPacket implements BedrockPacket {
         }
     }
 }
-

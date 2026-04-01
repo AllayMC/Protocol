@@ -12,7 +12,15 @@ import java.util.EnumSet;
 import java.util.Set;
 
 /**
- * @deprecated Removed in 1.19.30 (553). Use {@link UpdateAbilitiesPacket} and {@link UpdateAdventureSettingsPacket} instead.
+ * Sent by the server to update game-play related features, in particular permissions to access
+ * these features for the client. It includes allowing the player to fly, build and mine, and attack
+ * entities. Most of these flags should be checked server-side instead of using this packet only.
+ * The client may also send this packet to the server when it updates one of these settings through
+ * the in-game settings interface. The server should verify if the player actually has permission to
+ * update those settings.
+ *
+ * @deprecated Removed in 1.19.30 (553). Use {@link UpdateAbilitiesPacket} and {@link
+ * UpdateAdventureSettingsPacket} instead.
  */
 @Data
 @Deprecated
@@ -42,4 +50,3 @@ public class AdventureSettingsPacket implements BedrockPacket {
         }
     }
 }
-

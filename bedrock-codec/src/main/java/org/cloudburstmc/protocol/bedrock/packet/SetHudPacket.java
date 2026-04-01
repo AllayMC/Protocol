@@ -11,6 +11,8 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.Set;
 
 /**
+ * Sent by the server to set the visibility of individual HUD elements on the client.
+ *
  * @since v649
  */
 @Data
@@ -39,4 +41,3 @@ public class SetHudPacket implements BedrockPacket {
         }
     }
 }
-

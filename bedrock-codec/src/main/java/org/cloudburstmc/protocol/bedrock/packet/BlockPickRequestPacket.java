@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it requests to pick a block in the world and place its item in their
+ * inventory.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -32,4 +36,3 @@ public class BlockPickRequestPacket implements BedrockPacket {
         }
     }
 }
-

@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to make the client open a form. This form may be either a modal form which has
+ * two options, a menu form for a selection of options and a custom form for properties.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -30,4 +34,3 @@ public class ModalFormRequestPacket implements BedrockPacket {
         }
     }
 }
-

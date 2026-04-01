@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to make the client 'select' a hot bar slot. It currently appears to be broken
+ * however, and does not actually set the selected slot to the hot bar slot set in the packet.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -31,4 +35,3 @@ public class GuiDataPickItemPacket implements BedrockPacket {
         }
     }
 }
-

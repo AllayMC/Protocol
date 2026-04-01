@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it interacts with another entity in some way. It used to be used for
+ * normal entity and block interaction, but this is no longer the case now.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -42,4 +46,3 @@ public class InteractPacket implements BedrockPacket {
         }
     }
 }
-

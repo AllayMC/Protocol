@@ -1,6 +1,5 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -14,7 +13,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MotionPredictionHintsPacket implements BedrockPacket {
-
     /**
      * The runtime ID of the entity to set motion.
      *
@@ -22,7 +20,6 @@ public class MotionPredictionHintsPacket implements BedrockPacket {
      * @return runtime ID
      */
     private long runtimeEntityId;
-
     /**
      * Motion to set onto the specified entity
      *
@@ -30,7 +27,6 @@ public class MotionPredictionHintsPacket implements BedrockPacket {
      * @return motion of entity
      */
     private Vector3f motion;
-
     /**
      * If the entity is on the ground. (Not falling or jumping)
      *
@@ -58,4 +54,3 @@ public class MotionPredictionHintsPacket implements BedrockPacket {
         }
     }
 }
-

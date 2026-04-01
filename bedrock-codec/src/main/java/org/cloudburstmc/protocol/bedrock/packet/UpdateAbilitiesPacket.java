@@ -12,6 +12,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * A packet sent from the server to the client to update the abilities of the player. It, along with
+ * the UpdateAdventureSettings packet, are replacements of the AdventureSettings packet since
+ * v1.19.10.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -39,4 +44,3 @@ public class UpdateAbilitiesPacket implements BedrockPacket, PlayerAbilityHolder
         }
     }
 }
-

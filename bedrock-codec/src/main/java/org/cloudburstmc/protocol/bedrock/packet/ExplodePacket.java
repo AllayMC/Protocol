@@ -10,6 +10,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the server to make an explosion happen. The explosion will break all blocks in the packet
+ * client-side.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -36,4 +40,3 @@ public class ExplodePacket implements BedrockPacket {
         }
     }
 }
-

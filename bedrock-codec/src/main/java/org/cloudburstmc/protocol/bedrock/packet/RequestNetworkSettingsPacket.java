@@ -7,8 +7,8 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Initial packet sent in the login sequence by the client. The server is expected to respond to
- * this packet with the {@link NetworkSettingsPacket} and apply the compression settings that
- * are defined in the packet.
+ * this packet with the {@link NetworkSettingsPacket} and apply the compression settings that are
+ * defined in the packet.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)

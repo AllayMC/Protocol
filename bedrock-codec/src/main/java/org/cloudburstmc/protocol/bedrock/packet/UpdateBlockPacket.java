@@ -11,13 +11,19 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Set;
 
+/**
+ * Sent by the server to update a block client-side, without resending the entire chunk that the
+ * block is located in. It is particularly useful for small modifications like block
+ * breaking/placing.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateBlockPacket implements BedrockPacket {
-    public static final Set<Flag> FLAG_ALL = Collections.unmodifiableSet(EnumSet.of(Flag.NEIGHBORS, Flag.NETWORK));
-    public static final Set<Flag> FLAG_ALL_PRIORITY = Collections.unmodifiableSet(
-            EnumSet.of(Flag.NEIGHBORS, Flag.NETWORK, Flag.PRIORITY));
+    public static final Set<Flag> FLAG_ALL =
+            Collections.unmodifiableSet(EnumSet.of(Flag.NEIGHBORS, Flag.NETWORK));
+    public static final Set<Flag> FLAG_ALL_PRIORITY =
+            Collections.unmodifiableSet(EnumSet.of(Flag.NEIGHBORS, Flag.NETWORK, Flag.PRIORITY));
 
     final Set<Flag> flags = EnumSet.noneOf(Flag.class);
     Vector3i blockPosition;
@@ -50,4 +56,3 @@ public class UpdateBlockPacket implements BedrockPacket {
         }
     }
 }
-

@@ -19,7 +19,6 @@ import java.util.Map;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class GraphicsParameterOverridePacket implements BedrockPacket {
-
     private String biomeIdentifier;
     private GraphicsOverrideParameterType parameterType;
     private Map<Float, Vector3f> values;

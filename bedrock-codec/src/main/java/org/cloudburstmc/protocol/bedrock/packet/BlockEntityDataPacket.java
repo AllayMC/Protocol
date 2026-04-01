@@ -7,6 +7,9 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update data of a block entity client-side, for example the data of a chest.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -32,4 +35,3 @@ public class BlockEntityDataPacket implements BedrockPacket {
         }
     }
 }
-

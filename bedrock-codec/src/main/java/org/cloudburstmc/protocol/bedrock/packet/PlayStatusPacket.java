@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update a player on the play status. This includes failed statuses due to a
+ * mismatched version, but also success statuses.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -73,4 +77,3 @@ public class PlayStatusPacket implements BedrockPacket {
         }
     }
 }
-

@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update the game type, which is otherwise known as the game mode, of a
+ * player.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -29,4 +33,3 @@ public class SetPlayerGameTypePacket implements BedrockPacket {
         }
     }
 }
-

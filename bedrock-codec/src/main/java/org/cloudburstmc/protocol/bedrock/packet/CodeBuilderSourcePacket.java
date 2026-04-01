@@ -8,11 +8,14 @@ import org.cloudburstmc.protocol.bedrock.data.CodeBuilderCodeStatus;
 import org.cloudburstmc.protocol.bedrock.data.CodeBuilderOperationType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * An Education Edition packet sent by the client to the server to run an operation with a code
+ * builder.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CodeBuilderSourcePacket implements BedrockPacket {
-
     private CodeBuilderOperationType operation;
     private CodeBuilderCategoryType category;
     /**
@@ -43,4 +46,3 @@ public class CodeBuilderSourcePacket implements BedrockPacket {
         }
     }
 }
-

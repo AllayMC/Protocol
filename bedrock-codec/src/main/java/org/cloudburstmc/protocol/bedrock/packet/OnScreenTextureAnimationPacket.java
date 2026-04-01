@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to show a certain animation on the screen of the player. The packet is used,
+ * as an example, for when a raid is triggered and when a raid is defeated.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -29,4 +33,3 @@ public class OnScreenTextureAnimationPacket implements BedrockPacket {
         }
     }
 }
-

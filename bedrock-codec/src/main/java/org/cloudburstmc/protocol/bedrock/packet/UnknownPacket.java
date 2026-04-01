@@ -11,7 +11,8 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
-public final class UnknownPacket implements BedrockPacket, BedrockPacketSerializer<UnknownPacket>, ReferenceCounted {
+public final class UnknownPacket
+        implements BedrockPacket, BedrockPacketSerializer<UnknownPacket>, ReferenceCounted {
     private int packetId;
     private ByteBuf payload;
 
@@ -27,11 +28,14 @@ public final class UnknownPacket implements BedrockPacket, BedrockPacketSerializ
 
     @Override
     public String toString() {
-        return "UNKNOWN - " + getPacketId() + " - Hex: " + (payload == null || payload.refCnt() == 0 ? "null" : ByteBufUtil.hexDump(payload));
+        return "UNKNOWN - "
+               + getPacketId()
+               + " - Hex: "
+               + (payload == null || payload.refCnt() == 0 ? "null" : ByteBufUtil.hexDump(payload));
     }
 
     @Override
-    public final PacketSignal handle(BedrockPacketHandler handler) {
+    public PacketSignal handle(BedrockPacketHandler handler) {
         return PacketSignal.UNHANDLED;
     }
 
@@ -91,4 +95,3 @@ public final class UnknownPacket implements BedrockPacket, BedrockPacketSerializ
         throw new UnsupportedOperationException("Can not clone reference counted packet");
     }
 }
-

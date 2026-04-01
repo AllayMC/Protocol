@@ -7,6 +7,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.UUID;
 
+/**
+ * Sent by the client to request a chunk of data from a particular resource pack, that it has
+ * obtained information about in a ResourcePackDataInfo packet.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -33,4 +37,3 @@ public class ResourcePackChunkRequestPacket implements BedrockPacket {
         }
     }
 }
-

@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ServerboundLoadingScreenPacketType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client to tell the server about the state of the loading screen that the client is
+ * currently displaying.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

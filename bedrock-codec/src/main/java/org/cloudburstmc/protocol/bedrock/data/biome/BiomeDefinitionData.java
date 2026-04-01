@@ -8,7 +8,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.common.util.index.Indexable;
 import org.cloudburstmc.protocol.common.util.index.Unindexed;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.List;
 
 @Value

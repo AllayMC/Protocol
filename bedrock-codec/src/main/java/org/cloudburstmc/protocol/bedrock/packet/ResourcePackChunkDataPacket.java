@@ -9,9 +9,16 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.UUID;
 
+/**
+ * Sent to the client so that the client can download the resource pack. Each packet holds a chunk
+ * of the compressed resource pack, of which the size is defined in the ResourcePackDataInfo packet
+ * sent before.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
-@ToString(doNotUseGetters = true, exclude = {"data"})
+@ToString(
+        doNotUseGetters = true,
+        exclude = {"data"})
 public class ResourcePackChunkDataPacket extends AbstractReferenceCounted implements BedrockPacket {
     private UUID packId;
     private String packVersion;
@@ -44,4 +51,3 @@ public class ResourcePackChunkDataPacket extends AbstractReferenceCounted implem
         throw new UnsupportedOperationException("Can not clone reference counted packet");
     }
 }
-

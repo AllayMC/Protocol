@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 /**
  * Applies a single update to the server data store from the client
  *
- * @since v897
+ * @since v898
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)

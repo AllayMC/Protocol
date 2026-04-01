@@ -23,7 +23,13 @@ public class ImageData {
     public static final int SKIN_PERSONA_SIZE = 256 * 256 * PIXEL_SIZE;
     public static final int ANIMATION_SIZE = 1024 * 1024 * PIXEL_SIZE; // 4 MB
 
+    /**
+     * @since v388
+     */
     private final int width;
+    /**
+     * @since v388
+     */
     private final int height;
     private final byte[] image;
 

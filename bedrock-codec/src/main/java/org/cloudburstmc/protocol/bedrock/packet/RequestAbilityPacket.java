@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.Ability;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * A packet sent by the client to the server to request permission for a specific ability from the
+ * server. These abilities are defined above.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -34,4 +38,3 @@ public class RequestAbilityPacket implements BedrockPacket {
         }
     }
 }
-

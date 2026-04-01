@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.NpcRequestType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it interacts with an NPC. The packet is specifically made for Education
+ * Edition, where NPCs are available to use.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -37,4 +41,3 @@ public class NpcRequestPacket implements BedrockPacket {
         }
     }
 }
-

@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to enable or disable the ability to execute commands for the client. If
+ * disabled, the client itself will stop the execution of commands.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -29,4 +33,3 @@ public class SetCommandsEnabledPacket implements BedrockPacket {
         }
     }
 }
-

@@ -7,6 +7,10 @@ import org.cloudburstmc.protocol.bedrock.data.PacketViolationSeverity;
 import org.cloudburstmc.protocol.bedrock.data.PacketViolationType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it receives an invalid packet from the server. It holds some information
+ * on the error that occurred. noinspection GoNameStartsWithPackageName
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -35,4 +39,3 @@ public class PacketViolationWarningPacket implements BedrockPacket {
         }
     }
 }
-

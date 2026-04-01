@@ -14,6 +14,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the server to the client to spawn an entity to the player. It is used for every entity
+ * except other players, for which the AddPlayer packet is used.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -23,14 +27,14 @@ public class AddEntityPacket implements BedrockPacket {
     private List<EntityLinkData> entityLinks = new ObjectArrayList<>();
     private long uniqueEntityId;
     private long runtimeEntityId;
+    /**
+     * @since v313
+     */
     private String identifier;
     private int entityType;
     private Vector3f position;
     private Vector3f motion;
     private Vector2f rotation;
-    /**
-     * @since v534
-     */
     private float headRotation;
     /**
      * @since v534
@@ -59,4 +63,3 @@ public class AddEntityPacket implements BedrockPacket {
         }
     }
 }
-

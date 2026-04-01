@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to display an object as a scoreboard to the player. Once sent, it should be
+ * followed up by a SetScore packet to set the lines of the packet.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -41,4 +45,3 @@ public class SetDisplayObjectivePacket implements BedrockPacket {
         return type.cast(displayName);
     }
 }
-

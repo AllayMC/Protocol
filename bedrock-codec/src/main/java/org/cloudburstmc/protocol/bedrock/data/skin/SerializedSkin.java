@@ -23,34 +23,70 @@ public class SerializedSkin {
     public static final int SKIN_128_128_SIZE = 128 * 128 * PIXEL_SIZE;
 
     private final String skinId;
+    private final String geometryName;
+    private final ImageData skinData;
+    private final ImageData capeData;
+    private final String geometryData;
+    private final boolean premium;
+    /**
+     * @since v388
+     */
+    private final String skinResourcePatch;
+    /**
+     * @since v388
+     */
+    private final List<AnimationData> animations;
+    /**
+     * @since v388
+     */
+    private final String animationData;
+    /**
+     * @since v388
+     */
+    private final boolean persona;
+    /**
+     * @since v388
+     */
+    private final boolean capeOnClassic;
+    /**
+     * @since v388
+     */
+    private final String capeId;
+    /**
+     * @since v388
+     */
+    private final String fullSkinId;
+    /**
+     * @since v390
+     */
+    private final String armSize;
+    /**
+     * @since v390
+     */
+    private final String skinColor;
+    /**
+     * @since v390
+     */
+    private final List<PersonaPieceData> personaPieces;
+    /**
+     * @since v390
+     */
+    private final List<PersonaPieceTintData> tintColors;
     /**
      * @since v428
      */
     private final String playFabId;
-    private final String geometryName;
-    private final String skinResourcePatch;
-    private final ImageData skinData;
-    private final List<AnimationData> animations;
-    private final ImageData capeData;
-    private final String geometryData;
     /**
      * @since v465
      */
     private final String geometryDataEngineVersion;
-    private final String animationData;
-    private final boolean premium;
-    private final boolean persona;
-    private final boolean capeOnClassic;
     /**
      * @since v465
      */
     private final boolean primaryUser;
-    private final String capeId;
-    private final String fullSkinId;
-    private final String armSize;
-    private final String skinColor;
-    private final List<PersonaPieceData> personaPieces;
-    private final List<PersonaPieceTintData> tintColors;
+    /**
+     * @since v568
+     */
     private final boolean overridingPlayerAppearance;
 
     public static SerializedSkin of(String skinId, String playFabId, ImageData skinData, ImageData capeData, String geometryName,
@@ -58,9 +94,9 @@ public class SerializedSkin {
         skinData.checkLegacySkinSize();
         capeData.checkLegacyCapeSize();
 
-        return new SerializedSkin(skinId, playFabId, geometryName, null, skinData, Collections.emptyList(), capeData,
-                geometryData, "", "", premiumSkin, false, false, true, "", "",
-                "wide", "#0", Collections.emptyList(), Collections.emptyList(), true);
+        return new SerializedSkin(skinId, geometryName, skinData, capeData, geometryData, premiumSkin, null,
+                Collections.emptyList(), "", false, false, "", "", "wide", "#0",
+                Collections.emptyList(), Collections.emptyList(), playFabId, "", true, true);
     }
 
     public static SerializedSkin of(String skinId, String playFabId, String skinResourcePatch, ImageData skinData,
@@ -86,9 +122,9 @@ public class SerializedSkin {
                                     boolean primaryUser, String capeId, String fullSkinId, String armSize,
                                     String skinColor, List<PersonaPieceData> personaPieces,
                                     List<PersonaPieceTintData> tintColors) {
-        return new SerializedSkin(skinId, playFabId, null, skinResourcePatch, skinData,
-                Collections.unmodifiableList(new ObjectArrayList<>(animations)), capeData, geometryData, "", animationData,
-                premium, persona, capeOnClassic, primaryUser, capeId, fullSkinId, armSize, skinColor, personaPieces, tintColors, true);
+        return new SerializedSkin(skinId, null, skinData, capeData, geometryData, premium, skinResourcePatch,
+                Collections.unmodifiableList(new ObjectArrayList<>(animations)), animationData, persona, capeOnClassic,
+                capeId, fullSkinId, armSize, skinColor, personaPieces, tintColors, playFabId, "", primaryUser, true);
     }
 
     public static SerializedSkin of(String skinId, String playFabId, String skinResourcePatch, ImageData skinData,
@@ -98,9 +134,10 @@ public class SerializedSkin {
                                     String fullSkinId, String armSize, String skinColor, List<PersonaPieceData> personaPieces,
                                     List<PersonaPieceTintData> tintColors) {
 
-        return new SerializedSkin(skinId, playFabId, null, skinResourcePatch, skinData,
-                Collections.unmodifiableList(new ObjectArrayList<>(animations)), capeData, geometryData, geometryDataEngineVersion, animationData,
-                premium, persona, capeOnClassic, primaryUser, capeId, fullSkinId, armSize, skinColor, personaPieces, tintColors, true);
+        return new SerializedSkin(skinId, null, skinData, capeData, geometryData, premium, skinResourcePatch,
+                Collections.unmodifiableList(new ObjectArrayList<>(animations)), animationData, persona, capeOnClassic,
+                capeId, fullSkinId, armSize, skinColor, personaPieces, tintColors, playFabId,
+                geometryDataEngineVersion, primaryUser, true);
     }
 
     public static SerializedSkin of(String skinId, String playFabId, String skinResourcePatch, ImageData skinData,
@@ -110,9 +147,10 @@ public class SerializedSkin {
                                     String fullSkinId, String armSize, String skinColor, List<PersonaPieceData> personaPieces,
                                     List<PersonaPieceTintData> tintColors, boolean overridingPlayerAppearance) {
 
-        return new SerializedSkin(skinId, playFabId, null, skinResourcePatch, skinData,
-                Collections.unmodifiableList(new ObjectArrayList<>(animations)), capeData, geometryData, geometryDataEngineVersion, animationData,
-                premium, persona, capeOnClassic, primaryUser, capeId, fullSkinId, armSize, skinColor, personaPieces, tintColors, overridingPlayerAppearance);
+        return new SerializedSkin(skinId, null, skinData, capeData, geometryData, premium, skinResourcePatch,
+                Collections.unmodifiableList(new ObjectArrayList<>(animations)), animationData, persona, capeOnClassic,
+                capeId, fullSkinId, armSize, skinColor, personaPieces, tintColors, playFabId,
+                geometryDataEngineVersion, primaryUser, overridingPlayerAppearance);
     }
 
     public static Builder builder() {
@@ -126,8 +164,8 @@ public class SerializedSkin {
 
     private boolean isValidSkin() {
         return skinId != null && !skinId.trim().isEmpty() &&
-                skinData != null && skinData.getWidth() >= 64 && skinData.getHeight() >= 32 &&
-                skinData.getImage().length >= SINGLE_SKIN_SIZE;
+               skinData != null && skinData.getWidth() >= 64 && skinData.getHeight() >= 32 &&
+               skinData.getImage().length >= SINGLE_SKIN_SIZE;
     }
 
     public String getSkinResourcePatch() {
@@ -333,27 +371,27 @@ public class SerializedSkin {
 
         public String toString() {
             return "SerializedSkin.Builder(skinId=" + this.skinId +
-                    ", playFabId=" + this.playFabId +
-                    ", geometryName=" + this.geometryName +
-                    ", skinResourcePatch=" + this.skinResourcePatch +
-                    ", skinData=" + this.skinData +
-                    ", animations=" + this.animations +
-                    ", capeData=" + this.capeData +
-                    ", geometryData=" + this.geometryData +
-                    ", animationData=" + this.animationData +
-                    ", premium=" + this.premium +
-                    ", persona=" + this.persona +
-                    ", capeOnClassic=" + this.capeOnClassic +
-                    ", capeId=" + this.capeId +
-                    ", fullSkinId=" + this.fullSkinId +
-                    ", armSize=" + this.armSize +
-                    ", skinColor=" + this.skinColor +
-                    ", personaPieces=" + this.personaPieces +
-                    ", tintColors=" + this.tintColors +
-                    ", geometryDataEngineVersion=" + this.geometryDataEngineVersion +
-                    ", primaryUser=" + this.primaryUser +
-                    ", overridingPlayerAppearance=" + this.overridingPlayerAppearance +
-                    ")";
+                   ", playFabId=" + this.playFabId +
+                   ", geometryName=" + this.geometryName +
+                   ", skinResourcePatch=" + this.skinResourcePatch +
+                   ", skinData=" + this.skinData +
+                   ", animations=" + this.animations +
+                   ", capeData=" + this.capeData +
+                   ", geometryData=" + this.geometryData +
+                   ", animationData=" + this.animationData +
+                   ", premium=" + this.premium +
+                   ", persona=" + this.persona +
+                   ", capeOnClassic=" + this.capeOnClassic +
+                   ", capeId=" + this.capeId +
+                   ", fullSkinId=" + this.fullSkinId +
+                   ", armSize=" + this.armSize +
+                   ", skinColor=" + this.skinColor +
+                   ", personaPieces=" + this.personaPieces +
+                   ", tintColors=" + this.tintColors +
+                   ", geometryDataEngineVersion=" + this.geometryDataEngineVersion +
+                   ", primaryUser=" + this.primaryUser +
+                   ", overridingPlayerAppearance=" + this.overridingPlayerAppearance +
+                   ")";
         }
     }
 }

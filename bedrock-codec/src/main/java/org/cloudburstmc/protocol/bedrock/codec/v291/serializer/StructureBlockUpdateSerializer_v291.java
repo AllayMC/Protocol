@@ -74,11 +74,10 @@ public class StructureBlockUpdateSerializer_v291 implements BedrockPacketSeriali
         // Structure Editor Data end
         boolean boundingBoxVisible = buffer.readBoolean();
 
-        StructureSettings settings = new StructureSettings("", ignoreEntities, ignoreBlocks, true, size, offset,
-                -1, rotation, mirror, StructureAnimationMode.NONE, 0f,
-                structureIntegrity, integritySeed, Vector3f.ZERO);
-        StructureEditorData editorData = new StructureEditorData(name, "", dataField, includePlayers, boundingBoxVisible,
-                structureType, settings, StructureRedstoneSaveMode.SAVES_TO_DISK);
+        StructureSettings settings = new StructureSettings(ignoreEntities, ignoreBlocks, size, offset, rotation, mirror,
+                structureIntegrity, integritySeed, "", -1, Vector3f.ZERO, StructureAnimationMode.NONE, 0f, true);
+        StructureEditorData editorData = new StructureEditorData(name, includePlayers, boundingBoxVisible, structureType,
+                settings, dataField, StructureRedstoneSaveMode.SAVES_TO_DISK, "");
 
         packet.setEditorData(editorData);
         packet.setPowered(buffer.readBoolean());

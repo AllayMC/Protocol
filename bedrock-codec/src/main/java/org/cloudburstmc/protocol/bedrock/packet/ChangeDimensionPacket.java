@@ -6,6 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to the client to send a dimension change screen client-side. Once the screen
+ * is cleared client-side, the client will send a PlayerAction packet with
+ * PlayerActionDimensionChangeDone.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -15,6 +20,7 @@ public class ChangeDimensionPacket implements BedrockPacket {
     private boolean respawn;
     /**
      * Will be serialized as optional not present if null
+     *
      * @since v712
      */
     private Integer loadingScreenId;
@@ -37,4 +43,3 @@ public class ChangeDimensionPacket implements BedrockPacket {
         }
     }
 }
-

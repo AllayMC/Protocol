@@ -7,7 +7,12 @@ import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * @deprecated Removed as of v800 (1.21.80). Server authoritative input is handled by {@link PlayerAuthInputPacket}
+ * Sent by the client to the server when the player is moving but the server does not allow it to
+ * update its movement using the MovePlayer packet. It includes situations where the player is
+ * riding an entity like a boat. If this is the case, the packet is sent roughly every tick.
+ *
+ * @deprecated Removed as of v800 (1.21.80). Server authoritative input is handled by {@link
+ * PlayerAuthInputPacket}
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
@@ -35,4 +40,3 @@ public class PlayerInputPacket implements BedrockPacket {
         }
     }
 }
-

@@ -6,8 +6,7 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Stats sent to the client regarding the server's network performance
- * that are used for telemetry.
+ * Stats sent to the client regarding the server's network performance that are used for telemetry.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)

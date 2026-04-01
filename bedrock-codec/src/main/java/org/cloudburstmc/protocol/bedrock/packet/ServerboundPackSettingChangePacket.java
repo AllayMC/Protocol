@@ -7,6 +7,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.UUID;
 
+/**
+ * Sent by the client to the server when it changes a setting for a specific pack in the pack
+ * settings UI.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

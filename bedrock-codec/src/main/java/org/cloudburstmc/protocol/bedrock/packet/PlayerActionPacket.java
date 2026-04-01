@@ -7,6 +7,10 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.PlayerActionType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it executes any action, for example starting to sprint, swim, starting
+ * the breaking of a block, dropping an item, etc.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -15,9 +19,10 @@ public class PlayerActionPacket implements BedrockPacket {
     private PlayerActionType action;
     private Vector3i blockPosition;
     /**
-     * @since v526
+     * @since v527
      */
     private Vector3i resultPosition;
+
     private int face;
 
     @Override
@@ -38,4 +43,3 @@ public class PlayerActionPacket implements BedrockPacket {
         }
     }
 }
-

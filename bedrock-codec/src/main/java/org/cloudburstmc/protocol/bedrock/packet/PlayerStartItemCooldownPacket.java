@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to the client to initiate a cooldown on an item.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -32,4 +35,3 @@ public class PlayerStartItemCooldownPacket implements BedrockPacket {
         }
     }
 }
-

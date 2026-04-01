@@ -18,14 +18,26 @@ import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 public class ShapedRecipeData implements CraftingRecipeData {
 
     private final CraftingDataType type;
-    private final String id;
     private final int width;
     private final int height;
     private final List<ItemDescriptorWithCount> ingredients;
     private final List<ItemData> results;
     private final UUID uuid;
+    /**
+     * @since v354
+     */
     private final String tag;
+    /**
+     * @since v361
+     */
+    private final String id;
+    /**
+     * @since v361
+     */
     private final int priority;
+    /**
+     * @since v407
+     */
     private final int netId;
     /**
      * @since v671
@@ -48,7 +60,7 @@ public class ShapedRecipeData implements CraftingRecipeData {
                                       String tag, int priority, int netId, boolean assumeSymetry, RecipeUnlockingRequirement requirement) {
         checkArgument(type == CraftingDataType.SHAPED || type == CraftingDataType.SHAPED_CHEMISTRY,
                 "type must be SHAPED or SHAPED_CHEMISTRY");
-        return new ShapedRecipeData(type, id, width, height, ingredients, results, uuid, tag, priority, netId, assumeSymetry, requirement);
+        return new ShapedRecipeData(type, width, height, ingredients, results, uuid, tag, id, priority, netId, assumeSymetry, requirement);
     }
 
     public static ShapedRecipeData of(CraftingDataType type, String id, int width, int height,

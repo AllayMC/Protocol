@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Used to make the client connect to a websocket server. This websocket server has the ability to
+ * execute commands on the behalf of the client and it can listen for certain events fired by the
+ * client.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -29,4 +34,3 @@ public class AutomationClientConnectPacket implements BedrockPacket {
         }
     }
 }
-

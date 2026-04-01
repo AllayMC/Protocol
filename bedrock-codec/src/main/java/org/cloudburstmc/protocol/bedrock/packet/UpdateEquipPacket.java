@@ -6,6 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to the client upon opening a horse inventory. It is used to set the content of
+ * the inventory and specify additional properties, such as the items that are allowed to be put in
+ * slots of the inventory.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -34,4 +39,3 @@ public class UpdateEquipPacket implements BedrockPacket {
         }
     }
 }
-

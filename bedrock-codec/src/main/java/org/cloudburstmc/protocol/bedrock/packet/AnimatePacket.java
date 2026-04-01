@@ -8,6 +8,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.HashMap;
 
+/**
+ * Sent by the server to send a player animation from one player to all viewers of that player. It
+ * is used for a couple of actions, such as arm swimming and critical hits.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -16,6 +20,7 @@ public class AnimatePacket implements BedrockPacket {
      * @deprecated since v897
      */
     private float rowingTime;
+
     private Action action;
     private long runtimeEntityId;
     /**
@@ -23,7 +28,7 @@ public class AnimatePacket implements BedrockPacket {
      */
     private float data;
     /**
-     * @since v897
+     * @since v898
      */
     private SwingSource swingSource = SwingSource.NONE;
 
@@ -62,7 +67,6 @@ public class AnimatePacket implements BedrockPacket {
         THROW_ITEM("throwitem"),
         DROP_ITEM("dropitem"),
         EVENT("event");
-
         private static final HashMap<String, SwingSource> BY_NAME = new HashMap<>();
 
         static {
@@ -71,6 +75,9 @@ public class AnimatePacket implements BedrockPacket {
             }
         }
 
+        /**
+         * @since v898
+         */
         @Getter
         private final String name;
 
@@ -92,4 +99,3 @@ public class AnimatePacket implements BedrockPacket {
         }
     }
 }
-

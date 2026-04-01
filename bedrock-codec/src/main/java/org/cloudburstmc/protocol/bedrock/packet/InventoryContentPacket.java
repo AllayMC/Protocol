@@ -11,6 +11,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the server to update the full content of a particular inventory. It is usually sent for
+ * the main inventory of the player, but also works for other inventories that are currently opened
+ * by the player.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -20,7 +25,8 @@ public class InventoryContentPacket implements BedrockPacket {
     /**
      * @since v712
      */
-    private FullContainerName containerNameData = new FullContainerName(ContainerSlotType.ANVIL_INPUT, null);
+    private FullContainerName containerNameData =
+            new FullContainerName(ContainerSlotType.ANVIL_INPUT, null);
     /**
      * @since v729
      * @deprecated since v748. Use storageItem ItemData size instead.
@@ -49,4 +55,3 @@ public class InventoryContentPacket implements BedrockPacket {
         }
     }
 }
-

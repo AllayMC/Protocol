@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server at the start of the game to let the client know all entities that are
+ * available on the server.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -30,4 +34,3 @@ public class AvailableEntityIdentifiersPacket implements BedrockPacket {
         }
     }
 }
-

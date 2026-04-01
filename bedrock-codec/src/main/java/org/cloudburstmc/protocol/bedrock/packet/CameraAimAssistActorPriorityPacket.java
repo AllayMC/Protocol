@@ -9,8 +9,8 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * Camera aim-assist actor priority data sent from the server to clients.
- * Sent by the server to clients for updating the actor priority for client aim-assist systems.
+ * Camera aim-assist actor priority data sent from the server to clients. Sent by the server to
+ * clients for updating the actor priority for client aim-assist systems.
  *
  * @since v924
  */

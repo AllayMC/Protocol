@@ -5,10 +5,18 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to damage the player's armor after being hit. The packet should never be used
+ * by servers as it hands the responsibility over to the player completely, while the server can
+ * easily reliably update the armor damage of players itself.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class HurtArmorPacket implements BedrockPacket {
+    /**
+     * @since v407
+     */
     private int cause;
     private int damage;
     /**
@@ -34,4 +42,3 @@ public class HurtArmorPacket implements BedrockPacket {
         }
     }
 }
-

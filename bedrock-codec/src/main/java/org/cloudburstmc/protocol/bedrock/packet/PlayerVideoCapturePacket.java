@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Packet is sent by the server to start or stop video recording for a player. This packet only
+ * works on development builds and has no effect on retail builds. When recording, the client will
+ * save individual frames to '/LocalCache/minecraftpe' in the format specified below.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it falls from a distance onto a block that would damage the player. This
+ * packet should not be used at all by the server, as it can easily be spoofed using a proxy or
+ * custom client. Servers should implement fall damage using their own calculations.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -31,4 +36,3 @@ public class EntityFallPacket implements BedrockPacket {
         }
     }
 }
-

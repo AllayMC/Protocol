@@ -9,10 +9,15 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Sent by the client to tell the server about the performance diagnostics of the client. It is sent
+ * by the client roughly every 500ms or 10 in-game ticks when the "Creator &gt; Enable Client
+ * Diagnostics" setting is enabled.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
-public class ServerboundDiagnosticsPacket implements BedrockPacket{
+public class ServerboundDiagnosticsPacket implements BedrockPacket {
     private float avgFps;
     private float avgServerSimTickTimeMS;
     private float avgClientSimTickTimeMS;
@@ -22,6 +27,9 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket{
     private float avgEndFrameTimeMS;
     private float avgRemainderTimePercent;
     private float avgUnaccountedTimePercent;
+    /**
+     * @since v924
+     */
     private final List<MemoryCategoryCounter> memoryCategoryValues = new ArrayList<>();
 
     @Override

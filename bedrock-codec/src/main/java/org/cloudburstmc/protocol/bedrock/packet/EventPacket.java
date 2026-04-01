@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.event.EventData;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to send an event with additional data. It is typically sent to the client for
+ * telemetry reasons, much like the SimpleEvent packet.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -57,4 +61,3 @@ public class EventPacket implements BedrockPacket {
         }
     }
 }
-

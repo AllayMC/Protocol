@@ -3,10 +3,13 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.protocol.bedrock.data.camera.AimAssistAction;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to send a player animation from one player to all viewers of that player. It
+ * is used for a couple of actions, such as arm swimming and critical hits.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

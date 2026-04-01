@@ -8,14 +8,28 @@ import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 
 import java.util.Optional;
 
+/**
+ * A packet sent by the server to update Minecraft: Education Edition related settings. It is unused
+ * by the normal base game.
+ */
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EducationSettingsPacket implements BedrockPacket {
     private String codeBuilderUri;
+    /**
+     * @since v407
+     */
     private String codeBuilderTitle;
+    /**
+     * @since v407
+     */
     private boolean canResizeCodeBuilder;
+    /**
+     * @since v407
+     */
+    private Optional<String> overrideUri;
     /**
      * @since v465
      */
@@ -28,9 +42,15 @@ public class EducationSettingsPacket implements BedrockPacket {
      * @since v465
      */
     private String screenshotBorderPath;
+    /**
+     * @since v465
+     */
     private OptionalBoolean entityCapabilities;
-    private Optional<String> overrideUri;
+
     private boolean quizAttached;
+    /**
+     * @since v465
+     */
     private OptionalBoolean externalLinkSettings;
 
     @Override
@@ -51,4 +71,3 @@ public class EducationSettingsPacket implements BedrockPacket {
         }
     }
 }
-

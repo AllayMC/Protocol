@@ -35,4 +35,3 @@ public class TickingAreasLoadStatusPacket implements BedrockPacket {
         }
     }
 }
-

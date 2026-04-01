@@ -6,6 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityEventType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server when a particular event happens that has to do with an entity. Some of these
+ * events are entity-specific, for example a wolf shaking itself dry, but others are used for each
+ * entity, such as dying.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -32,4 +37,3 @@ public class EntityEventPacket implements BedrockPacket {
         }
     }
 }
-

@@ -9,14 +9,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Causes the client's camera view to shake with a specified intensity and duration.
- * <p>
- * No known uses yet.
+ *
+ * <p>No known uses yet.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CameraShakePacket implements BedrockPacket {
-
     /**
      * Intensity to shake the player's camera view.
      *
@@ -24,7 +23,6 @@ public class CameraShakePacket implements BedrockPacket {
      * @return shake intensity
      */
     private float intensity;
-
     /**
      * Amount of time to shake the player's camera.
      *
@@ -34,7 +32,6 @@ public class CameraShakePacket implements BedrockPacket {
     private float duration;
 
     private CameraShakeType shakeType;
-
     /**
      * @since v428
      */
@@ -59,4 +56,3 @@ public class CameraShakePacket implements BedrockPacket {
         }
     }
 }
-

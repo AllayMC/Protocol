@@ -109,8 +109,9 @@ public interface ItemData {
 
     /**
      * Checks if this item us equal to another {@link ItemData}.
-     * @param other the item data to compare against
-     * @param checkAmount whether to check the amount
+     *
+     * @param other         the item data to compare against
+     * @param checkAmount   whether to check the amount
      * @param checkMetadata whether to check the metadata
      * @param checkUserdata whether to check the user data
      * @return if this item is equal to the other item data

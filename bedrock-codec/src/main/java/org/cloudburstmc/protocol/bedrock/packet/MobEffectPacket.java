@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to apply an effect to the player, for example an effect like poison. It may
+ * also be used to modify existing effects, or removing them completely.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -20,7 +24,7 @@ public class MobEffectPacket implements BedrockPacket {
      */
     private long tick;
     /**
-     * @since v897
+     * @since v898
      */
     private boolean ambient;
 
@@ -49,4 +53,3 @@ public class MobEffectPacket implements BedrockPacket {
         }
     }
 }
-

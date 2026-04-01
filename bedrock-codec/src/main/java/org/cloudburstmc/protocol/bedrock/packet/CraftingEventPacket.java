@@ -12,7 +12,10 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * @since since v630
+ * Sent by the client when it crafts a particular item. This packet may be fully ignored, as the
+ * InventoryTransaction packet provides all the information required.
+ *
+ * @since v630
  */
 @Deprecated
 @Data
@@ -43,4 +46,3 @@ public class CraftingEventPacket implements BedrockPacket {
         }
     }
 }
-

@@ -19,6 +19,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Sent by the server to the client to make a player entity show up client-side. It is one of the
+ * few entities that cannot be sent using the {@link AddEntityPacket}.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -36,9 +40,14 @@ public class AddPlayerPacket implements BedrockPacket, PlayerAbilityHolder {
     private ItemData hand;
     private AdventureSettingsPacket adventureSettings = new AdventureSettingsPacket();
     private String deviceId;
+    /**
+     * @since v388
+     */
     private int buildPlatform;
+    /**
+     * @since v503
+     */
     private GameType gameType;
-
     /**
      * @since v534
      */
@@ -91,4 +100,3 @@ public class AddPlayerPacket implements BedrockPacket, PlayerAbilityHolder {
         }
     }
 }
-

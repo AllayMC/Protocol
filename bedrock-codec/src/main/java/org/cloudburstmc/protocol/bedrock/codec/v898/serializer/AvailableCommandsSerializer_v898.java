@@ -77,7 +77,7 @@ public class AvailableCommandsSerializer_v898 extends AvailableCommandsSerialize
                 params[i2] = readParameter(buffer, helper, enums, postfixes, softEnumParameters);
             }
         }
-        return new CommandData(name, description, flags, permissions, aliases, subcommands, overloads);
+        return new CommandData(name, description, flags, permissions, aliases, overloads, subcommands);
     }
 
     @Override

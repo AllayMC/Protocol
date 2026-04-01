@@ -4,6 +4,9 @@ import lombok.Data;
 
 @Data
 public class CommandOverloadData {
+    /**
+     * @since v594
+     */
     private final boolean chaining;
     private final CommandParamData[] overloads;
 }

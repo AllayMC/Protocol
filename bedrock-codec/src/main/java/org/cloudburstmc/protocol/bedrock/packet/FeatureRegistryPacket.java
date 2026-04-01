@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * World generation features used for client-side chunk generation.
  *
- * @since 1.19.20
+ * @since v544
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
@@ -39,4 +39,3 @@ public class FeatureRegistryPacket implements BedrockPacket {
         }
     }
 }
-

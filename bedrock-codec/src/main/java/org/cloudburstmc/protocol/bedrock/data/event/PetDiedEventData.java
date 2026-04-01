@@ -8,6 +8,9 @@ public class PetDiedEventData implements EventData {
     private final long killerUniqueEntityId;
     private final long petUniqueEntityId;
     private final int entityDamageCause;
+    /**
+     * @since v340
+     */
     private final int petEntityType;
 
     @Override

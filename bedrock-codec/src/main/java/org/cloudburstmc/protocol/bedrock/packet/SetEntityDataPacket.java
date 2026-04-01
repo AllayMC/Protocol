@@ -7,12 +7,19 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataMap;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityProperties;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update the entity metadata of an entity. It includes flags such as if the
+ * entity is on fire, but also properties such as the air it has left until it starts drowning.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetEntityDataPacket implements BedrockPacket {
     private EntityDataMap metadata = new EntityDataMap();
     private long runtimeEntityId;
+    /**
+     * @since v419
+     */
     private long tick;
     /**
      * @since v557
@@ -37,4 +44,3 @@ public class SetEntityDataPacket implements BedrockPacket {
         }
     }
 }
-

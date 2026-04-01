@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to make the client start video streaming. The client starts sending
+ * screenshots at the configured rate to the websocket server supplied in this packet.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -12,7 +16,13 @@ public class VideoStreamConnectPacket implements BedrockPacket {
     private String address;
     private float screenshotFrequency;
     private Action action;
+    /**
+     * @since v361
+     */
     private int width;
+    /**
+     * @since v361
+     */
     private int height;
 
     @Override
@@ -38,4 +48,3 @@ public class VideoStreamConnectPacket implements BedrockPacket {
         }
     }
 }
-

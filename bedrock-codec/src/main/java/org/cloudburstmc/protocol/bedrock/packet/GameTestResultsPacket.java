@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * A packet sent in response to the GameTestRequest packet, with a boolean indicating whether the
+ * test was successful or not, and an error string if the test failed.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)

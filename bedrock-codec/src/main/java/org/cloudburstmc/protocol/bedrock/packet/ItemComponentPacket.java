@@ -1,6 +1,5 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,4 +38,3 @@ public class ItemComponentPacket implements BedrockPacket {
         }
     }
 }
-

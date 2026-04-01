@@ -53,9 +53,9 @@ final class BaseItemData implements ItemData {
 
     public boolean equals(ItemData other, boolean checkAmount, boolean checkMetadata, boolean checkUserdata) {
         return definition == other.getDefinition() &&
-                (!checkAmount || count == other.getCount()) &&
-                (!checkMetadata || (damage == other.getDamage() && blockingTicks == other.getBlockingTicks())) &&
-                (!checkUserdata || (Objects.equals(tag, other.getTag()) && Arrays.equals(canPlace, other.getCanPlace()) && Arrays.equals(canBreak, other.getCanBreak())));
+               (!checkAmount || count == other.getCount()) &&
+               (!checkMetadata || (damage == other.getDamage() && blockingTicks == other.getBlockingTicks())) &&
+               (!checkUserdata || (Objects.equals(tag, other.getTag()) && Arrays.equals(canPlace, other.getCanPlace()) && Arrays.equals(canBreak, other.getCanBreak())));
     }
 
     @Override

@@ -10,23 +10,27 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.Set;
 
+/**
+ * Sent by the client to the server periodically if the client has received movement corrections
+ * from the server, containing information about client-predictions that are relevant to movement.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MovementPredictionSyncPacket implements BedrockPacket {
     private long runtimeEntityId;
-
     private final Set<EntityFlag> flags = new ObjectOpenHashSet<>();
     private Vector3f boundingBox;
-
     private float speed;
     private float underwaterSpeed;
     private float lavaSpeed;
     private float jumpStrength;
     private float health;
     private float hunger;
+    /**
+     * @since v786
+     */
     private boolean flying;
-
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
@@ -46,4 +50,3 @@ public class MovementPredictionSyncPacket implements BedrockPacket {
         }
     }
 }
-

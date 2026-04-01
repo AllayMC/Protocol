@@ -17,7 +17,7 @@ public class EntityDataTypes {
         @Override
         public boolean isInstance(Object value) {
             return value instanceof EnumMap &&
-                    (((EnumMap<?, ?>) value).isEmpty() || ((Map<?, ?>) value).keySet().iterator().next() instanceof EntityFlag);
+                   (((EnumMap<?, ?>) value).isEmpty() || ((Map<?, ?>) value).keySet().iterator().next() instanceof EntityFlag);
         }
     };
     public static final EntityDataType<Integer> STRUCTURAL_INTEGRITY = new EntityDataType<>(Integer.class, "STRUCTURAL_INTEGRITY");
@@ -183,7 +183,7 @@ public class EntityDataTypes {
         @Override
         public boolean isInstance(Object value) {
             return value instanceof EnumMap &&
-                    (((EnumMap<?, ?>) value).isEmpty() || ((Map<?, ?>) value).keySet().iterator().next() instanceof EntityFlag);
+                   (((EnumMap<?, ?>) value).isEmpty() || ((Map<?, ?>) value).keySet().iterator().next() instanceof EntityFlag);
         }
     };
     public static final EntityDataType<Float> LAYING_AMOUNT = new EntityDataType<>(Float.class, "LAYING_AMOUNT");

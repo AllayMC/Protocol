@@ -8,6 +8,10 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataMap;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to the client to make an item entity show up. It is one of the few entities
+ * that cannot be sent using the {@link AddEntityPacket}
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -38,4 +42,3 @@ public class AddItemEntityPacket implements BedrockPacket {
         }
     }
 }
-

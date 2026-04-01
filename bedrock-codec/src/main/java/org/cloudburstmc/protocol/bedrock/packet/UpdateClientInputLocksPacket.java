@@ -6,8 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
-import static org.cloudburstmc.protocol.bedrock.packet.BedrockPacketType.*;
+import static org.cloudburstmc.protocol.bedrock.packet.BedrockPacketType.UPDATE_CLIENT_INPUT_LOCKS;
 
+/**
+ * Sent by the server to the client to lock either the camera or physical movement of the client.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -37,4 +40,3 @@ public class UpdateClientInputLocksPacket implements BedrockPacket {
         }
     }
 }
-

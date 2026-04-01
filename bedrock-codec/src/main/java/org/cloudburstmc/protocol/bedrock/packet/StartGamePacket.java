@@ -17,9 +17,16 @@ import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Sent by the server to send information about the world the player will be spawned in. It contains
+ * information about the position the player spawns in, and information about the world in general
+ * such as its game rules.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
-@ToString(doNotUseGetters = true, exclude = {"itemDefinitions", "blockPalette"})
+@ToString(
+        doNotUseGetters = true,
+        exclude = {"itemDefinitions", "blockPalette"})
 public class StartGamePacket implements BedrockPacket {
     private final List<GameRuleData<?>> gamerules = new ObjectArrayList<>();
     private long uniqueEntityId;
@@ -29,8 +36,6 @@ public class StartGamePacket implements BedrockPacket {
     private Vector2f rotation;
     // Level settings start
     private long seed;
-    private SpawnBiomeType spawnBiomeType;
-    private String customBiomeName;
     private int dimensionId;
     private int generatorId;
     private GameType levelGameType;
@@ -40,10 +45,8 @@ public class StartGamePacket implements BedrockPacket {
     private int dayCycleStopTime;
     private int eduEditionOffers;
     private boolean eduFeaturesEnabled;
-    private String educationProductionId;
     private float rainLevel;
     private float lightningLevel;
-    private boolean platformLockedContentConfirmed;
     private boolean multiplayerGame;
     private boolean broadcastingToLan;
     private GamePublishSetting xblBroadcastMode;
@@ -51,7 +54,6 @@ public class StartGamePacket implements BedrockPacket {
     private boolean commandsEnabled;
     private boolean texturePacksRequired;
     private final List<ExperimentData> experiments = new ObjectArrayList<>();
-    private boolean experimentsPreviouslyToggled;
     private boolean bonusChestEnabled;
     private boolean startingWithMap;
     private boolean trustingPlayers;
@@ -61,80 +63,118 @@ public class StartGamePacket implements BedrockPacket {
     private boolean resourcePackLocked;
     private boolean fromLockedWorldTemplate;
     private boolean usingMsaGamertagsOnly;
-    private boolean fromWorldTemplate;
-    private boolean worldTemplateOptionLocked;
-    private boolean onlySpawningV1Villagers;
-    private String vanillaVersion;
-    private int limitedWorldWidth;
-    private int limitedWorldHeight;
-    private boolean netherType;
-    /**
-     * @since v465
-     */
-    private EduSharedUriResource eduSharedUriResource = EduSharedUriResource.EMPTY;
-    private OptionalBoolean forceExperimentalGameplay;
-    /**
-     * @since 1.19.20
-     */
-    private ChatRestrictionLevel chatRestrictionLevel;
-    /**
-     * @since 1.19.20
-     */
-    private boolean disablingPlayerInteractions;
-    /**
-     * @since 1.19.20
-     */
-    private boolean disablingPersonas;
-    /**
-     * @since 1.19.20
-     */
-    private boolean disablingCustomSkins;
+
     // Level settings end
     private String levelId;
     private CharSequence levelName;
     private String premiumWorldTemplateId;
     private boolean trial;
+
     // SyncedPlayerMovementSettings start
-    /**
-     * @deprecated since v818. {@link AuthoritativeMovementMode#SERVER_WITH_REWIND} is now the default movement mode.
-     */
-    private AuthoritativeMovementMode authoritativeMovementMode;
-    private int rewindHistorySize;
     boolean serverAuthoritativeBlockBreaking;
     // SyncedPlayerMovementSettings end
     private long currentTick;
     private int enchantmentSeed;
     private NbtList<NbtMap> blockPalette;
-    private final List<BlockPropertyData> blockProperties = new ObjectArrayList<>();
+    private String multiplayerCorrelationId;
     /**
+     * @since v313
+     */
+    private boolean fromWorldTemplate;
+    /**
+     * @since v332
+     */
+    private boolean platformLockedContentConfirmed;
+    /**
+     * @since v332
+     */
+    private boolean worldTemplateOptionLocked;
+    /**
+     * @since v361
      * @deprecated since v776. Use ItemComponentPacket instead.
      */
     private List<ItemDefinition> itemDefinitions = new ObjectArrayList<>();
-    private String multiplayerCorrelationId;
+    /**
+     * @since v361
+     */
+    private boolean onlySpawningV1Villagers;
+    /**
+     * @since v388
+     */
+    private String vanillaVersion;
+    /**
+     * @since v388
+     * @deprecated since v818. {@link AuthoritativeMovementMode#SERVER_WITH_REWIND} is now the default
+     * movement mode.
+     */
+    private AuthoritativeMovementMode authoritativeMovementMode;
+    /**
+     * @since v407
+     */
+    private SpawnBiomeType spawnBiomeType;
+    /**
+     * @since v407
+     */
+    private String customBiomeName;
+    /**
+     * @since v407
+     */
+    private String educationProductionId;
+    /**
+     * @since v407
+     */
+    private int limitedWorldWidth;
+    /**
+     * @since v407
+     */
+    private int limitedWorldHeight;
+    /**
+     * @since v407
+     */
+    private boolean netherType;
+    /**
+     * @since v407
+     */
+    private OptionalBoolean forceExperimentalGameplay;
     /**
      * @since v407
      */
     private boolean inventoriesServerAuthoritative;
     /**
-     * The name of the server software.
-     * Used for telemetry within the Bedrock client.
+     * @since v419
+     */
+    private boolean experimentsPreviouslyToggled;
+    /**
+     * @since v419
+     */
+    private final List<BlockPropertyData> blockProperties = new ObjectArrayList<>();
+    /**
+     * @since v428
+     */
+    private int rewindHistorySize;
+    /**
+     * The name of the server software. Used for telemetry within the Bedrock client.
      *
      * @since v440
      */
     private String serverEngine;
     /**
-     * @since v527
+     * @since v465
      */
-    private NbtMap playerPropertyData;
+    private EduSharedUriResource eduSharedUriResource = EduSharedUriResource.EMPTY;
     /**
-     * A XXHash64 of all block states by their compound tag.
-     * <b>The exact way this is calculated is not currently known.</b>
-     * <p>
-     * A value of 0 will not be validated by the client.
+     * A XXHash64 of all block states by their compound tag. <b>The exact way this is calculated is
+     * not currently known.</b>
+     *
+     * <p>A value of 0 will not be validated by the client.
      *
      * @since v475
      */
     private long blockRegistryChecksum;
+    /**
+     * @since v527
+     */
+    private NbtMap playerPropertyData;
     /**
      * @since v527
      */
@@ -144,9 +184,25 @@ public class StartGamePacket implements BedrockPacket {
      */
     private WorldType editorWorldType = WorldType.NON_EDITOR;
     /**
+     * @since v544
+     */
+    private ChatRestrictionLevel chatRestrictionLevel;
+    /**
+     * @since v544
+     */
+    private boolean disablingPlayerInteractions;
+    /**
+     * @since v544
+     */
+    private boolean disablingPersonas;
+    /**
+     * @since v544
+     */
+    private boolean disablingCustomSkins;
+    /**
      * Enables client side chunk generation
      *
-     * @since 1.19.20
+     * @since v544
      */
     private boolean clientSideGenerationEnabled;
     /**
@@ -155,7 +211,8 @@ public class StartGamePacket implements BedrockPacket {
     private boolean emoteChatMuted;
     /**
      * Whether block runtime IDs should be replaced by 32-bit integer hashes of NBT block state.
-     * Unlike runtime IDs, this hashes should be persistent across versions and should make support for data-driven/custom blocks easier.
+     * Unlike runtime IDs, this hashes should be persistent across versions and should make support
+     * for data-driven/custom blocks easier.
      *
      * @since v582
      */
@@ -227,4 +284,3 @@ public class StartGamePacket implements BedrockPacket {
         return type.cast(levelName);
     }
 }
-

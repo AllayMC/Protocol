@@ -7,6 +7,10 @@ import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to update the trades offered by a villager to a player. It is sent at the
+ * moment that a player interacts with a villager.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -14,12 +18,21 @@ public class UpdateTradePacket implements BedrockPacket {
     private int containerId;
     private ContainerType containerType;
     private int size; // Hardcoded to 0
+
+    /**
+     * @since v313
+     */
     private int tradeTier;
+
     private long traderUniqueEntityId;
     private long playerUniqueEntityId;
     private CharSequence displayName;
     private NbtMap offers;
+    /**
+     * @since v313
+     */
     private boolean newTradingUi;
+
     private boolean recipeAddedOnUpdate;
     private boolean usingEconomyTrade;
 
@@ -49,4 +62,3 @@ public class UpdateTradePacket implements BedrockPacket {
         return type.cast(displayName);
     }
 }
-

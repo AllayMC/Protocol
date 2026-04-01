@@ -7,6 +7,12 @@ import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to make any kind of built-in sound heard to a player. It is sent to, for
+ * example, play a stepping sound or a shear sound. The packet is also sent by the client, in which
+ * case it could be forwarded by the server to the other players online. If possible, the packets
+ * from the client should be ignored however, and the server should play them on its own accord.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -17,6 +23,9 @@ public class LevelSoundEventPacket implements BedrockPacket {
     private String identifier;
     private boolean babySound;
     private boolean relativeVolumeDisabled;
+    /**
+     * @since v786
+     */
     private long entityUniqueId;
 
     @Override

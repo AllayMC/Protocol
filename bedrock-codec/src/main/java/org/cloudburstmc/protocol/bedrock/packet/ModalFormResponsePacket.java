@@ -8,6 +8,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.Optional;
 
+/**
+ * Sent by the client in response to a ModalFormRequest, after the player has submitted the form
+ * sent. It contains the options/properties selected by the player, or a JSON encoded 'null' if the
+ * form was closed by clicking the X at the top right corner of the form.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -17,7 +22,7 @@ public class ModalFormResponsePacket implements BedrockPacket {
     /**
      * The reason for why the form response was cancelled.
      *
-     * @since 1.19.20
+     * @since v544
      */
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     private Optional<ModalFormCancelReason> cancelReason;
@@ -40,4 +45,3 @@ public class ModalFormResponsePacket implements BedrockPacket {
         }
     }
 }
-

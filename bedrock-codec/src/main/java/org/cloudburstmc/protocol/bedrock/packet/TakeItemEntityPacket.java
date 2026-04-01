@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server when a player picks up an item entity. It makes the item entity disappear to
+ * viewers and shows the pick-up animation.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -30,4 +34,3 @@ public class TakeItemEntityPacket implements BedrockPacket {
         }
     }
 }
-

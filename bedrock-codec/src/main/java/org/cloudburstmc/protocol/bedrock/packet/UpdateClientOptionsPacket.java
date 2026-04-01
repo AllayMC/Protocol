@@ -6,6 +6,9 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.GraphicsMode;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when some of the client's options are updated, such as the graphics mode.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)

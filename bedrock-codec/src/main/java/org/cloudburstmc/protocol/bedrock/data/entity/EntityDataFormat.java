@@ -12,5 +12,5 @@ public enum EntityDataFormat {
     NBT,
     VECTOR3I,
     LONG,
-    VECTOR3F;
+    VECTOR3F
 }

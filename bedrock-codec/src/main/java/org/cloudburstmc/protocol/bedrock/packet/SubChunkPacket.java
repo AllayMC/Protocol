@@ -11,16 +11,23 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sends data about multiple sub-chunks around a center point.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)
 public class SubChunkPacket extends AbstractReferenceCounted implements BedrockPacket {
     private int dimension;
+    /**
+     * @since v475
+     */
     private boolean cacheEnabled;
     /**
-     * @since v485
+     * @since v486
      */
     private Vector3i centerPosition;
+
     private List<SubChunkData> subChunks = new ObjectArrayList<>();
 
     @Override
@@ -48,4 +55,3 @@ public class SubChunkPacket extends AbstractReferenceCounted implements BedrockP
         throw new UnsupportedOperationException("Can not clone reference counted packet");
     }
 }
-

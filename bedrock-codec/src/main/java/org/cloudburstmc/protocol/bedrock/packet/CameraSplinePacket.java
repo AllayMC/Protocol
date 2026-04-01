@@ -9,8 +9,8 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * Camera custom spline data sent from server to client.
- * Sent by the server to clients for initializing custom spline data that can be played later through the camera command.
+ * Camera custom spline data sent from server to client. Sent by the server to clients for
+ * initializing custom spline data that can be played later through the camera command.
  *
  * @since v924
  */

@@ -13,11 +13,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
+ * Functions the same as UpdateAbilities. It is unclear why these two were separated. Deprecated:
+ * ClientCheatAbility is deprecated as of 1.20.10.
+ *
  * @since v567
- */
-
-/**
- * Deprecated since v594
+ * @deprecated since v594
  */
 @Deprecated
 @Data
@@ -49,4 +49,3 @@ public class ClientCheatAbilityPacket implements BedrockPacket, PlayerAbilityHol
         }
     }
 }
-

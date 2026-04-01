@@ -94,7 +94,7 @@ public enum DisconnectFailReason {
      * @deprecated since v685
      */
     REALMS_SESSION_NOT_FOUND_DEPRECATED,
-    BAD_PACKET,    
+    BAD_PACKET,
     CONN_FAILED_TO_CREATE_OFFER,
     CONN_FAILED_TO_CREATE_ANSWER,
     CONN_FAILED_TO_SET_LOCAL_DESCRIPTION,

@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Used to communicate custom messages from the client to the server, or from the server to the
+ * client. While the name may suggest this packet is used for the discontinued scripting API, it is
+ * likely instead for the GameTest framework.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -32,4 +37,3 @@ public class ScriptMessagePacket implements BedrockPacket {
         }
     }
 }
-

@@ -6,7 +6,6 @@ import org.cloudburstmc.protocol.common.util.index.Indexable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 @SuppressWarnings("rawtypes")
 public final class IndexedBiomes implements Indexable<Map<String, BiomeDefinitionData>> {

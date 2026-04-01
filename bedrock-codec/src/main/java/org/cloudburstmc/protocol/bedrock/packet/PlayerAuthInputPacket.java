@@ -15,6 +15,12 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Sent by the client to allow for server authoritative movement. It is used to synchronise the
+ * player input with the position server-side. The client sends this packet when the
+ * ServerAuthoritativeMovementMode field in the StartGame packet is set to true, instead of the
+ * MovePlayer packet. The client will send this packet once every tick.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -29,22 +35,31 @@ public class PlayerAuthInputPacket implements BedrockPacket {
      * @deprecated since v748
      */
     private Vector3f vrGazeDirection;
+    /**
+     * @since v419
+     */
     private long tick;
+    /**
+     * @since v419
+     */
     private Vector3f delta;
     /**
-     * {@link #inputData} must contain {@link PlayerAuthInputData#PERFORM_ITEM_INTERACTION} in order for this to not be null.
+     * {@link #inputData} must contain {@link PlayerAuthInputData#PERFORM_ITEM_INTERACTION} in order
+     * for this to not be null.
      *
      * @since v428
      */
     private ItemUseTransaction itemUseTransaction;
     /**
-     * {@link #inputData} must contain {@link PlayerAuthInputData#PERFORM_ITEM_STACK_REQUEST} in order for this to not be null.
+     * {@link #inputData} must contain {@link PlayerAuthInputData#PERFORM_ITEM_STACK_REQUEST} in order
+     * for this to not be null.
      *
      * @since v428
      */
     private ItemStackRequest itemStackRequest;
     /**
-     * {@link #inputData} must contain {@link PlayerAuthInputData#PERFORM_BLOCK_ACTIONS} in order for this to not be empty.
+     * {@link #inputData} must contain {@link PlayerAuthInputData#PERFORM_BLOCK_ACTIONS} in order for
+     * this to not be empty.
      *
      * @since v428
      */
@@ -54,21 +69,21 @@ public class PlayerAuthInputPacket implements BedrockPacket {
      */
     private InputInteractionModel inputInteractionModel;
     /**
-     * @since v748
-     */
-    private Vector2f interactRotation;
-    /**
-     * @since 575
+     * @since v575
      */
     private Vector2f analogMoveVector;
     /**
-     * @since 649
+     * @since v649
      */
     private long predictedVehicle;
     /**
-     * @since 662
+     * @since v662
      */
     private Vector2f vehicleRotation;
+    /**
+     * @since v748
+     */
+    private Vector2f interactRotation;
     /**
      * @since v748
      */
@@ -96,4 +111,3 @@ public class PlayerAuthInputPacket implements BedrockPacket {
         }
     }
 }
-

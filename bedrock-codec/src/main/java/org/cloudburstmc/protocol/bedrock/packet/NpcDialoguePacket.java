@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * A packet that allows the client to display dialog boxes for interacting with NPCs.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class NpcDialoguePacket implements BedrockPacket {
@@ -39,4 +42,3 @@ public class NpcDialoguePacket implements BedrockPacket {
         }
     }
 }
-

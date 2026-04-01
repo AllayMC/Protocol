@@ -6,6 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client to the server and the server to the client to make the other side aware of the
+ * new item that an entity is holding. It is used to show the item in the hand of entities such as
+ * zombies too.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -34,4 +39,3 @@ public class MobEquipmentPacket implements BedrockPacket {
         }
     }
 }
-

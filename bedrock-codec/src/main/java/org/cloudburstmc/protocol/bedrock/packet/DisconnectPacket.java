@@ -6,10 +6,17 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.DisconnectFailReason;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * May be sent by the server to disconnect the client using an optional message to send as the
+ * disconnect screen.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class DisconnectPacket implements BedrockPacket {
+    /**
+     * @since v622
+     */
     private DisconnectFailReason reason = DisconnectFailReason.UNKNOWN;
     private boolean messageSkipped;
     private CharSequence kickMessage;
@@ -52,4 +59,3 @@ public class DisconnectPacket implements BedrockPacket {
         return type.cast(filteredMessage);
     }
 }
-

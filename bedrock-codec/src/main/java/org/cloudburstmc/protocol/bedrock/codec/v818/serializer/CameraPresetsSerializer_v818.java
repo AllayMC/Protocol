@@ -73,6 +73,6 @@ public class CameraPresetsSerializer_v818 extends CameraPresetsSerializer_v800 {
         CameraAimAssistPreset aimAssist = helper.readOptional(buffer, null, buf -> readCameraAimAssist(buf, helper));
         ControlScheme controlScheme = helper.readOptional(buffer, null, buf -> VALUES[buf.readUnsignedByte()]);
 
-        return new CameraPreset(identifier, parentPreset, pos, yaw, pitch, viewOffset, radius, minYawLimit, maxYawLimit, listener, effects, rotationSpeed, snapToTarget, entityOffset, horizontalRotationLimit, verticalRotationLimit, continueTargeting, OptionalBoolean.empty(), blockListeningRadius, aimAssist, controlScheme);
+        return new CameraPreset(identifier, parentPreset, pos, yaw, pitch, listener, effects, viewOffset, radius, rotationSpeed, snapToTarget, entityOffset, horizontalRotationLimit, verticalRotationLimit, continueTargeting, OptionalBoolean.empty(), blockListeningRadius, aimAssist, minYawLimit, maxYawLimit, controlScheme);
     }
 }

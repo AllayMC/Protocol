@@ -16,10 +16,27 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * A packet sent by the client. It essentially exists out of multiple sub-packets, each of which
+ * have something to do with the inventory in one way or another. Some of these sub-packets directly
+ * relate to the inventory, others relate to interaction with the world, that could potentially
+ * result in a change in the inventory.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class InventoryTransactionPacket implements BedrockPacket {
+    /**
+     * Block definition of block being picked. ItemUseInventoryTransaction only
+     *
+     * @param blockDefinition block definition of block
+     * @return block definition of block
+     * @since v340
+     */
+    private BlockDefinition blockDefinition;
+    /**
+     * @since v407
+     */
     private int legacyRequestId;
     private final List<LegacySetItemSlotData> legacySlots = new ObjectArrayList<>();
     private final List<InventoryActionData> actions = new ObjectArrayList<>();
@@ -40,18 +57,9 @@ public class InventoryTransactionPacket implements BedrockPacket {
     @Deprecated
     private boolean usingNetIds;
     /**
-     * Block definition of block being picked.
-     * ItemUseInventoryTransaction only
-     *
-     * @param blockDefinition block definition of block
-     * @return block definition of block
-     */
-    private BlockDefinition blockDefinition;
-    /**
      * @since v712
      */
     private ItemUseTransaction.TriggerType triggerType;
-
     /**
      * @since v712
      */
@@ -79,4 +87,3 @@ public class InventoryTransactionPacket implements BedrockPacket {
         }
     }
 }
-

@@ -12,9 +12,12 @@ public class CameraAimAssistCategory {
     private String name;
     private List<CameraAimAssistPriority> entityPriorities = new ObjectArrayList<>();
     private List<CameraAimAssistPriority> blockPriorities = new ArrayList<>();
+    /**
+     * @since v898
+     */
     private List<CameraAimAssistPriority> blockTagPriorities = new ArrayList<>();
     /**
-     * @since v897
+     * @since v924
      */
     private List<CameraAimAssistPriority> entityTypeFamiliesPriorities = new ArrayList<>();
     @Nullable

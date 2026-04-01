@@ -10,6 +10,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the server to send the order in which resource packs and behavior packs should be applied
+ * (and downloaded) by the client.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -17,14 +21,19 @@ public class ResourcePackStackPacket implements BedrockPacket {
     private boolean forcedToAccept;
     private final List<Entry> behaviorPacks = new ObjectArrayList<>();
     private final List<Entry> resourcePacks = new ObjectArrayList<>();
-    private String gameVersion;
     private final List<ExperimentData> experiments = new ObjectArrayList<>();
+    /**
+     * @since v388
+     */
+    private String gameVersion;
+    /**
+     * @since v419
+     */
     private boolean experimentsPreviouslyToggled;
     /**
      * @since v671
      */
     private boolean hasEditorPacks;
-
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
@@ -51,4 +60,3 @@ public class ResourcePackStackPacket implements BedrockPacket {
         }
     }
 }
-

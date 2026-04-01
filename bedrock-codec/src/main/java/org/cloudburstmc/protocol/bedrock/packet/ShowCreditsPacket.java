@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to show the Minecraft credits screen to the client. It is typically sent when
+ * the player beats the ender dragon and leaves the End.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -35,4 +39,3 @@ public class ShowCreditsPacket implements BedrockPacket {
         }
     }
 }
-

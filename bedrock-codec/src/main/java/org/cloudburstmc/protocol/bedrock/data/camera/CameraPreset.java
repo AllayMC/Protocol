@@ -23,6 +23,15 @@ public class CameraPreset {
     private Float yaw;
     private Float pitch;
     /**
+     * @since v618
+     */
+    private CameraAudioListener listener;
+    /**
+     * @since v618
+     */
+    @Builder.Default
+    private OptionalBoolean playEffect = OptionalBoolean.empty();
+    /**
      * @since v712
      */
     private Vector2f viewOffset;
@@ -30,17 +39,6 @@ public class CameraPreset {
      * @since v712
      */
     private Float radius;
-    /**
-     * @since v776
-     */
-    private Float minYawLimit;
-    /**
-     * @since v776
-     */
-    private Float maxYawLimit;
-    private CameraAudioListener listener;
-    @Builder.Default
-    private OptionalBoolean playEffect = OptionalBoolean.empty();
     /**
      * @since v729
      */
@@ -81,6 +79,14 @@ public class CameraPreset {
      * @since v766
      */
     private CameraAimAssistPreset aimAssistPreset;
+    /**
+     * @since v776
+     */
+    private Float minYawLimit;
+    /**
+     * @since v776
+     */
+    private Float maxYawLimit;
     /**
      * @since v800
      */

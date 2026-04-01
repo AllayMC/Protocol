@@ -6,6 +6,11 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the server to spawn an experience orb entity client-side. Much like the AddPainting
+ * packet, it is one of the few packets that spawn an entity without using the {@link
+ * AddEntityPacket}.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -31,4 +36,3 @@ public class SpawnExperienceOrbPacket implements BedrockPacket {
         }
     }
 }
-

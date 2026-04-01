@@ -48,6 +48,6 @@ public class ResourcePacksInfoSerializer_v748 extends ResourcePacksInfoSerialize
         boolean raytracingCapable = resource && buffer.readBoolean();
         String cdnUrl = helper.readString(buffer);
         return new ResourcePacksInfoPacket.Entry(packId, packVersion, packSize, contentKey, subPackName, contentId,
-                isScripting, raytracingCapable, isAddonPack, cdnUrl);
+                isScripting, raytracingCapable, cdnUrl, isAddonPack);
     }
 }

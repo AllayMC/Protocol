@@ -26,7 +26,7 @@ public class EventSerializer_v389 extends EventSerializer_v388 {
         int attackerVariant = VarInts.readInt(buffer);
         int entityDamageCause = VarInts.readInt(buffer);
         boolean inRaid = buffer.readBoolean();
-        return new PlayerDiedEventData(attackerEntityId, attackerVariant, entityDamageCause, inRaid);
+        return new PlayerDiedEventData(attackerEntityId, entityDamageCause, attackerVariant, inRaid);
     }
 
     @Override

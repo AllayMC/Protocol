@@ -9,6 +9,9 @@ public class AnimationData {
     private final ImageData image;
     private final AnimatedTextureType textureType;
     private final float frames;
+    /**
+     * @since v419
+     */
     private final AnimationExpressionType expressionType;
 
     public AnimationData(ImageData image, AnimatedTextureType textureType, float frames) {

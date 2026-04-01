@@ -6,6 +6,10 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ee.LessonAction;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * A packet sent by the server to the client to inform the client of updated progress on a lesson.
+ * This packet only functions on the Minecraft: Education Edition version of the game.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -33,4 +37,3 @@ public class LessonProgressPacket implements BedrockPacket {
         }
     }
 }
-

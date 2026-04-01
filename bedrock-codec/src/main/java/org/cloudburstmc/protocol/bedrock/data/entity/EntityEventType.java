@@ -77,7 +77,7 @@ public enum EntityEventType {
      */
     SHAKE_WETNESS_STOP,
     /**
-     * @since v897
+     * @since v898
      */
     KINETIC_DAMAGE_DEALT
 }

@@ -14,7 +14,6 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AnimateEntityPacket implements BedrockPacket {
-
     /**
      * Name of the to play on the entities specified in {@link #runtimeEntityIds}
      *
@@ -22,7 +21,6 @@ public class AnimateEntityPacket implements BedrockPacket {
      * @return entity animation
      */
     private String animation;
-
     /**
      * The entity state to move to when the animation has finished playing.
      *
@@ -30,7 +28,6 @@ public class AnimateEntityPacket implements BedrockPacket {
      * @return state after animation has finished
      */
     private String nextState;
-
     /**
      * Expression to check if the animation needs to stop.
      *
@@ -38,18 +35,14 @@ public class AnimateEntityPacket implements BedrockPacket {
      * @return molang expression (???)
      */
     private String stopExpression;
-
     /**
      * The molang stop expression version
      *
      * @param stopExpressionVersion the stop expression version
      * @return molang stop expression version
-     *
      * @since v465
      */
     private int stopExpressionVersion;
-
-
     /**
      * Name of the animation controller to use.
      *
@@ -57,7 +50,6 @@ public class AnimateEntityPacket implements BedrockPacket {
      * @return controller name
      */
     private String controller;
-
     /**
      * Time taken to blend out of the specified animation.
      *
@@ -65,7 +57,6 @@ public class AnimateEntityPacket implements BedrockPacket {
      * @return time
      */
     private float blendOutTime;
-
     /**
      * Entity runtime IDs to run the animation on when sent to the client.
      *
@@ -93,4 +84,3 @@ public class AnimateEntityPacket implements BedrockPacket {
         }
     }
 }
-

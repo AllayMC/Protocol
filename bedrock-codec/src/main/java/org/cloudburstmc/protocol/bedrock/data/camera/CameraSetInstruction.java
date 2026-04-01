@@ -18,6 +18,9 @@ public class CameraSetInstruction {
     private EaseData ease;
     private Vector3f pos;
     private Vector2f rot;
+    /**
+     * @since v618
+     */
     private Vector3f facing;
     /**
      * @since v712
@@ -29,6 +32,9 @@ public class CameraSetInstruction {
     private Vector3f entityOffset;
     @Builder.Default
     private OptionalBoolean defaultPreset = OptionalBoolean.empty();
+    /**
+     * @since v818
+     */
     private boolean removeIgnoreStartingValues;
 
     @Data

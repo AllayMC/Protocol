@@ -5,6 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client to the server to update the server on the chunk view radius that it has set in
+ * the settings. The server may respond with a ChunkRadiusUpdated packet with either the chunk
+ * radius requested, or a different chunk radius if the server chooses so.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -33,4 +38,3 @@ public class RequestChunkRadiusPacket implements BedrockPacket {
         }
     }
 }
-

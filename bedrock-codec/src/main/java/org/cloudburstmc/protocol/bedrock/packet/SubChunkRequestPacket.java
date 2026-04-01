@@ -9,6 +9,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Requests specific sub-chunks from the server using a center point.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -16,7 +19,7 @@ public class SubChunkRequestPacket implements BedrockPacket {
     private int dimension;
     private Vector3i subChunkPosition;
     /**
-     * @since v485
+     * @since v486
      */
     private List<Vector3i> positionOffsets = new ObjectArrayList<>();
 
@@ -38,4 +41,3 @@ public class SubChunkRequestPacket implements BedrockPacket {
         }
     }
 }
-

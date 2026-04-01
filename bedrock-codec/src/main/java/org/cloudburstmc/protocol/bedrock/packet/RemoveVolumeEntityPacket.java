@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Indicates a volume entity to be removed from server to client.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class RemoveVolumeEntityPacket implements BedrockPacket {
@@ -32,4 +35,3 @@ public class RemoveVolumeEntityPacket implements BedrockPacket {
         }
     }
 }
-

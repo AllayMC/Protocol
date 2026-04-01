@@ -10,5 +10,8 @@ import lombok.Data;
 public class CreativeItemData {
     private final ItemData item;
     private final int netId;
+    /**
+     * @since v776
+     */
     private final int groupId;
 }

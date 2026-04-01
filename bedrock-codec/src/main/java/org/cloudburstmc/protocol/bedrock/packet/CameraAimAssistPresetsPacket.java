@@ -12,6 +12,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
+/**
+ * Sent by the server to the client to provide a list of categories and presets that can be used
+ * when sending a CameraAimAssist packet or a CameraInstruction including aim assist.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -20,15 +24,15 @@ public class CameraAimAssistPresetsPacket implements BedrockPacket {
      * @deprecated since v800 (1.21.80). Use {@link #categoryDefinitions} instead.
      */
     private final List<CameraAimAssistCategories> categories = new ObjectArrayList<>();
-    /**
-     * @since v800 (1.21.80)
-     */
-    private final List<CameraAimAssistCategory> categoryDefinitions = new ObjectArrayList<>();
     private final List<CameraAimAssistPresetDefinition> presets = new ObjectArrayList<>();
     /**
      * @since v776
      */
     private CameraAimAssistOperation operation;
+    /**
+     * @since v800 (1.21.80)
+     */
+    private final List<CameraAimAssistCategory> categoryDefinitions = new ObjectArrayList<>();
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

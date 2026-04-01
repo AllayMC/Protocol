@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * A packet that allows players to export photos from their portfolios into items in their
+ * inventory. This packet only works on the Education Edition version of Minecraft.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -32,4 +36,3 @@ public class CreatePhotoPacket implements BedrockPacket {
         }
     }
 }
-

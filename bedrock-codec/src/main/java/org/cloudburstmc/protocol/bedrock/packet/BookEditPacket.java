@@ -5,6 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Sent by the client when it edits a book. It is sent each time a modification was made and the
+ * player stops its typing 'session', rather than simply after closing the book.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
@@ -69,4 +73,3 @@ public class BookEditPacket implements BedrockPacket {
         return type.cast(author);
     }
 }
-

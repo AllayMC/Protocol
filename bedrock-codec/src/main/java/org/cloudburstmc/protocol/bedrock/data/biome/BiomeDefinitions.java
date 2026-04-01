@@ -10,7 +10,7 @@ import org.cloudburstmc.protocol.common.util.index.Indexable;
 import java.util.Map;
 
 @Value
-@RequiredArgsConstructor(onConstructor_ = { @Deprecated })
+@RequiredArgsConstructor(onConstructor_ = {@Deprecated})
 public class BiomeDefinitions {
 
     @Getter(AccessLevel.NONE)
