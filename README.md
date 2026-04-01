@@ -9,7 +9,7 @@ A protocol library for Minecraft: Bedrock Edition that supports multiple version
 
 This library supports multiple versions of the Bedrock protocol. Below is a list of the supported versions and their corresponding classes:
 
-<details open>
+<details>
 <summary><b>Supported Versions</b></summary>
 
 |    Class     |  Minecraft Version  |
