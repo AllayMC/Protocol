@@ -1,5 +1,5 @@
 dependencies {
-    api(projects.common)
+    api(project(":common"))
     api(platform(libs.fastutil.bom))
     api(libs.netty.buffer)
     api(libs.fastutil.long.common)
