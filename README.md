@@ -1,13 +1,45 @@
 # Protocol
 
 [![License](https://img.shields.io/badge/license-apache%202.0-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/maven-central/v/org.allaymc.protocol/codec?label=codec)](https://central.sonatype.com/artifact/org.allaymc.protocol/codec)
+[![Maven Central](https://img.shields.io/maven-central/v/org.allaymc.protocol/bedrock-connection?label=bedrock-connection)](https://central.sonatype.com/artifact/org.allaymc.protocol/bedrock-connection)
 
-A protocol library for Minecraft: Bedrock Edition that supports multiple versions. This library is hard forked from [CloudburstMC/Protocol](https://github.com/CloudburstMC/Protocol)
+A protocol library for Minecraft: Bedrock Edition with multi-version codec support.
+
+This project is a hard fork of [CloudburstMC/Protocol](https://github.com/CloudburstMC/Protocol).
+
+## Modules
+
+| Module               | Description                                                                                                          |
+|:---------------------|:---------------------------------------------------------------------------------------------------------------------|
+| `common`             | Shared protocol abstractions, registries, and utility types used by the other modules.                               |
+| `bedrock-codec`      | Bedrock packet definitions, serializers, helpers, and version-specific codec constants such as `Bedrock_v944.CODEC`. |
+| `bedrock-connection` | Netty + RakNet connection support, including peers, sessions, compression, and encryption.                           |
+
+Published artifacts use the `org.allaymc.protocol` group, while the Java packages remain under `org.cloudburstmc.protocol`.
+
+## Adding to Your Project
+
+Choose the smallest module that matches your use case:
+
+- `org.allaymc.protocol:bedrock-codec` if you only need packet serialization, deserialization, and version-specific codecs.
+- `org.allaymc.protocol:bedrock-connection` if you also need the Netty/RakNet transport and session layer.
+- `org.allaymc.protocol:common` is typically consumed transitively and usually does not need to be declared directly.
+
+```kts
+repositories {
+    mavenCentral()
+    maven("https://repo.opencollab.dev/maven-releases/")
+    maven("https://repo.opencollab.dev/maven-snapshots/")
+}
+
+dependencies {
+    implementation("org.allaymc.protocol:bedrock-connection:<version>")
+}
+```
 
 ## Supported Versions
 
-This library supports multiple versions of the Bedrock protocol. Below is a list of the supported versions and their corresponding classes:
+This library supports multiple Bedrock protocol versions. The table below lists the codec class for each supported Minecraft version:
 
 <details>
 <summary><b>Supported Versions</b></summary>
@@ -75,17 +107,3 @@ This library supports multiple versions of the Bedrock protocol. Below is a list
 | Bedrock_v944 |       1.26.10       |
 
 </details>
-
-## Adding to Your Project
-
-This library is available in Maven Central. You can add the following configuration to your Maven/Gradle project to use this library:
-
-```kts
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compileOnly(group = "org.allaymc.protocol", name = "bedrock-connection", version = "<version>")
-}
-```
