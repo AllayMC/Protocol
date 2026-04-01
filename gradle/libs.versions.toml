@@ -33,4 +33,4 @@ junit = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "ju
 
 [plugins]
 checkerframework = { id = "org.checkerframework", version = "0.6.29" }
-lombok = { id = "io.freefair.lombok", version = "6.6.3" }
+lombok = { id = "io.freefair.lombok", version = "9.2.0" }
