@@ -96,7 +96,7 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
     }
 
     private void onRakNetDisconnect(ChannelHandlerContext ctx, RakDisconnectReason reason) {
-        CharSequence disconnectReason = BedrockDisconnectReasons.getReason(reason);
+        String disconnectReason = BedrockDisconnectReasons.getReason(reason);
         for (BedrockSession session : this.sessions.values()) {
             session.disconnectReason = disconnectReason;
         }
@@ -184,7 +184,7 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
         this.channel.pipeline().get(BedrockPacketCodec.class).setCodec(codec);
     }
 
-    public void close(CharSequence reason) {
+    public void close(String reason) {
         for (BedrockSession session : this.sessions.values()) {
             session.disconnectReason = reason;
         }

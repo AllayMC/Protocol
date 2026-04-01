@@ -15,8 +15,8 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ToastRequestPacket implements BedrockPacket {
 
-    private CharSequence title;
-    private CharSequence content;
+    private String title;
+    private String content;
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {
@@ -35,21 +35,5 @@ public class ToastRequestPacket implements BedrockPacket {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
-    }
-
-    public String getTitle() {
-        return getTitle(String.class);
-    }
-
-    public <T extends CharSequence> T getTitle(Class<T> type) {
-        return type.cast(title);
-    }
-
-    public String getContent() {
-        return getContent(String.class);
-    }
-
-    public <T extends CharSequence> T getContent(Class<T> type) {
-        return type.cast(content);
     }
 }

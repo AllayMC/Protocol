@@ -18,7 +18,7 @@ import java.util.List;
 public class TextPacket implements BedrockPacket {
     private Type type;
     private String sourceName;
-    private CharSequence message;
+    private String message;
     private List<String> parameters = new ObjectArrayList<>();
     private boolean needsTranslation;
     private String xuid;
@@ -26,7 +26,7 @@ public class TextPacket implements BedrockPacket {
     /**
      * @since v685
      */
-    private CharSequence filteredMessage = "";
+    private String filteredMessage = "";
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
@@ -62,21 +62,5 @@ public class TextPacket implements BedrockPacket {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
-    }
-
-    public String getMessage() {
-        return getMessage(String.class);
-    }
-
-    public <T extends CharSequence> T getMessage(Class<T> type) {
-        return type.cast(message);
-    }
-
-    public String getFilteredMessage() {
-        return getFilteredMessage(String.class);
-    }
-
-    public <T extends CharSequence> T getFilteredMessage(Class<T> type) {
-        return type.cast(filteredMessage);
     }
 }

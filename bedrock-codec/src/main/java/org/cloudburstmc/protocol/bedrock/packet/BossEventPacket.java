@@ -16,11 +16,11 @@ public class BossEventPacket implements BedrockPacket {
     private long bossUniqueEntityId;
     private Action action;
     private long playerUniqueEntityId;
-    private CharSequence title;
+    private String title;
     /**
      * @since v776
      */
-    private CharSequence filteredTitle = "";
+    private String filteredTitle = "";
 
     private float healthPercentage;
     private int darkenSky;
@@ -80,21 +80,5 @@ public class BossEventPacket implements BedrockPacket {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
-    }
-
-    public String getTitle() {
-        return getTitle(String.class);
-    }
-
-    public <T extends CharSequence> T getTitle(Class<T> type) {
-        return type.cast(title);
-    }
-
-    public String getFilteredTitle() {
-        return getFilteredTitle(String.class);
-    }
-
-    public <T extends CharSequence> T getFilteredTitle(Class<T> type) {
-        return type.cast(filteredTitle);
     }
 }

@@ -15,7 +15,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 public class SetDisplayObjectivePacket implements BedrockPacket {
     private String displaySlot;
     private String objectiveId;
-    private CharSequence displayName;
+    private String displayName;
     private String criteria;
     private int sortOrder;
 
@@ -35,13 +35,5 @@ public class SetDisplayObjectivePacket implements BedrockPacket {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
-    }
-
-    public String getDisplayName() {
-        return getDisplayName(String.class);
-    }
-
-    public <T extends CharSequence> T getDisplayName(Class<T> type) {
-        return type.cast(displayName);
     }
 }

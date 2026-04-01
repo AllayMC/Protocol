@@ -6,7 +6,6 @@ import it.unimi.dsi.fastutil.objects.ObjectList;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v898.serializer.TextSerializer_v898;
 import org.cloudburstmc.protocol.bedrock.packet.TextPacket;
-import org.cloudburstmc.protocol.common.util.TextConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,11 +17,7 @@ public class TextSerializer_v924 extends TextSerializer_v898 {
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, TextPacket packet) {
         TextPacket.Type type = packet.getType();
-        TextConverter converter = helper.getTextConverter();
-        CharSequence message = packet.getMessage(CharSequence.class);
-        Boolean needsTranslation = converter.needsTranslation(message);
-
-        buffer.writeBoolean(needsTranslation != null ? needsTranslation : packet.isNeedsTranslation());
+        buffer.writeBoolean(packet.isNeedsTranslation());
         String text;
 
         switch (type) {
@@ -31,7 +26,7 @@ public class TextSerializer_v924 extends TextSerializer_v898 {
             case SYSTEM:
                 buffer.writeByte(0); // MessageOnly
                 buffer.writeByte(type.ordinal());
-                text = converter.serialize(message);
+                text = packet.getMessage();
                 if (text.isEmpty()) {
                     text = " ";
                     if (log.isDebugEnabled()) {
@@ -45,7 +40,7 @@ public class TextSerializer_v924 extends TextSerializer_v898 {
             case ANNOUNCEMENT_JSON:
                 buffer.writeByte(0); // MessageOnly
                 buffer.writeByte(type.ordinal());
-                text = converter.serializeJson(message);
+                text = packet.getMessage();
                 if (text.isEmpty()) {
                     text = " ";
                     if (log.isDebugEnabled()) {
@@ -60,7 +55,7 @@ public class TextSerializer_v924 extends TextSerializer_v898 {
                 buffer.writeByte(1); // AuthorAndMessage
                 buffer.writeByte(type.ordinal());
                 helper.writeString(buffer, packet.getSourceName());
-                text = converter.serialize(message);
+                text = packet.getMessage();
                 if (text.isEmpty()) {
                     text = " ";
                     if (log.isDebugEnabled()) {
@@ -74,7 +69,7 @@ public class TextSerializer_v924 extends TextSerializer_v898 {
             case JUKEBOX_POPUP:
                 buffer.writeByte(2); // MessageAndParams
                 buffer.writeByte(type.ordinal());
-                text = converter.serializeWithArguments(message, packet.getParameters());
+                text = packet.getMessage();
                 if (text.isEmpty()) {
                     text = " ";
                     if (log.isDebugEnabled()) {
@@ -90,38 +85,32 @@ public class TextSerializer_v924 extends TextSerializer_v898 {
 
         helper.writeString(buffer, packet.getXuid());
         helper.writeString(buffer, packet.getPlatformChatId());
-        String filtered = converter.serialize(packet.getFilteredMessage(CharSequence.class));
+        String filtered = packet.getFilteredMessage();
         helper.writeOptional(buffer, (s -> !s.isEmpty()), filtered, (buf, codecHelper, s) -> codecHelper.writeString(buf, s));
     }
 
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, TextPacket packet) {
-        TextConverter converter = helper.getTextConverter();
         boolean needsTranslation = buffer.readBoolean();
+        packet.setNeedsTranslation(needsTranslation);
 
         switch (buffer.readByte()) {
             case 0: // MessageOnly
                 TextPacket.Type type = TextPacket.Type.values()[buffer.readUnsignedByte()];
                 packet.setType(type);
-
-                String text = helper.readString(buffer);
-                if (type == TextPacket.Type.JSON || type == TextPacket.Type.WHISPER_JSON || type == TextPacket.Type.ANNOUNCEMENT_JSON) {
-                    packet.setMessage(converter.deserializeJson(text, needsTranslation));
-                } else {
-                    packet.setMessage(converter.deserialize(text, needsTranslation));
-                }
+                packet.setMessage(helper.readString(buffer));
                 break;
             case 1: // AuthorAndMessage
                 packet.setType(TextPacket.Type.values()[buffer.readUnsignedByte()]);
                 packet.setSourceName(helper.readString(buffer));
-                packet.setMessage(converter.deserialize(helper.readString(buffer), needsTranslation));
+                packet.setMessage(helper.readString(buffer));
                 break;
             case 2: // MessageAndParams
                 packet.setType(TextPacket.Type.values()[buffer.readUnsignedByte()]);
                 String text2 = helper.readString(buffer);
                 ObjectList<String> parameters = new ObjectArrayList<>();
                 helper.readArray(buffer, parameters, helper::readString);
-                packet.setMessage(converter.deserializeWithArguments(text2, parameters, needsTranslation));
+                packet.setMessage(text2);
                 packet.setParameters(parameters);
                 break;
             default:
@@ -131,6 +120,6 @@ public class TextSerializer_v924 extends TextSerializer_v898 {
         packet.setXuid(helper.readString(buffer));
         packet.setPlatformChatId(helper.readString(buffer));
         String filtered = helper.readOptional(buffer, "", (buf, codecHelper) -> codecHelper.readString(buf));
-        packet.setFilteredMessage(converter.deserialize(filtered, needsTranslation));
+        packet.setFilteredMessage(filtered);
     }
 }

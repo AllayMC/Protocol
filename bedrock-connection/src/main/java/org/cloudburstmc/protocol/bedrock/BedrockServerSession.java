@@ -14,11 +14,11 @@ public class BedrockServerSession extends BedrockSession {
         super(peer, subClientId);
     }
 
-    public void disconnect(@Nullable CharSequence reason, boolean hideReason) {
+    public void disconnect(@Nullable String reason, boolean hideReason) {
         this.checkForClosed();
 
         DisconnectPacket packet = new DisconnectPacket();
-        CharSequence finalReason;
+        String finalReason;
         if (reason == null || hideReason) {
             packet.setMessageSkipped(true);
             finalReason = BedrockDisconnectReasons.DISCONNECTED;

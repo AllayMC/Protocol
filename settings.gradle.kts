@@ -23,4 +23,4 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "protocol"
 
-include("adventure", "bedrock-codec", "bedrock-connection", "common")
+include("bedrock-codec", "bedrock-connection", "common")

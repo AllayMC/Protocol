@@ -8,7 +8,6 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.skin.ImageData;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerListPacket;
-import org.cloudburstmc.protocol.common.util.TextConverter;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
 import static org.cloudburstmc.protocol.bedrock.packet.PlayerListPacket.Action;
@@ -18,18 +17,18 @@ import static org.cloudburstmc.protocol.bedrock.packet.PlayerListPacket.Entry;
 public class PlayerListSerializer_v291 implements BedrockPacketSerializer<PlayerListPacket> {
     public static final PlayerListSerializer_v291 INSTANCE = new PlayerListSerializer_v291();
 
+
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, PlayerListPacket packet) {
         buffer.writeByte(packet.getAction().ordinal());
         VarInts.writeUnsignedInt(buffer, packet.getEntries().size());
 
-        TextConverter converter = helper.getTextConverter();
         for (Entry entry : packet.getEntries()) {
             helper.writeUuid(buffer, entry.getUuid());
 
             if (packet.getAction() == Action.ADD) {
                 VarInts.writeLong(buffer, entry.getEntityId());
-                helper.writeString(buffer, converter.serialize(entry.getName(CharSequence.class)));
+                helper.writeString(buffer, entry.getName());
                 SerializedSkin skin = entry.getSkin();
                 helper.writeString(buffer, skin.getSkinId());
                 skin.getSkinData().checkLegacySkinSize();
@@ -50,13 +49,12 @@ public class PlayerListSerializer_v291 implements BedrockPacketSerializer<Player
         packet.setAction(action);
         int length = VarInts.readUnsignedInt(buffer);
 
-        TextConverter converter = helper.getTextConverter();
         for (int i = 0; i < length; i++) {
             Entry entry = new Entry(helper.readUuid(buffer));
 
             if (action == Action.ADD) {
                 entry.setEntityId(VarInts.readLong(buffer));
-                entry.setName(converter.deserialize(helper.readString(buffer)));
+                entry.setName(helper.readString(buffer));
                 String skinId = helper.readString(buffer);
                 ImageData skinData = ImageData.of(helper.readByteArray(buffer));
                 ImageData capeData = ImageData.of(64, 32, helper.readByteArray(buffer));

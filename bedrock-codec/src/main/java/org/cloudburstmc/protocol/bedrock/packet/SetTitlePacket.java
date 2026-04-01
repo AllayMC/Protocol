@@ -14,7 +14,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class SetTitlePacket implements BedrockPacket {
     private Type type;
-    private CharSequence text;
+    private String text;
     private int fadeInTime;
     private int stayTime;
     private int fadeOutTime;
@@ -29,7 +29,7 @@ public class SetTitlePacket implements BedrockPacket {
     /**
      * @since v712
      */
-    private CharSequence filteredTitleText = "";
+    private String filteredTitleText = "";
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
@@ -59,21 +59,5 @@ public class SetTitlePacket implements BedrockPacket {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
-    }
-
-    public String getText() {
-        return getText(String.class);
-    }
-
-    public <T extends CharSequence> T getText(Class<T> type) {
-        return type.cast(text);
-    }
-
-    public String getFilteredTitleText() {
-        return getFilteredTitleText(String.class);
-    }
-
-    public <T extends CharSequence> T getFilteredTitleText(Class<T> type) {
-        return type.cast(filteredTitleText);
     }
 }

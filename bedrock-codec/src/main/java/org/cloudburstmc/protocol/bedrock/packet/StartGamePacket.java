@@ -66,7 +66,7 @@ public class StartGamePacket implements BedrockPacket {
 
     // Level settings end
     private String levelId;
-    private CharSequence levelName;
+    private String levelName;
     private String premiumWorldTemplateId;
     private boolean trial;
 
@@ -274,13 +274,5 @@ public class StartGamePacket implements BedrockPacket {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
-    }
-
-    public String getLevelName() {
-        return getLevelName(String.class);
-    }
-
-    public <T extends CharSequence> T getLevelName(Class<T> type) {
-        return type.cast(levelName);
     }
 }

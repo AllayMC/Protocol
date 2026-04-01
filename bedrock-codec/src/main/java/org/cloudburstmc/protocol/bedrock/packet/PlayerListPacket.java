@@ -45,7 +45,7 @@ public class PlayerListPacket implements BedrockPacket {
     public static final class Entry {
         private final UUID uuid;
         private long entityId;
-        private CharSequence name;
+        private String name;
         private String xuid;
         private String platformChatId;
         /**
@@ -74,14 +74,6 @@ public class PlayerListPacket implements BedrockPacket {
          * @since v800
          */
         private Color color;
-
-        public String getName() {
-            return getName(String.class);
-        }
-
-        public <T extends CharSequence> T getName(Class<T> type) {
-            return type.cast(name);
-        }
     }
 
     @Override

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.packet.BossEventPacket;
-import org.cloudburstmc.protocol.common.util.TextConverter;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -28,14 +27,13 @@ public class BossEventSerializer_v291 implements BedrockPacketSerializer<BossEve
     }
 
     protected void serializeAction(ByteBuf buffer, BedrockCodecHelper helper, BossEventPacket packet) {
-        TextConverter converter = helper.getTextConverter();
         switch (packet.getAction()) {
             case REGISTER_PLAYER:
             case UNREGISTER_PLAYER:
                 VarInts.writeLong(buffer, packet.getPlayerUniqueEntityId());
                 break;
             case CREATE:
-                helper.writeString(buffer, converter.serialize(packet.getTitle(CharSequence.class)));
+                helper.writeString(buffer, packet.getTitle());
                 buffer.writeFloatLE(packet.getHealthPercentage());
                 // fall through
             case UPDATE_PROPERTIES:
@@ -49,7 +47,7 @@ public class BossEventSerializer_v291 implements BedrockPacketSerializer<BossEve
                 buffer.writeFloatLE(packet.getHealthPercentage());
                 break;
             case UPDATE_NAME:
-                helper.writeString(buffer, converter.serialize(packet.getTitle(CharSequence.class)));
+                helper.writeString(buffer, packet.getTitle());
                 break;
             case REMOVE:
                 break;
@@ -59,14 +57,13 @@ public class BossEventSerializer_v291 implements BedrockPacketSerializer<BossEve
     }
 
     protected void deserializeAction(ByteBuf buffer, BedrockCodecHelper helper, BossEventPacket packet) {
-        TextConverter converter = helper.getTextConverter();
         switch (packet.getAction()) {
             case REGISTER_PLAYER:
             case UNREGISTER_PLAYER:
                 packet.setPlayerUniqueEntityId(VarInts.readLong(buffer));
                 break;
             case CREATE:
-                packet.setTitle(converter.serialize(helper.readString(buffer)));
+                packet.setTitle(helper.readString(buffer));
                 packet.setHealthPercentage(buffer.readFloatLE());
                 // fall through
             case UPDATE_PROPERTIES:
@@ -80,7 +77,7 @@ public class BossEventSerializer_v291 implements BedrockPacketSerializer<BossEve
                 packet.setHealthPercentage(buffer.readFloatLE());
                 break;
             case UPDATE_NAME:
-                packet.setTitle(converter.serialize(helper.readString(buffer)));
+                packet.setTitle(helper.readString(buffer));
                 break;
         }
     }

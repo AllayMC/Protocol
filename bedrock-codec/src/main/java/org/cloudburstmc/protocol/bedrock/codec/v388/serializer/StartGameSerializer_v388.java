@@ -9,7 +9,6 @@ import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.StartGameSerializ
 import org.cloudburstmc.protocol.bedrock.data.AuthoritativeMovementMode;
 import org.cloudburstmc.protocol.bedrock.data.GameType;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
-import org.cloudburstmc.protocol.common.util.TextConverter;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -27,8 +26,7 @@ public class StartGameSerializer_v388 extends StartGameSerializer_v361 {
         this.writeLevelSettings(buffer, helper, packet);
 
         helper.writeString(buffer, packet.getLevelId());
-        TextConverter converter = helper.getTextConverter();
-        helper.writeString(buffer, converter.serialize(packet.getLevelName(CharSequence.class)));
+        helper.writeString(buffer, packet.getLevelName());
         helper.writeString(buffer, packet.getPremiumWorldTemplateId());
         buffer.writeBoolean(packet.isTrial());
         buffer.writeBoolean(packet.getAuthoritativeMovementMode() != AuthoritativeMovementMode.CLIENT);
@@ -56,8 +54,7 @@ public class StartGameSerializer_v388 extends StartGameSerializer_v361 {
         this.readLevelSettings(buffer, helper, packet);
 
         packet.setLevelId(helper.readString(buffer));
-        TextConverter converter = helper.getTextConverter();
-        packet.setLevelName(converter.deserialize(helper.readString(buffer)));
+        packet.setLevelName(helper.readString(buffer));
         packet.setPremiumWorldTemplateId(helper.readString(buffer));
         packet.setTrial(buffer.readBoolean());
         packet.setAuthoritativeMovementMode(buffer.readBoolean() ? AuthoritativeMovementMode.SERVER : AuthoritativeMovementMode.CLIENT);

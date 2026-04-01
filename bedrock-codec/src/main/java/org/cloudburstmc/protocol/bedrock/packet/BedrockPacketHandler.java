@@ -9,7 +9,7 @@ public interface BedrockPacketHandler extends PacketHandler {
         return packet.handle(this);
     }
 
-    default void onDisconnect(CharSequence reason) {
+    default void onDisconnect(String reason) {
     }
 
     default PacketSignal handle(AdventureSettingsPacket packet) {

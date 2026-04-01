@@ -4,12 +4,12 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
 import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
 import org.cloudburstmc.protocol.bedrock.codec.v766.Bedrock_v766;
 import org.cloudburstmc.protocol.bedrock.codec.v776.serializer.*;
-import org.cloudburstmc.protocol.bedrock.data.*;
+import org.cloudburstmc.protocol.bedrock.data.Ability;
+import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataFormat;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.cloudburstmc.protocol.bedrock.packet.*;
-import org.cloudburstmc.protocol.bedrock.transformer.StringTransformer;
 import org.cloudburstmc.protocol.bedrock.transformer.FlagTransformer;
 import org.cloudburstmc.protocol.common.util.TypeMap;
 
@@ -22,7 +22,7 @@ public class Bedrock_v776 extends Bedrock_v766 {
 
     protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v766.ENTITY_DATA
             .toBuilder()
-            .insert(EntityDataTypes.FILTERED_NAME, 132, EntityDataFormat.STRING, StringTransformer.INSTANCE)
+            .insert(EntityDataTypes.FILTERED_NAME, 132, EntityDataFormat.STRING)
             .insert(EntityDataTypes.BED_ENTER_POSITION, 133, EntityDataFormat.VECTOR3F)
             .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
             .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))

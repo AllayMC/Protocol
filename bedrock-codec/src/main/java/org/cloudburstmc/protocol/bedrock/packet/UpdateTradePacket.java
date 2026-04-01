@@ -26,7 +26,7 @@ public class UpdateTradePacket implements BedrockPacket {
 
     private long traderUniqueEntityId;
     private long playerUniqueEntityId;
-    private CharSequence displayName;
+    private String displayName;
     private NbtMap offers;
     /**
      * @since v313
@@ -52,13 +52,5 @@ public class UpdateTradePacket implements BedrockPacket {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
-    }
-
-    public String getDisplayName() {
-        return getDisplayName(String.class);
-    }
-
-    public <T extends CharSequence> T getDisplayName(Class<T> type) {
-        return type.cast(displayName);
     }
 }

@@ -37,7 +37,6 @@ import org.cloudburstmc.protocol.bedrock.data.skin.ImageData;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.packet.InventoryTransactionPacket;
-import org.cloudburstmc.protocol.common.util.TextConverter;
 import org.cloudburstmc.protocol.common.DefinitionRegistry;
 import org.cloudburstmc.protocol.common.NamedDefinition;
 import org.cloudburstmc.protocol.common.util.TriConsumer;
@@ -46,16 +45,11 @@ import org.cloudburstmc.protocol.common.util.VarInts;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.ObjIntConsumer;
-import java.util.function.ToLongFunction;
+import java.util.function.*;
 
 import static java.util.Objects.requireNonNull;
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
@@ -78,10 +72,6 @@ public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {
     @Getter
     @Setter
     protected EncodingSettings encodingSettings = EncodingSettings.DEFAULT;
-
-    @Getter
-    @Setter
-    protected TextConverter textConverter = TextConverter.DEFAULT;
 
     protected static boolean isAir(ItemDefinition definition) {
         return definition == null || "minecraft:air".equals(definition.getIdentifier());

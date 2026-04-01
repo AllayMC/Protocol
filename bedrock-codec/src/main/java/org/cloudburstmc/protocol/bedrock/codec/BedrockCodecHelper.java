@@ -26,7 +26,6 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.InventoryAct
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.packet.InventoryTransactionPacket;
-import org.cloudburstmc.protocol.common.util.TextConverter;
 import org.cloudburstmc.protocol.common.DefinitionRegistry;
 import org.cloudburstmc.protocol.common.NamedDefinition;
 import org.cloudburstmc.protocol.common.util.TriConsumer;
@@ -36,12 +35,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.ObjIntConsumer;
-import java.util.function.Predicate;
-import java.util.function.ToLongFunction;
+import java.util.function.*;
 
 public interface BedrockCodecHelper {
 
@@ -58,10 +52,6 @@ public interface BedrockCodecHelper {
     DefinitionRegistry<NamedDefinition> getCameraPresetDefinitions();
 
     EncodingSettings getEncodingSettings();
-
-    TextConverter getTextConverter();
-
-    void setTextConverter(TextConverter textConverter);
 
     void setEncodingSettings(EncodingSettings settings);
 
