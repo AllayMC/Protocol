@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client when it receives an invalid packet from the server. It holds some information
- * on the error that occurred. noinspection GoNameStartsWithPackageName
+ * on the error that occurred.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
