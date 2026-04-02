@@ -1,5 +1,7 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory;
 
+import org.cloudburstmc.protocol.bedrock.annotation.NetEaseOnly;
+
 /**
  * Enumerates container slot type values used in the Bedrock protocol.
  */
@@ -88,4 +90,9 @@ public enum ContainerSlotType {
      * @since v944
      */
     RECIPE_FURNACE_ITEMS_CONTAINER,
+    /**
+     * NetEase-only recipe category inserted at protocol id 17.
+     */
+    @NetEaseOnly
+    RECIPE_CUSTOM,
 }

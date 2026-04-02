@@ -881,6 +881,10 @@ public interface BedrockPacketHandler {
         return PacketSignal.UNHANDLED;
     }
 
+    default PacketSignal handle(ConfirmSkinPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
     default PacketSignal handle(MovementEffectPacket packet) {
         return PacketSignal.UNHANDLED;
     }
@@ -981,11 +985,23 @@ public interface BedrockPacketHandler {
         return PacketSignal.UNHANDLED;
     }
 
+    default PacketSignal handle(NetEaseJsonPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
     default PacketSignal handle(PartyChangedPacket packet) {
         return PacketSignal.UNHANDLED;
     }
 
+    default PacketSignal handle(PyRpcPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
     default PacketSignal handle(ServerboundDataDrivenScreenClosedPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(StoreBuySuccessPacket packet) {
         return PacketSignal.UNHANDLED;
     }
 

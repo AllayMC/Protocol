@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.cloudburstmc.protocol.bedrock.annotation.NetEaseOnly;
 
 import java.util.List;
 
@@ -62,6 +63,11 @@ public class TextPacket implements BedrockPacket {
      * @since v685
      */
     private String filteredMessage = "";
+    /**
+     * Extra trailing text data used by the NetEase client for chat and popup messages.
+     */
+    @NetEaseOnly
+    private String unknown = "";
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

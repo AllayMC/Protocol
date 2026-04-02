@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
+import org.cloudburstmc.protocol.bedrock.annotation.NetEaseOnly;
 import org.cloudburstmc.protocol.bedrock.data.*;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequest;
 import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.ItemUseTransaction;
@@ -138,6 +139,36 @@ public class PlayerAuthInputPacket implements BedrockPacket {
      * @since v766
      */
     private Vector2f rawMoveVector;
+    /**
+     * Whether the camera has been detached from the player.
+     */
+    @NetEaseOnly
+    private boolean cameraDeparted;
+    /**
+     * Whether the client is currently using a third-person perspective.
+     */
+    @NetEaseOnly
+    private boolean thirdPersonPerspective;
+    /**
+     * The player rotation relative to the current camera.
+     */
+    @NetEaseOnly
+    private Vector2f playerRotationToCamera = Vector2f.from(0, 0);
+    /**
+     * Whether the ready position delta needs to be refreshed.
+     */
+    @NetEaseOnly
+    private boolean readyPosDeltaDirty;
+    /**
+     * Whether the client considers the player to be on the ground.
+     */
+    @NetEaseOnly
+    private boolean onGround;
+    /**
+     * NetEase-specific reset position indicator.
+     */
+    @NetEaseOnly
+    private int resetPosition;
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {
