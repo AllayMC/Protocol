@@ -129,7 +129,7 @@ public final class ChainValidationResult {
          */
         @Nullable
         @Deprecated
-        public final UUID yidentity;
+        public final UUID identity;
         public final String xuid;
         @Nullable
         public final String titleId;
