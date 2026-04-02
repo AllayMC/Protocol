@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.inventory.EnchantData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.EnchantOptionData;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerEnchantOptionsPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.List;
 

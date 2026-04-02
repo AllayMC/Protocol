@@ -10,7 +10,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v748.serializer.PlayerAuthInputSe
 import org.cloudburstmc.protocol.bedrock.data.PlayerAuthInputData;
 import org.cloudburstmc.protocol.bedrock.data.PlayerBlockActionData;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerAuthInputPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class PlayerAuthInputSerializer_v766 extends PlayerAuthInputSerializer_v748 {

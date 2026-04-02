@@ -18,7 +18,7 @@ import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.packet.*;
 import org.cloudburstmc.protocol.bedrock.transformer.TypeMapTransformer;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Bedrock_v431 extends Bedrock_v428 {

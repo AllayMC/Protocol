@@ -7,7 +7,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v503.serializer.AddPlayerSerializer_v503;
 import org.cloudburstmc.protocol.bedrock.data.BuildPlatform;
 import org.cloudburstmc.protocol.bedrock.packet.AddPlayerPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AddPlayerSerializer_v534 extends AddPlayerSerializer_v503 {

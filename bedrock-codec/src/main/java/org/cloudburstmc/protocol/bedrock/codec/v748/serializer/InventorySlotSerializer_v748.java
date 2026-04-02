@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.packet.InventorySlotPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class InventorySlotSerializer_v748 implements BedrockPacketSerializer<InventorySlotPacket> {

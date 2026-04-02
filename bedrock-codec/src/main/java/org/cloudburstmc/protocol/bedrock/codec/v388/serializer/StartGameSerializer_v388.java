@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.StartGameSerializ
 import org.cloudburstmc.protocol.bedrock.data.AuthoritativeMovementMode;
 import org.cloudburstmc.protocol.bedrock.data.GameType;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StartGameSerializer_v388 extends StartGameSerializer_v361 {

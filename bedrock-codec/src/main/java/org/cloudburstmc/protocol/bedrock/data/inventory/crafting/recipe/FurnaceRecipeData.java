@@ -4,7 +4,7 @@ import lombok.*;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.CraftingDataType;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
 
 /**
  * Represents a recipe that is specifically used for all kinds of furnaces. These recipes don't just

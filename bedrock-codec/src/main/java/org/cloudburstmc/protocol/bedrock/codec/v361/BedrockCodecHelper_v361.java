@@ -13,16 +13,16 @@ import org.cloudburstmc.protocol.bedrock.data.structure.StructureMirror;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureRotation;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.transformer.EntityDataTransformer;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.AbstractMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkNotNull;
 
 public class BedrockCodecHelper_v361 extends BedrockCodecHelper_v340 {
 

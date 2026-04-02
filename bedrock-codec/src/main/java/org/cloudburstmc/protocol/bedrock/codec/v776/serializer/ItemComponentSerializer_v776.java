@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemVersion;
 import org.cloudburstmc.protocol.bedrock.packet.ItemRegistryPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ItemComponentSerializer_v776 implements BedrockPacketSerializer<ItemRegistryPacket> {

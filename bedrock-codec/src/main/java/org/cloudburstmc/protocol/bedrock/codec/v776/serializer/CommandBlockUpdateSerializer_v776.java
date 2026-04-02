@@ -7,7 +7,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.CommandBlockUpdateSerializer_v361;
 import org.cloudburstmc.protocol.bedrock.data.CommandBlockMode;
 import org.cloudburstmc.protocol.bedrock.packet.CommandBlockUpdatePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CommandBlockUpdateSerializer_v776 extends CommandBlockUpdateSerializer_v361 {

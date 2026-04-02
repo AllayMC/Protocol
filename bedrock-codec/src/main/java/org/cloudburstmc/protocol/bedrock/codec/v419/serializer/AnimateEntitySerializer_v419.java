@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.packet.AnimateEntityPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class AnimateEntitySerializer_v419 implements BedrockPacketSerializer<AnimateEntityPacket> {

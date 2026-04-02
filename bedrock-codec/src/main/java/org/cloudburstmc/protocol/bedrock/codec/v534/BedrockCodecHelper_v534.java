@@ -13,7 +13,7 @@ import org.cloudburstmc.protocol.bedrock.data.PlayerPermission;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandPermission;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.ItemStackRequestActionType;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 import java.util.Set;
 

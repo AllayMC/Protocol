@@ -8,7 +8,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.ControlScheme;
-import org.cloudburstmc.protocol.common.util.OptionalBoolean;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
 
 /**
  * Represents a basic preset that can be extended upon by more complex instructions.

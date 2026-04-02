@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v589.serializer.EmoteSerializer_v589;
 import org.cloudburstmc.protocol.bedrock.packet.EmotePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class EmoteSerializer_v729 extends EmoteSerializer_v589 {

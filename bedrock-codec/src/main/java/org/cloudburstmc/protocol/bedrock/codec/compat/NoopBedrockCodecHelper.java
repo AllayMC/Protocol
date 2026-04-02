@@ -13,8 +13,8 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityLinkData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
-import org.cloudburstmc.protocol.common.util.TriConsumer;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TriConsumer;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;

@@ -4,7 +4,7 @@ import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v859.serializer.BiomeDefinitionListSerializer_v859;
 import org.cloudburstmc.protocol.bedrock.data.biome.*;
-import org.cloudburstmc.protocol.common.util.SequencedHashSet;
+import org.cloudburstmc.protocol.bedrock.util.SequencedHashSet;
 
 import java.util.List;
 

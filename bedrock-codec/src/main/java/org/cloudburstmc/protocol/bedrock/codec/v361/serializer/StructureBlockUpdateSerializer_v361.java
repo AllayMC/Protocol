@@ -10,7 +10,7 @@ import org.cloudburstmc.protocol.bedrock.data.structure.StructureEditorData;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureRedstoneSaveMode;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.packet.StructureBlockUpdatePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StructureBlockUpdateSerializer_v361 implements BedrockPacketSerializer<StructureBlockUpdatePacket> {

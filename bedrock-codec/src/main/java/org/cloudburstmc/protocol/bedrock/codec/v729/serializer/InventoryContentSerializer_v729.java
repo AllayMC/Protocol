@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v407.serializer.InventoryContentSerializer_v407;
 import org.cloudburstmc.protocol.bedrock.packet.InventoryContentPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class InventoryContentSerializer_v729 extends InventoryContentSerializer_v407 { // intentionally skip InventoryContentSerializer_v712

@@ -5,7 +5,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.ModalFormResponseSerializer_v291;
 import org.cloudburstmc.protocol.bedrock.data.ModalFormCancelReason;
 import org.cloudburstmc.protocol.bedrock.packet.ModalFormResponsePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.Objects;
 import java.util.Optional;

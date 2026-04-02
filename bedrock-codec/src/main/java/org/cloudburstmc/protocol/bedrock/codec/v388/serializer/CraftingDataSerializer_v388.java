@@ -8,7 +8,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.CraftingDataSeria
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.ContainerMixData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.PotionMixData;
 import org.cloudburstmc.protocol.bedrock.packet.CraftingDataPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CraftingDataSerializer_v388 extends CraftingDataSerializer_v361 {

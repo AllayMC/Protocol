@@ -16,16 +16,16 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.ItemStackRequestActionType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.InventoryActionData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.InventorySource;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
-import org.cloudburstmc.protocol.common.util.stream.LittleEndianByteBufInputStream;
-import org.cloudburstmc.protocol.common.util.stream.LittleEndianByteBufOutputStream;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.stream.LittleEndianByteBufInputStream;
+import org.cloudburstmc.protocol.bedrock.util.stream.LittleEndianByteBufOutputStream;
 
 import java.io.IOException;
 import java.util.List;
 
 import static java.util.Objects.requireNonNull;
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
 
 public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
 

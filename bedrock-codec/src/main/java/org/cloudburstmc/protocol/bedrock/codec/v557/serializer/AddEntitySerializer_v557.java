@@ -4,7 +4,7 @@ import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v534.serializer.AddEntitySerializer_v534;
 import org.cloudburstmc.protocol.bedrock.packet.AddEntityPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class AddEntitySerializer_v557 extends AddEntitySerializer_v534 {
 

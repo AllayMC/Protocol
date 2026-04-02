@@ -12,12 +12,12 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.CraftingDataTyp
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.PotionMixData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.*;
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescriptorWithCount;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.List;
 import java.util.UUID;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkNotNull;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CraftingDataSerializer_v407 extends CraftingDataSerializer_v388 {

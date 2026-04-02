@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.BossEventSerializer_v291;
 import org.cloudburstmc.protocol.bedrock.packet.BossEventPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BossEventSerializer_v486 extends BossEventSerializer_v291 {

@@ -8,7 +8,7 @@ import org.cloudburstmc.protocol.bedrock.data.AbilityLayer;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.TextProcessingEventOrigin;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.ItemStackRequestActionType;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class BedrockCodecHelper_v776 extends BedrockCodecHelper_v766 {
 

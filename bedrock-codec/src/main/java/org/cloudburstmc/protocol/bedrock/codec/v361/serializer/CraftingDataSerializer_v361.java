@@ -14,13 +14,13 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.Shapeles
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.DefaultDescriptor;
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.InvalidDescriptor;
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescriptorWithCount;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.List;
 import java.util.UUID;
 
 import static java.util.Objects.requireNonNull;
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CraftingDataSerializer_v361 extends CraftingDataSerializer_v354 {

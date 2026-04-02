@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescripto
 import java.util.List;
 import java.util.UUID;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
 
 /**
  * Represents a recipe that has no particular shape. Its functionality is shared with the

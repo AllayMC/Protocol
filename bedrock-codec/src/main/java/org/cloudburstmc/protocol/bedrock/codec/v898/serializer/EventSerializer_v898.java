@@ -6,9 +6,9 @@ import org.cloudburstmc.protocol.bedrock.codec.v685.serializer.EventSerializer_v
 import org.cloudburstmc.protocol.bedrock.data.event.EventData;
 import org.cloudburstmc.protocol.bedrock.data.event.EventDataType;
 import org.cloudburstmc.protocol.bedrock.packet.EventPacket;
-import org.cloudburstmc.protocol.common.util.Preconditions;
-import org.cloudburstmc.protocol.common.util.TriConsumer;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.Preconditions;
+import org.cloudburstmc.protocol.bedrock.util.TriConsumer;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.function.BiFunction;
 

@@ -4,8 +4,8 @@ import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
 import org.cloudburstmc.protocol.bedrock.codec.v291.BedrockCodecHelper_v291;
 import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.InventorySource;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class BedrockCodecHelper_v313 extends BedrockCodecHelper_v291 {
 

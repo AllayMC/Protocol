@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.auth.CertificateChainPayload;
 import org.cloudburstmc.protocol.bedrock.packet.LoginPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 import org.jose4j.json.internal.json_simple.JSONArray;
 import org.jose4j.json.internal.json_simple.JSONObject;
 import org.jose4j.json.internal.json_simple.JSONValue;
@@ -17,7 +17,7 @@ import org.jose4j.json.internal.json_simple.JSONValue;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class LoginSerializerCompat implements BedrockPacketSerializer<LoginPacket> {

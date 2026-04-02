@@ -7,8 +7,8 @@ import java.util.*;
 
 import static org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes.FLAGS;
 import static org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes.FLAGS_2;
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkNotNull;
 
 /**
  * Represents entity data map used in the Bedrock protocol.

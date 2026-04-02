@@ -11,7 +11,7 @@ import org.cloudburstmc.protocol.bedrock.data.attribute.AttributeModifierData;
 
 import java.util.List;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkNotNull;
 
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)

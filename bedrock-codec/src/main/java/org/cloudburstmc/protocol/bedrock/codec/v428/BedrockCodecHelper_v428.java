@@ -10,8 +10,8 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.MineBlockAction;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.response.ItemStackResponseSlot;
 import org.cloudburstmc.protocol.bedrock.data.skin.*;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.List;
 

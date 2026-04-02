@@ -6,7 +6,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v407.serializer.InventoryContentS
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.FullContainerName;
 import org.cloudburstmc.protocol.bedrock.packet.InventoryContentPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class InventoryContentSerializer_v712 extends InventoryContentSerializer_v407 {
     public static final InventoryContentSerializer_v712 INSTANCE = new InventoryContentSerializer_v712();

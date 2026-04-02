@@ -7,8 +7,8 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.MoveEntityDeltaSerializer_v291;
 import org.cloudburstmc.protocol.bedrock.packet.MoveEntityDeltaPacket;
 import org.cloudburstmc.protocol.bedrock.packet.MoveEntityDeltaPacket.Flag;
-import org.cloudburstmc.protocol.common.util.TriConsumer;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.TriConsumer;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.Set;
 

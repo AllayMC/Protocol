@@ -7,7 +7,7 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryLayout;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryTabLeft;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryTabRight;
 import org.cloudburstmc.protocol.bedrock.packet.SetPlayerInventoryOptionsPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class SetPlayerInventoryOptionsSerializer_v630 implements BedrockPacketSerializer<SetPlayerInventoryOptionsPacket> {
 

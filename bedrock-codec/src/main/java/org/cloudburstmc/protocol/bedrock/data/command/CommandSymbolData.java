@@ -1,6 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.command;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
 
 /**
  * Represents command symbol data used in the Bedrock protocol.

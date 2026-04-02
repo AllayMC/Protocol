@@ -6,8 +6,8 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEvent2Packet;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @RequiredArgsConstructor
 public class LevelSoundEvent2Serializer_v313 implements BedrockPacketSerializer<LevelSoundEvent2Packet> {

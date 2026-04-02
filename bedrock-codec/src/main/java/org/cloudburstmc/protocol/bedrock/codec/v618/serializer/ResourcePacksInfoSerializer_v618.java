@@ -8,12 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v448.serializer.ResourcePacksInfoSerializer_v448;
 import org.cloudburstmc.protocol.bedrock.packet.ResourcePacksInfoPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class ResourcePacksInfoSerializer_v618 extends ResourcePacksInfoSerializer_v448 {

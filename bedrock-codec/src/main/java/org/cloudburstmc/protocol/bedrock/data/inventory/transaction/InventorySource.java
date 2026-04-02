@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerId;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkNotNull;
 
 /**
  * Represents inventory source used in the Bedrock protocol.

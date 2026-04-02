@@ -6,7 +6,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v567.serializer.CraftingDataSeria
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.CraftingDataType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.*;
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescriptorWithCount;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class CraftingDataSerializer_v582 extends CraftingDataSerializer_v567 {
 

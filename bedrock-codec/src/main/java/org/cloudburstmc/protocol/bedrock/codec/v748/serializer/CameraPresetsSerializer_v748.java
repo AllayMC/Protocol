@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v729.serializer.CameraPresetsSerializer_v729;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAudioListener;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraPreset;
-import org.cloudburstmc.protocol.common.util.OptionalBoolean;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class CameraPresetsSerializer_v748 extends CameraPresetsSerializer_v729 {

@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.common.definition.NamedDefinition;
-import org.cloudburstmc.protocol.common.util.OptionalBoolean;
+import org.cloudburstmc.protocol.bedrock.definition.NamedDefinition;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
 
 /**
  * CameraInstructionSet represents a camera instruction that sets the camera to a specified preset

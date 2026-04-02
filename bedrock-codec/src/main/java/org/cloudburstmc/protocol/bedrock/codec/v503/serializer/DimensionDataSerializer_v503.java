@@ -5,7 +5,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.definitions.DimensionDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.DimensionDataPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class DimensionDataSerializer_v503 implements BedrockPacketSerializer<DimensionDataPacket> {
 

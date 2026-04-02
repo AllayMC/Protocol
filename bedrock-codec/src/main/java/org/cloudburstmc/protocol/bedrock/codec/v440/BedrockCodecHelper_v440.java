@@ -12,9 +12,9 @@ import org.cloudburstmc.protocol.bedrock.data.structure.StructureAnimationMode;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureMirror;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureRotation;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
-import org.cloudburstmc.protocol.common.util.Preconditions;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.Preconditions;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class BedrockCodecHelper_v440 extends BedrockCodecHelper_v431 {
 

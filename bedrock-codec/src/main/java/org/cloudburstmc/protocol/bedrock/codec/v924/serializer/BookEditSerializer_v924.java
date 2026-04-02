@@ -4,7 +4,7 @@ import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.BookEditSerializer_v291;
 import org.cloudburstmc.protocol.bedrock.packet.BookEditPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class BookEditSerializer_v924 extends BookEditSerializer_v291 {
 

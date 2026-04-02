@@ -4,7 +4,7 @@ import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v407.serializer.UpdatePlayerGameTypeSerializer_v407;
 import org.cloudburstmc.protocol.bedrock.packet.UpdatePlayerGameTypePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class UpdatePlayerGameTypeSerializer_v671 extends UpdatePlayerGameTypeSerializer_v407 {
     public static final UpdatePlayerGameTypeSerializer_v671 INSTANCE = new UpdatePlayerGameTypeSerializer_v671();

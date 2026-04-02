@@ -1,6 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
-import org.cloudburstmc.protocol.common.util.index.Indexable;
+import org.cloudburstmc.protocol.bedrock.util.index.Indexable;
 
 import java.util.Map;
 

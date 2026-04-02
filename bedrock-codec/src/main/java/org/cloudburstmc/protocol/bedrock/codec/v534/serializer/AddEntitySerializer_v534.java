@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v313.serializer.AddEntitySerializer_v313;
 import org.cloudburstmc.protocol.bedrock.packet.AddEntityPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AddEntitySerializer_v534 extends AddEntitySerializer_v313 {

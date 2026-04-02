@@ -1,6 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.command;
 
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 /**
  * Represents command param used in the Bedrock protocol.

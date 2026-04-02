@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.camera.CameraEase;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSplineInstruction;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSplineType;
 import org.cloudburstmc.protocol.bedrock.packet.CameraInstructionPacket;
-import org.cloudburstmc.protocol.common.util.OptionalBoolean;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
 
 import java.util.ArrayList;
 import java.util.List;

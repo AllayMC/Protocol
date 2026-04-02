@@ -11,7 +11,6 @@ on:
       - gradle.properties
       - settings.gradle.kts
       - build.gradle.kts
-      - common/**
       - bedrock-codec/**
       - bedrock-connection/**
   pull_request:
@@ -23,7 +22,6 @@ on:
       - gradle.properties
       - settings.gradle.kts
       - build.gradle.kts
-      - common/**
       - bedrock-codec/**
       - bedrock-connection/**
 
@@ -62,7 +60,6 @@ jobs:
       - name: Publish to Maven Central
         if: success() && github.event_name == 'push' && github.repository == 'AllayMC/Protocol' && github.ref_name == 'main'
         run: |
-          ./gradlew :common:publishToMavenCentral
           ./gradlew :bedrock-codec:publishToMavenCentral
           ./gradlew :bedrock-connection:publishToMavenCentral
         env:

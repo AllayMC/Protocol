@@ -6,8 +6,8 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.debugshape.*;
 import org.cloudburstmc.protocol.bedrock.packet.DebugDrawerPacket;
-import org.cloudburstmc.protocol.common.util.TriConsumer;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.TriConsumer;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.awt.*;
 import java.util.function.BiConsumer;

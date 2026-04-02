@@ -8,7 +8,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.HudElement;
 import org.cloudburstmc.protocol.bedrock.data.HudVisibility;
 import org.cloudburstmc.protocol.bedrock.packet.SetHudPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class SetHudSerializer_v649 implements BedrockPacketSerializer<SetHudPacket> {

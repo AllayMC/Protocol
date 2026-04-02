@@ -5,8 +5,8 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v898.serializer.StartGameSerializer_v898;
 import org.cloudburstmc.protocol.bedrock.data.*;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
-import org.cloudburstmc.protocol.common.util.OptionalBoolean;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class StartGameSerializer_v924 extends StartGameSerializer_v898 {
 

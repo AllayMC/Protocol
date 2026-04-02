@@ -1,7 +1,7 @@
 package org.cloudburstmc.protocol.bedrock.data.auth;
 
 import lombok.Getter;
-import org.cloudburstmc.protocol.common.util.Preconditions;
+import org.cloudburstmc.protocol.bedrock.util.Preconditions;
 
 import java.util.Objects;
 

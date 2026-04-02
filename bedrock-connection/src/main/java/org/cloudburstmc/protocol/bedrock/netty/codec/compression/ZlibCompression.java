@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.cloudburstmc.protocol.bedrock.data.CompressionAlgorithm;
 import org.cloudburstmc.protocol.bedrock.data.PacketCompressionAlgorithm;
-import org.cloudburstmc.protocol.common.util.Zlib;
+import org.cloudburstmc.protocol.bedrock.util.Zlib;
 
 public class ZlibCompression implements BatchCompression {
     private static final int MAX_DECOMPRESSED_BYTES = Integer.getInteger("bedrock.maxDecompressedBytes", 1024 * 1024 * 10);

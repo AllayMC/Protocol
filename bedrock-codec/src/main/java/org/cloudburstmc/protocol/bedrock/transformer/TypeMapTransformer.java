@@ -3,7 +3,7 @@ package org.cloudburstmc.protocol.bedrock.transformer;
 import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataMap;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 @RequiredArgsConstructor
 public final class TypeMapTransformer<T> implements EntityDataTransformer<Integer, T> {

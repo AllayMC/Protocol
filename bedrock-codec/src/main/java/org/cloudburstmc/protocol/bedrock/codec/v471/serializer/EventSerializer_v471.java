@@ -6,8 +6,8 @@ import org.cloudburstmc.protocol.bedrock.codec.v389.serializer.EventSerializer_v
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.event.*;
-import org.cloudburstmc.protocol.common.util.DefinitionUtils;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.DefinitionUtils;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class EventSerializer_v471 extends EventSerializer_v389 {
     public static final EventSerializer_v471 INSTANCE = new EventSerializer_v471();

@@ -7,7 +7,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v388.serializer.AddPlayerSerializ
 import org.cloudburstmc.protocol.bedrock.data.BuildPlatform;
 import org.cloudburstmc.protocol.bedrock.data.GameType;
 import org.cloudburstmc.protocol.bedrock.packet.AddPlayerPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class AddPlayerSerializer_v503 extends AddPlayerSerializer_v388 {
 

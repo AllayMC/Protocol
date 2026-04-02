@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.HeightMapDataType;
 import org.cloudburstmc.protocol.bedrock.data.SubChunkData;
 import org.cloudburstmc.protocol.bedrock.data.SubChunkRequestResult;
 import org.cloudburstmc.protocol.bedrock.packet.SubChunkPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SubChunkSerializer_v475 extends SubChunkSerializer_v471 {

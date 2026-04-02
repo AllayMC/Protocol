@@ -7,7 +7,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v712.serializer.PlayerArmorDamageSerializer_v712;
 import org.cloudburstmc.protocol.bedrock.data.PlayerArmorDamageFlag;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerArmorDamagePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PlayerArmorDamageSerializer_v844 extends PlayerArmorDamageSerializer_v712 {

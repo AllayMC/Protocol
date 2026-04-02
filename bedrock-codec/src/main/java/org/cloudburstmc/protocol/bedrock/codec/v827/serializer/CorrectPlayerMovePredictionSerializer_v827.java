@@ -5,7 +5,7 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v712.serializer.CorrectPlayerMovePredictionSerializer_v712;
 import org.cloudburstmc.protocol.bedrock.data.PredictionType;
 import org.cloudburstmc.protocol.bedrock.packet.CorrectPlayerMovePredictionPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class CorrectPlayerMovePredictionSerializer_v827 extends CorrectPlayerMovePredictionSerializer_v712 {
 

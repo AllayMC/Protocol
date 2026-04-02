@@ -2,7 +2,7 @@ package org.cloudburstmc.protocol.bedrock.netty.codec.packet;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.netty.BedrockPacketWrapper;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class BedrockPacketCodec_v3 extends BedrockPacketCodec {
 

@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.datastore.DataStoreChange;
 import org.cloudburstmc.protocol.bedrock.data.datastore.DataStoreRemoval;
 import org.cloudburstmc.protocol.bedrock.data.datastore.DataStoreUpdate;
 import org.cloudburstmc.protocol.bedrock.packet.ClientboundDataStorePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.HashMap;
 import java.util.Map;

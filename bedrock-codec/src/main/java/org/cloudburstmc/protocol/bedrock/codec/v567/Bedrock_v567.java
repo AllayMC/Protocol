@@ -13,7 +13,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v567.serializer.StartGameSerializ
 import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.packet.*;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v567 extends Bedrock_v560 {
 

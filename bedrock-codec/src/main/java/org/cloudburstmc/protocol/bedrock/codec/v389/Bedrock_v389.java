@@ -14,7 +14,7 @@ import org.cloudburstmc.protocol.bedrock.packet.EventPacket;
 import org.cloudburstmc.protocol.bedrock.packet.LevelEventGenericPacket;
 import org.cloudburstmc.protocol.bedrock.packet.LevelEventPacket;
 import org.cloudburstmc.protocol.bedrock.transformer.TypeMapTransformer;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v389 extends Bedrock_v388 {
 

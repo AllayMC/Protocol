@@ -10,7 +10,7 @@ import org.cloudburstmc.protocol.bedrock.data.skin.AnimatedTextureType;
 import org.cloudburstmc.protocol.bedrock.data.skin.AnimationData;
 import org.cloudburstmc.protocol.bedrock.data.skin.AnimationExpressionType;
 import org.cloudburstmc.protocol.bedrock.data.skin.ImageData;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 import java.util.List;
 

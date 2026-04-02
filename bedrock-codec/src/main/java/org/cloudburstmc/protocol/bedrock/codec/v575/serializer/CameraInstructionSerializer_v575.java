@@ -12,10 +12,10 @@ import org.cloudburstmc.protocol.bedrock.data.camera.CameraEase;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraFadeInstruction;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSetInstruction;
 import org.cloudburstmc.protocol.bedrock.packet.CameraInstructionPacket;
-import org.cloudburstmc.protocol.common.definition.NamedDefinition;
-import org.cloudburstmc.protocol.common.util.DefinitionUtils;
-import org.cloudburstmc.protocol.common.util.OptionalBoolean;
-import org.cloudburstmc.protocol.common.util.Preconditions;
+import org.cloudburstmc.protocol.bedrock.definition.NamedDefinition;
+import org.cloudburstmc.protocol.bedrock.util.DefinitionUtils;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
+import org.cloudburstmc.protocol.bedrock.util.Preconditions;
 
 import java.awt.*;
 import java.util.List;

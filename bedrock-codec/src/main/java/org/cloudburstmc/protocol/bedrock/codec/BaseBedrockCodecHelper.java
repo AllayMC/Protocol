@@ -37,11 +37,11 @@ import org.cloudburstmc.protocol.bedrock.data.skin.ImageData;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.packet.InventoryTransactionPacket;
-import org.cloudburstmc.protocol.common.definition.DefinitionRegistry;
-import org.cloudburstmc.protocol.common.definition.NamedDefinition;
-import org.cloudburstmc.protocol.common.util.TriConsumer;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.definition.DefinitionRegistry;
+import org.cloudburstmc.protocol.bedrock.definition.NamedDefinition;
+import org.cloudburstmc.protocol.bedrock.util.TriConsumer;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -52,8 +52,8 @@ import java.util.UUID;
 import java.util.function.*;
 
 import static java.util.Objects.requireNonNull;
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkNotNull;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {

@@ -5,7 +5,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v786.serializer.LevelSoundEventSe
 import org.cloudburstmc.protocol.bedrock.codec.v818.Bedrock_v818;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEventPacket;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v819 extends Bedrock_v818 {
 

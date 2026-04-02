@@ -8,7 +8,7 @@ import org.jose4j.json.internal.json_simple.JSONValue;
 import java.util.Collections;
 import java.util.List;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
 
 /**
  * The serialised form of a player skin as sent in packets such as

@@ -11,8 +11,8 @@ import org.cloudburstmc.protocol.bedrock.data.structure.StructureAnimationMode;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureMirror;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureRotation;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class BedrockCodecHelper_v503 extends BedrockCodecHelper_v471 {
     public BedrockCodecHelper_v503(EntityDataTypeMap entityData, TypeMap<Class<?>> gameRulesTypes,

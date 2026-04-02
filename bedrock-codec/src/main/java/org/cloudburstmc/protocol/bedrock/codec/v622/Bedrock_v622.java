@@ -16,7 +16,7 @@ import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEvent1Packet;
 import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEvent2Packet;
 import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEventPacket;
 import org.cloudburstmc.protocol.bedrock.transformer.FlagTransformer;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v622 extends Bedrock_v618 {
 

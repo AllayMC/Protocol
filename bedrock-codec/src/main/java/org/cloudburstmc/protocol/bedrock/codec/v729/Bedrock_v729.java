@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v729.serializer.*;
 import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.packet.*;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v729 extends Bedrock_v712 {
 

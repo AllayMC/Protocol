@@ -8,7 +8,7 @@ import org.cloudburstmc.protocol.bedrock.transformer.EntityDataTransformer;
 import java.util.*;
 import java.util.function.Consumer;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.*;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.*;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class EntityDataTypeMap {

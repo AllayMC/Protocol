@@ -7,7 +7,7 @@ import org.cloudburstmc.protocol.bedrock.data.event.EventData;
 import org.cloudburstmc.protocol.bedrock.data.event.EventDataType;
 import org.cloudburstmc.protocol.bedrock.data.event.ExtractHoneyEventData;
 import org.cloudburstmc.protocol.bedrock.data.event.PlayerDiedEventData;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class EventSerializer_v389 extends EventSerializer_v388 {
     public static final EventSerializer_v389 INSTANCE = new EventSerializer_v389();

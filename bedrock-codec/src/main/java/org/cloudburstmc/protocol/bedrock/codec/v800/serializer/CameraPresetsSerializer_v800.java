@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.ControlScheme;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistPreset;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAudioListener;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraPreset;
-import org.cloudburstmc.protocol.common.util.OptionalBoolean;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
 
 public class CameraPresetsSerializer_v800 extends CameraPresetsSerializer_v776 {
 

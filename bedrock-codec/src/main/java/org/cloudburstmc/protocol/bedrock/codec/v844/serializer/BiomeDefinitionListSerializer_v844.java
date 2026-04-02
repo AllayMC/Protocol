@@ -4,10 +4,10 @@ import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v827.serializer.BiomeDefinitionListSerializer_v827;
 import org.cloudburstmc.protocol.bedrock.data.biome.*;
-import org.cloudburstmc.protocol.common.util.Preconditions;
-import org.cloudburstmc.protocol.common.util.SequencedHashSet;
-import org.cloudburstmc.protocol.common.util.VarInts;
-import org.cloudburstmc.protocol.common.util.index.IndexedList;
+import org.cloudburstmc.protocol.bedrock.util.Preconditions;
+import org.cloudburstmc.protocol.bedrock.util.SequencedHashSet;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.index.IndexedList;
 
 import java.awt.*;
 import java.util.List;

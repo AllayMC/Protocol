@@ -128,9 +128,11 @@ public final class ChainValidationResult {
          * @deprecated v818: Use {@link #minecraftId} instead.
          */
         @Nullable
-        public final UUID identity;
+        @Deprecated
+        public final UUID yidentity;
         public final String xuid;
-        public final @Nullable String titleId;
+        @Nullable
+        public final String titleId;
         /**
          * The player's Minecraft PlayFab ID
          * @since v818

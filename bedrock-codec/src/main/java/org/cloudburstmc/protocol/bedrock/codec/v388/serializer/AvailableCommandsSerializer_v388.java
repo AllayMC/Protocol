@@ -6,10 +6,10 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v340.serializer.AvailableCommandsSerializer_v340;
 import org.cloudburstmc.protocol.bedrock.data.command.*;
 import org.cloudburstmc.protocol.bedrock.packet.AvailableCommandsPacket;
-import org.cloudburstmc.protocol.common.util.LongKeys;
-import org.cloudburstmc.protocol.common.util.SequencedHashSet;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.LongKeys;
+import org.cloudburstmc.protocol.bedrock.util.SequencedHashSet;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.HashSet;
 import java.util.List;

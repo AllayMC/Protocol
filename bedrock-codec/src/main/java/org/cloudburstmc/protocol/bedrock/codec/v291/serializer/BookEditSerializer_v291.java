@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.packet.BookEditPacket;
-import org.cloudburstmc.protocol.common.util.Int2ObjectBiMap;
+import org.cloudburstmc.protocol.bedrock.util.Int2ObjectBiMap;
 
 import static org.cloudburstmc.protocol.bedrock.packet.BookEditPacket.Action;
 

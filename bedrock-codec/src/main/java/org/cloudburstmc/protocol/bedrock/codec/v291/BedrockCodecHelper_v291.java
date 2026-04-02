@@ -23,10 +23,10 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataType;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityLinkData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.bedrock.transformer.EntityDataTransformer;
-import org.cloudburstmc.protocol.common.util.TriConsumer;
-import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
-import org.cloudburstmc.protocol.common.util.stream.LittleEndianByteBufOutputStream;
+import org.cloudburstmc.protocol.bedrock.util.TriConsumer;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.stream.LittleEndianByteBufOutputStream;
 
 import java.io.IOException;
 import java.util.*;
@@ -35,8 +35,8 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkNotNull;
 
 public class BedrockCodecHelper_v291 extends BaseBedrockCodecHelper {
 

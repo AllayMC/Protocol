@@ -18,8 +18,8 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
-import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
+import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkNotNull;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public final class BedrockCodec {

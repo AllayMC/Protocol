@@ -8,10 +8,10 @@ import org.cloudburstmc.protocol.bedrock.codec.v618.serializer.CameraInstruction
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSetInstruction;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraTargetInstruction;
 import org.cloudburstmc.protocol.bedrock.packet.CameraInstructionPacket;
-import org.cloudburstmc.protocol.common.definition.NamedDefinition;
-import org.cloudburstmc.protocol.common.util.DefinitionUtils;
-import org.cloudburstmc.protocol.common.util.OptionalBoolean;
-import org.cloudburstmc.protocol.common.util.Preconditions;
+import org.cloudburstmc.protocol.bedrock.definition.NamedDefinition;
+import org.cloudburstmc.protocol.bedrock.util.DefinitionUtils;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
+import org.cloudburstmc.protocol.bedrock.util.Preconditions;
 
 public class CameraInstructionSerializer_v712 extends CameraInstructionSerializer_618 {
     public static final CameraInstructionSerializer_v712 INSTANCE = new CameraInstructionSerializer_v712();

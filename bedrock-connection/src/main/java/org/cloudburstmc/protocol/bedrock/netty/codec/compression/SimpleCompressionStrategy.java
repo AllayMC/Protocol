@@ -3,7 +3,7 @@ package org.cloudburstmc.protocol.bedrock.netty.codec.compression;
 import org.cloudburstmc.protocol.bedrock.data.CompressionAlgorithm;
 import org.cloudburstmc.protocol.bedrock.data.PacketCompressionAlgorithm;
 import org.cloudburstmc.protocol.bedrock.netty.BedrockBatchWrapper;
-import org.cloudburstmc.protocol.common.util.Zlib;
+import org.cloudburstmc.protocol.bedrock.util.Zlib;
 
 /**
  * A simple compression strategy that uses the same compression for all packets, but

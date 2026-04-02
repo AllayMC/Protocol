@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v419.serializer.StartGameSerializ
 import org.cloudburstmc.protocol.bedrock.data.BlockPropertyData;
 import org.cloudburstmc.protocol.bedrock.data.GameType;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @SuppressWarnings("DuplicatedCode")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

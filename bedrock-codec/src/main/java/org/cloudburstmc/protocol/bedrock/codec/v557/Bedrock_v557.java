@@ -11,7 +11,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v557.serializer.AddPlayerSerializ
 import org.cloudburstmc.protocol.bedrock.codec.v557.serializer.SetEntityDataSerializer_v557;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.packet.*;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v557 extends Bedrock_v554 {
 

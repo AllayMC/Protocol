@@ -1,7 +1,7 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
 import it.unimi.dsi.fastutil.ints.IntObjectPair;
-import org.cloudburstmc.protocol.common.util.index.Indexable;
+import org.cloudburstmc.protocol.bedrock.util.index.Indexable;
 
 import java.util.LinkedHashMap;
 import java.util.List;

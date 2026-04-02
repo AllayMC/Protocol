@@ -17,7 +17,7 @@ import org.cloudburstmc.protocol.bedrock.packet.AgentAnimationPacket;
 import org.cloudburstmc.protocol.bedrock.packet.AvailableCommandsPacket;
 import org.cloudburstmc.protocol.bedrock.packet.ScriptCustomEventPacket;
 import org.cloudburstmc.protocol.bedrock.transformer.FlagTransformer;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v594 extends Bedrock_v589 {
 

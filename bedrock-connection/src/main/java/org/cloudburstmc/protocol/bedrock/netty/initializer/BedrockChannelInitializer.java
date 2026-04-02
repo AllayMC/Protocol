@@ -15,7 +15,7 @@ import org.cloudburstmc.protocol.bedrock.netty.codec.packet.BedrockPacketCodec;
 import org.cloudburstmc.protocol.bedrock.netty.codec.packet.BedrockPacketCodec_v1;
 import org.cloudburstmc.protocol.bedrock.netty.codec.packet.BedrockPacketCodec_v2;
 import org.cloudburstmc.protocol.bedrock.netty.codec.packet.BedrockPacketCodec_v3;
-import org.cloudburstmc.protocol.common.util.Zlib;
+import org.cloudburstmc.protocol.bedrock.util.Zlib;
 
 public abstract class BedrockChannelInitializer<T extends BedrockSession> extends ChannelInitializer<Channel> {
 

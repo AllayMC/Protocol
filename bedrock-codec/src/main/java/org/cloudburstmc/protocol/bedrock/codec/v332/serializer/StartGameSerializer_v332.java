@@ -8,7 +8,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.StartGameSerializ
 import org.cloudburstmc.protocol.bedrock.data.GamePublishSetting;
 import org.cloudburstmc.protocol.bedrock.data.GameType;
 import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StartGameSerializer_v332 extends StartGameSerializer_v291 { // No need to extend last version

@@ -26,10 +26,10 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.InventoryAct
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.packet.InventoryTransactionPacket;
-import org.cloudburstmc.protocol.common.definition.DefinitionRegistry;
-import org.cloudburstmc.protocol.common.definition.NamedDefinition;
-import org.cloudburstmc.protocol.common.util.TriConsumer;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.definition.DefinitionRegistry;
+import org.cloudburstmc.protocol.bedrock.definition.NamedDefinition;
+import org.cloudburstmc.protocol.bedrock.util.TriConsumer;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.util.Collection;
 import java.util.List;

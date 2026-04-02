@@ -8,7 +8,7 @@ import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.ItemStackRequestActionType;
 import org.cloudburstmc.protocol.bedrock.packet.FilterTextPacket;
 import org.cloudburstmc.protocol.bedrock.packet.ResourcePacksInfoPacket;
-import org.cloudburstmc.protocol.common.util.TypeMap;
+import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v422 extends Bedrock_v419 {
 

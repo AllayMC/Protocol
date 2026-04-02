@@ -2,8 +2,8 @@ package org.cloudburstmc.protocol.bedrock.data.biome;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.cloudburstmc.protocol.common.util.index.Indexable;
-import org.cloudburstmc.protocol.common.util.index.Unindexed;
+import org.cloudburstmc.protocol.bedrock.util.index.Indexable;
+import org.cloudburstmc.protocol.bedrock.util.index.Unindexed;
 
 import java.awt.*;
 import java.util.List;

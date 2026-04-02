@@ -11,7 +11,6 @@ This project is a hard fork of [CloudburstMC/Protocol](https://github.com/Cloudb
 
 | Module               | Description                                                                                                          |
 |:---------------------|:---------------------------------------------------------------------------------------------------------------------|
-| `common`             | Shared protocol abstractions, registries, and utility types used by the other modules.                               |
 | `bedrock-codec`      | Bedrock packet definitions, serializers, helpers, and version-specific codec constants such as `Bedrock_v944.CODEC`. |
 | `bedrock-connection` | Netty + RakNet connection support, including peers, sessions, compression, and encryption.                           |
 
@@ -23,7 +22,6 @@ Choose the smallest module that matches your use case:
 
 - `org.allaymc.protocol:bedrock-codec` if you only need packet serialization, deserialization, and version-specific codecs.
 - `org.allaymc.protocol:bedrock-connection` if you also need the Netty/RakNet transport and session layer.
-- `org.allaymc.protocol:common` is typically consumed transitively and usually does not need to be declared directly.
 
 ```kts
 repositories {

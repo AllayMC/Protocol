@@ -2,7 +2,7 @@ package org.cloudburstmc.protocol.bedrock.data.definitions;
 
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemVersion;
-import org.cloudburstmc.protocol.common.definition.NamedDefinition;
+import org.cloudburstmc.protocol.bedrock.definition.NamedDefinition;
 
 /**
  * Represents item definition used in the Bedrock protocol.

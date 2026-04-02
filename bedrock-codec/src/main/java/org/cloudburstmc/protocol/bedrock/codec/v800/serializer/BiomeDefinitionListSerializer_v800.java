@@ -13,9 +13,9 @@ import org.cloudburstmc.protocol.bedrock.data.RandomDistributionType;
 import org.cloudburstmc.protocol.bedrock.data.biome.*;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.BiomeDefinitionListPacket;
-import org.cloudburstmc.protocol.common.util.*;
-import org.cloudburstmc.protocol.common.util.index.Indexed;
-import org.cloudburstmc.protocol.common.util.index.IndexedList;
+import org.cloudburstmc.protocol.bedrock.util.*;
+import org.cloudburstmc.protocol.bedrock.util.index.Indexed;
+import org.cloudburstmc.protocol.bedrock.util.index.IndexedList;
 
 import java.awt.*;
 import java.util.List;

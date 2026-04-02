@@ -10,7 +10,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v407.serializer.CraftingDataSeria
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.MaterialReducer;
 import org.cloudburstmc.protocol.bedrock.packet.CraftingDataPacket;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class CraftingDataSerializer_v465 extends CraftingDataSerializer_v407 {

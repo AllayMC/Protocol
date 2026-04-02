@@ -8,10 +8,10 @@ import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v712.serializer.CameraInstructionSerializer_v712;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSetInstruction;
-import org.cloudburstmc.protocol.common.definition.NamedDefinition;
-import org.cloudburstmc.protocol.common.util.DefinitionUtils;
-import org.cloudburstmc.protocol.common.util.OptionalBoolean;
-import org.cloudburstmc.protocol.common.util.Preconditions;
+import org.cloudburstmc.protocol.bedrock.definition.NamedDefinition;
+import org.cloudburstmc.protocol.bedrock.util.DefinitionUtils;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
+import org.cloudburstmc.protocol.bedrock.util.Preconditions;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class CameraInstructionSerializer_v748 extends CameraInstructionSerializer_v712 {

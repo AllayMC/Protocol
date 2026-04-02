@@ -5,7 +5,7 @@ import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v818.serializer.DebugDrawerSerializer_v818;
 import org.cloudburstmc.protocol.bedrock.data.debugshape.*;
-import org.cloudburstmc.protocol.common.util.VarInts;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.awt.*;
 
