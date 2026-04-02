@@ -8,15 +8,15 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemVersion;
-import org.cloudburstmc.protocol.bedrock.packet.ItemComponentPacket;
+import org.cloudburstmc.protocol.bedrock.packet.ItemRegistryPacket;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ItemComponentSerializer_v419 implements BedrockPacketSerializer<ItemComponentPacket> {
+public class ItemComponentSerializer_v419 implements BedrockPacketSerializer<ItemRegistryPacket> {
 
     public static final ItemComponentSerializer_v419 INSTANCE = new ItemComponentSerializer_v419();
 
     @Override
-    public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ItemComponentPacket packet) {
+    public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ItemRegistryPacket packet) {
         helper.writeArray(buffer, packet.getItems(), (buf, packetHelper, item) -> {
             packetHelper.writeString(buf, item.identifier());
             packetHelper.writeTag(buf, item.componentData());
@@ -24,7 +24,7 @@ public class ItemComponentSerializer_v419 implements BedrockPacketSerializer<Ite
     }
 
     @Override
-    public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, ItemComponentPacket packet) {
+    public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, ItemRegistryPacket packet) {
         helper.readArray(buffer, packet.getItems(), (buf, packetHelper) -> {
             String name = packetHelper.readString(buf);
             NbtMap data = packetHelper.readTag(buf, NbtMap.class);

@@ -668,7 +668,7 @@ public interface BedrockPacketHandler extends PacketHandler {
         return PacketSignal.UNHANDLED;
     }
 
-    default PacketSignal handle(ItemComponentPacket packet) {
+    default PacketSignal handle(ItemRegistryPacket packet) {
         return PacketSignal.UNHANDLED;
     }
 
