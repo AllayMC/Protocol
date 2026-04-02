@@ -1,7 +1,5 @@
 package org.cloudburstmc.protocol.bedrock.data.command;
 
-import lombok.NonNull;
-
 /**
  * Represents a message sent by a command that holds the output of one of the commands executed.
  *
@@ -13,5 +11,5 @@ import lombok.NonNull;
  *                   as the position that a player was teleported to or the effect that was applied to an entity.
  *                   These parameters only apply for the Minecraft built-in command output.
  */
-public record CommandOutputMessage(boolean success, @NonNull String message, @NonNull String[] parameters) {
+public record CommandOutputMessage(boolean success, String message, String[] parameters) {
 }

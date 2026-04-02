@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.response;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 /**
  * ItemEntry holds information on what item stack should be present in a specific slot.
@@ -35,7 +34,7 @@ public class ItemStackResponseSlot {
      *
      * @since v422
      */
-    private @NonNull String customName;
+    private String customName;
 
     /**
      * The durability correction.
