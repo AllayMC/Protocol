@@ -1,7 +1,5 @@
 package org.cloudburstmc.protocol.common.util.index;
 
-import org.cloudburstmc.protocol.common.util.SequencedHashSet;
-
 import java.util.List;
 
 public final class Indexed<T> implements Indexable<T> {

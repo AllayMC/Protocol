@@ -1,13 +1,13 @@
 package org.cloudburstmc.protocol.bedrock.data.event;
 
-import lombok.Value;
-
-@Value
-public class CauldronUsedEventData implements EventData {
-    private final int potionId;
-    private final int color;
-    private final int fillLevel;
-
+/**
+ * Represents the event data sent when a cauldron is used.
+ *
+ * @param potionId  The potion ID.
+ * @param color     The color.
+ * @param fillLevel The fill level.
+ */
+public record CauldronUsedEventData(int potionId, int color, int fillLevel) implements EventData {
     @Override
     public EventDataType getType() {
         return EventDataType.CAULDRON_USED;

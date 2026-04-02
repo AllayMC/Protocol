@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.response.ItemStackResponse;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +18,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @ToString(doNotUseGetters = true)
 public class ItemStackResponsePacket implements BedrockPacket {
+    /**
+     * One response entry for each request processed by the server, indicating whether that request
+     * was accepted and what container state should be applied on the client.
+     */
     private final List<ItemStackResponse> entries = new ArrayList<>();
 
     @Override

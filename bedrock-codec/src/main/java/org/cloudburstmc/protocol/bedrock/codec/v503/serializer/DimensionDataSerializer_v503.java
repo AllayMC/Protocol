@@ -20,10 +20,10 @@ public class DimensionDataSerializer_v503 implements BedrockPacketSerializer<Dim
     }
 
     protected void writeDefinition(ByteBuf buffer, BedrockCodecHelper helper, DimensionDefinition definition) {
-        helper.writeString(buffer, definition.getId());
-        VarInts.writeInt(buffer, definition.getMaximumHeight());
-        VarInts.writeInt(buffer, definition.getMinimumHeight());
-        VarInts.writeInt(buffer, definition.getGeneratorType());
+        helper.writeString(buffer, definition.id());
+        VarInts.writeInt(buffer, definition.maximumHeight());
+        VarInts.writeInt(buffer, definition.minimumHeight());
+        VarInts.writeInt(buffer, definition.generatorType());
     }
 
     protected DimensionDefinition readDefinition(ByteBuf buffer, BedrockCodecHelper helper) {

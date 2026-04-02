@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.entity;
 
+/**
+ * Enumerates entity damage cause values used in the Bedrock protocol.
+ */
 public enum EntityDamageCause {
     NONE,
     OVERRIDE,
@@ -40,6 +43,7 @@ public enum EntityDamageCause {
      * @since v729
      * @deprecated since v776
      */
+    @Deprecated
     MACE_SMASH;
 
     private static final EntityDamageCause[] VALUES = EntityDamageCause.values();

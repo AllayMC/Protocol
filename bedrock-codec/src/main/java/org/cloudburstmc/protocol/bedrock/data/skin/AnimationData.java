@@ -1,23 +1,15 @@
 package org.cloudburstmc.protocol.bedrock.data.skin;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-
-@Value
-@RequiredArgsConstructor
-public class AnimationData {
-    private final ImageData image;
-    private final AnimatedTextureType textureType;
-    private final float frames;
-    /**
-     * @since v419
-     */
-    private final AnimationExpressionType expressionType;
-
+/**
+ * Represents animation data used in the Bedrock protocol.
+ *
+ * @param image          The image.
+ * @param textureType    The texture type.
+ * @param frames         The frames.
+ * @param expressionType The expression type.
+ */
+public record AnimationData(ImageData image, AnimatedTextureType textureType, float frames, AnimationExpressionType expressionType) {
     public AnimationData(ImageData image, AnimatedTextureType textureType, float frames) {
-        this.image = image;
-        this.textureType = textureType;
-        this.frames = frames;
-        this.expressionType = AnimationExpressionType.LINEAR;
+        this(image, textureType, frames, AnimationExpressionType.LINEAR);
     }
 }

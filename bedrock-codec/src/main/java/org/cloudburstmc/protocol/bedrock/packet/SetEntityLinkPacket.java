@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityLinkData;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to initiate an entity link client-side, meaning one entity will start riding
@@ -14,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetEntityLinkPacket implements BedrockPacket {
+    /**
+     * The link to apply between two entities, typically for mounting or dismounting.
+     */
     private EntityLinkData entityLink;
 
     @Override

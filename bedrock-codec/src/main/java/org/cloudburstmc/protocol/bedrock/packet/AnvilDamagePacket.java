@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to request the dealing damage to an anvil. This packet is completely pointless
@@ -14,7 +13,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AnvilDamagePacket implements BedrockPacket {
+    /**
+     * The damage that the client requests to be dealt to the anvil.
+     */
     private int damage;
+    /**
+     * The block position of the anvil that should be damaged.
+     */
     private Vector3i position;
 
     @Override

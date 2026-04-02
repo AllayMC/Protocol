@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to the client to make a painting entity show up. It is one of the few entities
@@ -13,6 +12,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = true)
 @ToString(doNotUseGetters = true)
 public class AddPaintingPacket extends AddHangingEntityPacket {
+    /**
+     * The painting motive identifier that selects which artwork the client should render.
+     */
     private String motive;
 
     @Override

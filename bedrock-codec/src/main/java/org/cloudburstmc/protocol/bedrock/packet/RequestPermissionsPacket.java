@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.PlayerPermission;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * A packet sent from the client to the server to request permissions that the client does not
@@ -14,8 +13,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class RequestPermissionsPacket implements BedrockPacket {
+    /**
+     * The unique entity ID of the player whose permission level is being requested.
+     */
     private long uniqueEntityId;
+    /**
+     * The coarse permission level being requested.
+     */
     private PlayerPermission permissions;
+    /**
+     * Custom permission flags requested in addition to {@link #permissions}.
+     */
     private int customPermissions;
 
     @Override

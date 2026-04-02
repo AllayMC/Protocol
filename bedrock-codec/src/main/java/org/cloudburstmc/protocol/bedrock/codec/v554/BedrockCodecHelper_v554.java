@@ -49,7 +49,7 @@ public class BedrockCodecHelper_v554 extends BedrockCodecHelper_v534 {
     @Override
     public void writeItemStackRequest(ByteBuf buffer, ItemStackRequest request) {
         super.writeItemStackRequest(buffer, request);
-        TextProcessingEventOrigin origin = request.getTextProcessingEventOrigin();
+        TextProcessingEventOrigin origin = request.textProcessingEventOrigin();
         buffer.writeIntLE(origin == null ? -1 : this.textProcessingEventOrigins.getId(origin));  // new for v552
     }
 
@@ -87,34 +87,34 @@ public class BedrockCodecHelper_v554 extends BedrockCodecHelper_v534 {
 
     @Override
     public void writeIngredient(ByteBuf buffer, ItemDescriptorWithCount ingredient) {
-        buffer.writeByte(ingredient.getDescriptor().getType().ordinal());
-        this.writeItemDescriptor(buffer, ingredient.getDescriptor());
-        VarInts.writeInt(buffer, ingredient.getCount());
+        buffer.writeByte(ingredient.descriptor().getType().ordinal());
+        this.writeItemDescriptor(buffer, ingredient.descriptor());
+        VarInts.writeInt(buffer, ingredient.count());
     }
 
     protected void writeItemDescriptor(ByteBuf buffer, ItemDescriptor descriptor) {
         switch (descriptor.getType()) {
             case DEFAULT:
                 DefaultDescriptor defaultDescriptor = (DefaultDescriptor) descriptor;
-                boolean empty = defaultDescriptor.getItemId() == null || defaultDescriptor.getItemId().getRuntimeId() == 0;
-                buffer.writeShortLE(empty ? 0 : defaultDescriptor.getItemId().getRuntimeId());
+                boolean empty = defaultDescriptor.itemId() == null || defaultDescriptor.itemId().runtimeId() == 0;
+                buffer.writeShortLE(empty ? 0 : defaultDescriptor.itemId().runtimeId());
                 if (!empty) {
-                    buffer.writeShortLE(defaultDescriptor.getAuxValue());
+                    buffer.writeShortLE(defaultDescriptor.auxValue());
                 }
                 break;
             case MOLANG:
                 MolangDescriptor molangDescriptor = (MolangDescriptor) descriptor;
-                this.writeString(buffer, molangDescriptor.getTagExpression());
-                buffer.writeByte(molangDescriptor.getMolangVersion());
+                this.writeString(buffer, molangDescriptor.tagExpression());
+                buffer.writeByte(molangDescriptor.molangVersion());
                 break;
             case ITEM_TAG:
                 ItemTagDescriptor tagDescriptor = (ItemTagDescriptor) descriptor;
-                this.writeString(buffer, tagDescriptor.getItemTag());
+                this.writeString(buffer, tagDescriptor.itemTag());
                 break;
             case DEFERRED:
                 DeferredDescriptor deferredDescriptor = (DeferredDescriptor) descriptor;
-                this.writeString(buffer, deferredDescriptor.getFullName());
-                buffer.writeShortLE(deferredDescriptor.getAuxValue());
+                this.writeString(buffer, deferredDescriptor.fullName());
+                buffer.writeShortLE(deferredDescriptor.auxValue());
                 break;
         }
     }

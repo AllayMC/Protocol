@@ -4,10 +4,8 @@ import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.v671.serializer.StartGameSerializer_v671;
 import org.cloudburstmc.protocol.bedrock.codec.v685.serializer.StartGameSerializer_v685;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
-import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
 
 import java.util.List;
 

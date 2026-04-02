@@ -3,10 +3,10 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Used to inform the server that the client has finished loading all resource packs.
+ * Sent by the client to inform the server that every required resource pack has finished loading
+ * and that the client is ready for validation. This packet has no fields.
  *
  * @since v944
  */

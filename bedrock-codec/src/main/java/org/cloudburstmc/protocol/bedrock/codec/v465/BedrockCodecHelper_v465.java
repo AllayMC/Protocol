@@ -97,18 +97,18 @@ public class BedrockCodecHelper_v465 extends BedrockCodecHelper_v448 {
         List<PersonaPieceData> pieces = skin.getPersonaPieces();
         buffer.writeIntLE(pieces.size());
         for (PersonaPieceData piece : pieces) {
-            this.writeString(buffer, piece.getId());
-            this.writeString(buffer, piece.getType());
-            this.writeString(buffer, piece.getPackId());
+            this.writeString(buffer, piece.id());
+            this.writeString(buffer, piece.type());
+            this.writeString(buffer, piece.packId());
             buffer.writeBoolean(piece.isDefault());
-            this.writeString(buffer, piece.getProductId());
+            this.writeString(buffer, piece.productId());
         }
 
         List<PersonaPieceTintData> tints = skin.getTintColors();
         buffer.writeIntLE(tints.size());
         for (PersonaPieceTintData tint : tints) {
-            this.writeString(buffer, tint.getType());
-            List<String> colors = tint.getColors();
+            this.writeString(buffer, tint.type());
+            List<String> colors = tint.colors();
             buffer.writeIntLE(colors.size());
             for (String color : colors) {
                 this.writeString(buffer, color);

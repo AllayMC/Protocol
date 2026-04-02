@@ -1,12 +1,14 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory.descriptor;
 
-import lombok.Value;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 
-@Value
-public class ItemTagDescriptor implements ItemDescriptor {
-    String itemTag;
-
+/**
+ * ItemTagItemDescriptor represents an item descriptor that uses item tagging. This should be used
+ * to reduce duplicative entries for items that can be grouped under a single tag.
+ *
+ * @param itemTag The item tag.
+ */
+public record ItemTagDescriptor(String itemTag) implements ItemDescriptor {
     @Override
     public ItemDescriptorType getType() {
         return ItemDescriptorType.ITEM_TAG;

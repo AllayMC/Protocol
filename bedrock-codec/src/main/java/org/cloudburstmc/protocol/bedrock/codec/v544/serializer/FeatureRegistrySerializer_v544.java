@@ -11,8 +11,8 @@ public class FeatureRegistrySerializer_v544 implements BedrockPacketSerializer<F
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, FeatureRegistryPacket packet) {
         helper.writeArray(buffer, packet.getFeatures(), (buf, aHelper, data) -> {
-            helper.writeString(buf, data.getName());
-            helper.writeString(buf, data.getJson());
+            helper.writeString(buf, data.name());
+            helper.writeString(buf, data.json());
         });
     }
 

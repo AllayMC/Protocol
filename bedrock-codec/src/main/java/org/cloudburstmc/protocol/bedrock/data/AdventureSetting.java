@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates adventure setting values used in the Bedrock protocol.
+ */
 public enum AdventureSetting {
     WORLD_IMMUTABLE,
     NO_PVM,

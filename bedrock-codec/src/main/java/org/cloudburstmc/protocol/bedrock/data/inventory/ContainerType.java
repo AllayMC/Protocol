@@ -3,6 +3,9 @@ package org.cloudburstmc.protocol.bedrock.data.inventory;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Enumerates container type values used in the Bedrock protocol.
+ */
 @Getter
 @RequiredArgsConstructor
 public enum ContainerType {
@@ -64,6 +67,9 @@ public enum ContainerType {
         }
     }
 
+    /**
+     * The ID.
+     */
     private final int id;
 
     public static ContainerType from(int id) {

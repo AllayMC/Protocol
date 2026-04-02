@@ -1,16 +1,20 @@
 package org.cloudburstmc.protocol.bedrock.data.skin;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 
+/**
+ * Represents image data used in the Bedrock protocol.
+ */
 @Getter
 @ToString(exclude = {"image"})
 @EqualsAndHashCode(doNotUseGetters = true)
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class ImageData {
     public static final ImageData EMPTY = new ImageData(0, 0, new byte[0]);
 
@@ -24,14 +28,27 @@ public class ImageData {
     public static final int ANIMATION_SIZE = 1024 * 1024 * PIXEL_SIZE; // 4 MB
 
     /**
+     * The image.
+     */
+    private final byte[] image;
+    /**
+     * The width.
+     *
      * @since v388
      */
     private final int width;
     /**
+     * The height.
+     *
      * @since v388
      */
     private final int height;
-    private final byte[] image;
+
+    ImageData(int width, int height, byte[] image) {
+        this.image = image;
+        this.width = width;
+        this.height = height;
+    }
 
     public static ImageData of(int width, int height, byte[] image) {
         Objects.requireNonNull(image, "image");

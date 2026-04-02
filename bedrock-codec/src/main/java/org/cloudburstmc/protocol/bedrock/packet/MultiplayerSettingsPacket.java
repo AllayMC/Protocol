@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.MultiplayerMode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to update multi-player related settings server-side and sent back to online
@@ -15,6 +14,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MultiplayerSettingsPacket implements BedrockPacket {
+    /**
+     * The multiplayer action to apply, such as enabling multiplayer, disabling it, or refreshing
+     * the join code.
+     */
     private MultiplayerMode mode;
 
     @Override

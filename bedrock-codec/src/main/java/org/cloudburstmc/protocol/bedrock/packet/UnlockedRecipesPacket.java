@@ -4,7 +4,6 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
@@ -16,7 +15,14 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UnlockedRecipesPacket implements BedrockPacket {
+    /**
+     * The kind of unlock update represented by this packet, such as initially unlocked recipes,
+     * newly unlocked recipes, or recipes that should be removed.
+     */
     private ActionType action;
+    /**
+     * The recipe identifiers affected by {@link #action}.
+     */
     private final List<String> unlockedRecipes = new ObjectArrayList<>();
 
     @Override

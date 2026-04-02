@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * A packet sent from the server to the client to display a toast to the top of the screen. These
@@ -15,7 +14,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ToastRequestPacket implements BedrockPacket {
 
+    /**
+     * The title of the toast.
+     */
     private String title;
+    /**
+     * The message shown below the toast title.
+     */
     private String content;
 
     @Override

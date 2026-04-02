@@ -3,17 +3,18 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to update the current time client-side. The client actually advances time
- * client-side by itself, so this packet does not need to be sent each tick. It is merely a means of
- * synchronising time between server and client.
+ * Sent by the server to resynchronize the client's world time. The client continues advancing time
+ * locally, so this packet is only needed when the server wants to correct or jump the value.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetTimePacket implements BedrockPacket {
+    /**
+     * The current world time in ticks. The value is not limited to the 0-23999 day cycle range.
+     */
     private int time;
 
     @Override

@@ -3,16 +3,14 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.Value;
 import org.cloudburstmc.protocol.bedrock.data.LocatorBarWaypoint;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 /**
- * Syncs LocatorBar changes on the server with the client.
+ * Sent by the server to add, remove, or update waypoints on the client's locator bar.
  *
  * @since v944
  */
@@ -21,6 +19,9 @@ import java.util.UUID;
 @ToString(doNotUseGetters = true)
 public class LocatorBarPacket implements BedrockPacket {
 
+    /**
+     * The waypoint updates to apply.
+     */
     private List<Payload> waypoints = new ArrayList<>();
 
     @Override
@@ -41,11 +42,7 @@ public class LocatorBarPacket implements BedrockPacket {
         }
     }
 
-    @Value
-    public static class Payload {
-        Action actionFlag;
-        UUID groupHandle;
-        LocatorBarWaypoint waypoint;
+    public record Payload(Action actionFlag, UUID groupHandle, LocatorBarWaypoint waypoint) {
     }
 
     public enum Action {

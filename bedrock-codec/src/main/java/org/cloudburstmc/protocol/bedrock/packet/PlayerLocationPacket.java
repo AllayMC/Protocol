@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to the client to either update a player's position on the locator bar, or
@@ -16,8 +15,19 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class PlayerLocationPacket implements BedrockPacket {
 
+    /**
+     * The locator-bar action to perform for the target player.
+     */
     private Type type;
+    /**
+     * EntityUniqueID is the unique ID of the entity. The unique ID is a value that remains
+     * consistent across different sessions of the same world.
+     */
     private long targetEntityId;
+    /**
+     * The position of the player to be used on the locator bar. This is only set when the Type is
+     * PlayerLocationTypeCoordinates.
+     */
     private Vector3f position;
 
     @Override

@@ -1,10 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
-import lombok.Value;
-
-@Value
-public class NetworkPermissions {
+/**
+ * Represents network permissions used in the Bedrock protocol.
+ *
+ * @param serverAuthSounds Whether server auth sounds.
+ */
+public record NetworkPermissions(boolean serverAuthSounds) {
     public static final NetworkPermissions DEFAULT = new NetworkPermissions(false);
 
-    boolean serverAuthSounds;
 }

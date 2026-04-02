@@ -31,7 +31,7 @@ public class BedrockCodecHelper_v712 extends BedrockCodecHelper_v575 {
     @Override
     public void writeEntityLink(ByteBuf buffer, EntityLinkData entityLink) {
         super.writeEntityLink(buffer, entityLink);
-        buffer.writeFloatLE(entityLink.getVehicleAngularVelocity());
+        buffer.writeFloatLE(entityLink.vehicleAngularVelocity());
     }
 
     @Override
@@ -49,25 +49,25 @@ public class BedrockCodecHelper_v712 extends BedrockCodecHelper_v575 {
     @Override
     protected void writeRequestActionData(ByteBuf byteBuf, ItemStackRequestAction action) {
         if (action.getType().equals(ItemStackRequestActionType.CRAFT_RECIPE)) {
-            VarInts.writeUnsignedInt(byteBuf, ((RecipeItemStackRequestAction) action).getRecipeNetworkId());
-            byteBuf.writeByte(((RecipeItemStackRequestAction) action).getNumberOfRequestedCrafts());
+            VarInts.writeUnsignedInt(byteBuf, ((RecipeItemStackRequestAction) action).recipeNetworkId());
+            byteBuf.writeByte(((RecipeItemStackRequestAction) action).numberOfRequestedCrafts());
         } else if (action.getType().equals(ItemStackRequestActionType.CRAFT_CREATIVE)) {
-            VarInts.writeUnsignedInt(byteBuf, ((CraftCreativeAction) action).getCreativeItemNetworkId());
-            byteBuf.writeByte(((CraftCreativeAction) action).getNumberOfRequestedCrafts());
+            VarInts.writeUnsignedInt(byteBuf, ((CraftCreativeAction) action).creativeItemNetworkId());
+            byteBuf.writeByte(((CraftCreativeAction) action).numberOfRequestedCrafts());
         } else if (action.getType().equals(ItemStackRequestActionType.CRAFT_REPAIR_AND_DISENCHANT)) {
-            VarInts.writeUnsignedInt(byteBuf, ((CraftGrindstoneAction) action).getRecipeNetworkId());
-            byteBuf.writeByte(((CraftGrindstoneAction) action).getNumberOfRequestedCrafts());
-            VarInts.writeInt(byteBuf, ((CraftGrindstoneAction) action).getRepairCost());
+            VarInts.writeUnsignedInt(byteBuf, ((CraftGrindstoneAction) action).recipeNetworkId());
+            byteBuf.writeByte(((CraftGrindstoneAction) action).numberOfRequestedCrafts());
+            VarInts.writeInt(byteBuf, ((CraftGrindstoneAction) action).repairCost());
         } else if (action.getType().equals(ItemStackRequestActionType.CRAFT_RECIPE_AUTO)) {
-            VarInts.writeUnsignedInt(byteBuf, ((AutoCraftRecipeAction) action).getRecipeNetworkId());
-            byteBuf.writeByte(((AutoCraftRecipeAction) action).getNumberOfRequestedCrafts()); // since v712
-            byteBuf.writeByte(((AutoCraftRecipeAction) action).getTimesCrafted());
-            List<ItemDescriptorWithCount> ingredients = ((AutoCraftRecipeAction) action).getIngredients();
+            VarInts.writeUnsignedInt(byteBuf, ((AutoCraftRecipeAction) action).recipeNetworkId());
+            byteBuf.writeByte(((AutoCraftRecipeAction) action).numberOfRequestedCrafts()); // since v712
+            byteBuf.writeByte(((AutoCraftRecipeAction) action).timesCrafted());
+            List<ItemDescriptorWithCount> ingredients = ((AutoCraftRecipeAction) action).ingredients();
             byteBuf.writeByte(ingredients.size());
             writeArray(byteBuf, ingredients, this::writeIngredient);
         } else if (action.getType().equals(ItemStackRequestActionType.CRAFT_LOOM)) {
-            this.writeString(byteBuf, ((CraftLoomAction) action).getPatternId());
-            byteBuf.writeByte(((CraftLoomAction) action).getTimesCrafted());
+            this.writeString(byteBuf, ((CraftLoomAction) action).patternId());
+            byteBuf.writeByte(((CraftLoomAction) action).timesCrafted());
         } else {
             super.writeRequestActionData(byteBuf, action);
         }
@@ -101,7 +101,7 @@ public class BedrockCodecHelper_v712 extends BedrockCodecHelper_v575 {
     protected ItemStackRequestSlotData readStackRequestSlotInfo(ByteBuf buffer) {
         FullContainerName containerName = this.readFullContainerName(buffer);
         return new ItemStackRequestSlotData(
-                containerName.getContainer(),
+                containerName.container(),
                 buffer.readUnsignedByte(),
                 VarInts.readInt(buffer),
                 containerName
@@ -110,15 +110,15 @@ public class BedrockCodecHelper_v712 extends BedrockCodecHelper_v575 {
 
     @Override
     protected void writeStackRequestSlotInfo(ByteBuf buffer, ItemStackRequestSlotData data) {
-        this.writeFullContainerName(buffer, data.getContainerName());
-        buffer.writeByte(data.getSlot());
-        VarInts.writeInt(buffer, data.getStackNetworkId());
+        this.writeFullContainerName(buffer, data.containerName());
+        buffer.writeByte(data.slot());
+        VarInts.writeInt(buffer, data.stackNetworkId());
     }
 
     @Override
     public void writeItemStackResponseContainer(ByteBuf buffer, ItemStackResponseContainer container) {
-        this.writeFullContainerName(buffer, container.getContainerName());
-        this.writeArray(buffer, container.getItems(), this::writeItemEntry);
+        this.writeFullContainerName(buffer, container.containerName());
+        this.writeArray(buffer, container.items(), this::writeItemEntry);
     }
 
     @Override
@@ -126,7 +126,7 @@ public class BedrockCodecHelper_v712 extends BedrockCodecHelper_v575 {
         FullContainerName containerName = this.readFullContainerName(buffer);
         List<ItemStackResponseSlot> itemEntries = new ArrayList<>();
         this.readArray(buffer, itemEntries, this::readItemEntry);
-        return new ItemStackResponseContainer(containerName.getContainer(), itemEntries, containerName);
+        return new ItemStackResponseContainer(containerName.container(), itemEntries, containerName);
     }
 
     @Override
@@ -139,7 +139,7 @@ public class BedrockCodecHelper_v712 extends BedrockCodecHelper_v575 {
         this.writeItem(buffer, packet.getItemInHand());
         this.writeVector3f(buffer, packet.getPlayerPosition());
         this.writeVector3f(buffer, packet.getClickPosition());
-        VarInts.writeUnsignedInt(buffer, packet.getBlockDefinition().getRuntimeId());
+        VarInts.writeUnsignedInt(buffer, packet.getBlockDefinition().runtimeId());
         VarInts.writeUnsignedInt(buffer, packet.getClientInteractPrediction().ordinal());
     }
 
@@ -159,8 +159,8 @@ public class BedrockCodecHelper_v712 extends BedrockCodecHelper_v575 {
 
     @Override
     public void writeFullContainerName(ByteBuf buffer, FullContainerName containerName) {
-        this.writeContainerSlotType(buffer, containerName.getContainer());
-        buffer.writeIntLE(containerName.getDynamicId() == null ? 0 : containerName.getDynamicId());
+        this.writeContainerSlotType(buffer, containerName.container());
+        buffer.writeIntLE(containerName.dynamicId() == null ? 0 : containerName.dynamicId());
     }
 
     @Override

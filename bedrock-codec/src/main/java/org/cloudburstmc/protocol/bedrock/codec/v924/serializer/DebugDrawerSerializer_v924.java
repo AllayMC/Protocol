@@ -7,7 +7,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v859.serializer.DebugDrawerSerial
 import org.cloudburstmc.protocol.bedrock.data.debugshape.*;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class DebugDrawerSerializer_v924 extends DebugDrawerSerializer_v859 {
 

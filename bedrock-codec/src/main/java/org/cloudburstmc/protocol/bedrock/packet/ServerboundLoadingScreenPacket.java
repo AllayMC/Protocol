@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ServerboundLoadingScreenPacketType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to tell the server about the state of the loading screen that the client is
@@ -14,9 +13,12 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ServerboundLoadingScreenPacket implements BedrockPacket {
+    /**
+     * The loading screen event being reported by the client.
+     */
     private ServerboundLoadingScreenPacketType type;
     /**
-     * Optional int, not present if null
+     * The optional loading screen ID associated with {@link #type}.
      */
     private Integer loadingScreenId;
 

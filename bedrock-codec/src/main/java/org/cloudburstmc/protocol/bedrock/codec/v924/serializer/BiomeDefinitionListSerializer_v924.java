@@ -16,7 +16,7 @@ public class BiomeDefinitionListSerializer_v924 extends BiomeDefinitionListSeria
     protected void writeDefinitionChunkGen(ByteBuf buffer, BedrockCodecHelper helper, BiomeDefinitionChunkGenData definitionChunkGen,
                                            SequencedHashSet<String> strings) {
         super.writeDefinitionChunkGen(buffer, helper, definitionChunkGen, strings);
-        helper.writeOptionalNull(buffer, definitionChunkGen.getVillageType(), (b, n) -> b.writeByte(n.intValue()));
+        helper.writeOptionalNull(buffer, definitionChunkGen.villageType(), (b, n) -> b.writeByte(n.intValue()));
     }
 
     @Override

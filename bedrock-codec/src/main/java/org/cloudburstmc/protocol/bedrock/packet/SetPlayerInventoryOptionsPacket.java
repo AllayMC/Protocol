@@ -6,7 +6,6 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryLayout;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryTabLeft;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryTabRight;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * A bidirectional packet that can be used to update the inventory options of a player.
@@ -15,10 +14,25 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetPlayerInventoryOptionsPacket implements BedrockPacket {
+    /**
+     * The tab selected on the left side of the inventory UI, usually in the creative inventory.
+     */
     private InventoryTabLeft leftTab;
+    /**
+     * The tab selected on the right side of the inventory UI, usually in the player's inventory.
+     */
     private InventoryTabRight rightTab;
+    /**
+     * The whether the player has enabled the filtering between recipes they have unlocked or not.
+     */
     private boolean filtering;
+    /**
+     * The layout.
+     */
     private InventoryLayout layout;
+    /**
+     * The layout used for the crafting portion of the inventory UI.
+     */
     private InventoryLayout craftingLayout;
 
     @Override

@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server. It sets the health of the player it is sent to. The SetHealth packet should
@@ -14,6 +13,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetHealthPacket implements BedrockPacket {
+    /**
+     * The new health value for the local player. This packet only changes the current health and not
+     * the maximum health.
+     */
     private int health;
 
     @Override

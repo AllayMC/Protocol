@@ -8,9 +8,9 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemSt
  */
 public interface TransferItemStackRequestAction extends ItemStackRequestAction {
 
-    int getCount();
+    int count();
 
-    ItemStackRequestSlotData getSource();
+    ItemStackRequestSlotData source();
 
-    ItemStackRequestSlotData getDestination();
+    ItemStackRequestSlotData destination();
 }

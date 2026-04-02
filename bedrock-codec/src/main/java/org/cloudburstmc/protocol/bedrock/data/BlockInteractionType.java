@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates block interaction type values used in the Bedrock protocol.
+ */
 public enum BlockInteractionType {
     NONE,
     EXTEND,

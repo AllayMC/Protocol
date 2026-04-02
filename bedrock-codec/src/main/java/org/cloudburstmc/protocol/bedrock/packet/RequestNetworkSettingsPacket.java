@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Initial packet sent in the login sequence by the client. The server is expected to respond to
@@ -14,6 +13,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)
 public class RequestNetworkSettingsPacket implements BedrockPacket {
+    /**
+     * The protocol version used by the client. The server disconnects the client if this version is
+     * incompatible.
+     */
     private int protocolVersion;
 
     @Override

@@ -15,8 +15,8 @@ public class ServerboundDiagnosticsSerializer_v924 extends ServerboundDiagnostic
         super.serialize(buffer, helper, packet);
 
         helper.writeArray(buffer, packet.getMemoryCategoryValues(), ((buf, h, counter) -> {
-            buf.writeByte(counter.getCategory().ordinal());
-            buf.writeLongLE(counter.getCurrentBytes());
+            buf.writeByte(counter.category().ordinal());
+            buf.writeLongLE(counter.currentBytes());
         }));
     }
 

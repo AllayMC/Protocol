@@ -18,33 +18,33 @@ public class StructureBlockUpdateSerializer_v291 implements BedrockPacketSeriali
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, StructureBlockUpdatePacket packet) {
         StructureEditorData editorData = packet.getEditorData();
-        StructureSettings settings = editorData.getSettings();
+        StructureSettings settings = editorData.settings();
 
         helper.writeBlockPosition(buffer, packet.getBlockPosition());
-        VarInts.writeUnsignedInt(buffer, editorData.getType().ordinal());
+        VarInts.writeUnsignedInt(buffer, editorData.type().ordinal());
         // Structure Editor Data start
-        helper.writeString(buffer, editorData.getName());
-        helper.writeString(buffer, editorData.getName());
-        helper.writeBlockPosition(buffer, settings.getOffset());
-        helper.writeBlockPosition(buffer, settings.getSize());
-        buffer.writeBoolean(!settings.isIgnoringEntities());
-        buffer.writeBoolean(settings.isIgnoringBlocks());
-        buffer.writeBoolean(editorData.isIncludingPlayers());
+        helper.writeString(buffer, editorData.name());
+        helper.writeString(buffer, editorData.name());
+        helper.writeBlockPosition(buffer, settings.offset());
+        helper.writeBlockPosition(buffer, settings.size());
+        buffer.writeBoolean(!settings.ignoringEntities());
+        buffer.writeBoolean(settings.ignoringBlocks());
+        buffer.writeBoolean(editorData.includingPlayers());
         buffer.writeBoolean(false); // show air
         // Structure Settings start
-        buffer.writeFloatLE(settings.getIntegrityValue());
-        VarInts.writeUnsignedInt(buffer, settings.getIntegritySeed());
-        VarInts.writeUnsignedInt(buffer, settings.getMirror().ordinal());
-        VarInts.writeUnsignedInt(buffer, settings.getRotation().ordinal());
-        buffer.writeBoolean(settings.isIgnoringEntities());
+        buffer.writeFloatLE(settings.integrityValue());
+        VarInts.writeUnsignedInt(buffer, settings.integritySeed());
+        VarInts.writeUnsignedInt(buffer, settings.mirror().ordinal());
+        VarInts.writeUnsignedInt(buffer, settings.rotation().ordinal());
+        buffer.writeBoolean(settings.ignoringEntities());
         buffer.writeBoolean(true); // ignore structure blocks
-        Vector3i min = packet.getBlockPosition().add(settings.getOffset());
+        Vector3i min = packet.getBlockPosition().add(settings.offset());
         helper.writeVector3i(buffer, min);
-        Vector3i max = min.add(settings.getSize());
+        Vector3i max = min.add(settings.size());
         helper.writeVector3i(buffer, max);
         // Structure Settings end
         // Structure Editor Data end
-        buffer.writeBoolean(editorData.isBoundingBoxVisible());
+        buffer.writeBoolean(editorData.boundingBoxVisible());
         buffer.writeBoolean(packet.isPowered());
     }
 

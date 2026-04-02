@@ -5,49 +5,44 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.ClientboundDebugRendererType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to spawn an outlined cube on client-side.
+ * Sent by the server to add or clear client-side debug markers.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ClientboundDebugRendererPacket implements BedrockPacket {
+    /**
+     * The debug renderer action to perform.
+     */
     private ClientboundDebugRendererType debugMarkerType;
     /**
-     * Only used if {@link #debugMarkerType} is set to {@link
-     * ClientboundDebugRendererType#ADD_DEBUG_MARKER_CUBE}.
+     * The label shown for an added debug cube.
      */
     private String markerText;
     /**
-     * Only used if {@link #debugMarkerType} is set to {@link
-     * ClientboundDebugRendererType#ADD_DEBUG_MARKER_CUBE}.
+     * The world position of an added debug cube.
      */
     private Vector3f markerPosition;
     /**
-     * Only used if {@link #debugMarkerType} is set to {@link
-     * ClientboundDebugRendererType#ADD_DEBUG_MARKER_CUBE}.
+     * The red component of an added debug cube's color, in the range {@code 0.0-1.0}.
      */
     private float markerColorRed;
     /**
-     * Only used if {@link #debugMarkerType} is set to {@link
-     * ClientboundDebugRendererType#ADD_DEBUG_MARKER_CUBE}.
+     * The green component of an added debug cube's color, in the range {@code 0.0-1.0}.
      */
     private float markerColorGreen;
     /**
-     * Only used if {@link #debugMarkerType} is set to {@link
-     * ClientboundDebugRendererType#ADD_DEBUG_MARKER_CUBE}.
+     * The blue component of an added debug cube's color, in the range {@code 0.0-1.0}.
      */
     private float markerColorBlue;
     /**
-     * Only used if {@link #debugMarkerType} is set to {@link
-     * ClientboundDebugRendererType#ADD_DEBUG_MARKER_CUBE}.
+     * The alpha component of an added debug cube's color, in the range {@code 0.0-1.0}.
      */
     private float markerColorAlpha;
     /**
-     * Only used if {@link #debugMarkerType} is set to {@link
-     * ClientboundDebugRendererType#ADD_DEBUG_MARKER_CUBE}. In milliseconds.
+     * How long an added debug cube remains visible, in milliseconds.
      */
     private long markerDuration;
 

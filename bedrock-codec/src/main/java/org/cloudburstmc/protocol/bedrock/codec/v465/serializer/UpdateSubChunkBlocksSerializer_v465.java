@@ -34,11 +34,11 @@ public class UpdateSubChunkBlocksSerializer_v465 implements BedrockPacketSeriali
     }
 
     protected void writeBlockChangeEntry(ByteBuf buffer, BedrockCodecHelper helper, BlockChangeEntry entry) {
-        helper.writeBlockPosition(buffer, entry.getPosition());
-        VarInts.writeUnsignedInt(buffer, entry.getDefinition().getRuntimeId());
-        VarInts.writeUnsignedInt(buffer, entry.getUpdateFlags());
-        VarInts.writeUnsignedLong(buffer, entry.getMessageEntityId());
-        VarInts.writeUnsignedInt(buffer, entry.getMessageType().ordinal());
+        helper.writeBlockPosition(buffer, entry.position());
+        VarInts.writeUnsignedInt(buffer, entry.definition().runtimeId());
+        VarInts.writeUnsignedInt(buffer, entry.updateFlags());
+        VarInts.writeUnsignedLong(buffer, entry.messageEntityId());
+        VarInts.writeUnsignedInt(buffer, entry.messageType().ordinal());
     }
 
     protected BlockChangeEntry readBlockChangeEntry(ByteBuf buffer, BedrockCodecHelper helper) {

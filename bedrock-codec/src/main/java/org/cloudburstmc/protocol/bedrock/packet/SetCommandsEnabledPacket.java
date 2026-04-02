@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to enable or disable the ability to execute commands for the client. If
@@ -13,6 +12,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetCommandsEnabledPacket implements BedrockPacket {
+    /**
+     * Whether the client should allow command execution.
+     */
     private boolean commandsEnabled;
 
     @Override

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.StoreOfferRedirectType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to show a Marketplace store offer to a player. It opens a window client-side
@@ -18,13 +17,19 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ShowStoreOfferPacket implements BedrockPacket {
+    /**
+     * A UUID that identifies the offer for which a window should be opened.
+     */
     private String offerId;
     /**
+     * Legacy marketplace flag retained for compatibility with older protocol versions.
+     *
      * @since v630 deprecated
      */
-    @Deprecated
     private boolean shownToAll;
     /**
+     * The kind of store page that should be opened for this offer.
+     *
      * @since v630
      */
     private StoreOfferRedirectType redirectType;

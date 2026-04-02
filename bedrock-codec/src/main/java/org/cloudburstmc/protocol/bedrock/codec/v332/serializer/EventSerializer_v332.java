@@ -29,9 +29,9 @@ public class EventSerializer_v332 extends EventSerializer_v291 {
 
     protected void writeMobBorn(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         MobBornEventData event = (MobBornEventData) eventData;
-        VarInts.writeInt(buffer, event.getEntityType());
-        VarInts.writeInt(buffer, event.getVariant());
-        buffer.writeByte(event.getColor());
+        VarInts.writeInt(buffer, event.entityType());
+        VarInts.writeInt(buffer, event.variant());
+        buffer.writeByte(event.color());
     }
 
     protected PetDiedEventData readPetDied(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -44,9 +44,9 @@ public class EventSerializer_v332 extends EventSerializer_v291 {
 
     protected void writePetDied(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         PetDiedEventData event = (PetDiedEventData) eventData;
-        buffer.writeBoolean(event.isOwnerKilled());
-        VarInts.writeLong(buffer, event.getKillerUniqueEntityId());
-        VarInts.writeLong(buffer, event.getPetUniqueEntityId());
-        VarInts.writeInt(buffer, event.getEntityDamageCause());
+        buffer.writeBoolean(event.ownerKilled());
+        VarInts.writeLong(buffer, event.killerUniqueEntityId());
+        VarInts.writeLong(buffer, event.petUniqueEntityId());
+        VarInts.writeInt(buffer, event.entityDamageCause());
     }
 }

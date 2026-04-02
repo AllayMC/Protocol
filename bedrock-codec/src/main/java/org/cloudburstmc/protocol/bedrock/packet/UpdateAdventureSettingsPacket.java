@@ -3,21 +3,37 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * A packet sent from the server to the client to update the adventure settings of the player. It,
- * along with the UpdateAbilities packet, are replacements of the AdventureSettings packet since
- * v1.19.10.
+ * Sent by the server to update the client-side adventure toggles for a player. Together with
+ * {@link UpdateAbilitiesPacket}, this packet replaces {@link AdventureSettingsPacket} in newer
+ * protocol versions.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateAdventureSettingsPacket implements BedrockPacket {
+    /**
+     * Whether the player is prevented from attacking mobs.
+     */
     private boolean noPvM;
+    /**
+     * Whether mobs are prevented from attacking the player. The reason this flag is exposed to the
+     * client is not currently documented.
+     */
     private boolean noMvP;
+    /**
+     * Whether the world is treated as immutable for the player, preventing block interaction
+     * changes such as placing or breaking.
+     */
     private boolean immutableWorld;
+    /**
+     * Whether player name tags should be rendered.
+     */
     private boolean showNameTags;
+    /**
+     * Whether automatic jumping is enabled for the player.
+     */
     private boolean autoJump;
 
     @Override

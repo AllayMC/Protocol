@@ -29,12 +29,12 @@ public class BedrockCodecHelper_v557 extends BedrockCodecHelper_v554 {
 
     @Override
     public void readEntityProperties(ByteBuf buffer, EntityProperties properties) {
-        readArray(buffer, properties.getIntProperties(), byteBuf -> {
+        readArray(buffer, properties.intProperties(), byteBuf -> {
             int index = VarInts.readUnsignedInt(byteBuf);
             int value = VarInts.readInt(byteBuf);
             return new IntEntityProperty(index, value);
         });
-        readArray(buffer, properties.getFloatProperties(), byteBuf -> {
+        readArray(buffer, properties.floatProperties(), byteBuf -> {
             int index = VarInts.readUnsignedInt(byteBuf);
             float value = byteBuf.readFloatLE();
             return new FloatEntityProperty(index, value);
@@ -43,13 +43,13 @@ public class BedrockCodecHelper_v557 extends BedrockCodecHelper_v554 {
 
     @Override
     public void writeEntityProperties(ByteBuf buffer, EntityProperties properties) {
-        writeArray(buffer, properties.getIntProperties(), (byteBuf, property) -> {
-            VarInts.writeUnsignedInt(byteBuf, property.getIndex());
-            VarInts.writeInt(byteBuf, property.getValue());
+        writeArray(buffer, properties.intProperties(), (byteBuf, property) -> {
+            VarInts.writeUnsignedInt(byteBuf, property.index());
+            VarInts.writeInt(byteBuf, property.value());
         });
-        writeArray(buffer, properties.getFloatProperties(), (byteBuf, property) -> {
-            VarInts.writeUnsignedInt(byteBuf, property.getIndex());
-            byteBuf.writeFloatLE(property.getValue());
+        writeArray(buffer, properties.floatProperties(), (byteBuf, property) -> {
+            VarInts.writeUnsignedInt(byteBuf, property.index());
+            byteBuf.writeFloatLE(property.value());
         });
     }
 
@@ -75,7 +75,7 @@ public class BedrockCodecHelper_v557 extends BedrockCodecHelper_v554 {
     protected void writeRequestActionData(ByteBuf byteBuf, ItemStackRequestAction action) {
         super.writeRequestActionData(byteBuf, action);
         if (action.getType() == ItemStackRequestActionType.CRAFT_RECIPE_AUTO) {
-            List<ItemDescriptorWithCount> ingredients = ((AutoCraftRecipeAction) action).getIngredients();
+            List<ItemDescriptorWithCount> ingredients = ((AutoCraftRecipeAction) action).ingredients();
             byteBuf.writeByte(ingredients.size());
             writeArray(byteBuf, ingredients, this::writeIngredient);
         }

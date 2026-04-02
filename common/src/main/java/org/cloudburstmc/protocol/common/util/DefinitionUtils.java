@@ -1,7 +1,7 @@
 package org.cloudburstmc.protocol.common.util;
 
-import org.cloudburstmc.protocol.common.Definition;
-import org.cloudburstmc.protocol.common.DefinitionRegistry;
+import org.cloudburstmc.protocol.common.definition.Definition;
+import org.cloudburstmc.protocol.common.definition.DefinitionRegistry;
 
 public class DefinitionUtils {
 

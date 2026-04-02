@@ -21,13 +21,13 @@ public class Zlib {
 
     private Zlib(boolean raw) {
         // Required for Android API versions prior to 26.
-        this.inflaterLocal = new FastThreadLocal<Inflater>() {
+        this.inflaterLocal = new FastThreadLocal<>() {
             @Override
             public Inflater initialValue() {
                 return Natives.ZLIB.get().create(raw);
             }
         };
-        this.deflaterLocal = new FastThreadLocal<Deflater>() {
+        this.deflaterLocal = new FastThreadLocal<>() {
             @Override
             protected Deflater initialValue() {
                 return Natives.ZLIB.get().create(7, raw);

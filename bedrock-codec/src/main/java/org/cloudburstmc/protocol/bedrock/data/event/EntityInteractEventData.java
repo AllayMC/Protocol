@@ -1,18 +1,16 @@
 package org.cloudburstmc.protocol.bedrock.data.event;
 
-import lombok.Value;
-
-@Value
-public class EntityInteractEventData implements EventData {
-    /**
-     * @since v671
-     */
-    private final long interactedEntityID;
-    private final int interactionType;
-    private final int legacyEntityTypeId;
-    private final int variant;
-    private final int paletteColor;
-
+/**
+ * Represents the event data sent for entity interactions.
+ *
+ * @param interactedEntityID The interacted entity ID.
+ * @param interactionType    The interaction type.
+ * @param legacyEntityTypeId The legacy entity type ID.
+ * @param variant            The variant.
+ * @param paletteColor       The palette color.
+ */
+public record EntityInteractEventData(long interactedEntityID, int interactionType, int legacyEntityTypeId, int variant,
+                                      int paletteColor) implements EventData {
     @Override
     public EventDataType getType() {
         return EventDataType.ENTITY_INTERACT;

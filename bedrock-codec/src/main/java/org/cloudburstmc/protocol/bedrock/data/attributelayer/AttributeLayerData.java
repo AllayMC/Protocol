@@ -1,14 +1,15 @@
 package org.cloudburstmc.protocol.bedrock.data.attributelayer;
 
-import lombok.Value;
-
 import java.util.List;
 
-@Value
-public class AttributeLayerData {
+/**
+ * Represents a complete attribute layer.
+ *
+ * @param layerName  The layer name.
+ * @param dimension  The dimension.
+ * @param settings   The layer's settings.
+ * @param attributes The attributes.
+ */
+public record AttributeLayerData(String layerName, int dimension, AttributeLayerSettings settings, List<EnvironmentAttributeData> attributes) {
 
-    String layerName;
-    int dimension;
-    AttributeLayerSettings settings;
-    List<EnvironmentAttributeData> attributes;
 }

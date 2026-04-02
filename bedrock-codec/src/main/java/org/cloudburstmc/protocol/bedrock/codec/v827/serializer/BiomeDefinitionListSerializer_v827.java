@@ -11,10 +11,10 @@ public class BiomeDefinitionListSerializer_v827 extends BiomeDefinitionListSeria
 
     @Override
     protected void writeDefinitionId(ByteBuf buffer, BedrockCodecHelper helper, BiomeDefinitionData definition) {
-        if (definition.getId() == null) {
+        if (definition.id() == null) {
             buffer.writeShortLE(-1); // Vanilla biomes don't contain ID field
         } else {
-            buffer.writeShortLE(definition.getId());
+            buffer.writeShortLE(definition.id());
         }
     }
 

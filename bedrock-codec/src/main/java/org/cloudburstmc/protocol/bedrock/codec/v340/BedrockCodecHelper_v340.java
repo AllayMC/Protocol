@@ -65,7 +65,7 @@ public class BedrockCodecHelper_v340 extends BedrockCodecHelper_v332 {
 
         long blockingTicks = 0;
 
-        if (definition != null && BLOCKING_ID.equals(definition.getIdentifier())) {
+        if (definition != null && BLOCKING_ID.equals(definition.identifier())) {
             blockingTicks = VarInts.readLong(buffer);
         }
         return ItemData.builder()
@@ -84,7 +84,7 @@ public class BedrockCodecHelper_v340 extends BedrockCodecHelper_v332 {
         super.writeItem(buffer, item);
 
         ItemDefinition definition = item.getDefinition();
-        if (definition != null && BLOCKING_ID.equals(definition.getIdentifier())) {
+        if (definition != null && BLOCKING_ID.equals(definition.identifier())) {
             VarInts.writeLong(buffer, item.getBlockingTicks());
         }
     }
@@ -100,6 +100,6 @@ public class BedrockCodecHelper_v340 extends BedrockCodecHelper_v332 {
     public void writeItemUse(ByteBuf buffer, InventoryTransactionPacket packet) {
         super.writeItemUse(buffer, packet);
 
-        VarInts.writeUnsignedInt(buffer, packet.getBlockDefinition().getRuntimeId());
+        VarInts.writeUnsignedInt(buffer, packet.getBlockDefinition().runtimeId());
     }
 }

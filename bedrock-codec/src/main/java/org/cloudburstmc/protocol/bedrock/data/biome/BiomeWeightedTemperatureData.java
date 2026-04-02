@@ -1,10 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
-import lombok.Value;
+/**
+ * Represents biome weighted temperature data used in the Bedrock protocol.
+ *
+ * @param temperature The temperature.
+ * @param weight      The weight.
+ */
+public record BiomeWeightedTemperatureData(BiomeTemperatureCategory temperature, long weight) {
 
-@Value
-public class BiomeWeightedTemperatureData {
-
-    BiomeTemperatureCategory temperature;
-    long weight;
 }

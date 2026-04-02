@@ -83,8 +83,8 @@ public class CameraAimAssistPresetsSerializer_v766 implements BedrockPacketSeria
     }
 
     protected void writePriority(ByteBuf buffer, BedrockCodecHelper helper, CameraAimAssistPriority priority) {
-        helper.writeString(buffer, priority.getName());
-        buffer.writeIntLE(priority.getPriority());
+        helper.writeString(buffer, priority.name());
+        buffer.writeIntLE(priority.priority());
     }
 
     protected CameraAimAssistPriority readPriority(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -92,8 +92,8 @@ public class CameraAimAssistPresetsSerializer_v766 implements BedrockPacketSeria
     }
 
     protected void writeItemSetting(ByteBuf buffer, BedrockCodecHelper helper, CameraAimAssistItemSettings settings) {
-        helper.writeString(buffer, settings.getItemId());
-        helper.writeString(buffer, settings.getCategory());
+        helper.writeString(buffer, settings.itemId());
+        helper.writeString(buffer, settings.category());
     }
 
     protected CameraAimAssistItemSettings readItemSetting(ByteBuf buffer, BedrockCodecHelper helper) {

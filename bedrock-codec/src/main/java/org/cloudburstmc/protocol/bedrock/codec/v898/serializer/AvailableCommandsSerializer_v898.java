@@ -26,27 +26,27 @@ public class AvailableCommandsSerializer_v898 extends AvailableCommandsSerialize
     @Override
     protected void writeCommand(ByteBuf buffer, BedrockCodecHelper helper, CommandData commandData,
                                 List<CommandEnumData> enums, List<CommandEnumData> softEnums, List<String> postFixes, List<ChainedSubCommandData> subCommands) {
-        helper.writeString(buffer, commandData.getName());
-        helper.writeString(buffer, commandData.getDescription());
-        this.writeFlags(buffer, commandData.getFlags());
-        CommandPermission permission = commandData.getPermission() == null ? CommandPermission.ANY : commandData.getPermission();
+        helper.writeString(buffer, commandData.name());
+        helper.writeString(buffer, commandData.description());
+        this.writeFlags(buffer, commandData.flags());
+        CommandPermission permission = commandData.permission() == null ? CommandPermission.ANY : commandData.permission();
         helper.writeString(buffer, PERMISSION_LEVEL.get(permission.ordinal()));
 
-        CommandEnumData aliases = commandData.getAliases();
+        CommandEnumData aliases = commandData.aliases();
         buffer.writeIntLE(aliases == null ? -1 : enums.indexOf(aliases));
 
-        helper.writeArray(buffer, commandData.getSubcommands(), (buf, subcommand) -> {
+        helper.writeArray(buffer, commandData.subcommands(), (buf, subcommand) -> {
             int index = subCommands.indexOf(subcommand);
             checkArgument(index > -1, "Invalid subcommand index: " + subcommand);
             buf.writeIntLE(index);
         });
 
-        CommandOverloadData[] overloads = commandData.getOverloads();
+        CommandOverloadData[] overloads = commandData.overloads();
         VarInts.writeUnsignedInt(buffer, overloads.length);
         for (CommandOverloadData overload : overloads) {
-            buffer.writeBoolean(overload.isChaining());
-            VarInts.writeUnsignedInt(buffer, overload.getOverloads().length);
-            for (CommandParamData param : overload.getOverloads()) {
+            buffer.writeBoolean(overload.chaining());
+            VarInts.writeUnsignedInt(buffer, overload.overloads().length);
+            for (CommandParamData param : overload.overloads()) {
                 this.writeParameter(buffer, helper, param, enums, softEnums, postFixes);
             }
         }
@@ -83,10 +83,10 @@ public class AvailableCommandsSerializer_v898 extends AvailableCommandsSerialize
     @Override
     protected void writeEnums(ByteBuf buffer, BedrockCodecHelper helper, List<String> values, List<CommandEnumData> enums) {
         helper.writeArray(buffer, enums, (buf, commandEnum) -> {
-            helper.writeString(buf, commandEnum.getName());
+            helper.writeString(buf, commandEnum.name());
 
-            VarInts.writeUnsignedInt(buffer, commandEnum.getValues().size());
-            for (String value : commandEnum.getValues().keySet()) {
+            VarInts.writeUnsignedInt(buffer, commandEnum.values().size());
+            for (String value : commandEnum.values().keySet()) {
                 int index = values.indexOf(value);
                 checkArgument(index > -1, "Invalid enum value detected: " + value);
                 buffer.writeIntLE(index);
@@ -112,11 +112,11 @@ public class AvailableCommandsSerializer_v898 extends AvailableCommandsSerialize
     protected void writeSubCommand(ByteBuf buffer, BedrockCodecHelper helper, List<String> values, ChainedSubCommandData data) {
         helper.writeString(buffer, data.getName());
         helper.writeArray(buffer, data.getValues(), (buf, val) -> {
-            int first = values.indexOf(val.getFirst());
-            checkArgument(first > -1, "Invalid enum value detected: " + val.getFirst());
+            int first = values.indexOf(val.first());
+            checkArgument(first > -1, "Invalid enum value detected: " + val.first());
 
-            int second = values.indexOf(val.getSecond());
-            checkArgument(second > -1, "Invalid enum value detected: " + val.getSecond());
+            int second = values.indexOf(val.second());
+            checkArgument(second > -1, "Invalid enum value detected: " + val.second());
 
             VarInts.writeUnsignedInt(buf, first);
             VarInts.writeUnsignedInt(buf, second);
@@ -150,7 +150,7 @@ public class AvailableCommandsSerializer_v898 extends AvailableCommandsSerialize
         for (int i = 0; i < count; i++) {
             String key = enumValues.get((int) buffer.readUnsignedIntLE());
             CommandEnumData enumData = enums.get((int) buffer.readUnsignedIntLE());
-            Set<CommandEnumConstraint> constraints = enumData.getValues().get(key);
+            Set<CommandEnumConstraint> constraints = enumData.values().get(key);
             helper.readArray(buffer, constraints, buf -> CONSTRAINTS[buf.readUnsignedByte()]);
         }
     }

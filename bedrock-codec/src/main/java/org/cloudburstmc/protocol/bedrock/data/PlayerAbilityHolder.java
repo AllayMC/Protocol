@@ -4,6 +4,9 @@ import org.cloudburstmc.protocol.bedrock.data.command.CommandPermission;
 
 import java.util.List;
 
+/**
+ * Represents player ability holder used in the Bedrock protocol.
+ */
 public interface PlayerAbilityHolder {
 
     long getUniqueEntityId();

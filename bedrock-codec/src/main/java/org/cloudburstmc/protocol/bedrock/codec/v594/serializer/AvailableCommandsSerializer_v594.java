@@ -37,30 +37,30 @@ public class AvailableCommandsSerializer_v594 extends AvailableCommandsSerialize
 
         // Get all enum values
         for (CommandData data : packet.getCommands()) {
-            if (data.getAliases() != null) {
-                enumValues.addAll(data.getAliases().getValues().keySet());
-                enums.add(data.getAliases());
+            if (data.aliases() != null) {
+                enumValues.addAll(data.aliases().values().keySet());
+                enums.add(data.aliases());
             }
 
-            for (ChainedSubCommandData subcommand : data.getSubcommands()) {
+            for (ChainedSubCommandData subcommand : data.subcommands()) {
                 if (subCommandData.contains(subcommand)) {
                     continue;
                 }
 
                 subCommandData.add(subcommand);
                 for (ChainedSubCommandData.Value value : subcommand.getValues()) {
-                    if (!subCommandValues.contains(value.getFirst())) {
-                        subCommandValues.add(value.getFirst());
+                    if (!subCommandValues.contains(value.first())) {
+                        subCommandValues.add(value.first());
                     }
 
-                    if (!subCommandValues.contains(value.getSecond())) {
-                        subCommandValues.add(value.getSecond());
+                    if (!subCommandValues.contains(value.second())) {
+                        subCommandValues.add(value.second());
                     }
                 }
             }
 
-            for (CommandOverloadData overload : data.getOverloads()) {
-                for (CommandParamData parameter : overload.getOverloads()) {
+            for (CommandOverloadData overload : data.overloads()) {
+                for (CommandParamData parameter : overload.overloads()) {
                     CommandEnumData commandEnumData = parameter.getEnumData();
                     if (commandEnumData != null) {
                         if (commandEnumData.isSoft()) {
@@ -68,7 +68,7 @@ public class AvailableCommandsSerializer_v594 extends AvailableCommandsSerialize
                         } else {
                             enums.add(commandEnumData);
                             int enumIndex = enums.indexOf(commandEnumData);
-                            commandEnumData.getValues().forEach((key, constraints) -> {
+                            commandEnumData.values().forEach((key, constraints) -> {
                                 enumValues.add(key);
                                 if (!constraints.isEmpty()) {
                                     int valueIndex = enumValues.indexOf(key);
@@ -132,27 +132,27 @@ public class AvailableCommandsSerializer_v594 extends AvailableCommandsSerialize
 
     protected void writeCommand(ByteBuf buffer, BedrockCodecHelper helper, CommandData commandData,
                                 List<CommandEnumData> enums, List<CommandEnumData> softEnums, List<String> postFixes, List<ChainedSubCommandData> subCommands) {
-        helper.writeString(buffer, commandData.getName());
-        helper.writeString(buffer, commandData.getDescription());
-        this.writeFlags(buffer, commandData.getFlags());
-        CommandPermission permission = commandData.getPermission() == null ? CommandPermission.ANY : commandData.getPermission();
+        helper.writeString(buffer, commandData.name());
+        helper.writeString(buffer, commandData.description());
+        this.writeFlags(buffer, commandData.flags());
+        CommandPermission permission = commandData.permission() == null ? CommandPermission.ANY : commandData.permission();
         buffer.writeByte(permission.ordinal());
 
-        CommandEnumData aliases = commandData.getAliases();
+        CommandEnumData aliases = commandData.aliases();
         buffer.writeIntLE(aliases == null ? -1 : enums.indexOf(aliases));
 
-        helper.writeArray(buffer, commandData.getSubcommands(), (buf, subcommand) -> {
+        helper.writeArray(buffer, commandData.subcommands(), (buf, subcommand) -> {
             int index = subCommands.indexOf(subcommand);
             checkArgument(index > -1, "Invalid subcommand index: " + subcommand);
             buf.writeShortLE(index);
         });
 
-        CommandOverloadData[] overloads = commandData.getOverloads();
+        CommandOverloadData[] overloads = commandData.overloads();
         VarInts.writeUnsignedInt(buffer, overloads.length);
         for (CommandOverloadData overload : overloads) {
-            buffer.writeBoolean(overload.isChaining());
-            VarInts.writeUnsignedInt(buffer, overload.getOverloads().length);
-            for (CommandParamData param : overload.getOverloads()) {
+            buffer.writeBoolean(overload.chaining());
+            VarInts.writeUnsignedInt(buffer, overload.overloads().length);
+            for (CommandParamData param : overload.overloads()) {
                 this.writeParameter(buffer, helper, param, enums, softEnums, postFixes);
             }
         }
@@ -188,11 +188,11 @@ public class AvailableCommandsSerializer_v594 extends AvailableCommandsSerialize
     protected void writeSubCommand(ByteBuf buffer, BedrockCodecHelper helper, List<String> values, ChainedSubCommandData data) {
         helper.writeString(buffer, data.getName());
         helper.writeArray(buffer, data.getValues(), (buf, val) -> {
-            int first = values.indexOf(val.getFirst());
-            checkArgument(first > -1, "Invalid enum value detected: " + val.getFirst());
+            int first = values.indexOf(val.first());
+            checkArgument(first > -1, "Invalid enum value detected: " + val.first());
 
-            int second = values.indexOf(val.getSecond());
-            checkArgument(second > -1, "Invalid enum value detected: " + val.getSecond());
+            int second = values.indexOf(val.second());
+            checkArgument(second > -1, "Invalid enum value detected: " + val.second());
 
             buf.writeShortLE(first);
             buf.writeShortLE(second);

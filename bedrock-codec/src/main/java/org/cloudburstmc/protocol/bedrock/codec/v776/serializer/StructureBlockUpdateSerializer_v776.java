@@ -4,13 +4,11 @@ import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.v388.serializer.StructureBlockUpdateSerializer_v388;
 import org.cloudburstmc.protocol.bedrock.codec.v554.serializer.StructureBlockUpdateSerializer_v554;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureBlockType;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureEditorData;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureRedstoneSaveMode;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
-import org.cloudburstmc.protocol.bedrock.packet.StructureBlockUpdatePacket;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -33,13 +31,13 @@ public class StructureBlockUpdateSerializer_v776 extends StructureBlockUpdateSer
 
     @Override
     protected void writeEditorData(ByteBuf buffer, BedrockCodecHelper helper, StructureEditorData data) {
-        helper.writeString(buffer, data.getName());
-        helper.writeString(buffer, data.getFilteredName());
-        helper.writeString(buffer, data.getDataField());
-        buffer.writeBoolean(data.isIncludingPlayers());
-        buffer.writeBoolean(data.isBoundingBoxVisible());
-        VarInts.writeInt(buffer, data.getType().ordinal());
-        helper.writeStructureSettings(buffer, data.getSettings());
-        VarInts.writeInt(buffer, data.getRedstoneSaveMode().ordinal());
+        helper.writeString(buffer, data.name());
+        helper.writeString(buffer, data.filteredName());
+        helper.writeString(buffer, data.dataField());
+        buffer.writeBoolean(data.includingPlayers());
+        buffer.writeBoolean(data.boundingBoxVisible());
+        VarInts.writeInt(buffer, data.type().ordinal());
+        helper.writeStructureSettings(buffer, data.settings());
+        VarInts.writeInt(buffer, data.redstoneSaveMode().ordinal());
     }
 }

@@ -7,7 +7,7 @@ import org.cloudburstmc.protocol.bedrock.data.Ability;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.FullContainerName;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.TextProcessingEventOrigin;
-import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.*;
+import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.ItemStackRequestActionType;
 import org.cloudburstmc.protocol.common.util.TypeMap;
 
 public class BedrockCodecHelper_v729 extends BedrockCodecHelper_v712 {
@@ -19,8 +19,8 @@ public class BedrockCodecHelper_v729 extends BedrockCodecHelper_v712 {
 
     @Override
     public void writeFullContainerName(ByteBuf buffer, FullContainerName containerName) {
-        this.writeContainerSlotType(buffer, containerName.getContainer());
-        this.writeOptionalNull(buffer, containerName.getDynamicId(), ByteBuf::writeIntLE);
+        this.writeContainerSlotType(buffer, containerName.container());
+        this.writeOptionalNull(buffer, containerName.dynamicId(), ByteBuf::writeIntLE);
     }
 
     @Override

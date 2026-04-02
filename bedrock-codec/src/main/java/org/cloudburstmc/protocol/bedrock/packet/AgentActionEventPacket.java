@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ee.AgentActionType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * An Education Edition packet sent from the server to the client to return a response to a
@@ -16,9 +15,18 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AgentActionEventPacket implements BedrockPacket {
+    /**
+     * The request identifier echoed back from the originating Education Edition agent action.
+     */
     private String requestId;
+    /**
+     * The Education Edition agent action that produced this response payload.
+     */
     private AgentActionType actionType;
     /**
+     * A JSON payload describing the action result. The exact structure depends on {@link
+     * #actionType}.
+     *
      * @see AgentActionType for type specific JSON
      */
     private String responseJson;

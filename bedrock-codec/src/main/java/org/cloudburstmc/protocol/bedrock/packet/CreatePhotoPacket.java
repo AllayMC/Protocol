@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * A packet that allows players to export photos from their portfolios into items in their
@@ -13,8 +12,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CreatePhotoPacket implements BedrockPacket {
+    /**
+     * The unique ID of the entity creating the photo item.
+     */
     private long id;
+    /**
+     * The name of the photo.
+     */
     private String photoName;
+    /**
+     * The item name shown for the created photo item.
+     */
     private String photoItemName;
 
     @Override

@@ -2,16 +2,20 @@ package org.cloudburstmc.protocol.bedrock.packet;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Indicates a volume entity to be removed from server to client.
+ * Sent by the server to remove a previously spawned volume entity from the client.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class RemoveVolumeEntityPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the volume entity to remove.
+     */
     private int id;
     /**
+     * The dimension that currently contains the volume entity.
+     *
      * @since v503
      */
     private int dimension;

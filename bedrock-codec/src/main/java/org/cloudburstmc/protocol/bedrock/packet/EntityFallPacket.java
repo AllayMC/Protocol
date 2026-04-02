@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client when it falls from a distance onto a block that would damage the player. This
@@ -14,8 +13,18 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EntityFallPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the entity that the client reports as having taken fall damage.
+     */
     private long runtimeEntityId;
+    /**
+     * The distance, in blocks, that the entity claims to have fallen before landing.
+     */
     private float fallDistance;
+    /**
+     * Specifies whether the client considers the entity to have fallen into the void rather than
+     * onto a damaging block.
+     */
     private boolean inVoid;
 
     @Override

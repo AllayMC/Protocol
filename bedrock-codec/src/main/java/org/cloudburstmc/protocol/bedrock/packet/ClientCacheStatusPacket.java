@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to the server at the start of the game. It is sent to let the server know if
@@ -14,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ClientCacheStatusPacket implements BedrockPacket {
+    /**
+     * Whether the client supports the blob cache protocol.
+     */
     private boolean supported;
 
     @Override

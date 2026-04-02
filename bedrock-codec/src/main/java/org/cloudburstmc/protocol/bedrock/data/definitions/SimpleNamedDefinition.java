@@ -1,10 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.data.definitions;
 
-import lombok.Value;
-import org.cloudburstmc.protocol.common.NamedDefinition;
+import org.cloudburstmc.protocol.common.definition.NamedDefinition;
 
-@Value
-public class SimpleNamedDefinition implements NamedDefinition {
-    String identifier;
-    int runtimeId;
+/**
+ * Represents simple named definition used in the Bedrock protocol.
+ *
+ * @param identifier The identifier.
+ * @param runtimeId  The runtime ID.
+ */
+public record SimpleNamedDefinition(String identifier, int runtimeId) implements NamedDefinition {
 }

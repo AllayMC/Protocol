@@ -8,7 +8,7 @@ import org.cloudburstmc.protocol.bedrock.codec.v618.serializer.CameraInstruction
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSetInstruction;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraTargetInstruction;
 import org.cloudburstmc.protocol.bedrock.packet.CameraInstructionPacket;
-import org.cloudburstmc.protocol.common.NamedDefinition;
+import org.cloudburstmc.protocol.common.definition.NamedDefinition;
 import org.cloudburstmc.protocol.common.util.DefinitionUtils;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 import org.cloudburstmc.protocol.common.util.Preconditions;
@@ -41,7 +41,7 @@ public class CameraInstructionSerializer_v712 extends CameraInstructionSerialize
     @Override
     protected void writeSetInstruction(BedrockCodecHelper helper, ByteBuf buf, CameraSetInstruction set) {
         DefinitionUtils.checkDefinition(helper.getCameraPresetDefinitions(), set.getPreset());
-        buf.writeIntLE(set.getPreset().getRuntimeId());
+        buf.writeIntLE(set.getPreset().runtimeId());
 
         helper.writeOptionalNull(buf, set.getEase(), this::writeEase);
         helper.writeOptionalNull(buf, set.getPos(), helper::writeVector3f);

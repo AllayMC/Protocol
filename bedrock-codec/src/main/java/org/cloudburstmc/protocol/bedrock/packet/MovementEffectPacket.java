@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.MovementEffectType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to the client to update specific movement effects to allow the client to
@@ -15,9 +14,23 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MovementEffectPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the entity. The runtime ID is unique for each world session, and entities
+     * are generally identified in packets using this runtime ID.
+     */
     private long entityRuntimeId;
+    /**
+     * The type of movement effect being updated, such as the gliding firework boost.
+     */
     private MovementEffectType effectType;
+    /**
+     * The duration of the effect, measured in ticks.
+     */
     private int duration;
+    /**
+     * The server tick at which the packet was sent. It is used in relation to
+     * CorrectPlayerMovePrediction.
+     */
     private long tick;
 
     @Override

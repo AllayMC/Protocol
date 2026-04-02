@@ -95,7 +95,7 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writeAchievementAwarded(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         AchievementAwardedEventData event = (AchievementAwardedEventData) eventData;
-        VarInts.writeInt(buffer, event.getAchievementId());
+        VarInts.writeInt(buffer, event.achievementId());
     }
 
     protected EntityInteractEventData readEntityInteract(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -108,10 +108,10 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writeEntityInteract(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         EntityInteractEventData event = (EntityInteractEventData) eventData;
-        VarInts.writeInt(buffer, event.getInteractionType());
-        VarInts.writeInt(buffer, event.getLegacyEntityTypeId());
-        VarInts.writeInt(buffer, event.getVariant());
-        buffer.writeByte(event.getPaletteColor());
+        VarInts.writeInt(buffer, event.interactionType());
+        VarInts.writeInt(buffer, event.legacyEntityTypeId());
+        VarInts.writeInt(buffer, event.variant());
+        buffer.writeByte(event.paletteColor());
     }
 
     protected PortalBuiltEventData readPortalBuilt(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -121,7 +121,7 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writePortalBuilt(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         PortalBuiltEventData event = (PortalBuiltEventData) eventData;
-        VarInts.writeInt(buffer, event.getDimensionId());
+        VarInts.writeInt(buffer, event.dimensionId());
     }
 
     protected PortalUsedEventData readPortalUsed(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -132,8 +132,8 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writePortalUsed(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         PortalUsedEventData event = (PortalUsedEventData) eventData;
-        VarInts.writeInt(buffer, event.getFromDimensionId());
-        VarInts.writeInt(buffer, event.getToDimensionId());
+        VarInts.writeInt(buffer, event.fromDimensionId());
+        VarInts.writeInt(buffer, event.toDimensionId());
     }
 
     protected MobKilledEventData readMobKilled(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -148,11 +148,11 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writeMobKilled(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         MobKilledEventData event = (MobKilledEventData) eventData;
-        VarInts.writeLong(buffer, event.getKillerUniqueEntityId());
-        VarInts.writeLong(buffer, event.getVictimUniqueEntityId());
-        VarInts.writeInt(buffer, event.getEntityDamageCause());
-        VarInts.writeInt(buffer, event.getVillagerTradeTier());
-        helper.writeString(buffer, event.getVillagerDisplayName());
+        VarInts.writeLong(buffer, event.killerUniqueEntityId());
+        VarInts.writeLong(buffer, event.victimUniqueEntityId());
+        VarInts.writeInt(buffer, event.entityDamageCause());
+        VarInts.writeInt(buffer, event.villagerTradeTier());
+        helper.writeString(buffer, event.villagerDisplayName());
     }
 
     protected CauldronUsedEventData readCauldronUsed(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -164,9 +164,9 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writeCauldronUsed(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         CauldronUsedEventData event = (CauldronUsedEventData) eventData;
-        VarInts.writeUnsignedInt(buffer, event.getPotionId());
-        VarInts.writeInt(buffer, event.getColor());
-        VarInts.writeInt(buffer, event.getFillLevel());
+        VarInts.writeUnsignedInt(buffer, event.potionId());
+        VarInts.writeInt(buffer, event.color());
+        VarInts.writeInt(buffer, event.fillLevel());
     }
 
     protected PlayerDiedEventData readPlayerDied(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -177,8 +177,8 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writePlayerDied(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         PlayerDiedEventData event = (PlayerDiedEventData) eventData;
-        VarInts.writeInt(buffer, event.getAttackerEntityId());
-        VarInts.writeInt(buffer, event.getEntityDamageCause());
+        VarInts.writeInt(buffer, event.attackerEntityId());
+        VarInts.writeInt(buffer, event.entityDamageCause());
     }
 
     protected BossKilledEventData readBossKilled(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -190,9 +190,9 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writeBossKilled(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         BossKilledEventData event = (BossKilledEventData) eventData;
-        VarInts.writeLong(buffer, event.getBossUniqueEntityId());
-        VarInts.writeInt(buffer, event.getPlayerPartySize());
-        VarInts.writeInt(buffer, event.getBossEntityType());
+        VarInts.writeLong(buffer, event.bossUniqueEntityId());
+        VarInts.writeInt(buffer, event.playerPartySize());
+        VarInts.writeInt(buffer, event.bossEntityType());
     }
 
     protected AgentCommandEventData readAgentCommand(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -206,11 +206,11 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writeAgentCommand(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         AgentCommandEventData event = (AgentCommandEventData) eventData;
-        VarInts.writeInt(buffer, event.getResult().ordinal());
-        VarInts.writeInt(buffer, event.getDataValue());
-        helper.writeString(buffer, event.getCommand());
-        helper.writeString(buffer, event.getDataKey());
-        helper.writeString(buffer, event.getOutput());
+        VarInts.writeInt(buffer, event.result().ordinal());
+        VarInts.writeInt(buffer, event.dataValue());
+        helper.writeString(buffer, event.command());
+        helper.writeString(buffer, event.dataKey());
+        helper.writeString(buffer, event.output());
     }
 
     protected PatternRemovedEventData readPatternRemoved(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -224,11 +224,11 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writePatternRemoved(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         PatternRemovedEventData event = (PatternRemovedEventData) eventData;
-        VarInts.writeInt(buffer, event.getItemId());
-        VarInts.writeInt(buffer, event.getAuxValue());
-        VarInts.writeInt(buffer, event.getPatternsSize());
-        VarInts.writeInt(buffer, event.getPatternIndex());
-        VarInts.writeInt(buffer, event.getPatternColor());
+        VarInts.writeInt(buffer, event.itemId());
+        VarInts.writeInt(buffer, event.auxValue());
+        VarInts.writeInt(buffer, event.patternsSize());
+        VarInts.writeInt(buffer, event.patternIndex());
+        VarInts.writeInt(buffer, event.patternColor());
     }
 
     protected SlashCommandExecutedEventData readSlashCommandExecuted(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -241,10 +241,10 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writeSlashCommandExecuted(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         SlashCommandExecutedEventData event = (SlashCommandExecutedEventData) eventData;
-        VarInts.writeInt(buffer, event.getSuccessCount());
-        List<String> outputMessages = event.getOutputMessages();
+        VarInts.writeInt(buffer, event.successCount());
+        List<String> outputMessages = event.outputMessages();
         VarInts.writeInt(buffer, outputMessages.size());
-        helper.writeString(buffer, event.getCommandName());
+        helper.writeString(buffer, event.commandName());
         helper.writeString(buffer, String.join(";", outputMessages));
     }
 
@@ -258,9 +258,9 @@ public class EventSerializer_v291 implements BedrockPacketSerializer<EventPacket
 
     protected void writeFishBucketed(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         FishBucketedEventData event = (FishBucketedEventData) eventData;
-        VarInts.writeInt(buffer, event.getPattern());
-        VarInts.writeInt(buffer, event.getPreset());
-        VarInts.writeInt(buffer, event.getBucketedEntityType());
-        buffer.writeBoolean(event.isReleaseEvent());
+        VarInts.writeInt(buffer, event.pattern());
+        VarInts.writeInt(buffer, event.preset());
+        VarInts.writeInt(buffer, event.bucketedEntityType());
+        buffer.writeBoolean(event.releaseEvent());
     }
 }

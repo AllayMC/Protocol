@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.skin.SerializedSkin;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.UUID;
 
@@ -18,11 +17,27 @@ import java.util.UUID;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayerSkinPacket implements BedrockPacket {
+    /**
+     * The UUID of the player as sent in the Login packet when the client joined the server. It must
+     * match this UUID exactly for the skin to show up on the player.
+     */
     private UUID uuid;
+    /**
+     * The new skin to be applied on the player with the UUID in the field above. The skin,
+     * including its animations, will be shown after sending it.
+     */
     private SerializedSkin skin;
+    /**
+     * Legacy field with no current function. It may be left empty.
+     */
     private String newSkinName;
+    /**
+     * Legacy field with no current function. It may be left empty.
+     */
     private String oldSkinName;
     /**
+     * Whether the skin should be marked as trusted by the receiving client.
+     *
      * @since v390
      */
     private boolean trustedSkin;

@@ -4,7 +4,6 @@ import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.CommandBlockUpdateSerializer_v361;
 import org.cloudburstmc.protocol.bedrock.data.CommandBlockMode;
 import org.cloudburstmc.protocol.bedrock.packet.CommandBlockUpdatePacket;

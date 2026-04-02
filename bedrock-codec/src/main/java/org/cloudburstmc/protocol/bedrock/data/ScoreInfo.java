@@ -6,15 +6,37 @@ import lombok.ToString;
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 
+/**
+ * Represents one scoreboard entry transmitted in {@code SetScorePacket}.
+ */
 @Getter
 @EqualsAndHashCode
 @ToString
 public class ScoreInfo {
+    /**
+     * The unique scoreboard entry ID.
+     */
     private final long scoreboardId;
+    /**
+     * The objective identifier that owns this score.
+     */
     private final String objectiveId;
+    /**
+     * The numeric score value.
+     */
     private final int score;
+    /**
+     * The scorer type represented by this entry.
+     */
     private final ScorerType type;
+    /**
+     * The fake-player name, used when {@link #type} is {@link ScorerType#FAKE}.
+     */
     private final String name;
+    /**
+     * The unique entity ID, used when {@link #type} is {@link ScorerType#PLAYER} or
+     * {@link ScorerType#ENTITY}.
+     */
     private final long entityId;
 
     public ScoreInfo(long scoreboardId, String objectiveId, int score) {
@@ -46,9 +68,21 @@ public class ScoreInfo {
     }
 
     public enum ScorerType {
+        /**
+         * No scorer information is present.
+         */
         INVALID,
+        /**
+         * The score belongs to a player entity.
+         */
         PLAYER,
+        /**
+         * The score belongs to a non-player entity.
+         */
         ENTITY,
+        /**
+         * The score belongs to a fake player entry identified only by name.
+         */
         FAKE
     }
 }

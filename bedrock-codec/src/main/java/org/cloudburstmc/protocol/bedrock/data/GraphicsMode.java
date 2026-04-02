@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates graphics mode values used in the Bedrock protocol.
+ */
 public enum GraphicsMode {
     SIMPLE,
     FANCY,

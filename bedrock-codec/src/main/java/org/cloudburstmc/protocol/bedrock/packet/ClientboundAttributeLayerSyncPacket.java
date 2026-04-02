@@ -4,10 +4,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.attributelayer.AttributeLayerSyncPayload;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Syncs Attribute Layers to the Client (Currently disabled)
+ * Sent by the server to synchronize attribute layer payloads with the client.
  *
  * @since v944
  */
@@ -16,6 +15,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientboundAttributeLayerSyncPacket implements BedrockPacket {
 
+    /**
+     * The attribute layer payload to apply. The concrete payload type determines whether this
+     * packet updates full layers, layer settings, environment attributes, or removals.
+     */
     private AttributeLayerSyncPayload data;
 
     @Override

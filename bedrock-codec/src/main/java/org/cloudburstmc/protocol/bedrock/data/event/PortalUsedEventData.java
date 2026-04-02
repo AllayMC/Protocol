@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.data.event;
 
-import lombok.Value;
-
-@Value
-public class PortalUsedEventData implements EventData {
-    private final int fromDimensionId;
-    private final int toDimensionId;
-
+/**
+ * Represents the event data sent when a portal is used.
+ *
+ * @param fromDimensionId The from dimension ID.
+ * @param toDimensionId   The to dimension ID.
+ */
+public record PortalUsedEventData(int fromDimensionId, int toDimensionId) implements EventData {
     @Override
     public EventDataType getType() {
         return EventDataType.PORTAL_USED;

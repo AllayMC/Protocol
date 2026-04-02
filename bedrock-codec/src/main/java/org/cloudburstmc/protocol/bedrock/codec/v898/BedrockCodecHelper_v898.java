@@ -36,8 +36,8 @@ public class BedrockCodecHelper_v898 extends BedrockCodecHelper_v844 {
     public void writeCommandOrigin(ByteBuf buffer, CommandOriginData originData) {
         checkNotNull(originData, "commandOriginData");
         writeString(buffer, "player"); // Hardcode "player" for now
-        writeUuid(buffer, originData.getUuid());
-        writeString(buffer, originData.getRequestId());
-        buffer.writeLongLE(originData.getPlayerId());
+        writeUuid(buffer, originData.uuid());
+        writeString(buffer, originData.requestId());
+        buffer.writeLongLE(originData.playerId());
     }
 }

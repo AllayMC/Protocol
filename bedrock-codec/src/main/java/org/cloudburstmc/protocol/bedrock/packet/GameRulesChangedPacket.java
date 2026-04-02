@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.GameRuleData;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
@@ -17,6 +16,11 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class GameRulesChangedPacket implements BedrockPacket {
+    /**
+     * The game rules that changed with their respective values. Values may be {@code boolean},
+     * {@code int}, or {@code float}. Only changed rules need to be sent, and purely server-side
+     * rules do not necessarily need to be forwarded to the client.
+     */
     private final List<GameRuleData<?>> gameRules = new ObjectArrayList<>();
 
     @Override

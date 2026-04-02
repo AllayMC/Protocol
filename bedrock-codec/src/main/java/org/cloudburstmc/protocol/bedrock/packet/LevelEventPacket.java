@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.LevelEventType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to make a certain event in the level occur. It ranges from particles, to
@@ -15,8 +14,18 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class LevelEventPacket implements BedrockPacket {
+    /**
+     * The level event to trigger.
+     */
     private LevelEventType type;
+    /**
+     * The position of the level event. Practically every event requires this Vec3 set for it, as
+     * particles, sounds and block editing relies on it.
+     */
     private Vector3f position;
+    /**
+     * Additional event data whose meaning depends on {@link #type}.
+     */
     private int data;
 
     @Override

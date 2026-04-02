@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to award an achievement to a player.
@@ -12,6 +11,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AwardAchievementPacket implements BedrockPacket {
+    /**
+     * The numeric ID of the achievement that should be awarded to the player. The values for these
+     * IDs are currently unknown.
+     */
     private int achievementId;
 
     @Override

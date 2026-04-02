@@ -6,12 +6,11 @@ import lombok.ToString;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.GraphicsOverrideParameterType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.Map;
 
 /**
- * Sent from the server to the client when a server script changes the rendering settings
+ * Sent by the server to override graphics parameters on the client.
  *
  * @since v859
  */
@@ -19,16 +18,32 @@ import java.util.Map;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class GraphicsParameterOverridePacket implements BedrockPacket {
+    /**
+     * BiomeIdentifier is the identifier of the biome for which the parameters apply.
+     */
     private String biomeIdentifier;
+    /**
+     * The type of parameter being overridden.
+     */
     private GraphicsOverrideParameterType parameterType;
+    /**
+     * Keyframed parameter values to apply for this override.
+     */
     private Map<Float, Vector3f> values;
+    /**
+     * Reset indicates whether to reset the parameters.
+     */
     private boolean reset;
     /**
+     * An optional single float graphics parameter to be overridden.
+     *
      * @since v924
      */
     @Nullable
     private Float floatValue;
     /**
+     * An optional single Vec3 graphics parameter to be overridden.
+     *
      * @since v924
      */
     @Nullable

@@ -1,5 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Represents sent by the server to make a certain event in the level occur. It ranges from
+ * particles, to sounds, and other events such as starting rain and block breaking.
+ */
 public enum LevelEvent implements LevelEventType {
     UNDEFINED,
 
@@ -115,6 +119,7 @@ public enum LevelEvent implements LevelEventType {
      * @since v766
      * @deprecated since v776
      */
+    @Deprecated
     PARTICLE_CREAKING_HEART_TRIAL,
 
     SCULK_CATALYST_BLOOM,

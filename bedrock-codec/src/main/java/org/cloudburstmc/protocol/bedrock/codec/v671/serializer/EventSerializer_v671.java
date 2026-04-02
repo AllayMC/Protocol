@@ -23,10 +23,10 @@ public class EventSerializer_v671 extends EventSerializer_v589 {
     @Override
     protected void writeEntityInteract(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         EntityInteractEventData event = (EntityInteractEventData) eventData;
-        VarInts.writeLong(buffer, event.getInteractedEntityID());
-        VarInts.writeInt(buffer, event.getInteractionType());
-        VarInts.writeInt(buffer, event.getLegacyEntityTypeId());
-        VarInts.writeInt(buffer, event.getVariant());
-        buffer.writeByte(event.getPaletteColor());
+        VarInts.writeLong(buffer, event.interactedEntityID());
+        VarInts.writeInt(buffer, event.interactionType());
+        VarInts.writeInt(buffer, event.legacyEntityTypeId());
+        VarInts.writeInt(buffer, event.variant());
+        buffer.writeByte(event.paletteColor());
     }
 }

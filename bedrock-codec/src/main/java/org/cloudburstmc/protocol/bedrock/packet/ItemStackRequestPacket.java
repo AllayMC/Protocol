@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.ItemStackRequest;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +18,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @ToString(doNotUseGetters = true)
 public class ItemStackRequestPacket implements BedrockPacket {
+    /**
+     * The buffered item stack requests carried by this packet. Each request is handled
+     * independently, but the client may batch unrelated requests together before sending them.
+     */
     private final List<ItemStackRequest> requests = new ArrayList<>();
 
     @Override

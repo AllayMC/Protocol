@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.HudElement;
 import org.cloudburstmc.protocol.bedrock.data.HudVisibility;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.Set;
 
@@ -19,7 +18,13 @@ import java.util.Set;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetHudPacket implements BedrockPacket {
+    /**
+     * The HUD elements affected by this update.
+     */
     private final Set<HudElement> elements = new ObjectOpenHashSet<>();
+    /**
+     * The visibility state to apply to the selected HUD elements.
+     */
     private HudVisibility visibility;
 
     @Override

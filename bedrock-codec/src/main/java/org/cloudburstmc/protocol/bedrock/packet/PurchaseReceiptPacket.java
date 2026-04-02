@@ -4,7 +4,6 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
@@ -16,6 +15,9 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PurchaseReceiptPacket implements BedrockPacket {
+    /**
+     * Purchase receipts proving which server-offered marketplace items the player bought.
+     */
     private final List<String> receipts = new ObjectArrayList<>();
 
     @Override

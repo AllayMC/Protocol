@@ -1,5 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * LevelSoundEvent is sent by the server to make any kind of built-in sound heard to a player. It is
+ * sent to, for example, play a stepping sound or a shear sound. The packet is also sent by the
+ * client, in which case it could be forwarded by the server to the other players online. If
+ * possible, the packets from the client should be ignored however, and the server should play them
+ * on its own accord.
+ */
 public enum SoundEvent {
     ITEM_USE_ON,
     HIT,

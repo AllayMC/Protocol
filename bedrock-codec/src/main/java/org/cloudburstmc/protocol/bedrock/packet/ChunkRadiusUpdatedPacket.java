@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server in response to a RequestChunkRadius packet. It defines the chunk radius that
@@ -14,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ChunkRadiusUpdatedPacket implements BedrockPacket {
+    /**
+     * The chunk radius the client should use after server-side clamping.
+     */
     private int radius;
 
     @Override

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to let the client know all biomes that are available and what their properties
@@ -14,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true, exclude = "definitions")
 public class CompressedBiomeDefinitionListPacket implements BedrockPacket {
+    /**
+     * The compressed biome definition payload encoded as NBT.
+     */
     private NbtMap definitions;
 
     @Override

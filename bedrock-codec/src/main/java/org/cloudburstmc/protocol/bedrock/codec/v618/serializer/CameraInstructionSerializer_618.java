@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.camera.CameraEase;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraFadeInstruction;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSetInstruction;
 import org.cloudburstmc.protocol.bedrock.packet.CameraInstructionPacket;
-import org.cloudburstmc.protocol.common.NamedDefinition;
+import org.cloudburstmc.protocol.common.definition.NamedDefinition;
 import org.cloudburstmc.protocol.common.util.DefinitionUtils;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 import org.cloudburstmc.protocol.common.util.Preconditions;
@@ -47,8 +47,8 @@ public class CameraInstructionSerializer_618 implements BedrockPacketSerializer<
     }
 
     protected void writeEase(ByteBuf buffer, CameraSetInstruction.EaseData ease) {
-        buffer.writeByte(ease.getEaseType().ordinal());
-        buffer.writeFloatLE(ease.getTime());
+        buffer.writeByte(ease.easeType().ordinal());
+        buffer.writeFloatLE(ease.time());
     }
 
     protected CameraSetInstruction.EaseData readEase(ByteBuf buffer) {
@@ -58,9 +58,9 @@ public class CameraInstructionSerializer_618 implements BedrockPacketSerializer<
     }
 
     protected void writeTimeData(ByteBuf buffer, CameraFadeInstruction.TimeData timeData) {
-        buffer.writeFloatLE(timeData.getFadeInTime());
-        buffer.writeFloatLE(timeData.getWaitTime());
-        buffer.writeFloatLE(timeData.getFadeOutTime());
+        buffer.writeFloatLE(timeData.fadeInTime());
+        buffer.writeFloatLE(timeData.waitTime());
+        buffer.writeFloatLE(timeData.fadeOutTime());
     }
 
     protected CameraFadeInstruction.TimeData readTimeData(ByteBuf buffer) {
@@ -86,7 +86,7 @@ public class CameraInstructionSerializer_618 implements BedrockPacketSerializer<
 
     protected void writeSetInstruction(BedrockCodecHelper helper, ByteBuf buf, CameraSetInstruction set) {
         DefinitionUtils.checkDefinition(helper.getCameraPresetDefinitions(), set.getPreset());
-        buf.writeIntLE(set.getPreset().getRuntimeId());
+        buf.writeIntLE(set.getPreset().runtimeId());
 
         helper.writeOptionalNull(buf, set.getEase(), this::writeEase);
         helper.writeOptionalNull(buf, set.getPos(), helper::writeVector3f);

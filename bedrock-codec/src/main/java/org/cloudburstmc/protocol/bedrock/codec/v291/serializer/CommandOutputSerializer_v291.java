@@ -52,8 +52,8 @@ public class CommandOutputSerializer_v291 implements BedrockPacketSerializer<Com
     public void writeMessage(ByteBuf buffer, BedrockCodecHelper helper, CommandOutputMessage outputMessage) {
         requireNonNull(outputMessage, "CommandOutputMessage is null");
 
-        buffer.writeBoolean(outputMessage.isInternal());
-        helper.writeString(buffer, outputMessage.getMessageId());
-        helper.writeArray(buffer, outputMessage.getParameters(), helper::writeString);
+        buffer.writeBoolean(outputMessage.success());
+        helper.writeString(buffer, outputMessage.message());
+        helper.writeArray(buffer, outputMessage.parameters(), helper::writeString);
     }
 }

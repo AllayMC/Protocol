@@ -21,8 +21,8 @@ public class InventoryTransactionSerializer_v407 extends InventoryTransactionSer
 
         if (legacyRequestId < -1 && (legacyRequestId & 1) == 0) {
             helper.writeArray(buffer, packet.getLegacySlots(), (buf, packetHelper, data) -> {
-                buf.writeByte(data.getContainerId());
-                packetHelper.writeByteArray(buf, data.getSlots());
+                buf.writeByte(data.containerId());
+                packetHelper.writeByteArray(buf, data.slots());
             });
         }
 

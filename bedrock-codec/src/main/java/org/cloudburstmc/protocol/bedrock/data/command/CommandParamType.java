@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.command;
 
+/**
+ * Enumerates command param type values used in the Bedrock protocol.
+ */
 public enum CommandParamType {
     UNKNOWN,
     INT,

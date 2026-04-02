@@ -3,6 +3,9 @@ package org.cloudburstmc.protocol.bedrock.data.camera;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents an easing function that can be used by a CameraInstructionSet.
+ */
 public enum CameraEase {
     LINEAR("linear"),
     SPRING("spring"),
@@ -37,6 +40,9 @@ public enum CameraEase {
     EASE_OUT_BOUNCE("out_bounce"),
     EASE_IN_OUT_BOUNCE("in_out_bounce");
 
+    /**
+     * The serialize names.
+     */
     private static final Map<String, CameraEase> serializeNames = new HashMap<>();
 
     static {
@@ -45,6 +51,9 @@ public enum CameraEase {
         }
     }
 
+    /**
+     * The serialize name.
+     */
     private final String serializeName;
 
     CameraEase(String serializeName) {

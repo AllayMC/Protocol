@@ -17,7 +17,7 @@ public class BiomeDefinitionListSerializer_v859 extends BiomeDefinitionListSeria
     protected void writeDefinitionChunkGen(ByteBuf buffer, BedrockCodecHelper helper, BiomeDefinitionChunkGenData definitionChunkGen,
                                            SequencedHashSet<String> strings) {
         super.writeDefinitionChunkGen(buffer, helper, definitionChunkGen, strings);
-        helper.writeOptionalNull(buffer, definitionChunkGen.getBiomeReplacementData(), this::writeBiomeReplacementData);
+        helper.writeOptionalNull(buffer, definitionChunkGen.biomeReplacementData(), this::writeBiomeReplacementData);
     }
 
     @Override
@@ -52,12 +52,12 @@ public class BiomeDefinitionListSerializer_v859 extends BiomeDefinitionListSeria
     }
 
     protected void writeBiomeReplacementData(ByteBuf buffer, BedrockCodecHelper helper, BiomeReplacementData replacementData) {
-        buffer.writeShortLE(replacementData.getBiome());
-        buffer.writeShortLE(replacementData.getDimension());
-        helper.writeArray(buffer, replacementData.getTargetBiomes(), (buf, value) -> buf.writeShortLE(value));
-        buffer.writeFloatLE(replacementData.getAmount());
-        buffer.writeFloatLE(replacementData.getNoiseFrequencyScale());
-        buffer.writeIntLE(replacementData.getReplacementIndex());
+        buffer.writeShortLE(replacementData.biome());
+        buffer.writeShortLE(replacementData.dimension());
+        helper.writeArray(buffer, replacementData.targetBiomes(), (buf, value) -> buf.writeShortLE(value));
+        buffer.writeFloatLE(replacementData.amount());
+        buffer.writeFloatLE(replacementData.noiseFrequencyScale());
+        buffer.writeIntLE(replacementData.replacementIndex());
     }
 
     protected BiomeReplacementData readBiomeReplacementData(ByteBuf buffer, BedrockCodecHelper helper) {

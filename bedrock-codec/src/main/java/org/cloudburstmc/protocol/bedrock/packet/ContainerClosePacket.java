@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to close a container the player currently has opened, which was opened using
@@ -15,12 +14,19 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ContainerClosePacket implements BedrockPacket {
+    /**
+     * The window ID of the container being closed.
+     */
     private byte id;
     /**
+     * Whether the close was initiated by the server rather than the client.
+     *
      * @since v419
      */
     private boolean serverInitiated;
     /**
+     * The container type used by the client to validate the close request.
+     *
      * @since v685
      */
     private ContainerType type;

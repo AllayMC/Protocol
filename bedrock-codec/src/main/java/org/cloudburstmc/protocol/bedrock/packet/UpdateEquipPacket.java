@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to the client upon opening a horse inventory. It is used to set the content of
@@ -15,10 +14,28 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateEquipPacket implements BedrockPacket {
+    /**
+     * The identifier associated with the window that the UpdateEquip packet concerns. It is the ID
+     * sent for the horse inventory that was opened before this packet was sent.
+     */
     private short windowId;
+    /**
+     * The type of the window that was opened. Generally, this is the type of a horse inventory, as
+     * the packet is specifically made for that.
+     */
     private short windowType;
-    private int size; // Couldn't find anything on this one. Looks like it isn't used?
+    /**
+     * The size of the horse inventory UI that should be displayed.
+     */
+    private int size;
+    /**
+     * The unique ID of the entity whose equipment was 'updated' to the player. It is typically the
+     * horse entity that had its inventory opened.
+     */
     private long uniqueEntityId;
+    /**
+     * A network NBT compound containing the equipment inventory contents and slot restrictions.
+     */
     private NbtMap tag;
 
     @Override

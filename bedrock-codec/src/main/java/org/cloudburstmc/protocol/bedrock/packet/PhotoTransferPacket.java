@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.PhotoType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to transfer a photo (image) file to the client. It is typically used to
@@ -16,22 +15,42 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PhotoTransferPacket implements BedrockPacket {
+    /**
+     * The exact photo file name, including its extension.
+     */
     private String name;
+    /**
+     * The raw bytes of the photo image. Formats such as PNG and JPEG are accepted as long as
+     * {@link #name} uses a matching file extension.
+     */
     private byte[] data;
+    /**
+     * The ID of the book that the photo is associated with. If the PhotoName in a book with this ID
+     * is set to PhotoName, it will display the photo (provided Education Edition is used). The
+     * photo image is downloaded to a sub-folder with this book ID.
+     */
     private String bookId;
     /**
+     * The type of photo being transferred.
+     *
      * @since v465
      */
     private PhotoType photoType;
     /**
+     * The original type of the photo before this transfer.
+     *
      * @since v465
      */
     private PhotoType sourceType;
     /**
+     * The unique entity ID of the photo owner.
+     *
      * @since v465
      */
     private long ownerId;
     /**
+     * The new name of the photo.
+     *
      * @since v465
      */
     private String newPhotoName;

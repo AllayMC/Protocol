@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
@@ -17,7 +16,13 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetScorePacket implements BedrockPacket {
+    /**
+     * The scoreboard operation to apply to {@link #infos}.
+     */
     private Action action;
+    /**
+     * The score entries affected by {@link #action}.
+     */
     private List<ScoreInfo> infos = new ObjectArrayList<>();
 
     @Override
@@ -30,7 +35,13 @@ public class SetScorePacket implements BedrockPacket {
     }
 
     public enum Action {
+        /**
+         * Add new entries or update existing ones.
+         */
         SET,
+        /**
+         * Remove existing entries.
+         */
         REMOVE
     }
 

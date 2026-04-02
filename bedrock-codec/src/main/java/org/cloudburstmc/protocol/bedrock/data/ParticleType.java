@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates particle type values used in the Bedrock protocol.
+ */
 public enum ParticleType implements LevelEventType {
     UNDEFINED,
     BUBBLE,

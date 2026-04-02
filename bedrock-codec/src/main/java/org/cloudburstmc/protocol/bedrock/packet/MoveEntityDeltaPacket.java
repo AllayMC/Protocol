@@ -2,7 +2,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.EnumSet;
 import java.util.Set;
@@ -15,29 +14,60 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 public class MoveEntityDeltaPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the entity that is being moved. The packet works provided a non-player
+     * entity with this runtime ID is present.
+     */
     private long runtimeEntityId;
 
+    /**
+     * Flags that indicate which position or rotation components are present in this packet and
+     * whether special movement states such as teleporting apply.
+     */
     private final Set<Flag> flags = EnumSet.noneOf(Flag.class);
 
+    /**
+     * The new absolute X position, if {@link Flag#HAS_X} is present.
+     */
     private int deltaX;
+    /**
+     * The new absolute Y position, if {@link Flag#HAS_Y} is present.
+     */
     private int deltaY;
+    /**
+     * The new absolute Z position, if {@link Flag#HAS_Z} is present.
+     */
     private int deltaZ;
     /**
+     * The new pitch, if {@link Flag#HAS_PITCH} is present.
+     */
+    private float pitch;
+    /**
+     * The new yaw, if {@link Flag#HAS_YAW} is present.
+     */
+    private float yaw;
+    /**
+     * The new head yaw, if {@link Flag#HAS_HEAD_YAW} is present.
+     */
+    private float headYaw;
+    /**
+     * The new absolute X position for newer protocol versions.
+     *
      * @since v419
      */
     private float x;
     /**
+     * The new absolute Y position for newer protocol versions.
+     *
      * @since v419
      */
     private float y;
     /**
+     * The new absolute Z position for newer protocol versions.
+     *
      * @since v419
      */
     private float z;
-
-    private float pitch;
-    private float yaw;
-    private float headYaw;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
@@ -75,14 +105,41 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
     }
 
     public enum Flag {
+        /**
+         * The X component is present.
+         */
         HAS_X,
+        /**
+         * The Y component is present.
+         */
         HAS_Y,
+        /**
+         * The Z component is present.
+         */
         HAS_Z,
+        /**
+         * The pitch component is present.
+         */
         HAS_PITCH,
+        /**
+         * The yaw component is present.
+         */
         HAS_YAW,
+        /**
+         * The head yaw component is present.
+         */
         HAS_HEAD_YAW,
+        /**
+         * The entity should be considered on the ground after the move.
+         */
         ON_GROUND,
+        /**
+         * The movement should be treated as a teleport.
+         */
         TELEPORTING,
+        /**
+         * The local entity should be force-moved even if client prediction disagrees.
+         */
         FORCE_MOVE_LOCAL_ENTITY
     }
 

@@ -32,6 +32,6 @@ public class StructureBlockUpdateSerializer_v388 extends StructureBlockUpdateSer
     protected void writeEditorData(ByteBuf buffer, BedrockCodecHelper helper, StructureEditorData data) {
         super.writeEditorData(buffer, helper, data);
 
-        VarInts.writeInt(buffer, data.getRedstoneSaveMode().ordinal());
+        VarInts.writeInt(buffer, data.redstoneSaveMode().ordinal());
     }
 }

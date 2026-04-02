@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemUseType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to tell the client that it should be done using the item it is currently
@@ -14,7 +13,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CompletedUsingItemPacket implements BedrockPacket {
+    /**
+     * The item ID of the item the client finished using.
+     */
     private int itemId;
+    /**
+     * The way the item use completed.
+     */
     private ItemUseType type;
 
     @Override

@@ -1,11 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.data.clock;
 
-import lombok.Value;
-
 import java.util.List;
 
-@Value
-public class InitializeRegistryData implements SyncWorldClocksPayload {
+/**
+ * Represents initialize registry data used in the Bedrock protocol.
+ *
+ * @param clockData The clock data.
+ */
+public record InitializeRegistryData(List<WorldClockData> clockData) implements SyncWorldClocksPayload {
 
-    List<WorldClockData> clockData;
 }

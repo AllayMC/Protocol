@@ -3,16 +3,19 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to remove an entity that currently exists in the world from the client- side.
- * Sending this packet if the client cannot already see this entity will have no effect.
+ * Sent by the server to despawn an entity that is currently known to the client. Sending this
+ * packet for an entity that is not present client-side has no effect.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class RemoveEntityPacket implements BedrockPacket {
+    /**
+     * The unique entity ID of the entity to remove. Bedrock serializes the unique ID here even
+     * though most runtime interaction packets use the session-scoped runtime entity ID.
+     */
     private long uniqueEntityId;
 
     @Override

@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to show a certain animation on the screen of the player. The packet is used,
@@ -13,6 +12,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class OnScreenTextureAnimationPacket implements BedrockPacket {
+    /**
+     * The animation type to show. The packet does not include any extra data for duration or other
+     * playback properties.
+     */
     private long effectId;
 
     @Override

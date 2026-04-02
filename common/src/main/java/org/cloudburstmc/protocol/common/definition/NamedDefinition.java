@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.common;
+package org.cloudburstmc.protocol.common.definition;
 
 public interface NamedDefinition extends Definition {
     /**
@@ -6,5 +6,5 @@ public interface NamedDefinition extends Definition {
      *
      * @return identifier
      */
-    String getIdentifier();
+    String identifier();
 }

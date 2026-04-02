@@ -1,46 +1,70 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Platform identifiers reported by clients, for example in login and player list data.
+ */
 public enum BuildPlatform {
 
     UNKNOWN,
     /**
-     * Android
+     * Android.
      */
     GOOGLE,
+    /**
+     * iOS.
+     */
     IOS,
     /**
-     * macOS
+     * macOS.
      */
     OSX,
     /**
-     * Kindle, FireTV
+     * Fire OS devices such as Kindle and Fire TV.
      */
     AMAZON,
+    /**
+     * Gear VR.
+     */
     GEAR_VR,
+    /**
+     * HoloLens.
+     */
     HOLOLENS,
     /**
-     * Windows Store version
+     * Windows UWP / Microsoft Store client.
      */
     UWP,
     /**
-     * Education Edition
+     * Desktop Win32 client, historically used by Education Edition.
      */
     WIN32,
+    /**
+     * Dedicated server.
+     */
     DEDICATED,
     /**
-     * Apple TV
+     * Apple TV.
      */
     TV_OS,
     /**
-     * PlayStation
+     * PlayStation.
      */
     SONY,
     /**
-     * Nintendo Switch
+     * Nintendo Switch.
      */
     NX,
+    /**
+     * Xbox.
+     */
     XBOX,
+    /**
+     * Windows Phone.
+     */
     WINDOWS_PHONE,
+    /**
+     * Linux.
+     */
     LINUX;
 
     private static final BuildPlatform[] VALUES = values();

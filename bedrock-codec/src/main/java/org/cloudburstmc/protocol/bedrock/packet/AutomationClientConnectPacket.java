@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Used to make the client connect to a websocket server. This websocket server has the ability to
@@ -14,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AutomationClientConnectPacket implements BedrockPacket {
+    /**
+     * The websocket address that the client should connect to for automation.
+     */
     private String address;
 
     @Override

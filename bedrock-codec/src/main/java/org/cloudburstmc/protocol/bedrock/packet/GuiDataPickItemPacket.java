@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to make the client 'select' a hot bar slot. It currently appears to be broken
@@ -13,8 +12,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class GuiDataPickItemPacket implements BedrockPacket {
+    /**
+     * The item name shown in the top line of the selection popup.
+     */
     private String description;
+    /**
+     * The line under the ItemName, where the effects of the item are usually situated.
+     */
     private String itemEffects;
+    /**
+     * The hotbar slot to select. The client currently appears to ignore this value.
+     */
     private int hotbarSlot;
 
     @Override

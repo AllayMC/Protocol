@@ -22,7 +22,7 @@ public class UpdateAttributesSerializer_v544 extends UpdateAttributesSerializer_
     public void writeAttribute(ByteBuf buffer, BedrockCodecHelper helper, AttributeData attribute) {
         super.writeAttribute(buffer, helper, attribute);
 
-        helper.writeArray(buffer, attribute.getModifiers(), this::writeModifier);
+        helper.writeArray(buffer, attribute.modifiers(), this::writeModifier);
     }
 
     @Override
@@ -40,12 +40,12 @@ public class UpdateAttributesSerializer_v544 extends UpdateAttributesSerializer_
     }
 
     public void writeModifier(ByteBuf buffer, BedrockCodecHelper helper, AttributeModifierData modifier) {
-        helper.writeString(buffer, modifier.getId());
-        helper.writeString(buffer, modifier.getName());
-        buffer.writeFloatLE(modifier.getAmount());
-        buffer.writeIntLE(modifier.getOperation().ordinal());
-        buffer.writeIntLE(modifier.getOperand());
-        buffer.writeBoolean(modifier.isSerializable());
+        helper.writeString(buffer, modifier.id());
+        helper.writeString(buffer, modifier.name());
+        buffer.writeFloatLE(modifier.amount());
+        buffer.writeIntLE(modifier.operation().ordinal());
+        buffer.writeIntLE(modifier.operand());
+        buffer.writeBoolean(modifier.serializable());
     }
 
     public AttributeModifierData readModifier(ByteBuf buffer, BedrockCodecHelper helper) {

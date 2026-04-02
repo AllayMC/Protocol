@@ -51,19 +51,19 @@ public class AvailableCommandsSerializer_v291 implements BedrockPacketSerializer
 
         // Get all enum values
         for (CommandData data : packet.getCommands()) {
-            if (data.getAliases() != null) {
-                enumValues.addAll(data.getAliases().getValues().keySet());
-                enums.add(data.getAliases());
+            if (data.aliases() != null) {
+                enumValues.addAll(data.aliases().values().keySet());
+                enums.add(data.aliases());
             }
 
-            for (CommandOverloadData overload : data.getOverloads()) {
-                for (CommandParamData parameter : overload.getOverloads()) {
+            for (CommandOverloadData overload : data.overloads()) {
+                for (CommandParamData parameter : overload.overloads()) {
                     CommandEnumData commandEnumData = parameter.getEnumData();
                     if (commandEnumData != null) {
                         if (commandEnumData.isSoft()) {
                             softEnums.add(commandEnumData);
                         } else {
-                            enumValues.addAll(commandEnumData.getValues().keySet());
+                            enumValues.addAll(commandEnumData.values().keySet());
                             enums.add(commandEnumData);
                         }
                     }
@@ -123,10 +123,10 @@ public class AvailableCommandsSerializer_v291 implements BedrockPacketSerializer
 
         // Write enums
         helper.writeArray(buffer, enums, (buf, commandEnum) -> {
-            helper.writeString(buf, commandEnum.getName());
+            helper.writeString(buf, commandEnum.name());
 
-            VarInts.writeUnsignedInt(buffer, commandEnum.getValues().size());
-            for (String value : commandEnum.getValues().keySet()) {
+            VarInts.writeUnsignedInt(buffer, commandEnum.values().size());
+            for (String value : commandEnum.values().keySet()) {
                 int index = values.indexOf(value);
                 checkArgument(index > -1, "Invalid enum value detected: " + value);
                 indexWriter.accept(buf, index);
@@ -161,20 +161,20 @@ public class AvailableCommandsSerializer_v291 implements BedrockPacketSerializer
 
     protected void writeCommand(ByteBuf buffer, BedrockCodecHelper helper, CommandData commandData,
                                 List<CommandEnumData> enums, List<CommandEnumData> softEnums, List<String> postFixes) {
-        helper.writeString(buffer, commandData.getName());
-        helper.writeString(buffer, commandData.getDescription());
-        this.writeFlags(buffer, commandData.getFlags());
-        CommandPermission permission = commandData.getPermission() == null ? CommandPermission.ANY : commandData.getPermission();
+        helper.writeString(buffer, commandData.name());
+        helper.writeString(buffer, commandData.description());
+        this.writeFlags(buffer, commandData.flags());
+        CommandPermission permission = commandData.permission() == null ? CommandPermission.ANY : commandData.permission();
         buffer.writeByte(permission.ordinal());
 
-        CommandEnumData aliases = commandData.getAliases();
+        CommandEnumData aliases = commandData.aliases();
         buffer.writeIntLE(aliases == null ? -1 : enums.indexOf(aliases));
 
-        CommandOverloadData[] overloads = commandData.getOverloads();
+        CommandOverloadData[] overloads = commandData.overloads();
         VarInts.writeUnsignedInt(buffer, overloads.length);
         for (CommandOverloadData overload : overloads) {
-            VarInts.writeUnsignedInt(buffer, overload.getOverloads().length);
-            for (CommandParamData param : overload.getOverloads()) {
+            VarInts.writeUnsignedInt(buffer, overload.overloads().length);
+            for (CommandParamData param : overload.overloads()) {
                 this.writeParameter(buffer, helper, param, enums, softEnums, postFixes);
             }
         }
@@ -192,8 +192,8 @@ public class AvailableCommandsSerializer_v291 implements BedrockPacketSerializer
         CommandOverloadData[] overloads = new CommandOverloadData[VarInts.readUnsignedInt(buffer)];
         for (int i = 0; i < overloads.length; i++) {
             overloads[i] = new CommandOverloadData(false, new CommandParamData[VarInts.readUnsignedInt(buffer)]);
-            for (int i2 = 0; i2 < overloads[i].getOverloads().length; i2++) {
-                overloads[i].getOverloads()[i2] = readParameter(buffer, helper, enums, postfixes, softEnumParameters);
+            for (int i2 = 0; i2 < overloads[i].overloads().length; i2++) {
+                overloads[i].overloads()[i2] = readParameter(buffer, helper, enums, postfixes, softEnumParameters);
             }
         }
         return new CommandData(name, description, flags, permissions, aliases, overloads, Collections.emptyList());

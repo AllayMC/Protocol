@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.GraphicsMode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client when some of the client's options are updated, such as the graphics mode.
@@ -13,6 +12,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateClientOptionsPacket implements BedrockPacket {
+    /**
+     * The graphics mode currently selected by the client.
+     */
     private GraphicsMode graphicsMode;
 
     @Override

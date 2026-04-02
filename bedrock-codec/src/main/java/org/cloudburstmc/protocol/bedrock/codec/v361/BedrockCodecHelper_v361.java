@@ -16,7 +16,10 @@ import org.cloudburstmc.protocol.bedrock.transformer.EntityDataTransformer;
 import org.cloudburstmc.protocol.common.util.TypeMap;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
@@ -175,15 +178,15 @@ public class BedrockCodecHelper_v361 extends BedrockCodecHelper_v340 {
 
     @Override
     public void writeStructureSettings(ByteBuf buffer, StructureSettings settings) {
-        this.writeString(buffer, settings.getPaletteName());
-        buffer.writeBoolean(settings.isIgnoringEntities());
-        buffer.writeBoolean(settings.isIgnoringBlocks());
-        this.writeBlockPosition(buffer, settings.getSize());
-        this.writeBlockPosition(buffer, settings.getOffset());
-        VarInts.writeLong(buffer, settings.getLastEditedByEntityId());
-        buffer.writeByte(settings.getRotation().ordinal());
-        buffer.writeByte(settings.getMirror().ordinal());
-        buffer.writeFloatLE(settings.getIntegrityValue());
-        buffer.writeIntLE(settings.getIntegritySeed());
+        this.writeString(buffer, settings.paletteName());
+        buffer.writeBoolean(settings.ignoringEntities());
+        buffer.writeBoolean(settings.ignoringBlocks());
+        this.writeBlockPosition(buffer, settings.size());
+        this.writeBlockPosition(buffer, settings.offset());
+        VarInts.writeLong(buffer, settings.lastEditedByEntityId());
+        buffer.writeByte(settings.rotation().ordinal());
+        buffer.writeByte(settings.mirror().ordinal());
+        buffer.writeFloatLE(settings.integrityValue());
+        buffer.writeIntLE(settings.integritySeed());
     }
 }

@@ -3,9 +3,9 @@ package org.cloudburstmc.protocol.bedrock.codec.v685.serializer;
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderCategoryType;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderCodeStatus;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderOperationType;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderCategoryType;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderCodeStatus;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderOperationType;
 import org.cloudburstmc.protocol.bedrock.packet.CodeBuilderSourcePacket;
 
 public class CodeBuilderSourceSerializer_v685 implements BedrockPacketSerializer<CodeBuilderSourcePacket> {

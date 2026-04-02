@@ -1,11 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.data.clock;
 
-import lombok.Value;
-
 import java.util.List;
 
-@Value
-public class SyncStateData implements SyncWorldClocksPayload {
+/**
+ * SyncWorldClockStateData represents the state data for synchronising a world clock.
+ *
+ * @param clockData The clock data.
+ */
+public record SyncStateData(List<SyncWorldClockStateData> clockData) implements SyncWorldClocksPayload {
 
-    List<SyncWorldClockStateData> clockData;
 }

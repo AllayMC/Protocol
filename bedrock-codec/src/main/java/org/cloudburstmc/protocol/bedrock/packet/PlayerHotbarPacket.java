@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to the client. It used to be used to link hot bar slots of the player to
@@ -15,8 +14,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayerHotbarPacket implements BedrockPacket {
+    /**
+     * The selected hotbar slot.
+     */
     private int selectedHotbarSlot;
+    /**
+     * The window/container ID associated with the selected hotbar.
+     */
     private int containerId;
+    /**
+     * Whether the client should actually switch to {@link #selectedHotbarSlot}.
+     */
     private boolean selectHotbarSlot;
 
     @Override

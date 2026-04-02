@@ -3,11 +3,18 @@ package org.cloudburstmc.protocol.bedrock.data.camera;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * CameraSplineInstruction represents a camera instruction that creates a spline path for the camera
+ * to follow.
+ */
 public enum CameraSplineType {
 
     CATMULL_ROM("catmullrom"),
     LINEAR("linear");
 
+    /**
+     * The serialize names.
+     */
     private static final Map<String, CameraSplineType> serializeNames = new HashMap<>();
 
     static {
@@ -17,6 +24,8 @@ public enum CameraSplineType {
     }
 
     /**
+     * The serialize name.
+     *
      * @since v924
      */
     private final String serializeName;

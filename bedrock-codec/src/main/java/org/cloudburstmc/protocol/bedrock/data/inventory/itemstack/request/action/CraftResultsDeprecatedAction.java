@@ -1,19 +1,15 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action;
 
-import lombok.Value;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 
 /**
- * CraftResultsDeprecatedStackRequestAction is an additional, deprecated packet sent by the client after
- * crafting. It holds the final results and the amount of times the recipe was crafted. It shouldn't be used.
- * This action is also sent when an item is enchanted. Enchanting should be treated mostly the same way as
- * crafting, where the old item is consumed.
+ * Deprecated item stack request action sent by the client after crafting or enchanting. It carries
+ * the resulting items and the number of times the recipe was crafted.
+ *
+ * @param resultItems  The resulting items reported by the client.
+ * @param timesCrafted The number of times the recipe was crafted.
  */
-@Value
-public class CraftResultsDeprecatedAction implements ItemStackRequestAction {
-    ItemData[] resultItems;
-    int timesCrafted;
-
+public record CraftResultsDeprecatedAction(ItemData[] resultItems, int timesCrafted) implements ItemStackRequestAction {
     @Override
     public ItemStackRequestActionType getType() {
         return ItemStackRequestActionType.CRAFT_RESULTS_DEPRECATED;

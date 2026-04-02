@@ -5,9 +5,9 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.codec.v766.serializer.CameraAimAssistPresetsSerializer_v766;
-import org.cloudburstmc.protocol.bedrock.data.camera.*;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistOperation;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistPresetDefinition;
 import org.cloudburstmc.protocol.bedrock.packet.CameraAimAssistPresetsPacket;
 
 @Slf4j

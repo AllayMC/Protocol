@@ -6,20 +6,43 @@ import org.cloudburstmc.math.vector.Vector3f;
 
 import java.util.List;
 
+/**
+ * Represents a camera instruction that creates a spline path for the camera to follow.
+ */
 @Data
 @AllArgsConstructor
 public class CameraSplineInstruction {
 
+    /**
+     * The total time for the spline animation.
+     */
     private float totalTime;
+    /**
+     * The type.
+     */
     private CameraSplineType type;
+    /**
+     * A list of points that define the spline curve.
+     */
     private List<Vector3f> curve;
+    /**
+     * A list of progress key frames for the spline.
+     */
     private List<SplineProgressOption> progressKeyFrames;
+    /**
+     * The rotation option.
+     */
     private List<SplineRotationOption> rotationOption;
     /**
+     * SplineIdentifier is an optional identifier for referencing the spline by name.
+     *
      * @since v924
      */
     private String splineIdentifier;
     /**
+     * LoadFromJson optionally determines whether the spline should be loaded from a JSON
+     * definition.
+     *
      * @since v924
      */
     private boolean loadFromJson;

@@ -36,12 +36,12 @@ public class EventSerializer_v388 extends EventSerializer_v354 {
     @Override
     protected void writeMobKilled(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         MobKilledEventData event = (MobKilledEventData) eventData;
-        VarInts.writeLong(buffer, event.getKillerUniqueEntityId());
-        VarInts.writeLong(buffer, event.getVictimUniqueEntityId());
-        VarInts.writeInt(buffer, event.getKillerEntityType());
-        VarInts.writeInt(buffer, event.getEntityDamageCause());
-        VarInts.writeInt(buffer, event.getVillagerTradeTier());
-        helper.writeString(buffer, event.getVillagerDisplayName());
+        VarInts.writeLong(buffer, event.killerUniqueEntityId());
+        VarInts.writeLong(buffer, event.victimUniqueEntityId());
+        VarInts.writeInt(buffer, event.killerEntityType());
+        VarInts.writeInt(buffer, event.entityDamageCause());
+        VarInts.writeInt(buffer, event.villagerTradeTier());
+        helper.writeString(buffer, event.villagerDisplayName());
     }
 
     protected EntityDefinitionTriggerEventData readEntityDefinitionTrigger(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -51,7 +51,7 @@ public class EventSerializer_v388 extends EventSerializer_v354 {
 
     protected void writeEntityDefinitionTrigger(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         EntityDefinitionTriggerEventData event = (EntityDefinitionTriggerEventData) eventData;
-        helper.writeString(buffer, event.getEventName());
+        helper.writeString(buffer, event.eventName());
     }
 
     protected RaidUpdateEventData readRaidUpdate(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -63,9 +63,9 @@ public class EventSerializer_v388 extends EventSerializer_v354 {
 
     protected void writeRaidUpdate(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         RaidUpdateEventData event = (RaidUpdateEventData) eventData;
-        VarInts.writeInt(buffer, event.getCurrentWave());
-        VarInts.writeInt(buffer, event.getTotalWaves());
-        buffer.writeBoolean(event.isWinner());
+        VarInts.writeInt(buffer, event.currentWave());
+        VarInts.writeInt(buffer, event.totalWaves());
+        buffer.writeBoolean(event.winner());
     }
 
     protected MovementAnomalyEventData readMovementAnomaly(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -81,12 +81,12 @@ public class EventSerializer_v388 extends EventSerializer_v354 {
 
     protected void writeMovementAnomaly(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         MovementAnomalyEventData event = (MovementAnomalyEventData) eventData;
-        buffer.writeByte(event.getEventType());
-        buffer.writeFloatLE(event.getCheatingScore());
-        buffer.writeFloatLE(event.getAveragePositionDelta());
-        buffer.writeFloatLE(event.getTotalPositionDelta());
-        buffer.writeFloatLE(event.getMinPositionDelta());
-        buffer.writeFloatLE(event.getMaxPositionDelta());
+        buffer.writeByte(event.eventType());
+        buffer.writeFloatLE(event.cheatingScore());
+        buffer.writeFloatLE(event.averagePositionDelta());
+        buffer.writeFloatLE(event.totalPositionDelta());
+        buffer.writeFloatLE(event.minPositionDelta());
+        buffer.writeFloatLE(event.maxPositionDelta());
     }
 
     protected MovementCorrectedEventData readMovementCorrected(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -101,10 +101,10 @@ public class EventSerializer_v388 extends EventSerializer_v354 {
 
     protected void writeMovementCorrected(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         MovementCorrectedEventData event = (MovementCorrectedEventData) eventData;
-        buffer.writeFloatLE(event.getPositionDelta());
-        buffer.writeFloatLE(event.getCheatingScore());
-        buffer.writeFloatLE(event.getScoreThreshold());
-        buffer.writeFloatLE(event.getDistanceThreshold());
-        VarInts.writeInt(buffer, event.getDurationThreshold());
+        buffer.writeFloatLE(event.positionDelta());
+        buffer.writeFloatLE(event.cheatingScore());
+        buffer.writeFloatLE(event.scoreThreshold());
+        buffer.writeFloatLE(event.distanceThreshold());
+        VarInts.writeInt(buffer, event.durationThreshold());
     }
 }

@@ -1,19 +1,15 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
-import lombok.AllArgsConstructor;
-import lombok.Value;
-
-@Value
-@AllArgsConstructor
-public class GameRuleData<T> {
-    String name;
-    boolean editable;
-    T value;
-
+/**
+ * GameRule contains game rule data.
+ *
+ * @param name     The name of the game rule.
+ * @param editable Whether editable.
+ * @param value    The new value of the game rule. This is either a bool, uint32 or float32.
+ */
+public record GameRuleData<T>(String name, boolean editable, T value) {
     public GameRuleData(String name, T value) {
-        this.name = name;
-        this.value = value;
-        this.editable = false;
+        this(name, false, value);
     }
 
     @Override

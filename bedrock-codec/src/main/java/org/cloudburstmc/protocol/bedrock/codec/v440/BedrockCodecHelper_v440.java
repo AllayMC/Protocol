@@ -28,11 +28,11 @@ public class BedrockCodecHelper_v440 extends BedrockCodecHelper_v431 {
         Preconditions.checkNotNull(buffer, "buffer");
         Preconditions.checkNotNull(gameRule, "gameRule");
 
-        Object value = gameRule.getValue();
+        Object value = gameRule.value();
         int id = this.gameRuleType.getId(value.getClass());
 
-        writeString(buffer, gameRule.getName());
-        buffer.writeBoolean(gameRule.isEditable());
+        writeString(buffer, gameRule.name());
+        buffer.writeBoolean(gameRule.editable());
         VarInts.writeUnsignedInt(buffer, id);
         switch (id) {
             case 1:
@@ -88,18 +88,18 @@ public class BedrockCodecHelper_v440 extends BedrockCodecHelper_v431 {
 
     @Override
     public void writeStructureSettings(ByteBuf buffer, StructureSettings settings) {
-        this.writeString(buffer, settings.getPaletteName());
-        buffer.writeBoolean(settings.isIgnoringEntities());
-        buffer.writeBoolean(settings.isIgnoringBlocks());
-        this.writeBlockPosition(buffer, settings.getSize());
-        this.writeBlockPosition(buffer, settings.getOffset());
-        VarInts.writeLong(buffer, settings.getLastEditedByEntityId());
-        buffer.writeByte(settings.getRotation().ordinal());
-        buffer.writeByte(settings.getMirror().ordinal());
-        buffer.writeByte(settings.getAnimationMode().ordinal());
-        buffer.writeFloatLE(settings.getAnimationSeconds());
-        buffer.writeFloatLE(settings.getIntegrityValue());
-        buffer.writeIntLE(settings.getIntegritySeed());
-        this.writeVector3f(buffer, settings.getPivot());
+        this.writeString(buffer, settings.paletteName());
+        buffer.writeBoolean(settings.ignoringEntities());
+        buffer.writeBoolean(settings.ignoringBlocks());
+        this.writeBlockPosition(buffer, settings.size());
+        this.writeBlockPosition(buffer, settings.offset());
+        VarInts.writeLong(buffer, settings.lastEditedByEntityId());
+        buffer.writeByte(settings.rotation().ordinal());
+        buffer.writeByte(settings.mirror().ordinal());
+        buffer.writeByte(settings.animationMode().ordinal());
+        buffer.writeFloatLE(settings.animationSeconds());
+        buffer.writeFloatLE(settings.integrityValue());
+        buffer.writeIntLE(settings.integritySeed());
+        this.writeVector3f(buffer, settings.pivot());
     }
 }

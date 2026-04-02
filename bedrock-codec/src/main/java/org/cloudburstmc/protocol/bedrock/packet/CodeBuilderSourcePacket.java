@@ -3,10 +3,9 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderCategoryType;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderCodeStatus;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderOperationType;
-import org.cloudburstmc.protocol.common.PacketSignal;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderCategoryType;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderCodeStatus;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderOperationType;
 
 /**
  * An Education Edition packet sent by the client to the server to run an operation with a code
@@ -16,13 +15,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CodeBuilderSourcePacket implements BedrockPacket {
+    /**
+     * Distinguishes the Code Builder operation being performed.
+     */
     private CodeBuilderOperationType operation;
+    /**
+     * Distinguishes the category of the Code Builder operation being performed.
+     */
     private CodeBuilderCategoryType category;
     /**
+     * Legacy string payload associated with the operation.
+     *
      * @deprecated since v685
      */
+    @Deprecated
     private String value;
     /**
+     * The current Code Builder status reported with the operation.
+     *
      * @since v685
      */
     private CodeBuilderCodeStatus codeStatus;

@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.math.vector.Vector3i;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
@@ -18,8 +17,17 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ExplodePacket implements BedrockPacket {
+    /**
+     * The block offsets that should be broken client-side as part of the explosion effect.
+     */
     private final List<Vector3i> records = new ObjectArrayList<>();
+    /**
+     * The center position of the explosion.
+     */
     private Vector3f position;
+    /**
+     * The explosion radius, encoded on the network in steps of {@code 1/32} of a block.
+     */
     private float radius;
 
     @Override

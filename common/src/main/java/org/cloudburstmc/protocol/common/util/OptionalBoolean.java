@@ -188,11 +188,10 @@ public final class OptionalBoolean {
             return true;
         }
 
-        if (!(obj instanceof OptionalBoolean)) {
+        if (!(obj instanceof OptionalBoolean other)) {
             return false;
         }
 
-        OptionalBoolean other = (OptionalBoolean) obj;
         return (isPresent && other.isPresent)
                 ? Boolean.compare(value, other.value) == 0
                 : isPresent == other.isPresent;

@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory;
 
+/**
+ * Enumerates item version values used in the Bedrock protocol.
+ */
 public enum ItemVersion {
     LEGACY,
     DATA_DRIVEN,

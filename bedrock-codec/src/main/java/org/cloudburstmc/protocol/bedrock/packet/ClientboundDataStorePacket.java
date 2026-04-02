@@ -4,13 +4,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.datastore.DataStoreAction;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Sends a list of data store properties from the server to the client
+ * Sent by the server to apply data store updates on the client.
  *
  * @since v898
  */
@@ -19,6 +18,9 @@ import java.util.List;
 @ToString(doNotUseGetters = true)
 public class ClientboundDataStorePacket implements BedrockPacket {
 
+    /**
+     * An array of data store changes. Each entry has its own change type discriminator.
+     */
     private List<DataStoreAction> updates = new ArrayList<>();
 
     @Override

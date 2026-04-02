@@ -44,19 +44,19 @@ public class BedrockCodecHelper_v503 extends BedrockCodecHelper_v471 {
 
     @Override
     public void writeStructureSettings(ByteBuf buffer, StructureSettings settings) {
-        this.writeString(buffer, settings.getPaletteName());
-        buffer.writeBoolean(settings.isIgnoringEntities());
-        buffer.writeBoolean(settings.isIgnoringBlocks());
-        buffer.writeBoolean(settings.isNonTickingPlayersAndTickingAreasEnabled());
-        this.writeBlockPosition(buffer, settings.getSize());
-        this.writeBlockPosition(buffer, settings.getOffset());
-        VarInts.writeLong(buffer, settings.getLastEditedByEntityId());
-        buffer.writeByte(settings.getRotation().ordinal());
-        buffer.writeByte(settings.getMirror().ordinal());
-        buffer.writeByte(settings.getAnimationMode().ordinal());
-        buffer.writeFloatLE(settings.getAnimationSeconds());
-        buffer.writeFloatLE(settings.getIntegrityValue());
-        buffer.writeIntLE(settings.getIntegritySeed());
-        this.writeVector3f(buffer, settings.getPivot());
+        this.writeString(buffer, settings.paletteName());
+        buffer.writeBoolean(settings.ignoringEntities());
+        buffer.writeBoolean(settings.ignoringBlocks());
+        buffer.writeBoolean(settings.nonTickingPlayersAndTickingAreasEnabled());
+        this.writeBlockPosition(buffer, settings.size());
+        this.writeBlockPosition(buffer, settings.offset());
+        VarInts.writeLong(buffer, settings.lastEditedByEntityId());
+        buffer.writeByte(settings.rotation().ordinal());
+        buffer.writeByte(settings.mirror().ordinal());
+        buffer.writeByte(settings.animationMode().ordinal());
+        buffer.writeFloatLE(settings.animationSeconds());
+        buffer.writeFloatLE(settings.integrityValue());
+        buffer.writeIntLE(settings.integritySeed());
+        this.writeVector3f(buffer, settings.pivot());
     }
 }

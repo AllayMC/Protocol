@@ -13,7 +13,6 @@ import org.cloudburstmc.protocol.common.util.VarInts;
 
 import java.math.BigInteger;
 import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class BedrockCodecHelper_v766 extends BedrockCodecHelper_v729 {
 

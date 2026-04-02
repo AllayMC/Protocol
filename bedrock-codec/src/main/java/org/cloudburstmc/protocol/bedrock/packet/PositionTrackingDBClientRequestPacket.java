@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * A packet sent by the client to request the position and dimension of a 'tracking ID'. These IDs
@@ -16,7 +15,15 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PositionTrackingDBClientRequestPacket implements BedrockPacket {
+    /**
+     * The action to perform on the position tracking database.
+     */
     private Action action;
+    /**
+     * A unique ID used to identify the request. The server responds with a
+     * PositionTrackingDBServerBroadcast packet holding the same ID, so that the client can find out
+     * what that packet was in response to.
+     */
     private int trackingId;
 
     @Override
@@ -30,6 +37,9 @@ public class PositionTrackingDBClientRequestPacket implements BedrockPacket {
     }
 
     public enum Action {
+        /**
+         * Query the tracked position associated with {@link PositionTrackingDBClientRequestPacket#trackingId}.
+         */
         QUERY
     }
 

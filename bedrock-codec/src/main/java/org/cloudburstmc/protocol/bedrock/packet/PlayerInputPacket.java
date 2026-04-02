@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector2f;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to the server when the player is moving but the server does not allow it to
@@ -17,9 +16,19 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class PlayerInputPacket implements BedrockPacket {
+    /**
+     * The movement vector produced from directional input.
+     */
     private Vector2f inputMotion;
+    /**
+     * Whether the player is currently jumping.
+     */
     private boolean jumping;
+    /**
+     * Whether the player is currently sneaking.
+     */
     private boolean sneaking;
 
     @Override

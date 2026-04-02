@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory;
 
+/**
+ * Enumerates the possible reaction result types shown by a lab table.
+ */
 public enum LabTableReactionType {
     NONE,
     ICE_BOMB,

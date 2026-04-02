@@ -4,7 +4,6 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,7 +18,14 @@ import java.util.UUID;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EmoteListPacket implements BedrockPacket {
+    /**
+     * PlayerRuntimeID is the runtime ID of the player that owns the emote pieces below. If sent by
+     * the client, this player runtime ID is always that of the player itself.
+     */
     private long runtimeEntityId;
+    /**
+     * The list of emote piece identifiers currently equipped by the player.
+     */
     private final List<UUID> pieceIds = new ObjectArrayList<>();
 
     @Override

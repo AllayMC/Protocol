@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.common;
+package org.cloudburstmc.protocol.common.definition;
 
 /**
  * A mapping for a protocol feature that uses runtime IDs to transmit data more efficiently.
@@ -10,5 +10,5 @@ public interface Definition {
      *
      * @return runtime id
      */
-    int getRuntimeId();
+    int runtimeId();
 }

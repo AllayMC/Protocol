@@ -6,7 +6,6 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.inventory.LabTableReactionType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.LabTableType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to let the server know it started a chemical reaction in Education Edition,
@@ -17,8 +16,21 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class LabTablePacket implements BedrockPacket {
+    /**
+     * The lab table action being performed. Clients typically send
+     * {@link LabTableType#START_COMBINE} when starting a reaction, while servers broadcast the
+     * resulting reaction state.
+     */
     private LabTableType type;
+    /**
+     * The position at which the lab table used was located.
+     */
     private Vector3i position;
+    /**
+     * The type of the reaction that took place as a result of the items put into the lab table. The
+     * reaction type can be either that of an item or a particle, depending on whatever the result
+     * was of the reaction.
+     */
     private LabTableReactionType reactionType;
 
     @Override

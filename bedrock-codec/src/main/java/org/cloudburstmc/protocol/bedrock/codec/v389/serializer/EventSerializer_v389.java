@@ -32,9 +32,9 @@ public class EventSerializer_v389 extends EventSerializer_v388 {
     @Override
     protected void writePlayerDied(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         PlayerDiedEventData event = (PlayerDiedEventData) eventData;
-        VarInts.writeInt(buffer, event.getAttackerEntityId());
-        VarInts.writeInt(buffer, event.getAttackerVariant());
-        VarInts.writeInt(buffer, event.getEntityDamageCause());
-        buffer.writeBoolean(event.isInRaid());
+        VarInts.writeInt(buffer, event.attackerEntityId());
+        VarInts.writeInt(buffer, event.attackerVariant());
+        VarInts.writeInt(buffer, event.entityDamageCause());
+        buffer.writeBoolean(event.inRaid());
     }
 }

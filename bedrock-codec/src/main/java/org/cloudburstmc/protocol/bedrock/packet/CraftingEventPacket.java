@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.CraftingType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,16 +15,32 @@ import java.util.UUID;
  * InventoryTransaction packet provides all the information required.
  *
  * @since v630
+ * @deprecated Use {@link InventoryTransactionPacket} instead.
  */
-@Deprecated
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class CraftingEventPacket implements BedrockPacket {
+    /**
+     * The item stacks consumed by the crafting action.
+     */
     private final List<ItemData> inputs = new ObjectArrayList<>();
+    /**
+     * The item stacks produced by the crafting action.
+     */
     private final List<ItemData> outputs = new ObjectArrayList<>();
+    /**
+     * The container window ID where crafting took place.
+     */
     private byte containerId;
+    /**
+     * The crafting context used for the recipe.
+     */
     private CraftingType type;
+    /**
+     * The UUID of the crafted recipe.
+     */
     private UUID uuid;
 
     @Override

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to let the client know all the rules for jigsaw structures.
@@ -13,6 +12,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class JigsawStructureDataPacket implements BedrockPacket {
+    /**
+     * A network-NBT compound containing all jigsaw structure rules defined by the server.
+     */
     private NbtMap jigsawStructureDataTag;
 
     @Override

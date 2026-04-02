@@ -57,11 +57,11 @@ public class BedrockCodecHelper_v407 extends BedrockCodecHelper_v390 {
     public void writeEntityLink(ByteBuf buffer, EntityLinkData entityLink) {
         checkNotNull(entityLink, "entityLink");
 
-        VarInts.writeLong(buffer, entityLink.getFrom());
-        VarInts.writeLong(buffer, entityLink.getTo());
-        buffer.writeByte(entityLink.getType().ordinal());
-        buffer.writeBoolean(entityLink.isImmediate());
-        buffer.writeBoolean(entityLink.isRiderInitiated());
+        VarInts.writeLong(buffer, entityLink.from());
+        VarInts.writeLong(buffer, entityLink.to());
+        buffer.writeByte(entityLink.type().ordinal());
+        buffer.writeBoolean(entityLink.immediate());
+        buffer.writeBoolean(entityLink.riderInitiated());
     }
 
     @Override
@@ -86,12 +86,12 @@ public class BedrockCodecHelper_v407 extends BedrockCodecHelper_v390 {
     public void writeInventoryActions(ByteBuf buffer, List<InventoryActionData> actions, boolean hasNetworkIds) {
         buffer.writeBoolean(hasNetworkIds);
         this.writeArray(buffer, actions, (buf, helper, action) -> {
-            this.writeSource(buffer, action.getSource());
-            VarInts.writeUnsignedInt(buffer, action.getSlot());
-            helper.writeItem(buffer, action.getFromItem());
-            helper.writeItem(buffer, action.getToItem());
+            this.writeSource(buffer, action.source());
+            VarInts.writeUnsignedInt(buffer, action.slot());
+            helper.writeItem(buffer, action.fromItem());
+            helper.writeItem(buffer, action.toItem());
             if (hasNetworkIds) {
-                VarInts.writeInt(buffer, action.getStackNetworkId());
+                VarInts.writeInt(buffer, action.stackNetworkId());
             }
         });
     }
@@ -124,9 +124,9 @@ public class BedrockCodecHelper_v407 extends BedrockCodecHelper_v390 {
 
     @Override
     public void writeItemStackRequest(ByteBuf buffer, ItemStackRequest request) {
-        VarInts.writeInt(buffer, request.getRequestId());
+        VarInts.writeInt(buffer, request.requestId());
 
-        this.writeArray(buffer, request.getActions(), (byteBuf, action) -> {
+        this.writeArray(buffer, request.actions(), (byteBuf, action) -> {
             ItemStackRequestActionType type = action.getType();
             byteBuf.writeByte(this.stackRequestActionTypes.getId(type));
             writeRequestActionData(byteBuf, action);
@@ -137,48 +137,48 @@ public class BedrockCodecHelper_v407 extends BedrockCodecHelper_v390 {
         switch (action.getType()) {
             case TAKE:
             case PLACE:
-                byteBuf.writeByte(((TransferItemStackRequestAction) action).getCount());
-                writeStackRequestSlotInfo(byteBuf, ((TransferItemStackRequestAction) action).getSource());
-                writeStackRequestSlotInfo(byteBuf, ((TransferItemStackRequestAction) action).getDestination());
+                byteBuf.writeByte(((TransferItemStackRequestAction) action).count());
+                writeStackRequestSlotInfo(byteBuf, ((TransferItemStackRequestAction) action).source());
+                writeStackRequestSlotInfo(byteBuf, ((TransferItemStackRequestAction) action).destination());
                 break;
             case SWAP:
-                writeStackRequestSlotInfo(byteBuf, ((SwapAction) action).getSource());
-                writeStackRequestSlotInfo(byteBuf, ((SwapAction) action).getDestination());
+                writeStackRequestSlotInfo(byteBuf, ((SwapAction) action).source());
+                writeStackRequestSlotInfo(byteBuf, ((SwapAction) action).destination());
                 break;
             case DROP:
-                byteBuf.writeByte(((DropAction) action).getCount());
-                writeStackRequestSlotInfo(byteBuf, ((DropAction) action).getSource());
-                byteBuf.writeBoolean(((DropAction) action).isRandomly());
+                byteBuf.writeByte(((DropAction) action).count());
+                writeStackRequestSlotInfo(byteBuf, ((DropAction) action).source());
+                byteBuf.writeBoolean(((DropAction) action).randomly());
                 break;
             case DESTROY:
-                byteBuf.writeByte(((DestroyAction) action).getCount());
-                writeStackRequestSlotInfo(byteBuf, ((DestroyAction) action).getSource());
+                byteBuf.writeByte(((DestroyAction) action).count());
+                writeStackRequestSlotInfo(byteBuf, ((DestroyAction) action).source());
                 break;
             case CONSUME:
-                byteBuf.writeByte(((ConsumeAction) action).getCount());
-                writeStackRequestSlotInfo(byteBuf, ((ConsumeAction) action).getSource());
+                byteBuf.writeByte(((ConsumeAction) action).count());
+                writeStackRequestSlotInfo(byteBuf, ((ConsumeAction) action).source());
                 break;
             case CREATE:
-                byteBuf.writeByte(((CreateAction) action).getSlot());
+                byteBuf.writeByte(((CreateAction) action).slot());
                 break;
             case LAB_TABLE_COMBINE:
                 break;
             case BEACON_PAYMENT:
-                VarInts.writeInt(byteBuf, ((BeaconPaymentAction) action).getPrimaryEffect());
-                VarInts.writeInt(byteBuf, ((BeaconPaymentAction) action).getSecondaryEffect());
+                VarInts.writeInt(byteBuf, ((BeaconPaymentAction) action).primaryEffect());
+                VarInts.writeInt(byteBuf, ((BeaconPaymentAction) action).secondaryEffect());
                 break;
             case CRAFT_RECIPE:
             case CRAFT_RECIPE_AUTO:
-                VarInts.writeUnsignedInt(byteBuf, ((RecipeItemStackRequestAction) action).getRecipeNetworkId());
+                VarInts.writeUnsignedInt(byteBuf, ((RecipeItemStackRequestAction) action).recipeNetworkId());
                 break;
             case CRAFT_CREATIVE:
-                VarInts.writeUnsignedInt(byteBuf, ((CraftCreativeAction) action).getCreativeItemNetworkId());
+                VarInts.writeUnsignedInt(byteBuf, ((CraftCreativeAction) action).creativeItemNetworkId());
                 break;
             case CRAFT_NON_IMPLEMENTED_DEPRECATED:
                 break;
             case CRAFT_RESULTS_DEPRECATED:
-                this.writeArray(byteBuf, ((CraftResultsDeprecatedAction) action).getResultItems(), (buf2, item) -> this.writeItem(buf2, item));
-                byteBuf.writeByte(((CraftResultsDeprecatedAction) action).getTimesCrafted());
+                this.writeArray(byteBuf, ((CraftResultsDeprecatedAction) action).resultItems(), (buf2, item) -> this.writeItem(buf2, item));
+                byteBuf.writeByte(((CraftResultsDeprecatedAction) action).timesCrafted());
                 break;
             default:
                 throw new UnsupportedOperationException("Unhandled stack request action type: " + action.getType());
@@ -265,9 +265,9 @@ public class BedrockCodecHelper_v407 extends BedrockCodecHelper_v390 {
     }
 
     protected void writeStackRequestSlotInfo(ByteBuf buffer, ItemStackRequestSlotData data) {
-        this.writeContainerSlotType(buffer, data.getContainer());
-        buffer.writeByte(data.getSlot());
-        VarInts.writeInt(buffer, data.getStackNetworkId());
+        this.writeContainerSlotType(buffer, data.container());
+        buffer.writeByte(data.slot());
+        VarInts.writeInt(buffer, data.stackNetworkId());
     }
 
     @Override
@@ -298,23 +298,23 @@ public class BedrockCodecHelper_v407 extends BedrockCodecHelper_v390 {
     @Override
     public void writeIngredient(ByteBuf buffer, ItemDescriptorWithCount ingredient) {
         requireNonNull(ingredient, "ingredient is null");
-        if (ingredient == ItemDescriptorWithCount.EMPTY || ingredient.getDescriptor() == InvalidDescriptor.INSTANCE) {
+        if (ingredient == ItemDescriptorWithCount.EMPTY || ingredient.descriptor() == InvalidDescriptor.INSTANCE) {
             VarInts.writeInt(buffer, 0);
             return;
         }
 
-        checkArgument(ingredient.getDescriptor() instanceof DefaultDescriptor, "Descriptor must be of type DefaultDescriptor");
-        DefaultDescriptor descriptor = (DefaultDescriptor) ingredient.getDescriptor();
+        checkArgument(ingredient.descriptor() instanceof DefaultDescriptor, "Descriptor must be of type DefaultDescriptor");
+        DefaultDescriptor descriptor = (DefaultDescriptor) ingredient.descriptor();
 
-        VarInts.writeInt(buffer, descriptor.getItemId().getRuntimeId());
-        VarInts.writeInt(buffer, toAuxValue(descriptor.getAuxValue()));
-        VarInts.writeInt(buffer, ingredient.getCount());
+        VarInts.writeInt(buffer, descriptor.itemId().runtimeId());
+        VarInts.writeInt(buffer, toAuxValue(descriptor.auxValue()));
+        VarInts.writeInt(buffer, ingredient.count());
     }
 
     @Override
     public void writeItemStackResponseContainer(ByteBuf buffer, ItemStackResponseContainer container) {
-        this.writeContainerSlotType(buffer, container.getContainer());
-        this.writeArray(buffer, container.getItems(), this::writeItemEntry);
+        this.writeContainerSlotType(buffer, container.container());
+        this.writeArray(buffer, container.items(), this::writeItemEntry);
     }
 
     @Override

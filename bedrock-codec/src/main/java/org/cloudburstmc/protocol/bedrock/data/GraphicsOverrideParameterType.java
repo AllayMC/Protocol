@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * GraphicsOverrideParameter is sent by the server to override graphics parameters.
+ */
 public enum GraphicsOverrideParameterType {
 
     SKY_ZENITH_COLOR,

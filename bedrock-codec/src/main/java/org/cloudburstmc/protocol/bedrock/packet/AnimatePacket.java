@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.HashMap;
 
@@ -17,17 +16,34 @@ import java.util.HashMap;
 @ToString(doNotUseGetters = true)
 public class AnimatePacket implements BedrockPacket {
     /**
+     * The rowing time.
+     *
      * @deprecated since v897
      */
+    @Deprecated
     private float rowingTime;
 
+    /**
+     * The ID of the animation action to execute. It is one of the action type constants that may be
+     * found above.
+     */
     private Action action;
+    /**
+     * The runtime ID of the player that the animation should be played upon. The runtime ID is
+     * unique for each world session, and entities are generally identified in packets using this
+     * runtime ID.
+     */
     private long runtimeEntityId;
     /**
+     * Extra animation-specific data. For swing actions this usually carries the swing duration or
+     * strength value introduced by newer protocol versions.
+     *
      * @since v859
      */
     private float data;
     /**
+     * The source category for swing actions.
+     *
      * @since v898
      */
     private SwingSource swingSource = SwingSource.NONE;
@@ -50,10 +66,12 @@ public class AnimatePacket implements BedrockPacket {
         /**
          * @deprecated v800 (1.21.80)
          */
+        @Deprecated
         ROW_RIGHT,
         /**
          * @deprecated v800 (1.21.80)
          */
+        @Deprecated
         ROW_LEFT,
     }
 
@@ -76,6 +94,8 @@ public class AnimatePacket implements BedrockPacket {
         }
 
         /**
+         * The protocol string name written for this swing source.
+         *
          * @since v898
          */
         @Getter

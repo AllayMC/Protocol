@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * An Education Edition packet sent by the server to the client to open the URL to a Code Builder
@@ -13,7 +12,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CodeBuilderPacket implements BedrockPacket {
+    /**
+     * The WebSocket URL of the Code Builder server.
+     */
     private String url;
+    /**
+     * Whether the client should open Code Builder immediately.
+     */
     private boolean opening;
 
     @Override

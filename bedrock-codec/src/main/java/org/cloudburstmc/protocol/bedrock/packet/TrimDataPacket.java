@@ -6,19 +6,25 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.TrimMaterial;
 import org.cloudburstmc.protocol.bedrock.data.TrimPattern;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
 /**
- * Sent by the server to the client when they first join the server. It contains a list of all the
- * patterns and materials that can be applied via armor trims.
+ * Sent by the server during the join sequence to advertise the armor trim patterns and materials
+ * available to the client.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class TrimDataPacket implements BedrockPacket {
+    /**
+     * The trim patterns the client may use. Their visual presentation is defined by the active
+     * resource packs.
+     */
     private final List<TrimPattern> patterns = new ObjectArrayList<>();
+    /**
+     * The trim materials the client may use for recolouring an armor trim.
+     */
     private final List<TrimMaterial> materials = new ObjectArrayList<>();
 
     @Override

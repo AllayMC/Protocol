@@ -5,17 +5,20 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraPreset;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
 /**
- * Gives the client a list of custom camera presets.
+ * Sent by the server to register custom camera presets on the client.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CameraPresetsPacket implements BedrockPacket {
+    /**
+     * The presets available for later camera instructions. Order matters because instructions
+     * reference presets by index.
+     */
     private final List<CameraPreset> presets = new ObjectArrayList<>();
 
     @Override

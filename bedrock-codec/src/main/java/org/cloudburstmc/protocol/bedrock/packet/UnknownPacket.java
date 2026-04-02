@@ -7,13 +7,26 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
+/**
+ * Represents a Bedrock packet whose concrete type is not implemented by this codec. The packet ID
+ * and raw payload are preserved so the packet can still be inspected or forwarded without a
+ * dedicated serializer.
+ *
+ * <p>The payload is stored as a retained {@link ByteBuf}, so normal Netty reference-counting rules
+ * apply when this packet is passed around.
+ */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 public final class UnknownPacket
         implements BedrockPacket, BedrockPacketSerializer<UnknownPacket>, ReferenceCounted {
+    /**
+     * The numeric ID read from the packet header.
+     */
     private int packetId;
+    /**
+     * The raw packet body exactly as it appeared on the wire.
+     */
     private ByteBuf payload;
 
     @Override

@@ -121,12 +121,12 @@ public class ClientboundMapItemDataSerializer_v354 implements BedrockPacketSeria
 
         VarInts.writeUnsignedInt(buffer, decorations.size());
         for (MapDecoration decoration : decorations) {
-            buffer.writeByte(decoration.getImage());
-            buffer.writeByte(decoration.getRotation());
-            buffer.writeByte(decoration.getXOffset());
-            buffer.writeByte(decoration.getYOffset());
-            helper.writeString(buffer, decoration.getLabel());
-            VarInts.writeUnsignedInt(buffer, decoration.getColor());
+            buffer.writeByte(decoration.image());
+            buffer.writeByte(decoration.rotation());
+            buffer.writeByte(decoration.xOffset());
+            buffer.writeByte(decoration.yOffset());
+            helper.writeString(buffer, decoration.label());
+            VarInts.writeUnsignedInt(buffer, decoration.color());
         }
     }
 

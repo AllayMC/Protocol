@@ -19,10 +19,10 @@ public class CameraAimAssistActorPrioritySerializer_v924 implements BedrockPacke
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, CameraAimAssistActorPriorityPacket packet) {
         helper.writeArray(buffer, packet.getPriorityData(), (buf, value) -> {
-            buf.writeIntLE(value.getPresetIndex());
-            buf.writeIntLE(value.getCategoryIndex());
-            buf.writeIntLE(value.getActorIndex());
-            buf.writeIntLE(value.getPriorityValue());
+            buf.writeIntLE(value.presetIndex());
+            buf.writeIntLE(value.categoryIndex());
+            buf.writeIntLE(value.actorIndex());
+            buf.writeIntLE(value.priorityValue());
         });
     }
 

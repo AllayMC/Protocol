@@ -39,7 +39,10 @@ import java.security.interfaces.ECPublicKey;
 import java.security.spec.ECGenParameterSpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.List;
+import java.util.Map;
 
 @UtilityClass
 public class EncryptionUtils {
@@ -225,15 +228,13 @@ public class EncryptionUtils {
 
     public static ChainValidationResult validatePayload(AuthPayload payload)
             throws JoseException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidJwtException {
-        if (payload instanceof CertificateChainPayload) {
-            CertificateChainPayload chainPayload = (CertificateChainPayload) payload;
+        if (payload instanceof CertificateChainPayload chainPayload) {
             List<String> chain = chainPayload.getChain();
             if (chain == null || chain.isEmpty()) {
                 throw new IllegalStateException("Certificate chain is empty");
             }
             return validateChain(chain);
-        } else if (payload instanceof TokenPayload) {
-            TokenPayload tokenPayload = (TokenPayload) payload;
+        } else if (payload instanceof TokenPayload tokenPayload) {
             String token = tokenPayload.getToken();
             if (token == null || token.isEmpty()) {
                 throw new IllegalStateException("Token is empty");

@@ -1,8 +1,17 @@
 package org.cloudburstmc.protocol.bedrock.data.entity;
 
+/**
+ * Represents entity data type used in the Bedrock protocol.
+ */
 public class EntityDataType<T> {
 
+    /**
+     * The name.
+     */
     private final String name;
+    /**
+     * The type.
+     */
     private final Class<?> type;
 
     public EntityDataType(Class<? super T> type, String name) {

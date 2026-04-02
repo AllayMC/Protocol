@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client when it changes a setting in the settings that results in the issuing of a
@@ -13,7 +12,14 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SettingsCommandPacket implements BedrockPacket {
+    /**
+     * The full command line issued as a result of the client setting that was changed.
+     */
     private String command;
+    /**
+     * Specifies if the client wants the server to suppress the resulting command output. This is
+     * typically true because the setting change already gives the player visual feedback.
+     */
     private boolean suppressingOutput;
 
     @Override

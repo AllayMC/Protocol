@@ -12,7 +12,7 @@ import org.cloudburstmc.protocol.bedrock.data.camera.CameraEase;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraFadeInstruction;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSetInstruction;
 import org.cloudburstmc.protocol.bedrock.packet.CameraInstructionPacket;
-import org.cloudburstmc.protocol.common.NamedDefinition;
+import org.cloudburstmc.protocol.common.definition.NamedDefinition;
 import org.cloudburstmc.protocol.common.util.DefinitionUtils;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 import org.cloudburstmc.protocol.common.util.Preconditions;
@@ -31,12 +31,12 @@ public class CameraInstructionSerializer_v575 implements BedrockPacketSerializer
             DefinitionUtils.checkDefinition(helper.getCameraPresetDefinitions(), set.getPreset());
 
             NbtMapBuilder builder = NbtMap.builder()
-                    .putInt("preset", set.getPreset().getRuntimeId());
+                    .putInt("preset", set.getPreset().runtimeId());
 
             if (set.getEase() != null) {
                 builder.putCompound("ease", NbtMap.builder()
-                        .putString("type", set.getEase().getEaseType().getSerializeName())
-                        .putFloat("time", set.getEase().getTime())
+                        .putString("type", set.getEase().easeType().getSerializeName())
+                        .putFloat("time", set.getEase().time())
                         .build());
             }
 
@@ -70,9 +70,9 @@ public class CameraInstructionSerializer_v575 implements BedrockPacketSerializer
 
             if (fade.getTimeData() != null) {
                 builder.putCompound("time", NbtMap.builder()
-                        .putFloat("fadeIn", fade.getTimeData().getFadeInTime())
-                        .putFloat("hold", fade.getTimeData().getWaitTime())
-                        .putFloat("fadeOut", fade.getTimeData().getFadeOutTime())
+                        .putFloat("fadeIn", fade.getTimeData().fadeInTime())
+                        .putFloat("hold", fade.getTimeData().waitTime())
+                        .putFloat("fadeOut", fade.getTimeData().fadeOutTime())
                         .build());
             }
 

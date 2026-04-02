@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory;
 
+/**
+ * Enumerates inventory layout values used in the Bedrock protocol.
+ */
 public enum InventoryLayout {
     NONE,
     /**

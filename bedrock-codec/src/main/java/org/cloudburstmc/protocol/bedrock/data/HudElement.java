@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates hud element values used in the Bedrock protocol.
+ */
 public enum HudElement {
     PAPER_DOLL,
     ARMOR,

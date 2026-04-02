@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server at the start of the game to let the client know all entities that are
@@ -14,6 +13,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AvailableEntityIdentifiersPacket implements BedrockPacket {
+    /**
+     * The NBT payload describing every entity identifier that the client may encounter in this
+     * session.
+     */
     private NbtMap identifiers;
 
     @Override

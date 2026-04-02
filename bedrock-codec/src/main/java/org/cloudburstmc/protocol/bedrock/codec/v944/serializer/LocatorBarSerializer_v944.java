@@ -9,7 +9,7 @@ import org.cloudburstmc.protocol.bedrock.data.LocatorBarWaypoint;
 import org.cloudburstmc.protocol.bedrock.packet.LocatorBarPacket;
 import org.cloudburstmc.protocol.common.util.VarInts;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.UUID;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
@@ -28,9 +28,9 @@ public class LocatorBarSerializer_v944 implements BedrockPacketSerializer<Locato
     }
 
     private void writePayload(ByteBuf buf, BedrockCodecHelper helper, LocatorBarPacket.Payload payload) {
-        helper.writeUuid(buf, payload.getGroupHandle());
-        writeWaypoint(buf, helper, payload.getWaypoint());
-        buf.writeByte(payload.getActionFlag().ordinal());
+        helper.writeUuid(buf, payload.groupHandle());
+        writeWaypoint(buf, helper, payload.waypoint());
+        buf.writeByte(payload.actionFlag().ordinal());
     }
 
     private LocatorBarPacket.Payload readPayload(ByteBuf buf, BedrockCodecHelper helper) {
@@ -44,8 +44,8 @@ public class LocatorBarSerializer_v944 implements BedrockPacketSerializer<Locato
         buf.writeIntLE(waypoint.getUpdateFlag());
         helper.writeOptionalNull(buf, waypoint.getVisible(), ByteBuf::writeBoolean);
         helper.writeOptionalNull(buf, waypoint.getWorldPosition(), (buf1, h, pos) -> {
-            h.writeVector3f(buf1, pos.getPosition());
-            VarInts.writeInt(buf1, pos.getDimension());
+            h.writeVector3f(buf1, pos.position());
+            VarInts.writeInt(buf1, pos.dimension());
         });
         helper.writeOptionalNull(buf, waypoint.getTextureId(), ByteBuf::writeIntLE);
         helper.writeOptionalNull(buf, waypoint.getColor(), (buf1, h, c) -> buf1.writeIntLE(c.getRGB()));

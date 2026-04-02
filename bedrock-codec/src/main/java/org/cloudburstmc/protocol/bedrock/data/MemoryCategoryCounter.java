@@ -1,12 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
-import lombok.Data;
-
-@Data
-public class MemoryCategoryCounter {
-
-    private final Category category;
-    private final long currentBytes;
+/**
+ * Represents a memory usage counter for a specific category.
+ *
+ * @param category     The memory category this counter reports.
+ * @param currentBytes The current bytes.
+ */
+public record MemoryCategoryCounter(Category category, long currentBytes) {
 
     public enum Category {
 

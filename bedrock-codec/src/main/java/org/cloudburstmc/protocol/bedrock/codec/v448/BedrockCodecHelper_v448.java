@@ -33,7 +33,7 @@ public class BedrockCodecHelper_v448 extends BedrockCodecHelper_v440 {
     protected void writeRequestActionData(ByteBuf byteBuf, ItemStackRequestAction action) {
         super.writeRequestActionData(byteBuf, action);
         if (action.getType() == ItemStackRequestActionType.CRAFT_RECIPE_AUTO) {
-            byteBuf.writeByte(((AutoCraftRecipeAction) action).getTimesCrafted());
+            byteBuf.writeByte(((AutoCraftRecipeAction) action).timesCrafted());
         }
     }
 }

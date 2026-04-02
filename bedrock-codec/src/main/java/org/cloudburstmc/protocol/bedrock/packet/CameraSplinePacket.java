@@ -4,13 +4,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraSplineDefinition;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
 /**
- * Camera custom spline data sent from server to client. Sent by the server to clients for
- * initializing custom spline data that can be played later through the camera command.
+ * Sent by the server to register named camera spline definitions on the client.
  *
  * @since v924
  */
@@ -19,6 +17,9 @@ import java.util.List;
 @ToString(doNotUseGetters = true)
 public class CameraSplinePacket implements BedrockPacket {
 
+    /**
+     * The spline definitions available for later camera playback.
+     */
     private List<CameraSplineDefinition> splines;
 
     @Override

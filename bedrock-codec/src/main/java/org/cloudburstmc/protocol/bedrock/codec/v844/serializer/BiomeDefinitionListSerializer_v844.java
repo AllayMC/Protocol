@@ -19,20 +19,21 @@ public class BiomeDefinitionListSerializer_v844 extends BiomeDefinitionListSeria
     @Override
     protected void writeDefinition(ByteBuf buffer, BedrockCodecHelper helper, BiomeDefinitionData definition, SequencedHashSet<String> strings) {
         this.writeDefinitionId(buffer, helper, definition);
-        buffer.writeFloatLE(definition.getTemperature());
-        buffer.writeFloatLE(definition.getDownfall());
-        buffer.writeFloatLE(definition.getFoliageSnow());
-        buffer.writeFloatLE(definition.getDepth());
-        buffer.writeFloatLE(definition.getScale());
-        buffer.writeIntLE(definition.getMapWaterColor().getRGB());
-        buffer.writeBoolean(definition.isRain());
-        helper.writeOptionalNull(buffer, definition.getTags(), (byteBuf, aHelper, tags) -> {
-            VarInts.writeUnsignedInt(byteBuf, tags.size());
-            for (String tag : tags) {
+        buffer.writeFloatLE(definition.temperature());
+        buffer.writeFloatLE(definition.downfall());
+        buffer.writeFloatLE(definition.foliageSnow());
+        buffer.writeFloatLE(definition.depth());
+        buffer.writeFloatLE(definition.scale());
+        buffer.writeIntLE(definition.mapWaterColor().getRGB());
+        buffer.writeBoolean(definition.rain());
+        helper.writeOptionalNull(buffer, definition.tags(), (byteBuf, aHelper, tags) -> {
+            List<String> values = tags.get();
+            VarInts.writeUnsignedInt(byteBuf, values.size());
+            for (String tag : values) {
                 byteBuf.writeShortLE(strings.addAndGetIndex(tag));
             }
         });
-        helper.writeOptionalNull(buffer, definition.getChunkGenData(),
+        helper.writeOptionalNull(buffer, definition.chunkGenData(),
                 (buf, aHelper, data) -> writeDefinitionChunkGen(buf, aHelper, data, strings));
     }
 
@@ -61,30 +62,30 @@ public class BiomeDefinitionListSerializer_v844 extends BiomeDefinitionListSeria
         BiomeDefinitionChunkGenData chunkGenData = helper.readOptional(buffer, null,
                 (buf, aHelper) -> this.readDefinitionChunkGen(buf, aHelper, strings));
 
-        return new BiomeDefinitionData(id, temperature, downfall, foliageSnow, depth, scale, mapWaterColor,
-                rain, tags, chunkGenData);
+        return new BiomeDefinitionData(id, temperature, downfall, 0, 0, 0, 0, foliageSnow, depth, scale,
+                mapWaterColor, rain, tags, chunkGenData);
     }
 
     @Override
     protected void writeDefinitionChunkGen(ByteBuf buffer, BedrockCodecHelper helper, BiomeDefinitionChunkGenData definitionChunkGen,
                                            SequencedHashSet<String> strings) {
-        helper.writeOptionalNull(buffer, definitionChunkGen.getClimate(), this::writeClimate);
-        helper.writeOptionalNull(buffer, definitionChunkGen.getConsolidatedFeatures(),
+        helper.writeOptionalNull(buffer, definitionChunkGen.climate(), this::writeClimate);
+        helper.writeOptionalNull(buffer, definitionChunkGen.consolidatedFeatures(),
                 (buf, aHelper, consolidatedFeatures) -> this.writeConsolidatedFeatures(buf, aHelper, consolidatedFeatures, strings));
-        helper.writeOptionalNull(buffer, definitionChunkGen.getMountainParams(), this::writeMountainParamsData);
-        helper.writeOptionalNull(buffer, definitionChunkGen.getSurfaceMaterialAdjustment(),
+        helper.writeOptionalNull(buffer, definitionChunkGen.mountainParams(), this::writeMountainParamsData);
+        helper.writeOptionalNull(buffer, definitionChunkGen.surfaceMaterialAdjustment(),
                 (buf, aHelper, surfaceMaterialAdjustment) -> this.writeSurfaceMaterialAdjustment(buf, aHelper, surfaceMaterialAdjustment, strings));
-        helper.writeOptionalNull(buffer, definitionChunkGen.getSurfaceMaterial(), this::writeSurfaceMaterial);
-        buffer.writeBoolean(definitionChunkGen.isHasDefaultOverworldSurface()); // new
-        buffer.writeBoolean(definitionChunkGen.isHasSwampSurface());
-        buffer.writeBoolean(definitionChunkGen.isHasFrozenOceanSurface());
-        buffer.writeBoolean(definitionChunkGen.isHasTheEndSurface());
-        helper.writeOptionalNull(buffer, definitionChunkGen.getMesaSurface(), this::writeMesaSurface);
-        helper.writeOptionalNull(buffer, definitionChunkGen.getCappedSurface(), this::writeCappedSurface);
-        helper.writeOptionalNull(buffer, definitionChunkGen.getOverworldGenRules(),
+        helper.writeOptionalNull(buffer, definitionChunkGen.surfaceMaterial(), this::writeSurfaceMaterial);
+        buffer.writeBoolean(definitionChunkGen.hasDefaultOverworldSurface()); // new
+        buffer.writeBoolean(definitionChunkGen.hasSwampSurface());
+        buffer.writeBoolean(definitionChunkGen.hasFrozenOceanSurface());
+        buffer.writeBoolean(definitionChunkGen.hasTheEndSurface());
+        helper.writeOptionalNull(buffer, definitionChunkGen.mesaSurface(), this::writeMesaSurface);
+        helper.writeOptionalNull(buffer, definitionChunkGen.cappedSurface(), this::writeCappedSurface);
+        helper.writeOptionalNull(buffer, definitionChunkGen.overworldGenRules(),
                 (buf, aHelper, overworldGenRules) -> this.writeOverworldGenRules(buf, aHelper, overworldGenRules, strings));
-        helper.writeOptionalNull(buffer, definitionChunkGen.getMultinoiseGenRules(), this::writeMultinoiseGenRules);
-        helper.writeOptionalNull(buffer, definitionChunkGen.getLegacyWorldGenRules(),
+        helper.writeOptionalNull(buffer, definitionChunkGen.multinoiseGenRules(), this::writeMultinoiseGenRules);
+        helper.writeOptionalNull(buffer, definitionChunkGen.legacyWorldGenRules(),
                 (buf, aHelper, legacyWorldGenRules) -> this.writeLegacyWorldGenRules(buf, aHelper, legacyWorldGenRules, strings));
     }
 
@@ -120,10 +121,10 @@ public class BiomeDefinitionListSerializer_v844 extends BiomeDefinitionListSeria
 
     @Override
     protected void writeClimate(ByteBuf buffer, BedrockCodecHelper helper, BiomeClimateData climate) {
-        buffer.writeFloatLE(climate.getTemperature());
-        buffer.writeFloatLE(climate.getDownfall());
-        buffer.writeFloatLE(climate.getSnowAccumulationMin());
-        buffer.writeFloatLE(climate.getSnowAccumulationMax());
+        buffer.writeFloatLE(climate.temperature());
+        buffer.writeFloatLE(climate.downfall());
+        buffer.writeFloatLE(climate.snowAccumulationMin());
+        buffer.writeFloatLE(climate.snowAccumulationMax());
     }
 
     @Override

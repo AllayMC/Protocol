@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandEnumData;
 import org.cloudburstmc.protocol.bedrock.data.command.SoftEnumUpdateType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to update a soft enum, also known as a dynamic enum, previously sent in the
@@ -17,7 +16,15 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateSoftEnumPacket implements BedrockPacket {
+    /**
+     * The soft enum definition to update. Its name must match the dynamic enum previously sent in
+     * {@link AvailableCommandsPacket}.
+     */
     private CommandEnumData softEnum;
+    /**
+     * The kind of update to apply to {@link #softEnum}, such as adding, removing, or replacing
+     * options.
+     */
     private SoftEnumUpdateType type;
 
     @Override

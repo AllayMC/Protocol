@@ -6,17 +6,35 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.CraftingDataTyp
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 
+/**
+ * Represents a recipe that is specifically used for all kinds of furnaces. These recipes don't just
+ * apply to furnaces, but also blast furnaces and smokers.
+ */
 @Getter
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class FurnaceRecipeData implements TaggedCraftingData {
 
+    /**
+     * The type.
+     */
     private final CraftingDataType type;
+    /**
+     * The input ID.
+     */
     private final int inputId;
+    /**
+     * The input data.
+     */
     private final int inputData;
+    /**
+     * The result.
+     */
     private final ItemData result;
     /**
+     * The tag.
+     *
      * @since v354
      */
     private final String tag;

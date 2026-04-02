@@ -5,21 +5,31 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.AttributeData;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
 
 /**
- * Sent by the server to update an amount of attributes of any entity in the world. These attributes
- * include ones such as the health or the movement speed of the entity.
+ * Sent by the server to update one or more synced attributes for an entity, such as health or
+ * movement speed.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateAttributesPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the entity whose attributes are being updated. Runtime IDs are scoped to
+     * the current session and are the identifier used for entities in most packets.
+     */
     private long runtimeEntityId;
+    /**
+     * The changed attribute values to apply. Servers typically only send entries whose values have
+     * changed rather than the entity's full attribute set.
+     */
     private List<AttributeData> attributes = new ObjectArrayList<>();
     /**
+     * The server tick at which the update was produced. This is used alongside
+     * {@link CorrectPlayerMovePredictionPacket}.
+     *
      * @since v419
      */
     private long tick;

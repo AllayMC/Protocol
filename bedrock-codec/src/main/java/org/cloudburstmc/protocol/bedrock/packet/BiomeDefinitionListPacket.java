@@ -5,12 +5,11 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.biome.BiomeDefinitions;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to let the client know all biomes that are available and implemented on the
- * server side. When enabled, it also includes information for the client to accurately recreate the
- * server-side generation in vanilla worlds/servers for increased performance.
+ * Sent by the server to describe the biome definitions available for the current world.
+ * Depending on the protocol version, the payload is either encoded as legacy NBT or as structured
+ * biome definition entries used by newer clients.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
@@ -20,9 +19,10 @@ public class BiomeDefinitionListPacket implements BedrockPacket {
      * @deprecated As of v800 (1.21.80) the biomes are no longer sent as NBT. Use {@link #biomes}
      * instead.
      */
+    @Deprecated
     private NbtMap definitions;
     /**
-     * @since v800 (1.21.80)
+     * Structured biome definitions used by protocol v800 (1.21.80) and later.
      */
     private BiomeDefinitions biomes;
 

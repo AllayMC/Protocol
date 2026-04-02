@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ModalFormCancelReason;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.Optional;
 
@@ -17,10 +16,19 @@ import java.util.Optional;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ModalFormResponsePacket implements BedrockPacket {
+    /**
+     * The form ID of the form the client has responded to. It is the same as the ID sent in the
+     * ModalFormRequest, and may be used to identify which form was submitted.
+     */
     private int formId;
+    /**
+     * The JSON-encoded response payload. This is typically a boolean for modal forms, a button
+     * index for simple forms, an array of element values for custom forms, or JSON {@code null} if
+     * the form was closed without submitting.
+     */
     private String formData;
     /**
-     * The reason for why the form response was cancelled.
+     * The reason the form was cancelled instead of submitted, if the client provided one.
      *
      * @since v544
      */

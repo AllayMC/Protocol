@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to the server when it jumps while riding an entity that has the WASDControlled
@@ -15,7 +14,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class RiderJumpPacket implements BedrockPacket {
+    /**
+     * The jump charge strength that the player released for the ridden mount.
+     */
     private int jumpStrength;
 
     @Override

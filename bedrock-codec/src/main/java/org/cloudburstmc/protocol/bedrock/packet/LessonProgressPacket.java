@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ee.LessonAction;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * A packet sent by the server to the client to inform the client of updated progress on a lesson.
@@ -14,8 +13,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class LessonProgressPacket implements BedrockPacket {
+    /**
+     * The lesson progress action the client should display.
+     */
     private LessonAction action;
+    /**
+     * The score the client should use when displaying the progress.
+     */
     private int score;
+    /**
+     * The identifier of the lesson activity whose progress is being updated.
+     */
     private String activityId;
 
     @Override

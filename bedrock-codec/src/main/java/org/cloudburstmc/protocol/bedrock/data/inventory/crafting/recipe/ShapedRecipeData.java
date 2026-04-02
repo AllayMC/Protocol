@@ -11,39 +11,75 @@ import java.util.UUID;
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 
+/**
+ * Represents a recipe that has a specific shape that must be used to craft the output of the
+ * recipe. Trying to craft the item in any other shape will not work. The ShapedRecipe is of the
+ * same structure as the ShapedChemistryRecipe.
+ */
 @Getter
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class ShapedRecipeData implements CraftingRecipeData {
 
+    /**
+     * The type.
+     */
     private final CraftingDataType type;
+    /**
+     * The width of the recipe's shape.
+     */
     private final int width;
+    /**
+     * The height of the recipe's shape.
+     */
     private final int height;
+    /**
+     * The ingredients.
+     */
     private final List<ItemDescriptorWithCount> ingredients;
+    /**
+     * The results.
+     */
     private final List<ItemData> results;
+    /**
+     * A UUID identifying the recipe. Since the CraftingEvent packet no longer exists, this can
+     * always be empty.
+     */
     private final UUID uuid;
     /**
+     * The tag.
+     *
      * @since v354
      */
     private final String tag;
     /**
+     * The ID.
+     *
      * @since v361
      */
     private final String id;
     /**
+     * The priority.
+     *
      * @since v361
      */
     private final int priority;
     /**
+     * The net ID.
+     *
      * @since v407
      */
     private final int netId;
     /**
+     * Whether assume symetry.
+     *
      * @since v671
      */
     private final boolean assumeSymetry;
     /**
+     * The requirement.
+     *
      * @since v685
      */
     private final RecipeUnlockingRequirement requirement;

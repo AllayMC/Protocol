@@ -4,6 +4,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+/**
+ * Represents encoding settings used in the Bedrock protocol.
+ */
 @Data
 @Accessors(fluent = true)
 @Builder(builderClassName = "Builder", toBuilder = true)
@@ -74,12 +77,36 @@ public class EncodingSettings {
             .maxInventoryActionsOrRequests(-1)
             .build();
 
+    /**
+     * The max list size.
+     */
     private final int maxListSize;
+    /**
+     * The max byte array size.
+     */
     private final int maxByteArraySize;
+    /**
+     * The max network nbt size.
+     */
     private final int maxNetworkNBTSize;
+    /**
+     * The max item nbt size.
+     */
     private final int maxItemNBTSize;
+    /**
+     * The max string length.
+     */
     private final int maxStringLength;
+    /**
+     * The max item stack tag length.
+     */
     private final int maxItemStackTagLength;
+    /**
+     * The max geometry data size.
+     */
     private final int maxGeometryDataSize;
+    /**
+     * The max inventory actions or requests.
+     */
     private final int maxInventoryActionsOrRequests;
 }

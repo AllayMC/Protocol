@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.common;
+package org.cloudburstmc.protocol.bedrock.packet;
 
 @SuppressWarnings("InstantiationOfUtilityClass")
 public class PacketSignal {

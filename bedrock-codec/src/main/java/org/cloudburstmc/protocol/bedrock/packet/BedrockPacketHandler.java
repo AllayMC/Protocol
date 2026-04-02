@@ -1,14 +1,27 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import org.cloudburstmc.protocol.common.PacketHandler;
-import org.cloudburstmc.protocol.common.PacketSignal;
+/**
+ * Visitor-style handler for {@link BedrockPacket} instances.
+ * Each overload returns {@link PacketSignal#UNHANDLED} by default so implementations only need to
+ * override the packet types they care about.
+ */
+public interface BedrockPacketHandler {
 
-public interface BedrockPacketHandler extends PacketHandler {
-
+    /**
+     * Dispatches the supplied packet back to its typed {@code handle(...)} overload.
+     *
+     * @param packet the packet to handle
+     * @return the signal returned by the typed handler method
+     */
     default PacketSignal handlePacket(BedrockPacket packet) {
         return packet.handle(this);
     }
 
+    /**
+     * Hook invoked when the connection disconnects.
+     *
+     * @param reason disconnect reason provided by the transport
+     */
     default void onDisconnect(String reason) {
     }
 
@@ -652,7 +665,7 @@ public interface BedrockPacketHandler extends PacketHandler {
         return PacketSignal.UNHANDLED;
     }
 
-    default PacketSignal handle(ItemComponentPacket packet) {
+    default PacketSignal handle(ItemRegistryPacket packet) {
         return PacketSignal.UNHANDLED;
     }
 

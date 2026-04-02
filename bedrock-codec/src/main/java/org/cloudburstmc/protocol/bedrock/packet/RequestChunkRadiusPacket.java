@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to the server to update the server on the chunk view radius that it has set in
@@ -14,8 +13,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class RequestChunkRadiusPacket implements BedrockPacket {
+    /**
+     * The chunk radius currently requested in the client's video settings.
+     */
     private int radius;
     /**
+     * The maximum chunk radius that the client is prepared to receive.
+     *
      * @since v582
      */
     private int maxRadius;

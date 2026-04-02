@@ -57,8 +57,8 @@ public class StartGameSerializer_v534 extends StartGameSerializer_v527 {
         buffer.writeIntLE(packet.getLimitedWorldWidth());
         buffer.writeIntLE(packet.getLimitedWorldHeight());
         buffer.writeBoolean(packet.isNetherType());
-        helper.writeString(buffer, packet.getEduSharedUriResource().getButtonName());
-        helper.writeString(buffer, packet.getEduSharedUriResource().getLinkUri());
+        helper.writeString(buffer, packet.getEduSharedUriResource().buttonName());
+        helper.writeString(buffer, packet.getEduSharedUriResource().linkUri());
         helper.writeOptional(buffer, OptionalBoolean::isPresent, packet.getForceExperimentalGameplay(),
                 (buf, optional) -> buf.writeBoolean(optional.getAsBoolean()));
     }

@@ -4,15 +4,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.AuthoritativeMovementMode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to the client to change its movement mode.
+ * Sent by the server to change which side is authoritative for player movement.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetMovementAuthorityPacket implements BedrockPacket {
+    /**
+     * The movement authority mode to use.
+     */
     private AuthoritativeMovementMode movementMode;
 
     @Override

@@ -24,11 +24,11 @@ public class BedrockCodecHelper_v844 extends BedrockCodecHelper_v776 {
         Preconditions.checkNotNull(buffer, "buffer");
         Preconditions.checkNotNull(gameRule, "gameRule");
 
-        Object value = gameRule.getValue();
+        Object value = gameRule.value();
         int id = this.gameRuleType.getId(value.getClass());
 
-        writeString(buffer, gameRule.getName());
-        buffer.writeBoolean(gameRule.isEditable());
+        writeString(buffer, gameRule.name());
+        buffer.writeBoolean(gameRule.editable());
         VarInts.writeUnsignedInt(buffer, id);
         switch (id) {
             case 1:
@@ -67,11 +67,11 @@ public class BedrockCodecHelper_v844 extends BedrockCodecHelper_v776 {
         Preconditions.checkNotNull(buffer, "buffer");
         Preconditions.checkNotNull(gameRule, "gameRule");
 
-        Object value = gameRule.getValue();
+        Object value = gameRule.value();
         int id = this.gameRuleType.getId(value.getClass());
 
-        writeString(buffer, gameRule.getName());
-        buffer.writeBoolean(gameRule.isEditable());
+        writeString(buffer, gameRule.name());
+        buffer.writeBoolean(gameRule.editable());
         VarInts.writeUnsignedInt(buffer, id);
         switch (id) {
             case 1:

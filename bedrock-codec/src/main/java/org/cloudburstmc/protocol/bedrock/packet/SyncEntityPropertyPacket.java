@@ -3,14 +3,16 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.cloudburstmc.nbt.NbtMap;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * An alternative to synced entity data.
+ * Sent by the server to synchronize entity properties using an NBT payload.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class SyncEntityPropertyPacket implements BedrockPacket {
+    /**
+     * The encoded entity property data.
+     */
     private NbtMap data;
 
     @Override

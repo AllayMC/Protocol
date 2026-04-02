@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.structure;
 
+/**
+ * Enumerates structure mirror values used in the Bedrock protocol.
+ */
 public enum StructureMirror {
     NONE,
     X,

@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.data.event;
 
-import lombok.Value;
-
-@Value
-public class BellUsedEventData implements EventData {
-    private final int itemId;
-
+/**
+ * Represents the event data sent when a bell is used.
+ *
+ * @param itemId The item ID.
+ */
+public record BellUsedEventData(int itemId) implements EventData {
     @Override
     public EventDataType getType() {
         return EventDataType.BELL_USED;

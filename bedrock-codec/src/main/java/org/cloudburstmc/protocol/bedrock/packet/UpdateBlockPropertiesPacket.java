@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to update the available block properties.
@@ -13,6 +12,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateBlockPropertiesPacket implements BedrockPacket {
+    /**
+     * The network NBT compound containing the block property registry advertised to the client.
+     */
     private NbtMap properties;
 
     @Override

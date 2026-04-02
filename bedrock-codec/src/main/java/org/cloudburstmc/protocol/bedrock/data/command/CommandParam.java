@@ -1,12 +1,14 @@
 package org.cloudburstmc.protocol.bedrock.data.command;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.protocol.common.util.TypeMap;
 
-@RequiredArgsConstructor
-@Getter
-public class CommandParam {
+/**
+ * Represents command param used in the Bedrock protocol.
+ *
+ * @param paramType    The param type.
+ * @param defaultValue The default value.
+ */
+public record CommandParam(CommandParamType paramType, int defaultValue) {
 
     public static final CommandParam UNKNOWN = new CommandParam(CommandParamType.UNKNOWN);
     public static final CommandParam INT = new CommandParam(CommandParamType.INT);
@@ -102,17 +104,12 @@ public class CommandParam {
     public static final CommandParam CODE_BUILDER_SELECT_PARAM = new CommandParam(CommandParamType.CODE_BUILDER_SELECT_PARAM);
     public static final CommandParam CODE_BUILDER_SELECTOR = new CommandParam(CommandParamType.CODE_BUILDER_SELECTOR);
 
-    private final CommandParamType paramType;
-    private final int defaultValue;
-
     public CommandParam(CommandParamType paramType) {
-        this.paramType = paramType;
-        this.defaultValue = -1;
+        this(paramType, -1);
     }
 
     public CommandParam(int defaultValue) {
-        this.defaultValue = defaultValue;
-        this.paramType = null;
+        this(null, defaultValue);
     }
 
     public int getValue(TypeMap<CommandParam> typeMap) {

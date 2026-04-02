@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to change the client-side velocity of an entity. It is usually used in
@@ -14,9 +13,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetEntityMotionPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the entity whose motion is being updated.
+     */
     private long runtimeEntityId;
+    /**
+     * The velocity to apply on the client.
+     */
     private Vector3f motion;
     /**
+     * The server tick associated with this motion update.
+     *
      * @since v662
      */
     private long tick;

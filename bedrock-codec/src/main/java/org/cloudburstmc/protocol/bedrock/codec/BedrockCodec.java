@@ -47,9 +47,9 @@ public final class BedrockCodec {
     public BedrockPacket tryDecode(BedrockCodecHelper helper, ByteBuf buf, int id, PacketRecipient recipient) throws PacketSerializeException {
         BedrockPacketDefinition<? extends BedrockPacket> definition = getPacketDefinition(id);
 
-        if (definition != null && recipient != null && definition.getRecipient() != PacketRecipient.BOTH &&
-                definition.getRecipient() != recipient) {
-            throw new IllegalArgumentException("Packet " + definition.getFactory().get().getClass().getSimpleName() + " was sent to " + recipient + " instead of " + definition.getRecipient());
+        if (definition != null && recipient != null && definition.recipient() != PacketRecipient.BOTH &&
+                definition.recipient() != recipient) {
+            throw new IllegalArgumentException("Packet " + definition.factory().get().getClass().getSimpleName() + " was sent to " + recipient + " instead of " + definition.recipient());
         }
 
         BedrockPacket packet;
@@ -60,8 +60,8 @@ public final class BedrockCodec {
             packet = unknownPacket;
             serializer = (BedrockPacketSerializer) unknownPacket;
         } else {
-            packet = definition.getFactory().get();
-            serializer = (BedrockPacketSerializer) definition.getSerializer();
+            packet = definition.factory().get();
+            serializer = (BedrockPacketSerializer) definition.serializer();
         }
 
         try {
@@ -84,7 +84,7 @@ public final class BedrockCodec {
                 serializer = (BedrockPacketSerializer<T>) packet;
             } else {
                 BedrockPacketDefinition<T> definition = getPacketDefinition((Class<T>) packet.getClass());
-                serializer = definition.getSerializer();
+                serializer = definition.serializer();
             }
             serializer.serialize(buf, helper, packet);
         } catch (Exception e) {
@@ -146,7 +146,7 @@ public final class BedrockCodec {
         public <T extends BedrockPacket> Builder updateSerializer(Class<T> packetClass, BedrockPacketSerializer<T> serializer) {
             BedrockPacketDefinition<T> info = (BedrockPacketDefinition<T>) packets.get(packetClass);
             checkArgument(info != null, "Packet does not exist");
-            BedrockPacketDefinition<T> updatedInfo = new BedrockPacketDefinition<>(info.getId(), info.getFactory(), serializer, info.getRecipient());
+            BedrockPacketDefinition<T> updatedInfo = new BedrockPacketDefinition<>(info.id(), info.factory(), serializer, info.recipient());
 
             packets.replace(packetClass, info, updatedInfo);
 
@@ -156,7 +156,7 @@ public final class BedrockCodec {
         public <T extends BedrockPacket> Builder updateFactory(Class<T> packetClass, Supplier<? extends T> factory) {
             BedrockPacketDefinition<T> info = (BedrockPacketDefinition<T>) packets.get(packetClass);
             checkArgument(info != null, "Packet does not exist");
-            BedrockPacketDefinition<T> updatedInfo = new BedrockPacketDefinition<>(info.getId(), (Supplier<T>) factory, info.getSerializer(), info.getRecipient());
+            BedrockPacketDefinition<T> updatedInfo = new BedrockPacketDefinition<>(info.id(), (Supplier<T>) factory, info.serializer(), info.recipient());
 
             packets.replace(packetClass, info, updatedInfo);
 
@@ -219,15 +219,15 @@ public final class BedrockCodec {
             checkNotNull(helperFactory, "helperFactory cannot be null");
             int largestId = -1;
             for (BedrockPacketDefinition<? extends BedrockPacket> info : packets.values()) {
-                if (info.getId() > largestId) {
-                    largestId = info.getId();
+                if (info.id() > largestId) {
+                    largestId = info.id();
                 }
             }
             checkArgument(largestId > -1, "Must have at least one packet registered");
             BedrockPacketDefinition<? extends BedrockPacket>[] packetsById = new BedrockPacketDefinition[largestId + 1];
 
             for (BedrockPacketDefinition<? extends BedrockPacket> info : packets.values()) {
-                packetsById[info.getId()] = info;
+                packetsById[info.id()] = info;
             }
             return new BedrockCodec(protocolVersion, minecraftVersion, packetsById, packets, helperFactory, raknetProtocolVersion);
         }

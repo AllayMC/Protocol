@@ -44,8 +44,8 @@ public class StartGameSerializer_v419 implements BedrockPacketSerializer<StartGa
         VarInts.writeInt(buffer, packet.getEnchantmentSeed());
 
         helper.writeArray(buffer, packet.getBlockProperties(), (buf, packetHelper, block) -> {
-            packetHelper.writeString(buf, block.getName());
-            packetHelper.writeTag(buf, block.getProperties());
+            packetHelper.writeString(buf, block.name());
+            packetHelper.writeTag(buf, block.properties());
         });
 
         this.writeItemDefinitions(buffer, helper, packet.getItemDefinitions());
@@ -183,9 +183,9 @@ public class StartGameSerializer_v419 implements BedrockPacketSerializer<StartGa
 
     protected void writeItemDefinitions(ByteBuf buffer, BedrockCodecHelper helper, List<ItemDefinition> definitions) {
         helper.writeArray(buffer, definitions, (buf, entry) -> {
-            helper.writeString(buf, entry.getIdentifier());
-            buf.writeShortLE(entry.getRuntimeId());
-            buf.writeBoolean(entry.isComponentBased());
+            helper.writeString(buf, entry.identifier());
+            buf.writeShortLE(entry.runtimeId());
+            buf.writeBoolean(entry.componentBased());
         });
     }
 

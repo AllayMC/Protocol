@@ -4,7 +4,10 @@ import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v924.serializer.CameraInstructionSerializer_v924;
-import org.cloudburstmc.protocol.bedrock.data.camera.*;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraEase;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraFovInstruction;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraSplineInstruction;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraSplineType;
 
 import java.util.ArrayList;
 import java.util.List;

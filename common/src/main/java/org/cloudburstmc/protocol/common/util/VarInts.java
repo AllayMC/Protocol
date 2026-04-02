@@ -1,8 +1,6 @@
 package org.cloudburstmc.protocol.common.util;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.buffer.ByteBufUtil;
 import lombok.experimental.UtilityClass;
 
 import java.math.BigInteger;
@@ -14,7 +12,7 @@ public class VarInts {
     private static final BigInteger BIG_INTEGER_80 = BigInteger.valueOf(0x80);
 
     public static void writeInt(ByteBuf buffer, int value) {
-        encode(buffer, ((value << 1) ^ (value >> 31)) & 0xFFFFFFFFL);
+        encode(buffer, (((long) value << 1) ^ (value >> 31)) & 0xFFFFFFFFL);
     }
 
     public static int readInt(ByteBuf buffer) {

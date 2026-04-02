@@ -1,19 +1,31 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import org.cloudburstmc.protocol.common.MinecraftPacket;
-import org.cloudburstmc.protocol.common.PacketSignal;
+/**
+ * Base contract for packets encoded on the Bedrock protocol.
+ */
+public interface BedrockPacket extends Cloneable {
 
-public interface BedrockPacket extends MinecraftPacket, Cloneable {
-
+    /**
+     * Dispatches this packet to the matching overload on {@code handler}.
+     *
+     * @param handler the handler receiving this packet
+     * @return the signal returned by the handler
+     */
     PacketSignal handle(BedrockPacketHandler handler);
 
+    /**
+     * Returns the logical Bedrock packet type represented by this instance.
+     *
+     * @return the packet type constant for this packet
+     */
     BedrockPacketType getPacketType();
 
     /**
-     * Creates a new instance of this packet using Object.clone()
-     * Will throw a {@link UnsupportedOperationException} if the packet implements {@link io.netty.util.ReferenceCounted}
+     * Creates a shallow copy of this packet using {@link Object#clone()}.
+     * Implementations that also implement {@link io.netty.util.ReferenceCounted} may instead throw
+     * {@link UnsupportedOperationException}.
      *
-     * @return a new instance of this packet
+     * @return a cloned packet instance
      */
     BedrockPacket clone();
 }

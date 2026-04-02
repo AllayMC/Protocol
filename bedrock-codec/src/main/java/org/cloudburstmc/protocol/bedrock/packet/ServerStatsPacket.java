@@ -3,16 +3,21 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Stats sent to the client regarding the server's network performance that are used for telemetry.
+ * Sent by the server to provide telemetry timing samples for networking and server processing.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)
 public class ServerStatsPacket implements BedrockPacket {
+    /**
+     * The measured time spent on server-side processing.
+     */
     private float serverTime;
+    /**
+     * The measured time attributed to network processing.
+     */
     private float networkTime;
 
     @Override

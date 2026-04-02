@@ -17,7 +17,10 @@ import org.cloudburstmc.protocol.bedrock.data.command.CommandEnumData;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandOriginData;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandOriginType;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
-import org.cloudburstmc.protocol.bedrock.data.entity.*;
+import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataFormat;
+import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataMap;
+import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataType;
+import org.cloudburstmc.protocol.bedrock.data.entity.EntityLinkData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.cloudburstmc.protocol.bedrock.transformer.EntityDataTransformer;
 import org.cloudburstmc.protocol.common.util.TriConsumer;
@@ -56,10 +59,10 @@ public class BedrockCodecHelper_v291 extends BaseBedrockCodecHelper {
     public void writeEntityLink(ByteBuf buffer, EntityLinkData entityLink) {
         checkNotNull(entityLink, "entityLink");
 
-        VarInts.writeLong(buffer, entityLink.getFrom());
-        VarInts.writeLong(buffer, entityLink.getTo());
-        buffer.writeByte(entityLink.getType().ordinal());
-        buffer.writeBoolean(entityLink.isImmediate());
+        VarInts.writeLong(buffer, entityLink.from());
+        VarInts.writeLong(buffer, entityLink.to());
+        buffer.writeByte(entityLink.type().ordinal());
+        buffer.writeBoolean(entityLink.immediate());
     }
 
     @Override
@@ -122,7 +125,7 @@ public class BedrockCodecHelper_v291 extends BaseBedrockCodecHelper {
             buffer.writeByte(0);
             return;
         }
-        VarInts.writeInt(buffer, definition.getRuntimeId());
+        VarInts.writeInt(buffer, definition.runtimeId());
 
         // Write damage and count
         int damage = item.getDamage();
@@ -174,11 +177,11 @@ public class BedrockCodecHelper_v291 extends BaseBedrockCodecHelper {
     @Override
     public void writeCommandOrigin(ByteBuf buffer, CommandOriginData originData) {
         checkNotNull(originData, "commandOriginData");
-        VarInts.writeUnsignedInt(buffer, originData.getOrigin().ordinal());
-        writeUuid(buffer, originData.getUuid());
-        writeString(buffer, originData.getRequestId());
-        if (originData.getOrigin() == CommandOriginType.DEV_CONSOLE || originData.getOrigin() == CommandOriginType.TEST) {
-            VarInts.writeLong(buffer, originData.getPlayerId());
+        VarInts.writeUnsignedInt(buffer, originData.origin().ordinal());
+        writeUuid(buffer, originData.uuid());
+        writeString(buffer, originData.requestId());
+        if (originData.origin() == CommandOriginType.DEV_CONSOLE || originData.origin() == CommandOriginType.TEST) {
+            VarInts.writeLong(buffer, originData.playerId());
         }
     }
 
@@ -203,10 +206,10 @@ public class BedrockCodecHelper_v291 extends BaseBedrockCodecHelper {
     public void writeGameRule(ByteBuf buffer, GameRuleData<?> gameRule) {
         checkNotNull(gameRule, "gameRule");
 
-        Object value = gameRule.getValue();
+        Object value = gameRule.value();
         int type = this.gameRuleType.getId(value.getClass());
 
-        writeString(buffer, gameRule.getName());
+        writeString(buffer, gameRule.name());
         VarInts.writeUnsignedInt(buffer, type);
         switch (type) {
             case 1:
@@ -382,9 +385,9 @@ public class BedrockCodecHelper_v291 extends BaseBedrockCodecHelper {
     public void writeCommandEnum(ByteBuf buffer, CommandEnumData enumData) {
         checkNotNull(enumData, "enumData");
 
-        writeString(buffer, enumData.getName());
+        writeString(buffer, enumData.name());
 
-        Set<String> values = enumData.getValues().keySet();
+        Set<String> values = enumData.values().keySet();
         VarInts.writeUnsignedInt(buffer, values.size());
         for (String value : values) {
             writeString(buffer, value);

@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to make the client open a form. This form may be either a modal form which has
@@ -13,7 +12,15 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ModalFormRequestPacket implements BedrockPacket {
+    /**
+     * An ID used to identify the form. The ID is saved by the client and sent back when the player
+     * submits the form, so that the server can identify which form was submitted.
+     */
     private int formId;
+    /**
+     * The JSON-encoded form definition. Its schema depends on whether the form is modal, simple,
+     * or custom.
+     */
     private String formData;
 
     @Override

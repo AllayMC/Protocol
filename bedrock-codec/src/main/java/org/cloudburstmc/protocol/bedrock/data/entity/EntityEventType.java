@@ -1,5 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.data.entity;
 
+/**
+ * Enumerates the entity-event opcodes used by {@link
+ * org.cloudburstmc.protocol.bedrock.packet.EntityEventPacket}.
+ */
 public enum EntityEventType {
     NONE,
     JUMP,

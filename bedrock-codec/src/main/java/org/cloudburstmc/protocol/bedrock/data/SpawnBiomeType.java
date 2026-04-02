@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates spawn biome type values used in the Bedrock protocol.
+ */
 public enum SpawnBiomeType {
     DEFAULT,
     USER_DEFINED;

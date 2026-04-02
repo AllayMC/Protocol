@@ -1,12 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory;
 
-import lombok.Value;
-
-@Value
-public class FullContainerName {
-    private final ContainerSlotType container;
-    /**
-     * May be null if not present since v729
-     */
-    private final Integer dynamicId;
+/**
+ * FullContainerName contains information required to identify a container in a
+ * StackRequestSlotInfo.
+ *
+ * @param container The container.
+ * @param dynamicId May be null if not present since v729
+ */
+public record FullContainerName(ContainerSlotType container, Integer dynamicId) {
 }

@@ -1,9 +1,10 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory.transaction;
 
-import lombok.Value;
-
-@Value
-public class LegacySetItemSlotData {
-    private final int containerId;
-    private final byte[] slots;
+/**
+ * Legacy slot update information attached to an inventory transaction.
+ *
+ * @param containerId The container ID.
+ * @param slots       The slot indices within that container.
+ */
+public record LegacySetItemSlotData(int containerId, byte[] slots) {
 }

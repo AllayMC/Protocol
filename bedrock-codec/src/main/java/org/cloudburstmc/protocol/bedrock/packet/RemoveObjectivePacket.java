@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to remove a scoreboard objective. It is used to stop showing a scoreboard to a
@@ -13,6 +12,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class RemoveObjectivePacket implements BedrockPacket {
+    /**
+     * The scoreboard objective name to remove. It must match the identifier previously used in
+     * {@link SetDisplayObjectivePacket}.
+     */
     private String objectiveId;
 
     @Override

@@ -10,6 +10,11 @@ import java.util.List;
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 
+/**
+ * The serialised form of a player skin as sent in packets such as
+ * {@link org.cloudburstmc.protocol.bedrock.packet.PlayerListPacket} and
+ * {@link org.cloudburstmc.protocol.bedrock.packet.PlayerSkinPacket}.
+ */
 @Getter
 @ToString(exclude = {"geometryData"})
 @EqualsAndHashCode
@@ -22,69 +27,117 @@ public class SerializedSkin {
     public static final int SKIN_128_64_SIZE = 128 * 64 * PIXEL_SIZE;
     public static final int SKIN_128_128_SIZE = 128 * 128 * PIXEL_SIZE;
 
+    /**
+     * A unique identifier for the skin.
+     */
     private final String skinId;
+    /**
+     * The legacy geometry name used by older protocol versions.
+     */
     private final String geometryName;
+    /**
+     * The RGBA skin image data.
+     */
     private final ImageData skinData;
+    /**
+     * The RGBA cape image data.
+     */
     private final ImageData capeData;
+    /**
+     * The JSON geometry payload describing bones, UVs, pivots and related model data.
+     */
     private final String geometryData;
+    /**
+     * Whether this skin is a premium marketplace skin.
+     */
     private final boolean premium;
     /**
+     * The JSON resource patch that points the client to the skin geometry to use.
+     *
      * @since v388
      */
     private final String skinResourcePatch;
     /**
+     * The animations.
+     *
      * @since v388
      */
     private final List<AnimationData> animations;
     /**
+     * Additional animation metadata payload.
+     *
      * @since v388
      */
     private final String animationData;
     /**
+     * Whether this skin was created with the in-game persona creator.
+     *
      * @since v388
      */
     private final boolean persona;
     /**
+     * Whether a persona cape is applied on a classic skin.
+     *
      * @since v388
      */
     private final boolean capeOnClassic;
     /**
+     * The cape ID.
+     *
      * @since v388
      */
     private final String capeId;
     /**
+     * A full identifier for the combined skin and cape.
+     *
      * @since v388
      */
     private final String fullSkinId;
     /**
+     * The arm width variant, typically {@code wide} or {@code slim}.
+     *
      * @since v390
      */
     private final String armSize;
     /**
+     * The base skin colour in hex notation.
+     *
      * @since v390
      */
     private final String skinColor;
     /**
+     * The persona pieces.
+     *
      * @since v390
      */
     private final List<PersonaPieceData> personaPieces;
     /**
+     * The tint colors.
+     *
      * @since v390
      */
     private final List<PersonaPieceTintData> tintColors;
     /**
+     * The PlayFab identifier associated with the skin.
+     *
      * @since v428
      */
     private final String playFabId;
     /**
+     * The engine version associated with the geometry data.
+     *
      * @since v465
      */
     private final String geometryDataEngineVersion;
     /**
+     * Whether this skin belongs to the primary local user.
+     *
      * @since v465
      */
     private final boolean primaryUser;
     /**
+     * Whether this skin should override the player's locally equipped appearance.
+     *
      * @since v568
      */
     private final boolean overridingPlayerAppearance;
