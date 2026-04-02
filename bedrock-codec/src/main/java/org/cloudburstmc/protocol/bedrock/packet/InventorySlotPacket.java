@@ -6,7 +6,6 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.FullContainerName;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to update a single slot in one of the inventory windows that the client

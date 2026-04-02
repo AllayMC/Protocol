@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.MultiplayerMode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to update multi-player related settings server-side and sent back to online

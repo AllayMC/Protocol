@@ -5,7 +5,6 @@ import it.unimi.dsi.fastutil.longs.LongList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Used to trigger an entity animation on the specified runtime IDs to the client that receives it.

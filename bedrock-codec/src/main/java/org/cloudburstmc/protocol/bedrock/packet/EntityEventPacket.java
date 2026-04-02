@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityEventType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server when a particular event happens that has to do with an entity. Some of these

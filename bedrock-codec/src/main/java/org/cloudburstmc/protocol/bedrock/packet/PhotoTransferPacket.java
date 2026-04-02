@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.PhotoType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to transfer a photo (image) file to the client. It is typically used to

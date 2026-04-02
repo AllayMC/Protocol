@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.NpcRequestType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client when it interacts with an NPC. The packet is specifically made for Education

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client when using pick block so the server can place the matching item into the

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.SimpleEventType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Used for enabling or disabling commands and for unlocking world template settings (both unlocking

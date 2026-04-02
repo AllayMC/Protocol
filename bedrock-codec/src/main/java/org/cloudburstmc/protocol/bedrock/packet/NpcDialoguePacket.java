@@ -2,7 +2,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * A packet that allows the client to display dialog boxes for interacting with NPCs.

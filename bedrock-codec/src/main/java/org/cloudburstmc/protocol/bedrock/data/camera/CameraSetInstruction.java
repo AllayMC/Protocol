@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.common.NamedDefinition;
+import org.cloudburstmc.protocol.common.definition.NamedDefinition;
 import org.cloudburstmc.protocol.common.util.OptionalBoolean;
 
 /**

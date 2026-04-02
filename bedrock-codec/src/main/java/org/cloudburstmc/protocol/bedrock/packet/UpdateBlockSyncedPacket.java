@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.cloudburstmc.protocol.bedrock.data.BlockSyncType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to synchronise the falling of a falling block entity with the transitioning

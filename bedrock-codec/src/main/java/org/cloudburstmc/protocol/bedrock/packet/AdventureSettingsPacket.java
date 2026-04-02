@@ -6,7 +6,6 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.AdventureSetting;
 import org.cloudburstmc.protocol.bedrock.data.PlayerPermission;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandPermission;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.EnumSet;
 import java.util.Set;

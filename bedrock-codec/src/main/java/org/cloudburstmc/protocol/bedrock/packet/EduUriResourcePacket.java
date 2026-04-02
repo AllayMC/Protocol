@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.EduSharedUriResource;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * A packet that transmits education resource settings to all clients.

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to open a sign for editing. As of 1.19.80, the player can interact with a sign

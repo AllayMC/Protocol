@@ -2,7 +2,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.EnumSet;
 import java.util.Set;

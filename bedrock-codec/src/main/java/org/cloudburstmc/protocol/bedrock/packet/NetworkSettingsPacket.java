@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.annotation.Incompressible;
 import org.cloudburstmc.protocol.bedrock.data.PacketCompressionAlgorithm;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to update a variety of network settings. These settings modify the way packets

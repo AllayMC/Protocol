@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.common;
+package org.cloudburstmc.protocol.common.definition;
 
 /**
  * A basic registry for protocol definitions that can be expanded upon.

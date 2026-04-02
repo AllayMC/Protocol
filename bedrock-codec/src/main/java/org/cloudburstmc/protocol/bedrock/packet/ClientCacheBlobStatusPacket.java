@@ -5,7 +5,6 @@ import it.unimi.dsi.fastutil.longs.LongList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Part of the blob cache protocol. It is sent by the client to let the server know what blobs it

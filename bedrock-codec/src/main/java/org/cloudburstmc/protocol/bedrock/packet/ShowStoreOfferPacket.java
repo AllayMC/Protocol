@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.StoreOfferRedirectType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to show a Marketplace store offer to a player. It opens a window client-side

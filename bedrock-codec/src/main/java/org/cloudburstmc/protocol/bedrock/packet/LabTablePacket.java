@@ -6,7 +6,6 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.inventory.LabTableReactionType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.LabTableType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to let the server know it started a chemical reaction in Education Edition,

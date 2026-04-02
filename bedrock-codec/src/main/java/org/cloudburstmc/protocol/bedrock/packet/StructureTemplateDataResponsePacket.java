@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureTemplateResponseType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server in response to {@link StructureTemplateDataRequestPacket}.

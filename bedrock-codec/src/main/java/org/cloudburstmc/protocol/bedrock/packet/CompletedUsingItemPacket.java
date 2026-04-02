@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemUseType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to tell the client that it should be done using the item it is currently

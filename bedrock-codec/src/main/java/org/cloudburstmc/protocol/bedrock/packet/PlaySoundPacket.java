@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to play a sound to the client. Some of the sounds may only be started using

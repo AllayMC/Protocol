@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.LevelEventType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to send a 'generic' level event to the client. This packet sends an NBT

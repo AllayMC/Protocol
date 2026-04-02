@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.DisconnectFailReason;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to disconnect the client, optionally showing a message on the disconnection

@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataMap;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityProperties;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to update the entity metadata of an entity. It includes flags such as if the

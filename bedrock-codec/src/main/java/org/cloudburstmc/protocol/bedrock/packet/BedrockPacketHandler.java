@@ -1,14 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import org.cloudburstmc.protocol.common.PacketHandler;
-import org.cloudburstmc.protocol.common.PacketSignal;
-
 /**
  * Visitor-style handler for {@link BedrockPacket} instances.
  * Each overload returns {@link PacketSignal#UNHANDLED} by default so implementations only need to
  * override the packet types they care about.
  */
-public interface BedrockPacketHandler extends PacketHandler {
+public interface BedrockPacketHandler {
 
     /**
      * Dispatches the supplied packet back to its typed {@code handle(...)} overload.

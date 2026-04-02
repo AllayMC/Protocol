@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.GameType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to change the game mode of a player. It is functionally identical to the

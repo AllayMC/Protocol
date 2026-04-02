@@ -1,12 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import org.cloudburstmc.protocol.common.MinecraftPacket;
-import org.cloudburstmc.protocol.common.PacketSignal;
-
 /**
  * Base contract for packets encoded on the Bedrock protocol.
  */
-public interface BedrockPacket extends MinecraftPacket, Cloneable {
+public interface BedrockPacket extends Cloneable {
 
     /**
      * Dispatches this packet to the matching overload on {@code handler}.

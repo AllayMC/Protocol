@@ -6,7 +6,6 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureSettings;
 import org.cloudburstmc.protocol.bedrock.data.structure.StructureTemplateRequestOperation;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to request structure template data from the server.

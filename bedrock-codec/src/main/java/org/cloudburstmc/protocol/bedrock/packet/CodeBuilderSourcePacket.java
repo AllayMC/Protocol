@@ -6,7 +6,6 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderCategoryType;
 import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderCodeStatus;
 import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderOperationType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * An Education Edition packet sent by the client to the server to run an operation with a code

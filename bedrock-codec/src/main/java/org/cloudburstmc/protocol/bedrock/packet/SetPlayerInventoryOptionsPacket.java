@@ -6,7 +6,6 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryLayout;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryTabLeft;
 import org.cloudburstmc.protocol.bedrock.data.inventory.InventoryTabRight;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * A bidirectional packet that can be used to update the inventory options of a player.

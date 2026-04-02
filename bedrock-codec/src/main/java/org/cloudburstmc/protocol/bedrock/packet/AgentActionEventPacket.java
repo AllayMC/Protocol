@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ee.AgentActionType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * An Education Edition packet sent from the server to the client to return a response to a

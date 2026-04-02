@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.datastore.DataStoreUpdate;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to apply a single update to a server-managed data store.

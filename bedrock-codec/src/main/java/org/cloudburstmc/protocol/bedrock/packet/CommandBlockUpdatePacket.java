@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.CommandBlockMode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to update a command block at a specific position. The command block may be

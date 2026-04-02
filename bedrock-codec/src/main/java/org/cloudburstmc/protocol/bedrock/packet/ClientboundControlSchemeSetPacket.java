@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ControlScheme;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server upon the client's request or the usage of the vanilla /controlscheme command.

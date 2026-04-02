@@ -2,7 +2,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to remove a previously spawned volume entity from the client.

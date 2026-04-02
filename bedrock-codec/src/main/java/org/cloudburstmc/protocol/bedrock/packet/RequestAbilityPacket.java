@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.Ability;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to request that the server update or grant a specific ability value. The

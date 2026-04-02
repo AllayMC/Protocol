@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.PlayerArmorDamageFlag;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.EnumSet;
 import java.util.Set;

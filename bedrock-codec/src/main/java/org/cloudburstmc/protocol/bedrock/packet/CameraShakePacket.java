@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraShakeAction;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraShakeType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Causes the client's camera view to shake with a specified intensity and duration.

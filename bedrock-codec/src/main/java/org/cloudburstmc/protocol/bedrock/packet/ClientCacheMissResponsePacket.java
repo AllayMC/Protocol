@@ -8,7 +8,6 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Part of the blob cache protocol. It is sent by the server in response to a ClientCacheBlobStatus

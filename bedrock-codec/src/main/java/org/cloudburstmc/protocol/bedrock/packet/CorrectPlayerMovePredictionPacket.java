@@ -6,7 +6,6 @@ import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.PredictionType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent to the client when the server's movement prediction system does not match what the client is

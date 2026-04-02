@@ -1,7 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
 import lombok.Data;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to ask the server to refresh the player's entitlements for the current

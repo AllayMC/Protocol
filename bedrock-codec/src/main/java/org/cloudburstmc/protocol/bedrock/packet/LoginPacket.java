@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.auth.AuthPayload;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent when the client initially tries to join the server. It is the first packet sent and contains

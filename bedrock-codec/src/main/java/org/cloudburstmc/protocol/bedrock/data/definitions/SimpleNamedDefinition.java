@@ -1,6 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.data.definitions;
 
-import org.cloudburstmc.protocol.common.NamedDefinition;
+import org.cloudburstmc.protocol.common.definition.NamedDefinition;
 
 /**
  * Represents simple named definition used in the Bedrock protocol.

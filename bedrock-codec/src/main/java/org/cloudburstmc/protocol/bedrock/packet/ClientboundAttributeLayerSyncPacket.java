@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.attributelayer.AttributeLayerSyncPayload;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to synchronize attribute layer payloads with the client.

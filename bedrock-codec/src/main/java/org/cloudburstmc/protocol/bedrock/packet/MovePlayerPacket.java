@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by players to send their movement to the server, and by the server to update the movement of

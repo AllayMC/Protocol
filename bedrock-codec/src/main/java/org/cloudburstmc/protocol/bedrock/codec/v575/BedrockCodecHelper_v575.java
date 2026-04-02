@@ -12,8 +12,8 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescripto
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescriptorType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.TextProcessingEventOrigin;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.ItemStackRequestActionType;
-import org.cloudburstmc.protocol.common.DefinitionRegistry;
-import org.cloudburstmc.protocol.common.NamedDefinition;
+import org.cloudburstmc.protocol.common.definition.DefinitionRegistry;
+import org.cloudburstmc.protocol.common.definition.NamedDefinition;
 import org.cloudburstmc.protocol.common.util.TypeMap;
 
 public class BedrockCodecHelper_v575 extends BedrockCodecHelper_v568 {

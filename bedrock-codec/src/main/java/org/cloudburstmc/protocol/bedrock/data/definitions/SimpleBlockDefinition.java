@@ -2,7 +2,7 @@ package org.cloudburstmc.protocol.bedrock.data.definitions;
 
 import lombok.Data;
 import org.cloudburstmc.nbt.NbtMap;
-import org.cloudburstmc.protocol.common.NamedDefinition;
+import org.cloudburstmc.protocol.common.definition.NamedDefinition;
 
 import java.util.TreeMap;
 

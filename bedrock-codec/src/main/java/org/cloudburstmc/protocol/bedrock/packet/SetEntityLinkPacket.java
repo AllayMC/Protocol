@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityLinkData;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to initiate an entity link client-side, meaning one entity will start riding

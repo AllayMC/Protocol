@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.ServerboundLoadingScreenPacketType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client to tell the server about the state of the loading screen that the client is

@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.ClientboundDebugRendererType;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to add or clear client-side debug markers.

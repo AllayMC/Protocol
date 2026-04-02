@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3f;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the client when it performs one of the remaining entity interaction actions that are not

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to open a data-driven UI screen on the client.
