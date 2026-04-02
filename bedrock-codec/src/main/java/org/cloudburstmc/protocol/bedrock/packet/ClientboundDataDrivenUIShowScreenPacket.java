@@ -7,7 +7,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Allows the server to tell the client to show a Data Driven UI screen.
+ * Sent by the server to open a data-driven UI screen on the client.
  *
  * @since v924
  */
@@ -15,15 +15,18 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ClientboundDataDrivenUIShowScreenPacket implements BedrockPacket {
+    /**
+     * The identifier of the screen to show.
+     */
     private String screenId;
     /**
-     * The unique id of this instance of the form for tracking in scripting
+     * The unique ID for this screen instance, used by scripting to track it.
      *
      * @since v944
      */
     private int formId;
     /**
-     * The optional id of the data associated with this screen
+     * The optional ID of the data instance associated with this screen.
      *
      * @since v944
      */

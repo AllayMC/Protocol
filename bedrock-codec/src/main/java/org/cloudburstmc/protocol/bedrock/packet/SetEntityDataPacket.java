@@ -15,13 +15,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetEntityDataPacket implements BedrockPacket {
+    /**
+     * A map of entity metadata, which includes flags and data properties that alter in particular
+     * the way the entity looks. Flags include ones such as 'on fire' and 'sprinting'. The metadata
+     * values are indexed by their property key.
+     */
     private EntityDataMap metadata = new EntityDataMap();
+    /**
+     * The runtime ID of the entity. The runtime ID is unique for each world session, and entities
+     * are generally identified in packets using this runtime ID.
+     */
     private long runtimeEntityId;
     /**
+     * The server tick at which the packet was sent. It is used in relation to
+     * {@link CorrectPlayerMovePredictionPacket} so the client can correlate metadata changes with
+     * server-authoritative movement corrections.
+     *
      * @since v419
      */
     private long tick;
     /**
+     * A list of properties that the entity inhibits. These properties define and alter specific
+     * attributes of the entity.
+     *
      * @since v557
      */
     private EntityProperties properties = new EntityProperties();

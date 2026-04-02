@@ -6,7 +6,7 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Server-bound packet to change the properties of a mob.
+ * Sent by the server to update a client-side mob property value.
  *
  * @since v503
  */
@@ -14,11 +14,29 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ChangeMobPropertyPacket implements BedrockPacket {
+    /**
+     * The unique ID of the entity whose property is being changed.
+     */
     private long uniqueEntityId;
+    /**
+     * The name of the property being updated.
+     */
     private String property;
+    /**
+     * The value to use when the property is a boolean.
+     */
     private boolean boolValue;
+    /**
+     * The value to use when the property is a string.
+     */
     private String stringValue;
+    /**
+     * The value to use when the property is an integer.
+     */
     private int intValue;
+    /**
+     * The value to use when the property is a float.
+     */
     private float floatValue;
 
     @Override

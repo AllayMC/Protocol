@@ -15,7 +15,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ToastRequestPacket implements BedrockPacket {
 
+    /**
+     * The title of the toast.
+     */
     private String title;
+    /**
+     * The message shown below the toast title.
+     */
     private String content;
 
     @Override

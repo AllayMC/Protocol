@@ -6,14 +6,39 @@ import org.cloudburstmc.protocol.common.NamedDefinition;
 
 import java.util.TreeMap;
 
+/**
+ * Represents simple block definition used in the Bedrock protocol.
+ */
 @Data
 public class SimpleBlockDefinition implements BlockDefinition, NamedDefinition {
+    /**
+     * The identifier.
+     */
     private final String identifier;
+    /**
+     * The runtime ID.
+     */
     private final int runtimeId;
+    /**
+     * The state.
+     */
     private final NbtMap state;
 
     // Cache identifier as this implementation is immutable
+    /**
+     * The persistent identifier.
+     */
     private transient String persistentIdentifier;
+
+    @Override
+    public String identifier() {
+        return this.identifier;
+    }
+
+    @Override
+    public int runtimeId() {
+        return this.runtimeId;
+    }
 
     public String getPersistentIdentifier() {
         if (this.persistentIdentifier == null) {

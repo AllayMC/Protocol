@@ -15,6 +15,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SimpleEventPacket implements BedrockPacket {
+    /**
+     * The simple client event that should be reported to the server.
+     */
     private SimpleEventType event;
 
     @Override

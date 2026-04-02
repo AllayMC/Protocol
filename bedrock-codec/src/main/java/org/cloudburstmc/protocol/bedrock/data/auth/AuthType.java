@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.auth;
 
+/**
+ * Enumerates auth type values used in the Bedrock protocol.
+ */
 public enum AuthType {
     /**
      * Player auth status is unknown. This is the default value for legacy clients.

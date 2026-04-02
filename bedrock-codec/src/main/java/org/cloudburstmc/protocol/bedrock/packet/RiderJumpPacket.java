@@ -15,7 +15,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class RiderJumpPacket implements BedrockPacket {
+    /**
+     * The jump charge strength that the player released for the ridden mount.
+     */
     private int jumpStrength;
 
     @Override

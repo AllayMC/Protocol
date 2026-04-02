@@ -14,8 +14,8 @@ public class EduUriResourceSerializer_v465 implements BedrockPacketSerializer<Ed
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, EduUriResourcePacket packet) {
-        helper.writeString(buffer, packet.getEduSharedUriResource().getButtonName());
-        helper.writeString(buffer, packet.getEduSharedUriResource().getLinkUri());
+        helper.writeString(buffer, packet.getEduSharedUriResource().buttonName());
+        helper.writeString(buffer, packet.getEduSharedUriResource().linkUri());
     }
 
     @Override

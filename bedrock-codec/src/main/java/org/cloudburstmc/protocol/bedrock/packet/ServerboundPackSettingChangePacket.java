@@ -16,8 +16,17 @@ import java.util.UUID;
 @ToString(doNotUseGetters = true)
 public class ServerboundPackSettingChangePacket implements BedrockPacket {
 
+    /**
+     * The unique ID of the pack whose setting changed.
+     */
     private UUID packId;
+    /**
+     * The name of the setting that was changed.
+     */
     private String packSettingName;
+    /**
+     * The new value applied to {@link #packSettingName}.
+     */
     private Object packSettingValue;
 
     @Override

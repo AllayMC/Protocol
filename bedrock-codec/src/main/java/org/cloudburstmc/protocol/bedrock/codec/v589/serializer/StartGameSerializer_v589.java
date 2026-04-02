@@ -26,7 +26,7 @@ public class StartGameSerializer_v589 extends StartGameSerializer_v582 {
     }
 
     protected void writeNetworkPermissions(ByteBuf buffer, BedrockCodecHelper helper, NetworkPermissions permissions) {
-        buffer.writeBoolean(permissions.isServerAuthSounds());
+        buffer.writeBoolean(permissions.serverAuthSounds());
     }
 
     // Avoid code duplication with (de)serialize as they added TickDeathSystemsEnabled before NetworkPermissions in v827

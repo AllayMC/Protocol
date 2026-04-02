@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates expression op values used in the Bedrock protocol.
+ */
 public enum ExpressionOp {
     LEFT_BRACE,
     RIGHT_BRACE,

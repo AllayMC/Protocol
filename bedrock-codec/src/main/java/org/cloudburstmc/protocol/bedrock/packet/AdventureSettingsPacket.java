@@ -23,13 +23,29 @@ import java.util.Set;
  * UpdateAdventureSettingsPacket} instead.
  */
 @Data
-@Deprecated
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class AdventureSettingsPacket implements BedrockPacket {
+    /**
+     * A combined set of adventure and action-permission flags, such as flight, building, opening
+     * containers, or attacking entities.
+     */
     private final Set<AdventureSetting> settings = EnumSet.noneOf(AdventureSetting.class);
+    /**
+     * The command permission level exposed to the client. This controls which categories of
+     * commands the player is allowed to use.
+     */
     private CommandPermission commandPermission = CommandPermission.ANY;
+    /**
+     * The permission level shown for the player in the player list, such as visitor, member, or
+     * operator.
+     */
     private PlayerPermission playerPermission = PlayerPermission.VISITOR;
+    /**
+     * PlayerUniqueID is a unique identifier of the player. This must be filled out with the entity
+     * unique ID of the player.
+     */
     private long uniqueEntityId;
 
     @Override

@@ -6,7 +6,7 @@ package org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.actio
  */
 public interface RecipeItemStackRequestAction extends ItemStackRequestAction {
 
-    int getRecipeNetworkId();
+    int recipeNetworkId();
 
-    int getNumberOfRequestedCrafts();
+    int numberOfRequestedCrafts();
 }

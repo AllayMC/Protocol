@@ -4,7 +4,6 @@ import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.codec.v407.serializer.CreativeContentSerializer_v407;
 import org.cloudburstmc.protocol.bedrock.data.inventory.CreativeItemCategory;
 import org.cloudburstmc.protocol.bedrock.data.inventory.CreativeItemData;
@@ -39,9 +38,9 @@ public class CreativeContentSerializer_v776 extends CreativeContentSerializer_v4
     }
 
     protected void writeCreativeGroup(ByteBuf buffer, BedrockCodecHelper helper, CreativeItemGroup item) {
-        buffer.writeIntLE(item.getCategory().ordinal());
-        helper.writeString(buffer, item.getName());
-        helper.writeItemInstance(buffer, item.getIcon());
+        buffer.writeIntLE(item.category().ordinal());
+        helper.writeString(buffer, item.name());
+        helper.writeItemInstance(buffer, item.icon());
     }
 
     @Override
@@ -54,8 +53,8 @@ public class CreativeContentSerializer_v776 extends CreativeContentSerializer_v4
 
     @Override
     protected void writeCreativeItem(ByteBuf buffer, BedrockCodecHelper helper, CreativeItemData item) {
-        VarInts.writeUnsignedInt(buffer, item.getNetId());
-        helper.writeItemInstance(buffer, item.getItem());
-        VarInts.writeUnsignedInt(buffer, item.getGroupId());
+        VarInts.writeUnsignedInt(buffer, item.netId());
+        helper.writeItemInstance(buffer, item.item());
+        VarInts.writeUnsignedInt(buffer, item.groupId());
     }
 }

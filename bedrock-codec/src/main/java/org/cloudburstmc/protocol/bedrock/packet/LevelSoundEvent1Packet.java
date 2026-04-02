@@ -15,16 +15,38 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  *
  * @deprecated since v786
  */
-@Deprecated
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class LevelSoundEvent1Packet implements BedrockPacket {
+    /**
+     * The built-in sound event to play.
+     */
     private SoundEvent sound;
+    /**
+     * The position of the sound event. The player will be able to hear the direction of the sound
+     * based on what position is sent here.
+     */
     private Vector3f position;
+    /**
+     * A packed integer that some sound types use to provide extra data. An example of this is the
+     * note sound, which is composed of a pitch and an instrument type.
+     */
     private int extraData;
+    /**
+     * Additional pitch data used by some legacy sound events.
+     */
     private int pitch;
+    /**
+     * Specifies if the sound should use the baby variant, if the sound supports one.
+     */
     private boolean babySound;
+    /**
+     * DisableRelativeVolume specifies if the sound should be played relatively or not. If set to
+     * true, the sound will have full volume, regardless of where the Position is, whereas if set to
+     * false, the sound's volume will be based on the distance to Position.
+     */
     private boolean relativeVolumeDisabled;
 
     @Override

@@ -16,15 +16,46 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MovePlayerPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the player. The runtime ID is unique for each world session, and entities
+     * are generally identified in packets using this runtime ID.
+     */
     private long runtimeEntityId;
+    /**
+     * The player's updated position.
+     */
     private Vector3f position;
+    /**
+     * The player's pitch, yaw, and head yaw, in degrees.
+     */
     private Vector3f rotation;
+    /**
+     * The movement mode. This controls how the update should be interpreted by other clients, for
+     * example as a normal move, a respawn, or a teleport.
+     */
     private Mode mode;
+    /**
+     * Specifies if the player is considered on the ground. Note that proxies or hacked clients
+     * could fake this to always be true, so it should not be taken for granted.
+     */
     private boolean onGround;
+    /**
+     * The runtime ID of the entity the player is currently riding, or {@code 0} if the player is
+     * not riding anything.
+     */
     private long ridingRuntimeEntityId;
+    /**
+     * The cause of the teleport, written only when {@link #mode} is {@link Mode#TELEPORT}.
+     */
     private TeleportationCause teleportationCause;
+    /**
+     * The numeric entity type responsible for the teleport, such as an ender pearl projectile.
+     */
     private int entityType;
     /**
+     * The server tick at which the packet was sent. It is used in relation to
+     * CorrectPlayerMovePrediction.
+     *
      * @since v419
      */
     private long tick;

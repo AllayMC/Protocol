@@ -13,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetPlayerGameTypePacket implements BedrockPacket {
+    /**
+     * The game type to apply to the player.
+     */
     private int gamemode;
 
     @Override

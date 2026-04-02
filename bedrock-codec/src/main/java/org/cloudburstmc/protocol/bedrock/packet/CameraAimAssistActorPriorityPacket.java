@@ -9,8 +9,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * Camera aim-assist actor priority data sent from the server to clients. Sent by the server to
- * clients for updating the actor priority for client aim-assist systems.
+ * Sent by the server to define actor-specific aim assist priorities on the client.
  *
  * @since v924
  */
@@ -19,6 +18,9 @@ import java.util.List;
 @ToString(doNotUseGetters = true)
 public class CameraAimAssistActorPriorityPacket implements BedrockPacket {
 
+    /**
+     * The aim assist priority entries to apply.
+     */
     private List<AimAssistActorPriorityData> priorityData;
 
     @Override

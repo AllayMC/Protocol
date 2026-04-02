@@ -10,7 +10,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * World generation features used for client-side chunk generation.
+ * Sent by the server to notify the client about the world generation features currently in use.
+ * This packet works together with client-side world generation so the client can generate chunks
+ * locally instead of relying entirely on the server to transmit them.
  *
  * @since v544
  */
@@ -18,6 +20,10 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class FeatureRegistryPacket implements BedrockPacket {
+    /**
+     * All registered world generation features that the client should use for client-side terrain
+     * generation.
+     */
     private final List<FeatureDefinition> features = new ObjectArrayList<>();
 
     @Override

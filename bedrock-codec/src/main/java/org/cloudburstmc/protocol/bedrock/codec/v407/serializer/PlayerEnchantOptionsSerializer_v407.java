@@ -29,13 +29,13 @@ public class PlayerEnchantOptionsSerializer_v407 implements BedrockPacketSeriali
     }
 
     protected void writeOption(ByteBuf buffer, BedrockCodecHelper helper, EnchantOptionData option) {
-        VarInts.writeUnsignedInt(buffer, option.getCost());
-        buffer.writeIntLE(option.getPrimarySlot());
-        helper.writeArray(buffer, option.getEnchants0(), this::serializeEnchant);
-        helper.writeArray(buffer, option.getEnchants1(), this::serializeEnchant);
-        helper.writeArray(buffer, option.getEnchants2(), this::serializeEnchant);
-        helper.writeString(buffer, option.getEnchantName());
-        VarInts.writeUnsignedInt(buffer, option.getEnchantNetId());
+        VarInts.writeUnsignedInt(buffer, option.cost());
+        buffer.writeIntLE(option.primarySlot());
+        helper.writeArray(buffer, option.enchants0(), this::serializeEnchant);
+        helper.writeArray(buffer, option.enchants1(), this::serializeEnchant);
+        helper.writeArray(buffer, option.enchants2(), this::serializeEnchant);
+        helper.writeString(buffer, option.enchantName());
+        VarInts.writeUnsignedInt(buffer, option.enchantNetId());
     }
 
     protected EnchantOptionData readOption(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -53,8 +53,8 @@ public class PlayerEnchantOptionsSerializer_v407 implements BedrockPacketSeriali
     }
 
     protected void serializeEnchant(ByteBuf buffer, EnchantData enchant) {
-        buffer.writeByte(enchant.getType());
-        buffer.writeByte(enchant.getLevel());
+        buffer.writeByte(enchant.type());
+        buffer.writeByte(enchant.level());
     }
 
     protected EnchantData deserializeEnchant(ByteBuf buffer) {

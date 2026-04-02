@@ -2,6 +2,9 @@ package org.cloudburstmc.protocol.bedrock.data.inventory;
 
 import lombok.experimental.UtilityClass;
 
+/**
+ * Represents container ID used in the Bedrock protocol.
+ */
 @UtilityClass
 public class ContainerId {
     public static final int DROP_CONTENTS = -100;
@@ -49,5 +52,6 @@ public class ContainerId {
      * @since v729
      * @deprecated since v748
      */
+    @Deprecated
     public static final int CONTAINER_ID_REGISTRY_INVENTORY = 126;
 }

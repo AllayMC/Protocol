@@ -12,6 +12,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AddBehaviorTreePacket implements BedrockPacket {
+    /**
+     * Behaviour tree data encoded as JSON. The packet is currently unused by the vanilla client and
+     * server, but this field carries the complete payload when it is present.
+     */
     private String behaviorTreeJson;
 
     @Override

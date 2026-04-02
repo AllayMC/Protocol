@@ -7,15 +7,18 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the client when it takes an item out of an item frame.
+ * Sent by the client when it removes the displayed item from an item frame.
  *
  * @deprecated since v662
  */
-@Deprecated
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class ItemFrameDropItemPacket implements BedrockPacket {
+    /**
+     * The block position of the item frame.
+     */
     private Vector3i blockPosition;
 
     @Override

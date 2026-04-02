@@ -1,24 +1,17 @@
 package org.cloudburstmc.protocol.bedrock.data.structure;
 
-import lombok.Value;
-
-@Value
-public class StructureEditorData {
-    private final String name;
-    private final boolean includingPlayers;
-    private final boolean boundingBoxVisible;
-    private final StructureBlockType type;
-    private final StructureSettings settings;
-    /**
-     * @since v361
-     */
-    private final String dataField;
-    /**
-     * @since v388
-     */
-    private final StructureRedstoneSaveMode redstoneSaveMode;
-    /**
-     * @since v776
-     */
-    private final String filteredName;
+/**
+ * Describes the editable state of a structure block.
+ *
+ * @param name               the structure template name
+ * @param includingPlayers   whether players should be included in saves
+ * @param boundingBoxVisible whether the structure bounding box should be shown
+ * @param type               the structure block mode
+ * @param settings           the structure placement and export settings
+ * @param dataField          the auxiliary data field used by the structure block
+ * @param redstoneSaveMode   the save mode used when triggered by redstone
+ * @param filteredName       the profanity-filtered form of {@code name}
+ */
+public record StructureEditorData(String name, boolean includingPlayers, boolean boundingBoxVisible, StructureBlockType type,
+                                  StructureSettings settings, String dataField, StructureRedstoneSaveMode redstoneSaveMode, String filteredName) {
 }

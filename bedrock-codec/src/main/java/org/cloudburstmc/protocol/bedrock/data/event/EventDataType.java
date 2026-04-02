@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.event;
 
+/**
+ * Enumerates event data type values used in the Bedrock protocol.
+ */
 public enum EventDataType {
     ACHIEVEMENT_AWARDED,
     ENTITY_INTERACT,

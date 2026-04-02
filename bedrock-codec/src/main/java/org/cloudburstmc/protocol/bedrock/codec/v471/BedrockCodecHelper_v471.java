@@ -35,11 +35,11 @@ public class BedrockCodecHelper_v471 extends BedrockCodecHelper_v465 {
         switch (action.getType()) {
             case CRAFT_REPAIR_AND_DISENCHANT:
                 CraftGrindstoneAction actionData = (CraftGrindstoneAction) action;
-                VarInts.writeUnsignedInt(byteBuf, actionData.getRecipeNetworkId());
-                VarInts.writeInt(byteBuf, actionData.getRepairCost());
+                VarInts.writeUnsignedInt(byteBuf, actionData.recipeNetworkId());
+                VarInts.writeInt(byteBuf, actionData.repairCost());
                 return;
             case CRAFT_LOOM:
-                this.writeString(byteBuf, ((CraftLoomAction) action).getPatternId());
+                this.writeString(byteBuf, ((CraftLoomAction) action).patternId());
                 return;
             default:
                 super.writeRequestActionData(byteBuf, action);

@@ -39,8 +39,8 @@ public class BedrockCodecHelper_v419 extends BedrockCodecHelper_v407 {
         buffer.writeIntLE(experiments.size());
 
         for (ExperimentData experiment : experiments) {
-            this.writeString(buffer, experiment.getName());
-            buffer.writeBoolean(experiment.isEnabled());
+            this.writeString(buffer, experiment.name());
+            buffer.writeBoolean(experiment.enabled());
         }
     }
 
@@ -56,6 +56,6 @@ public class BedrockCodecHelper_v419 extends BedrockCodecHelper_v407 {
     @Override
     public void writeAnimationData(ByteBuf buffer, AnimationData animation) {
         super.writeAnimationData(buffer, animation);
-        buffer.writeIntLE(animation.getExpressionType().ordinal());
+        buffer.writeIntLE(animation.expressionType().ordinal());
     }
 }

@@ -7,12 +7,15 @@ import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to communicate the player's post-move position.
+ * Sent by the server to report the player's position after server-side movement processing.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ServerPlayerPostMovePositionPacket implements BedrockPacket {
+    /**
+     * The resulting player position.
+     */
     private Vector3f position;
 
     @Override

@@ -14,9 +14,19 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode
 @ToString(doNotUseGetters = true)
 public class UpdatePlayerGameTypePacket implements BedrockPacket {
+    /**
+     * The new game type of the player. Some game types require matching ability flags in
+     * {@link UpdateAbilitiesPacket} for the client to expose their full behaviour.
+     */
     private GameType gameType;
+    /**
+     * The unique ID of the player whose game type should be updated.
+     */
     private long entityId;
     /**
+     * The server tick at which the packet was sent. It is used in relation to
+     * CorrectPlayerMovePrediction.
+     *
      * @since v671
      */
     private long tick;

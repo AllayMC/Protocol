@@ -52,24 +52,16 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class BlockEventPacket implements BedrockPacket {
     /**
-     * Position to execute block event.
-     *
-     * @param blockPosition block event position
-     * @return block event position
+     * The position of the block that the event applies to.
      */
     private Vector3i blockPosition;
     /**
-     * Block event type to execute
-     *
-     * @param eventType block event type
-     * @return block event type
+     * The type of block event to trigger. The meaning of {@link #eventData} depends on this value.
      */
     private int eventType;
     /**
-     * Data used by event (if applicable)
-     *
-     * @param eventData data for event
-     * @return data for event
+     * Event-specific data. For example, chests use {@code 1} when opening and {@code 0} when
+     * closing.
      */
     private int eventData;
 

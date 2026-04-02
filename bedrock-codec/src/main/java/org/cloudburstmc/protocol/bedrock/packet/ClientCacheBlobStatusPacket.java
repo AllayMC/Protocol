@@ -15,7 +15,14 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ClientCacheBlobStatusPacket implements BedrockPacket {
+    /**
+     * Blob hashes that the client already has available locally, so the server does not need to
+     * resend them.
+     */
     private final LongList acks = new LongArrayList();
+    /**
+     * Blob hashes that the client is missing and wants the server to send as soon as possible.
+     */
     private final LongList naks = new LongArrayList();
 
     @Override

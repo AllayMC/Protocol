@@ -9,15 +9,27 @@ import org.cloudburstmc.protocol.bedrock.data.structure.StructureTemplateRequest
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the client to request data of a structure.
+ * Sent by the client to request structure template data from the server.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class StructureTemplateDataRequestPacket implements BedrockPacket {
+    /**
+     * The structure template name.
+     */
     private String name;
+    /**
+     * The position of the structure block that has its template data requested.
+     */
     private Vector3i position;
+    /**
+     * The structure settings to use when fulfilling the request.
+     */
     private StructureSettings settings;
+    /**
+     * The requested template operation.
+     */
     private StructureTemplateRequestOperation operation;
 
     @Override

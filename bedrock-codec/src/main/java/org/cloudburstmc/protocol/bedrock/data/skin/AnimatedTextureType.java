@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.skin;
 
+/**
+ * Enumerates animated texture type values used in the Bedrock protocol.
+ */
 public enum AnimatedTextureType {
     NONE,
     FACE,

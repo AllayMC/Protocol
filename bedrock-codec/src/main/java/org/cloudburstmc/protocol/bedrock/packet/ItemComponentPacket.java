@@ -10,13 +10,18 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * Definitions for custom component items added to the game
+ * Sent by the server to send the client the item definitions used by the session, including any
+ * attached client-side components for custom items.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ItemComponentPacket implements BedrockPacket {
 
+    /**
+     * All item definitions available in the session, along with any custom component data attached
+     * to them.
+     */
     private final List<ItemDefinition> items = new ObjectArrayList<>();
 
     @Override

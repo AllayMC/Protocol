@@ -6,14 +6,15 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to let the client know what entity type it was last hurt by. At this moment,
- * the packet is useless and should not be used. There is no behavior that depends on if this packet
- * is sent or not.
+ * Sent by the server to tell the client which entity type most recently damaged the player.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetLastHurtByPacket implements BedrockPacket {
+    /**
+     * The numeric entity type ID of the last attacker.
+     */
     private int entityTypeId;
 
     @Override

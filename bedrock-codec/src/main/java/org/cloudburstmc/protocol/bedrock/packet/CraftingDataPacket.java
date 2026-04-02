@@ -21,15 +21,30 @@ import java.util.List;
 @ToString(doNotUseGetters = true)
 @EqualsAndHashCode(doNotUseGetters = true)
 public class CraftingDataPacket implements BedrockPacket {
+    /**
+     * Recipes available on the server, including shaped, shapeless, furnace, and other crafting
+     * station recipes.
+     */
     private final List<RecipeData> craftingData = new ObjectArrayList<>();
+    /**
+     * Potion mixing recipes that can be used in a brewing stand.
+     */
     private final List<PotionMixData> potionMixData = new ObjectArrayList<>();
+    /**
+     * Recipes that convert potion containers between forms such as drinkable, splash, and
+     * lingering.
+     */
     private final List<ContainerMixData> containerMixData = new ObjectArrayList<>();
     /**
+     * Whether the client should discard all previously known recipes before applying this packet.
+     */
+    private boolean cleanRecipes;
+    /**
+     * A list of all material reducers which is used in education edition chemistry.
+     *
      * @since v465
      */
     private final List<MaterialReducer> materialReducers = new ObjectArrayList<>();
-
-    private boolean cleanRecipes;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

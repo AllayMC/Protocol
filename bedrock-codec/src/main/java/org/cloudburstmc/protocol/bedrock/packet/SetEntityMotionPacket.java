@@ -14,9 +14,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetEntityMotionPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the entity whose motion is being updated.
+     */
     private long runtimeEntityId;
+    /**
+     * The velocity to apply on the client.
+     */
     private Vector3f motion;
     /**
+     * The server tick associated with this motion update.
+     *
      * @since v662
      */
     private long tick;

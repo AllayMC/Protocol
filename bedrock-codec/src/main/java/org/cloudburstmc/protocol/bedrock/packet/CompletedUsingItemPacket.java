@@ -14,7 +14,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CompletedUsingItemPacket implements BedrockPacket {
+    /**
+     * The item ID of the item the client finished using.
+     */
     private int itemId;
+    /**
+     * The way the item use completed.
+     */
     private ItemUseType type;
 
     @Override

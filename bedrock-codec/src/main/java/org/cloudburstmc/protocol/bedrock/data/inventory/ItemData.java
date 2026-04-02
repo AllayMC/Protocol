@@ -7,7 +7,7 @@ import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 
 /**
- * Represents item data that is sent over the network.
+ * Represents an item stack encoded in the Bedrock protocol.
  */
 public interface ItemData {
     ItemData AIR = new BaseItemData(ItemDefinition.AIR, 0, 0, null, BaseItemData.EMPTY_ARRAY, BaseItemData.EMPTY_ARRAY, 0, null, false, 0);
@@ -21,9 +21,9 @@ public interface ItemData {
     ItemDefinition getDefinition();
 
     /**
-     * Gets the item damage.
+     * Gets the item damage or metadata value.
      *
-     * @return the item damage
+     * @return the item damage or metadata value
      */
     int getDamage();
 
@@ -50,7 +50,7 @@ public interface ItemData {
     String[] getCanPlace();
 
     /**
-     * Gets the blocks this item can break
+     * Gets the blocks this item can break.
      *
      * @return the blocks this item can break
      */
@@ -64,8 +64,7 @@ public interface ItemData {
     long getBlockingTicks();
 
     /**
-     * Gets the block definition of this item,
-     * if applicable.
+     * Gets the block runtime definition carried by this item, if applicable.
      *
      * @return the block definition of this item
      */
@@ -94,26 +93,26 @@ public interface ItemData {
     void setNetId(int netId);
 
     /**
-     * Gets if this item is valid.
+     * Gets whether this item contains a valid network representation.
      *
-     * @return if this item is valid
+     * @return whether this item is valid
      */
     boolean isValid();
 
     /**
-     * Gets if this item is null.
+     * Gets whether this item represents an empty stack.
      *
-     * @return if this item is null
+     * @return whether this item is null
      */
     boolean isNull();
 
     /**
-     * Checks if this item us equal to another {@link ItemData}.
+     * Checks if this item is equal to another {@link ItemData}.
      *
      * @param other         the item data to compare against
-     * @param checkAmount   whether to check the amount
+     * @param checkAmount   whether to compare the item count
      * @param checkMetadata whether to check the metadata
-     * @param checkUserdata whether to check the user data
+     * @param checkUserdata whether to compare user data such as NBT
      * @return if this item is equal to the other item data
      */
     boolean equals(ItemData other, boolean checkAmount, boolean checkMetadata, boolean checkUserdata);
@@ -140,15 +139,45 @@ public interface ItemData {
      * Creates a builder for this item data.
      */
     class Builder {
+        /**
+         * The item definition.
+         */
         private ItemDefinition definition;
+        /**
+         * The damage.
+         */
         private int damage;
+        /**
+         * The count.
+         */
         private int count;
+        /**
+         * The tag.
+         */
         private NbtMap tag;
+        /**
+         * The blocks this item can be placed on.
+         */
         private String[] canPlace;
+        /**
+         * The blocks this item can break.
+         */
         private String[] canBreak;
+        /**
+         * The blocking ticks.
+         */
         private long blockingTicks;
+        /**
+         * The block definition.
+         */
         private BlockDefinition blockDefinition;
+        /**
+         * Whether this item uses a net ID.
+         */
         private boolean usingNetId;
+        /**
+         * The net ID.
+         */
         private int netId;
 
         private Builder() {

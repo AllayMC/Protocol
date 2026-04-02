@@ -16,6 +16,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientboundControlSchemeSetPacket implements BedrockPacket {
 
+    /**
+     * The control scheme the client should switch to.
+     */
     private ControlScheme scheme;
 
     @Override

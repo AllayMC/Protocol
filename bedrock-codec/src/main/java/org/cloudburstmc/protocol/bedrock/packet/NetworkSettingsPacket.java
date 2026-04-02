@@ -17,28 +17,36 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class NetworkSettingsPacket implements BedrockPacket {
     /**
-     * The smallest amount of bytes that should be compressed by the client. 0-65535
+     * The minimum packet size, in bytes, that should be compressed before it is sent. Packets
+     * smaller than this threshold are left uncompressed, and a value of {@code 0} disables packet
+     * compression entirely.
      */
     private int compressionThreshold;
     /**
-     * Set the compression type to be used on the connection.
+     * The compression algorithm used for packets on this connection.
      *
      * @since v554
      */
     private PacketCompressionAlgorithm compressionAlgorithm;
     /**
-     * Enable client throttling of players out of the threshold. Players out of the threshold will not
-     * be ticked on the client, reducing the performance hit on lower end devices when in densely
-     * populated areas.
+     * Specifies if the client should throttle remote players once the player count exceeds
+     * {@link #clientThrottleThreshold}. Players outside the retained set are not ticked client-side,
+     * which reduces the performance hit on lower-end devices in crowded areas.
      *
      * @since v554
      */
     private boolean clientThrottleEnabled;
     /**
+     * The threshold for client throttling. If the number of players exceeds this value, the client
+     * will throttle players.
+     *
      * @since v554
      */
     private int clientThrottleThreshold;
     /**
+     * The scalar for client throttling. The scalar is the amount of players that are ticked when
+     * throttling is enabled.
+     *
      * @since v554
      */
     private float clientThrottleScalar;

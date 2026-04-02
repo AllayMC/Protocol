@@ -17,7 +17,14 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ResourcePackClientResponsePacket implements BedrockPacket {
+    /**
+     * The resource-pack identifiers referenced by the current {@link #status}. For
+     * {@link Status#SEND_PACKS}, each entry is the pack UUID combined with its version.
+     */
     private final List<String> packIds = new ObjectArrayList<>();
+    /**
+     * The client's current state in the resource-pack download/acceptance flow.
+     */
     private Status status;
 
     @Override
@@ -30,10 +37,25 @@ public class ResourcePackClientResponsePacket implements BedrockPacket {
     }
 
     public enum Status {
+        /**
+         * Default/unset status.
+         */
         NONE,
+        /**
+         * The client refused the required packs.
+         */
         REFUSED,
+        /**
+         * The server should send the packs listed in {@link #packIds}.
+         */
         SEND_PACKS,
+        /**
+         * The client has downloaded every required pack.
+         */
         HAVE_ALL_PACKS,
+        /**
+         * The client has finished applying the pack set.
+         */
         COMPLETED
     }
 

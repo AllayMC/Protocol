@@ -16,7 +16,16 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ServerSettingsResponsePacket implements BedrockPacket {
+    /**
+     * An ID used to identify the form. The ID is saved by the client and sent back when the player
+     * submits the form, so that the server can identify which form was submitted.
+     */
     private int formId;
+    /**
+     * A JSON-encoded custom-form definition. The payload has the same structure as a
+     * {@link ModalFormRequestPacket} body and describes the dedicated server-settings tab to show
+     * to the client.
+     */
     private String formData;
 
     @Override

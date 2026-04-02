@@ -42,9 +42,9 @@ public class CraftingDataSerializer_v388 extends CraftingDataSerializer_v361 {
     }
 
     protected void writePotionMixData(ByteBuf buffer, BedrockCodecHelper helper, PotionMixData potionMixData) {
-        VarInts.writeInt(buffer, potionMixData.getInputId());
-        VarInts.writeInt(buffer, potionMixData.getReagentId());
-        VarInts.writeInt(buffer, potionMixData.getOutputId());
+        VarInts.writeInt(buffer, potionMixData.inputId());
+        VarInts.writeInt(buffer, potionMixData.reagentId());
+        VarInts.writeInt(buffer, potionMixData.outputId());
     }
 
     protected ContainerMixData readContainerMixData(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -55,8 +55,8 @@ public class CraftingDataSerializer_v388 extends CraftingDataSerializer_v361 {
     }
 
     protected void writeContainerMixData(ByteBuf buffer, BedrockCodecHelper helper, ContainerMixData containerMixData) {
-        VarInts.writeInt(buffer, containerMixData.getInputId());
-        VarInts.writeInt(buffer, containerMixData.getReagentId());
-        VarInts.writeInt(buffer, containerMixData.getOutputId());
+        VarInts.writeInt(buffer, containerMixData.inputId());
+        VarInts.writeInt(buffer, containerMixData.reagentId());
+        VarInts.writeInt(buffer, containerMixData.outputId());
     }
 }

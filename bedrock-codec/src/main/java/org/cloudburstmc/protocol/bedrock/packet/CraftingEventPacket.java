@@ -16,16 +16,32 @@ import java.util.UUID;
  * InventoryTransaction packet provides all the information required.
  *
  * @since v630
+ * @deprecated Use {@link InventoryTransactionPacket} instead.
  */
-@Deprecated
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class CraftingEventPacket implements BedrockPacket {
+    /**
+     * The item stacks consumed by the crafting action.
+     */
     private final List<ItemData> inputs = new ObjectArrayList<>();
+    /**
+     * The item stacks produced by the crafting action.
+     */
     private final List<ItemData> outputs = new ObjectArrayList<>();
+    /**
+     * The container window ID where crafting took place.
+     */
     private byte containerId;
+    /**
+     * The crafting context used for the recipe.
+     */
     private CraftingType type;
+    /**
+     * The UUID of the crafted recipe.
+     */
     private UUID uuid;
 
     @Override

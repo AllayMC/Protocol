@@ -17,7 +17,7 @@ import java.util.List;
 @ToString(doNotUseGetters = true)
 public class ContainerRegistryCleanupPacket implements BedrockPacket {
     /**
-     * A list of full containers to cleanup.
+     * The dynamic container entries that should be removed from the client's registry.
      */
     private final List<FullContainerName> containers = new ObjectArrayList<>();
 

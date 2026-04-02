@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates chat restriction level values used in the Bedrock protocol.
+ */
 public enum ChatRestrictionLevel {
     /**
      * Default behaviour.

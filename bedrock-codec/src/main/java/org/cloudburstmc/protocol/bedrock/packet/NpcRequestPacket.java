@@ -14,11 +14,30 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class NpcRequestPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the NPC entity that the player interacted with. It is the same as sent by
+     * the server when spawning the entity.
+     */
     private long runtimeEntityId;
+    /**
+     * The type of the request, which depends on the permission that the player has. It will be
+     * either a type that indicates that the NPC should show its dialog, or that it should open the
+     * editing window.
+     */
     private NpcRequestType requestType;
+    /**
+     * The command string configured on the NPC. This may contain multiple commands, depending on
+     * what action the player selected in the NPC UI.
+     */
     private String command;
+    /**
+     * The type of the action to execute.
+     */
     private int actionType;
     /**
+     * The name of the scene. This can be left empty to specify the last scene that the player was
+     * sent.
+     *
      * @since v448
      */
     private String sceneName;

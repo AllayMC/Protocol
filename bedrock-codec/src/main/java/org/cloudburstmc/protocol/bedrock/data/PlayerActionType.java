@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates player action type values used in the Bedrock protocol.
+ */
 public enum PlayerActionType {
     START_BREAK,
     ABORT_BREAK,

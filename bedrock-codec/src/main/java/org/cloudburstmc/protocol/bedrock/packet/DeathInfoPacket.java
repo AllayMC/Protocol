@@ -9,14 +9,20 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * A packet sent from the server to the client expected to be sent when a player dies. It contains
- * messages related to the player's death, which are shown on the death screen as of v1.19.10.
+ * Sent by the server when a player dies. It carries the strings shown on the death screen,
+ * including the death cause and the list of translated message lines.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class DeathInfoPacket implements BedrockPacket {
+    /**
+     * The string key describing the cause of death, such as suffocation or suicide.
+     */
     private String causeAttackName;
+    /**
+     * The death messages shown on the death screen.
+     */
     private final List<String> messageList = new ObjectArrayList<>();
 
     @Override

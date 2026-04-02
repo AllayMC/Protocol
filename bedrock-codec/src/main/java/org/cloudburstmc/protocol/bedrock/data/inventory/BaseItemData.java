@@ -9,19 +9,52 @@ import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * Represents base item data used in the Bedrock protocol.
+ */
 @Data
 final class BaseItemData implements ItemData {
     static final String[] EMPTY_ARRAY = new String[0];
+    /**
+     * The item definition.
+     */
     private ItemDefinition definition;
+    /**
+     * The damage.
+     */
     private final int damage;
+    /**
+     * The count.
+     */
     private final int count;
+    /**
+     * The tag.
+     */
     private final NbtMap tag;
+    /**
+     * The blocks this item can be placed on.
+     */
     private final String[] canPlace;
+    /**
+     * The blocks this item can break.
+     */
     private final String[] canBreak;
+    /**
+     * The blocking ticks.
+     */
     private final long blockingTicks;
+    /**
+     * The block definition.
+     */
     private final BlockDefinition blockDefinition;
+    /**
+     * Whether this item uses a net ID.
+     */
     @NonFinal
     private boolean usingNetId;
+    /**
+     * The net ID.
+     */
     private int netId;
 
     BaseItemData(ItemDefinition definition, int damage, int count, NbtMap tag, String[] canPlace, String[] canBreak, long blockingTicks, BlockDefinition blockDefinition, boolean hasNetId, int netId) {

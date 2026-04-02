@@ -6,7 +6,7 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Allows the server to tell the client to reload the Data Driven UI.
+ * Sent by the server to reload the client's data-driven UI definitions.
  *
  * @since v924
  */

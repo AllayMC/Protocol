@@ -10,6 +10,9 @@ import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 import java.util.EnumMap;
 import java.util.Map;
 
+/**
+ * Represents entity data types used in the Bedrock protocol.
+ */
 @UtilityClass
 public class EntityDataTypes {
 
@@ -57,6 +60,7 @@ public class EntityDataTypes {
     /**
      * @deprecated since v827
      */
+    @Deprecated
     public static final EntityDataType<BlockDefinition> CARRY_BLOCK_STATE = new EntityDataType<>(BlockDefinition.class, "CARRY_BLOCK_STATE");
     public static final EntityDataType<Byte> CLIENT_EVENT = new EntityDataType<>(Byte.class, "CLIENT_EVENT");
     public static final EntityDataType<Boolean> USING_ITEM = new EntityDataType<>(Boolean.class, "USING_ITEM");
@@ -253,6 +257,9 @@ public class EntityDataTypes {
     public static final EntityDataType<Float> FREEZING_EFFECT_STRENGTH = new EntityDataType<>(Float.class, "FREEZING_EFFECT_STRENGTH");
     public static final EntityDataType<String> BUOYANCY_DATA = new EntityDataType<>(String.class, "BUOYANCY_DATA");
     public static final EntityDataType<Integer> GOAT_HORN_COUNT = new EntityDataType<>(Integer.class, "GOAT_HORN_COUNT");
+    public static final EntityDataType<Long> ARROW_SHOOTER_ID = new EntityDataType<>(Long.class, "ARROW_SHOOTER_ID");
+    public static final EntityDataType<Long> FIREWORK_SHOOTER_ID = new EntityDataType<>(Long.class, "FIREWORK_SHOOTER_ID");
+    public static final EntityDataType<Vector3f> FIREWORK_DIRECTION = new EntityDataType<>(Vector3f.class, "FIREWORK_DIRECTION");
     /**
      * @since v503
      */
@@ -313,7 +320,4 @@ public class EntityDataTypes {
      * @since v924
      */
     public static final EntityDataType<Integer> AIM_ASSIST_PRIORITY_ACTOR_ID = new EntityDataType<>(Integer.class, "AIM_ASSIST_PRIORITY_ACTOR_ID");
-    public static final EntityDataType<Long> ARROW_SHOOTER_ID = new EntityDataType<>(Long.class, "ARROW_SHOOTER_ID");
-    public static final EntityDataType<Long> FIREWORK_SHOOTER_ID = new EntityDataType<>(Long.class, "FIREWORK_SHOOTER_ID");
-    public static final EntityDataType<Vector3f> FIREWORK_DIRECTION = new EntityDataType<>(Vector3f.class, "FIREWORK_DIRECTION");
 }

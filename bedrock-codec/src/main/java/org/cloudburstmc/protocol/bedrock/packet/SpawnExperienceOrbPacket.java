@@ -15,7 +15,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SpawnExperienceOrbPacket implements BedrockPacket {
+    /**
+     * The world position where the orb should be spawned.
+     */
     private Vector3f position;
+    /**
+     * The amount of experience represented by the orb.
+     */
     private int amount;
 
     @Override

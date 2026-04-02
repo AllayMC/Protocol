@@ -39,9 +39,9 @@ public class CraftingDataSerializer_v465 extends CraftingDataSerializer_v407 {
     }
 
     protected void writeMaterialReducer(ByteBuf buffer, BedrockCodecHelper helper, MaterialReducer reducer) {
-        VarInts.writeInt(buffer, reducer.getInputId());
-        helper.writeArray(buffer, reducer.getItemCounts().object2IntEntrySet(), (buf, entry) -> {
-            VarInts.writeInt(buffer, entry.getKey().getRuntimeId());
+        VarInts.writeInt(buffer, reducer.inputId());
+        helper.writeArray(buffer, reducer.itemCounts().object2IntEntrySet(), (buf, entry) -> {
+            VarInts.writeInt(buffer, entry.getKey().runtimeId());
             VarInts.writeInt(buffer, entry.getIntValue());
         });
     }

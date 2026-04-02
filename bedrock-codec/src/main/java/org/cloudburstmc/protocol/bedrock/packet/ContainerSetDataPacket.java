@@ -25,8 +25,19 @@ public class ContainerSetDataPacket implements BedrockPacket {
     public static final int BREWING_STAND_FUEL_AMOUNT = 1;
     public static final int BREWING_STAND_FUEL_TOTAL = 2;
 
+    /**
+     * The ID of the window that should have its data set. The player must have a window open with
+     * the window ID passed, or nothing will happen.
+     */
     private byte windowId;
+    /**
+     * The property key to update. Its meaning depends on the kind of container and matches the
+     * constants declared in this class.
+     */
     private int property;
+    /**
+     * The value of the property. Its use differs per property.
+     */
     private int value;
 
     @Override

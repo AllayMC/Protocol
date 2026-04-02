@@ -1,30 +1,17 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory.crafting;
 
-import lombok.Value;
-
 /**
  * Represents a potion mixing recipe which may be used in a brewing stand.
+ *
+ * @param inputId     The input ID.
+ * @param inputMeta   The input meta.
+ * @param reagentId   The reagent ID.
+ * @param reagentMeta The reagent meta.
+ * @param outputId    The output ID.
+ * @param outputMeta  The output meta.
  */
-@Value
-public class PotionMixData {
+public record PotionMixData(int inputId, int inputMeta, int reagentId, int reagentMeta, int outputId, int outputMeta) {
     // Potion to be put in
-    private final int inputId;
-    /**
-     * @since v407
-     */
-    private final int inputMeta;
-
     // Item to be added to the brewing stand to brew the output potion
-    private final int reagentId;
-    /**
-     * @since v407
-     */
-    private final int reagentMeta;
-
     // Output Potion
-    private final int outputId;
-    /**
-     * @since v407
-     */
-    private final int outputMeta;
 }

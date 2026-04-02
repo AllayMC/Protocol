@@ -6,7 +6,7 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the client to provide additional client metadata.
+ * Sent by the client to indicate that the player's party identifier changed.
  *
  * @since v944
  */
@@ -15,6 +15,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class PartyChangedPacket implements BedrockPacket {
 
+    /**
+     * The updated party identifier.
+     */
     private String partyId;
 
     @Override

@@ -15,10 +15,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CommandRequestPacket implements BedrockPacket {
+    /**
+     * The raw command line entered by the client. The client does not parse it locally.
+     */
     private String command;
+    /**
+     * CommandOrigin is the data specifying the origin of the command. In other words, the source
+     * that the command was from, such as the player itself or a websocket server.
+     */
     private CommandOriginData commandOriginData;
+    /**
+     * Specifies whether the request is internal. Setting it to {@code false} appears to work, but
+     * the protocol purpose of this flag is still unclear.
+     */
     private boolean internal;
     /**
+     * The version of the command that is being executed. This field currently has no purpose or
+     * functionality.
+     *
      * @since v567
      */
     private int version;

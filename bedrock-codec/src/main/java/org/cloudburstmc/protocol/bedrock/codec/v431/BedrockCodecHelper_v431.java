@@ -79,7 +79,7 @@ public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
                 canBreak[i] = stream.readUTFMaxLen(this.encodingSettings.maxItemStackTagLength());
             }
 
-            if (definition != null && BLOCKING_ID.equals(definition.getIdentifier())) {
+            if (definition != null && BLOCKING_ID.equals(definition.identifier())) {
                 blockingTicks = stream.readLong();
             }
         } catch (IOException e) {
@@ -155,7 +155,7 @@ public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
                 canBreak[i] = stream.readUTFMaxLen(this.encodingSettings.maxItemStackTagLength());
             }
 
-            if (definition != null && BLOCKING_ID.equals(definition.getIdentifier())) {
+            if (definition != null && BLOCKING_ID.equals(definition.identifier())) {
                 blockingTicks = stream.readLong();
             }
         } catch (IOException e) {
@@ -200,12 +200,12 @@ public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
             buffer.writeByte(0);
             return;
         }
-        VarInts.writeInt(buffer, definition.getRuntimeId());
+        VarInts.writeInt(buffer, definition.runtimeId());
 
         // Write damage and count
         buffer.writeShortLE(item.getCount());
         VarInts.writeUnsignedInt(buffer, item.getDamage());
-        VarInts.writeInt(buffer, item.getBlockDefinition() == null ? 0 : item.getBlockDefinition().getRuntimeId());
+        VarInts.writeInt(buffer, item.getBlockDefinition() == null ? 0 : item.getBlockDefinition().runtimeId());
 
         ByteBuf userDataBuf = ByteBufAllocator.DEFAULT.ioBuffer();
         try (LittleEndianByteBufOutputStream stream = new LittleEndianByteBufOutputStream(userDataBuf);
@@ -230,7 +230,7 @@ public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
                 stream.writeUTF(aCanBreak);
             }
 
-            if (BLOCKING_ID.equals(definition.getIdentifier())) {
+            if (BLOCKING_ID.equals(definition.identifier())) {
                 stream.writeLong(item.getBlockingTicks());
             }
 
@@ -254,7 +254,7 @@ public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
             buffer.writeByte(0);
             return;
         }
-        VarInts.writeInt(buffer, definition.getRuntimeId());
+        VarInts.writeInt(buffer, definition.runtimeId());
 
         // Write damage and count
         buffer.writeShortLE(item.getCount());
@@ -265,7 +265,7 @@ public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
             VarInts.writeInt(buffer, item.getNetId());
         }
 
-        VarInts.writeInt(buffer, item.getBlockDefinition() == null ? 0 : item.getBlockDefinition().getRuntimeId());
+        VarInts.writeInt(buffer, item.getBlockDefinition() == null ? 0 : item.getBlockDefinition().runtimeId());
 
         ByteBuf userDataBuf = ByteBufAllocator.DEFAULT.ioBuffer();
         try (LittleEndianByteBufOutputStream stream = new LittleEndianByteBufOutputStream(userDataBuf);
@@ -290,7 +290,7 @@ public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
                 stream.writeUTF(aCanBreak);
             }
 
-            if (BLOCKING_ID.equals(definition.getIdentifier())) {
+            if (BLOCKING_ID.equals(definition.identifier())) {
                 stream.writeLong(item.getBlockingTicks());
             }
 
@@ -324,10 +324,10 @@ public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
     @Override
     public void writeInventoryActions(ByteBuf buffer, List<InventoryActionData> actions, boolean hasNetworkIds) {
         this.writeArray(buffer, actions, (buf, helper, action) -> {
-            writeSource(buf, action.getSource());
-            VarInts.writeUnsignedInt(buf, action.getSlot());
-            helper.writeItem(buf, action.getFromItem());
-            helper.writeItem(buf, action.getToItem());
+            writeSource(buf, action.source());
+            VarInts.writeUnsignedInt(buf, action.slot());
+            helper.writeItem(buf, action.fromItem());
+            helper.writeItem(buf, action.toItem());
         });
     }
 
@@ -346,8 +346,8 @@ public class BedrockCodecHelper_v431 extends BedrockCodecHelper_v428 {
     @Override
     protected void writeRequestActionData(ByteBuf byteBuf, ItemStackRequestAction action) {
         if (action.getType() == ItemStackRequestActionType.CRAFT_RESULTS_DEPRECATED) {
-            this.writeArray(byteBuf, ((CraftResultsDeprecatedAction) action).getResultItems(), this::writeItemInstance);
-            byteBuf.writeByte(((CraftResultsDeprecatedAction) action).getTimesCrafted());
+            this.writeArray(byteBuf, ((CraftResultsDeprecatedAction) action).resultItems(), this::writeItemInstance);
+            byteBuf.writeByte(((CraftResultsDeprecatedAction) action).timesCrafted());
         } else {
             super.writeRequestActionData(byteBuf, action);
         }

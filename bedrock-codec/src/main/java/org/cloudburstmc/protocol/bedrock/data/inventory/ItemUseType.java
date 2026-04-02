@@ -1,5 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory;
 
+/**
+ * ItemType represents a consistent combination of network ID and metadata value of an item. It
+ * cannot usually be changed unless a new item is obtained.
+ */
 public enum ItemUseType {
     UNKNOWN,
     EQUIP_ARMOR,

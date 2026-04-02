@@ -74,7 +74,7 @@ public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {
     protected EncodingSettings encodingSettings = EncodingSettings.DEFAULT;
 
     protected static boolean isAir(ItemDefinition definition) {
-        return definition == null || "minecraft:air".equals(definition.getIdentifier());
+        return definition == null || "minecraft:air".equals(definition.identifier());
     }
 
     @Override
@@ -433,10 +433,10 @@ public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {
     @Override
     public void writeInventoryActions(ByteBuf buffer, List<InventoryActionData> actions, boolean hasNetworkIds) {
         this.writeArray(buffer, actions, (buf, helper, action) -> {
-            this.writeSource(buf, action.getSource());
-            VarInts.writeUnsignedInt(buf, action.getSlot());
-            helper.writeItem(buf, action.getFromItem());
-            helper.writeItem(buf, action.getToItem());
+            this.writeSource(buf, action.source());
+            VarInts.writeUnsignedInt(buf, action.slot());
+            helper.writeItem(buf, action.fromItem());
+            helper.writeItem(buf, action.toItem());
         });
     }
 
@@ -465,16 +465,16 @@ public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {
     protected void writeSource(ByteBuf buffer, InventorySource inventorySource) {
         requireNonNull(inventorySource, "InventorySource was null");
 
-        VarInts.writeUnsignedInt(buffer, inventorySource.getType().id());
+        VarInts.writeUnsignedInt(buffer, inventorySource.type().id());
 
-        switch (inventorySource.getType()) {
+        switch (inventorySource.type()) {
             case CONTAINER:
             case UNTRACKED_INTERACTION_UI:
             case NON_IMPLEMENTED_TODO:
-                VarInts.writeInt(buffer, inventorySource.getContainerId());
+                VarInts.writeInt(buffer, inventorySource.containerId());
                 break;
             case WORLD_INTERACTION:
-                VarInts.writeUnsignedInt(buffer, inventorySource.getFlag().ordinal());
+                VarInts.writeUnsignedInt(buffer, inventorySource.flag().ordinal());
                 break;
         }
     }

@@ -2,8 +2,6 @@ package org.cloudburstmc.protocol.bedrock.codec.v685.serializer;
 
 import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.UUID;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v671.serializer.CraftingDataSerializer_v671;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
@@ -14,6 +12,9 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.ShapedRe
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.ShapelessRecipeData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.descriptor.ItemDescriptorWithCount;
 import org.cloudburstmc.protocol.common.util.VarInts;
+
+import java.util.List;
+import java.util.UUID;
 
 public class CraftingDataSerializer_v685 extends CraftingDataSerializer_v671 {
     public static final CraftingDataSerializer_v685 INSTANCE = new CraftingDataSerializer_v685();
@@ -107,16 +108,16 @@ public class CraftingDataSerializer_v685 extends CraftingDataSerializer_v671 {
 
     protected RecipeUnlockingRequirement readRequirement(ByteBuf buffer, BedrockCodecHelper helper, CraftingDataType type) {
         RecipeUnlockingRequirement requirement = new RecipeUnlockingRequirement(RecipeUnlockingRequirement.UnlockingContext.from(buffer.readByte()));
-        if (requirement.getContext().equals(RecipeUnlockingRequirement.UnlockingContext.NONE)) {
-            helper.readArray(buffer, requirement.getIngredients(), (buf, h) -> h.readIngredient(buf));
+        if (requirement.context().equals(RecipeUnlockingRequirement.UnlockingContext.NONE)) {
+            helper.readArray(buffer, requirement.ingredients(), (buf, h) -> h.readIngredient(buf));
         }
         return requirement;
     }
 
     protected void writeRequirement(ByteBuf buffer, BedrockCodecHelper helper, CraftingRecipeData data) {
-        buffer.writeByte(data.getRequirement().getContext().ordinal());
-        if (data.getRequirement().getContext().equals(RecipeUnlockingRequirement.UnlockingContext.NONE)) {
-            helper.writeArray(buffer, data.getRequirement().getIngredients(), (buf, h, ingredient) -> h.writeIngredient(buf, ingredient));
+        buffer.writeByte(data.getRequirement().context().ordinal());
+        if (data.getRequirement().context().equals(RecipeUnlockingRequirement.UnlockingContext.NONE)) {
+            helper.writeArray(buffer, data.getRequirement().ingredients(), (buf, h, ingredient) -> h.writeIngredient(buf, ingredient));
         }
     }
 }

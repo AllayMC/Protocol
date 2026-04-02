@@ -20,7 +20,7 @@ public class CameraInstructionSerializer_v748 extends CameraInstructionSerialize
     @Override
     protected void writeSetInstruction(BedrockCodecHelper helper, ByteBuf buf, CameraSetInstruction set) {
         DefinitionUtils.checkDefinition(helper.getCameraPresetDefinitions(), set.getPreset());
-        buf.writeIntLE(set.getPreset().getRuntimeId());
+        buf.writeIntLE(set.getPreset().runtimeId());
 
         helper.writeOptionalNull(buf, set.getEase(), this::writeEase);
         helper.writeOptionalNull(buf, set.getPos(), helper::writeVector3f);

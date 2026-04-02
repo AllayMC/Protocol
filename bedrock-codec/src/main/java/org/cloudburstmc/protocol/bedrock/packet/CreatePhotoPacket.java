@@ -13,8 +13,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CreatePhotoPacket implements BedrockPacket {
+    /**
+     * The unique ID of the entity creating the photo item.
+     */
     private long id;
+    /**
+     * The name of the photo.
+     */
     private String photoName;
+    /**
+     * The item name shown for the created photo item.
+     */
     private String photoItemName;
 
     @Override

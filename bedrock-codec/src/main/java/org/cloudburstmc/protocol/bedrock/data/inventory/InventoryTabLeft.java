@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory;
 
+/**
+ * Enumerates inventory tab left values used in the Bedrock protocol.
+ */
 public enum InventoryTabLeft {
     NONE,
     RECIPE_CONSTRUCTION,

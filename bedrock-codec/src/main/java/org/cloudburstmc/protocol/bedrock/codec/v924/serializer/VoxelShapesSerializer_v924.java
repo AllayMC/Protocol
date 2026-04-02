@@ -22,15 +22,15 @@ public class VoxelShapesSerializer_v924 implements BedrockPacketSerializer<Voxel
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, VoxelShapesPacket packet) {
         helper.writeArray(buffer, packet.getShapes(), (buf, shape) -> {
-            buf.writeByte(shape.getCells().getXSize());
-            buf.writeByte(shape.getCells().getYSize());
-            buf.writeByte(shape.getCells().getZSize());
+            buf.writeByte(shape.cells().xSize());
+            buf.writeByte(shape.cells().ySize());
+            buf.writeByte(shape.cells().zSize());
 
-            helper.writeArray(buf, shape.getCells().getStorage(), (buf2, value) -> buf2.writeByte(value));
+            helper.writeArray(buf, shape.cells().storage(), (buf2, value) -> buf2.writeByte(value));
 
-            helper.writeArray(buf, shape.getXCoordinates(), ByteBuf::writeFloatLE);
-            helper.writeArray(buf, shape.getYCoordinates(), ByteBuf::writeFloatLE);
-            helper.writeArray(buf, shape.getZCoordinates(), ByteBuf::writeFloatLE);
+            helper.writeArray(buf, shape.xCoordinates(), ByteBuf::writeFloatLE);
+            helper.writeArray(buf, shape.yCoordinates(), ByteBuf::writeFloatLE);
+            helper.writeArray(buf, shape.zCoordinates(), ByteBuf::writeFloatLE);
         });
 
         VarInts.writeUnsignedInt(buffer, packet.getNameMap().size());

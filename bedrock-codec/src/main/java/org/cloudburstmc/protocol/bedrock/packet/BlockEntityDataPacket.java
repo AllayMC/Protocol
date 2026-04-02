@@ -8,13 +8,20 @@ import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to update data of a block entity client-side, for example the data of a chest.
+ * Sent by the server to replace the client-side NBT state of a block entity, such as a chest or
+ * sign.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class BlockEntityDataPacket implements BedrockPacket {
+    /**
+     * Position of the block that owns the block entity being updated.
+     */
     private Vector3i blockPosition;
+    /**
+     * Complete block entity NBT that should be applied at {@link #blockPosition}.
+     */
     private NbtMap data;
 
     @Override

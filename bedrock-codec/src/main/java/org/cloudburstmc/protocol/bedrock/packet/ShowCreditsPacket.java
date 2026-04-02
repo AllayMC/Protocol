@@ -13,7 +13,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ShowCreditsPacket implements BedrockPacket {
+    /**
+     * The runtime entity ID of the player whose credits state is changing.
+     */
     private long runtimeEntityId;
+    /**
+     * Whether to start or end the credits sequence.
+     */
     private Status status;
 
     @Override
@@ -26,7 +32,13 @@ public class ShowCreditsPacket implements BedrockPacket {
     }
 
     public enum Status {
+        /**
+         * Begin showing the credits.
+         */
         START_CREDITS,
+        /**
+         * Close the credits screen.
+         */
         END_CREDITS
     }
 

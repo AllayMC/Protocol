@@ -13,6 +13,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class RemoveObjectivePacket implements BedrockPacket {
+    /**
+     * The scoreboard objective name to remove. It must match the identifier previously used in
+     * {@link SetDisplayObjectivePacket}.
+     */
     private String objectiveId;
 
     @Override

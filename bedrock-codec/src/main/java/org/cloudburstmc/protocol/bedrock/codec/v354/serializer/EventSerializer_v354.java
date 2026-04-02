@@ -28,8 +28,8 @@ public class EventSerializer_v354 extends EventSerializer_v340 {
 
     protected void writeCauldronInteract(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         CauldronInteractEventData event = (CauldronInteractEventData) eventData;
-        VarInts.writeInt(buffer, event.getBlockInteractionType().ordinal());
-        VarInts.writeInt(buffer, event.getItemId());
+        VarInts.writeInt(buffer, event.blockInteractionType().ordinal());
+        VarInts.writeInt(buffer, event.itemId());
     }
 
     protected ComposterInteractEventData readComposterInteract(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -40,8 +40,8 @@ public class EventSerializer_v354 extends EventSerializer_v340 {
 
     protected void writeComposterInteract(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         ComposterInteractEventData event = (ComposterInteractEventData) eventData;
-        VarInts.writeInt(buffer, event.getBlockInteractionType().ordinal());
-        VarInts.writeInt(buffer, event.getItemId());
+        VarInts.writeInt(buffer, event.blockInteractionType().ordinal());
+        VarInts.writeInt(buffer, event.itemId());
     }
 
     protected BellUsedEventData readBellUsed(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -51,6 +51,6 @@ public class EventSerializer_v354 extends EventSerializer_v340 {
 
     protected void writeBellUsed(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         BellUsedEventData event = (BellUsedEventData) eventData;
-        VarInts.writeInt(buffer, event.getItemId());
+        VarInts.writeInt(buffer, event.itemId());
     }
 }

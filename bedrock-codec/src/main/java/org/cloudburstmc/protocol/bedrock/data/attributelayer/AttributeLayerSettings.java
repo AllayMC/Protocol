@@ -1,25 +1,21 @@
 package org.cloudburstmc.protocol.bedrock.data.attributelayer;
 
-import lombok.Value;
-
-@Value
-public class AttributeLayerSettings {
-
-    int priority;
-    Weight weight;
-    boolean enabled;
-    boolean transitionsPaused;
+/**
+ * Represents settings for an attribute layer.
+ *
+ * @param priority          The priority of the layer.
+ * @param weight            The weight.
+ * @param enabled           Enabled indicates if the layer is enabled.
+ * @param transitionsPaused TransitionsPaused indicates if transitions are paused for this layer.
+ */
+public record AttributeLayerSettings(int priority, Weight weight, boolean enabled, boolean transitionsPaused) {
 
     public interface Weight {
     }
 
-    @Value
-    public static class FloatWeight implements Weight {
-        float value;
+    public record FloatWeight(float value) implements Weight {
     }
 
-    @Value
-    public static class StringWeight implements Weight {
-        String value;
+    public record StringWeight(String value) implements Weight {
     }
 }

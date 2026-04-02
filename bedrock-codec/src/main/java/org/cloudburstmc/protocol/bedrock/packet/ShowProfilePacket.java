@@ -6,12 +6,15 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to show the XBOX Live profile of one player to another.
+ * Sent by the server to open an Xbox Live profile on the client.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ShowProfilePacket implements BedrockPacket {
+    /**
+     * The XUID of the profile to show.
+     */
     private String xuid;
 
     @Override

@@ -16,6 +16,9 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PurchaseReceiptPacket implements BedrockPacket {
+    /**
+     * Purchase receipts proving which server-offered marketplace items the player bought.
+     */
     private final List<String> receipts = new ObjectArrayList<>();
 
     @Override

@@ -21,9 +21,21 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateAbilitiesPacket implements BedrockPacket, PlayerAbilityHolder {
+    /**
+     * The unique ID of the player whose abilities are being updated.
+     */
     private long uniqueEntityId;
+    /**
+     * The player permission level currently granted to the player.
+     */
     private PlayerPermission playerPermission;
+    /**
+     * The command permission level currently granted to the player.
+     */
     private CommandPermission commandPermission;
+    /**
+     * The full set of advertised ability layers for the player.
+     */
     private List<AbilityLayer> abilityLayers = new ObjectArrayList<>();
 
     @Override

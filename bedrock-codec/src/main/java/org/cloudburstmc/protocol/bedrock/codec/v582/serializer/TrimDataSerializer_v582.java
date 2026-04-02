@@ -16,13 +16,13 @@ public class TrimDataSerializer_v582 implements BedrockPacketSerializer<TrimData
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, TrimDataPacket packet) {
         helper.writeArray(buffer, packet.getPatterns(), (buf, pattern) -> {
-            helper.writeString(buf, pattern.getItemName());
-            helper.writeString(buf, pattern.getPatternId());
+            helper.writeString(buf, pattern.itemName());
+            helper.writeString(buf, pattern.patternId());
         });
         helper.writeArray(buffer, packet.getMaterials(), (buf, pattern) -> {
-            helper.writeString(buf, pattern.getMaterialId());
-            helper.writeString(buf, pattern.getColor());
-            helper.writeString(buf, pattern.getItemName());
+            helper.writeString(buf, pattern.materialId());
+            helper.writeString(buf, pattern.color());
+            helper.writeString(buf, pattern.itemName());
         });
     }
 

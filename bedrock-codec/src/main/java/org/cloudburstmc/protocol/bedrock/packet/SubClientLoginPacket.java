@@ -17,12 +17,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class SubClientLoginPacket implements BedrockPacket {
     /**
-     * The JWT payload signed by Minecraft's authentication server. Assuming this is a valid
-     * signature, it can be trusted to contain the player's identity and other information.
+     * The authenticated identity payload for the joining sub-client.
      */
     private AuthPayload authPayload;
     /**
-     * The JWT payload signed by the client. The client can modify this, so it should not be trusted.
+     * The client-signed JWT chain supplied alongside the login request.
      */
     private String clientJwt;
 

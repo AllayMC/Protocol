@@ -1,11 +1,12 @@
 package org.cloudburstmc.protocol.bedrock.data.attributelayer;
 
-import lombok.Value;
-
 import java.util.List;
 
-@Value
-public class UpdateAttributeLayersData implements AttributeLayerSyncPayload {
+/**
+ * Represents update attribute layers data used in the Bedrock protocol.
+ *
+ * @param attributeLayers The attribute layers.
+ */
+public record UpdateAttributeLayersData(List<AttributeLayerData> attributeLayers) implements AttributeLayerSyncPayload {
 
-    List<AttributeLayerData> attributeLayers;
 }

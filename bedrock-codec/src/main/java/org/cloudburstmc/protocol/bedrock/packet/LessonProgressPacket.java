@@ -14,8 +14,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class LessonProgressPacket implements BedrockPacket {
+    /**
+     * The lesson progress action the client should display.
+     */
     private LessonAction action;
+    /**
+     * The score the client should use when displaying the progress.
+     */
     private int score;
+    /**
+     * The identifier of the lesson activity whose progress is being updated.
+     */
     private String activityId;
 
     @Override

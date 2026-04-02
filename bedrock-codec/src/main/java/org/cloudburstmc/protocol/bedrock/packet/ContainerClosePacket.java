@@ -15,12 +15,19 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ContainerClosePacket implements BedrockPacket {
+    /**
+     * The window ID of the container being closed.
+     */
     private byte id;
     /**
+     * Whether the close was initiated by the server rather than the client.
+     *
      * @since v419
      */
     private boolean serverInitiated;
     /**
+     * The container type used by the client to validate the close request.
+     *
      * @since v685
      */
     private ContainerType type;

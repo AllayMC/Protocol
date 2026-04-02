@@ -20,10 +20,27 @@ import java.util.UUID;
         doNotUseGetters = true,
         exclude = {"data"})
 public class ResourcePackChunkDataPacket extends AbstractReferenceCounted implements BedrockPacket {
+    /**
+     * The pack ID.
+     */
     private UUID packId;
+    /**
+     * The pack version.
+     */
     private String packVersion;
+    /**
+     * The current chunk index of the chunk. It is a number that starts at 0 and is incremented for
+     * each resource pack data chunk sent to the client.
+     */
     private int chunkIndex;
+    /**
+     * The progress.
+     */
     private long progress;
+    /**
+     * RawPayload is a byte slice containing a chunk of data from the resource pack. It must be of
+     * the same size or less than the DataChunkSize set in the ResourcePackDataInfo packet.
+     */
     private ByteBuf data;
 
     @Override

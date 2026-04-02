@@ -13,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = true)
 @ToString(doNotUseGetters = true)
 public class AddPaintingPacket extends AddHangingEntityPacket {
+    /**
+     * The painting motive identifier that selects which artwork the client should render.
+     */
     private String motive;
 
     @Override

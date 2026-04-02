@@ -19,6 +19,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @ToString(doNotUseGetters = true)
 public class ItemStackResponsePacket implements BedrockPacket {
+    /**
+     * One response entry for each request processed by the server, indicating whether that request
+     * was accepted and what container state should be applied on the client.
+     */
     private final List<ItemStackResponse> entries = new ArrayList<>();
 
     @Override

@@ -14,6 +14,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true, exclude = "definitions")
 public class CompressedBiomeDefinitionListPacket implements BedrockPacket {
+    /**
+     * The compressed biome definition payload encoded as NBT.
+     */
     private NbtMap definitions;
 
     @Override

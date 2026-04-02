@@ -15,7 +15,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ServerboundDataDrivenScreenClosedPacket implements BedrockPacket {
 
+    /**
+     * The optional instance ID of the screen that was closed.
+     */
     private Integer formId;
+    /**
+     * The reason the client closed the screen.
+     */
     private CloseReason closeReason;
 
     @Override
@@ -37,10 +43,25 @@ public class ServerboundDataDrivenScreenClosedPacket implements BedrockPacket {
     }
 
     public enum CloseReason {
+        /**
+         * The screen was closed programmatically.
+         */
         PROGRAMMATIC_CLOSE,
+        /**
+         * All open data-driven screens were closed programmatically.
+         */
         PROGRAMMATIC_CLOSE_ALL,
+        /**
+         * The client canceled the screen.
+         */
         CLIENT_CANCELED,
+        /**
+         * The client was unable to open the screen because it was already busy.
+         */
         USER_BUSY,
+        /**
+         * The referenced form or screen instance was invalid.
+         */
         INVALID_FORM,
     }
 }

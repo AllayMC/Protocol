@@ -13,7 +13,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class DebugInfoPacket implements BedrockPacket {
+    /**
+     * PlayerUniqueID is the unique ID of the player that the packet is sent to.
+     */
     private long uniqueEntityId;
+    /**
+     * The opaque debug payload sent to the target client.
+     */
     private String data;
 
     @Override

@@ -193,12 +193,12 @@ public class CraftingDataSerializer_v407 extends CraftingDataSerializer_v388 {
     protected void writePotionMixData(ByteBuf buffer, BedrockCodecHelper helper, PotionMixData data) {
         checkNotNull(data, "data is null");
 
-        VarInts.writeInt(buffer, data.getInputId());
-        VarInts.writeInt(buffer, data.getInputMeta());
-        VarInts.writeInt(buffer, data.getReagentId());
-        VarInts.writeInt(buffer, data.getReagentMeta());
-        VarInts.writeInt(buffer, data.getOutputId());
-        VarInts.writeInt(buffer, data.getOutputMeta());
+        VarInts.writeInt(buffer, data.inputId());
+        VarInts.writeInt(buffer, data.inputMeta());
+        VarInts.writeInt(buffer, data.reagentId());
+        VarInts.writeInt(buffer, data.reagentMeta());
+        VarInts.writeInt(buffer, data.outputId());
+        VarInts.writeInt(buffer, data.outputMeta());
     }
 
     @Override
@@ -214,8 +214,8 @@ public class CraftingDataSerializer_v407 extends CraftingDataSerializer_v388 {
     protected void writeContainerMixData(ByteBuf buffer, BedrockCodecHelper helper, ContainerMixData data) {
         checkNotNull(data, "data is null");
 
-        VarInts.writeInt(buffer, data.getInputId());
-        VarInts.writeInt(buffer, data.getReagentId());
-        VarInts.writeInt(buffer, data.getOutputId());
+        VarInts.writeInt(buffer, data.inputId());
+        VarInts.writeInt(buffer, data.reagentId());
+        VarInts.writeInt(buffer, data.outputId());
     }
 }

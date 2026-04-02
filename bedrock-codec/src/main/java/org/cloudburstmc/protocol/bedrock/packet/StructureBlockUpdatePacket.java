@@ -8,19 +8,27 @@ import org.cloudburstmc.protocol.bedrock.data.structure.StructureEditorData;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the client when it updates a structure block using the in-game UI. The data it contains
- * depends on the type of structure block that it is. In Minecraft Bedrock Edition v1.11, there is
- * only the Export structure block type, but in v1.13 the ones present in Java Edition will,
- * according to the wiki, be added too.
+ * Sent by the client when it updates a structure block through the in-game UI.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class StructureBlockUpdatePacket implements BedrockPacket {
+    /**
+     * The position of the structure block being updated.
+     */
     private Vector3i blockPosition;
+    /**
+     * The structure block editor settings supplied by the client.
+     */
     private StructureEditorData editorData;
+    /**
+     * Whether the block is currently powered by redstone.
+     */
     private boolean powered;
     /**
+     * Specifies if non-air blocks replace water or combine with water.
+     *
      * @since v554
      */
     private boolean waterlogged;

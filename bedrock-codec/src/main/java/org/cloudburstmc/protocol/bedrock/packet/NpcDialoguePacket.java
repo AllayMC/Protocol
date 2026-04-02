@@ -11,11 +11,30 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class NpcDialoguePacket implements BedrockPacket {
 
+    /**
+     * The unique ID of the NPC being requested.
+     */
     private long uniqueEntityId;
+    /**
+     * The type of action for the packet.
+     */
     private Action action;
+    /**
+     * The text that the client should see.
+     */
     private String dialogue;
+    /**
+     * The identifier of the scene. If this is left empty, the client will use the last scene sent
+     * to it. https://docs.microsoft.com/en-us/minecraft/creator/documents/npcdialogue.
+     */
     private String sceneName;
+    /**
+     * NPCName is the name of the NPC to be displayed to the client.
+     */
     private String npcName;
+    /**
+     * The JSON definition of the buttons or actions shown in the NPC dialogue screen.
+     */
     private String actionJson;
 
     @Override

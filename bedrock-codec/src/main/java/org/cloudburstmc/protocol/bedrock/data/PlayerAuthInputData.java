@@ -1,11 +1,16 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Bit flags carried in {@link org.cloudburstmc.protocol.bedrock.packet.PlayerAuthInputPacket#inputData}
+ * to describe the client's movement and interaction state for a tick.
+ */
 public enum PlayerAuthInputData {
     ASCEND,
     DESCEND,
     /**
      * @deprecated since v685
      */
+    @Deprecated
     NORTH_JUMP,
     JUMP_DOWN,
     SPRINT_DOWN,

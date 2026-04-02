@@ -18,16 +18,46 @@ import java.util.Set;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MovementPredictionSyncPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the client player whose prediction state is being synchronised.
+     */
     private long runtimeEntityId;
+    /**
+     * The current set of entity flags known to the client.
+     */
     private final Set<EntityFlag> flags = new ObjectOpenHashSet<>();
+    /**
+     * The width, height, and scale-related bounding box values reported by the client for movement
+     * prediction.
+     */
     private Vector3f boundingBox;
+    /**
+     * The movement speed attribute, or {@code 0} if it is not set.
+     */
     private float speed;
+    /**
+     * UnderwaterMovementSpeed is the underwater movement speed attribute or 0 if not set.
+     */
     private float underwaterSpeed;
+    /**
+     * LavaMovementSpeed is the lava movement speed attribute or 0 if not set.
+     */
     private float lavaSpeed;
+    /**
+     * The jump strength attribute or 0 if not set.
+     */
     private float jumpStrength;
+    /**
+     * The health attribute or 0 if not set.
+     */
     private float health;
+    /**
+     * The hunger attribute or 0 if not set.
+     */
     private float hunger;
     /**
+     * Specifies if the client is currently flying.
+     *
      * @since v786
      */
     private boolean flying;

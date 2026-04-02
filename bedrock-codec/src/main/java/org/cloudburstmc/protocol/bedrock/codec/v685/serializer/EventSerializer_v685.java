@@ -26,9 +26,9 @@ public class EventSerializer_v685 extends EventSerializer_v671 {
 
     protected void writeItemUsed(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         ItemUsedEventData event = (ItemUsedEventData) eventData;
-        buffer.writeShortLE(event.getItemId());
-        buffer.writeIntLE(event.getItemAux());
-        buffer.writeIntLE(event.getUseMethod());
-        buffer.writeIntLE(event.getUseCount());
+        buffer.writeShortLE(event.itemId());
+        buffer.writeIntLE(event.itemAux());
+        buffer.writeIntLE(event.useMethod());
+        buffer.writeIntLE(event.useCount());
     }
 }

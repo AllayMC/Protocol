@@ -17,9 +17,19 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class PlayerInputPacket implements BedrockPacket {
+    /**
+     * The movement vector produced from directional input.
+     */
     private Vector2f inputMotion;
+    /**
+     * Whether the player is currently jumping.
+     */
     private boolean jumping;
+    /**
+     * Whether the player is currently sneaking.
+     */
     private boolean sneaking;
 
     @Override

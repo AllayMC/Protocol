@@ -17,44 +17,38 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class CorrectPlayerMovePredictionPacket implements BedrockPacket {
     /**
-     * Client's reported position by the server
-     *
-     * @param position reported position
-     * @return reported position
+     * The position that the player should be at for the corrected tick. The client reapplies later
+     * movement starting from this position.
      */
     private Vector3f position;
     /**
-     * Difference in client and server prediction
-     *
-     * @param delta position difference
-     * @return position difference
+     * The difference between the position reported by the client and the server-authoritative
+     * position for the corrected tick.
      */
     private Vector3f delta;
     /**
-     * If the client is on the ground. (Not falling or jumping)
-     *
-     * @param onGround is client on the ground
-     * @return is client on the ground
+     * Whether the player was on the ground at the corrected tick.
      */
     private boolean onGround;
     /**
-     * The tick which is being corrected by the server.
-     *
-     * @param tick to be corrected
-     * @return to be corrected
+     * The movement tick being corrected by the server.
      */
     private long tick;
     /**
+     * The type of prediction that is being corrected.
+     *
      * @since v649
-     * <p>The type of prediction player sends.
      */
     private PredictionType predictionType = PredictionType.PLAYER;
     /**
+     * The player or vehicle rotation at the corrected tick.
+     *
      * @since v671
-     * <p>The rotation of the vehicle.
      */
     private Vector2f vehicleRotation;
     /**
+     * The angular velocity of the vehicle that the rider is riding.
+     *
      * @since v712
      */
     private Float vehicleAngularVelocity;

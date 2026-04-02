@@ -28,6 +28,6 @@ public class EventSerializer_v340 extends EventSerializer_v332 {
     protected void writePetDied(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         super.writePetDied(buffer, helper, eventData);
 
-        VarInts.writeInt(buffer, ((PetDiedEventData) eventData).getPetEntityType());
+        VarInts.writeInt(buffer, ((PetDiedEventData) eventData).petEntityType());
     }
 }

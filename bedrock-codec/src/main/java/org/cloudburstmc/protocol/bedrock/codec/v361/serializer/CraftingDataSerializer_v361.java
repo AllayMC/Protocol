@@ -100,20 +100,20 @@ public class CraftingDataSerializer_v361 extends CraftingDataSerializer_v354 {
 
     protected void writeIngredient(ByteBuf buffer, ItemDescriptorWithCount ingredient) {
         requireNonNull(ingredient, "ingredient is null");
-        if (ingredient == ItemDescriptorWithCount.EMPTY || ingredient.getDescriptor() == InvalidDescriptor.INSTANCE) {
+        if (ingredient == ItemDescriptorWithCount.EMPTY || ingredient.descriptor() == InvalidDescriptor.INSTANCE) {
             VarInts.writeInt(buffer, 0);
             return;
         }
 
-        checkArgument(ingredient.getDescriptor() instanceof DefaultDescriptor, "Descriptor must be of type DefaultDescriptor");
-        DefaultDescriptor descriptor = (DefaultDescriptor) ingredient.getDescriptor();
+        checkArgument(ingredient.descriptor() instanceof DefaultDescriptor, "Descriptor must be of type DefaultDescriptor");
+        DefaultDescriptor descriptor = (DefaultDescriptor) ingredient.descriptor();
 
-        int id = descriptor.getItemId().getRuntimeId();
+        int id = descriptor.itemId().runtimeId();
         VarInts.writeInt(buffer, id);
 
         if (id != 0) {
-            VarInts.writeInt(buffer, toAuxValue(descriptor.getAuxValue()));
-            VarInts.writeInt(buffer, ingredient.getCount());
+            VarInts.writeInt(buffer, toAuxValue(descriptor.auxValue()));
+            VarInts.writeInt(buffer, ingredient.count());
         }
     }
 

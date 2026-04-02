@@ -13,9 +13,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class TransferPacket implements BedrockPacket {
+    /**
+     * The address of the new server, which might be either a hostname or an actual IP address.
+     */
     private String address;
+    /**
+     * The UDP port of the new server.
+     */
     private int port;
     /**
+     * A flag with currently unknown purpose that was added alongside newer transfer behaviour.
+     *
      * @since v729
      */
     private boolean reloadWorld;

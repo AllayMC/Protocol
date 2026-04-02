@@ -7,8 +7,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Allows the server to tell the client to close all the Data Driven UI screens. Previously
- * ClientboundDataDrivenUICloseAllScreensPacket
+ * Sent by the server to close one or more data-driven UI screens on the client.
  *
  * @since v924
  */
@@ -17,7 +16,7 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientboundDataDrivenUICloseScreenPacket implements BedrockPacket {
     /**
-     * The unique id of th form to close. If not supplied, this will close all forms
+     * The unique ID of the form to close. If absent, all data-driven UI forms are closed.
      *
      * @since v944
      */

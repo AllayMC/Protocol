@@ -23,11 +23,21 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class NetworkChunkPublisherUpdatePacket implements BedrockPacket {
+    /**
+     * The block position around which chunks loaded will remain shown to the client. Most servers
+     * set this position to the position of the player itself.
+     */
     private Vector3i position;
+    /**
+     * The radius in blocks around Position that chunks sent show up in and will remain loaded in.
+     * Unlike the RequestChunkRadius and ChunkRadiusUpdated packets, this radius is in blocks rather
+     * than chunks, so the chunk radius needs to be multiplied by 16. (Or shifted to the left by
+     * 4.).
+     */
     private int radius;
     /**
-     * Lets the client know which chunks have been saved, and need requesting whilst client chunk
-     * generation is enabled.
+     * Lists chunk coordinates that the client should request again when client-side chunk generation
+     * is enabled.
      *
      * @since v544
      */

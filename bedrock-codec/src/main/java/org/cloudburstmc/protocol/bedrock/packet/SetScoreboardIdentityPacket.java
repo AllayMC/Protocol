@@ -4,7 +4,6 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.Value;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 import java.util.List;
@@ -20,7 +19,16 @@ import java.util.UUID;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetScoreboardIdentityPacket implements BedrockPacket {
+    /**
+     * A list of all entries in the packet. Each of these entries points to one of the entries on a
+     * scoreboard. Depending on ActionType, their identity will either be registered or cleared.
+     */
     private final List<Entry> entries = new ObjectArrayList<>();
+    /**
+     * The type of the action to execute. The action is either ScoreboardIdentityActionRegister to
+     * associate an identity with the entry, or ScoreboardIdentityActionClear to remove associations
+     * with an entity.
+     */
     private Action action;
 
     @Override
@@ -37,10 +45,15 @@ public class SetScoreboardIdentityPacket implements BedrockPacket {
         REMOVE
     }
 
-    @Value
-    public static class Entry {
-        private final long scoreboardId;
-        private final UUID uuid;
+    public record Entry(
+            /**
+             * The numeric scoreboard entry identifier whose backing identity should be updated.
+             */
+            long scoreboardId,
+            /**
+             * The UUID to associate with the scoreboard entry when {@link Action#ADD} is used.
+             */
+            UUID uuid) {
     }
 
     @Override

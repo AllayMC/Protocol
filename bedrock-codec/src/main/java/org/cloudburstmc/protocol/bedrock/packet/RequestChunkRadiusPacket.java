@@ -14,8 +14,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class RequestChunkRadiusPacket implements BedrockPacket {
+    /**
+     * The chunk radius currently requested in the client's video settings.
+     */
     private int radius;
     /**
+     * The maximum chunk radius that the client is prepared to receive.
+     *
      * @since v582
      */
     private int maxRadius;

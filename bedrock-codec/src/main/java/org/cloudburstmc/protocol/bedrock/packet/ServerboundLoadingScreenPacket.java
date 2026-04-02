@@ -14,9 +14,12 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ServerboundLoadingScreenPacket implements BedrockPacket {
+    /**
+     * The loading screen event being reported by the client.
+     */
     private ServerboundLoadingScreenPacketType type;
     /**
-     * Optional int, not present if null
+     * The optional loading screen ID associated with {@link #type}.
      */
     private Integer loadingScreenId;
 

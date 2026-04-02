@@ -34,13 +34,13 @@ public class AvailableCommandsSerializer_v388 extends AvailableCommandsSerialize
 
         // Get all enum values
         for (CommandData data : packet.getCommands()) {
-            if (data.getAliases() != null) {
-                enumValues.addAll(data.getAliases().getValues().keySet());
-                enums.add(data.getAliases());
+            if (data.aliases() != null) {
+                enumValues.addAll(data.aliases().values().keySet());
+                enums.add(data.aliases());
             }
 
-            for (CommandOverloadData overload : data.getOverloads()) {
-                for (CommandParamData parameter : overload.getOverloads()) {
+            for (CommandOverloadData overload : data.overloads()) {
+                for (CommandParamData parameter : overload.overloads()) {
                     CommandEnumData commandEnumData = parameter.getEnumData();
                     if (commandEnumData != null) {
                         if (commandEnumData.isSoft()) {
@@ -48,7 +48,7 @@ public class AvailableCommandsSerializer_v388 extends AvailableCommandsSerialize
                         } else {
                             enums.add(commandEnumData);
                             int enumIndex = enums.indexOf(commandEnumData);
-                            commandEnumData.getValues().forEach((key, constraints) -> {
+                            commandEnumData.values().forEach((key, constraints) -> {
                                 enumValues.add(key);
                                 if (!constraints.isEmpty()) {
                                     int valueIndex = enumValues.indexOf(key);
@@ -115,7 +115,7 @@ public class AvailableCommandsSerializer_v388 extends AvailableCommandsSerialize
         for (int i = 0; i < count; i++) {
             String key = enumValues.get(buffer.readIntLE());
             CommandEnumData enumData = enums.get(buffer.readIntLE());
-            Set<CommandEnumConstraint> constraints = enumData.getValues().get(key);
+            Set<CommandEnumConstraint> constraints = enumData.values().get(key);
             helper.readArray(buffer, constraints, buf -> CONSTRAINTS[buf.readUnsignedByte()]);
         }
     }

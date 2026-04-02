@@ -40,7 +40,7 @@ public class BedrockCodecHelper_v575 extends BedrockCodecHelper_v568 {
     @Override
     protected void writeItemDescriptor(ByteBuf buffer, ItemDescriptor descriptor) {
         if (descriptor.getType() == ItemDescriptorType.COMPLEX_ALIAS) {
-            this.writeString(buffer, ((ComplexAliasDescriptor) descriptor).getName());
+            this.writeString(buffer, ((ComplexAliasDescriptor) descriptor).name());
         } else {
             super.writeItemDescriptor(buffer, descriptor);
         }

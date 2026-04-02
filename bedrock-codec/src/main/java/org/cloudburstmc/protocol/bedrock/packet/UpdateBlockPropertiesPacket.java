@@ -13,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateBlockPropertiesPacket implements BedrockPacket {
+    /**
+     * The network NBT compound containing the block property registry advertised to the client.
+     */
     private NbtMap properties;
 
     @Override

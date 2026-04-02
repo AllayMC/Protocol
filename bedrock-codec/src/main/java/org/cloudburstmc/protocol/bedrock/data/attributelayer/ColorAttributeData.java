@@ -1,24 +1,20 @@
 package org.cloudburstmc.protocol.bedrock.data.attributelayer;
 
-import lombok.Value;
-
-@Value
-public class ColorAttributeData implements AttributeData {
-
-    Color255RGBA value;
-    Operation operation;
+/**
+ * AttributeData represents a polymorphic attribute value.
+ *
+ * @param value     The value.
+ * @param operation The operation.
+ */
+public record ColorAttributeData(Color255RGBA value, Operation operation) implements AttributeData {
 
     public interface Color255RGBA {
     }
 
-    @Value
-    public static class StringColor implements Color255RGBA {
-        String value;
+    public record StringColor(String value) implements Color255RGBA {
     }
 
-    @Value
-    public static class ArrayColor implements Color255RGBA {
-        int[] value;
+    public record ArrayColor(int[] value) implements Color255RGBA {
     }
 
     public enum Operation {

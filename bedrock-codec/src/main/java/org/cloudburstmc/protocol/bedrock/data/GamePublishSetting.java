@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates game publish setting values used in the Bedrock protocol.
+ */
 public enum GamePublishSetting {
     NO_MULTI_PLAY,
     INVITE_ONLY,

@@ -8,14 +8,31 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
  * Sent by the server to make a hanging entity show up client-side.
+ *
+ * @deprecated Removed in 1.12.0 (v361).
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class AddHangingEntityPacket implements BedrockPacket {
+    /**
+     * The unique ID of the hanging entity. The unique ID stays stable across sessions of the same
+     * world, but servers often reuse the runtime ID here.
+     */
     private long uniqueEntityId;
+    /**
+     * The runtime ID of the hanging entity. The runtime ID is unique for the current session and is
+     * the identifier used by most other packets.
+     */
     private long runtimeEntityId;
+    /**
+     * The block position where the hanging entity is attached.
+     */
     private Vector3f position;
+    /**
+     * The horizontal facing of the hanging entity.
+     */
     private int direction;
 
     @Override

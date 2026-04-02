@@ -13,10 +13,26 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetDisplayObjectivePacket implements BedrockPacket {
+    /**
+     * The display slot in which the scoreboard should appear, for example {@code list},
+     * {@code sidebar}, or {@code belowname}.
+     */
     private String displaySlot;
+    /**
+     * The objective ID.
+     */
     private String objectiveId;
+    /**
+     * The name, or title, that is displayed at the top of the scoreboard.
+     */
     private String displayName;
+    /**
+     * The criteria.
+     */
     private String criteria;
+    /**
+     * The sort order used for scoreboard entries.
+     */
     private int sortOrder;
 
     @Override

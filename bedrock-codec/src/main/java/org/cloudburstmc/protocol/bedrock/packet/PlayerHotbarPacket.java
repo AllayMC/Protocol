@@ -15,8 +15,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayerHotbarPacket implements BedrockPacket {
+    /**
+     * The selected hotbar slot.
+     */
     private int selectedHotbarSlot;
+    /**
+     * The window/container ID associated with the selected hotbar.
+     */
     private int containerId;
+    /**
+     * Whether the client should actually switch to {@link #selectedHotbarSlot}.
+     */
     private boolean selectHotbarSlot;
 
     @Override

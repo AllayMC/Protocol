@@ -16,14 +16,50 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class TextPacket implements BedrockPacket {
+    /**
+     * The text category carried by this packet. Clientbound packets may use chat, popup, tip, and
+     * translation variants, while clientbound-originated packets should normally use
+     * {@link Type#CHAT}.
+     */
     private Type type;
+    /**
+     * The name of the source of the messages. This source is displayed in text types such as the
+     * TextTypeChat and TextTypeWhisper, where typically the username is shown.
+     */
     private String sourceName;
+    /**
+     * The message of the packet. This field is set for each TextType and is the main component of
+     * the packet.
+     */
     private String message;
+    /**
+     * A list of parameters that should be filled into the message. These parameters are only
+     * written if the type of the packet is TextTypeTranslation, TextTypeTip, TextTypePopup or
+     * TextTypeJukeboxPopup.
+     */
     private List<String> parameters = new ObjectArrayList<>();
+    /**
+     * Specifies if any of the messages need to be translated. It seems that where % is found in
+     * translatable text types, these are translated regardless of this bool. Translatable text
+     * types include TextTypeTranslation, TextTypeTip, TextTypePopup and TextTypeJukeboxPopup.
+     */
     private boolean needsTranslation;
+    /**
+     * The XBOX Live user ID of the player that sent the message. It is only set for packets of
+     * TextTypeChat. When sent to a player, the player will only be shown the chat message if a
+     * player with this XUID is present in the player list and not muted, or if the XUID is empty.
+     */
     private String xuid;
+    /**
+     * An identifier only set for particular platforms when chatting (presumably only for Nintendo
+     * Switch). It is otherwise an empty string, and is used to decide which players are able to
+     * chat with each other.
+     */
     private String platformChatId = "";
     /**
+     * A filtered version of Message with all the profanity removed. The client will use this over
+     * Message if this field is not empty and they have the "Filter Profanity" setting enabled.
+     *
      * @since v685
      */
     private String filteredMessage = "";

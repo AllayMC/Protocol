@@ -12,6 +12,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AwardAchievementPacket implements BedrockPacket {
+    /**
+     * The numeric ID of the achievement that should be awarded to the player. The values for these
+     * IDs are currently unknown.
+     */
     private int achievementId;
 
     @Override

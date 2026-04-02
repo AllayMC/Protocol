@@ -7,11 +7,23 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Represents indexed biomes used in the Bedrock protocol.
+ */
 @SuppressWarnings("rawtypes")
 public final class IndexedBiomes implements Indexable<Map<String, BiomeDefinitionData>> {
 
+    /**
+     * The biomes.
+     */
     private final List<IntObjectPair<BiomeDefinitionData>> biomes;
+    /**
+     * The values.
+     */
     private final List<String> values;
+    /**
+     * The cached.
+     */
     private Map<String, BiomeDefinitionData> cached;
 
     public IndexedBiomes(List<IntObjectPair<BiomeDefinitionData>> biomes, List<String> values) {

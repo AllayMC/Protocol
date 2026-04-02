@@ -1,10 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
-import lombok.Value;
-
 import java.util.List;
 
-@Value
-public class BiomeSurfaceMaterialAdjustmentData {
-    List<BiomeElementData> biomeElements;
+/**
+ * BiomeSurfaceMaterial specifies the materials to use for the surface layers of the biome.
+ *
+ * @param biomeElements The biome elements.
+ */
+public record BiomeSurfaceMaterialAdjustmentData(List<BiomeElementData> biomeElements) {
 }

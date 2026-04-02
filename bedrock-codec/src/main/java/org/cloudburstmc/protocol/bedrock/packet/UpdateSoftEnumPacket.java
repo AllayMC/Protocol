@@ -17,7 +17,15 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateSoftEnumPacket implements BedrockPacket {
+    /**
+     * The soft enum definition to update. Its name must match the dynamic enum previously sent in
+     * {@link AvailableCommandsPacket}.
+     */
     private CommandEnumData softEnum;
+    /**
+     * The kind of update to apply to {@link #softEnum}, such as adding, removing, or replacing
+     * options.
+     */
     private SoftEnumUpdateType type;
 
     @Override

@@ -13,8 +13,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)
 public class GameTestResultsPacket implements BedrockPacket {
+    /**
+     * Whether the requested test completed successfully.
+     */
     private boolean successful;
+    /**
+     * The error that occurred. If Succeeded is true, this field is empty.
+     */
     private String error;
+    /**
+     * The name of the test that produced this result.
+     */
     private String testName;
 
     @Override

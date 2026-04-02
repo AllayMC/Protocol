@@ -19,6 +19,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ClientCacheMissResponsePacket extends AbstractReferenceCounted
         implements BedrockPacket {
+    /**
+     * Blob data keyed by the blob hash requested by the client.
+     */
     private final Long2ObjectMap<ByteBuf> blobs = new Long2ObjectLinkedOpenHashMap<>();
 
     @Override

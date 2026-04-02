@@ -14,6 +14,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)
 public class RequestNetworkSettingsPacket implements BedrockPacket {
+    /**
+     * The protocol version used by the client. The server disconnects the client if this version is
+     * incompatible.
+     */
     private int protocolVersion;
 
     @Override

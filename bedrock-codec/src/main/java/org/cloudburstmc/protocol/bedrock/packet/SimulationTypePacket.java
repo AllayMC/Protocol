@@ -12,6 +12,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 public class SimulationTypePacket implements BedrockPacket {
 
+    /**
+     * The simulation type selected by the client or server.
+     */
     private SimulationType type;
 
     @Override

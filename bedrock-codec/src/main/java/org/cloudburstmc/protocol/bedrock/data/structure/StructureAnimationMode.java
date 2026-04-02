@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.structure;
 
+/**
+ * Enumerates structure animation mode values used in the Bedrock protocol.
+ */
 public enum StructureAnimationMode {
     NONE,
     LAYER,

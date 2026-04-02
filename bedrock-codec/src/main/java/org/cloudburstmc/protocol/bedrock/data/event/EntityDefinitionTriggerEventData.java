@@ -1,11 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.data.event;
 
-import lombok.Value;
-
-@Value
-public class EntityDefinitionTriggerEventData implements EventData {
-    private final String eventName;
-
+/**
+ * Represents an event used for an unknown purpose.
+ *
+ * @param eventName The event name.
+ */
+public record EntityDefinitionTriggerEventData(String eventName) implements EventData {
     @Override
     public EventDataType getType() {
         return EventDataType.ENTITY_DEFINITION_TRIGGER;

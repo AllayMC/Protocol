@@ -22,6 +22,9 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @ToString(doNotUseGetters = true)
 public class PlayerEnchantOptionsPacket implements BedrockPacket {
+    /**
+     * The enchantment-table options that should be shown for the current item.
+     */
     private final List<EnchantOptionData> options = new ArrayList<>();
 
     @Override

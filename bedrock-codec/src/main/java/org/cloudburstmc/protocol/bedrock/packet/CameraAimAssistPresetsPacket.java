@@ -21,15 +21,26 @@ import java.util.List;
 @ToString(doNotUseGetters = true)
 public class CameraAimAssistPresetsPacket implements BedrockPacket {
     /**
+     * A list of categories which can be referenced by one of the Presets.
+     *
      * @deprecated since v800 (1.21.80). Use {@link #categoryDefinitions} instead.
      */
+    @Deprecated
     private final List<CameraAimAssistCategories> categories = new ObjectArrayList<>();
+    /**
+     * A list of presets which define a base for how aim assist should behave.
+     */
     private final List<CameraAimAssistPresetDefinition> presets = new ObjectArrayList<>();
     /**
+     * The operation to perform with the preset definitions, such as replacing or appending them.
+     *
      * @since v776
      */
     private CameraAimAssistOperation operation;
     /**
+     * Category definitions referenced by the presets. This supersedes the deprecated legacy
+     * {@link #categories} list.
+     *
      * @since v800 (1.21.80)
      */
     private final List<CameraAimAssistCategory> categoryDefinitions = new ObjectArrayList<>();

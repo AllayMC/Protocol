@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates game type values used in the Bedrock protocol.
+ */
 public enum GameType {
     SURVIVAL,
     CREATIVE,

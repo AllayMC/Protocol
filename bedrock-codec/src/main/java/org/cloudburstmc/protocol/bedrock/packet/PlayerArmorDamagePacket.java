@@ -17,7 +17,13 @@ import java.util.Set;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayerArmorDamagePacket implements BedrockPacket {
+    /**
+     * Flags indicating which armour slots have damage values present in {@link #damage}.
+     */
     private final Set<PlayerArmorDamageFlag> flags = EnumSet.noneOf(PlayerArmorDamageFlag.class);
+    /**
+     * Damage values indexed by armour slot order.
+     */
     private final int[] damage = new int[5];
 
     @Override

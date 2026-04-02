@@ -14,6 +14,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetEntityLinkPacket implements BedrockPacket {
+    /**
+     * The link to apply between two entities, typically for mounting or dismounting.
+     */
     private EntityLinkData entityLink;
 
     @Override

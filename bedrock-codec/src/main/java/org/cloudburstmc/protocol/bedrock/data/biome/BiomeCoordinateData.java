@@ -1,45 +1,26 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.cloudburstmc.protocol.bedrock.data.ExpressionOp;
 import org.cloudburstmc.protocol.bedrock.data.RandomDistributionType;
-import org.cloudburstmc.protocol.common.util.index.Indexable;
-import org.cloudburstmc.protocol.common.util.index.Unindexed;
 
-@Value
-@RequiredArgsConstructor(onConstructor_ = {@Deprecated})
-public class BiomeCoordinateData {
-    ExpressionOp minValueType;
-    @Getter(AccessLevel.NONE)
-    transient Indexable<String> minValue;
-    ExpressionOp maxValueType;
-    @Getter(AccessLevel.NONE)
-    transient Indexable<String> maxValue;
-    long gridOffset;
-    long gridStepSize;
-    RandomDistributionType distribution;
+/**
+ * BiomeCoordinate specifies coordinate rules for where features can be scattered in the biome.
+ *
+ * @param minValueType The expression operation to use when evaluating the minimum value.
+ * @param minValue     The minimum value expression.
+ * @param maxValueType The expression operation to use when evaluating the maximum value.
+ * @param maxValue     The maximum value expression.
+ * @param gridOffset   The offset of the grid, used for fixed grid and jittered grid distributions.
+ * @param gridStepSize The step size of the grid, used for fixed grid and jittered grid
+ *                     distributions.
+ * @param distribution The random distribution to use for this coordinate rule.
+ */
+public record BiomeCoordinateData(ExpressionOp minValueType, String minValue, ExpressionOp maxValueType,
+                                  String maxValue, long gridOffset, long gridStepSize,
+                                  RandomDistributionType distribution) {
 
     @JsonCreator
-    public BiomeCoordinateData(ExpressionOp minValueType, String minValue, ExpressionOp maxValueType, String maxValue,
-                               long gridOffset, long gridStepSize, RandomDistributionType distribution) {
-        this.minValueType = minValueType;
-        this.minValue = new Unindexed<>(minValue);
-        this.maxValueType = maxValueType;
-        this.maxValue = new Unindexed<>(maxValue);
-        this.gridOffset = gridOffset;
-        this.gridStepSize = gridStepSize;
-        this.distribution = distribution;
-    }
-
-    public String getMinValue() {
-        return minValue.get();
-    }
-
-    public String getMaxValue() {
-        return maxValue.get();
+    public BiomeCoordinateData {
     }
 }

@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.skin;
 
+/**
+ * Enumerates animation expression type values used in the Bedrock protocol.
+ */
 public enum AnimationExpressionType {
     LINEAR,
     BLINKING;

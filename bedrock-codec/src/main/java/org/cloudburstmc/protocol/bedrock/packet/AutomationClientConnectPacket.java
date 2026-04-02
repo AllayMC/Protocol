@@ -14,6 +14,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AutomationClientConnectPacket implements BedrockPacket {
+    /**
+     * The websocket address that the client should connect to for automation.
+     */
     private String address;
 
     @Override

@@ -10,5 +10,5 @@ public interface Definition {
      *
      * @return runtime id
      */
-    int getRuntimeId();
+    int runtimeId();
 }

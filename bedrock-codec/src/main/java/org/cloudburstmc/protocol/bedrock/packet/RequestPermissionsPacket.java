@@ -14,8 +14,17 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class RequestPermissionsPacket implements BedrockPacket {
+    /**
+     * The unique entity ID of the player whose permission level is being requested.
+     */
     private long uniqueEntityId;
+    /**
+     * The coarse permission level being requested.
+     */
     private PlayerPermission permissions;
+    /**
+     * Custom permission flags requested in addition to {@link #permissions}.
+     */
     private int customPermissions;
 
     @Override

@@ -84,7 +84,7 @@ public class BedrockCodecHelper_v332 extends BedrockCodecHelper_v313 {
             buffer.writeByte(0);
             return;
         }
-        VarInts.writeInt(buffer, definition.getRuntimeId());
+        VarInts.writeInt(buffer, definition.runtimeId());
         // Write damage and count
         int damage = item.getDamage();
         if (damage == -1) damage = Short.MAX_VALUE;

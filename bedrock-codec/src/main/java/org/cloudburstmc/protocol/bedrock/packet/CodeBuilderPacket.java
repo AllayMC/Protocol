@@ -13,7 +13,13 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CodeBuilderPacket implements BedrockPacket {
+    /**
+     * The WebSocket URL of the Code Builder server.
+     */
     private String url;
+    /**
+     * Whether the client should open Code Builder immediately.
+     */
     private boolean opening;
 
     @Override

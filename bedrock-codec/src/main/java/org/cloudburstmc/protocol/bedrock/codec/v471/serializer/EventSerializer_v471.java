@@ -37,7 +37,7 @@ public class EventSerializer_v471 extends EventSerializer_v389 {
 
     protected void writeBlockHit(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         TargetBlockHitEventData event = (TargetBlockHitEventData) eventData;
-        VarInts.writeInt(buffer, event.getRedstoneLevel());
+        VarInts.writeInt(buffer, event.redstoneLevel());
     }
 
     protected PiglinBarterEventData readPiglinBarter(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -49,8 +49,8 @@ public class EventSerializer_v471 extends EventSerializer_v389 {
 
     protected void writePiglinBarter(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         PiglinBarterEventData event = (PiglinBarterEventData) eventData;
-        VarInts.writeInt(buffer, event.getDefinition().getRuntimeId());
-        buffer.writeBoolean(event.isTargetingPlayer());
+        VarInts.writeInt(buffer, event.definition().runtimeId());
+        buffer.writeBoolean(event.targetingPlayer());
     }
 
     protected CopperWaxedOrUnwaxedEventData readCopperWaxedUnwaxed(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -61,7 +61,7 @@ public class EventSerializer_v471 extends EventSerializer_v389 {
 
     protected void writeCopperWaxedUnwaxed(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         CopperWaxedOrUnwaxedEventData event = (CopperWaxedOrUnwaxedEventData) eventData;
-        VarInts.writeInt(buffer, DefinitionUtils.checkDefinition(helper.getBlockDefinitions(), event.getDefinition()).getRuntimeId());
+        VarInts.writeInt(buffer, DefinitionUtils.checkDefinition(helper.getBlockDefinitions(), event.definition()).runtimeId());
     }
 
     protected CodeBuilderActionEventData readCodeBuilderAction(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -71,7 +71,7 @@ public class EventSerializer_v471 extends EventSerializer_v389 {
 
     protected void writeCodeBuilderAction(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         CodeBuilderActionEventData event = (CodeBuilderActionEventData) eventData;
-        helper.writeString(buffer, event.getAction());
+        helper.writeString(buffer, event.action());
     }
 
     protected CodeBuilderScoreboardEventData readCodeBuilderScoreboard(ByteBuf buffer, BedrockCodecHelper helper) {
@@ -82,7 +82,7 @@ public class EventSerializer_v471 extends EventSerializer_v389 {
 
     protected void writeCodeBuilderScoreboard(ByteBuf buffer, BedrockCodecHelper helper, EventData eventData) {
         CodeBuilderScoreboardEventData event = (CodeBuilderScoreboardEventData) eventData;
-        helper.writeString(buffer, event.getObjectiveName());
-        VarInts.writeInt(buffer, event.getScore());
+        helper.writeString(buffer, event.objectiveName());
+        VarInts.writeInt(buffer, event.score());
     }
 }

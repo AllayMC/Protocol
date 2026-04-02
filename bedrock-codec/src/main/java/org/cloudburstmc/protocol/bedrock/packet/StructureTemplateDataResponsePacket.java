@@ -8,17 +8,27 @@ import org.cloudburstmc.protocol.bedrock.data.structure.StructureTemplateRespons
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to send data of a structure to the client in response to a
- * StructureTemplateDataRequest packet.
+ * Sent by the server in response to {@link StructureTemplateDataRequestPacket}.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class StructureTemplateDataResponsePacket implements BedrockPacket {
+    /**
+     * The structure template name.
+     */
     private String name;
+    /**
+     * Whether the response contains data for a save/export operation.
+     */
     private boolean save;
+    /**
+     * The structure template data encoded as NBT.
+     */
     private NbtMap tag;
     /**
+     * The response operation type.
+     *
      * @since v388
      */
     private StructureTemplateResponseType type;

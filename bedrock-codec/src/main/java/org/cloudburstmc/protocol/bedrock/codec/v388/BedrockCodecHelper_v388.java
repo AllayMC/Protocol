@@ -85,9 +85,9 @@ public class BedrockCodecHelper_v388 extends BedrockCodecHelper_v361 {
 
     @Override
     public void writeAnimationData(ByteBuf buffer, AnimationData animation) {
-        this.writeImage(buffer, animation.getImage());
-        buffer.writeIntLE(animation.getTextureType().ordinal());
-        buffer.writeFloatLE(animation.getFrames());
+        this.writeImage(buffer, animation.image());
+        buffer.writeIntLE(animation.textureType().ordinal());
+        buffer.writeFloatLE(animation.frames());
     }
 
     @Override
@@ -128,6 +128,6 @@ public class BedrockCodecHelper_v388 extends BedrockCodecHelper_v361 {
     @Override
     public void writeStructureSettings(ByteBuf buffer, StructureSettings settings) {
         super.writeStructureSettings(buffer, settings);
-        this.writeVector3f(buffer, settings.getPivot());
+        this.writeVector3f(buffer, settings.pivot());
     }
 }

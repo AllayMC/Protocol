@@ -15,8 +15,18 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class LevelEventPacket implements BedrockPacket {
+    /**
+     * The level event to trigger.
+     */
     private LevelEventType type;
+    /**
+     * The position of the level event. Practically every event requires this Vec3 set for it, as
+     * particles, sounds and block editing relies on it.
+     */
     private Vector3f position;
+    /**
+     * Additional event data whose meaning depends on {@link #type}.
+     */
     private int data;
 
     @Override

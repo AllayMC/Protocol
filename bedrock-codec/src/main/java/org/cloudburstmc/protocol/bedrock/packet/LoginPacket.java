@@ -14,14 +14,19 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)
 public class LoginPacket implements BedrockPacket {
+    /**
+     * The protocol version reported by the client. Modern clients also send a protocol version in
+     * {@link RequestNetworkSettingsPacket}, so servers should not rely on this field alone.
+     */
     private int protocolVersion;
     /**
-     * The JWT payload signed by Minecraft's authentication server. Assuming this is a valid
-     * signature, it can be trusted to contain the player's identity and other information.
+     * The parsed connection request payload. It contains the authenticated chain data and the
+     * client data JWT, including the client's public key used to start encryption.
      */
     private AuthPayload authPayload;
     /**
-     * The JWT payload signed by the client. The client can modify this, so it should not be trusted.
+     * The raw client data JWT signed by the client itself. It may be modified by the client and
+     * should therefore not be trusted on its own.
      */
     private String clientJwt;
 

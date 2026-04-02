@@ -17,22 +17,22 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class CameraShakePacket implements BedrockPacket {
     /**
-     * Intensity to shake the player's camera view.
-     *
-     * @param intensity shake intensity
-     * @return shake intensity
+     * The intensity of the camera shake. The client clamps this value to 4, so higher values may
+     * not have any additional effect.
      */
     private float intensity;
     /**
-     * Amount of time to shake the player's camera.
-     *
-     * @param duration seconds to shake
-     * @return seconds to shake
+     * The duration of the shake in seconds.
      */
     private float duration;
 
+    /**
+     * The type of shake to apply, which affects how the shake is rendered client-side.
+     */
     private CameraShakeType shakeType;
     /**
+     * The action to perform, typically either adding shake or stopping it.
+     *
      * @since v428
      */
     private CameraShakeAction shakeAction;

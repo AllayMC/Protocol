@@ -11,33 +11,60 @@ import java.util.UUID;
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 
+/**
+ * Represents a recipe that has no particular shape. Its functionality is shared with the
+ * RecipeShulkerBox and RecipeShapelessChemistry types.
+ */
 @Getter
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class ShapelessRecipeData implements CraftingRecipeData {
 
+    /**
+     * The type.
+     */
     private final CraftingDataType type;
+    /**
+     * The ingredients.
+     */
     private final List<ItemDescriptorWithCount> ingredients;
+    /**
+     * The results.
+     */
     private final List<ItemData> results;
+    /**
+     * A UUID identifying the recipe. Since the CraftingEvent packet no longer exists, this can
+     * always be empty.
+     */
     private final UUID uuid;
     /**
+     * The tag.
+     *
      * @since v354
      */
     private final String tag;
     /**
+     * The ID.
+     *
      * @since v361
      */
     private final String id;
     /**
+     * The priority.
+     *
      * @since v361
      */
     private final int priority;
     /**
+     * The net ID.
+     *
      * @since v407
      */
     private final int netId;
     /**
+     * The requirement.
+     *
      * @since v685
      */
     private final RecipeUnlockingRequirement requirement;

@@ -17,8 +17,18 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class InventorySlotPacket implements BedrockPacket {
+    /**
+     * The ID of the inventory window being updated.
+     */
     private int containerId;
+    /**
+     * The index of the slot that the packet modifies. The new item will be set to the slot at this
+     * index.
+     */
     private int slot;
+    /**
+     * The item to place into the target slot.
+     */
     private ItemData item;
     /**
      * @since v712
@@ -26,11 +36,18 @@ public class InventorySlotPacket implements BedrockPacket {
     private FullContainerName containerNameData =
             new FullContainerName(ContainerSlotType.ANVIL_INPUT, null);
     /**
+     * The size of the dynamic container.
+     *
      * @since v729
-     * @deprecated since v748. Use storageItem ItemData size instead.
+     * @deprecated since v748. Use the storage item stack size instead.
      */
+    @Deprecated
     private int dynamicContainerSize;
     /**
+     * The item that is acting as the storage container for the inventory. If the inventory is not a
+     * dynamic container then this field should be left empty. When set, only the item type is used
+     * by the client and none of the other stack info.
+     *
      * @since v748
      */
     private ItemData storageItem = ItemData.AIR;

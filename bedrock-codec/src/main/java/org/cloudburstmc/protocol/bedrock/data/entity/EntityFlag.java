@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.entity;
 
+/**
+ * Enumerates entity flag values used in the Bedrock protocol.
+ */
 public enum EntityFlag {
     ON_FIRE,
     SNEAKING,
@@ -115,16 +118,19 @@ public enum EntityFlag {
      * @since v575
      * @deprecated since v671
      */
+    @Deprecated
     SCENTING,
     /**
      * @since v575
      * @deprecated since v671
      */
+    @Deprecated
     RISING,
     /**
      * @since v575
      * @deprecated since v671
      */
+    @Deprecated
     FEELING_HAPPY,
     /**
      * @since v575

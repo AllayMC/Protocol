@@ -38,14 +38,14 @@ public class BedrockCodecHelper_v422 extends BedrockCodecHelper_v419 {
 
     @Override
     public void writeItemStackRequest(ByteBuf buffer, ItemStackRequest request) {
-        VarInts.writeInt(buffer, request.getRequestId());
+        VarInts.writeInt(buffer, request.requestId());
 
-        this.writeArray(buffer, request.getActions(), (byteBuf, action) -> {
+        this.writeArray(buffer, request.actions(), (byteBuf, action) -> {
             ItemStackRequestActionType type = action.getType();
             byteBuf.writeByte(this.stackRequestActionTypes.getId(type));
             writeRequestActionData(byteBuf, action);
         });
-        this.writeArray(buffer, request.getFilterStrings(), this::writeString); // new for v422
+        this.writeArray(buffer, request.filterStrings(), this::writeString); // new for v422
     }
 
     @Override
@@ -62,8 +62,8 @@ public class BedrockCodecHelper_v422 extends BedrockCodecHelper_v419 {
     @Override
     protected void writeRequestActionData(ByteBuf byteBuf, ItemStackRequestAction action) {
         if (action.getType() == ItemStackRequestActionType.CRAFT_RECIPE_OPTIONAL) {
-            VarInts.writeUnsignedInt(byteBuf, ((CraftRecipeOptionalAction) action).getRecipeNetworkId());
-            byteBuf.writeIntLE(((CraftRecipeOptionalAction) action).getFilteredStringIndex());
+            VarInts.writeUnsignedInt(byteBuf, ((CraftRecipeOptionalAction) action).recipeNetworkId());
+            byteBuf.writeIntLE(((CraftRecipeOptionalAction) action).filteredStringIndex());
         } else {
             super.writeRequestActionData(byteBuf, action);
         }

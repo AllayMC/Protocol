@@ -15,6 +15,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class MultiplayerSettingsPacket implements BedrockPacket {
+    /**
+     * The multiplayer action to apply, such as enabling multiplayer, disabling it, or refreshing
+     * the join code.
+     */
     private MultiplayerMode mode;
 
     @Override

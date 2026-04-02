@@ -1,5 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.data.structure;
 
+/**
+ * Enumerates the structure template response modes used in
+ * {@code StructureTemplateDataResponsePacket}.
+ */
 public enum StructureTemplateResponseType {
     NONE,
     EXPORT,
@@ -8,6 +12,7 @@ public enum StructureTemplateResponseType {
      * @since v560
      * @deprecated since v712
      */
+    @Deprecated
     IMPORT;
 
     private static final StructureTemplateResponseType[] VALUES = StructureTemplateResponseType.values();

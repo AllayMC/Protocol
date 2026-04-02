@@ -6,7 +6,7 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Client bound packet to indicate whether the server has preloaded the ticking areas.
+ * Sent by the server to notify the client of a ticking area's loading status.
  *
  * @since v503
  */
@@ -14,6 +14,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class TickingAreasLoadStatusPacket implements BedrockPacket {
+    /**
+     * {@code true} if the server is still waiting for the area's preload to complete.
+     */
     boolean waitingForPreload;
 
     @Override

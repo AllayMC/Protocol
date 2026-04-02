@@ -13,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateClientOptionsPacket implements BedrockPacket {
+    /**
+     * The graphics mode currently selected by the client.
+     */
     private GraphicsMode graphicsMode;
 
     @Override

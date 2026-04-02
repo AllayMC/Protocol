@@ -36,8 +36,8 @@ public class StartGameSerializer_v428 extends StartGameSerializer_v419 {
         VarInts.writeInt(buffer, packet.getEnchantmentSeed());
 
         helper.writeArray(buffer, packet.getBlockProperties(), (buf, packetHelper, block) -> {
-            packetHelper.writeString(buf, block.getName());
-            packetHelper.writeTag(buf, block.getProperties());
+            packetHelper.writeString(buf, block.name());
+            packetHelper.writeTag(buf, block.properties());
         });
 
         this.writeItemDefinitions(buffer, helper, packet.getItemDefinitions());

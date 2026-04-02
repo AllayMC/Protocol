@@ -1,5 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.data.structure;
 
+/**
+ * Enumerates the operations a client may request in
+ * {@code StructureTemplateDataRequestPacket}.
+ */
 public enum StructureTemplateRequestOperation {
     NONE,
     EXPORT_FROM_SAVED_MODE,
@@ -9,6 +13,7 @@ public enum StructureTemplateRequestOperation {
      * @since v560
      * @deprecated since v712
      */
+    @Deprecated
     IMPORT;
 
     private static final StructureTemplateRequestOperation[] VALUES = StructureTemplateRequestOperation.values();

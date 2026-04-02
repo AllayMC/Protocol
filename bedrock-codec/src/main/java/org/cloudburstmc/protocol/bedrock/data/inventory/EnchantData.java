@@ -1,9 +1,10 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory;
 
-import lombok.Value;
-
-@Value
-public class EnchantData {
-    private final int type;
-    private final int level;
+/**
+ * Represents enchant data used in the Bedrock protocol.
+ *
+ * @param type  The type.
+ * @param level The level.
+ */
+public record EnchantData(int type, int level) {
 }

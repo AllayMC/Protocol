@@ -15,8 +15,19 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EntityEventPacket implements BedrockPacket {
+    /**
+     * The runtime ID of the entity. The runtime ID is unique for each world session, and entities
+     * are generally identified in packets using this runtime ID.
+     */
     private long runtimeEntityId;
+    /**
+     * The entity event to fire. Each value maps to a specific client-side animation or behaviour.
+     */
     private EntityEventType type;
+    /**
+     * Optional event-specific payload. Most entity events leave this at {@code 0}, but some values
+     * repurpose it for extra state such as caravan size or spawn metadata.
+     */
     private int data;
 
     @Override

@@ -37,8 +37,8 @@ public class ResourcePackStackSerializer_v291 implements BedrockPacketSerializer
     public void writeEntry(ByteBuf buffer, BedrockCodecHelper helper, ResourcePackStackPacket.Entry entry) {
         requireNonNull(entry, "ResourcePackStackPacket entry is null");
 
-        helper.writeString(buffer, entry.getPackId());
-        helper.writeString(buffer, entry.getPackVersion());
-        helper.writeString(buffer, entry.getSubPackName());
+        helper.writeString(buffer, entry.packId());
+        helper.writeString(buffer, entry.packVersion());
+        helper.writeString(buffer, entry.subPackName());
     }
 }

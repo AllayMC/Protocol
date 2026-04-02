@@ -13,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayStatusPacket implements BedrockPacket {
+    /**
+     * The play status to apply. This is one of the values in {@link Status}.
+     */
     private Status status;
 
     @Override
@@ -27,44 +30,53 @@ public class PlayStatusPacket implements BedrockPacket {
     public enum Status {
 
         /**
-         * Sent to confirm login success and move onto resource pack sequence
+         * Confirms login success and advances the connection into the resource-pack phase.
          */
         LOGIN_SUCCESS,
 
         /**
-         * Displays outdated client disconnection screen
+         * Indicates that the client is too old for the server.
          */
         LOGIN_FAILED_CLIENT_OLD,
 
         /**
-         * Displays outdated server disconnection screen
+         * Indicates that the server is too old for the client.
          */
         LOGIN_FAILED_SERVER_OLD,
 
         /**
-         * Spawns player into the world
+         * Tells the client it may finish spawning into the world.
          */
         PLAYER_SPAWN,
 
+        /**
+         * Indicates that the tenant information in the login chain was invalid.
+         */
         LOGIN_FAILED_INVALID_TENANT,
 
         /**
-         * Sent when a Education Edition client joins an Bedrock server
+         * Sent when an Education Edition client attempts to join a vanilla Bedrock server.
          */
         LOGIN_FAILED_EDITION_MISMATCH_EDU_TO_VANILLA,
 
         /**
-         * Sent when a Bedrock client joins an Education server
+         * Sent when a vanilla Bedrock client attempts to join an Education Edition server.
          */
         LOGIN_FAILED_EDITION_MISMATCH_VANILLA_TO_EDU,
 
         /**
-         * Sent to a split screen player when the server is full
+         * Sent to a split-screen sub-client when the server is already full.
          */
         FAILED_SERVER_FULL_SUB_CLIENT,
 
+        /**
+         * Sent when an editor client attempts to join a vanilla world.
+         */
         EDITOR_TO_VANILLA_MISMATCH,
 
+        /**
+         * Sent when a vanilla client attempts to join an editor world.
+         */
         VANILLA_TO_EDITOR_MISMATCH
     }
 

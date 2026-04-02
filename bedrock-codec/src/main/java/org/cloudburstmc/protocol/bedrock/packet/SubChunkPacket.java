@@ -12,23 +12,32 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * Sends data about multiple sub-chunks around a center point.
+ * Sent by the server to return multiple sub-chunks relative to a shared center position.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true, callSuper = false)
 @ToString(doNotUseGetters = true)
 public class SubChunkPacket extends AbstractReferenceCounted implements BedrockPacket {
+    /**
+     * The dimension containing the returned sub-chunks.
+     */
     private int dimension;
     /**
+     * The sub-chunk entries included in the response.
+     */
+    private List<SubChunkData> subChunks = new ObjectArrayList<>();
+    /**
+     * Whether blob caching is enabled for the returned entries.
+     *
      * @since v475
      */
     private boolean cacheEnabled;
     /**
+     * The absolute sub-chunk center position used as the base for the entries in {@link #subChunks}.
+     *
      * @since v486
      */
     private Vector3i centerPosition;
-
-    private List<SubChunkData> subChunks = new ObjectArrayList<>();
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

@@ -12,8 +12,17 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemStackResponseSlot {
+    /**
+     * The slot.
+     */
     private int slot;
+    /**
+     * The hotbar slot.
+     */
     private int hotbarSlot;
+    /**
+     * The count.
+     */
     private int count;
 
     /**
@@ -29,10 +38,14 @@ public class ItemStackResponseSlot {
     private @NonNull String customName;
 
     /**
+     * The durability correction.
+     *
      * @since v428
      */
     private int durabilityCorrection;
     /**
+     * The filtered custom name.
+     *
      * @since v766
      */
     private String filteredCustomName = "";

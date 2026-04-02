@@ -14,7 +14,15 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class OpenSignPacket implements BedrockPacket {
+    /**
+     * The position of the sign to edit. The client uses this to fetch the sign's current text and
+     * formatting before opening the editor.
+     */
     private Vector3i position;
+    /**
+     * FrontSide dictates whether the front side of the sign should be opened for editing. If false,
+     * the back side is assumed to be edited.
+     */
     private boolean frontSide;
 
     @Override

@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request;
 
+/**
+ * Enumerates text processing event origin values used in the Bedrock protocol.
+ */
 public enum TextProcessingEventOrigin {
     SERVER_CHAT_PUBLIC,
     SERVER_CHAT_WHISPER,
@@ -15,16 +18,19 @@ public enum TextProcessingEventOrigin {
     /**
      * @deprecated since v589
      */
+    @Deprecated
     SLASH_COMMAND_NON_CHAT,
     /**
      * @since v560
      * @deprecated since v575
      */
+    @Deprecated
     SCOREBOARD_TEXT,
     /**
      * @since v560
      * @deprecated since v575
      */
+    @Deprecated
     TICKING_AREA_TEXT,
     /**
      * @since v589

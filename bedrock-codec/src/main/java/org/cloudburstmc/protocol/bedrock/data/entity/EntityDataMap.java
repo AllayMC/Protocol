@@ -10,6 +10,9 @@ import static org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes.FLAG
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkNotNull;
 
+/**
+ * Represents entity data map used in the Bedrock protocol.
+ */
 public final class EntityDataMap implements Map<EntityDataType<?>, Object> {
 
     public static EnumMap<EntityFlag, Boolean> flagsOf(EntityFlag... flags) {
@@ -20,6 +23,9 @@ public final class EntityDataMap implements Map<EntityDataType<?>, Object> {
         return map;
     }
 
+    /**
+     * The map.
+     */
     private final Map<EntityDataType<?>, Object> map = new LinkedHashMap<>();
 
     @NonNull

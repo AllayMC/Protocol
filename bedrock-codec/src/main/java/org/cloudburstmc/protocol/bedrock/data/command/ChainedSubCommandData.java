@@ -5,14 +5,20 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Represents chained sub command data used in the Bedrock protocol.
+ */
 @Data
 public class ChainedSubCommandData {
+    /**
+     * The name.
+     */
     private final String name;
+    /**
+     * The values.
+     */
     private final List<Value> values = new ObjectArrayList<>();
 
-    @Data
-    public static class Value {
-        private final String first;
-        private final String second;
+    public record Value(String first, String second) {
     }
 }

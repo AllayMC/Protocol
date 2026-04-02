@@ -15,6 +15,11 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 @NoEncryption // This is sent in plain text to complete the Diffie Hellman key exchange.
 public class ServerToClientHandshakePacket implements BedrockPacket {
+    /**
+     * JWT is a raw JWT token containing data such as the public key from the server, the algorithm
+     * used and the server's token. The client uses it to verify the server key and derive the
+     * shared encryption secret.
+     */
     private String jwt;
 
     @Override

@@ -10,17 +10,33 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * Essentially just UpdateBlock packet, however for a set of blocks in a sub-chunk.
+ * A batched variant of {@link UpdateBlockPacket} that updates multiple blocks within the same
+ * sub-chunk.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateSubChunkBlocksPacket implements BedrockPacket {
+    /**
+     * The x coordinate of the sub-chunk.
+     */
     private int chunkX;
+    /**
+     * The y coordinate of the sub-chunk.
+     */
     private int chunkY;
+    /**
+     * The z coordinate of the sub-chunk.
+     */
     private int chunkZ;
 
+    /**
+     * Block changes for the default block layer.
+     */
     private final List<BlockChangeEntry> standardBlocks = new ObjectArrayList<>();
+    /**
+     * Block changes for the extra block layer, usually used for waterlogged or similar blocks.
+     */
     private final List<BlockChangeEntry> extraBlocks = new ObjectArrayList<>();
 
     @Override

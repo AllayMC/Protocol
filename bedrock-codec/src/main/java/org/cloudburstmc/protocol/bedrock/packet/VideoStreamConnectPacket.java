@@ -13,14 +13,27 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class VideoStreamConnectPacket implements BedrockPacket {
+    /**
+     * The websocket server address that should receive the streamed screenshots.
+     */
     private String address;
+    /**
+     * The rate at which the client should capture and send screenshots.
+     */
     private float screenshotFrequency;
+    /**
+     * The streaming action to perform.
+     */
     private Action action;
     /**
+     * The width of the captured frames.
+     *
      * @since v361
      */
     private int width;
     /**
+     * The height of the captured frames.
+     *
      * @since v361
      */
     private int height;

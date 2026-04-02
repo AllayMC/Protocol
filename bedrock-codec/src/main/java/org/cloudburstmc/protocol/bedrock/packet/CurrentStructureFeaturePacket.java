@@ -13,6 +13,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CurrentStructureFeaturePacket implements BedrockPacket {
+    /**
+     * The identifier of the structure feature the player is currently occupying. Empty when the
+     * player is not inside any tracked structure feature.
+     */
     private String currentStructureFeature;
 
     @Override

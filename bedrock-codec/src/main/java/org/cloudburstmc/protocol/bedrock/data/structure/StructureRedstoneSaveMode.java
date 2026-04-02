@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.structure;
 
+/**
+ * Enumerates structure redstone save mode values used in the Bedrock protocol.
+ */
 public enum StructureRedstoneSaveMode {
     SAVES_TO_MEMORY,
     SAVES_TO_DISK;

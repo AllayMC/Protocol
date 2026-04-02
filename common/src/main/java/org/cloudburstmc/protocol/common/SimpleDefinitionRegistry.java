@@ -31,7 +31,7 @@ public class SimpleDefinitionRegistry<D extends Definition> implements Definitio
     public boolean isRegistered(D definition) {
         // A containsValue() check here would cause a linear search through the entire map, so we do this instead.
         // Also, might as well do a reference check since there should only be one instance of each definition.
-        return runtimeMap.get(definition.getRuntimeId()) == definition;
+        return runtimeMap.get(definition.runtimeId()) == definition;
     }
 
     public Builder<D> toBuilder() {
@@ -52,18 +52,18 @@ public class SimpleDefinitionRegistry<D extends Definition> implements Definitio
 
         public Builder<D> add(D definition) {
             checkNotNull(definition, "definition");
-            checkArgument(!this.runtimeMap.containsKey(definition.getRuntimeId()),
-                    "Runtime ID is already registered: " + definition.getRuntimeId());
-            this.runtimeMap.put(definition.getRuntimeId(), definition);
+            checkArgument(!this.runtimeMap.containsKey(definition.runtimeId()),
+                    "Runtime ID is already registered: " + definition.runtimeId());
+            this.runtimeMap.put(definition.runtimeId(), definition);
 
             return this;
         }
 
         public Builder<D> remove(D definition) {
             checkNotNull(definition, "definition");
-            checkArgument(this.runtimeMap.containsKey(definition.getRuntimeId()),
-                    "Runtime ID is not registered: " + definition.getRuntimeId());
-            this.runtimeMap.remove(definition.getRuntimeId());
+            checkArgument(this.runtimeMap.containsKey(definition.runtimeId()),
+                    "Runtime ID is not registered: " + definition.runtimeId());
+            this.runtimeMap.remove(definition.runtimeId());
 
             return this;
         }

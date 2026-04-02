@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Enumerates disconnect fail reason values used in the Bedrock protocol.
+ */
 public enum DisconnectFailReason {
     UNKNOWN,
     CANT_CONNECT_NO_INTERNET,
@@ -93,6 +96,7 @@ public enum DisconnectFailReason {
     /**
      * @deprecated since v685
      */
+    @Deprecated
     REALMS_SESSION_NOT_FOUND_DEPRECATED,
     BAD_PACKET,
     CONN_FAILED_TO_CREATE_OFFER,

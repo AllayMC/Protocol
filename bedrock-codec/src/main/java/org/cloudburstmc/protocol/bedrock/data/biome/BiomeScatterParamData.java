@@ -1,51 +1,28 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.cloudburstmc.protocol.bedrock.data.CoordinateEvaluationOrder;
 import org.cloudburstmc.protocol.bedrock.data.ExpressionOp;
-import org.cloudburstmc.protocol.common.util.index.Indexable;
-import org.cloudburstmc.protocol.common.util.index.Unindexed;
 
 import java.util.List;
 
-@Value
-@RequiredArgsConstructor(onConstructor_ = {@Deprecated})
-public class BiomeScatterParamData {
-
-    List<BiomeCoordinateData> coordinates;
-    CoordinateEvaluationOrder evalOrder;
-    ExpressionOp chancePercentType;
-    @Getter(AccessLevel.NONE)
-    transient Indexable<String> chancePercent;
-    int chanceNumerator;
-    int changeDenominator;
-    ExpressionOp iterationsType;
-    @Getter(AccessLevel.NONE)
-    transient Indexable<String> iterations;
+/**
+ * Represents biome scatter param data used in the Bedrock protocol.
+ *
+ * @param coordinates        The coordinates.
+ * @param evalOrder          The eval order.
+ * @param chancePercentType  The chance percent type.
+ * @param chancePercent      The chance percent.
+ * @param chanceNumerator    The chance numerator.
+ * @param changeDenominator  The change denominator.
+ * @param iterationsType     The iterations type.
+ * @param iterations         The iterations.
+ */
+public record BiomeScatterParamData(List<BiomeCoordinateData> coordinates, CoordinateEvaluationOrder evalOrder,
+                                    ExpressionOp chancePercentType, String chancePercent, int chanceNumerator,
+                                    int changeDenominator, ExpressionOp iterationsType, String iterations) {
 
     @JsonCreator
-    public BiomeScatterParamData(List<BiomeCoordinateData> coordinates, CoordinateEvaluationOrder evalOrder,
-                                 ExpressionOp chancePercentType, String chancePercent, int chanceNumerator,
-                                 int changeDenominator, ExpressionOp iterationsType, String iterations) {
-        this.coordinates = coordinates;
-        this.evalOrder = evalOrder;
-        this.chancePercentType = chancePercentType;
-        this.chancePercent = new Unindexed<>(chancePercent);
-        this.chanceNumerator = chanceNumerator;
-        this.changeDenominator = changeDenominator;
-        this.iterationsType = iterationsType;
-        this.iterations = new Unindexed<>(iterations);
-    }
-
-    public String getChancePercent() {
-        return chancePercent.get();
-    }
-
-    public String getIterations() {
-        return iterations.get();
+    public BiomeScatterParamData {
     }
 }

@@ -1,8 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.packet;
 
-import lombok.Getter;
-
-public class BedrockPacketType {
+/**
+ * Identifier for a logical Bedrock packet type.
+ *
+ * @param name stable name used for the packet type constant
+ */
+public record BedrockPacketType(String name) {
     public static final BedrockPacketType ADD_BEHAVIOR_TREE = new BedrockPacketType("ADD_BEHAVIOR_TREE");
     public static final BedrockPacketType ADD_ENTITY = new BedrockPacketType("ADD_ENTITY");
     public static final BedrockPacketType ADD_HANGING_ENTITY = new BedrockPacketType("ADD_HANGING_ENTITY");
@@ -247,13 +250,6 @@ public class BedrockPacketType {
     public static final BedrockPacketType SERVERBOUND_DATA_DRIVEN_SCREEN_CLOSED = new BedrockPacketType("SERVERBOUND_DATA_DRIVEN_SCREEN_CLOSED");
     public static final BedrockPacketType SYNC_WORLD_CLOCKS = new BedrockPacketType("SYNC_WORLD_CLOCKS");
     public static final BedrockPacketType CLIENTBOUND_ATTRIBUTE_LAYER_SYNC = new BedrockPacketType("CLIENTBOUND_ATTRIBUTE_LAYER_SYNC");
-
-    @Getter
-    private final String name;
-
-    public BedrockPacketType(String name) {
-        this.name = name;
-    }
 
     @Override
     public String toString() {

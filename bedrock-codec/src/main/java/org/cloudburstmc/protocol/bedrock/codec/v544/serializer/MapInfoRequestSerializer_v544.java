@@ -13,8 +13,8 @@ public class MapInfoRequestSerializer_v544 extends MapInfoRequestSerializer_v291
         super.serialize(buffer, helper, packet);
 
         helper.writeArray(buffer, packet.getPixels(), ByteBuf::writeIntLE, (buf, aHelper, pixel) -> {
-            buf.writeIntLE(pixel.getPixel());
-            buf.writeShortLE(pixel.getIndex());
+            buf.writeIntLE(pixel.pixel());
+            buf.writeShortLE(pixel.index());
         });
     }
 

@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.structure;
 
+/**
+ * Enumerates structure rotation values used in the Bedrock protocol.
+ */
 public enum StructureRotation {
     NONE,
     ROTATE_90,

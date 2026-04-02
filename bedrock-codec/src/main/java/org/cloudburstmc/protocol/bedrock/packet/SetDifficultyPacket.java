@@ -13,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetDifficultyPacket implements BedrockPacket {
+    /**
+     * The world difficulty to present on the client.
+     */
     private int difficulty;
 
     @Override

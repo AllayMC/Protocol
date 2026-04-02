@@ -6,5 +6,5 @@ public interface NamedDefinition extends Definition {
      *
      * @return identifier
      */
-    String getIdentifier();
+    String identifier();
 }

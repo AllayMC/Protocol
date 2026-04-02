@@ -7,10 +7,7 @@ import org.cloudburstmc.protocol.bedrock.data.clock.SyncWorldClocksPayload;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Initializes and syncs world clocks from the server to clients. (Currently disabled) Sent from the
- * server when a client joins to initialize all world clocks for the client and periodically to all
- * clients to keep them in sync. It is also sent to all clients when a world clock's paused state
- * changes or when time markers are added or removed.
+ * Sent by the server to initialize or update client-side world clocks.
  *
  * @since v944
  */
@@ -19,6 +16,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class SyncWorldClocksPacket implements BedrockPacket {
 
+    /**
+     * The clock payload describing the requested synchronization action.
+     */
     private SyncWorldClocksPayload data;
 
     @Override

@@ -21,7 +21,7 @@ public class UpdateBlockSyncedSerializer_v291 implements BedrockPacketSerializer
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, UpdateBlockSyncedPacket packet) {
         helper.writeBlockPosition(buffer, packet.getBlockPosition());
-        VarInts.writeUnsignedInt(buffer, packet.getDefinition().getRuntimeId());
+        VarInts.writeUnsignedInt(buffer, packet.getDefinition().runtimeId());
         int flagValue = 0;
         for (Flag flag : packet.getFlags()) {
             flagValue |= (1 << flag.ordinal());

@@ -41,10 +41,10 @@ public class UpdateAttributesSerializer_v291 implements BedrockPacketSerializer<
     public void writeAttribute(ByteBuf buffer, BedrockCodecHelper helper, AttributeData attribute) {
         checkNotNull(attribute, "attribute");
 
-        buffer.writeFloatLE(attribute.getMinimum());
-        buffer.writeFloatLE(attribute.getMaximum());
-        buffer.writeFloatLE(attribute.getValue());
-        buffer.writeFloatLE(attribute.getDefaultValue());
-        helper.writeString(buffer, attribute.getName());
+        buffer.writeFloatLE(attribute.minimum());
+        buffer.writeFloatLE(attribute.maximum());
+        buffer.writeFloatLE(attribute.value());
+        buffer.writeFloatLE(attribute.defaultValue());
+        helper.writeString(buffer, attribute.name());
     }
 }

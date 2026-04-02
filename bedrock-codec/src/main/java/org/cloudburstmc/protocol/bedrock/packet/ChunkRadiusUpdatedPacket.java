@@ -14,6 +14,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class ChunkRadiusUpdatedPacket implements BedrockPacket {
+    /**
+     * The chunk radius the client should use after server-side clamping.
+     */
     private int radius;
 
     @Override

@@ -13,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetCommandsEnabledPacket implements BedrockPacket {
+    /**
+     * Whether the client should allow command execution.
+     */
     private boolean commandsEnabled;
 
     @Override

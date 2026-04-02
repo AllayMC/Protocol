@@ -18,8 +18,8 @@ public class ItemComponentSerializer_v419 implements BedrockPacketSerializer<Ite
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ItemComponentPacket packet) {
         helper.writeArray(buffer, packet.getItems(), (buf, packetHelper, item) -> {
-            packetHelper.writeString(buf, item.getIdentifier());
-            packetHelper.writeTag(buf, item.getComponentData());
+            packetHelper.writeString(buf, item.identifier());
+            packetHelper.writeTag(buf, item.componentData());
         });
     }
 

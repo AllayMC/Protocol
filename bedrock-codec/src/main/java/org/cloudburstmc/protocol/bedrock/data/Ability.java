@@ -1,5 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+/**
+ * Ability identifiers used by the Bedrock protocol when synchronizing or requesting player
+ * abilities.
+ */
 public enum Ability {
     BUILD,
     MINE,
@@ -28,6 +32,9 @@ public enum Ability {
      */
     VERTICAL_FLY_SPEED;
 
+    /**
+     * Wire type used to serialize the value associated with an {@link Ability}.
+     */
     public enum Type {
         NONE,
         BOOLEAN,

@@ -19,8 +19,18 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PositionTrackingDBServerBroadcastPacket implements BedrockPacket {
+    /**
+     * The result of the position tracking database lookup.
+     */
     private Action action;
+    /**
+     * The ID of the PositionTrackingDBClientRequest packet that this packet was in response to. The
+     * tracking ID is also present as the 'id' field in the SerialisedData field.
+     */
     private int trackingId;
+    /**
+     * The network-little-endian NBT payload describing the tracked position entry.
+     */
     private NbtMap tag;
 
     @Override
@@ -34,8 +44,17 @@ public class PositionTrackingDBServerBroadcastPacket implements BedrockPacket {
     }
 
     public enum Action {
+        /**
+         * The tracked entry was found and the payload contains its current data.
+         */
         UPDATE,
+        /**
+         * The tracked entry was explicitly removed.
+         */
         DESTROY,
+        /**
+         * No tracked entry exists for the requested ID.
+         */
         NOT_FOUND
     }
 

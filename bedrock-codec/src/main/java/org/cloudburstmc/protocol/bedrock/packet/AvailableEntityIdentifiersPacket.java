@@ -14,6 +14,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class AvailableEntityIdentifiersPacket implements BedrockPacket {
+    /**
+     * The NBT payload describing every entity identifier that the client may encounter in this
+     * session.
+     */
     private NbtMap identifiers;
 
     @Override

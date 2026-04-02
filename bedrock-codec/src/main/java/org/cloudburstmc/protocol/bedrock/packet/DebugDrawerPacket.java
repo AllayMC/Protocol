@@ -10,13 +10,18 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import java.util.List;
 
 /**
- * Sends debug geometry to the client. Meant for script debugging purposes.
+ * Sent by the server to instruct the client to render one or more debug shapes. Each packet
+ * replaces the previously rendered debug-drawer state.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class DebugDrawerPacket implements BedrockPacket {
 
+    /**
+     * The shapes to render client-side. Omitting a previously sent shape removes it on the next
+     * update.
+     */
     private final List<DebugShape> shapes = new ObjectArrayList<>();
 
     @Override

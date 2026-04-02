@@ -56,9 +56,9 @@ public class AddEntitySerializer_v291 implements BedrockPacketSerializer<AddEnti
     public void writeAttribute(ByteBuf buffer, BedrockCodecHelper helper, AttributeData attribute) {
         requireNonNull(attribute, "attribute is null");
 
-        helper.writeString(buffer, attribute.getName());
-        buffer.writeFloatLE(attribute.getMinimum());
-        buffer.writeFloatLE(attribute.getMaximum());
-        buffer.writeFloatLE(attribute.getValue());
+        helper.writeString(buffer, attribute.name());
+        buffer.writeFloatLE(attribute.minimum());
+        buffer.writeFloatLE(attribute.maximum());
+        buffer.writeFloatLE(attribute.value());
     }
 }

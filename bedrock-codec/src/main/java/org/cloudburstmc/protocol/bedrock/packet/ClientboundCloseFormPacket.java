@@ -6,8 +6,8 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Sent by the server to clear the entire form stack of the client. This means that all forms that
- * are currently open will be closed. This does not affect inventories and other containers.
+ * Sent by the server to close the client's current modal/custom form stack. This packet does not
+ * affect inventories or other container screens and has no fields.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)

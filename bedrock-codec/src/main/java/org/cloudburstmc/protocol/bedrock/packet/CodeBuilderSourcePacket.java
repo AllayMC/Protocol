@@ -16,13 +16,24 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CodeBuilderSourcePacket implements BedrockPacket {
+    /**
+     * Distinguishes the Code Builder operation being performed.
+     */
     private CodeBuilderOperationType operation;
+    /**
+     * Distinguishes the category of the Code Builder operation being performed.
+     */
     private CodeBuilderCategoryType category;
     /**
+     * Legacy string payload associated with the operation.
+     *
      * @deprecated since v685
      */
+    @Deprecated
     private String value;
     /**
+     * The current Code Builder status reported with the operation.
+     *
      * @since v685
      */
     private CodeBuilderCodeStatus codeStatus;

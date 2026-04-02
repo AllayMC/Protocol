@@ -13,6 +13,10 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class OnScreenTextureAnimationPacket implements BedrockPacket {
+    /**
+     * The animation type to show. The packet does not include any extra data for duration or other
+     * playback properties.
+     */
     private long effectId;
 
     @Override

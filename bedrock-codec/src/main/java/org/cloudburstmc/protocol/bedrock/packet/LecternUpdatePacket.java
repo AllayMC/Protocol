@@ -14,18 +14,28 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class LecternUpdatePacket implements BedrockPacket {
+    /**
+     * The page number in the book that was opened by the player on the lectern.
+     */
     private int page;
     /**
-     * @since v354
+     * The position of the lectern that was updated. If there is no lectern at this position, the
+     * packet should be ignored.
      */
-    private int totalPages;
-
     private Vector3i blockPosition;
     /**
+     * Specifies if the client requested the book to be removed from the lectern.
+     *
      * @deprecated since v662
      */
     @Deprecated
     private boolean droppingBook;
+    /**
+     * The total number of pages in the book currently on the lectern.
+     *
+     * @since v354
+     */
+    private int totalPages;
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

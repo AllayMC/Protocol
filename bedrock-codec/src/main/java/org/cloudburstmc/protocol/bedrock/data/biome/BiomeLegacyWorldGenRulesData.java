@@ -1,10 +1,11 @@
 package org.cloudburstmc.protocol.bedrock.data.biome;
 
-import lombok.Value;
-
 import java.util.List;
 
-@Value
-public class BiomeLegacyWorldGenRulesData {
-    List<BiomeConditionalTransformationData> legacyPreHills;
+/**
+ * Represents biome legacy world gen rules data used in the Bedrock protocol.
+ *
+ * @param legacyPreHills The legacy pre hills.
+ */
+public record BiomeLegacyWorldGenRulesData(List<BiomeConditionalTransformationData> legacyPreHills) {
 }

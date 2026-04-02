@@ -48,8 +48,8 @@ public class CommandOutputSerializer_v898 extends CommandOutputSerializer_v291 {
     public void writeMessage(ByteBuf buffer, BedrockCodecHelper helper, CommandOutputMessage outputMessage) {
         requireNonNull(outputMessage, "CommandOutputMessage is null");
 
-        helper.writeString(buffer, outputMessage.getMessageId());
-        buffer.writeBoolean(outputMessage.isInternal());
-        helper.writeArray(buffer, outputMessage.getParameters(), helper::writeString);
+        helper.writeString(buffer, outputMessage.messageId());
+        buffer.writeBoolean(outputMessage.internal());
+        helper.writeArray(buffer, outputMessage.parameters(), helper::writeString);
     }
 }

@@ -15,9 +15,22 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PacketViolationWarningPacket implements BedrockPacket {
+    /**
+     * The category of packet violation that the client detected.
+     */
     private PacketViolationType type;
+    /**
+     * Specifies the severity of the packet violation. The action the client takes after this
+     * violation depends on the severity sent.
+     */
     private PacketViolationSeverity severity;
+    /**
+     * PacketID is the ID of the invalid packet that was received.
+     */
     private int packetCauseId;
+    /**
+     * The context.
+     */
     private String context;
 
     @Override

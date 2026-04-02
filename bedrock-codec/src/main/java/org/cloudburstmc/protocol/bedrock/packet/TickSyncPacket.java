@@ -6,13 +6,22 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
- * Used to maintain synchronization with a server running in authoritative mode.
+ * Used by authoritative movement to synchronize a timestamp exchange between the client and
+ * server. The initiating side sends a request timestamp, and the reply echoes that value together
+ * with the responder's timestamp.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class TickSyncPacket implements BedrockPacket {
+    /**
+     * The timestamp chosen by the side initiating the sync exchange. A response echoes this value
+     * so the request can be matched.
+     */
     private long requestTimestamp;
+    /**
+     * The timestamp supplied by the side answering the sync exchange.
+     */
     private long responseTimestamp;
 
     @Override

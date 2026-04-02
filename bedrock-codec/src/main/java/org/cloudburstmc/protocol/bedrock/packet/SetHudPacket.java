@@ -19,7 +19,13 @@ import java.util.Set;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SetHudPacket implements BedrockPacket {
+    /**
+     * The HUD elements affected by this update.
+     */
     private final Set<HudElement> elements = new ObjectOpenHashSet<>();
+    /**
+     * The visibility state to apply to the selected HUD elements.
+     */
     private HudVisibility visibility;
 
     @Override

@@ -16,9 +16,17 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class SubChunkRequestPacket implements BedrockPacket {
+    /**
+     * The dimension from which sub-chunks are being requested.
+     */
     private int dimension;
+    /**
+     * The absolute sub-chunk center position used as the base for all requested offsets.
+     */
     private Vector3i subChunkPosition;
     /**
+     * The relative sub-chunk offsets to request around {@link #subChunkPosition}.
+     *
      * @since v486
      */
     private List<Vector3i> positionOffsets = new ObjectArrayList<>();

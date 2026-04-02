@@ -13,6 +13,9 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class EduUriResourcePacket implements BedrockPacket {
+    /**
+     * The shared education resource button metadata, including its label and destination URI.
+     */
     private EduSharedUriResource eduSharedUriResource;
 
     @Override

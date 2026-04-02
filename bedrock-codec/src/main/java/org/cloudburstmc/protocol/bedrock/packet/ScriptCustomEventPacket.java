@@ -12,12 +12,20 @@ import org.cloudburstmc.protocol.common.PacketSignal;
  *
  * @deprecated since v594
  */
-@Deprecated
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
+@Deprecated
 public class ScriptCustomEventPacket implements BedrockPacket {
+    /**
+     * The name of the event. The script and the server will use this event name to identify the
+     * data that is sent.
+     */
     private String eventName;
+    /**
+     * The event payload associated with {@link #eventName}. Its format is application-defined and
+     * depends on the script event channel in use.
+     */
     private String data;
 
     @Override

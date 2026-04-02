@@ -15,7 +15,15 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @ToString(doNotUseGetters = true)
 public class ScriptMessagePacket implements BedrockPacket {
 
+    /**
+     * The identifier of the script message. Both sides use this value to decide how to interpret
+     * {@link #message}.
+     */
     private String channel;
+    /**
+     * The payload of the message. Despite the Java field being a string, this represents opaque
+     * application-defined data.
+     */
     private String message;
 
     @Override

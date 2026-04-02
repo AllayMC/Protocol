@@ -1,5 +1,8 @@
 package org.cloudburstmc.protocol.bedrock.data.inventory;
 
+/**
+ * Enumerates container slot type values used in the Bedrock protocol.
+ */
 public enum ContainerSlotType {
     UNKNOWN, // used internally only
 

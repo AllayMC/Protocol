@@ -24,10 +24,30 @@ import java.util.List;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class CommandOutputPacket implements BedrockPacket {
+    /**
+     * Output messages produced by the command execution.
+     */
     private final List<CommandOutputMessage> messages = new ObjectArrayList<>();
+    /**
+     * CommandOrigin is the data specifying the origin of the command. In other words, the source
+     * that the command request was from, such as the player itself or a websocket server. The
+     * client forwards the messages in this packet to the right origin, depending on what is sent
+     * here.
+     */
     private CommandOriginData commandOriginData;
+    /**
+     * The output routing mode. Vanilla typically sends {@link CommandOutputType#ALL_OUTPUT}.
+     */
     private CommandOutputType type;
+    /**
+     * The amount of times that a command was executed successfully as a result of the command that
+     * was requested. For servers, this is usually a rather meaningless fields, but for vanilla,
+     * this is applicable for commands created with Functions.
+     */
     private int successCount;
+    /**
+     * Optional extra dataset payload used by the {@code DATA_SET} output type.
+     */
     @Nullable
     private String data;
 

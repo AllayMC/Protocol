@@ -9,16 +9,23 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 import static org.cloudburstmc.protocol.bedrock.packet.BedrockPacketType.UPDATE_CLIENT_INPUT_LOCKS;
 
 /**
- * Sent by the server to the client to lock either the camera or physical movement of the client.
+ * Sent by the server to the client to lock specific player inputs such as camera rotation,
+ * movement, jumping, sneaking, mounting, or directional movement.
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class UpdateClientInputLocksPacket implements BedrockPacket {
+    /**
+     * A bitset describing which client inputs should be disabled.
+     */
     private int lockComponentData;
     /**
+     * Legacy server position field used by older protocol versions.
+     *
      * @deprecated since v944
      */
+    @Deprecated
     private Vector3f serverPosition;
 
     @Override

@@ -104,8 +104,8 @@ public class StartGameSerializer_v361 extends StartGameSerializer_v332 {
 
     protected void writeItemDefinitions(ByteBuf buffer, BedrockCodecHelper helper, List<ItemDefinition> definitions) {
         helper.writeArray(buffer, definitions, (buf, entry) -> {
-            helper.writeString(buf, entry.getIdentifier());
-            buf.writeShortLE(entry.getRuntimeId());
+            helper.writeString(buf, entry.identifier());
+            buf.writeShortLE(entry.runtimeId());
         });
     }
 

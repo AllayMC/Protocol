@@ -14,8 +14,20 @@ import org.cloudburstmc.protocol.common.PacketSignal;
 @EqualsAndHashCode(doNotUseGetters = true)
 @ToString(doNotUseGetters = true)
 public class PlayerVideoCapturePacket implements BedrockPacket {
+    /**
+     * The video-capture action to perform, such as starting or stopping capture.
+     */
     private Action action;
+    /**
+     * The frame rate at which the video should be recorded. It is only used when Action is
+     * PlayerVideoCaptureActionStart. A higher frame rate will cause more frames to be recorded, but
+     * also a noticeable increase in lag.
+     */
     private int frameRate;
+    /**
+     * The prefix of the file name that will be used to save the frames. The frames will be saved in
+     * the format 'FilePrefix%d.png' where %d is the frame index.
+     */
     private String filePrefix;
 
     @Override
