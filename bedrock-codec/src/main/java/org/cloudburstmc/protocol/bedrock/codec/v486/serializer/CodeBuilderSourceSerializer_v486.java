@@ -5,8 +5,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderCategoryType;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderOperationType;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderCategoryType;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderOperationType;
 import org.cloudburstmc.protocol.bedrock.packet.CodeBuilderSourcePacket;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

@@ -5,7 +5,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v419.serializer.CameraShakeSerializer_v419;
-import org.cloudburstmc.protocol.bedrock.data.CameraShakeAction;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraShakeAction;
 import org.cloudburstmc.protocol.bedrock.packet.CameraShakePacket;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)

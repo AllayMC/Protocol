@@ -3,8 +3,8 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.bedrock.data.CameraShakeAction;
-import org.cloudburstmc.protocol.bedrock.data.CameraShakeType;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraShakeAction;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraShakeType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**

@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.data;
+package org.cloudburstmc.protocol.bedrock.data.codebuilder;
 
 /**
  * Enumerates code builder category type values used in the Bedrock protocol.

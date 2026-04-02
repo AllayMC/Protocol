@@ -3,9 +3,9 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderCategoryType;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderCodeStatus;
-import org.cloudburstmc.protocol.bedrock.data.CodeBuilderOperationType;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderCategoryType;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderCodeStatus;
+import org.cloudburstmc.protocol.bedrock.data.codebuilder.CodeBuilderOperationType;
 import org.cloudburstmc.protocol.common.PacketSignal;
 
 /**
