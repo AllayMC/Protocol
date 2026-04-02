@@ -1,7 +1,6 @@
 package org.cloudburstmc.protocol.bedrock.codec.v786.serializer;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;

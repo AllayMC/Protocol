@@ -2,7 +2,6 @@ package org.cloudburstmc.protocol.bedrock.codec.v291.serializer;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
-import io.netty.util.AsciiString;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,9 @@ import org.jose4j.json.JsonUtil;
 import org.jose4j.lang.JoseException;
 
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.cloudburstmc.protocol.common.util.Preconditions.checkArgument;
 

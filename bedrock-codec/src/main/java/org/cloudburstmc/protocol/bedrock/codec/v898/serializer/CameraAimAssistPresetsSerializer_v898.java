@@ -3,7 +3,8 @@ package org.cloudburstmc.protocol.bedrock.codec.v898.serializer;
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v800.serializer.CameraAimAssistPresetsSerializer_v800;
-import org.cloudburstmc.protocol.bedrock.data.camera.*;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistCategory;
+import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistPresetDefinition;
 
 public class CameraAimAssistPresetsSerializer_v898 extends CameraAimAssistPresetsSerializer_v800 {
 

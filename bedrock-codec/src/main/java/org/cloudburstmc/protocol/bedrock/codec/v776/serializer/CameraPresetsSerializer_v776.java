@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.v729.serializer.CameraPresetsSerializer_v729;
 import org.cloudburstmc.protocol.bedrock.codec.v766.serializer.CameraPresetsSerializer_v766;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAimAssistPreset;
 import org.cloudburstmc.protocol.bedrock.data.camera.CameraAudioListener;

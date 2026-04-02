@@ -2,19 +2,13 @@ package org.cloudburstmc.protocol.bedrock.codec.v776;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
-import org.cloudburstmc.protocol.bedrock.codec.v729.BedrockCodecHelper_v729;
 import org.cloudburstmc.protocol.bedrock.codec.v766.BedrockCodecHelper_v766;
 import org.cloudburstmc.protocol.bedrock.data.Ability;
 import org.cloudburstmc.protocol.bedrock.data.AbilityLayer;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.TextProcessingEventOrigin;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.ItemStackRequestActionType;
-import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.response.ItemStackResponseSlot;
 import org.cloudburstmc.protocol.common.util.TypeMap;
-import org.cloudburstmc.protocol.common.util.VarInts;
-
-import java.math.BigInteger;
-import java.util.Set;
 
 public class BedrockCodecHelper_v776 extends BedrockCodecHelper_v766 {
 
