@@ -78,7 +78,7 @@ public record BedrockPacketType(String name) {
     public static final BedrockPacketType INVENTORY_CONTENT = new BedrockPacketType("INVENTORY_CONTENT");
     public static final BedrockPacketType INVENTORY_SLOT = new BedrockPacketType("INVENTORY_SLOT");
     public static final BedrockPacketType INVENTORY_TRANSACTION = new BedrockPacketType("INVENTORY_TRANSACTION");
-    public static final BedrockPacketType ITEM_COMPONENT = new BedrockPacketType("ITEM_COMPONENT");
+    public static final BedrockPacketType ITEM_REGISTRY = new BedrockPacketType("ITEM_REGISTRY");
     public static final BedrockPacketType ITEM_FRAME_DROP_ITEM = new BedrockPacketType("ITEM_FRAME_DROP_ITEM");
     public static final BedrockPacketType ITEM_STACK_REQUEST = new BedrockPacketType("ITEM_STACK_REQUEST");
     public static final BedrockPacketType ITEM_STACK_RESPONSE = new BedrockPacketType("ITEM_STACK_RESPONSE");

@@ -56,6 +56,6 @@ public class Bedrock_v419 extends Bedrock_v408 {
             .registerPacket(CameraShakePacket::new, CameraShakeSerializer_v419.INSTANCE, 159, PacketRecipient.CLIENT)
             .registerPacket(PlayerFogPacket::new, PlayerFogSerializer_v419.INSTANCE, 160, PacketRecipient.CLIENT)
             .registerPacket(CorrectPlayerMovePredictionPacket::new, CorrectPlayerMovePredictionSerializer_v419.INSTANCE, 161, PacketRecipient.CLIENT)
-            .registerPacket(ItemRegistryPacket::new, ItemComponentSerializer_v419.INSTANCE, 162, PacketRecipient.CLIENT)
+            .registerPacket(ItemRegistryPacket::new, ItemRegistrySerializer_v419.INSTANCE, 162, PacketRecipient.CLIENT)
             .build();
 }

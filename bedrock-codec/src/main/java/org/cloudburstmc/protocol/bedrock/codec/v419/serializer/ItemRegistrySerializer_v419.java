@@ -11,9 +11,9 @@ import org.cloudburstmc.protocol.bedrock.data.inventory.ItemVersion;
 import org.cloudburstmc.protocol.bedrock.packet.ItemRegistryPacket;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ItemComponentSerializer_v419 implements BedrockPacketSerializer<ItemRegistryPacket> {
+public class ItemRegistrySerializer_v419 implements BedrockPacketSerializer<ItemRegistryPacket> {
 
-    public static final ItemComponentSerializer_v419 INSTANCE = new ItemComponentSerializer_v419();
+    public static final ItemRegistrySerializer_v419 INSTANCE = new ItemRegistrySerializer_v419();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ItemRegistryPacket packet) {

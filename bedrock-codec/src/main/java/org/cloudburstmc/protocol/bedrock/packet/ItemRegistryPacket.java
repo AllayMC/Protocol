@@ -35,7 +35,7 @@ public class ItemRegistryPacket implements BedrockPacket {
 
     @Override
     public BedrockPacketType getPacketType() {
-        return BedrockPacketType.ITEM_COMPONENT;
+        return BedrockPacketType.ITEM_REGISTRY;
     }
 
     @Override
