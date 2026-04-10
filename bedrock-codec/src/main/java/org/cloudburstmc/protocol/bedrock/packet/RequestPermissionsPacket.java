@@ -3,7 +3,11 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.cloudburstmc.protocol.bedrock.data.Ability;
 import org.cloudburstmc.protocol.bedrock.data.PlayerPermission;
+
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * A packet sent from the client to the server to request permissions that the client does not
@@ -24,7 +28,7 @@ public class RequestPermissionsPacket implements BedrockPacket {
     /**
      * Custom permission flags requested in addition to {@link #permissions}.
      */
-    private int customPermissions;
+    private final Set<Ability> customPermissions = EnumSet.noneOf(Ability.class);
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {
