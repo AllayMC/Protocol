@@ -34,6 +34,13 @@ public final class DebugBox extends DebugShape {
         this.boxBounds = boxBounds;
     }
 
+    public DebugBox(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                    @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                    @Nullable Float maximumRenderDistance, Vector3f boxBounds, @Nullable Long attachedToEntityId) {
+        super(id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
+        this.boxBounds = boxBounds;
+    }
+
     @Override
     public Type getType() {
         return Type.BOX;

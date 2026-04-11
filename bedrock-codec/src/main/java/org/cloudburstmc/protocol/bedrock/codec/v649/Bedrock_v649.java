@@ -34,11 +34,6 @@ public class Bedrock_v649 extends Bedrock_v630 {
             .insert(LEVEL_EVENT_PARTICLE_TYPE, PARTICLE_TYPES)
             .build();
 
-    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v630.ENTITY_DATA
-            .toBuilder()
-            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
-            .build();
-
     protected static final TypeMap<SoundEvent> SOUND_EVENTS = Bedrock_v630.SOUND_EVENTS
             .toBuilder()
             .replace(492, SoundEvent.AMBIENT_IN_AIR)
@@ -50,6 +45,12 @@ public class Bedrock_v649 extends Bedrock_v630 {
             .insert(498, SoundEvent.UNEQUIP_WOLF)
             .insert(499, SoundEvent.REFLECT)
             .insert(500, SoundEvent.UNDEFINED)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v630.ENTITY_DATA
+            .toBuilder()
+            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
     public static final BedrockCodec CODEC = Bedrock_v630.CODEC.toBuilder()

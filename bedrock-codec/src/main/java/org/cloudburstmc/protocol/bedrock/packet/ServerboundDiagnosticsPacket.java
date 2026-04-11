@@ -59,6 +59,18 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
      * @since v924
      */
     private final List<MemoryCategoryCounter> memoryCategoryValues = new ArrayList<>();
+    /**
+     * Optional entity timing diagnostics.
+     *
+     * @since v974
+     */
+    private EntityDiagnostics entityDiagnostics;
+    /**
+     * Optional system timing diagnostics.
+     *
+     * @since v974
+     */
+    private SystemDiagnostics systemDiagnostics;
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {
@@ -77,5 +89,25 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
+    }
+
+    @Data
+    @EqualsAndHashCode(doNotUseGetters = true)
+    @ToString(doNotUseGetters = true)
+    public static class EntityDiagnostics {
+        private String displayName;
+        private String entity;
+        private long timeInNs;
+        private int percentOfTotal;
+    }
+
+    @Data
+    @EqualsAndHashCode(doNotUseGetters = true)
+    @ToString(doNotUseGetters = true)
+    public static class SystemDiagnostics {
+        private String displayName;
+        private long systemIndex;
+        private long timeInNs;
+        private int percentOfTotal;
     }
 }

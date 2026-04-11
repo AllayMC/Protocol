@@ -9,6 +9,12 @@ package org.cloudburstmc.protocol.bedrock.data.definitions;
  * @param maximumHeight the upper build limit of the dimension
  * @param minimumHeight the lower build limit of the dimension
  * @param generatorType the generator variant used for the dimension
+ * @param dimensionType the numeric dimension type sent by modern codecs
  */
-public record DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType) {
+public record DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType,
+                                  int dimensionType) {
+
+    public DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType) {
+        this(id, maximumHeight, minimumHeight, generatorType, 0);
+    }
 }

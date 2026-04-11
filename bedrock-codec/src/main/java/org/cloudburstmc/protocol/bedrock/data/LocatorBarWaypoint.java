@@ -1,6 +1,7 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
 import lombok.Data;
+import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 
 import java.awt.*;
@@ -27,6 +28,18 @@ public class LocatorBarWaypoint {
      * The waypoint icon texture identifier.
      */
     private Integer textureId;
+    /**
+     * The waypoint icon texture path.
+     *
+     * @since v974
+     */
+    private String texturePath;
+    /**
+     * The waypoint icon size.
+     *
+     * @since v974
+     */
+    private Vector2f iconSize;
     /**
      * The tint colour used for the waypoint icon.
      */

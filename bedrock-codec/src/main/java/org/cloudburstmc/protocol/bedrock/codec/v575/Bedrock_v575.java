@@ -42,13 +42,6 @@ public class Bedrock_v575 extends Bedrock_v568 {
             .insert(85, ParticleType.BRUSH_DUST)
             .build();
 
-    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v568.ENTITY_DATA
-            .toBuilder()
-            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
-            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
-            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
-            .build();
-
     protected static final TypeMap<SoundEvent> SOUND_EVENTS = Bedrock_v568.SOUND_EVENTS
             .toBuilder()
             .replace(462, SoundEvent.BRUSH)
@@ -56,6 +49,14 @@ public class Bedrock_v575 extends Bedrock_v568 {
             .insert(464, SoundEvent.SHATTER_DECORATED_POT)
             .insert(465, SoundEvent.BREAK_DECORATED_POD)
             .insert(466, SoundEvent.UNDEFINED)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v568.ENTITY_DATA
+            .toBuilder()
+            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
+            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
+            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
     protected static final TypeMap<LevelEventType> LEVEL_EVENTS = Bedrock_v568.LEVEL_EVENTS.toBuilder()

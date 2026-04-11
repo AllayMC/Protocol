@@ -51,6 +51,12 @@ public class LevelSoundEventPacket implements BedrockPacket {
      * @since v786
      */
     private long entityUniqueId;
+    /**
+     * Optional fire position data used by certain modern sound events.
+     *
+     * @since v974
+     */
+    private Vector3f fireAtPosition;
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

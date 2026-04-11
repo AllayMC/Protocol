@@ -23,6 +23,9 @@ import java.util.List;
  * @param legacyWorldGenRules        The legacy world gen rules.
  * @param biomeReplacementData       The biome replacement data.
  * @param villageType                The village type.
+ * @param replacementBiomes          The biome replacement list introduced in v974.
+ * @param surfaceBuilderData         The primary surface builder data introduced in v974.
+ * @param subSurfaceBuilderData      The secondary surface builder data introduced in v974.
  */
 public record BiomeDefinitionChunkGenData(@Nullable BiomeClimateData climate, @Nullable List<BiomeConsolidatedFeatureData> consolidatedFeatures,
                                           @Nullable BiomeMountainParamsData mountainParams,
@@ -33,5 +36,30 @@ public record BiomeDefinitionChunkGenData(@Nullable BiomeClimateData climate, @N
                                           @Nullable BiomeOverworldGenRulesData overworldGenRules,
                                           @Nullable BiomeMultinoiseGenRulesData multinoiseGenRules,
                                           @Nullable BiomeLegacyWorldGenRulesData legacyWorldGenRules,
-                                          @Nullable BiomeReplacementData biomeReplacementData, @Nullable Number villageType) {
+                                          @Nullable BiomeReplacementData biomeReplacementData, @Nullable Number villageType,
+                                          @Nullable List<BiomeReplacementData> replacementBiomes,
+                                          @Nullable BiomeSurfaceBuilderData surfaceBuilderData,
+                                          @Nullable BiomeSurfaceBuilderData subSurfaceBuilderData) {
+
+    public BiomeDefinitionChunkGenData(@Nullable BiomeClimateData climate,
+                                       @Nullable List<BiomeConsolidatedFeatureData> consolidatedFeatures,
+                                       @Nullable BiomeMountainParamsData mountainParams,
+                                       @Nullable BiomeSurfaceMaterialAdjustmentData surfaceMaterialAdjustment,
+                                       @Nullable BiomeSurfaceMaterialData surfaceMaterial,
+                                       boolean hasDefaultOverworldSurface,
+                                       boolean hasSwampSurface,
+                                       boolean hasFrozenOceanSurface,
+                                       boolean hasTheEndSurface,
+                                       @Nullable BiomeMesaSurfaceData mesaSurface,
+                                       @Nullable BiomeCappedSurfaceData cappedSurface,
+                                       @Nullable BiomeOverworldGenRulesData overworldGenRules,
+                                       @Nullable BiomeMultinoiseGenRulesData multinoiseGenRules,
+                                       @Nullable BiomeLegacyWorldGenRulesData legacyWorldGenRules,
+                                       @Nullable BiomeReplacementData biomeReplacementData,
+                                       @Nullable Number villageType) {
+        this(climate, consolidatedFeatures, mountainParams, surfaceMaterialAdjustment, surfaceMaterial,
+                hasDefaultOverworldSurface, hasSwampSurface, hasFrozenOceanSurface, hasTheEndSurface,
+                mesaSurface, cappedSurface, overworldGenRules, multinoiseGenRules, legacyWorldGenRules,
+                biomeReplacementData, villageType, null, null, null);
+    }
 }

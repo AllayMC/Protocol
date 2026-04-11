@@ -17,6 +17,7 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.cloudburstmc.protocol.bedrock.packet.*;
 import org.cloudburstmc.protocol.bedrock.transformer.FlagTransformer;
+import org.cloudburstmc.protocol.bedrock.transformer.TypeMapTransformer;
 import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v844 extends Bedrock_v827 {
@@ -24,12 +25,6 @@ public class Bedrock_v844 extends Bedrock_v827 {
     protected static final TypeMap<EntityFlag> ENTITY_FLAGS = Bedrock_v827.ENTITY_FLAGS
             .toBuilder()
             .insert(125, EntityFlag.CAN_USE_VERTICAL_MOVEMENT_ACTION)
-            .build();
-
-    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v827.ENTITY_DATA
-            .toBuilder()
-            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
-            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
             .build();
 
     protected static final TypeMap<SoundEvent> SOUND_EVENTS = Bedrock_v827.SOUND_EVENTS
@@ -42,6 +37,14 @@ public class Bedrock_v844 extends Bedrock_v827 {
 
     protected static final TypeMap<ParticleType> PARTICLE_TYPES = Bedrock_v827.PARTICLE_TYPES.toBuilder()
             .insert(98, ParticleType.GREEN_FLAME)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v827.ENTITY_DATA
+            .toBuilder()
+            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
+            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
+            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
     protected static final TypeMap<LevelEventType> LEVEL_EVENTS = Bedrock_v827.LEVEL_EVENTS.toBuilder()

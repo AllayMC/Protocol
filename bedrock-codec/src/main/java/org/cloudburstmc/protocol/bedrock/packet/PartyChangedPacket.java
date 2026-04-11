@@ -18,6 +18,12 @@ public class PartyChangedPacket implements BedrockPacket {
      * The updated party identifier.
      */
     private String partyId;
+    /**
+     * Whether the player is the leader of the updated party.
+     *
+     * @since v974
+     */
+    private boolean partyLeader;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

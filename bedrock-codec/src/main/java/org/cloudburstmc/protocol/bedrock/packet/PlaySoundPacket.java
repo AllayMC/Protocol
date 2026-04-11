@@ -33,6 +33,12 @@ public class PlaySoundPacket implements BedrockPacket {
      * it to specify the pitch as the field is intended.
      */
     private float pitch;
+    /**
+     * Optional server-assigned sound handle for long-lived sounds.
+     *
+     * @since v974
+     */
+    private Long serverSoundHandle;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

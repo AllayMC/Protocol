@@ -1,6 +1,7 @@
 package org.cloudburstmc.protocol.bedrock.codec.v766;
 
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
+import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
 import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LevelEventSerializer_v291;
 import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LevelSoundEvent1Serializer_v291;
 import org.cloudburstmc.protocol.bedrock.codec.v313.serializer.LevelSoundEvent2Serializer_v313;
@@ -9,7 +10,9 @@ import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.LevelEventGeneric
 import org.cloudburstmc.protocol.bedrock.codec.v748.Bedrock_v748;
 import org.cloudburstmc.protocol.bedrock.codec.v766.serializer.*;
 import org.cloudburstmc.protocol.bedrock.data.*;
+import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.packet.*;
+import org.cloudburstmc.protocol.bedrock.transformer.TypeMapTransformer;
 import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v766 extends Bedrock_v748 {
@@ -41,6 +44,12 @@ public class Bedrock_v766 extends Bedrock_v748 {
     protected static final TypeMap<LevelEventType> LEVEL_EVENTS = Bedrock_v748.LEVEL_EVENTS.toBuilder()
             .insert(LEVEL_EVENT_PARTICLE_TYPE, PARTICLE_TYPES)
             .insert(9816, LevelEvent.PARTICLE_CREAKING_HEART_TRIAL)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v748.ENTITY_DATA
+            .toBuilder()
+            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
     public static final BedrockCodec CODEC = Bedrock_v748.CODEC.toBuilder()

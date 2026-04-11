@@ -54,6 +54,7 @@ public class Bedrock_v618 extends Bedrock_v594 {
     protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v594.ENTITY_DATA
             .toBuilder()
             .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
     public static final BedrockCodec CODEC = Bedrock_v594.CODEC.toBuilder()

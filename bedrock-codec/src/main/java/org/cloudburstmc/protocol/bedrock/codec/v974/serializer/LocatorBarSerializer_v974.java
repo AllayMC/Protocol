@@ -1,0 +1,70 @@
+package org.cloudburstmc.protocol.bedrock.codec.v974.serializer;
+
+import io.netty.buffer.ByteBuf;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
+import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
+import org.cloudburstmc.protocol.bedrock.data.LocatorBarWaypoint;
+import org.cloudburstmc.protocol.bedrock.packet.LocatorBarPacket;
+import org.cloudburstmc.protocol.bedrock.util.VarInts;
+
+import java.awt.*;
+import java.util.UUID;
+
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+public class LocatorBarSerializer_v974 implements BedrockPacketSerializer<LocatorBarPacket> {
+
+    public static final LocatorBarSerializer_v974 INSTANCE = new LocatorBarSerializer_v974();
+
+    @Override
+    public void serialize(ByteBuf buffer, BedrockCodecHelper helper, LocatorBarPacket packet) {
+        helper.writeArray(buffer, packet.getWaypoints(), (buf, payload) -> writePayload(buf, helper, payload));
+    }
+
+    @Override
+    public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, LocatorBarPacket packet) {
+        helper.readArray(buffer, packet.getWaypoints(), buf -> readPayload(buf, helper), 40000);
+    }
+
+    private void writePayload(ByteBuf buf, BedrockCodecHelper helper, LocatorBarPacket.Payload payload) {
+        helper.writeUuid(buf, payload.groupHandle());
+        writeWaypoint(buf, helper, payload.waypoint());
+        buf.writeByte(payload.actionFlag().ordinal());
+    }
+
+    private LocatorBarPacket.Payload readPayload(ByteBuf buf, BedrockCodecHelper helper) {
+        UUID groupHandle = helper.readUuid(buf);
+        LocatorBarWaypoint waypoint = readWaypoint(buf, helper);
+        LocatorBarPacket.Action actionFlag = LocatorBarPacket.Action.values()[buf.readUnsignedByte()];
+        return new LocatorBarPacket.Payload(actionFlag, groupHandle, waypoint);
+    }
+
+    private void writeWaypoint(ByteBuf buf, BedrockCodecHelper helper, LocatorBarWaypoint waypoint) {
+        buf.writeIntLE(waypoint.getUpdateFlag());
+        helper.writeOptionalNull(buf, waypoint.getVisible(), ByteBuf::writeBoolean);
+        helper.writeOptionalNull(buf, waypoint.getWorldPosition(), (buf1, h, pos) -> {
+            h.writeVector3f(buf1, pos.position());
+            VarInts.writeInt(buf1, pos.dimension());
+        });
+        helper.writeOptionalNull(buf, waypoint.getTexturePath(), helper::writeString);
+        helper.writeOptionalNull(buf, waypoint.getIconSize(), helper::writeVector2f);
+        helper.writeOptionalNull(buf, waypoint.getColor(), (buf1, color) -> buf1.writeIntLE(color.getRGB()));
+        helper.writeOptionalNull(buf, waypoint.getClientPositionAuthority(), ByteBuf::writeBoolean);
+        helper.writeOptionalNull(buf, waypoint.getEntityUniqueId(), VarInts::writeLong);
+    }
+
+    private LocatorBarWaypoint readWaypoint(ByteBuf buf, BedrockCodecHelper helper) {
+        LocatorBarWaypoint waypoint = new LocatorBarWaypoint();
+        waypoint.setUpdateFlag(buf.readIntLE());
+        waypoint.setVisible(helper.readOptional(buf, null, ByteBuf::readBoolean));
+        waypoint.setWorldPosition(helper.readOptional(buf, null, (buf1, h) ->
+                new LocatorBarWaypoint.WorldPosition(h.readVector3f(buf1), VarInts.readInt(buf1))));
+        waypoint.setTexturePath(helper.readOptional(buf, null, helper::readString));
+        waypoint.setIconSize(helper.readOptional(buf, null, helper::readVector2f));
+        waypoint.setColor(helper.readOptional(buf, null, value -> new Color(value.readIntLE(), true)));
+        waypoint.setClientPositionAuthority(helper.readOptional(buf, null, ByteBuf::readBoolean));
+        waypoint.setEntityUniqueId(helper.readOptional(buf, null, VarInts::readLong));
+        return waypoint;
+    }
+}

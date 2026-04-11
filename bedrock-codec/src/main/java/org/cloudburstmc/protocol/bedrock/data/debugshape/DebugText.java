@@ -20,18 +20,62 @@ public final class DebugText extends DebugShape {
      * The text.
      */
     private final String text;
+    /**
+     * Whether the text uses the shape rotation.
+     *
+     * @since v974
+     */
+    private final boolean useRotation;
+    /**
+     * The optional background colour of the text.
+     *
+     * @since v974
+     */
+    @Nullable
+    private final Color backgroundColor;
+    /**
+     * Whether the text participates in depth testing.
+     *
+     * @since v974
+     */
+    private final boolean depthTest;
+    /**
+     * Whether the text background renders its backface.
+     *
+     * @since v974
+     */
+    private final boolean showBackface;
+    /**
+     * Whether the text renders its backface.
+     *
+     * @since v974
+     */
+    private final boolean showTextBackface;
 
     public DebugText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
                      @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
                      String text) {
-        this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, null);
+        this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, false, null, false, false, false, null, null);
     }
 
     public DebugText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
                      @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
                      String text, @Nullable Long attachedToEntityId) {
-        super(id, dimension, position, scale, rotation, totalTimeLeft, color, attachedToEntityId);
+        this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, false, null, false, false, false, null, attachedToEntityId);
+    }
+
+    public DebugText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                     @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                     String text, boolean useRotation, @Nullable Color backgroundColor, boolean depthTest,
+                     boolean showBackface, boolean showTextBackface, @Nullable Float maximumRenderDistance,
+                     @Nullable Long attachedToEntityId) {
+        super(id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
         this.text = text;
+        this.useRotation = useRotation;
+        this.backgroundColor = backgroundColor;
+        this.depthTest = depthTest;
+        this.showBackface = showBackface;
+        this.showTextBackface = showTextBackface;
     }
 
     @Override

@@ -55,6 +55,24 @@ public class MovementPredictionSyncPacket implements BedrockPacket {
      */
     private float hunger;
     /**
+     * The friction modifier reported by the client.
+     *
+     * @since v974
+     */
+    private float frictionModifier;
+    /**
+     * The bounciness reported by the client.
+     *
+     * @since v974
+     */
+    private float bounciness;
+    /**
+     * The air-drag modifier reported by the client.
+     *
+     * @since v974
+     */
+    private float airDragModifier;
+    /**
      * Specifies if the client is currently flying.
      *
      * @since v786

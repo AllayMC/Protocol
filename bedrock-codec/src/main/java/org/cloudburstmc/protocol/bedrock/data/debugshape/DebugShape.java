@@ -48,6 +48,13 @@ public class DebugShape {
     @Nullable
     private final Color color;
     /**
+     * The optional maximum render distance of the shape.
+     *
+     * @since v974
+     */
+    @Nullable
+    private final Float maximumRenderDistance;
+    /**
      * The optional dimension ID where the shape should be rendered.
      *
      * @since v859
@@ -63,23 +70,30 @@ public class DebugShape {
 
     public DebugShape(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
                       @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
-                      @Nullable Long attachedToEntityId) {
+                      @Nullable Float maximumRenderDistance, @Nullable Long attachedToEntityId) {
         this.id = id;
         this.position = position;
         this.scale = scale;
         this.rotation = rotation;
         this.totalTimeLeft = totalTimeLeft;
         this.color = color;
+        this.maximumRenderDistance = maximumRenderDistance;
         this.dimension = dimension;
         this.attachedToEntityId = attachedToEntityId;
     }
 
     public DebugShape(long id) {
-        this(id, 0, null, null, null, null, null, null);
+        this(id, 0, null, null, null, null, null, null, null);
     }
 
     public DebugShape(long id, int dimension) {
-        this(id, dimension, null, null, null, null, null, null);
+        this(id, dimension, null, null, null, null, null, null, null);
+    }
+
+    public DebugShape(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                      @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                      @Nullable Long attachedToEntityId) {
+        this(id, dimension, position, scale, rotation, totalTimeLeft, color, null, attachedToEntityId);
     }
 
     public Type getType() {

@@ -616,4 +616,14 @@ public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {
     public <T extends Enum<?>> void writeLargeVarIntFlags(ByteBuf buffer, Set<T> flags, Class<T> clazz) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public void writeNetItemDescriptor(ByteBuf buffer, ItemData item) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ItemData readNetItemDescriptor(ByteBuf buffer) {
+        throw new UnsupportedOperationException();
+    }
 }

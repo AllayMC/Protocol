@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.GraphicsMode;
+import org.cloudburstmc.protocol.bedrock.util.OptionalBoolean;
 
 /**
  * Sent by the client when some of the client's options are updated, such as the graphics mode.
@@ -16,6 +17,12 @@ public class UpdateClientOptionsPacket implements BedrockPacket {
      * The graphics mode currently selected by the client.
      */
     private GraphicsMode graphicsMode;
+    /**
+     * Optional profanity-filter preference change reported by the client.
+     *
+     * @since v974
+     */
+    private OptionalBoolean filterProfanityChange = OptionalBoolean.empty();
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {

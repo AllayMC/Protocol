@@ -134,10 +134,14 @@ public final class TypeMap<T> {
          * @return
          */
         public Builder<T> shift(int startIndex, int amount) {
+            return this.shift(startIndex, -1, amount);
+        }
+
+        public Builder<T> shift(int startIndex, int endIndex, int amount) {
             Int2ObjectSortedMap<Object> shiftMap = types.tailMap(startIndex);
             Int2ObjectArrayMap<Object> tmp = new Int2ObjectArrayMap<>(shiftMap.size());
             for (Int2ObjectMap.Entry<Object> entry : shiftMap.int2ObjectEntrySet()) {
-                tmp.put(entry.getIntKey() + amount, entry.getValue());
+                tmp.put(entry.getIntKey() + (endIndex != -1 && entry.getIntKey() >= endIndex ? 0 : amount), entry.getValue());
                 types.put(entry.getIntKey(), null);
             }
             types.putAll(tmp);

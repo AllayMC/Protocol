@@ -5,6 +5,7 @@ import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.nbt.NbtMap;
 import org.cloudburstmc.protocol.bedrock.data.ParticleType;
+import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
 
 import java.util.EnumMap;
@@ -271,7 +272,7 @@ public class EntityDataTypes {
     /**
      * @since v503
      */
-    public static final EntityDataType<Integer> HEARTBEAT_SOUND_EVENT = new EntityDataType<>(Integer.class, "HEARTBEAT_SOUND_EVENT");
+    public static final EntityDataType<SoundEvent> HEARTBEAT_SOUND_EVENT = new EntityDataType<>(SoundEvent.class, "HEARTBEAT_SOUND_EVENT");
     /**
      * @since v527
      */

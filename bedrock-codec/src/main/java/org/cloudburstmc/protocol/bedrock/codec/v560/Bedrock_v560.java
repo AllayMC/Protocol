@@ -18,6 +18,7 @@ import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEvent2Packet;
 import org.cloudburstmc.protocol.bedrock.packet.LevelSoundEventPacket;
 import org.cloudburstmc.protocol.bedrock.packet.UpdateClientInputLocksPacket;
 import org.cloudburstmc.protocol.bedrock.transformer.FlagTransformer;
+import org.cloudburstmc.protocol.bedrock.transformer.TypeMapTransformer;
 import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v560 extends Bedrock_v557 {
@@ -28,11 +29,6 @@ public class Bedrock_v560 extends Bedrock_v557 {
             .insert(96, EntityFlag.OUT_OF_CONTROL)
             .insert(108, EntityFlag.HAS_DASH_COOLDOWN)
             .insert(109, EntityFlag.PUSH_TOWARDS_CLOSEST_SPACE)
-            .build();
-
-    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v557.ENTITY_DATA.toBuilder()
-            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
-            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
             .build();
 
     protected static final TypeMap<ContainerSlotType> CONTAINER_SLOT_TYPES = Bedrock_v557.CONTAINER_SLOT_TYPES.toBuilder()
@@ -53,6 +49,12 @@ public class Bedrock_v560 extends Bedrock_v557 {
             .insert(456, SoundEvent.FENCE_GATE_OPEN)
             .insert(457, SoundEvent.FENCE_GATE_CLOSE)
             .insert(458, SoundEvent.UNDEFINED)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v557.ENTITY_DATA.toBuilder()
+            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
+            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
     public static final BedrockCodec CODEC = Bedrock_v557.CODEC.toBuilder()

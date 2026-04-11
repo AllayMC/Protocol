@@ -188,5 +188,9 @@ public enum EntityFlag {
     /**
      * @since v859
      */
-    BODY_ROTATION_LOCKED_TO_VEHICLE
+    BODY_ROTATION_LOCKED_TO_VEHICLE,
+    /**
+     * @since v974
+     */
+    USES_LEGACY_FRICTION
 }

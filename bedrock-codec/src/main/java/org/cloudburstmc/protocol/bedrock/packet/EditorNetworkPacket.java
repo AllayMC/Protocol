@@ -14,7 +14,10 @@ import lombok.ToString;
 public class EditorNetworkPacket implements BedrockPacket {
     /**
      * A network little-endian compound-tag payload containing the actual editor message data.
+     *
+     * @deprecated since v944
      */
+    @Deprecated
     private Object payload; // NBT like
 
     /**
@@ -24,6 +27,18 @@ public class EditorNetworkPacket implements BedrockPacket {
      * @since v712
      */
     private boolean routeToManager;
+    /**
+     * The raw editor variant identifier used by v944+.
+     *
+     * @since v944
+     */
+    private String rawVariantName;
+    /**
+     * The raw editor variant payload used by v944+.
+     *
+     * @since v944
+     */
+    private String rawVariantData;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

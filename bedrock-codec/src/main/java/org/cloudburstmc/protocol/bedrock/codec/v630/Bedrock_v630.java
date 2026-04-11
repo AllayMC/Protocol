@@ -35,11 +35,6 @@ public class Bedrock_v630 extends Bedrock_v622 {
             .insert(LEVEL_EVENT_PARTICLE_TYPE, PARTICLE_TYPES)
             .build();
 
-    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v622.ENTITY_DATA
-            .toBuilder()
-            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
-            .build();
-
     protected static final TypeMap<ContainerSlotType> CONTAINER_SLOT_TYPES = Bedrock_v622.CONTAINER_SLOT_TYPES.toBuilder()
             .insert(62, ContainerSlotType.CRAFTER_BLOCK_CONTAINER)
             .build();
@@ -60,6 +55,12 @@ public class Bedrock_v630 extends Bedrock_v622 {
             .insert(490, SoundEvent.COPPER_BULB_ON)
             .insert(491, SoundEvent.COPPER_BULB_OFF)
             .insert(492, SoundEvent.UNDEFINED)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v622.ENTITY_DATA
+            .toBuilder()
+            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
 

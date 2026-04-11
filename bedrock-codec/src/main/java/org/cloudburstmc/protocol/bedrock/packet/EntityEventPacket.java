@@ -3,6 +3,7 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityEventType;
 
 /**
@@ -28,6 +29,12 @@ public class EntityEventPacket implements BedrockPacket {
      * repurpose it for extra state such as caravan size or spawn metadata.
      */
     private int data;
+    /**
+     * Optional fire position data used by certain modern entity events.
+     *
+     * @since v974
+     */
+    private Vector3f fireAtPosition;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

@@ -15,6 +15,7 @@ public record MemoryCategoryCounter(Category category, long currentBytes) {
         ACTOR,
         ACTOR_ANIMATION,
         ACTOR_RENDERING,
+        @Deprecated
         BALANCER,
         BLOCK_TICKING_QUEUES,
         BIOME_STORAGE,
@@ -91,6 +92,10 @@ public record MemoryCategoryCounter(Category category, long currentBytes) {
         SCRIPTING_CONTEXT_RUN,
         DATA_DRIVEN_UI,
         DATA_DRIVEN_UI_DEFS,
+        /**
+         * @since v944
+         */
+        LIGHT_VOLUME_MANAGER,
         /**
          * @since v944
          */

@@ -6,24 +6,19 @@ import org.cloudburstmc.protocol.bedrock.codec.v786.serializer.LevelSoundEventSe
 import org.cloudburstmc.protocol.bedrock.codec.v898.BedrockCodecHelper_v898;
 import org.cloudburstmc.protocol.bedrock.codec.v898.Bedrock_v898;
 import org.cloudburstmc.protocol.bedrock.codec.v924.serializer.*;
+import org.cloudburstmc.protocol.bedrock.data.MemoryCategoryCounter;
 import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataFormat;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.packet.*;
+import org.cloudburstmc.protocol.bedrock.transformer.TypeMapTransformer;
 import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v924 extends Bedrock_v898 {
 
-    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v898.ENTITY_DATA
-            .toBuilder()
-            .insert(EntityDataTypes.ARROW_SHOOTER_ID, 17, EntityDataFormat.LONG)
-            .insert(EntityDataTypes.FIREWORK_DIRECTION, 17, EntityDataFormat.VECTOR3F)
-            .insert(EntityDataTypes.FIREWORK_SHOOTER_ID, 18, EntityDataFormat.LONG)
-            .insert(EntityDataTypes.AIM_ASSIST_PRIORITY_PRESET_ID, 136, EntityDataFormat.INT)
-            .insert(EntityDataTypes.AIM_ASSIST_PRIORITY_CATEGORY_ID, 137, EntityDataFormat.INT)
-            .insert(EntityDataTypes.AIM_ASSIST_PRIORITY_ACTOR_ID, 138, EntityDataFormat.INT)
-            .build();
+    protected static final TypeMap<MemoryCategoryCounter.Category> MEMORY_CATEGORY_TYPES =
+            TypeMap.fromEnum(MemoryCategoryCounter.Category.class, 80);
 
     protected static final TypeMap<SoundEvent> SOUND_EVENTS = Bedrock_v898.SOUND_EVENTS
             .toBuilder()
@@ -50,6 +45,17 @@ public class Bedrock_v924 extends Bedrock_v898 {
 
             .build();
 
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v898.ENTITY_DATA
+            .toBuilder()
+            .insert(EntityDataTypes.ARROW_SHOOTER_ID, 17, EntityDataFormat.LONG)
+            .insert(EntityDataTypes.FIREWORK_DIRECTION, 17, EntityDataFormat.VECTOR3F)
+            .insert(EntityDataTypes.FIREWORK_SHOOTER_ID, 18, EntityDataFormat.LONG)
+            .insert(EntityDataTypes.AIM_ASSIST_PRIORITY_PRESET_ID, 136, EntityDataFormat.INT)
+            .insert(EntityDataTypes.AIM_ASSIST_PRIORITY_CATEGORY_ID, 137, EntityDataFormat.INT)
+            .insert(EntityDataTypes.AIM_ASSIST_PRIORITY_ACTOR_ID, 138, EntityDataFormat.INT)
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
+            .build();
+
     public static final BedrockCodec CODEC = Bedrock_v898.CODEC.toBuilder()
             .protocolVersion(924)
             .minecraftVersion("1.26.0")
@@ -63,7 +69,7 @@ public class Bedrock_v924 extends Bedrock_v898 {
             .updateSerializer(GraphicsParameterOverridePacket.class, GraphicsParameterOverrideSerializer_v924.INSTANCE)
             .updateSerializer(LevelSoundEventPacket.class, new LevelSoundEventSerializer_v786(SOUND_EVENTS))
             .updateSerializer(ServerboundDataStorePacket.class, ServerboundDataStoreSerializer_v924.INSTANCE)
-            .updateSerializer(ServerboundDiagnosticsPacket.class, ServerboundDiagnosticsSerializer_v924.INSTANCE)
+            .updateSerializer(ServerboundDiagnosticsPacket.class, new ServerboundDiagnosticsSerializer_v924(MEMORY_CATEGORY_TYPES))
             .updateSerializer(StartGamePacket.class, StartGameSerializer_v924.INSTANCE)
             .updateSerializer(TextPacket.class, TextSerializer_v924.INSTANCE)
             .registerPacket(ClientboundDataDrivenUIShowScreenPacket::new, ClientboundDataDrivenUIShowScreenSerializer_v924.INSTANCE, 333, PacketRecipient.CLIENT)

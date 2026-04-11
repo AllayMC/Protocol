@@ -13,6 +13,7 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.cloudburstmc.protocol.bedrock.packet.*;
 import org.cloudburstmc.protocol.bedrock.transformer.FlagTransformer;
+import org.cloudburstmc.protocol.bedrock.transformer.TypeMapTransformer;
 import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v800 extends Bedrock_v786 {
@@ -20,14 +21,6 @@ public class Bedrock_v800 extends Bedrock_v786 {
     protected static final TypeMap<EntityFlag> ENTITY_FLAGS = Bedrock_v786.ENTITY_FLAGS
             .toBuilder()
             .insert(123, EntityFlag.DOES_SERVER_AUTH_ONLY_DISMOUNT)
-            .build();
-
-    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v786.ENTITY_DATA
-            .toBuilder()
-            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
-            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
-            .insert(EntityDataTypes.SEAT_THIRD_PERSON_CAMERA_RADIUS, 134, EntityDataFormat.FLOAT)
-            .insert(EntityDataTypes.SEAT_CAMERA_RELAX_DISTANCE_SMOOTHING, 135, EntityDataFormat.FLOAT)
             .build();
 
     protected static final TypeMap<SoundEvent> SOUND_EVENTS = Bedrock_v786.SOUND_EVENTS
@@ -42,6 +35,15 @@ public class Bedrock_v800 extends Bedrock_v786 {
             .insert(553, SoundEvent.IMITATE_HAPPY_GHAST)
             .insert(554, SoundEvent.UNEQUIP_GENERIC)
             .insert(555, SoundEvent.UNDEFINED)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v786.ENTITY_DATA
+            .toBuilder()
+            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
+            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
+            .insert(EntityDataTypes.SEAT_THIRD_PERSON_CAMERA_RADIUS, 134, EntityDataFormat.FLOAT)
+            .insert(EntityDataTypes.SEAT_CAMERA_RELAX_DISTANCE_SMOOTHING, 135, EntityDataFormat.FLOAT)
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
     @SuppressWarnings("deprecation")

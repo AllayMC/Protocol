@@ -6,8 +6,10 @@ import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LevelEventSeriali
 import org.cloudburstmc.protocol.bedrock.codec.v361.serializer.LevelEventGenericSerializer_v361;
 import org.cloudburstmc.protocol.bedrock.codec.v786.serializer.LevelSoundEventSerializer_v786;
 import org.cloudburstmc.protocol.bedrock.codec.v924.Bedrock_v924;
+import org.cloudburstmc.protocol.bedrock.codec.v924.serializer.ServerboundDiagnosticsSerializer_v924;
 import org.cloudburstmc.protocol.bedrock.codec.v944.serializer.*;
 import org.cloudburstmc.protocol.bedrock.data.LevelEventType;
+import org.cloudburstmc.protocol.bedrock.data.MemoryCategoryCounter;
 import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.ParticleType;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
@@ -26,14 +28,27 @@ public class Bedrock_v944 extends Bedrock_v924 {
             .insert(66, ContainerSlotType.RECIPE_FURNACE_ITEMS_CONTAINER)
             .build();
 
+    protected static final TypeMap<MemoryCategoryCounter.Category> MEMORY_CATEGORY_TYPES = Bedrock_v924.MEMORY_CATEGORY_TYPES
+            .toBuilder()
+            .remove(5)
+            .shift(6, 43, -1)
+            .insert(42, MemoryCategoryCounter.Category.LIGHT_VOLUME_MANAGER)
+            .insert(81, MemoryCategoryCounter.Category.GAMEFACE)
+            .insert(82, MemoryCategoryCounter.Category.GAMEFACE_SYSTEM)
+            .insert(83, MemoryCategoryCounter.Category.GAMEFACE_DOM)
+            .insert(84, MemoryCategoryCounter.Category.GAMEFACE_CSS)
+            .insert(85, MemoryCategoryCounter.Category.GAMEFACE_DISPLAY)
+            .insert(86, MemoryCategoryCounter.Category.GAMEFACE_TEMP_ALLOCATOR)
+            .insert(87, MemoryCategoryCounter.Category.GAMEFACE_POOL_ALLOCATOR)
+            .insert(88, MemoryCategoryCounter.Category.GAMEFACE_DUMP)
+            .insert(89, MemoryCategoryCounter.Category.GAMEFACE_MEDIA)
+            .insert(90, MemoryCategoryCounter.Category.GAMEFACE_JSON)
+            .insert(91, MemoryCategoryCounter.Category.GAMEFACE_SCRIPT_ENGINE)
+            .build();
+
     protected static final TypeMap<ParticleType> PARTICLE_TYPES = Bedrock_v924.PARTICLE_TYPES.toBuilder()
             .insert(99, ParticleType.PAUSE_MOB_GROWTH)
             .insert(100, ParticleType.RESET_MOB_GROWTH)
-            .build();
-
-    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v924.ENTITY_DATA
-            .toBuilder()
-            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
             .build();
 
     protected static final TypeMap<LevelEventType> LEVEL_EVENTS = Bedrock_v924.LEVEL_EVENTS.toBuilder()
@@ -47,6 +62,12 @@ public class Bedrock_v944 extends Bedrock_v924 {
             .insert(599, SoundEvent.UNDEFINED)
             .build();
 
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v924.ENTITY_DATA
+            .toBuilder()
+            .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
+            .build();
+
     public static final BedrockCodec CODEC = Bedrock_v924.CODEC.toBuilder()
             .protocolVersion(944)
             .minecraftVersion("1.26.10")
@@ -55,10 +76,12 @@ public class Bedrock_v944 extends Bedrock_v924 {
             .updateSerializer(CameraSplinePacket.class, CameraSplineSerializer_v944.INSTANCE)
             .updateSerializer(ClientboundDataDrivenUICloseScreenPacket.class, ClientboundDataDrivenUICloseScreenSerializer_v944.INSTANCE)
             .updateSerializer(ClientboundDataDrivenUIShowScreenPacket.class, ClientboundDataDrivenUIShowScreenSerializer_v944.INSTANCE)
+            .updateSerializer(EditorNetworkPacket.class, EditorNetworkSerializer_v944.INSTANCE)
             .updateSerializer(LevelEventPacket.class, new LevelEventSerializer_v291(LEVEL_EVENTS))
             .updateSerializer(LevelEventGenericPacket.class, new LevelEventGenericSerializer_v361(LEVEL_EVENTS))
             .updateSerializer(LevelSoundEventPacket.class, new LevelSoundEventSerializer_v786(SOUND_EVENTS))
             .updateSerializer(PlayerAuthInputPacket.class, PlayerAuthInputSerializer_v944.INSTANCE)
+            .updateSerializer(ServerboundDiagnosticsPacket.class, new ServerboundDiagnosticsSerializer_v924(MEMORY_CATEGORY_TYPES))
             .updateSerializer(StartGamePacket.class, StartGameSerializer_v944.INSTANCE)
             .updateSerializer(UpdateClientInputLocksPacket.class, UpdateClientInputLocksSerializer_v944.INSTANCE)
             .updateSerializer(VoxelShapesPacket.class, VoxelShapesSerializer_v944.INSTANCE)

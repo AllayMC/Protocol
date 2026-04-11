@@ -109,6 +109,10 @@ public interface BedrockCodecHelper {
 
     void writeNetItem(ByteBuf buffer, ItemData item);
 
+    ItemData readNetItemDescriptor(ByteBuf buffer);
+
+    void writeNetItemDescriptor(ByteBuf buffer, ItemData item);
+
     ItemData readItem(ByteBuf buffer);
 
     void writeItem(ByteBuf buffer, ItemData item);

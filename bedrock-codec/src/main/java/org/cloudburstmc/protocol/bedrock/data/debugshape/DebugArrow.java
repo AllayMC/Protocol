@@ -52,6 +52,17 @@ public final class DebugArrow extends DebugShape {
         this.arrowHeadSegments = arrowHeadSegments;
     }
 
+    public DebugArrow(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                      @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                      @Nullable Float maximumRenderDistance, Vector3f arrowEndPosition, Float arrowHeadLength,
+                      Float arrowHeadRadius, Integer arrowHeadSegments, @Nullable Long attachedToEntityId) {
+        super(id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
+        this.arrowEndPosition = arrowEndPosition;
+        this.arrowHeadLength = arrowHeadLength;
+        this.arrowHeadRadius = arrowHeadRadius;
+        this.arrowHeadSegments = arrowHeadSegments;
+    }
+
     @Override
     public Type getType() {
         return Type.ARROW;

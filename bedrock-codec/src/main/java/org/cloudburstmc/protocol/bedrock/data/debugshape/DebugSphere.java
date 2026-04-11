@@ -34,6 +34,13 @@ public final class DebugSphere extends DebugShape {
         this.segments = segments;
     }
 
+    public DebugSphere(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                       @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                       @Nullable Float maximumRenderDistance, Integer segments, @Nullable Long attachedToEntityId) {
+        super(id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
+        this.segments = segments;
+    }
+
     @Override
     public Type getType() {
         return Type.SPHERE;

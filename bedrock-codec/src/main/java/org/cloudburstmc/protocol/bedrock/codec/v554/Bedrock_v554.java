@@ -1,6 +1,7 @@
 package org.cloudburstmc.protocol.bedrock.codec.v554;
 
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
+import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
 import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.LevelSoundEvent1Serializer_v291;
 import org.cloudburstmc.protocol.bedrock.codec.v313.serializer.LevelSoundEvent2Serializer_v313;
 import org.cloudburstmc.protocol.bedrock.codec.v332.serializer.LevelSoundEventSerializer_v332;
@@ -8,8 +9,10 @@ import org.cloudburstmc.protocol.bedrock.codec.v545.Bedrock_v545;
 import org.cloudburstmc.protocol.bedrock.codec.v554.serializer.*;
 import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
+import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.TextProcessingEventOrigin;
 import org.cloudburstmc.protocol.bedrock.packet.*;
+import org.cloudburstmc.protocol.bedrock.transformer.TypeMapTransformer;
 import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v554 extends Bedrock_v545 {
@@ -17,6 +20,10 @@ public class Bedrock_v554 extends Bedrock_v545 {
     protected static final TypeMap<SoundEvent> SOUND_EVENTS = Bedrock_v545.SOUND_EVENTS.toBuilder()
             .replace(442, SoundEvent.ENCHANTING_TABLE_USE)
             .insert(443, SoundEvent.UNDEFINED)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v545.ENTITY_DATA.toBuilder()
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
     protected static final TypeMap<TextProcessingEventOrigin> TEXT_PROCESSING_ORIGINS = TypeMap.fromEnum(TextProcessingEventOrigin.class, 13);

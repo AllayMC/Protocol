@@ -12,6 +12,7 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
 import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
 import org.cloudburstmc.protocol.bedrock.packet.*;
 import org.cloudburstmc.protocol.bedrock.transformer.FlagTransformer;
+import org.cloudburstmc.protocol.bedrock.transformer.TypeMapTransformer;
 import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
 public class Bedrock_v818 extends Bedrock_v800 {
@@ -19,12 +20,6 @@ public class Bedrock_v818 extends Bedrock_v800 {
     protected static final TypeMap<EntityFlag> ENTITY_FLAGS = Bedrock_v800.ENTITY_FLAGS
             .toBuilder()
             .insert(124, EntityFlag.BODY_ROTATION_ALWAYS_FOLLOWS_HEAD)
-            .build();
-
-    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v800.ENTITY_DATA
-            .toBuilder()
-            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
-            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
             .build();
 
     protected static final TypeMap<SoundEvent> SOUND_EVENTS = Bedrock_v800.SOUND_EVENTS
@@ -36,6 +31,13 @@ public class Bedrock_v818 extends Bedrock_v800 {
             .insert(559, SoundEvent.LEAD_BREAK)
             .insert(560, SoundEvent.UNSADDLE)
             .insert(561, SoundEvent.UNDEFINED)
+            .build();
+
+    protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v800.ENTITY_DATA
+            .toBuilder()
+            .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
+            .update(EntityDataTypes.FLAGS_2, new FlagTransformer(ENTITY_FLAGS, 1))
+            .update(EntityDataTypes.HEARTBEAT_SOUND_EVENT, new TypeMapTransformer<>(SOUND_EVENTS))
             .build();
 
     public static final BedrockCodec CODEC = Bedrock_v800.CODEC.toBuilder()
