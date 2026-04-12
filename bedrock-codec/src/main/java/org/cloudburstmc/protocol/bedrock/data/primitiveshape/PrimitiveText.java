@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.data.debugshape;
+package org.cloudburstmc.protocol.bedrock.data.primitiveshape;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,12 +9,12 @@ import org.cloudburstmc.math.vector.Vector3f;
 import java.awt.*;
 
 /**
- * Represents debug text used in the Bedrock protocol.
+ * Represents primitive text used in the Bedrock protocol.
  */
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public final class DebugText extends DebugShape {
+public final class PrimitiveText extends PrimitiveShape {
 
     /**
      * The text.
@@ -52,23 +52,23 @@ public final class DebugText extends DebugShape {
      */
     private final boolean showTextBackface;
 
-    public DebugText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
-                     @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
-                     String text) {
+    public PrimitiveText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                         @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                         String text) {
         this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, false, null, false, false, false, null, null);
     }
 
-    public DebugText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
-                     @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
-                     String text, @Nullable Long attachedToEntityId) {
+    public PrimitiveText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                         @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                         String text, @Nullable Long attachedToEntityId) {
         this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, false, null, false, false, false, null, attachedToEntityId);
     }
 
-    public DebugText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
-                     @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
-                     String text, boolean useRotation, @Nullable Color backgroundColor, boolean depthTest,
-                     boolean showBackface, boolean showTextBackface, @Nullable Float maximumRenderDistance,
-                     @Nullable Long attachedToEntityId) {
+    public PrimitiveText(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                         @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                         String text, boolean useRotation, @Nullable Color backgroundColor, boolean depthTest,
+                         boolean showBackface, boolean showTextBackface, @Nullable Float maximumRenderDistance,
+                         @Nullable Long attachedToEntityId) {
         super(id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
         this.text = text;
         this.useRotation = useRotation;

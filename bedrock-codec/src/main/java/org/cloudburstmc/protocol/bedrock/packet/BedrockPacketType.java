@@ -231,7 +231,7 @@ public record BedrockPacketType(String name) {
     public static final BedrockPacketType PLAYER_UPDATE_ENTITY_OVERRIDES = new BedrockPacketType("PLAYER_UPDATE_ENTITY_OVERRIDES");
     public static final BedrockPacketType PLAYER_LOCATION = new BedrockPacketType("PLAYER_LOCATION");
     public static final BedrockPacketType CLIENTBOUND_CONTROL_SCHEME_SET = new BedrockPacketType("CLIENTBOUND_CONTROL_SCHEME_SET");
-    public static final BedrockPacketType DEBUG_DRAWER = new BedrockPacketType("DEBUG_DRAWER");
+    public static final BedrockPacketType PRIMITIVE_SHAPES = new BedrockPacketType("PRIMITIVE_SHAPES");
     public static final BedrockPacketType SERVERBOUND_PACK_SETTING_CHANGE = new BedrockPacketType("SERVERBOUND_PACK_SETTING_CHANGE");
     public static final BedrockPacketType GRAPHICS_PARAMETER_OVERRIDE_PACKET = new BedrockPacketType("GRAPHICS_PARAMETER_OVERRIDE_PACKET");
     public static final BedrockPacketType SERVER_PLAYER_POST_MOVE_POSITION = new BedrockPacketType("SERVER_PLAYER_POST_MOVE_POSITION");

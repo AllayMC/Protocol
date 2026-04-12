@@ -925,7 +925,7 @@ public interface BedrockPacketHandler {
         return PacketSignal.UNHANDLED;
     }
 
-    default PacketSignal handle(DebugDrawerPacket packet) {
+    default PacketSignal handle(PrimitiveShapesPacket packet) {
         return PacketSignal.UNHANDLED;
     }
 

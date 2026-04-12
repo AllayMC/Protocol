@@ -3,18 +3,18 @@ package org.cloudburstmc.protocol.bedrock.codec.v924.serializer;
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.v859.serializer.DebugDrawerSerializer_v859;
-import org.cloudburstmc.protocol.bedrock.data.debugshape.*;
+import org.cloudburstmc.protocol.bedrock.codec.v859.serializer.PrimitiveShapesSerializer_v859;
+import org.cloudburstmc.protocol.bedrock.data.primitiveshape.*;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.awt.*;
 
-public class DebugDrawerSerializer_v924 extends DebugDrawerSerializer_v859 {
+public class PrimitiveShapesSerializer_v924 extends PrimitiveShapesSerializer_v859 {
 
-    public static final DebugDrawerSerializer_v924 INSTANCE = new DebugDrawerSerializer_v924();
+    public static final PrimitiveShapesSerializer_v924 INSTANCE = new PrimitiveShapesSerializer_v924();
 
     @Override
-    protected void writeCommonShapeData(ByteBuf buffer, BedrockCodecHelper helper, DebugShape shape) {
+    protected void writeCommonShapeData(ByteBuf buffer, BedrockCodecHelper helper, PrimitiveShape shape) {
         VarInts.writeUnsignedLong(buffer, shape.getId());
         helper.writeOptionalNull(buffer, shape.getType(), (buf, type) -> buf.writeByte(type.ordinal()));
         helper.writeOptionalNull(buffer, shape.getPosition(), WRITE_VECTOR3F);
@@ -28,10 +28,10 @@ public class DebugDrawerSerializer_v924 extends DebugDrawerSerializer_v859 {
     }
 
     @Override
-    protected DebugShape readShape(ByteBuf buffer, BedrockCodecHelper helper) {
+    protected PrimitiveShape readShape(ByteBuf buffer, BedrockCodecHelper helper) {
         long id = VarInts.readUnsignedLong(buffer);
 
-        DebugShape.Type type = helper.readOptional(buffer, null,
+        PrimitiveShape.Type type = helper.readOptional(buffer, null,
                 (buf, aHelper) -> SHAPE_TYPES[buf.readUnsignedByte()]);
         Vector3f position = helper.readOptional(buffer, null, READ_VECTOR3F);
         Float scale = helper.readOptional(buffer, null, ByteBuf::readFloatLE);
@@ -44,7 +44,7 @@ public class DebugDrawerSerializer_v924 extends DebugDrawerSerializer_v859 {
         int payloadType = VarInts.readUnsignedInt(buffer); // Unused
 
         if (type == null) {
-            return new DebugShape(id, dimension);
+            return new PrimitiveShape(id, dimension);
         }
 
         switch (type) {
@@ -53,25 +53,25 @@ public class DebugDrawerSerializer_v924 extends DebugDrawerSerializer_v859 {
                 Float arrowHeadLength = helper.readOptional(buffer, null, ByteBuf::readFloatLE);
                 Float arrowHeadRadius = helper.readOptional(buffer, null, ByteBuf::readFloatLE);
                 Integer arrowHeadSegments = helper.readOptional(buffer, null, buf -> (int) buf.readUnsignedByte());
-                return new DebugArrow(id, dimension, position, scale, rotation, totalTimeLeft, color, arrowEndPosition,
+                return new PrimitiveArrow(id, dimension, position, scale, rotation, totalTimeLeft, color, arrowEndPosition,
                         arrowHeadLength, arrowHeadRadius, arrowHeadSegments, attachedToEntityId);
             case BOX:
                 Vector3f boxBounds = helper.readVector3f(buffer);
-                return new DebugBox(id, dimension, position, scale, rotation, totalTimeLeft, color, boxBounds, attachedToEntityId);
+                return new PrimitiveBox(id, dimension, position, scale, rotation, totalTimeLeft, color, boxBounds, attachedToEntityId);
             case CIRCLE:
                 Integer circleSegments = (int) buffer.readUnsignedByte();
-                return new DebugCircle(id, dimension, position, scale, rotation, totalTimeLeft, color, circleSegments, attachedToEntityId);
+                return new PrimitiveCircle(id, dimension, position, scale, rotation, totalTimeLeft, color, circleSegments, attachedToEntityId);
             case LINE:
                 Vector3f lineEndPosition = helper.readVector3f(buffer);
-                return new DebugLine(id, dimension, position, scale, rotation, totalTimeLeft, color, lineEndPosition, attachedToEntityId);
+                return new PrimitiveLine(id, dimension, position, scale, rotation, totalTimeLeft, color, lineEndPosition, attachedToEntityId);
             case SPHERE:
                 Integer sphereSegments = (int) buffer.readUnsignedByte();
-                return new DebugSphere(id, dimension, position, scale, rotation, totalTimeLeft, color, sphereSegments, attachedToEntityId);
+                return new PrimitiveSphere(id, dimension, position, scale, rotation, totalTimeLeft, color, sphereSegments, attachedToEntityId);
             case TEXT:
                 String text = helper.readString(buffer);
-                return new DebugText(id, dimension, position, scale, rotation, totalTimeLeft, color, text, attachedToEntityId);
+                return new PrimitiveText(id, dimension, position, scale, rotation, totalTimeLeft, color, text, attachedToEntityId);
             default:
-                throw new IllegalStateException("Unknown debug shape type");
+                throw new IllegalStateException("Unknown primitive shape type");
         }
     }
 }

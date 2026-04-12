@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.data.debugshape;
+package org.cloudburstmc.protocol.bedrock.data.primitiveshape;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,12 +9,12 @@ import org.cloudburstmc.math.vector.Vector3f;
 import java.awt.*;
 
 /**
- * Represents debug arrow used in the Bedrock protocol.
+ * Represents a primitive arrow used in the Bedrock protocol.
  */
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public final class DebugArrow extends DebugShape {
+public final class PrimitiveArrow extends PrimitiveShape {
 
     /**
      * The arrow end position.
@@ -33,18 +33,18 @@ public final class DebugArrow extends DebugShape {
      */
     private final Integer arrowHeadSegments;
 
-    public DebugArrow(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
-                      @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
-                      Vector3f arrowEndPosition, Float arrowHeadLength, Float arrowHeadRadius,
-                      Integer arrowHeadSegments) {
+    public PrimitiveArrow(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                          @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                          Vector3f arrowEndPosition, Float arrowHeadLength, Float arrowHeadRadius,
+                          Integer arrowHeadSegments) {
         this(id, dimension, position, scale, rotation, totalTimeLeft, color, arrowEndPosition, arrowHeadLength,
                 arrowHeadRadius, arrowHeadSegments, null);
     }
 
-    public DebugArrow(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
-                      @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
-                      Vector3f arrowEndPosition, Float arrowHeadLength, Float arrowHeadRadius,
-                      Integer arrowHeadSegments, @Nullable Long attachedToEntityId) {
+    public PrimitiveArrow(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                          @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                          Vector3f arrowEndPosition, Float arrowHeadLength, Float arrowHeadRadius,
+                          Integer arrowHeadSegments, @Nullable Long attachedToEntityId) {
         super(id, dimension, position, scale, rotation, totalTimeLeft, color, attachedToEntityId);
         this.arrowEndPosition = arrowEndPosition;
         this.arrowHeadLength = arrowHeadLength;
@@ -52,10 +52,10 @@ public final class DebugArrow extends DebugShape {
         this.arrowHeadSegments = arrowHeadSegments;
     }
 
-    public DebugArrow(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
-                      @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
-                      @Nullable Float maximumRenderDistance, Vector3f arrowEndPosition, Float arrowHeadLength,
-                      Float arrowHeadRadius, Integer arrowHeadSegments, @Nullable Long attachedToEntityId) {
+    public PrimitiveArrow(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                          @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                          @Nullable Float maximumRenderDistance, Vector3f arrowEndPosition, Float arrowHeadLength,
+                          Float arrowHeadRadius, Integer arrowHeadSegments, @Nullable Long attachedToEntityId) {
         super(id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
         this.arrowEndPosition = arrowEndPosition;
         this.arrowHeadLength = arrowHeadLength;

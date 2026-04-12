@@ -46,7 +46,7 @@ public class Bedrock_v974 extends Bedrock_v944 {
             .minecraftVersion("1.26.20")
             .helper(() -> new BedrockCodecHelper_v974(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
             .updateSerializer(BiomeDefinitionListPacket.class, BiomeDefinitionListSerializer_v974.INSTANCE)
-            .updateSerializer(DebugDrawerPacket.class, DebugDrawerSerializer_v974.INSTANCE)
+            .updateSerializer(PrimitiveShapesPacket.class, PrimitiveShapesSerializer_v974.INSTANCE)
             .updateSerializer(DimensionDataPacket.class, DimensionDataSerializer_v974.INSTANCE)
             .updateSerializer(DisconnectPacket.class, DisconnectSerializer_v974.INSTANCE)
             .updateSerializer(EntityEventPacket.class, new EntityEventSerializer_v974(ENTITY_EVENTS))

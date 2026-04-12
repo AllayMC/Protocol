@@ -4,8 +4,8 @@ import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
-import org.cloudburstmc.protocol.bedrock.data.debugshape.*;
-import org.cloudburstmc.protocol.bedrock.packet.DebugDrawerPacket;
+import org.cloudburstmc.protocol.bedrock.data.primitiveshape.*;
+import org.cloudburstmc.protocol.bedrock.packet.PrimitiveShapesPacket;
 import org.cloudburstmc.protocol.bedrock.util.TriConsumer;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
@@ -14,11 +14,11 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<DebugDrawerPacket> {
+public class PrimitiveShapesSerializer_v818 implements BedrockPacketSerializer<PrimitiveShapesPacket> {
 
-    public static final DebugDrawerSerializer_v818 INSTANCE = new DebugDrawerSerializer_v818();
+    public static final PrimitiveShapesSerializer_v818 INSTANCE = new PrimitiveShapesSerializer_v818();
 
-    protected static final DebugShape.Type[] SHAPE_TYPES = DebugShape.Type.values();
+    protected static final PrimitiveShape.Type[] SHAPE_TYPES = PrimitiveShape.Type.values();
 
     protected static final TriConsumer<ByteBuf, BedrockCodecHelper, Vector3f> WRITE_VECTOR3F =
             (buffer, helper, vector3f) -> helper.writeVector3f(buffer, vector3f);
@@ -34,21 +34,21 @@ public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<Debug
             (buffer, helper) -> helper.readString(buffer);
 
     @Override
-    public void serialize(ByteBuf buffer, BedrockCodecHelper helper, DebugDrawerPacket packet) {
+    public void serialize(ByteBuf buffer, BedrockCodecHelper helper, PrimitiveShapesPacket packet) {
         helper.writeArray(buffer, packet.getShapes(), this::writeShape);
     }
 
     @Override
-    public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, DebugDrawerPacket packet) {
+    public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, PrimitiveShapesPacket packet) {
         helper.readArray(buffer, packet.getShapes(), this::readShape);
     }
 
-    protected void writeShape(ByteBuf buffer, BedrockCodecHelper helper, DebugShape shape) {
+    protected void writeShape(ByteBuf buffer, BedrockCodecHelper helper, PrimitiveShape shape) {
         writeCommonShapeData(buffer, helper, shape);
 
         switch (shape.getType()) {
             case ARROW:
-                DebugArrow arrow = (DebugArrow) shape;
+                PrimitiveArrow arrow = (PrimitiveArrow) shape;
                 buffer.writeBoolean(false);
                 buffer.writeBoolean(false);
                 helper.writeOptionalNull(buffer, arrow.getArrowEndPosition(), WRITE_VECTOR3F);
@@ -57,7 +57,7 @@ public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<Debug
                 helper.writeOptionalNull(buffer, arrow.getArrowHeadSegments(), ByteBuf::writeByte);
                 break;
             case BOX:
-                DebugBox box = (DebugBox) shape;
+                PrimitiveBox box = (PrimitiveBox) shape;
                 buffer.writeBoolean(false);
                 helper.writeOptionalNull(buffer, box.getBoxBounds(), WRITE_VECTOR3F);
                 buffer.writeBoolean(false);
@@ -66,7 +66,7 @@ public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<Debug
                 buffer.writeBoolean(false);
                 break;
             case CIRCLE:
-                DebugCircle circle = (DebugCircle) shape;
+                PrimitiveCircle circle = (PrimitiveCircle) shape;
                 buffer.writeBoolean(false);
                 buffer.writeBoolean(false);
                 buffer.writeBoolean(false);
@@ -75,7 +75,7 @@ public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<Debug
                 helper.writeOptionalNull(buffer, circle.getSegments(), ByteBuf::writeByte);
                 break;
             case LINE:
-                DebugLine line = (DebugLine) shape;
+                PrimitiveLine line = (PrimitiveLine) shape;
                 buffer.writeBoolean(false);
                 buffer.writeBoolean(false);
                 helper.writeOptionalNull(buffer, line.getLineEndPosition(), WRITE_VECTOR3F);
@@ -84,7 +84,7 @@ public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<Debug
                 buffer.writeBoolean(false);
                 break;
             case SPHERE:
-                DebugSphere sphere = (DebugSphere) shape;
+                PrimitiveSphere sphere = (PrimitiveSphere) shape;
                 buffer.writeBoolean(false);
                 buffer.writeBoolean(false);
                 buffer.writeBoolean(false);
@@ -93,7 +93,7 @@ public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<Debug
                 helper.writeOptionalNull(buffer, sphere.getSegments(), ByteBuf::writeByte);
                 break;
             case TEXT:
-                DebugText text = (DebugText) shape;
+                PrimitiveText text = (PrimitiveText) shape;
                 helper.writeOptionalNull(buffer, text.getText(), WRITE_STRING);
                 buffer.writeBoolean(false);
                 buffer.writeBoolean(false);
@@ -104,7 +104,7 @@ public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<Debug
         }
     }
 
-    protected void writeCommonShapeData(ByteBuf buffer, BedrockCodecHelper helper, DebugShape shape) {
+    protected void writeCommonShapeData(ByteBuf buffer, BedrockCodecHelper helper, PrimitiveShape shape) {
         VarInts.writeUnsignedLong(buffer, shape.getId());
         helper.writeOptionalNull(buffer, shape.getType(), (buf, type) -> buf.writeByte(type.ordinal()));
         helper.writeOptionalNull(buffer, shape.getPosition(), WRITE_VECTOR3F);
@@ -114,10 +114,10 @@ public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<Debug
         helper.writeOptionalNull(buffer, shape.getColor(), WRITE_COLOR);
     }
 
-    protected DebugShape readShape(ByteBuf buffer, BedrockCodecHelper helper) {
+    protected PrimitiveShape readShape(ByteBuf buffer, BedrockCodecHelper helper) {
         long id = VarInts.readUnsignedLong(buffer);
 
-        DebugShape.Type type = helper.readOptional(buffer, null,
+        PrimitiveShape.Type type = helper.readOptional(buffer, null,
                 (buf, aHelper) -> SHAPE_TYPES[buf.readUnsignedByte()]);
         Vector3f position = helper.readOptional(buffer, null, READ_VECTOR3F);
         Float scale = helper.readOptional(buffer, null, ByteBuf::readFloatLE);
@@ -133,24 +133,24 @@ public class DebugDrawerSerializer_v818 implements BedrockPacketSerializer<Debug
         Integer segments = helper.readOptional(buffer, null, buf -> (int) buf.readUnsignedByte());
 
         if (type == null) {
-            return new DebugShape(id);
+            return new PrimitiveShape(id);
         }
 
         switch (type) {
             case ARROW:
-                return new DebugArrow(id, 0, position, scale, rotation, totalTimeLeft, color, lineEndPosition, arrowHeadLength, arrowHeadRadius, segments);
+                return new PrimitiveArrow(id, 0, position, scale, rotation, totalTimeLeft, color, lineEndPosition, arrowHeadLength, arrowHeadRadius, segments);
             case BOX:
-                return new DebugBox(id, 0, position, scale, rotation, totalTimeLeft, color, boxBounds);
+                return new PrimitiveBox(id, 0, position, scale, rotation, totalTimeLeft, color, boxBounds);
             case CIRCLE:
-                return new DebugCircle(id, 0, position, scale, rotation, totalTimeLeft, color, segments);
+                return new PrimitiveCircle(id, 0, position, scale, rotation, totalTimeLeft, color, segments);
             case LINE:
-                return new DebugLine(id, 0, position, scale, rotation, totalTimeLeft, color, lineEndPosition);
+                return new PrimitiveLine(id, 0, position, scale, rotation, totalTimeLeft, color, lineEndPosition);
             case SPHERE:
-                return new DebugSphere(id, 0, position, scale, rotation, totalTimeLeft, color, segments);
+                return new PrimitiveSphere(id, 0, position, scale, rotation, totalTimeLeft, color, segments);
             case TEXT:
-                return new DebugText(id, 0, position, scale, rotation, totalTimeLeft, color, text);
+                return new PrimitiveText(id, 0, position, scale, rotation, totalTimeLeft, color, text);
             default:
-                throw new IllegalStateException("Unknown debug shape type");
+                throw new IllegalStateException("Unknown primitive shape type");
         }
     }
 }

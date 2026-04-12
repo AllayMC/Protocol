@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.data.debugshape;
+package org.cloudburstmc.protocol.bedrock.data.primitiveshape;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,14 +9,14 @@ import org.cloudburstmc.math.vector.Vector3f;
 import java.awt.*;
 
 /**
- * Defines a single debug shape rendered by {@link
- * org.cloudburstmc.protocol.bedrock.packet.DebugDrawerPacket}. Each shape has a unique network ID
+ * Defines a single primitive shape rendered by {@link
+ * org.cloudburstmc.protocol.bedrock.packet.PrimitiveShapesPacket}. Each shape has a unique network ID
  * and a set of optional parameters depending on its type.
  */
 @Getter
 @ToString
 @EqualsAndHashCode
-public class DebugShape {
+public class PrimitiveShape {
 
     /**
      * The network ID of the shape.
@@ -68,9 +68,9 @@ public class DebugShape {
     @Nullable
     private final Long attachedToEntityId;
 
-    public DebugShape(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
-                      @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
-                      @Nullable Float maximumRenderDistance, @Nullable Long attachedToEntityId) {
+    public PrimitiveShape(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                          @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                          @Nullable Float maximumRenderDistance, @Nullable Long attachedToEntityId) {
         this.id = id;
         this.position = position;
         this.scale = scale;
@@ -82,17 +82,17 @@ public class DebugShape {
         this.attachedToEntityId = attachedToEntityId;
     }
 
-    public DebugShape(long id) {
+    public PrimitiveShape(long id) {
         this(id, 0, null, null, null, null, null, null, null);
     }
 
-    public DebugShape(long id, int dimension) {
+    public PrimitiveShape(long id, int dimension) {
         this(id, dimension, null, null, null, null, null, null, null);
     }
 
-    public DebugShape(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
-                      @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
-                      @Nullable Long attachedToEntityId) {
+    public PrimitiveShape(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,
+                          @Nullable Vector3f rotation, @Nullable Float totalTimeLeft, @Nullable Color color,
+                          @Nullable Long attachedToEntityId) {
         this(id, dimension, position, scale, rotation, totalTimeLeft, color, null, attachedToEntityId);
     }
 
