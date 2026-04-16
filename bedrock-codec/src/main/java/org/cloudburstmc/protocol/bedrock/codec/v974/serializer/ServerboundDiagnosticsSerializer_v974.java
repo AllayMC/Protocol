@@ -15,15 +15,15 @@ public class ServerboundDiagnosticsSerializer_v974 extends ServerboundDiagnostic
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ServerboundDiagnosticsPacket packet) {
         super.serialize(buffer, helper, packet);
-        helper.writeOptionalNull(buffer, packet.getEntityDiagnostics(), this::writeEntityDiagnostics);
-        helper.writeOptionalNull(buffer, packet.getSystemDiagnostics(), this::writeSystemDiagnostics);
+        helper.writeArray(buffer, packet.getEntityDiagnostics(), this::writeEntityDiagnostics);
+        helper.writeArray(buffer, packet.getSystemDiagnostics(), this::writeSystemDiagnostics);
     }
 
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, ServerboundDiagnosticsPacket packet) {
         super.deserialize(buffer, helper, packet);
-        packet.setEntityDiagnostics(helper.readOptional(buffer, null, this::readEntityDiagnostics));
-        packet.setSystemDiagnostics(helper.readOptional(buffer, null, this::readSystemDiagnostics));
+        helper.readArray(buffer, packet.getEntityDiagnostics(), this::readEntityDiagnostics);
+        helper.readArray(buffer, packet.getSystemDiagnostics(), this::readSystemDiagnostics);
     }
 
     private void writeEntityDiagnostics(ByteBuf buffer, BedrockCodecHelper helper, ServerboundDiagnosticsPacket.EntityDiagnostics diagnostics) {

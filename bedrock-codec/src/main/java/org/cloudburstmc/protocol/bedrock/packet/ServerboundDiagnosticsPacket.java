@@ -60,17 +60,17 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
      */
     private final List<MemoryCategoryCounter> memoryCategoryValues = new ArrayList<>();
     /**
-     * Optional entity timing diagnostics.
+     * Entity timing diagnostics.
      *
      * @since v974
      */
-    private EntityDiagnostics entityDiagnostics;
+    private final List<EntityDiagnostics> entityDiagnostics = new ArrayList<>();
     /**
-     * Optional system timing diagnostics.
+     * System timing diagnostics.
      *
      * @since v974
      */
-    private SystemDiagnostics systemDiagnostics;
+    private final List<SystemDiagnostics> systemDiagnostics = new ArrayList<>();
 
     @Override
     public PacketSignal handle(BedrockPacketHandler handler) {
