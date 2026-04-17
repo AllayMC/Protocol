@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.data.BlockChangeEntry;
 
 import java.util.List;
@@ -17,17 +18,9 @@ import java.util.List;
 @ToString(doNotUseGetters = true)
 public class UpdateSubChunkBlocksPacket implements BedrockPacket {
     /**
-     * The x coordinate of the sub-chunk.
+     * The block position of the sub-chunk.
      */
-    private int chunkX;
-    /**
-     * The y coordinate of the sub-chunk.
-     */
-    private int chunkY;
-    /**
-     * The z coordinate of the sub-chunk.
-     */
-    private int chunkZ;
+    private Vector3i position;
 
     /**
      * Block changes for the default block layer.
