@@ -14,6 +14,7 @@ public enum AuthType {
     FULL,
     /**
      * Split screen player using the host's authentication token.
+     * If accepting guests, you should limit the maximum number of guests per host.
      */
     GUEST,
     /**
