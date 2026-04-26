@@ -9,7 +9,7 @@ import lombok.ToString;
  * the server to filter the text server-side. The server then responds with the same packet and the
  * safer version of the text.
  *
- * @deprecated This packet was deprecated in an unknown protocol version.
+ * @deprecated since v671
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
