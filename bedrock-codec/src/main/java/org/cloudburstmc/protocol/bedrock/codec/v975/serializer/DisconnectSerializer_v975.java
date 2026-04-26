@@ -15,7 +15,7 @@ public class DisconnectSerializer_v975 implements BedrockPacketSerializer<Discon
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, DisconnectPacket packet) {
-        VarInts.writeUnsignedInt(buffer, packet.getReason().ordinal());
+        VarInts.writeInt(buffer, packet.getReason().ordinal());
         VarInts.writeUnsignedInt(buffer, packet.isMessageSkipped() ? 1 : 0);
         if (!packet.isMessageSkipped()) {
             helper.writeString(buffer, packet.getKickMessage() == null ? "" : packet.getKickMessage());
@@ -25,7 +25,7 @@ public class DisconnectSerializer_v975 implements BedrockPacketSerializer<Discon
 
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, DisconnectPacket packet) {
-        packet.setReason(DisconnectFailReason.values()[VarInts.readUnsignedInt(buffer)]);
+        packet.setReason(DisconnectFailReason.values()[VarInts.readInt(buffer)]);
         int type = VarInts.readUnsignedInt(buffer);
         packet.setMessageSkipped(type != 0);
         if (type == 0) {
