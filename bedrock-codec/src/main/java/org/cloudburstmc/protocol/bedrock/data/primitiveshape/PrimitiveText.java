@@ -23,32 +23,32 @@ public final class PrimitiveText extends PrimitiveShape {
     /**
      * Whether the text uses the shape rotation.
      *
-     * @since v974
+     * @since v975
      */
     private final boolean useRotation;
     /**
      * The optional background colour of the text.
      *
-     * @since v974
+     * @since v975
      */
     @Nullable
     private final Color backgroundColor;
     /**
      * Whether the text participates in depth testing.
      *
-     * @since v974
+     * @since v975
      */
     private final boolean depthTest;
     /**
      * Whether the text background renders its backface.
      *
-     * @since v974
+     * @since v975
      */
     private final boolean showBackface;
     /**
      * Whether the text renders its backface.
      *
-     * @since v974
+     * @since v975
      */
     private final boolean showTextBackface;
 

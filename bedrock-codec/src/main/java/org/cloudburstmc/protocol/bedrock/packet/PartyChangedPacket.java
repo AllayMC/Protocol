@@ -21,7 +21,7 @@ public class PartyChangedPacket implements BedrockPacket {
     /**
      * Whether the player is the leader of the updated party.
      *
-     * @since v974
+     * @since v975
      */
     private boolean partyLeader;
 

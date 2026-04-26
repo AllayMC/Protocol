@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v974.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v975.serializer;
 
 import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
@@ -9,8 +9,8 @@ import org.cloudburstmc.protocol.bedrock.data.definitions.DimensionDefinition;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class DimensionDataSerializer_v974 extends DimensionDataSerializer_v503 {
-    public static final DimensionDataSerializer_v974 INSTANCE = new DimensionDataSerializer_v974();
+public class DimensionDataSerializer_v975 extends DimensionDataSerializer_v503 {
+    public static final DimensionDataSerializer_v975 INSTANCE = new DimensionDataSerializer_v975();
 
     @Override
     protected void writeDefinition(ByteBuf buffer, BedrockCodecHelper helper, DimensionDefinition definition) {

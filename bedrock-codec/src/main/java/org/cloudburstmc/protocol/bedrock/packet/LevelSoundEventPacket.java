@@ -54,7 +54,7 @@ public class LevelSoundEventPacket implements BedrockPacket {
     /**
      * Optional fire position data used by certain modern sound events.
      *
-     * @since v974
+     * @since v975
      */
     private Vector3f fireAtPosition;
 

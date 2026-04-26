@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v974.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v975.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.math.vector.Vector3f;
@@ -9,9 +9,9 @@ import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import java.awt.*;
 
-public class PrimitiveShapesSerializer_v974 extends PrimitiveShapesSerializer_v924 {
+public class PrimitiveShapesSerializer_v975 extends PrimitiveShapesSerializer_v924 {
 
-    public static final PrimitiveShapesSerializer_v974 INSTANCE = new PrimitiveShapesSerializer_v974();
+    public static final PrimitiveShapesSerializer_v975 INSTANCE = new PrimitiveShapesSerializer_v975();
 
     @Override
     protected void writeShape(ByteBuf buffer, BedrockCodecHelper helper, PrimitiveShape shape) {

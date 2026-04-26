@@ -23,9 +23,9 @@ import java.util.List;
  * @param legacyWorldGenRules        The legacy world gen rules.
  * @param biomeReplacementData       The biome replacement data.
  * @param villageType                The village type.
- * @param replacementBiomes          The biome replacement list introduced in v974.
- * @param surfaceBuilderData         The primary surface builder data introduced in v974.
- * @param subSurfaceBuilderData      The secondary surface builder data introduced in v974.
+ * @param replacementBiomes          The biome replacement list introduced in v975.
+ * @param surfaceBuilderData         The primary surface builder data introduced in v975.
+ * @param subSurfaceBuilderData      The secondary surface builder data introduced in v975.
  */
 public record BiomeDefinitionChunkGenData(@Nullable BiomeClimateData climate, @Nullable List<BiomeConsolidatedFeatureData> consolidatedFeatures,
                                           @Nullable BiomeMountainParamsData mountainParams,

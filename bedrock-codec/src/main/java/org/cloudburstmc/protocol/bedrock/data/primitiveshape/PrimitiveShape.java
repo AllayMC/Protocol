@@ -50,7 +50,7 @@ public class PrimitiveShape {
     /**
      * The optional maximum render distance of the shape.
      *
-     * @since v974
+     * @since v975
      */
     @Nullable
     private final Float maximumRenderDistance;

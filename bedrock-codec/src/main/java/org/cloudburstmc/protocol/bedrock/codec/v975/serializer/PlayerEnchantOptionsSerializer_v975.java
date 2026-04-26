@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v974.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v975.serializer;
 
 import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -13,9 +13,9 @@ import org.cloudburstmc.protocol.bedrock.util.VarInts;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PlayerEnchantOptionsSerializer_v974 extends PlayerEnchantOptionsSerializer_v407 {
+public class PlayerEnchantOptionsSerializer_v975 extends PlayerEnchantOptionsSerializer_v407 {
 
-    public static final PlayerEnchantOptionsSerializer_v974 INSTANCE = new PlayerEnchantOptionsSerializer_v974();
+    public static final PlayerEnchantOptionsSerializer_v975 INSTANCE = new PlayerEnchantOptionsSerializer_v975();
 
     @Override
     protected void writeOption(ByteBuf buffer, BedrockCodecHelper helper, EnchantOptionData option) {

@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v974.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v975.serializer;
 
 import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
@@ -8,8 +8,8 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.packet.PartyChangedPacket;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PartyChangedSerializer_v974 implements BedrockPacketSerializer<PartyChangedPacket> {
-    public static final PartyChangedSerializer_v974 INSTANCE = new PartyChangedSerializer_v974();
+public class PartyChangedSerializer_v975 implements BedrockPacketSerializer<PartyChangedPacket> {
+    public static final PartyChangedSerializer_v975 INSTANCE = new PartyChangedSerializer_v975();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, PartyChangedPacket packet) {

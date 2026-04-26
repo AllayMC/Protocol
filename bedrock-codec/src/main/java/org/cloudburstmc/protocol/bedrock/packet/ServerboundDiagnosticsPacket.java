@@ -62,13 +62,13 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
     /**
      * Entity timing diagnostics.
      *
-     * @since v974
+     * @since v975
      */
     private final List<EntityDiagnostics> entityDiagnostics = new ArrayList<>();
     /**
      * System timing diagnostics.
      *
-     * @since v974
+     * @since v975
      */
     private final List<SystemDiagnostics> systemDiagnostics = new ArrayList<>();
 

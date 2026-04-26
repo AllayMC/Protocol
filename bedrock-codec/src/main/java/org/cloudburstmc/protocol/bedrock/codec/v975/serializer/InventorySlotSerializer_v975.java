@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v974.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v975.serializer;
 
 import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
@@ -13,8 +13,8 @@ import org.cloudburstmc.protocol.bedrock.packet.InventorySlotPacket;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-public class InventorySlotSerializer_v974 implements BedrockPacketSerializer<InventorySlotPacket> {
-    public static final InventorySlotSerializer_v974 INSTANCE = new InventorySlotSerializer_v974();
+public class InventorySlotSerializer_v975 implements BedrockPacketSerializer<InventorySlotPacket> {
+    public static final InventorySlotSerializer_v975 INSTANCE = new InventorySlotSerializer_v975();
     private static final FullContainerName LEGACY_CONTAINER_NAME_DATA =
             new FullContainerName(ContainerSlotType.ANVIL_INPUT, null);
     private static final ItemData LEGACY_STORAGE_ITEM = ItemData.AIR;

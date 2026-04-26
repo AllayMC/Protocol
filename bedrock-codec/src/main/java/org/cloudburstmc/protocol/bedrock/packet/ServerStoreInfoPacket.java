@@ -7,7 +7,7 @@ import lombok.ToString;
 /**
  * Sent by the server to advertise optional store entry-point metadata.
  *
- * @since v974
+ * @since v975
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)

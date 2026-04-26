@@ -31,13 +31,13 @@ public class LocatorBarWaypoint {
     /**
      * The waypoint icon texture path.
      *
-     * @since v974
+     * @since v975
      */
     private String texturePath;
     /**
      * The waypoint icon size.
      *
-     * @since v974
+     * @since v975
      */
     private Vector2f iconSize;
     /**

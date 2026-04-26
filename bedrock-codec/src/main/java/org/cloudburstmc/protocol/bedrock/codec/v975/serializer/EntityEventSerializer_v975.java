@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v974.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v975.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
@@ -7,9 +7,9 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityEventType;
 import org.cloudburstmc.protocol.bedrock.packet.EntityEventPacket;
 import org.cloudburstmc.protocol.bedrock.util.TypeMap;
 
-public class EntityEventSerializer_v974 extends EntityEventSerializer_v291 {
+public class EntityEventSerializer_v975 extends EntityEventSerializer_v291 {
 
-    public EntityEventSerializer_v974(TypeMap<EntityEventType> typeMap) {
+    public EntityEventSerializer_v975(TypeMap<EntityEventType> typeMap) {
         super(typeMap);
     }
 

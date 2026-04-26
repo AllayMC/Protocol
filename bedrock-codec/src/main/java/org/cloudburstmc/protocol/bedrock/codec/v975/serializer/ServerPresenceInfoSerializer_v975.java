@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v974.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v975.serializer;
 
 import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
@@ -8,8 +8,8 @@ import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
 import org.cloudburstmc.protocol.bedrock.packet.ServerPresenceInfoPacket;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ServerPresenceInfoSerializer_v974 implements BedrockPacketSerializer<ServerPresenceInfoPacket> {
-    public static final ServerPresenceInfoSerializer_v974 INSTANCE = new ServerPresenceInfoSerializer_v974();
+public class ServerPresenceInfoSerializer_v975 implements BedrockPacketSerializer<ServerPresenceInfoPacket> {
+    public static final ServerPresenceInfoSerializer_v975 INSTANCE = new ServerPresenceInfoSerializer_v975();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, ServerPresenceInfoPacket packet) {

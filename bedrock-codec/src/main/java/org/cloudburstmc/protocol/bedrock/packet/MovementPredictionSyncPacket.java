@@ -57,19 +57,19 @@ public class MovementPredictionSyncPacket implements BedrockPacket {
     /**
      * The friction modifier reported by the client.
      *
-     * @since v974
+     * @since v975
      */
     private float frictionModifier;
     /**
      * The bounciness reported by the client.
      *
-     * @since v974
+     * @since v975
      */
     private float bounciness;
     /**
      * The air-drag modifier reported by the client.
      *
-     * @since v974
+     * @since v975
      */
     private float airDragModifier;
     /**

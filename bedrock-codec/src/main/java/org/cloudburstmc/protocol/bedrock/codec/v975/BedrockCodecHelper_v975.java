@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v974;
+package org.cloudburstmc.protocol.bedrock.codec.v975;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
@@ -24,9 +24,9 @@ import java.io.IOException;
 import static java.util.Objects.requireNonNull;
 import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument;
 
-public class BedrockCodecHelper_v974 extends BedrockCodecHelper_v944 {
+public class BedrockCodecHelper_v975 extends BedrockCodecHelper_v944 {
 
-    public BedrockCodecHelper_v974(EntityDataTypeMap entityData, TypeMap<Class<?>> gameRulesTypes,
+    public BedrockCodecHelper_v975(EntityDataTypeMap entityData, TypeMap<Class<?>> gameRulesTypes,
                                    TypeMap<ItemStackRequestActionType> stackRequestActionTypes,
                                    TypeMap<ContainerSlotType> containerSlotTypes, TypeMap<Ability> abilities,
                                    TypeMap<TextProcessingEventOrigin> textProcessingEventOrigins) {

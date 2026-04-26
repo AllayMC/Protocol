@@ -36,7 +36,7 @@ public class PlaySoundPacket implements BedrockPacket {
     /**
      * Optional server-assigned sound handle for long-lived sounds.
      *
-     * @since v974
+     * @since v975
      */
     private Long serverSoundHandle;
 

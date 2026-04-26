@@ -20,7 +20,7 @@ public class UpdateClientOptionsPacket implements BedrockPacket {
     /**
      * Optional profanity-filter preference change reported by the client.
      *
-     * @since v974
+     * @since v975
      */
     private OptionalBoolean filterProfanityChange = OptionalBoolean.empty();
 

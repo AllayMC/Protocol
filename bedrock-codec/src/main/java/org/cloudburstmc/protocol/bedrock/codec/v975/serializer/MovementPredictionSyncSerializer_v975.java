@@ -1,4 +1,4 @@
-package org.cloudburstmc.protocol.bedrock.codec.v974.serializer;
+package org.cloudburstmc.protocol.bedrock.codec.v975.serializer;
 
 import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
@@ -10,8 +10,8 @@ import org.cloudburstmc.protocol.bedrock.packet.MovementPredictionSyncPacket;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MovementPredictionSyncSerializer_v974 implements BedrockPacketSerializer<MovementPredictionSyncPacket> {
-    public static final MovementPredictionSyncSerializer_v974 INSTANCE = new MovementPredictionSyncSerializer_v974();
+public class MovementPredictionSyncSerializer_v975 implements BedrockPacketSerializer<MovementPredictionSyncPacket> {
+    public static final MovementPredictionSyncSerializer_v975 INSTANCE = new MovementPredictionSyncSerializer_v975();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, MovementPredictionSyncPacket packet) {

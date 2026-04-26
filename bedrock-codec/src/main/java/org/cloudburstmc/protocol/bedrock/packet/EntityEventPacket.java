@@ -32,7 +32,7 @@ public class EntityEventPacket implements BedrockPacket {
     /**
      * Optional fire position data used by certain modern entity events.
      *
-     * @since v974
+     * @since v975
      */
     private Vector3f fireAtPosition;
 
