@@ -4,46 +4,49 @@ import io.netty.buffer.ByteBuf;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.BedrockPacketSerializer;
-import org.cloudburstmc.protocol.bedrock.data.entity.EntityFlag;
+import org.cloudburstmc.protocol.bedrock.codec.v786.serializer.MovementPredictionSyncSerializer_v786;
 import org.cloudburstmc.protocol.bedrock.packet.MovementPredictionSyncPacket;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MovementPredictionSyncSerializer_v975 implements BedrockPacketSerializer<MovementPredictionSyncPacket> {
+public class MovementPredictionSyncSerializer_v975 extends MovementPredictionSyncSerializer_v786 {
     public static final MovementPredictionSyncSerializer_v975 INSTANCE = new MovementPredictionSyncSerializer_v975();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, MovementPredictionSyncPacket packet) {
-        helper.writeLargeVarIntFlags(buffer, packet.getFlags(), EntityFlag.class);
-        helper.writeVector3f(buffer, packet.getBoundingBox());
-        buffer.writeFloatLE(packet.getSpeed());
-        buffer.writeFloatLE(packet.getUnderwaterSpeed());
-        buffer.writeFloatLE(packet.getLavaSpeed());
-        buffer.writeFloatLE(packet.getJumpStrength());
-        buffer.writeFloatLE(packet.getHealth());
-        buffer.writeFloatLE(packet.getHunger());
-        buffer.writeFloatLE(packet.getFrictionModifier());
-        buffer.writeFloatLE(packet.getBounciness());
-        buffer.writeFloatLE(packet.getAirDragModifier());
-        VarInts.writeUnsignedLong(buffer, packet.getRuntimeEntityId());
-        buffer.writeBoolean(packet.isFlying());
+        this.serializeBeforeRuntimeEntityId(buffer, helper, packet);
+        this.serializeMovementModifiers(buffer, packet);
+        this.serializeRuntimeEntityId(buffer, packet);
+        this.serializeFlying(buffer, packet);
     }
 
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, MovementPredictionSyncPacket packet) {
-        helper.readLargeVarIntFlags(buffer, packet.getFlags(), EntityFlag.class);
-        packet.setBoundingBox(helper.readVector3f(buffer));
-        packet.setSpeed(buffer.readFloatLE());
-        packet.setUnderwaterSpeed(buffer.readFloatLE());
-        packet.setLavaSpeed(buffer.readFloatLE());
-        packet.setJumpStrength(buffer.readFloatLE());
-        packet.setHealth(buffer.readFloatLE());
-        packet.setHunger(buffer.readFloatLE());
+        this.deserializeBeforeRuntimeEntityId(buffer, helper, packet);
+        this.deserializeMovementModifiers(buffer, packet);
+        this.deserializeRuntimeEntityId(buffer, packet);
+        this.deserializeFlying(buffer, packet);
+    }
+
+    protected void serializeMovementModifiers(ByteBuf buffer, MovementPredictionSyncPacket packet) {
+        buffer.writeFloatLE(packet.getFrictionModifier());
+        buffer.writeFloatLE(packet.getBounciness());
+        buffer.writeFloatLE(packet.getAirDragModifier());
+    }
+
+    protected void deserializeMovementModifiers(ByteBuf buffer, MovementPredictionSyncPacket packet) {
         packet.setFrictionModifier(buffer.readFloatLE());
         packet.setBounciness(buffer.readFloatLE());
         packet.setAirDragModifier(buffer.readFloatLE());
-        packet.setRuntimeEntityId(VarInts.readUnsignedLong(buffer));
-        packet.setFlying(buffer.readBoolean());
+    }
+
+    @Override
+    protected void serializeRuntimeEntityId(ByteBuf buffer, MovementPredictionSyncPacket packet) {
+        VarInts.writeLong(buffer, packet.getRuntimeEntityId());
+    }
+
+    @Override
+    protected void deserializeRuntimeEntityId(ByteBuf buffer, MovementPredictionSyncPacket packet) {
+        packet.setRuntimeEntityId(VarInts.readLong(buffer));
     }
 }

@@ -14,12 +14,20 @@ public class MovementPredictionSyncSerializer_v786 extends MovementPredictionSyn
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, MovementPredictionSyncPacket packet) {
         super.serialize(buffer, helper, packet);
-        buffer.writeBoolean(packet.isFlying());
+        this.serializeFlying(buffer, packet);
     }
 
     @Override
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, MovementPredictionSyncPacket packet) {
         super.deserialize(buffer, helper, packet);
+        this.deserializeFlying(buffer, packet);
+    }
+
+    protected void serializeFlying(ByteBuf buffer, MovementPredictionSyncPacket packet) {
+        buffer.writeBoolean(packet.isFlying());
+    }
+
+    protected void deserializeFlying(ByteBuf buffer, MovementPredictionSyncPacket packet) {
         packet.setFlying(buffer.readBoolean());
     }
 }

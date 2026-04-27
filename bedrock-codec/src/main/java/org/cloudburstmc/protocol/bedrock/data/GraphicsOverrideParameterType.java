@@ -123,4 +123,16 @@ public enum GraphicsOverrideParameterType {
      * @since v944
      */
     AMBIENT_ILLUMINANCE,
+    /**
+     * @since v975
+     */
+    EMISSIVE_DESATURATION,
+    /**
+     * @since v975
+     */
+    SKY_INTENSITY,
+    /**
+     * @since v975
+     */
+    ORBITAL_OFFSET_DEGREES,
 }

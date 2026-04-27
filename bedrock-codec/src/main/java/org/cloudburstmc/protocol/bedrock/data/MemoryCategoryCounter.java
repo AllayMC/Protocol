@@ -140,5 +140,9 @@ public record MemoryCategoryCounter(Category category, long currentBytes) {
          * @since v944
          */
         GAMEFACE_SCRIPT_ENGINE,
+        /**
+         * @since v975
+         */
+        RENDERING_RENDER_REGISTRY,
     }
 }
