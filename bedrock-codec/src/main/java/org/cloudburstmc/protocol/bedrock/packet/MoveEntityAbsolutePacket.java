@@ -40,6 +40,10 @@ public class MoveEntityAbsolutePacket implements BedrockPacket {
      * Forces the local client entity to accept the move even if local prediction disagrees.
      */
     private boolean forceMove;
+    /**
+     * @since v975
+     */
+    private boolean forceCompletion;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

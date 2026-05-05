@@ -71,6 +71,7 @@ public class Bedrock_v975 extends Bedrock_v944 {
 
     protected static final EntityDataTypeMap ENTITY_DATA = Bedrock_v944.ENTITY_DATA
             .toBuilder()
+            .insert(EntityDataTypes.RESERVED_139, 139, EntityDataFormat.LONG)
             .insert(EntityDataTypes.NAMEPLATE_RENDER_DISTANCE_MAX, 140, EntityDataFormat.FLOAT)
             .update(EntityDataTypes.AREA_EFFECT_CLOUD_PARTICLE, new TypeMapTransformer<>(PARTICLE_TYPES))
             .update(EntityDataTypes.FLAGS, new FlagTransformer(ENTITY_FLAGS, 0))
@@ -96,6 +97,7 @@ public class Bedrock_v975 extends Bedrock_v944 {
             .updateSerializer(LevelSoundEventPacket.class, new LevelSoundEventSerializer_v975(SOUND_EVENTS))
             .updateSerializer(LocatorBarPacket.class, LocatorBarSerializer_v975.INSTANCE)
             .updateSerializer(MobEquipmentPacket.class, MobEquipmentSerializer_v975.INSTANCE)
+            .updateSerializer(MoveEntityAbsolutePacket.class, MoveEntityAbsoluteSerializer_v975.INSTANCE)
             .updateSerializer(MovementPredictionSyncPacket.class, MovementPredictionSyncSerializer_v975.INSTANCE)
             .updateSerializer(PartyChangedPacket.class, PartyChangedSerializer_v975.INSTANCE)
             .updateSerializer(PlayerEnchantOptionsPacket.class, PlayerEnchantOptionsSerializer_v975.INSTANCE)

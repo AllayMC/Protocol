@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.MobEquipmentSerializer_v291;
 import org.cloudburstmc.protocol.bedrock.packet.MobEquipmentPacket;
-import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MobEquipmentSerializer_v975 extends MobEquipmentSerializer_v291 {
@@ -24,15 +23,15 @@ public class MobEquipmentSerializer_v975 extends MobEquipmentSerializer_v291 {
 
     @Override
     protected void serializeSlots(ByteBuf buffer, MobEquipmentPacket packet) {
-        VarInts.writeUnsignedInt(buffer, packet.getInventorySlot());
-        VarInts.writeUnsignedInt(buffer, packet.getHotbarSlot());
-        VarInts.writeUnsignedInt(buffer, packet.getContainerId());
+        buffer.writeByte(packet.getInventorySlot());
+        buffer.writeByte(packet.getHotbarSlot());
+        buffer.writeByte(packet.getContainerId());
     }
 
     @Override
     protected void deserializeSlots(ByteBuf buffer, MobEquipmentPacket packet) {
-        packet.setInventorySlot(VarInts.readUnsignedInt(buffer));
-        packet.setHotbarSlot(VarInts.readUnsignedInt(buffer));
-        packet.setContainerId(VarInts.readUnsignedInt(buffer));
+        packet.setInventorySlot(buffer.readUnsignedByte());
+        packet.setHotbarSlot(buffer.readUnsignedByte());
+        packet.setContainerId(buffer.readByte());
     }
 }

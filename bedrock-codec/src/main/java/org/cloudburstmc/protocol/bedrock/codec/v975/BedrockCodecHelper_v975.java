@@ -38,7 +38,9 @@ public class BedrockCodecHelper_v975 extends BedrockCodecHelper_v944 {
         requireNonNull(item, "item is null!");
 
         ItemDefinition definition = item.getDefinition();
-        buffer.writeShortLE(definition.runtimeId());
+        boolean air = isAir(definition);
+
+        buffer.writeShortLE(air ? 0 : definition.runtimeId());
         buffer.writeShortLE(item.getCount());
         VarInts.writeUnsignedInt(buffer, item.getDamage());
 
@@ -48,7 +50,12 @@ public class BedrockCodecHelper_v975 extends BedrockCodecHelper_v944 {
             VarInts.writeInt(buffer, item.getNetId());
         }
 
-        VarInts.writeUnsignedInt(buffer, item.getBlockDefinition() == null ? 0 : item.getBlockDefinition().runtimeId());
+        VarInts.writeUnsignedInt(buffer, air || item.getBlockDefinition() == null ? 0 : item.getBlockDefinition().runtimeId());
+
+        if (air) {
+            VarInts.writeUnsignedInt(buffer, 0);
+            return;
+        }
 
         ByteBuf userDataBuf = ByteBufAllocator.DEFAULT.ioBuffer();
         try (LittleEndianByteBufOutputStream stream = new LittleEndianByteBufOutputStream(userDataBuf);
@@ -117,7 +124,7 @@ public class BedrockCodecHelper_v975 extends BedrockCodecHelper_v944 {
                     .canPlace(canPlace)
                     .canBreak(canBreak)
                     .blockingTicks(blockingTicks)
-                    .blockDefinition(this.getBlockDefinitions().getDefinition(blockRuntimeId))
+                    .blockDefinition(runtimeId == 0 ? ItemData.AIR.getBlockDefinition() : this.getBlockDefinitions().getDefinition(blockRuntimeId))
                     .usingNetId(hasNetId)
                     .netId(netId)
                     .build();
@@ -176,7 +183,7 @@ public class BedrockCodecHelper_v975 extends BedrockCodecHelper_v944 {
                 .canPlace(canPlace)
                 .canBreak(canBreak)
                 .blockingTicks(blockingTicks)
-                .blockDefinition(this.getBlockDefinitions().getDefinition(blockRuntimeId))
+                .blockDefinition(runtimeId == 0 ? ItemData.AIR.getBlockDefinition() : this.getBlockDefinitions().getDefinition(blockRuntimeId))
                 .usingNetId(hasNetId)
                 .netId(netId)
                 .build();
