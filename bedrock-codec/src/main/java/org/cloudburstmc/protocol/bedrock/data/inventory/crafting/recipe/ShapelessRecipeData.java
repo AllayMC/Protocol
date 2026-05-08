@@ -14,6 +14,8 @@ import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument
 /**
  * Represents a recipe that has no particular shape. Its functionality is shared with the
  * RecipeShulkerBox and RecipeShapelessChemistry types.
+ * <p>
+ * Furnace recipes are also encoded as shapeless recipes since v975 (1.26.20).
  */
 @Getter
 @ToString
