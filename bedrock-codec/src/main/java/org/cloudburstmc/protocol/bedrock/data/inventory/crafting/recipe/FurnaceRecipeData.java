@@ -8,12 +8,16 @@ import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkArgument
 
 /**
  * Represents a recipe that is specifically used for all kinds of furnaces. These recipes don't just
- * apply to furnaces, but also blast furnaces and smokers.
+ * apply to furnaces, but also blast furnaces and smokers. This class is deprecated since v975 (1.26.20),
+ * furnace recipes are now encoded as shapeless recipes.
+ *
+ * @deprecated since v975
  */
 @Getter
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@Deprecated
 public class FurnaceRecipeData implements TaggedCraftingData {
 
     /**
