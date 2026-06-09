@@ -56,12 +56,15 @@ public class SubChunkData extends AbstractReferenceCounted {
     private ByteBuf renderHeightMapData;
 
     @Override
-    public SubChunkData touch(Object o) {
+    public SubChunkData touch(Object hint) {
         if (this.data != null) {
-            this.data.touch(o);
+            this.data.touch(hint);
         }
         if (this.heightMapData != null) {
-            this.heightMapData.touch(o);
+            this.heightMapData.touch(hint);
+        }
+        if (this.renderHeightMapData != null) {
+            this.renderHeightMapData.touch(hint);
         }
         return this;
     }
@@ -73,6 +76,9 @@ public class SubChunkData extends AbstractReferenceCounted {
         }
         if (this.heightMapData != null) {
             this.heightMapData.release();
+        }
+        if (this.renderHeightMapData != null) {
+            this.renderHeightMapData.release();
         }
     }
 }
