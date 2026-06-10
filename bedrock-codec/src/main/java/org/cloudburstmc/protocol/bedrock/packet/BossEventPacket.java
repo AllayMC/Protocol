@@ -33,7 +33,7 @@ public class BossEventPacket implements BedrockPacket {
      * The title shown above the boss bar. If {@link #bossUniqueEntityId} is the client's own entity
      * unique ID, this title can be set independently from the boss entity's name tag.
      */
-    private String title;
+    private String title = "";
     /**
      * The percentage of health that is shown in the boss bar (0.0-1.0). The HealthPercentage may be
      * set to a specific value if the BossEntityUniqueID matches the client's entity unique ID.
