@@ -8,7 +8,7 @@ import java.util.List;
  * Represents a complete attribute layer.
  *
  * @param layerName  The layer name.
- * @param noiseName  The noise name.
+ * @param noiseName  The optional name of the noise used by the layer since v1001.
  * @param dimension  The dimension.
  * @param settings   The layer's settings.
  * @param attributes The attributes.

@@ -19,9 +19,21 @@ import java.awt.*;
 @EqualsAndHashCode(callSuper = true)
 public final class PrimitiveCylinder extends PrimitiveShape {
 
+    /**
+     * The height of the cylinder.
+     */
     private final float height;
+    /**
+     * The number of segments used to render the cylinder.
+     */
     private final int segments;
+    /**
+     * The cylinder radii on the X axis.
+     */
     private final Vector2f radiusX;
+    /**
+     * The cylinder radii on the Z axis.
+     */
     private final Vector2f radiusZ;
 
     public PrimitiveCylinder(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,

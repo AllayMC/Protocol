@@ -19,8 +19,17 @@ import java.awt.*;
 @EqualsAndHashCode(callSuper = true)
 public final class PrimitiveCone extends PrimitiveShape {
 
+    /**
+     * The height of the cone.
+     */
     private final float height;
+    /**
+     * The number of segments used to render the cone.
+     */
     private final int segments;
+    /**
+     * The cone base radii along the X and Z axes.
+     */
     private final Vector2f radii;
 
     public PrimitiveCone(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,

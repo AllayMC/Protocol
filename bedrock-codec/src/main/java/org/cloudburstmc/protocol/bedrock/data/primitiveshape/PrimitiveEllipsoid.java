@@ -18,7 +18,13 @@ import java.awt.*;
 @EqualsAndHashCode(callSuper = true)
 public final class PrimitiveEllipsoid extends PrimitiveShape {
 
+    /**
+     * The number of segments per axis used to render the ellipsoid.
+     */
     private final int segments;
+    /**
+     * The ellipsoid radii.
+     */
     private final Vector3f radii;
 
     public PrimitiveEllipsoid(long id, int dimension, @Nullable Vector3f position, @Nullable Float scale,

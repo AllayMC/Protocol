@@ -14,7 +14,13 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 public class PartyDestinationCookieResponsePacket implements BedrockPacket {
 
+    /**
+     * The opaque party destination cookie echoed back from {@link SendPartyDestinationCookiePacket}.
+     */
     private String cookie;
+    /**
+     * Whether the client accepted the party destination.
+     */
     private boolean accepted;
 
     @Override

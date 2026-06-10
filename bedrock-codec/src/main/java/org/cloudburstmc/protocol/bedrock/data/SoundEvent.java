@@ -1174,42 +1174,62 @@ public enum SoundEvent {
      */
     BOUNCE("bounce"),
     /**
+     * Played when a slime lands.
+     *
      * @since v1001
      */
     SLIME_LANDING("slime_landing"),
     /**
+     * Played when a block is absorbed.
+     *
      * @since v1001
      */
     ABSORB_BLOCK("absorb_block"),
     /**
+     * Played when a block is ejected.
+     *
      * @since v1001
      */
     EJECT_BLOCK("eject_block"),
     /**
+     * Played when a geyser eruption starts.
+     *
      * @since v1001
      */
     GEYSER_ERUPTION_START("geyser_eruption_start"),
     /**
+     * Played while a geyser eruption is active.
+     *
      * @since v1001
      */
     GEYSER_ERUPTION_ACTIVE("geyser_eruption_active"),
     /**
+     * Played for the Bounce music disc.
+     *
      * @since v1001
      */
     RECORD_BOUNCE("record.bounce"),
     /**
+     * Played when filling a bucket with a land animal.
+     *
      * @since v1001
      */
     BUCKET_FILL_LAND_ANIMAL("bucket.fill.land_animal"),
     /**
+     * Played when emptying a land-animal bucket.
+     *
      * @since v1001
      */
     BUCKET_EMPTY_LAND_ANIMAL("bucket.empty.land_animal"),
     /**
+     * Played when a continuous geyser eruption starts.
+     *
      * @since v1001
      */
     GEYSER_CONTINUOUS_ERUPTION_START("geyser_continuous_eruption_start"),
     /**
+     * Played while a continuous geyser eruption is active.
+     *
      * @since v1001
      */
     GEYSER_CONTINUOUS_ERUPTION_ACTIVE("geyser_continuous_eruption_active"),

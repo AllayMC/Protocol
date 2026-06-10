@@ -508,14 +508,20 @@ public class StartGamePacket implements BedrockPacket {
      */
     private boolean hasServerJoinInformation;
     /**
+     * Whether the server owner is logging chat messages on the server machine. Education Edition only.
+     *
      * @since v1001
      */
     private boolean isLoggingChat;
     /**
+     * Controls the editor connection policy.
+     *
      * @since v1001
      */
     private int serverEditorConnectionPolicy;
     /**
+     * Whether anonymous block drops are allowed in hybrid editor worlds.
+     *
      * @since v1001
      */
     private boolean allowAnonymousBlockDropsInEditorWorlds;

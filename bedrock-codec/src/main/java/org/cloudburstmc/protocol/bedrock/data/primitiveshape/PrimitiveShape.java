@@ -108,18 +108,26 @@ public class PrimitiveShape {
         TEXT,
         ARROW,
         /**
+         * A cylinder primitive.
+         *
          * @since v1001
          */
         CYLINDER,
         /**
+         * A pyramid primitive.
+         *
          * @since v1001
          */
         PYRAMID,
         /**
+         * An ellipsoid primitive.
+         *
          * @since v1001
          */
         ELLIPSOID,
         /**
+         * A cone primitive.
+         *
          * @since v1001
          */
         CONE

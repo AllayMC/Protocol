@@ -18,8 +18,17 @@ import java.awt.*;
 @EqualsAndHashCode(callSuper = true)
 public final class PrimitivePyramid extends PrimitiveShape {
 
+    /**
+     * The height of the pyramid.
+     */
     private final float height;
+    /**
+     * The width of the pyramid.
+     */
     private final float width;
+    /**
+     * The optional depth of the pyramid. Defaults to the width if unset.
+     */
     @Nullable
     private final Float depth;
 

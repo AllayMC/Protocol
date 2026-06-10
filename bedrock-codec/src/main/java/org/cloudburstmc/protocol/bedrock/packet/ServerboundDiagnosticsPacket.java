@@ -73,6 +73,8 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
      */
     private final List<SystemDiagnostics> systemDiagnostics = new ArrayList<>();
     /**
+     * A list of whisker profiler scope diagnostic summaries sent by the client.
+     *
      * @since v1001
      */
     private final List<WhiskerScopeDataSummary> whiskerScopes = new ArrayList<>();

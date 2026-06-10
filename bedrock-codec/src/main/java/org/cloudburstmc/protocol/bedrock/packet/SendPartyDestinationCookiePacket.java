@@ -18,8 +18,17 @@ import java.util.Map;
 @ToString(doNotUseGetters = true)
 public class SendPartyDestinationCookiePacket implements BedrockPacket {
 
+    /**
+     * The opaque party destination cookie.
+     */
     private String cookie;
+    /**
+     * The intent of the cookie.
+     */
     private Intent intent;
+    /**
+     * The name of the destination the cookie refers to.
+     */
     private String destinationName;
 
     @Override
@@ -42,7 +51,18 @@ public class SendPartyDestinationCookiePacket implements BedrockPacket {
     }
 
     public enum Intent {
-        NOTIFY("notify"), OPT_IN("optin"), OPT_OUT("optout");
+        /**
+         * Notify the client about the destination.
+         */
+        NOTIFY("notify"),
+        /**
+         * Ask the client to opt in to the destination.
+         */
+        OPT_IN("optin"),
+        /**
+         * Ask the client to opt out of the destination.
+         */
+        OPT_OUT("optout");
 
         private static final Map<String, Intent> serializeNames = new HashMap<>(values().length);
         static {

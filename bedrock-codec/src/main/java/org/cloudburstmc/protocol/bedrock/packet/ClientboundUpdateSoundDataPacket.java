@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
- * Sent to update sound data.
+ * Sent by the server to update the state of a server-controlled sound.
  *
  * @since v1001
  */
@@ -14,7 +14,13 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 public class ClientboundUpdateSoundDataPacket implements BedrockPacket {
 
+    /**
+     * The server-side handle identifying the sound to update.
+     */
     private long serverSoundHandle;
+    /**
+     * The sound event action to apply to the sound.
+     */
     private String type;
 
     @Override
