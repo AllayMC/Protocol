@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
  * Represents sneak close to sculk sensor event data used in the Bedrock protocol.
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Deprecated
 public class SneakCloseToSculkSensorEventData implements EventData {
     public static final SneakCloseToSculkSensorEventData INSTANCE = new SneakCloseToSculkSensorEventData();
 

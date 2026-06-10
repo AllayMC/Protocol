@@ -11,4 +11,9 @@ public record CodeBuilderScoreboardEventData(String objectiveName, int score) im
     public EventDataType getType() {
         return EventDataType.CODE_BUILDER_SCOREBOARD;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 19;
+    }
 }

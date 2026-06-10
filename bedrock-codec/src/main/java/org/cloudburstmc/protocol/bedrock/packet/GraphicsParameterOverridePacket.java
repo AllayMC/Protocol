@@ -48,6 +48,11 @@ public class GraphicsParameterOverridePacket implements BedrockPacket {
      */
     @Nullable
     private Vector3f vec3Value;
+    /**
+     * @since v1001
+     */
+    @Nullable
+    private String playerIdentifier;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

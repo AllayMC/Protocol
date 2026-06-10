@@ -16,5 +16,11 @@ import org.cloudburstmc.protocol.bedrock.data.camera.CameraEase;
  */
 public record EnvironmentAttributeData(String attributeName, @Nullable AttributeData from, AttributeData attribute,
                                        @Nullable AttributeData to, int CurrentTransitionTicks,
-                                       int TotalTransitionTicks, CameraEase easing) {
+                                       int TotalTransitionTicks, CameraEase easing,
+                                       int localTransitionTicks, boolean noiseTransition) {
+    public EnvironmentAttributeData(String attributeName, @Nullable AttributeData from, AttributeData attribute,
+                                    @Nullable AttributeData to, int CurrentTransitionTicks,
+                                    int TotalTransitionTicks, CameraEase easing) {
+        this(attributeName, from, attribute, to, CurrentTransitionTicks, TotalTransitionTicks, easing, 0, false);
+    }
 }

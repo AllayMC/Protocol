@@ -13,4 +13,9 @@ public record CauldronInteractEventData(BlockInteractionType blockInteractionTyp
     public EventDataType getType() {
         return EventDataType.CAULDRON_INTERACT;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 10;
+    }
 }

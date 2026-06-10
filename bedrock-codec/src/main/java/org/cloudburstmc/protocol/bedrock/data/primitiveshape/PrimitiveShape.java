@@ -106,6 +106,22 @@ public class PrimitiveShape {
         SPHERE,
         CIRCLE,
         TEXT,
-        ARROW
+        ARROW,
+        /**
+         * @since v1001
+         */
+        CYLINDER,
+        /**
+         * @since v1001
+         */
+        PYRAMID,
+        /**
+         * @since v1001
+         */
+        ELLIPSOID,
+        /**
+         * @since v1001
+         */
+        CONE
     }
 }

@@ -12,4 +12,9 @@ public record BossKilledEventData(long bossUniqueEntityId, int playerPartySize, 
     public EventDataType getType() {
         return EventDataType.BOSS_KILLED;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 7;
+    }
 }

@@ -13,4 +13,9 @@ public record PiglinBarterEventData(ItemDefinition definition, boolean targeting
     public EventDataType getType() {
         return EventDataType.PIGLIN_BARTER;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 16;
+    }
 }

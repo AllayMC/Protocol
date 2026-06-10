@@ -1,5 +1,9 @@
 package org.cloudburstmc.protocol.bedrock.data;
 
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 /**
  * LevelSoundEvent is sent by the server to make any kind of built-in sound heard to a player. It is
  * sent to, for example, play a stepping sound or a shear sound. The packet is also sent by the
@@ -1025,5 +1029,71 @@ public enum SoundEvent {
      * @since v975
      */
     BOUNCE,
-    UNDEFINED
+    /**
+     * @since v1001
+     */
+    SLIME_LANDING,
+    /**
+     * @since v1001
+     */
+    ABSORB_BLOCK,
+    /**
+     * @since v1001
+     */
+    EJECT_BLOCK,
+    /**
+     * @since v1001
+     */
+    GEYSER_ERUPTION_START,
+    /**
+     * @since v1001
+     */
+    GEYSER_ERUPTION_ACTIVE,
+    /**
+     * @since v1001
+     */
+    RECORD_BOUNCE("record.bounce"),
+    /**
+     * @since v1001
+     */
+    BUCKET_FILL_LAND_ANIMAL("bucket.fill.land_animal"),
+    /**
+     * @since v1001
+     */
+    BUCKET_EMPTY_LAND_ANIMAL("bucket.empty.land_animal"),
+    /**
+     * @since v1001
+     */
+    GEYSER_CONTINUOUS_ERUPTION_START,
+    /**
+     * @since v1001
+     */
+    GEYSER_CONTINUOUS_ERUPTION_ACTIVE,
+    UNDEFINED;
+
+    private static final Map<String, SoundEvent> SERIALIZE_NAMES = new HashMap<>(values().length);
+
+    static {
+        for (SoundEvent value : values()) {
+            SERIALIZE_NAMES.put(value.getSerializeName(), value);
+        }
+    }
+
+    private final String serializeName;
+
+    SoundEvent() {
+        this.serializeName = this.name().toLowerCase(Locale.ROOT);
+    }
+
+    SoundEvent(String serializeName) {
+        this.serializeName = serializeName;
+    }
+
+    public String getSerializeName() {
+        return this.serializeName;
+    }
+
+    public static SoundEvent fromName(String serializeName) {
+        return SERIALIZE_NAMES.getOrDefault(serializeName, UNDEFINED);
+    }
 }

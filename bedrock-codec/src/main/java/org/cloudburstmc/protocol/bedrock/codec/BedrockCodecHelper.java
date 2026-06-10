@@ -207,8 +207,10 @@ public interface BedrockCodecHelper {
 
     void writeTagValue(ByteBuf buffer, Object tag);
 
+    @Deprecated
     void readItemUse(ByteBuf buffer, InventoryTransactionPacket packet);
 
+    @Deprecated
     void writeItemUse(ByteBuf buffer, InventoryTransactionPacket packet);
 
     boolean readInventoryActions(ByteBuf buffer, List<InventoryActionData> actions);

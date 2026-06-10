@@ -8,8 +8,8 @@ import java.util.List;
  * Noise-gradient surface configuration used by the v975 biome-definition codec.
  */
 public record BiomeNoiseGradientSurfaceData(List<BlockDefinition> nonReplaceableBlocks,
-                                            List<BlockDefinition> gradientBlocks,
-                                            String noiseSeedString,
+                                            List<NoiseBlockSpecifier> gradientBlocks,
+                                            String noise,
                                             int firstOctave,
                                             List<Float> amplitudes) {
 }

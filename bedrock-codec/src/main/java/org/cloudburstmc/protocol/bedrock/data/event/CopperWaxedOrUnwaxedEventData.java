@@ -12,4 +12,9 @@ public record CopperWaxedOrUnwaxedEventData(BlockDefinition definition) implemen
     public EventDataType getType() {
         return EventDataType.COPPER_WAXED_OR_UNWAXED;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 17;
+    }
 }

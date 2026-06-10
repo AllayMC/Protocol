@@ -33,7 +33,7 @@ public class ClientboundMapItemDataSerializer_v354 implements BedrockPacketSeria
         }
         List<MapDecoration> decorations = packet.getDecorations();
         List<MapTrackedObject> trackedObjects = packet.getTrackedObjects();
-        if (!decorations.isEmpty() && !trackedObjects.isEmpty()) {
+        if (!decorations.isEmpty() || !trackedObjects.isEmpty()) {
             type |= FLAG_DECORATION_UPDATE;
         }
         LongList trackedEntityIds = packet.getTrackedEntityIds();
@@ -107,13 +107,12 @@ public class ClientboundMapItemDataSerializer_v354 implements BedrockPacketSeria
 
         VarInts.writeUnsignedInt(buffer, trackedObjects.size());
         for (MapTrackedObject object : trackedObjects) {
+            buffer.writeIntLE(object.getType().ordinal());
             switch (object.getType()) {
                 case BLOCK:
-                    buffer.writeIntLE(object.getType().ordinal());
                     helper.writeBlockPosition(buffer, object.getPosition());
                     break;
                 case ENTITY:
-                    buffer.writeIntLE(object.getType().ordinal());
                     VarInts.writeLong(buffer, object.getEntityId());
                     break;
             }

@@ -41,5 +41,9 @@ public class ServerPresenceInfoPacket implements BedrockPacket {
     public static class PresenceConfiguration {
         private String experienceName;
         private String worldName;
+        /**
+         * @since v1001
+         */
+        private String richPresenceId;
     }
 }

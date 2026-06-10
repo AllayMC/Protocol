@@ -23,4 +23,9 @@ public record MobKilledEventData(long killerUniqueEntityId, long victimUniqueEnt
     public EventDataType getType() {
         return EventDataType.MOB_KILLED;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 4;
+    }
 }

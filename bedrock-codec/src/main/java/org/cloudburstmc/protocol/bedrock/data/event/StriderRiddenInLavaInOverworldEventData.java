@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
  * Represents an event sent by the server when a strider is ridden in lava in the overworld.
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Deprecated
 public class StriderRiddenInLavaInOverworldEventData implements EventData {
     public static final StriderRiddenInLavaInOverworldEventData INSTANCE = new StriderRiddenInLavaInOverworldEventData();
 

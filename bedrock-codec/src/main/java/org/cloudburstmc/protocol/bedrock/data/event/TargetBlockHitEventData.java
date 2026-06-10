@@ -10,4 +10,9 @@ public record TargetBlockHitEventData(int redstoneLevel) implements EventData {
     public EventDataType getType() {
         return EventDataType.TARGET_BLOCK_HIT;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 15;
+    }
 }

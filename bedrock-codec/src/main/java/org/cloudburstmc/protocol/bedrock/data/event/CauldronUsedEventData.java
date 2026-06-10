@@ -12,4 +12,9 @@ public record CauldronUsedEventData(int potionId, int color, int fillLevel) impl
     public EventDataType getType() {
         return EventDataType.CAULDRON_USED;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 5;
+    }
 }

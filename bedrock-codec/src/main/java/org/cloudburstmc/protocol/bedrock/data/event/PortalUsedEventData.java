@@ -11,4 +11,9 @@ public record PortalUsedEventData(int fromDimensionId, int toDimensionId) implem
     public EventDataType getType() {
         return EventDataType.PORTAL_USED;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 3;
+    }
 }

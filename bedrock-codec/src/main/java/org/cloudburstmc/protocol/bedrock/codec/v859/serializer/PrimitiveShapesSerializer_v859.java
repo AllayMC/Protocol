@@ -21,6 +21,7 @@ public class PrimitiveShapesSerializer_v859 extends PrimitiveShapesSerializer_v8
             case BOX -> 3;
             case LINE -> 4;
             case SPHERE, CIRCLE -> 5;
+            default -> throw new IllegalStateException("Unknown primitive shape type");
         };
     }
 
@@ -62,6 +63,8 @@ public class PrimitiveShapesSerializer_v859 extends PrimitiveShapesSerializer_v8
                 PrimitiveText text = (PrimitiveText) shape;
                 helper.writeString(buffer, text.getText());
                 break;
+            default:
+                throw new IllegalStateException("Unknown primitive shape type");
         }
     }
 
@@ -120,6 +123,7 @@ public class PrimitiveShapesSerializer_v859 extends PrimitiveShapesSerializer_v8
                 String text = helper.readString(buffer);
                 yield new PrimitiveText(id, dimension, position, scale, rotation, totalTimeLeft, color, text);
             }
+            default -> throw new IllegalStateException("Unknown primitive shape type");
         };
     }
 }

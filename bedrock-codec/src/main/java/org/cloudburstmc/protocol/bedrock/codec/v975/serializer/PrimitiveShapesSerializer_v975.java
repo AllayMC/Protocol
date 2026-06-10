@@ -56,6 +56,7 @@ public class PrimitiveShapesSerializer_v975 extends PrimitiveShapesSerializer_v9
                 buffer.writeBoolean(text.isShowBackface());
                 buffer.writeBoolean(text.isShowTextBackface());
             }
+            default -> throw new IllegalStateException("Unknown primitive shape type");
         }
     }
 
@@ -113,6 +114,7 @@ public class PrimitiveShapesSerializer_v975 extends PrimitiveShapesSerializer_v9
                     helper.readOptional(buffer, null, value -> new Color(value.readIntLE(), true)),
                     buffer.readBoolean(), buffer.readBoolean(), buffer.readBoolean(),
                     maximumRenderDistance, attachedToEntityId);
+            default -> throw new IllegalStateException("Unknown primitive shape type");
         };
     }
 }

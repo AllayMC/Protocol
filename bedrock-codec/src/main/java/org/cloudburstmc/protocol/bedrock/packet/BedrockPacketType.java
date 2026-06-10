@@ -252,6 +252,9 @@ public record BedrockPacketType(String name) {
     public static final BedrockPacketType CLIENTBOUND_ATTRIBUTE_LAYER_SYNC = new BedrockPacketType("CLIENTBOUND_ATTRIBUTE_LAYER_SYNC");
     public static final BedrockPacketType SERVER_STORE_INFO = new BedrockPacketType("SERVER_STORE_INFO");
     public static final BedrockPacketType SERVER_PRESENCE_INFO = new BedrockPacketType("SERVER_PRESENCE_INFO");
+    public static final BedrockPacketType CLIENTBOUND_UPDATE_SOUND_DATA = new BedrockPacketType("CLIENTBOUND_UPDATE_SOUND_DATA");
+    public static final BedrockPacketType SEND_PARTY_DESTINATION_COOKIE = new BedrockPacketType("SEND_PARTY_DESTINATION_COOKIE");
+    public static final BedrockPacketType PARTY_DESTINATION_COOKIE_RESPONSE = new BedrockPacketType("PARTY_DESTINATION_COOKIE_RESPONSE");
     public static final BedrockPacketType CONFIRM_SKIN = new BedrockPacketType("CONFIRM_SKIN");
     public static final BedrockPacketType NET_EASE_JSON = new BedrockPacketType("NET_EASE_JSON");
     public static final BedrockPacketType PY_RPC = new BedrockPacketType("PY_RPC");

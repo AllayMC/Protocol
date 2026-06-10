@@ -12,4 +12,9 @@ public record MobBornEventData(int entityType, int variant, int color) implement
     public EventDataType getType() {
         return EventDataType.MOB_BORN;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 9;
+    }
 }

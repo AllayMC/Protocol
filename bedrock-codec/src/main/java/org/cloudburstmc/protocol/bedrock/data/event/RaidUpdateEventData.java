@@ -12,4 +12,9 @@ public record RaidUpdateEventData(int currentWave, int totalWaves, boolean winne
     public EventDataType getType() {
         return EventDataType.RAID_UPDATE;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 14;
+    }
 }

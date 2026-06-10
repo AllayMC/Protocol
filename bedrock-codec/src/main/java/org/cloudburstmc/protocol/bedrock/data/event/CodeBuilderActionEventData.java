@@ -11,4 +11,9 @@ public record CodeBuilderActionEventData(String action) implements EventData {
     public EventDataType getType() {
         return EventDataType.CODE_BUILDER_ACTION;
     }
+
+    @Override
+    public int getPayloadType() {
+        return 18;
+    }
 }

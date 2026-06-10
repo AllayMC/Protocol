@@ -128,17 +128,17 @@ public class BiomeDefinitionListSerializer_v975 extends BiomeDefinitionListSeria
 
     protected void writeBiomeNoiseGradientSurfaceData(ByteBuf buffer, BedrockCodecHelper helper, BiomeNoiseGradientSurfaceData data) {
         helper.writeArray(buffer, data.nonReplaceableBlocks(), this::writeBlock);
-        helper.writeArray(buffer, data.gradientBlocks(), this::writeBlock);
-        helper.writeString(buffer, data.noiseSeedString());
+        helper.writeArray(buffer, data.gradientBlocks(), (buf, h, specifier) -> this.writeBlock(buf, h, specifier.getBlock()));
+        helper.writeString(buffer, data.noise());
         buffer.writeIntLE(data.firstOctave());
         helper.writeArray(buffer, data.amplitudes(), ByteBuf::writeFloatLE);
     }
 
     protected BiomeNoiseGradientSurfaceData readBiomeNoiseGradientSurfaceData(ByteBuf buffer, BedrockCodecHelper helper) {
         List<BlockDefinition> nonReplaceableBlocks = new ObjectArrayList<>();
-        List<BlockDefinition> gradientBlocks = new ObjectArrayList<>();
+        List<NoiseBlockSpecifier> gradientBlocks = new ObjectArrayList<>();
         helper.readArray(buffer, nonReplaceableBlocks, this::readBlock);
-        helper.readArray(buffer, gradientBlocks, this::readBlock);
+        helper.readArray(buffer, gradientBlocks, (buf, h) -> new NoiseBlockSpecifier(null, 0, 0, 0, this.readBlock(buf, h)));
         String noiseSeedString = helper.readString(buffer);
         int firstOctave = buffer.readIntLE();
         List<Float> amplitudes = new ObjectArrayList<>();
