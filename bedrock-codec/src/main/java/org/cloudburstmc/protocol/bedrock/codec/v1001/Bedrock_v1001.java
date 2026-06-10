@@ -2,7 +2,6 @@ package org.cloudburstmc.protocol.bedrock.codec.v1001;
 
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
 import org.cloudburstmc.protocol.bedrock.codec.v1001.serializer.*;
-import org.cloudburstmc.protocol.bedrock.codec.v975.BedrockCodecHelper_v975;
 import org.cloudburstmc.protocol.bedrock.codec.v975.Bedrock_v975;
 import org.cloudburstmc.protocol.bedrock.data.PacketRecipient;
 import org.cloudburstmc.protocol.bedrock.data.SoundEvent;
@@ -29,7 +28,7 @@ public class Bedrock_v1001 extends Bedrock_v975 {
     public static final BedrockCodec CODEC = Bedrock_v975.CODEC.toBuilder()
             .protocolVersion(1001)
             .minecraftVersion("1.26.30")
-            .helper(() -> new BedrockCodecHelper_v975(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
+            .helper(() -> new BedrockCodecHelper_v1001(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
             .updateSerializer(BiomeDefinitionListPacket.class, BiomeDefinitionListSerializer_v1001.INSTANCE)
             .updateSerializer(BossEventPacket.class, BossEventSerializer_v1001.INSTANCE)
             .updateSerializer(ClientboundAttributeLayerSyncPacket.class, ClientboundAttributeLayerSyncSerializer_v1001.INSTANCE)
@@ -41,7 +40,6 @@ public class Bedrock_v1001 extends Bedrock_v975 {
             .updateSerializer(LevelSoundEventPacket.class, new LevelSoundEventSerializer_v1001(SOUND_EVENTS))
             .updateSerializer(MobArmorEquipmentPacket.class, MobArmorEquipmentSerializer_v1001.INSTANCE)
             .updateSerializer(ServerboundDiagnosticsPacket.class, new ServerboundDiagnosticsSerializer_v1001(MEMORY_CATEGORY_TYPES))
-            .updateSerializer(ServerPresenceInfoPacket.class, ServerPresenceInfoSerializer_v1001.INSTANCE)
             .updateSerializer(StartGamePacket.class, StartGameSerializer_v1001.INSTANCE)
             .updateSerializer(SubChunkRequestPacket.class, SubChunkRequestSerializer_v1001.INSTANCE)
             .registerPacket(ClientboundUpdateSoundDataPacket::new, ClientboundUpdateSoundDataSerializer_v1001.INSTANCE, 348, PacketRecipient.CLIENT)

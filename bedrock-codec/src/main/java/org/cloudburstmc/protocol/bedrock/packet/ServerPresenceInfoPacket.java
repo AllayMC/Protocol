@@ -3,6 +3,7 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.cloudburstmc.protocol.bedrock.data.PresenceConfiguration;
 
 /**
  * Sent by the server to advertise optional presence metadata.
@@ -35,15 +36,4 @@ public class ServerPresenceInfoPacket implements BedrockPacket {
         }
     }
 
-    @Data
-    @EqualsAndHashCode(doNotUseGetters = true)
-    @ToString(doNotUseGetters = true)
-    public static class PresenceConfiguration {
-        private String experienceName;
-        private String worldName;
-        /**
-         * @since v1001
-         */
-        private String richPresenceId;
-    }
 }

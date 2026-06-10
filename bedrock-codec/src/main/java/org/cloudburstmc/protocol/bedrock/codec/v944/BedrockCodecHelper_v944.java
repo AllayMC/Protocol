@@ -5,6 +5,7 @@ import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
 import org.cloudburstmc.protocol.bedrock.codec.v898.BedrockCodecHelper_v898;
 import org.cloudburstmc.protocol.bedrock.data.Ability;
+import org.cloudburstmc.protocol.bedrock.data.PresenceConfiguration;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.TextProcessingEventOrigin;
 import org.cloudburstmc.protocol.bedrock.data.inventory.itemstack.request.action.ItemStackRequestActionType;
@@ -50,5 +51,16 @@ public class BedrockCodecHelper_v944 extends BedrockCodecHelper_v898 {
         super.readItemUse(buffer, packet);
 
         packet.setClientCooldownState(buffer.readByte());
+    }
+
+    @Override
+    public void writePresenceConfiguration(ByteBuf buffer, PresenceConfiguration configuration) {
+        writeString(buffer, configuration.getExperienceName());
+        writeString(buffer, configuration.getWorldName());
+    }
+
+    @Override
+    public PresenceConfiguration readPresenceConfiguration(ByteBuf buffer) {
+        return new PresenceConfiguration(readString(buffer), readString(buffer), null);
     }
 }
