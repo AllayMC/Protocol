@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 /**
  * Represents the event data sent when an agent is created.
+ *
+ * @deprecated since v1001
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Deprecated

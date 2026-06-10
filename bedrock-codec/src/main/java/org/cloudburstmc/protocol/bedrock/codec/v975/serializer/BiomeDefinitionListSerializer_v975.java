@@ -128,7 +128,7 @@ public class BiomeDefinitionListSerializer_v975 extends BiomeDefinitionListSeria
 
     protected void writeBiomeNoiseGradientSurfaceData(ByteBuf buffer, BedrockCodecHelper helper, BiomeNoiseGradientSurfaceData data) {
         helper.writeArray(buffer, data.nonReplaceableBlocks(), this::writeBlock);
-        helper.writeArray(buffer, data.gradientBlocks(), (buf, h, specifier) -> this.writeBlock(buf, h, specifier.getBlock()));
+        helper.writeArray(buffer, data.gradientBlocks(), (buf, h, specifier) -> this.writeBlock(buf, h, specifier.block()));
         helper.writeString(buffer, data.noise());
         buffer.writeIntLE(data.firstOctave());
         helper.writeArray(buffer, data.amplitudes(), ByteBuf::writeFloatLE);

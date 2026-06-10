@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 /**
  * Represents an event sent by the server when a strider is ridden in lava in the overworld.
+ *
+ * @deprecated since v1001
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Deprecated

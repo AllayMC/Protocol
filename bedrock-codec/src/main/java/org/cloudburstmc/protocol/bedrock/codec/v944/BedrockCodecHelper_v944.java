@@ -55,8 +55,8 @@ public class BedrockCodecHelper_v944 extends BedrockCodecHelper_v898 {
 
     @Override
     public void writePresenceConfiguration(ByteBuf buffer, PresenceConfiguration configuration) {
-        writeString(buffer, configuration.getExperienceName());
-        writeString(buffer, configuration.getWorldName());
+        writeString(buffer, configuration.experienceName());
+        writeString(buffer, configuration.worldName());
     }
 
     @Override

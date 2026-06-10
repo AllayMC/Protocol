@@ -19,11 +19,11 @@ public class ServerboundDiagnosticsSerializer_v1001 extends ServerboundDiagnosti
         super.serialize(buffer, helper, packet);
 
         helper.writeArray(buffer, packet.getWhiskerScopes(), ((buf, h, info) -> {
-            helper.writeString(buf, info.getLabel());
-            helper.writeString(buf, info.getIndentation());
-            buf.writeLongLE(info.getTotalHighCostNS());
-            buf.writeLongLE(info.getTotalMidCostNS());
-            buf.writeLongLE(info.getTotalLowCostNS());
+            helper.writeString(buf, info.label());
+            helper.writeString(buf, info.indentation());
+            buf.writeLongLE(info.totalHighCostNS());
+            buf.writeLongLE(info.totalMidCostNS());
+            buf.writeLongLE(info.totalLowCostNS());
         }));
     }
 

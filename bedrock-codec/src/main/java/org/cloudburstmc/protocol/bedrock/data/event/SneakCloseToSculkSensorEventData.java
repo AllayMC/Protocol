@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 /**
  * Represents sneak close to sculk sensor event data used in the Bedrock protocol.
+ *
+ * @deprecated since v1001
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Deprecated

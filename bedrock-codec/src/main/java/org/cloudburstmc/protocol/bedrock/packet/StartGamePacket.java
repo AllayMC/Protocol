@@ -425,14 +425,6 @@ public class StartGamePacket implements BedrockPacket {
      */
     private boolean disablingCustomSkins;
     /**
-     * @since v1001
-     */
-    private int serverEditorConnectionPolicy;
-    /**
-     * @since v1001
-     */
-    private boolean allowAnonymousBlockDropsInEditorWorlds;
-    /**
      * Enables client side chunk generation
      *
      * @since v544
@@ -519,6 +511,14 @@ public class StartGamePacket implements BedrockPacket {
      * @since v1001
      */
     private boolean isLoggingChat;
+    /**
+     * @since v1001
+     */
+    private int serverEditorConnectionPolicy;
+    /**
+     * @since v1001
+     */
+    private boolean allowAnonymousBlockDropsInEditorWorlds;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
