@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.cloudburstmc.math.vector.Vector3i;
+import org.cloudburstmc.protocol.bedrock.annotation.NetEaseOnly;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerType;
 
 /**
@@ -34,6 +35,12 @@ public class ContainerOpenPacket implements BedrockPacket {
      * used if the ContainerType is one that points to an entity, for example a horse.
      */
     private long uniqueEntityId = -1;
+    /**
+     * NetEase-only. When true, the client opens the container even when the backing block is not
+     * physically present. Appended at the end of the packet since {@code 1.21.120-netease}.
+     */
+    @NetEaseOnly
+    private boolean ignoreBlock;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
