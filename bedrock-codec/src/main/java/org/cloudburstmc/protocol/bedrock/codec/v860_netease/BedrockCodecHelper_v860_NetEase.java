@@ -2,7 +2,7 @@ package org.cloudburstmc.protocol.bedrock.codec.v860_netease;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
-import org.cloudburstmc.protocol.bedrock.codec.v776.BedrockCodecHelper_v776;
+import org.cloudburstmc.protocol.bedrock.codec.v844.BedrockCodecHelper_v844;
 import org.cloudburstmc.protocol.bedrock.data.Ability;
 import org.cloudburstmc.protocol.bedrock.data.PlayerAuthInputData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
@@ -14,7 +14,7 @@ import org.cloudburstmc.protocol.bedrock.util.VarInts;
 import java.math.BigInteger;
 import java.util.Set;
 
-public class BedrockCodecHelper_v860_NetEase extends BedrockCodecHelper_v776 {
+public class BedrockCodecHelper_v860_NetEase extends BedrockCodecHelper_v844 {
     private static final int PLAYER_AUTH_INPUT_DATA_NETEASE = PlayerAuthInputData.RECEIVED_SERVER_DATA.ordinal() + 1;
 
     public BedrockCodecHelper_v860_NetEase(EntityDataTypeMap entityData, TypeMap<Class<?>> gameRulesTypes,
