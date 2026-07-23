@@ -15,6 +15,8 @@ import org.cloudburstmc.math.vector.Vector3i;
 public class AnvilDamagePacket implements BedrockPacket {
     /**
      * The damage that the client requests to be dealt to the anvil.
+     *
+     * @deprecated since v2168
      */
     private int damage;
     /**

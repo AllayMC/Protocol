@@ -9,5 +9,9 @@ public interface DefinitionRegistry<D extends Definition> {
 
     D getDefinition(int runtimeId);
 
+    default D getDefinition(String identifier) {
+        return null;
+    }
+
     boolean isRegistered(D definition);
 }

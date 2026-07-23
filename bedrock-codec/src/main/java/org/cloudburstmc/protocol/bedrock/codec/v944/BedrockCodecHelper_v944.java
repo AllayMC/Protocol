@@ -3,7 +3,7 @@ package org.cloudburstmc.protocol.bedrock.codec.v944;
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.math.vector.Vector3i;
 import org.cloudburstmc.protocol.bedrock.codec.EntityDataTypeMap;
-import org.cloudburstmc.protocol.bedrock.codec.v898.BedrockCodecHelper_v898;
+import org.cloudburstmc.protocol.bedrock.codec.v924.BedrockCodecHelper_v924;
 import org.cloudburstmc.protocol.bedrock.data.Ability;
 import org.cloudburstmc.protocol.bedrock.data.PresenceConfiguration;
 import org.cloudburstmc.protocol.bedrock.data.inventory.ContainerSlotType;
@@ -15,7 +15,7 @@ import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 import static org.cloudburstmc.protocol.bedrock.util.Preconditions.checkNotNull;
 
-public class BedrockCodecHelper_v944 extends BedrockCodecHelper_v898 {
+public class BedrockCodecHelper_v944 extends BedrockCodecHelper_v924 {
 
     public BedrockCodecHelper_v944(EntityDataTypeMap entityData, TypeMap<Class<?>> gameRulesTypes, TypeMap<ItemStackRequestActionType> stackRequestActionTypes,
                                    TypeMap<ContainerSlotType> containerSlotTypes, TypeMap<Ability> abilities, TypeMap<TextProcessingEventOrigin> textProcessingEventOrigins) {

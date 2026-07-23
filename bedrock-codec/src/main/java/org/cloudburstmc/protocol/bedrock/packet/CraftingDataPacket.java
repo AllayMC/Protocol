@@ -7,7 +7,7 @@ import lombok.ToString;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.ContainerMixData;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.MaterialReducer;
 import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.PotionMixData;
-import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.RecipeData;
+import org.cloudburstmc.protocol.bedrock.data.inventory.crafting.recipe.*;
 
 import java.util.List;
 
@@ -25,6 +25,38 @@ public class CraftingDataPacket implements BedrockPacket {
      * station recipes.
      */
     private final List<RecipeData> craftingData = new ObjectArrayList<>();
+    /**
+     * @since v2168
+     */
+    private final List<ShapedRecipeData> shapedData = new ObjectArrayList<>();
+    /**
+     * @since v2168
+     */
+    private final List<ShapelessRecipeData> shapelessData = new ObjectArrayList<>();
+    /**
+     * @since v2168
+     */
+    private final List<MultiRecipeData> multiData = new ObjectArrayList<>();
+    /**
+     * @since v2168
+     */
+    private final List<ShapelessRecipeData> shapelessUserData = new ObjectArrayList<>();
+    /**
+     * @since v2168
+     */
+    private final List<ShapelessRecipeData> shapelessChemistryData = new ObjectArrayList<>();
+    /**
+     * @since v2168
+     */
+    private final List<ShapedRecipeData> shapedChemistryData = new ObjectArrayList<>();
+    /**
+     * @since v2168
+     */
+    private final List<SmithingTransformRecipeData> smithingTransformData = new ObjectArrayList<>();
+    /**
+     * @since v2168
+     */
+    private final List<SmithingTrimRecipeData> smithingTrimData = new ObjectArrayList<>();
     /**
      * Potion mixing recipes that can be used in a brewing stand.
      */

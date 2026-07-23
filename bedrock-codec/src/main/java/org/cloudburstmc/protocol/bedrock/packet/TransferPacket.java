@@ -3,6 +3,7 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.cloudburstmc.protocol.bedrock.data.GatheringsConfigurationJoinInfo;
 
 /**
  * Sent by the server to transfer a player from the current server to another. Doing so will fully
@@ -26,6 +27,10 @@ public class TransferPacket implements BedrockPacket {
      * @since v729
      */
     private boolean reloadWorld;
+    /**
+     * @since v2168
+     */
+    private GatheringsConfigurationJoinInfo gatheringsConfigurationJoinInfo;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

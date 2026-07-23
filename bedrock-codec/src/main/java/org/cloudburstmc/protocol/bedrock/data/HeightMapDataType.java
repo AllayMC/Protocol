@@ -8,5 +8,5 @@ public enum HeightMapDataType {
     HAS_DATA,
     TOO_HIGH,
     TOO_LOW,
-    COPIED
+    COPIED // render height map only
 }

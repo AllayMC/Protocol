@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.util.AbstractReferenceCounted;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3i;
 
 /**
@@ -41,7 +42,8 @@ public class SubChunkData extends AbstractReferenceCounted {
      *
      * @since v475
      */
-    private long blobId;
+    @Nullable
+    private Long blobId;
     /**
      * The render height map encoding type.
      *

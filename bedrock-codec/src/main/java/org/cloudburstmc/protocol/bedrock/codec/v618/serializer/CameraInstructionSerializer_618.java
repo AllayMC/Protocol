@@ -100,7 +100,7 @@ public class CameraInstructionSerializer_618 implements BedrockPacketSerializer<
     protected CameraSetInstruction readSetInstruction(ByteBuf buf, BedrockCodecHelper helper) {
         int runtimeId = buf.readIntLE();
         NamedDefinition definition = helper.getCameraPresetDefinitions().getDefinition(runtimeId);
-        Preconditions.checkNotNull(definition, "Unknown camera preset " + runtimeId);
+        Preconditions.checkNotNull(definition, "Unknown camera preset %s", runtimeId);
 
         CameraSetInstruction.EaseData ease = helper.readOptional(buf, null, this::readEase);
         Vector3f pos = helper.readOptional(buf, null, helper::readVector3f);

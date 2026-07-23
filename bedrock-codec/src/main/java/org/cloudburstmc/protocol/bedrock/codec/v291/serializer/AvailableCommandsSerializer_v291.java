@@ -128,7 +128,7 @@ public class AvailableCommandsSerializer_v291 implements BedrockPacketSerializer
             VarInts.writeUnsignedInt(buffer, commandEnum.values().size());
             for (String value : commandEnum.values().keySet()) {
                 int index = values.indexOf(value);
-                checkArgument(index > -1, "Invalid enum value detected: " + value);
+                checkArgument(index > -1, "Invalid enum value detected: %s", value);
                 indexWriter.accept(buf, index);
             }
         });

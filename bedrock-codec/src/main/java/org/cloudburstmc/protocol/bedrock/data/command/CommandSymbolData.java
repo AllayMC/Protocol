@@ -21,7 +21,7 @@ public record CommandSymbolData(int value, boolean commandEnum, boolean softEnum
         boolean commandEnum = (type & ARG_FLAG_ENUM) != 0;
         boolean softEnum = (type & ARG_FLAG_SOFT_ENUM) != 0;
         boolean postfix = (type & ARG_FLAG_POSTFIX) != 0;
-        checkArgument(postfix || (type & ARG_FLAG_VALID) != 0, "Invalid command param type: " + type);
+        checkArgument(postfix || (type & ARG_FLAG_VALID) != 0, "Invalid command param type: %s", type);
         return new CommandSymbolData(value, commandEnum, softEnum, postfix);
     }
 

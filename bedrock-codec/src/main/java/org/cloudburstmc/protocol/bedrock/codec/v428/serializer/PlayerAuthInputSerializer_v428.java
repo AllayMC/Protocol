@@ -65,6 +65,8 @@ public class PlayerAuthInputSerializer_v428 extends PlayerAuthInputSerializer_v4
             case BLOCK_CONTINUE_DESTROY:
                 helper.writeVector3i(buffer, actionData.getBlockPosition());
                 VarInts.writeInt(buffer, actionData.getFace());
+            default:
+                throw new IllegalArgumentException();
         }
     }
 
@@ -79,8 +81,10 @@ public class PlayerAuthInputSerializer_v428 extends PlayerAuthInputSerializer_v4
             case BLOCK_CONTINUE_DESTROY:
                 actionData.setBlockPosition(helper.readVector3i(buffer));
                 actionData.setFace(VarInts.readInt(buffer));
+                return actionData;
+            default:
+                throw new IllegalArgumentException();
         }
-        return actionData;
     }
 
     protected void writeItemUseTransaction(ByteBuf buffer, BedrockCodecHelper helper, ItemUseTransaction transaction) {

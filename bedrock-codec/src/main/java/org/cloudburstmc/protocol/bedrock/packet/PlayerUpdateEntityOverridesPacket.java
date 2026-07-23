@@ -55,7 +55,7 @@ public class PlayerUpdateEntityOverridesPacket implements BedrockPacket {
         }
     }
 
-    public enum UpdateType { // TODO: changelog says it's now None|Neighbors|Connections
+    public enum UpdateType {
         /**
          * Clear all overrides for the property.
          */

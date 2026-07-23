@@ -31,11 +31,13 @@ public class ClientboundMapItemDataSerializer_v354 implements BedrockPacketSeria
         if (colors != null && colors.length > 0) {
             type |= FLAG_TEXTURE_UPDATE;
         }
+
         List<MapDecoration> decorations = packet.getDecorations();
         List<MapTrackedObject> trackedObjects = packet.getTrackedObjects();
         if (!decorations.isEmpty() || !trackedObjects.isEmpty()) {
             type |= FLAG_DECORATION_UPDATE;
         }
+
         LongList trackedEntityIds = packet.getTrackedEntityIds();
         if (!trackedEntityIds.isEmpty()) {
             type |= FLAG_MAP_CREATION;
@@ -74,7 +76,7 @@ public class ClientboundMapItemDataSerializer_v354 implements BedrockPacketSeria
         }
 
         if ((type & FLAG_ALL) != 0) {
-            packet.setScale(buffer.readUnsignedByte());
+            packet.setScale(buffer.readByte());
         }
 
         if ((type & FLAG_DECORATION_UPDATE) != 0) {

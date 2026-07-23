@@ -99,7 +99,7 @@ public class CameraInstructionSerializer_v575 implements BedrockPacketSerializer
 
             int runtimeId = setTag.getInt("preset");
             NamedDefinition definition = helper.getCameraPresetDefinitions().getDefinition(runtimeId);
-            Preconditions.checkNotNull(definition, "Unknown camera preset " + runtimeId);
+            Preconditions.checkNotNull(definition, "Unknown camera preset %s", runtimeId);
             set.setPreset(definition);
 
             if (setTag.containsKey("ease", NbtType.COMPOUND)) {

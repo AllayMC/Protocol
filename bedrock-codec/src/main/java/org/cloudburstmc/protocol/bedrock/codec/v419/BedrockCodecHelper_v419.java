@@ -25,7 +25,7 @@ public class BedrockCodecHelper_v419 extends BedrockCodecHelper_v407 {
 
     @Override
     public void readExperiments(ByteBuf buffer, List<ExperimentData> experiments) {
-        int count = buffer.readIntLE(); // Actually unsigned
+        int count = buffer.readIntLE(); // No size compression
         for (int i = 0; i < count; i++) {
             experiments.add(new ExperimentData(
                     this.readString(buffer),

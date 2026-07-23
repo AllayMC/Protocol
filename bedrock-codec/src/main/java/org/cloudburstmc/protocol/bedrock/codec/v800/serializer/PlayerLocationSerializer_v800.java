@@ -12,7 +12,7 @@ import org.cloudburstmc.protocol.bedrock.util.VarInts;
 public class PlayerLocationSerializer_v800 implements BedrockPacketSerializer<PlayerLocationPacket> {
 
     public static final PlayerLocationSerializer_v800 INSTANCE = new PlayerLocationSerializer_v800();
-    private static final PlayerLocationPacket.Type[] VALUES = PlayerLocationPacket.Type.values();
+    protected static final PlayerLocationPacket.Type[] VALUES = PlayerLocationPacket.Type.values();
 
 
     @Override

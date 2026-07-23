@@ -3,7 +3,6 @@ package org.cloudburstmc.protocol.bedrock.packet;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.cloudburstmc.protocol.bedrock.data.camera.CameraSplineType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -64,7 +63,7 @@ public class SendPartyDestinationCookiePacket implements BedrockPacket {
          */
         OPT_OUT("optout");
 
-        private static final Map<String, Intent> serializeNames = new HashMap<>(values().length);
+        private static final Map<String, Intent> serializeNames = new HashMap<>(values().length, 1);
         static {
             for (Intent value : values()) {
                 serializeNames.put(value.getSerializeName(), value);

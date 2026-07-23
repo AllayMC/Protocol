@@ -157,4 +157,16 @@ public enum ParticleType implements LevelEventType {
      * @since v975
      */
     SULFUR_CUBE,
+    /**
+     * @since v2168
+     */
+    ORANGE_POPLAR_LEAVES,
+    /**
+     * @since v2168
+     */
+    RED_POPLAR_LEAVES,
+    /**
+     * @since v2168
+     */
+    YELLOW_POPLAR_LEAVES,
 }

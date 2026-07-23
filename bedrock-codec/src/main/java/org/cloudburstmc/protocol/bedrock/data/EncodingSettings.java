@@ -25,7 +25,7 @@ public class EncodingSettings {
             .maxStringLength(1024 * 32) // 32KB
             .maxGeometryDataSize(1024 * 512)
             .maxItemStackTagLength(64)
-            .maxInventoryActionsOrRequests(64)
+            .maxInventoryActionsOrRequests(100)
             .build();
 
     /**
@@ -41,7 +41,7 @@ public class EncodingSettings {
             .maxStringLength(1024 * 1024 * 2) // 2MB
             .maxGeometryDataSize(1024 * 512)
             .maxItemStackTagLength(64)
-            .maxInventoryActionsOrRequests(64)
+            .maxInventoryActionsOrRequests(100)
             .build();
 
     /**
@@ -57,7 +57,7 @@ public class EncodingSettings {
             .maxStringLength(1024 * 32) // 32KB
             .maxGeometryDataSize(1024 * 256)
             .maxItemStackTagLength(64)
-            .maxInventoryActionsOrRequests(64)
+            .maxInventoryActionsOrRequests(100)
             .build();
 
     /**

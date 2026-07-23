@@ -63,7 +63,7 @@ public class CraftingDataSerializer_v685 extends CraftingDataSerializer_v671 {
         int width = VarInts.readInt(buffer);
         int height = VarInts.readInt(buffer);
         int inputCount = width * height;
-        List<ItemDescriptorWithCount> inputs = new ObjectArrayList<>(inputCount);
+        List<ItemDescriptorWithCount> inputs = new ObjectArrayList<>();
         for (int i = 0; i < inputCount; i++) {
             inputs.add(helper.readIngredient(buffer));
         }

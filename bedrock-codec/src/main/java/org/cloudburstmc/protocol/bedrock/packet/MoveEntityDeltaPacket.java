@@ -29,14 +29,17 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
     /**
      * The new absolute X position, if {@link Flag#HAS_X} is present.
      */
+    @Deprecated
     private int deltaX;
     /**
      * The new absolute Y position, if {@link Flag#HAS_Y} is present.
      */
+    @Deprecated
     private int deltaY;
     /**
      * The new absolute Z position, if {@link Flag#HAS_Z} is present.
      */
+    @Deprecated
     private int deltaZ;
     /**
      * The new pitch, if {@link Flag#HAS_PITCH} is present.
@@ -68,6 +71,11 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
      * @since v419
      */
     private float z;
+
+    private boolean onGround;
+    private boolean forceMove;
+    private boolean forceMoveLocalEntity;
+    private boolean forceCompletion;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
@@ -101,7 +109,15 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
                + yaw
                + ", "
                + headYaw
-               + "))";
+               + "), onGround="
+               + onGround
+               + ", forceMove="
+               + forceMove
+               + ", forceMoveLocalEntity="
+               + forceMoveLocalEntity
+               + ", forceCompletion="
+               + forceCompletion
+               + ")";
     }
 
     public enum Flag {

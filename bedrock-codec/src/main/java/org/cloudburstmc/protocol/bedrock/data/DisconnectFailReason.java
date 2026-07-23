@@ -216,5 +216,37 @@ public enum DisconnectFailReason {
     /**
      * @since v975
      */
-    NONCE_NOT_VALID
+    NONCE_NOT_VALID,
+    /**
+     * @since v1001
+     */
+    HOST_DISCONNECTED,
+    /**
+     * @since v1001
+     */
+    EDITOR_JOIN_INTENT_POLICY_FAILURE,
+    /**
+     * @since v2168
+     */
+    NETHER_NET_IDENTITY_NOT_ALLOWED,
+    /**
+     * @since v2168
+     */
+    INVALID_NAME,
+    /**
+     * @since v2164
+     */
+    EXPIRED_TOKEN,
+    /**
+     * @since v2164
+     */
+    HOST_ACCEPTS_NO_TYPE_OF_AUTH,
+    /**
+     * @since v2164
+     */
+    NOT_AUTHENTICATED_FAST_FAIL,
+    /**
+     * @since v2164
+     */
+    EDITOR_NOT_ALLOWED,
 }
