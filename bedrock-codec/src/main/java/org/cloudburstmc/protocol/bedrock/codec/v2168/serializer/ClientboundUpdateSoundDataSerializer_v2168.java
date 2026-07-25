@@ -20,20 +20,20 @@ public class ClientboundUpdateSoundDataSerializer_v2168 extends ClientboundUpdat
         });
         helper.writeOptionalNull(buffer, packet.getVolume(), (buf, d) -> {
             VarInts.writeUnsignedInt(buffer, 0);
-            buf.writeFloatLE(d.getVolume());
+            buf.writeFloatLE(d.volume());
         });
         helper.writeOptionalNull(buffer, packet.getPitch(), (buf, d) -> {
             VarInts.writeUnsignedInt(buffer, 0);
-            buf.writeFloatLE(d.getPitch());
+            buf.writeFloatLE(d.pitch());
         });
         helper.writeOptionalNull(buffer, packet.getFade(), (buf, d) -> {
             VarInts.writeUnsignedInt(buffer, 0);
-            buf.writeFloatLE(d.getTargetVolume());
-            buf.writeFloatLE(d.getDuration());
+            buf.writeFloatLE(d.targetVolume());
+            buf.writeFloatLE(d.duration());
         });
         helper.writeOptionalNull(buffer, packet.getSeekTo(), (buf, d) -> {
             VarInts.writeUnsignedInt(buffer, 0);
-            buf.writeFloatLE(d.getSeconds());
+            buf.writeFloatLE(d.seconds());
         });
         helper.writeOptionalNull(buffer, packet.getPause(), (buf, d) -> {
             VarInts.writeUnsignedInt(buffer, 0);

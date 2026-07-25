@@ -21,20 +21,23 @@ public class SetScoreSerializer_v2168 extends SetScoreSerializer_v291 {
 
             VarInts.writeLong(buf, scoreInfo.getScoreboardId());
 
-            helper.writeString(buf, scoreInfo.getObjectiveId());
-
             switch (scoreInfo.getType()) {
+                case INVALID:
+                    helper.writeOptional(buf, value -> !value.isEmpty(), scoreInfo.getObjectiveId(), helper::writeString);
+                    break;
                 case ENTITY:
                 case PLAYER:
+                    helper.writeString(buf, scoreInfo.getObjectiveId());
                     buf.writeIntLE(scoreInfo.getScore());
                     VarInts.writeLong(buf, scoreInfo.getEntityId());
                     break;
                 case FAKE:
+                    helper.writeString(buf, scoreInfo.getObjectiveId());
                     buf.writeIntLE(scoreInfo.getScore());
                     helper.writeString(buf, scoreInfo.getName());
                     break;
                 default:
-                    break;
+                    throw new IllegalStateException("ScoreInfo.ScorerType");
             }
         });
     }
@@ -47,20 +50,25 @@ public class SetScoreSerializer_v2168 extends SetScoreSerializer_v291 {
 
             long scoreboardId = VarInts.readLong(buf);
 
-            String objectiveId = helper.readString(buf);
+            String objectiveId;
             int score;
             switch (type) {
+                case INVALID:
+                    objectiveId = helper.readOptional(buf, null, helper::readString);
+                    return new ScoreInfo(scoreboardId, objectiveId == null ? "" : objectiveId, 0);
                 case ENTITY:
                 case PLAYER:
+                    objectiveId = helper.readString(buf);
                     score = buf.readIntLE();
                     long entityId = VarInts.readLong(buf);
                     return new ScoreInfo(scoreboardId, objectiveId, score, type, entityId);
                 case FAKE:
+                    objectiveId = helper.readString(buf);
                     score = buf.readIntLE();
                     String name = helper.readString(buf);
                     return new ScoreInfo(scoreboardId, objectiveId, score, name);
                 default:
-                    return new ScoreInfo(scoreboardId, objectiveId, 0);
+                    throw new IllegalStateException("ScoreInfo.ScorerType");
             }
         });
     }

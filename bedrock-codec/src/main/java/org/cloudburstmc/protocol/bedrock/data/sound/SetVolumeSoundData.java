@@ -1,8 +1,4 @@
 package org.cloudburstmc.protocol.bedrock.data.sound;
 
-import lombok.Value;
-
-@Value
-public class SetVolumeSoundData {
-    float volume;
+public record SetVolumeSoundData(float volume) {
 }

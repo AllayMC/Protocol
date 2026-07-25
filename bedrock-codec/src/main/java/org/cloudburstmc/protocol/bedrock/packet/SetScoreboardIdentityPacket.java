@@ -50,9 +50,21 @@ public class SetScoreboardIdentityPacket implements BedrockPacket {
              */
             long scoreboardId,
             /**
-             * The UUID to associate with the scoreboard entry when {@link Action#ADD} is used.
+             * The UUID used by protocol versions before v2168.
              */
-            UUID uuid) {
+            UUID uuid,
+            /**
+             * The numeric player identity used by v2168 and newer.
+             */
+            long playerId) {
+
+        public Entry(long scoreboardId, UUID uuid) {
+            this(scoreboardId, uuid, 0);
+        }
+
+        public Entry(long scoreboardId, long playerId) {
+            this(scoreboardId, null, playerId);
+        }
     }
 
     @Override

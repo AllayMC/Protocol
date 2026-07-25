@@ -5,8 +5,11 @@ import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
 import org.cloudburstmc.protocol.bedrock.codec.v944.serializer.PlayerAuthInputSerializer_v944;
+import org.cloudburstmc.protocol.bedrock.data.PlayerActionType;
 import org.cloudburstmc.protocol.bedrock.data.PlayerAuthInputData;
 import org.cloudburstmc.protocol.bedrock.data.PlayerBlockActionData;
+import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.ItemUseTransaction;
+import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.LegacySetItemSlotData;
 import org.cloudburstmc.protocol.bedrock.packet.PlayerAuthInputPacket;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
@@ -53,7 +56,7 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
         buffer.writeBoolean(true);
         if (packet.getInputData().contains(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS)) {
             buffer.writeBoolean(true);
-            VarInts.writeInt(buffer, packet.getPlayerActions().size());
+            VarInts.writeUnsignedInt(buffer, packet.getPlayerActions().size());
             for (PlayerBlockActionData actionData : packet.getPlayerActions()) {
                 writePlayerBlockActionData(buffer, helper, actionData);
             }
@@ -120,5 +123,85 @@ public class PlayerAuthInputSerializer_v2168 extends PlayerAuthInputSerializer_v
         packet.setAnalogMoveVector(helper.readVector2f(buffer));
         packet.setCameraOrientation(helper.readVector3f(buffer));
         packet.setRawMoveVector(helper.readVector2f(buffer));
+    }
+
+    @Override
+    protected void writeItemUseTransaction(ByteBuf buffer, BedrockCodecHelper helper, ItemUseTransaction transaction) {
+        int legacyRequestId = transaction.getLegacyRequestId();
+        VarInts.writeInt(buffer, legacyRequestId);
+
+        if (legacyRequestId < -1 && (legacyRequestId & 1) == 0) {
+            buffer.writeBoolean(true);
+            helper.writeArray(buffer, transaction.getLegacySlots(), (buf, packetHelper, data) -> {
+                buf.writeByte(data.containerId());
+                packetHelper.writeByteArray(buf, data.slots());
+            });
+        } else {
+            buffer.writeBoolean(false);
+        }
+
+        buffer.writeBoolean(true);
+        buffer.writeBoolean(true);
+        helper.writeInventoryActions(buffer, transaction.getActions(), transaction.isUsingNetIds());
+
+        VarInts.writeInt(buffer, transaction.getActionType());
+        buffer.writeByte(transaction.getTriggerType().ordinal());
+        helper.writeBlockPosition(buffer, transaction.getBlockPosition());
+        buffer.writeByte(transaction.getBlockFace());
+        VarInts.writeInt(buffer, transaction.getHotbarSlot());
+        helper.writeItem(buffer, transaction.getItemInHand());
+        helper.writeVector3f(buffer, transaction.getPlayerPosition());
+        helper.writeVector3f(buffer, transaction.getClickPosition());
+        VarInts.writeUnsignedInt(buffer, transaction.getBlockDefinition().runtimeId());
+        buffer.writeByte(transaction.getClientInteractPrediction().ordinal());
+        buffer.writeByte(transaction.getClientCooldownState());
+    }
+
+    @Override
+    protected ItemUseTransaction readItemUseTransaction(ByteBuf buffer, BedrockCodecHelper helper) {
+        ItemUseTransaction itemTransaction = new ItemUseTransaction();
+        int legacyRequestId = VarInts.readInt(buffer);
+        itemTransaction.setLegacyRequestId(legacyRequestId);
+
+        if (buffer.readBoolean() && legacyRequestId < -1 && (legacyRequestId & 1) == 0) {
+            helper.readArray(buffer, itemTransaction.getLegacySlots(), (buf, packetHelper) -> {
+                int containerId = buf.readUnsignedByte();
+                byte[] slots = packetHelper.readByteArray(buf, 89);
+                return new LegacySetItemSlotData(containerId, slots);
+            });
+        }
+
+        if (buffer.readBoolean() && buffer.readBoolean()) {
+            helper.readInventoryActions(buffer, itemTransaction.getActions());
+        }
+
+        itemTransaction.setActionType(VarInts.readInt(buffer));
+        itemTransaction.setTriggerType(ItemUseTransaction.TriggerType.values()[buffer.readUnsignedByte()]);
+        itemTransaction.setBlockPosition(helper.readBlockPosition(buffer));
+        itemTransaction.setBlockFace(buffer.readUnsignedByte());
+        itemTransaction.setHotbarSlot(VarInts.readInt(buffer));
+        itemTransaction.setItemInHand(helper.readItem(buffer));
+        itemTransaction.setPlayerPosition(helper.readVector3f(buffer));
+        itemTransaction.setClickPosition(helper.readVector3f(buffer));
+        itemTransaction.setBlockDefinition(helper.getBlockDefinitions().getDefinition(VarInts.readUnsignedInt(buffer)));
+        itemTransaction.setClientInteractPrediction(ItemUseTransaction.PredictedResult.values()[buffer.readUnsignedByte()]);
+        itemTransaction.setClientCooldownState(buffer.readUnsignedByte());
+        return itemTransaction;
+    }
+
+    @Override
+    protected void writePlayerBlockActionData(ByteBuf buffer, BedrockCodecHelper helper, PlayerBlockActionData actionData) {
+        VarInts.writeInt(buffer, actionData.getAction().ordinal());
+        helper.writeVector3i(buffer, actionData.getBlockPosition());
+        VarInts.writeInt(buffer, actionData.getFace());
+    }
+
+    @Override
+    protected PlayerBlockActionData readPlayerBlockActionData(ByteBuf buffer, BedrockCodecHelper helper) {
+        PlayerBlockActionData actionData = new PlayerBlockActionData();
+        actionData.setAction(PlayerActionType.values()[VarInts.readInt(buffer)]);
+        actionData.setBlockPosition(helper.readVector3i(buffer));
+        actionData.setFace(VarInts.readInt(buffer));
+        return actionData;
     }
 }

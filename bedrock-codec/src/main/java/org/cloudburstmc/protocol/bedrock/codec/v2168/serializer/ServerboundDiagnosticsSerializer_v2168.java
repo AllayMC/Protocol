@@ -20,8 +20,8 @@ public class ServerboundDiagnosticsSerializer_v2168 extends ServerboundDiagnosti
         super.serialize(buffer, helper, packet);
 
         helper.writeArray(buffer, packet.getSystemCategories(), ((buf, h, info) -> {
-            helper.writeString(buf, info.getCategoryName());
-            buf.writeLongLE(info.getSystemIndex());
+            helper.writeString(buf, info.categoryName());
+            buf.writeLongLE(info.systemIndex());
         }));
 
         helper.writeArray(buffer, packet.getWhiskerScopes(), ((buf, h, info) -> {

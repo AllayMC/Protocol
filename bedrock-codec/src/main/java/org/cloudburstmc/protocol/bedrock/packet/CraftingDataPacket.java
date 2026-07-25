@@ -23,6 +23,8 @@ public class CraftingDataPacket implements BedrockPacket {
     /**
      * Recipes available on the server, including shaped, shapeless, furnace, and other crafting
      * station recipes.
+     *
+     * @deprecated since v2168
      */
     private final List<RecipeData> craftingData = new ObjectArrayList<>();
     /**
