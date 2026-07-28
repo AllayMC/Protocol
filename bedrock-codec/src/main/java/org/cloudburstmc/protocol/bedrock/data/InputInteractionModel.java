@@ -15,5 +15,6 @@ public enum InputInteractionModel {
     /**
      * Classic interactions.
      */
-    CLASSIC
+    CLASSIC,
+    COUNT
 }
