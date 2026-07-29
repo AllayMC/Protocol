@@ -14,6 +14,16 @@ public enum ItemStackRequestActionType {
     DESTROY,
     CONSUME,
     CREATE,
+    /**
+     * @deprecated since 712
+     */
+    @Deprecated
+    PLACE_IN_ITEM_CONTAINER,
+    /**
+     * @deprecated since 712
+     */
+    @Deprecated
+    TAKE_FROM_ITEM_CONTAINER,
     LAB_TABLE_COMBINE,
     BEACON_PAYMENT,
     MINE_BLOCK,
@@ -24,15 +34,5 @@ public enum ItemStackRequestActionType {
     CRAFT_REPAIR_AND_DISENCHANT,
     CRAFT_LOOM,
     CRAFT_NON_IMPLEMENTED_DEPRECATED,
-    CRAFT_RESULTS_DEPRECATED,
-    /**
-     * @deprecated since 712
-     */
-    @Deprecated
-    PLACE_IN_ITEM_CONTAINER,
-    /**
-     * @deprecated since 712
-     */
-    @Deprecated
-    TAKE_FROM_ITEM_CONTAINER
+    CRAFT_RESULTS_DEPRECATED
 }

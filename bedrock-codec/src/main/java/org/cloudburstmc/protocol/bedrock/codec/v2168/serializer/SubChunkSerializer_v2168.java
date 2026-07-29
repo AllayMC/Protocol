@@ -52,9 +52,7 @@ public class SubChunkSerializer_v2168 extends SubChunkSerializer_v818 {
         subChunk.setResult(SubChunkRequestResult.values()[buffer.readUnsignedByte()]);
         subChunk.setData(helper.readOptional(buffer, null, helper::readByteBuf));
         readHeightMapData(buffer, helper, subChunk);
-        if (buffer.readBoolean()) {
-            subChunk.setBlobId(buffer.readLongLE());
-        }
+        subChunk.setBlobId(helper.readOptional(buffer, null, ByteBuf::readLongLE));
         return subChunk;
     }
 

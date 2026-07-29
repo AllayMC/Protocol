@@ -6,12 +6,15 @@ import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.SetScoreSerialize
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
 import org.cloudburstmc.protocol.bedrock.packet.SetScorePacket;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SetScoreSerializer_v2168 extends SetScoreSerializer_v291 {
 
     public static final SetScoreSerializer_v2168 INSTANCE = new SetScoreSerializer_v2168();
 
     private static final String[] TYPES = {"remove", "changeplayer", "changeentity", "changefakeplayer"};
+    private static final Logger log = LoggerFactory.getLogger(SetScoreSerializer_v2168.class);
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, SetScorePacket packet) {
@@ -27,14 +30,23 @@ public class SetScoreSerializer_v2168 extends SetScoreSerializer_v291 {
                     break;
                 case ENTITY:
                 case PLAYER:
-                    helper.writeString(buf, scoreInfo.getObjectiveId());
+                    if (scoreInfo.getObjectiveId().isEmpty() && log.isDebugEnabled()) {
+                        log.debug("SetScorePacket with empty ObjectiveId");
+                    }
+                    helper.writeString(buf, scoreInfo.getObjectiveId().isEmpty() ? " " : scoreInfo.getObjectiveId());
                     buf.writeIntLE(scoreInfo.getScore());
                     VarInts.writeLong(buf, scoreInfo.getEntityId());
                     break;
                 case FAKE:
-                    helper.writeString(buf, scoreInfo.getObjectiveId());
+                    if (scoreInfo.getObjectiveId().isEmpty() && log.isDebugEnabled()) {
+                        log.debug("SetScorePacket with empty ObjectiveId");
+                    }
+                    if (scoreInfo.getName().isEmpty() && log.isDebugEnabled()) {
+                        log.debug("SetScorePacket with empty Name");
+                    }
+                    helper.writeString(buf, scoreInfo.getObjectiveId().isEmpty() ? " " : scoreInfo.getObjectiveId());
                     buf.writeIntLE(scoreInfo.getScore());
-                    helper.writeString(buf, scoreInfo.getName());
+                    helper.writeString(buf, scoreInfo.getName().isEmpty() ? " " : scoreInfo.getName());
                     break;
                 default:
                     throw new IllegalStateException("ScoreInfo.ScorerType");

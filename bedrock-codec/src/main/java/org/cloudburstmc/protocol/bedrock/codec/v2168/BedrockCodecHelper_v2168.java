@@ -1009,12 +1009,7 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         buffer.writeByte(itemEntry.getHotbarSlot());
         buffer.writeByte(itemEntry.getCount());
         buffer.writeBoolean(true);
-        if (itemEntry.getStackNetworkId() > 0) {
-            buffer.writeBoolean(true);
-            VarInts.writeInt(buffer, itemEntry.getStackNetworkId());
-        } else {
-            buffer.writeBoolean(false);
-        }
+        this.writeOptional(buffer, id -> id > 0, itemEntry.getStackNetworkId(), VarInts::writeInt);
         this.writeString(buffer, itemEntry.getCustomName());
         this.writeString(buffer, itemEntry.getFilteredCustomName());
         VarInts.writeInt(buffer, itemEntry.getDurabilityCorrection());

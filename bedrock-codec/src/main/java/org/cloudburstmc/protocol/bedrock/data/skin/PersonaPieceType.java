@@ -7,7 +7,7 @@ import java.util.Map;
 
 public enum PersonaPieceType {
 
-    UNKNOWN("unknown", "unknown"),
+    UNKNOWN("unknown", "persona_unknown"),
     SKELETON("skeleton", "persona_skeleton"),
     BODY("body", "persona_body"),
     SKIN("skin", "persona_skin"),
@@ -16,7 +16,7 @@ public enum PersonaPieceType {
     DRESS("dress", "persona_dress"),
     TOP("top", "persona_top"),
     HIGH_PANTS("high_pants", "persona_high_pants"),
-    HANDS("hands", "persona_hand"), // wtf this really is hand
+    HANDS("hands", "persona_hand"),
     OUTERWEAR("outerwear", "persona_outerwear"),
     FACIAL_HAIR("facial_hair", "persona_facial_hair"),
     MOUTH("mouth", "persona_mouth"),
