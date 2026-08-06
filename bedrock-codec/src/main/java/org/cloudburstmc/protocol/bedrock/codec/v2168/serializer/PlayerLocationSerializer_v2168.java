@@ -14,7 +14,7 @@ public class PlayerLocationSerializer_v2168 extends PlayerLocationSerializer_v80
         VarInts.writeLong(buffer, packet.getTargetEntityId());
         VarInts.writeUnsignedInt(buffer, packet.getType().ordinal());
 
-        VarInts.writeInt(buffer, 0);
+        VarInts.writeInt(buffer, packet.getType().ordinal());
 
         if (packet.getType() == PlayerLocationPacket.Type.COORDINATES) {
             helper.writeVector3f(buffer, packet.getPosition());
