@@ -53,6 +53,7 @@ public class Bedrock_v975 extends Bedrock_v944 {
             .build();
 
     protected static final TypeMap<CommandParam> COMMAND_PARAMS = Bedrock_v944.COMMAND_PARAMS.toBuilder()
+            .replace(4, CommandParam.R_VALUE)
             .remove(134217728)
             .shift(86, 92, 1)
             .insert(86, CommandParam.CLOCK_TIME_MARKER_NAME)
