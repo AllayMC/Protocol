@@ -6,8 +6,9 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.DecoderException;
 import io.netty.util.ReferenceCountUtil;
-import io.netty.util.concurrent.ScheduledFuture;
+import io.netty.util.concurrent.GlobalEventExecutor;
 import io.netty.util.internal.PlatformDependent;
+import io.netty.util.internal.SystemPropertyUtil;
 import io.netty.util.internal.logging.InternalLogger;
 import io.netty.util.internal.logging.InternalLoggerFactory;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -34,8 +35,10 @@ import org.cloudburstmc.protocol.bedrock.util.EncryptionUtils;
 
 import javax.crypto.SecretKey;
 import java.net.SocketAddress;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Queue;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -49,17 +52,57 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
 
     private static final InternalLogger log = InternalLoggerFactory.getInstance(BedrockPeer.class);
 
+    static final String BATCH_FLUSH_DELAY_PROPERTY = "org.cloudburstmc.protocol.bedrock.batchFlushDelayMillis";
+    static final int DEFAULT_BATCH_FLUSH_DELAY_MILLIS = 1;
+    static final int MAX_BATCH_FLUSH_DELAY_MILLIS = 50;
+
+    /**
+     * How long the first packet of a burst waits in the outbound queue for the rest
+     * of that burst to join its batch. A producer that hands its packets over
+     * together still gets a single batch at any positive delay; the wait only
+     * splits bursts that are emitted over a longer stretch than the window, and
+     * each resulting batch is then compressed on its own. A wider window trades
+     * latency for compression efficiency on such producers, while zero disables
+     * coalescing across event loop iterations. Configurable in milliseconds with
+     * the {@value #BATCH_FLUSH_DELAY_PROPERTY} system property, read once when this
+     * class is initialized.
+     * <p>
+     * Note that a window is not equivalent to the periodic flush this replaced: it
+     * starts at the first enqueue, so a burst handed over together always waits the
+     * full window, where a periodic tick of the same period waited half of it on
+     * average.
+     */
+    static final long BATCH_FLUSH_DELAY_NANOS = TimeUnit.MILLISECONDS.toNanos(
+            resolveFlushDelayMillis(SystemPropertyUtil.getInt(BATCH_FLUSH_DELAY_PROPERTY, DEFAULT_BATCH_FLUSH_DELAY_MILLIS)));
+    static final long REJECTED_RETRY_DELAY_MILLIS = 10;
+
     protected final Int2ObjectMap<BedrockSession> sessions = new Int2ObjectOpenHashMap<>();
     protected final Queue<BedrockPacketWrapper> packetQueue = PlatformDependent.newMpscQueue();
     protected final Channel channel;
     protected final BedrockSessionFactory sessionFactory;
-    protected ScheduledFuture<?> tickFuture;
+    final AtomicBoolean flushScheduled = new AtomicBoolean();
+    final AtomicBoolean flushRetryScheduled = new AtomicBoolean();
+    final AtomicBoolean closeRetryScheduled = new AtomicBoolean();
     protected AtomicBoolean closed = new AtomicBoolean();
     protected AtomicBoolean closing = new AtomicBoolean();
 
     public BedrockPeer(Channel channel, BedrockSessionFactory sessionFactory) {
         this.channel = channel;
         this.sessionFactory = sessionFactory;
+    }
+
+    /**
+     * Returns the configured flush delay, falling back to the default when it is
+     * outside the supported range. Out of range values are rejected rather than
+     * saturated so a typo cannot silently pick the nearest bound.
+     */
+    static int resolveFlushDelayMillis(int delay) {
+        if (delay < 0 || delay > MAX_BATCH_FLUSH_DELAY_MILLIS) {
+            log.warn("Unable to use the flush delay system property '{}':{} - using the default value: {}",
+                    BATCH_FLUSH_DELAY_PROPERTY, delay, DEFAULT_BATCH_FLUSH_DELAY_MILLIS);
+            return DEFAULT_BATCH_FLUSH_DELAY_MILLIS;
+        }
+        return delay;
     }
 
     protected void onBedrockPacket(BedrockPacketWrapper wrapper) {
@@ -85,22 +128,106 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
         this.sessions.remove(session.subClientId, session);
     }
 
-    protected void onTick() {
-        if (this.closing.get() || this.closed.get()) {
+    protected void flushPacketQueue() {
+        if (this.closed.get()) {
+            this.flushScheduled.set(false);
+            // Release anything enqueued after onClose() drained the queue.
+            this.free();
             return;
         }
-        flushQueue();
+        if (this.closing.get()) {
+            // Once a disconnect is requested nothing more is written; the queue
+            // is freed by onClose(), which is guaranteed to follow.
+            this.flushScheduled.set(false);
+            return;
+        }
+
+        try {
+            BedrockPacketWrapper packet;
+            boolean wrotePacket = false;
+            while ((packet = this.packetQueue.poll()) != null) {
+                this.channel.write(packet);
+                wrotePacket = true;
+            }
+            if (wrotePacket) {
+                this.channel.flush();
+            }
+        } finally {
+            this.flushScheduled.set(false);
+
+            // A producer can enqueue after the final poll but before the flag is cleared.
+            if (!this.closing.get() && !this.closed.get() && !this.packetQueue.isEmpty()) {
+                this.schedulePacketFlush();
+            }
+        }
     }
 
-    protected void flushQueue() {
-        if (this.packetQueue.isEmpty()) {
+    void schedulePacketFlush() {
+        if (this.closed.get()) {
+            // sendPacket() can race the door gate, enqueueing after onClose() has
+            // already drained the queue and leaving the wrapper with no flush
+            // task to release it. Hand the cleanup to the event loop rather than
+            // draining here: the queue is MPSC, so drains must stay serialized.
+            try {
+                this.channel.eventLoop().execute(this::free);
+            } catch (RejectedExecutionException exception) {
+                // Rejection means the loop is shut down or its task queue is
+                // full; either way it may still be running tasks, and other
+                // producers can land here concurrently. free() is synchronized
+                // to keep this drain mutually exclusive with those.
+                this.free();
+            }
             return;
         }
-        BedrockPacketWrapper packet;
-        while ((packet = this.packetQueue.poll()) != null) {
-            this.channel.write(packet);
+        // Once closing, nothing schedules; onClose() frees the queue.
+        if (this.closing.get() || !this.flushScheduled.compareAndSet(false, true)) {
+            return;
         }
-        this.channel.flush();
+
+        try {
+            this.scheduleFlushTask();
+        } catch (RejectedExecutionException exception) {
+            // The loop refused the task: it is shutting down, or a bounded task
+            // queue is momentarily full while the peer stays live. The wrapper
+            // stays owned by the packet queue, but without a retry a live peer
+            // with no further sends would strand it until close, so retry off
+            // the global executor, which never rejects. The CAS keeps the retry
+            // deduplicated to one chain per peer; otherwise every send during
+            // saturation would spawn its own self reproducing retry, turning
+            // loop backpressure into an unbounded global executor backlog. The
+            // chain ends once the loop accepts a flush or the peer closes.
+            this.flushScheduled.set(false);
+            if (this.flushRetryScheduled.compareAndSet(false, true)) {
+                this.scheduleRejectedRetry(this::retryPacketFlush);
+            }
+        } catch (RuntimeException exception) {
+            this.flushScheduled.set(false);
+            throw exception;
+        }
+    }
+
+    private void retryPacketFlush() {
+        this.flushRetryScheduled.set(false);
+        if (this.closing.get() || this.closed.get() || this.packetQueue.isEmpty()) {
+            return;
+        }
+        this.schedulePacketFlush();
+    }
+
+    void scheduleFlushTask() {
+        this.channel.eventLoop().schedule(this::flushPacketQueue, BATCH_FLUSH_DELAY_NANOS, TimeUnit.NANOSECONDS);
+    }
+
+    void executeOnEventLoop(Runnable task) {
+        this.channel.eventLoop().execute(task);
+    }
+
+    boolean isOnEventLoop() {
+        return this.channel.eventLoop().inEventLoop();
+    }
+
+    void scheduleRejectedRetry(Runnable retry) {
+        GlobalEventExecutor.INSTANCE.schedule(retry, REJECTED_RETRY_DELAY_MILLIS, TimeUnit.MILLISECONDS);
     }
 
     private void onRakNetDisconnect(ChannelHandlerContext ctx, RakDisconnectReason reason) {
@@ -110,8 +237,20 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
         }
     }
 
-    private void free() {
-        for (BedrockPacketWrapper wrapper : this.packetQueue) {
+    /**
+     * Releases every queued packet wrapper. The queue is MPSC, so drains must be
+     * mutually exclusive. Most callers run on the event loop (onClose(), the
+     * closed branches of flushPacketQueue() and schedulePacketFlush()), but when
+     * the loop rejects work during shutdown a producer thread drains directly,
+     * and the loop may still be running its final tasks at that point, so the
+     * loop thread alone cannot serialize this. The lock does. Only close time
+     * paths call this, never the flush hot path. Repeated invocation is only
+     * safe because the drain is a destructive poll; iterating instead would
+     * release the same wrappers twice.
+     */
+    private synchronized void free() {
+        BedrockPacketWrapper wrapper;
+        while ((wrapper = this.packetQueue.poll()) != null) {
             ReferenceCountUtil.safeRelease(wrapper);
         }
     }
@@ -122,6 +261,7 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
             return;
         }
         this.packetQueue.add(BedrockPacketWrapper.create(0, senderClientId, targetClientId, packet, null));
+        this.schedulePacketFlush();
     }
 
     public void sendPacketImmediately(int senderClientId, int targetClientId, BedrockPacket packet) {
@@ -207,10 +347,27 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
     }
 
     public void close(String reason) {
-        if (this.channel.eventLoop().inEventLoop()) {
+        if (this.isOnEventLoop()) {
             this.close0(reason, false);
-        } else {
-            this.channel.eventLoop().execute(() -> this.close0(reason, false));
+            return;
+        }
+        // The session map is event loop confined, so the close must run there.
+        // Rejection means the loop is shut down or a bounded task queue is full
+        // while the channel may still be open, so retry off the never rejecting
+        // global executor until the close lands or the channel dies on its own;
+        // dropping the task would silently lose the disconnect reason. The CAS
+        // keeps the retry deduplicated; the first reason wins.
+        try {
+            this.executeOnEventLoop(() -> this.close0(reason, false));
+        } catch (RejectedExecutionException exception) {
+            if (this.closeRetryScheduled.compareAndSet(false, true)) {
+                this.scheduleRejectedRetry(() -> {
+                    this.closeRetryScheduled.set(false);
+                    if (!this.closing.get() && !this.closed.get() && this.channel.isOpen()) {
+                        this.close(reason);
+                    }
+                });
+            }
         }
     }
 
@@ -243,20 +400,22 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
             return;
         }
 
-        if (this.tickFuture != null) {
-            this.tickFuture.cancel(false);
-            this.tickFuture = null;
-        }
-
-        for (BedrockSession session : this.sessions.values()) {
-            try {
-                session.onClose();
-            } catch (Exception e) {
-                log.error("Exception whilst closing session", e);
+        try {
+            // Sessions remove themselves from the map in onClose(), and the open
+            // addressing map must not be mutated mid iteration (skipped entries,
+            // iterator NPE), so iterate a snapshot. An escaping exception here
+            // could otherwise never be retried: closed is already latched.
+            for (BedrockSession session : new ArrayList<>(this.sessions.values())) {
+                try {
+                    session.onClose();
+                } catch (Exception e) {
+                    log.error("Exception whilst closing session", e);
+                }
             }
+        } finally {
+            this.sessions.clear();
+            this.free();
         }
-
-        this.free();
     }
 
     public boolean isConnected() {
@@ -291,7 +450,6 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         this.sessions.put(0, this.sessionFactory.createSession(this, 0));
-        this.tickFuture = this.channel.eventLoop().scheduleAtFixedRate(this::onTick, 50, 50, TimeUnit.MILLISECONDS);
     }
 
     @Override
