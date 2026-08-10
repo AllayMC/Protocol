@@ -80,9 +80,9 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
     protected final Queue<BedrockPacketWrapper> packetQueue = PlatformDependent.newMpscQueue();
     protected final Channel channel;
     protected final BedrockSessionFactory sessionFactory;
-    final AtomicBoolean flushScheduled = new AtomicBoolean();
-    final AtomicBoolean flushRetryScheduled = new AtomicBoolean();
-    final AtomicBoolean closeRetryScheduled = new AtomicBoolean();
+    protected final AtomicBoolean flushScheduled = new AtomicBoolean();
+    protected final AtomicBoolean flushRetryScheduled = new AtomicBoolean();
+    protected final AtomicBoolean closeRetryScheduled = new AtomicBoolean();
     protected AtomicBoolean closed = new AtomicBoolean();
     protected AtomicBoolean closing = new AtomicBoolean();
 
@@ -261,6 +261,15 @@ public class BedrockPeer extends ChannelInboundHandlerAdapter {
             return;
         }
         this.packetQueue.add(BedrockPacketWrapper.create(0, senderClientId, targetClientId, packet, null));
+        this.schedulePacketFlush();
+    }
+
+    public void sendPacket(BedrockPacketWrapper wrapper) {
+        if (this.closing.get() || this.closed.get()) {
+            ReferenceCountUtil.safeRelease(wrapper); // queue is no longer drained
+            return;
+        }
+        this.packetQueue.add(wrapper);
         this.schedulePacketFlush();
     }
 

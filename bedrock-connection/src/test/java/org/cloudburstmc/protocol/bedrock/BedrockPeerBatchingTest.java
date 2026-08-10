@@ -77,6 +77,28 @@ public class BedrockPeerBatchingTest {
     }
 
     @Test
+    public void wrapperPacketsAreQueuedWithoutRewrapping() {
+        FlushCounter counter = new FlushCounter();
+        TestPeer testPeer = createPeer(counter);
+        PlayStatusPacket packet = new PlayStatusPacket();
+        BedrockPacketWrapper wrapper = BedrockPacketWrapper.create(0, 1, 2, packet, null);
+
+        try {
+            testPeer.peer.sendPacket(wrapper);
+            advanceToFlush(testPeer.channel);
+
+            BedrockPacketWrapper outbound = testPeer.channel.readOutbound();
+            assertSame(wrapper, outbound);
+            assertSame(packet, outbound.getPacket());
+            ReferenceCountUtil.release(outbound);
+            assertNull(testPeer.channel.readOutbound());
+            assertEquals(1, counter.flushes);
+        } finally {
+            close(testPeer);
+        }
+    }
+
+    @Test
     public void packetEnqueuedDuringFlushSchedulesAnotherBatch() {
         EnqueueOnFirstFlush handler = new EnqueueOnFirstFlush();
         TestPeer testPeer = createPeer(handler);
