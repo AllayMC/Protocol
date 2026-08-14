@@ -2,19 +2,13 @@ package org.cloudburstmc.protocol.bedrock.codec.v2168.serializer;
 
 import io.netty.buffer.ByteBuf;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodecHelper;
-import org.cloudburstmc.protocol.bedrock.codec.v291.serializer.SetScoreSerializer_v291;
 import org.cloudburstmc.protocol.bedrock.data.ScoreInfo;
 import org.cloudburstmc.protocol.bedrock.packet.SetScorePacket;
 import org.cloudburstmc.protocol.bedrock.util.VarInts;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class SetScoreSerializer_v2168 extends SetScoreSerializer_v291 {
+public class SetScoreSerializer_v2168_hotfix4 extends SetScoreSerializer_v2168 {
 
-    public static final SetScoreSerializer_v2168 INSTANCE = new SetScoreSerializer_v2168();
-
-    protected static final String[] TYPES = {"remove", "changeplayer", "changeentity", "changefakeplayer"};
-    protected static final Logger log = LoggerFactory.getLogger(SetScoreSerializer_v2168.class);
+    public static final SetScoreSerializer_v2168_hotfix4 INSTANCE = new SetScoreSerializer_v2168_hotfix4();
 
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, SetScorePacket packet) {
@@ -26,13 +20,17 @@ public class SetScoreSerializer_v2168 extends SetScoreSerializer_v291 {
 
             switch (scoreInfo.getType()) {
                 case INVALID:
-                    helper.writeOptional(buf, value -> !value.isEmpty(), scoreInfo.getObjectiveId(), helper::writeString);
+                    helper.writeOptional(buf, objectiveId -> !objectiveId.isEmpty(), scoreInfo.getObjectiveId(), (optionalBuffer, objectiveId) -> {
+                        buffer.writeBoolean(true);
+                        helper.writeString(optionalBuffer, objectiveId);
+                    });
                     break;
                 case ENTITY:
                 case PLAYER:
                     if (scoreInfo.getObjectiveId().isEmpty() && log.isDebugEnabled()) {
                         log.debug("SetScorePacket with empty ObjectiveId");
                     }
+
                     helper.writeString(buf, scoreInfo.getObjectiveId().isEmpty() ? " " : scoreInfo.getObjectiveId());
                     buf.writeIntLE(scoreInfo.getScore());
                     VarInts.writeLong(buf, scoreInfo.getEntityId());
@@ -44,6 +42,7 @@ public class SetScoreSerializer_v2168 extends SetScoreSerializer_v291 {
                     if (scoreInfo.getName().isEmpty() && log.isDebugEnabled()) {
                         log.debug("SetScorePacket with empty Name");
                     }
+
                     helper.writeString(buf, scoreInfo.getObjectiveId().isEmpty() ? " " : scoreInfo.getObjectiveId());
                     buf.writeIntLE(scoreInfo.getScore());
                     helper.writeString(buf, scoreInfo.getName().isEmpty() ? " " : scoreInfo.getName());
@@ -58,15 +57,17 @@ public class SetScoreSerializer_v2168 extends SetScoreSerializer_v291 {
     public void deserialize(ByteBuf buffer, BedrockCodecHelper helper, SetScorePacket packet) {
         helper.readArray(buffer, packet.getInfos(), buf -> {
             ScoreInfo.ScorerType type = ScoreInfo.ScorerType.values()[VarInts.readUnsignedInt(buffer)];
-            helper.readString(buf); //type
+            helper.readString(buf);
 
             long scoreboardId = VarInts.readLong(buf);
 
-            String objectiveId;
+            String objectiveId = null;
             int score;
             switch (type) {
                 case INVALID:
-                    objectiveId = helper.readOptional(buf, null, helper::readString);
+                    if (buffer.readBoolean()) {
+                        objectiveId = helper.readOptional(buf, null, helper::readString);
+                    }
                     return new ScoreInfo(scoreboardId, objectiveId == null ? "" : objectiveId, 0);
                 case ENTITY:
                 case PLAYER:
