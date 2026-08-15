@@ -80,6 +80,8 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
      */
     private final List<WhiskerScopeDataSummary> whiskerScopes = new ArrayList<>();
     /**
+     * Mappings from diagnostics category names to the system indices referenced by timing data.
+     *
      * @since v2168
      */
     private final List<SystemCategory> systemCategories = new ArrayList<>();

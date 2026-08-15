@@ -109,7 +109,7 @@ public class SerializedSkin {
      */
     private final String skinColor;
     /**
-     * The v2168 color representation.
+     * The base skin colour in ARGB form, replacing the legacy string representation.
      *
      * @since v2168
      */
@@ -151,10 +151,15 @@ public class SerializedSkin {
      */
     private final boolean overridingPlayerAppearance;
     /**
+     * Whether the skin is marked as trusted by its sender. This value is client-controlled and is
+     * not a security boundary.
+     *
      * @since v2168
      */
     private final boolean trusted;
     /**
+     * The profile hash supplied with this skin.
+     *
      * @since v2168
      */
     private final String profileHash;
@@ -332,6 +337,10 @@ public class SerializedSkin {
     }
 
     /**
+     * Gets the base skin colour in ARGB form.
+     *
+     * @return the base skin colour, or {@code null} when no colour is available
+     *
      * @since v2168
      */
     public Color getColor() {

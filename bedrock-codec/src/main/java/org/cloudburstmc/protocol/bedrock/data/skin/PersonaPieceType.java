@@ -5,6 +5,11 @@ import lombok.Getter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Enumerates persona-skin piece types and the protocol names used to represent them.
+ *
+ * @since v2168
+ */
 public enum PersonaPieceType {
 
     UNKNOWN("unknown", "persona_unknown"),
@@ -37,8 +42,14 @@ public enum PersonaPieceType {
     EMOTE("emote", "persona_emote"),
     UNSUPPORTED("unsupported", "unsupported");
 
+    /**
+     * The canonical name serialized for this persona piece type.
+     */
     @Getter
     private final String serializeName;
+    /**
+     * The alternate protocol name accepted when decoding this persona piece type.
+     */
     private final String type;
 
     private static final Map<String, PersonaPieceType> serializeNames = new HashMap<>(values().length * 2, 1);
@@ -54,6 +65,13 @@ public enum PersonaPieceType {
         this.type = type;
     }
 
+    /**
+     * Resolves a canonical or alternate protocol name to its persona piece type.
+     *
+     * @param serializeName the protocol name to resolve
+     * @return the matching persona piece type
+     * @throws IllegalArgumentException if the supplied name is unknown
+     */
     public static PersonaPieceType fromName(String serializeName) {
         PersonaPieceType value = serializeNames.get(serializeName);
         if (value == null) {

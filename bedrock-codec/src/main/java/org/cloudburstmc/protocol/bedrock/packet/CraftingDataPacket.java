@@ -28,34 +28,50 @@ public class CraftingDataPacket implements BedrockPacket {
      */
     private final List<RecipeData> craftingData = new ObjectArrayList<>();
     /**
+     * Shaped crafting-table recipe entries.
+     *
      * @since v2168
      */
     private final List<ShapedRecipeData> shapedData = new ObjectArrayList<>();
     /**
+     * Shapeless recipe entries.
+     *
      * @since v2168
      */
     private final List<ShapelessRecipeData> shapelessData = new ObjectArrayList<>();
     /**
+     * Multi-recipe entries that refer to a set of related recipes.
+     *
      * @since v2168
      */
     private final List<MultiRecipeData> multiData = new ObjectArrayList<>();
     /**
+     * Shapeless user-recipe entries.
+     *
      * @since v2168
      */
     private final List<ShapelessRecipeData> shapelessUserData = new ObjectArrayList<>();
     /**
+     * Shapeless Education Edition chemistry recipe entries.
+     *
      * @since v2168
      */
     private final List<ShapelessRecipeData> shapelessChemistryData = new ObjectArrayList<>();
     /**
+     * Shaped Education Edition chemistry recipe entries.
+     *
      * @since v2168
      */
     private final List<ShapedRecipeData> shapedChemistryData = new ObjectArrayList<>();
     /**
+     * Smithing transform recipe entries.
+     *
      * @since v2168
      */
     private final List<SmithingTransformRecipeData> smithingTransformData = new ObjectArrayList<>();
     /**
+     * Smithing trim recipe entries.
+     *
      * @since v2168
      */
     private final List<SmithingTrimRecipeData> smithingTrimData = new ObjectArrayList<>();

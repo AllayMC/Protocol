@@ -72,9 +72,29 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
      */
     private float z;
 
+    /**
+     * Whether the entity should be considered on the ground after this update.
+     *
+     * @since v2168
+     */
     private boolean onGround;
+    /**
+     * Whether the client should snap the entity to its new position without interpolation.
+     *
+     * @since v2168
+     */
     private boolean forceMove;
+    /**
+     * Whether the client should also force-move a locally controlled entity despite prediction.
+     *
+     * @since v2168
+     */
     private boolean forceMoveLocalEntity;
+    /**
+     * Whether the client should complete pending local movement before applying this update.
+     *
+     * @since v2168
+     */
     private boolean forceCompletion;
 
     @Override
