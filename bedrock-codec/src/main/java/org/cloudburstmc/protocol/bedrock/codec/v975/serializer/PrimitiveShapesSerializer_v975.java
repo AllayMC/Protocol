@@ -47,15 +47,7 @@ public class PrimitiveShapesSerializer_v975 extends PrimitiveShapesSerializer_v9
                 PrimitiveSphere sphere = (PrimitiveSphere) shape;
                 buffer.writeByte(sphere.getSegments());
             }
-            case TEXT -> {
-                PrimitiveText text = (PrimitiveText) shape;
-                helper.writeString(buffer, text.getText());
-                buffer.writeBoolean(text.isUseRotation());
-                helper.writeOptionalNull(buffer, text.getBackgroundColor(), (buf, color) -> buf.writeIntLE(color.getRGB()));
-                buffer.writeBoolean(text.isDepthTest());
-                buffer.writeBoolean(text.isShowBackface());
-                buffer.writeBoolean(text.isShowTextBackface());
-            }
+            case TEXT -> writeText(buffer, helper, (PrimitiveText) shape);
             default -> throw new IllegalStateException("Unknown primitive shape type");
         }
     }
@@ -109,12 +101,26 @@ public class PrimitiveShapesSerializer_v975 extends PrimitiveShapesSerializer_v9
                     maximumRenderDistance, helper.readVector3f(buffer), attachedToEntityId);
             case SPHERE -> new PrimitiveSphere(id, dimension, position, scale, rotation, totalTimeLeft, color,
                     maximumRenderDistance, (int) buffer.readUnsignedByte(), attachedToEntityId);
-            case TEXT -> new PrimitiveText(id, dimension, position, scale, rotation, totalTimeLeft, color,
+            case TEXT -> readText(buffer, helper, id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
+            default -> throw new IllegalStateException("Unknown primitive shape type");
+        };
+    }
+
+    protected PrimitiveText readText(ByteBuf buffer, BedrockCodecHelper helper, long id, int dimension,
+                                     Vector3f position, Float scale, Vector3f rotation, Float totalTimeLeft,
+                                     Color color, Float maximumRenderDistance, Long attachedToEntityId) {
+        return new PrimitiveText(id, dimension, position, scale, rotation, totalTimeLeft, color,
                     helper.readString(buffer), buffer.readBoolean(),
                     helper.readOptional(buffer, null, value -> new Color(value.readIntLE(), true)),
                     buffer.readBoolean(), buffer.readBoolean(), buffer.readBoolean(),
                     maximumRenderDistance, attachedToEntityId);
-            default -> throw new IllegalStateException("Unknown primitive shape type");
-        };
+    }
+    protected void writeText(ByteBuf buffer, BedrockCodecHelper helper, PrimitiveText text) {
+        helper.writeString(buffer, text.getText());
+        buffer.writeBoolean(text.isUseRotation());
+        helper.writeOptionalNull(buffer, text.getBackgroundColor(), (buf, color) -> buf.writeIntLE(color.getRGB()));
+        buffer.writeBoolean(text.isDepthTest());
+        buffer.writeBoolean(text.isShowBackface());
+        buffer.writeBoolean(text.isShowTextBackface());
     }
 }

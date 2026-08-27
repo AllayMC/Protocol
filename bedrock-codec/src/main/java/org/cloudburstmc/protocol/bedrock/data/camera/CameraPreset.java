@@ -154,4 +154,26 @@ public class CameraPreset {
      */
     @Nullable
     private ControlScheme controlScheme;
+    /**
+     * @since v2192
+     */
+    private boolean applyInheritedStartingRotation;
+    /**
+     * @since v2192
+     */
+    @Nullable
+    private Vector2f startingRotation;
+
+    public CameraPreset(String identifier, String parentPreset, Vector3f pos, Float yaw, Float pitch,
+                        CameraAudioListener listener, OptionalBoolean playEffect, Vector2f viewOffset, Float radius,
+                        Float rotationSpeed, OptionalBoolean snapToTarget, Vector3f entityOffset,
+                        Vector2f horizontalRotationLimit, Vector2f verticalRotationLimit,
+                        OptionalBoolean continueTargeting, OptionalBoolean alignTargetAndCameraForward,
+                        Float blockListeningRadius, CameraAimAssistPreset aimAssistPreset, Float minYawLimit,
+                        Float maxYawLimit, ControlScheme controlScheme) {
+        this(identifier, parentPreset, pos, yaw, pitch, listener, playEffect, viewOffset, radius, rotationSpeed,
+                snapToTarget, entityOffset, horizontalRotationLimit, verticalRotationLimit, continueTargeting,
+                alignTargetAndCameraForward, blockListeningRadius, aimAssistPreset, minYawLimit, maxYawLimit,
+                controlScheme, false, null);
+    }
 }

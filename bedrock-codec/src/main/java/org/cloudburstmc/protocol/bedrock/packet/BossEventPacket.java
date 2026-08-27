@@ -25,6 +25,7 @@ public class BossEventPacket implements BedrockPacket {
     private Action action;
     /**
      * The unique ID of the player to register to or unregister from the boss fight. This field is
+     * @deprecated since v2192
      * only relevant for {@link Action#REGISTER_PLAYER}, {@link Action#UNREGISTER_PLAYER}, and
      * {@link Action#QUERY}.
      */

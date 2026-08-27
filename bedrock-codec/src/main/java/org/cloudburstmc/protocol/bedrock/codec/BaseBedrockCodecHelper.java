@@ -438,7 +438,8 @@ public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {
         });
     }
 
-    protected InventorySource readSource(ByteBuf buffer) {
+    @Override
+    public InventorySource readSource(ByteBuf buffer) {
         InventorySource.Type type = InventorySource.Type.byId(VarInts.readUnsignedInt(buffer));
 
         switch (type) {
@@ -460,7 +461,8 @@ public abstract class BaseBedrockCodecHelper implements BedrockCodecHelper {
         }
     }
 
-    protected void writeSource(ByteBuf buffer, InventorySource inventorySource) {
+    @Override
+    public void writeSource(ByteBuf buffer, InventorySource inventorySource) {
         requireNonNull(inventorySource, "InventorySource was null");
 
         VarInts.writeUnsignedInt(buffer, inventorySource.type().id());

@@ -90,11 +90,7 @@ public class PrimitiveShapesSerializer_v1001 extends PrimitiveShapesSerializer_v
                     maximumRenderDistance, helper.readVector3f(buffer), attachedToEntityId);
             case SPHERE -> new PrimitiveSphere(id, dimension, position, scale, rotation, totalTimeLeft, color,
                     maximumRenderDistance, (int) buffer.readUnsignedByte(), attachedToEntityId);
-            case TEXT -> new PrimitiveText(id, dimension, position, scale, rotation, totalTimeLeft, color,
-                    helper.readString(buffer), buffer.readBoolean(),
-                    helper.readOptional(buffer, null, value -> new Color(value.readIntLE(), true)),
-                    buffer.readBoolean(), buffer.readBoolean(), buffer.readBoolean(),
-                    maximumRenderDistance, attachedToEntityId);
+            case TEXT -> readText(buffer, helper, id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
             case CYLINDER -> {
                 var radiusX = helper.readVector2f(buffer);
                 var radiusZ = helper.readVector2f(buffer);

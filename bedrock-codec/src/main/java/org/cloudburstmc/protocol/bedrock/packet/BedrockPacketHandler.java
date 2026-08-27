@@ -1032,4 +1032,12 @@ public interface BedrockPacketHandler {
     default PacketSignal handle(PartyDestinationCookieResponsePacket packet) {
         return PacketSignal.UNHANDLED;
     }
+
+    default PacketSignal handle(RecordStartedPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
+
+    default PacketSignal handle(SetPlayerFurnaceOptionsPacket packet) {
+        return PacketSignal.UNHANDLED;
+    }
 }

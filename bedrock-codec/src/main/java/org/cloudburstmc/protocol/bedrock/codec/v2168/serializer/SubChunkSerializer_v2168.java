@@ -56,7 +56,7 @@ public class SubChunkSerializer_v2168 extends SubChunkSerializer_v818 {
         return subChunk;
     }
 
-    private void writeHeightMapData(ByteBuf buffer, BedrockCodecHelper helper, SubChunkData subChunk) {
+    protected void writeHeightMapData(ByteBuf buffer, BedrockCodecHelper helper, SubChunkData subChunk) {
         buffer.writeByte(subChunk.getHeightMapType().ordinal());
         helper.writeOptional(buffer, o-> subChunk.getHeightMapData() != null, subChunk.getHeightMapData(), (buf, toWrite) -> {
             ByteBuf heightMapBuf = subChunk.getHeightMapData();
@@ -69,7 +69,7 @@ public class SubChunkSerializer_v2168 extends SubChunkSerializer_v818 {
         });
     }
 
-    private void readHeightMapData(ByteBuf buffer, BedrockCodecHelper helper, SubChunkData subChunk) {
+    protected void readHeightMapData(ByteBuf buffer, BedrockCodecHelper helper, SubChunkData subChunk) {
         subChunk.setHeightMapType(HeightMapDataType.values()[buffer.readUnsignedByte()]);
         subChunk.setHeightMapData(helper.readOptional(buffer, null, buf-> buf.readRetainedSlice(HEIGHT_MAP_LENGTH)));
         subChunk.setRenderHeightMapType(HeightMapDataType.values()[buffer.readUnsignedByte()]);

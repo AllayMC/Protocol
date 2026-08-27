@@ -260,6 +260,9 @@ public record BedrockPacketType(String name) {
     public static final BedrockPacketType PY_RPC = new BedrockPacketType("PY_RPC");
     public static final BedrockPacketType STORE_BUY_SUCCESS = new BedrockPacketType("STORE_BUY_SUCCESS");
 
+    public static final BedrockPacketType SET_PLAYER_FURNACE_OPTIONS = new BedrockPacketType("SET_PLAYER_FURNACE_OPTIONS");
+    public static final BedrockPacketType RECORD_STARTED = new BedrockPacketType("RECORD_STARTED");
+
     @Override
     public String toString() {
         return name;

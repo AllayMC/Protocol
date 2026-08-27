@@ -513,7 +513,6 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
                 VarInts.writeUnsignedInt(byteBuf, ((AutoCraftRecipeAction) action).recipeNetworkId());
                 byteBuf.writeByte(((AutoCraftRecipeAction) action).numberOfRequestedCrafts()); // count duplication removed
                 List<ItemDescriptorWithCount> ingredients = ((AutoCraftRecipeAction) action).ingredients();
-                byteBuf.writeByte(ingredients.size());
                 writeArray(byteBuf, ingredients, this::writeIngredient2);
                 break;
             case CRAFT_CREATIVE:

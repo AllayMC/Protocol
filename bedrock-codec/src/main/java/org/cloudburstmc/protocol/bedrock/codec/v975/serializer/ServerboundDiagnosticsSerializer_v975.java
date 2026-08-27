@@ -26,14 +26,14 @@ public class ServerboundDiagnosticsSerializer_v975 extends ServerboundDiagnostic
         helper.readArray(buffer, packet.getSystemDiagnostics(), this::readSystemDiagnostics);
     }
 
-    private void writeEntityDiagnostics(ByteBuf buffer, BedrockCodecHelper helper, ServerboundDiagnosticsPacket.EntityDiagnostics diagnostics) {
+    protected void writeEntityDiagnostics(ByteBuf buffer, BedrockCodecHelper helper, ServerboundDiagnosticsPacket.EntityDiagnostics diagnostics) {
         helper.writeString(buffer, diagnostics.getDisplayName());
         helper.writeString(buffer, diagnostics.getEntity());
         buffer.writeLongLE(diagnostics.getTimeInNs());
         buffer.writeByte(diagnostics.getPercentOfTotal());
     }
 
-    private ServerboundDiagnosticsPacket.EntityDiagnostics readEntityDiagnostics(ByteBuf buffer, BedrockCodecHelper helper) {
+    protected ServerboundDiagnosticsPacket.EntityDiagnostics readEntityDiagnostics(ByteBuf buffer, BedrockCodecHelper helper) {
         ServerboundDiagnosticsPacket.EntityDiagnostics diagnostics = new ServerboundDiagnosticsPacket.EntityDiagnostics();
         diagnostics.setDisplayName(helper.readString(buffer));
         diagnostics.setEntity(helper.readString(buffer));

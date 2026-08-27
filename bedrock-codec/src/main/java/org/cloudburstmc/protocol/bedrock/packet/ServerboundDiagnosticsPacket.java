@@ -113,6 +113,8 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
         private String entity;
         private long timeInNs;
         private int percentOfTotal;
+        private org.cloudburstmc.math.vector.Vector3f position;
+        private String dimension;
     }
 
     @Data

@@ -15,7 +15,11 @@ import java.util.UUID;
  * @param packId        the owning pack identifier sent by v2168+
  */
 public record DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType,
-                                  int dimensionType, UUID packId) {
+                                  int dimensionType, UUID packId, String defaultBiome) {
+
+    public DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType, int dimensionType, UUID packId) {
+        this(id, maximumHeight, minimumHeight, generatorType, dimensionType, packId, null);
+    }
 
     public DimensionDefinition(String id, int maximumHeight, int minimumHeight, int generatorType) {
         this(id, maximumHeight, minimumHeight, generatorType, 0);

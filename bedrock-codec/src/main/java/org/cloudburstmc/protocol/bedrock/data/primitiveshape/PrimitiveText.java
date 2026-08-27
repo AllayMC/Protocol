@@ -20,6 +20,7 @@ public final class PrimitiveText extends PrimitiveShape {
      * The text.
      */
     private final String text;
+    private final float lineGapHeight;
     /**
      * Whether the text uses the shape rotation.
      *
@@ -69,7 +70,16 @@ public final class PrimitiveText extends PrimitiveShape {
                          String text, boolean useRotation, @Nullable Color backgroundColor, boolean depthTest,
                          boolean showBackface, boolean showTextBackface, @Nullable Float maximumRenderDistance,
                          @Nullable Long attachedToEntityId) {
+        this(id, dimension, position, scale, rotation, totalTimeLeft, color, text, useRotation, backgroundColor,
+                depthTest, showBackface, showTextBackface, maximumRenderDistance, attachedToEntityId, 0);
+    }
+
+    public PrimitiveText(long id, int dimension, Vector3f position, Float scale, Vector3f rotation,
+                         Float totalTimeLeft, Color color, String text, boolean useRotation, Color backgroundColor,
+                         boolean depthTest, boolean showBackface, boolean showTextBackface, Float maximumRenderDistance,
+                         Long attachedToEntityId, float lineGapHeight) {
         super(id, dimension, position, scale, rotation, totalTimeLeft, color, maximumRenderDistance, attachedToEntityId);
+        this.lineGapHeight = lineGapHeight;
         this.text = text;
         this.useRotation = useRotation;
         this.backgroundColor = backgroundColor;
