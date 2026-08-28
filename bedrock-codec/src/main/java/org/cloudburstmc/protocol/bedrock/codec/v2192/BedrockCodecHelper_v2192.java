@@ -28,7 +28,7 @@ public class BedrockCodecHelper_v2192 extends BedrockCodecHelper_v2168 {
         int count = buffer.readUnsignedByte();
         int stackNetworkId = buffer.readBoolean() ? VarInts.readInt(buffer) : 0;
         String customName = this.readString(buffer);
-        String filteredCustomName = this.readString(buffer);
+        String filteredCustomName = this.readOptional(buffer, null, this::readString);
         int durabilityCorrection = VarInts.readInt(buffer);
         return new ItemStackResponseSlot(slot, hotbarSlot, count, stackNetworkId,
                 customName, durabilityCorrection, filteredCustomName);
@@ -42,7 +42,7 @@ public class BedrockCodecHelper_v2192 extends BedrockCodecHelper_v2168 {
         buffer.writeByte(itemEntry.getCount());
         this.writeOptional(buffer, id->id > 0, itemEntry.getStackNetworkId(), VarInts::writeInt);
         this.writeString(buffer, itemEntry.getCustomName());
-        this.writeString(buffer, itemEntry.getFilteredCustomName());
+        this.writeOptionalNull(buffer, itemEntry.getFilteredCustomName(), this::writeString);
         VarInts.writeInt(buffer, itemEntry.getDurabilityCorrection());
     }
 
