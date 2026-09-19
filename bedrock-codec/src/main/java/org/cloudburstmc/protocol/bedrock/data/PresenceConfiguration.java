@@ -11,6 +11,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  *
  * @since v1001
  */
-public record PresenceConfiguration(@Nullable String experienceName, @Nullable String worldName,
+public record PresenceConfiguration(@Deprecated @Nullable String experienceName, @Deprecated @Nullable String worldName,
                                     String richPresenceId) {
 }
