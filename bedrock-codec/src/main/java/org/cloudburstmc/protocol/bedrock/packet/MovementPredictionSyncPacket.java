@@ -18,9 +18,19 @@ import java.util.Set;
 @ToString(doNotUseGetters = true)
 public class MovementPredictionSyncPacket implements BedrockPacket {
     /**
-     * The runtime ID of the client player whose prediction state is being synchronised.
+     * The signed unique ID of the client player whose prediction state is being synchronised.
      */
-    private long runtimeEntityId;
+    private long uniqueEntityId;
+
+    @Deprecated
+    public long getRuntimeEntityId() {
+        return uniqueEntityId;
+    }
+
+    @Deprecated
+    public void setRuntimeEntityId(long runtimeEntityId) {
+        this.uniqueEntityId = runtimeEntityId;
+    }
     /**
      * The current set of entity flags known to the client.
      */

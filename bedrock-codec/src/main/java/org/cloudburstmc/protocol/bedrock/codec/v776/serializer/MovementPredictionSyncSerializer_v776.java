@@ -37,7 +37,7 @@ public class MovementPredictionSyncSerializer_v776 implements BedrockPacketSeria
     }
 
     protected void serializeRuntimeEntityId(ByteBuf buffer, MovementPredictionSyncPacket packet) {
-        VarInts.writeUnsignedLong(buffer, packet.getRuntimeEntityId());
+        VarInts.writeLong(buffer, packet.getUniqueEntityId());
     }
 
     protected void deserializeBeforeRuntimeEntityId(ByteBuf buffer, BedrockCodecHelper helper, MovementPredictionSyncPacket packet) {
@@ -52,6 +52,6 @@ public class MovementPredictionSyncSerializer_v776 implements BedrockPacketSeria
     }
 
     protected void deserializeRuntimeEntityId(ByteBuf buffer, MovementPredictionSyncPacket packet) {
-        packet.setRuntimeEntityId(VarInts.readUnsignedLong(buffer));
+        packet.setUniqueEntityId(VarInts.readLong(buffer));
     }
 }

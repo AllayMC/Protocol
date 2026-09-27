@@ -42,11 +42,11 @@ public class MovementPredictionSyncSerializer_v975 extends MovementPredictionSyn
 
     @Override
     protected void serializeRuntimeEntityId(ByteBuf buffer, MovementPredictionSyncPacket packet) {
-        VarInts.writeUnsignedLong(buffer, packet.getRuntimeEntityId());
+        VarInts.writeLong(buffer, packet.getUniqueEntityId());
     }
 
     @Override
     protected void deserializeRuntimeEntityId(ByteBuf buffer, MovementPredictionSyncPacket packet) {
-        packet.setRuntimeEntityId(VarInts.readUnsignedLong(buffer));
+        packet.setUniqueEntityId(VarInts.readLong(buffer));
     }
 }
