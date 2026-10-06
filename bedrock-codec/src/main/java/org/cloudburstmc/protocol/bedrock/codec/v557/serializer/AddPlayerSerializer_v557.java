@@ -9,6 +9,8 @@ import org.cloudburstmc.protocol.bedrock.util.VarInts;
 
 public class AddPlayerSerializer_v557 extends AddPlayerSerializer_v534 {
 
+    public static final AddPlayerSerializer_v557 INSTANCE = new AddPlayerSerializer_v557();
+
     @Override
     public void serialize(ByteBuf buffer, BedrockCodecHelper helper, AddPlayerPacket packet) {
         helper.writeUuid(buffer, packet.getUuid());

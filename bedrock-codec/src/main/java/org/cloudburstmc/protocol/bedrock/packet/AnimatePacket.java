@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import org.cloudburstmc.protocol.bedrock.data.inventory.HandSlot;
 
 import java.util.HashMap;
 
@@ -47,6 +48,10 @@ public class AnimatePacket implements BedrockPacket {
      * @since v898
      */
     private SwingSource swingSource = SwingSource.NONE;
+    /**
+     * @since v2223
+     */
+    private HandSlot hand = HandSlot.MAINHAND;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {

@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.protocol.bedrock.data.*;
 import org.cloudburstmc.protocol.bedrock.data.command.CommandPermission;
@@ -122,6 +123,11 @@ public class AddPlayerPacket implements BedrockPacket, PlayerAbilityHolder {
      * @since v557
      */
     private final EntityProperties properties = new EntityProperties();
+    /**
+     * @since v2223
+     */
+    @Nullable
+    private PassengerOfBlockArguments passengerOfBlockArguments;
 
     public void setUniqueEntityId(long uniqueEntityId) {
         this.uniqueEntityId = uniqueEntityId;

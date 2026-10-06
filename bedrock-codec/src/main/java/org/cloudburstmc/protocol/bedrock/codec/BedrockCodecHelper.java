@@ -274,4 +274,8 @@ public interface BedrockCodecHelper {
     void writeGatheringsConfiguration(ByteBuf byteBuf, BedrockCodecHelper bedrockCodecHelper, GatheringsConfigurationJoinInfo gatheringsConfigurationJoinInfo);
 
     GatheringsConfigurationJoinInfo readGatheringsConfiguration(ByteBuf byteBuf, BedrockCodecHelper bedrockCodecHelper);
+
+    void writePassengerOfBlockArguments(ByteBuf buf, BedrockCodecHelper bedrockCodecHelper, PassengerOfBlockArguments passengerOfBlockArguments);
+
+    PassengerOfBlockArguments readPassengerOfBlockArguments(ByteBuf buf, BedrockCodecHelper bedrockCodecHelper);
 }

@@ -1243,7 +1243,7 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         }
     }
 
-    private static int parseSkinColor(String color) {
+    protected static int parseSkinColor(String color) {
         if (color == null || color.isBlank()) {
             return 0;
         }
