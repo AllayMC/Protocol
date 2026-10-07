@@ -542,6 +542,10 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
                 this.writeArray(byteBuf, ((CraftResultsDeprecatedAction) action).resultItems(), this::writeItemStackRequestNetworkItemInstanceDescriptor);
                 byteBuf.writeByte(((CraftResultsDeprecatedAction) action).timesCrafted());
                 break;
+            case RESERVED:
+                writeString(byteBuf, ((CraftReservedAction) action).reservedId());
+                byteBuf.writeByte(((CraftReservedAction) action).numCrafts());
+                break;
             default:
                 throw new IllegalArgumentException("got " + action.getType());
         }
@@ -631,6 +635,11 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
             case CRAFT_RESULTS_DEPRECATED:
                 return new CraftResultsDeprecatedAction(
                         this.readArray(byteBuf, new ItemData[0], this::readItemStackRequestNetworkItemInstanceDescriptor),
+                        byteBuf.readUnsignedByte()
+                );
+            case RESERVED:
+                return new CraftReservedAction(
+                        readString(byteBuf),
                         byteBuf.readUnsignedByte()
                 );
             default:

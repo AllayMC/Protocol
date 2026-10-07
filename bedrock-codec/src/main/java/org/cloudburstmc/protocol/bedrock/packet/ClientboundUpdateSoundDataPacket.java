@@ -27,6 +27,7 @@ public class ClientboundUpdateSoundDataPacket implements BedrockPacket {
      * @deprecated since v2168
      */
     private String type;
+    private SoundData event;
     /**
      * The optional Cereal slot that fades the sound to a new volume.
      *

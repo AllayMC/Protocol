@@ -1245,6 +1245,10 @@ public enum SoundEvent {
      * @since v2168
      */
     STRAW_BED_BREAK_LEAVE("straw_bed.break_leave"),
+    /**
+     * @since v2225
+     */
+    ICE_BALL_BREAK("ice_ball.break"),
     UNDEFINED("undefined");
 
     private static final Map<String, SoundEvent> SERIALIZE_NAMES = new HashMap<>(values().length, 1);

@@ -6,5 +6,10 @@ package org.cloudburstmc.protocol.bedrock.data.sound;
  * @param pitch the new playback pitch
  * @since v2168
  */
-public record SetPitchSoundData(float pitch) {
+public record SetPitchSoundData(float pitch) implements SoundData {
+
+    @Override
+    public SoundDataType getType() {
+        return SoundDataType.SET_PITCH;
+    }
 }

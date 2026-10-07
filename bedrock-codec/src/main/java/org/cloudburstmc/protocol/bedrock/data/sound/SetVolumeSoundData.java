@@ -6,5 +6,10 @@ package org.cloudburstmc.protocol.bedrock.data.sound;
  * @param volume the new playback volume
  * @since v2168
  */
-public record SetVolumeSoundData(float volume) {
+public record SetVolumeSoundData(float volume) implements SoundData {
+
+    @Override
+    public SoundDataType getType() {
+        return SoundDataType.SET_VOLUME;
+    }
 }

@@ -124,7 +124,7 @@ public class AddPlayerPacket implements BedrockPacket, PlayerAbilityHolder {
      */
     private final EntityProperties properties = new EntityProperties();
     /**
-     * @since v2223
+     * @since v2225
      */
     @Nullable
     private PassengerOfBlockArguments passengerOfBlockArguments;

@@ -5,5 +5,10 @@ package org.cloudburstmc.protocol.bedrock.data.sound;
  *
  * @since v2168
  */
-public record StopSoundData() {
+public record StopSoundData() implements SoundData {
+
+    @Override
+    public SoundDataType getType() {
+        return SoundDataType.STOP;
+    }
 }

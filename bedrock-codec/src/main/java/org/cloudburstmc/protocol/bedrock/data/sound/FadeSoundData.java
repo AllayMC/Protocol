@@ -7,5 +7,10 @@ package org.cloudburstmc.protocol.bedrock.data.sound;
  * @param duration     the fade duration in seconds
  * @since v2168
  */
-public record FadeSoundData(float targetVolume, float duration) {
+public record FadeSoundData(float targetVolume, float duration) implements SoundData {
+
+    @Override
+    public SoundDataType getType() {
+        return SoundDataType.FADE;
+    }
 }

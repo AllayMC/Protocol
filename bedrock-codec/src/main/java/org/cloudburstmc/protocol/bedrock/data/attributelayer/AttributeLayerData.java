@@ -13,7 +13,7 @@ import java.util.List;
  * @param settings   The layer's settings.
  * @param attributes The attributes.
  */
-public record AttributeLayerData(String layerName, @Nullable String noiseName, int dimension,
+public record AttributeLayerData(String layerName, @Deprecated @Nullable String noiseName, int dimension,
                                  AttributeLayerSettings settings, List<EnvironmentAttributeData> attributes) {
 
     public AttributeLayerData(String layerName, int dimension, AttributeLayerSettings settings,
