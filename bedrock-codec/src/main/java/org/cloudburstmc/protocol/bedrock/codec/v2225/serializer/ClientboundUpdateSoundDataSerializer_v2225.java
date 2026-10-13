@@ -67,7 +67,8 @@ public class ClientboundUpdateSoundDataSerializer_v2225 extends ClientboundUpdat
                 packet.setEvent(new SetPitchSoundData(buffer.readFloatLE()));
                 break;
             case FADE:
-                packet.setEvent(new FadeSoundData(buffer.readFloatLE(), buffer.readFloatLE()));
+                float duration = buffer.readFloatLE();
+                packet.setEvent(new FadeSoundData(buffer.readFloatLE(), duration));
                 break;
             case SEEK_TO:
                 packet.setEvent(new SeekToSoundData(buffer.readFloatLE()));
