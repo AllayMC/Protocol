@@ -19,16 +19,22 @@ import org.cloudburstmc.protocol.bedrock.data.camera.CameraEase;
 public record EnvironmentAttributeData(String attributeName, @Nullable AttributeData from, AttributeData attribute,
                                        @Nullable AttributeData to, int CurrentTransitionTicks,
                                        int TotalTransitionTicks, CameraEase easing, String clockName,
-                                       int localTransitionTicks, boolean noiseTransition, String noiseName, NoiseAlignment noiseAlignment) {
+                                       int localTransitionTicks, boolean noiseTransition, String noiseName,
+                                       NoiseAlignment noiseAlignment) {
+
     public EnvironmentAttributeData(String attributeName, AttributeData from, AttributeData attribute, AttributeData to,
                                     int CurrentTransitionTicks, int TotalTransitionTicks, CameraEase easing,
                                     int localTransitionTicks, boolean noiseTransition, NoiseAlignment noiseAlignment) {
         this(attributeName, from, attribute, to, CurrentTransitionTicks, TotalTransitionTicks, easing,
                 null, localTransitionTicks, noiseTransition, null, noiseAlignment);
     }
-    public EnvironmentAttributeData(String attributeName, AttributeData from, AttributeData attribute, AttributeData to, int CurrentTransitionTicks, int TotalTransitionTicks, CameraEase easing, int localTransitionTicks, boolean noiseTransition) {
+
+    public EnvironmentAttributeData(String attributeName, AttributeData from, AttributeData attribute, AttributeData to,
+                                    int CurrentTransitionTicks, int TotalTransitionTicks, CameraEase easing,
+                                    int localTransitionTicks, boolean noiseTransition) {
         this(attributeName, from, attribute, to, CurrentTransitionTicks, TotalTransitionTicks, easing, localTransitionTicks, noiseTransition, null);
     }
+
     public EnvironmentAttributeData(String attributeName, @Nullable AttributeData from, AttributeData attribute,
                                     @Nullable AttributeData to, int CurrentTransitionTicks,
                                     int TotalTransitionTicks, CameraEase easing) {

@@ -200,4 +200,3 @@ public class BedrockCodecHelper_v2225 extends BedrockCodecHelper_v2193 {
         return descriptor;
     }
 }
-
