@@ -26,7 +26,7 @@ public class AddPlayerSerializer_v2225 extends AddPlayerSerializer_v557 {
         helper.writeEntityProperties(buffer, packet.getProperties());
         helper.writePlayerAbilities(buffer, packet);
         helper.writeArray(buffer, packet.getEntityLinks(), helper::writeEntityLink);
-        helper.writeOptionalNull(buffer, packet.getPassengerOfBlockArguments(), helper::writePassengerOfBlockArguments); //new
+        helper.writeOptionalNull(buffer, packet.getPassengerOfBlockArguments(), helper::writePassengerOfBlockArguments);
         helper.writeString(buffer, packet.getDeviceId());
         buffer.writeIntLE(packet.getBuildPlatform().getId());
     }
@@ -46,7 +46,7 @@ public class AddPlayerSerializer_v2225 extends AddPlayerSerializer_v557 {
         helper.readEntityProperties(buffer, packet.getProperties());
         helper.readPlayerAbilities(buffer, packet);
         helper.readArray(buffer, packet.getEntityLinks(), helper::readEntityLink);
-        packet.setPassengerOfBlockArguments(helper.readOptional(buffer, null, helper::readPassengerOfBlockArguments)); //new
+        packet.setPassengerOfBlockArguments(helper.readOptional(buffer, null, helper::readPassengerOfBlockArguments));
         packet.setDeviceId(helper.readString(buffer));
         packet.setBuildPlatform(BuildPlatform.from(buffer.readIntLE()));
     }

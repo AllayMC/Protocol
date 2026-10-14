@@ -88,7 +88,7 @@ public class InventoryTransactionSerializer_v2193 extends InventoryTransactionSe
         helper.writeBlockPosition(buffer, packet.getBlockPosition());
         buffer.writeByte(packet.getBlockFace());
         VarInts.writeInt(buffer, packet.getHotbarSlot());
-        buffer.writeByte(packet.getHand().ordinal()); // new
+        buffer.writeByte(packet.getHand().ordinal());
         helper.writeItem(buffer, packet.getItemInHand());
         helper.writeVector3f(buffer, packet.getPlayerPosition());
         helper.writeVector3f(buffer, packet.getClickPosition());
@@ -104,7 +104,7 @@ public class InventoryTransactionSerializer_v2193 extends InventoryTransactionSe
         packet.setBlockPosition(helper.readBlockPosition(buffer));
         packet.setBlockFace(buffer.readUnsignedByte());
         packet.setHotbarSlot(VarInts.readInt(buffer));
-        packet.setHand(HandSlot.values()[buffer.readUnsignedByte()]); // new
+        packet.setHand(HandSlot.values()[buffer.readUnsignedByte()]);
         packet.setItemInHand(helper.readItem(buffer));
         packet.setPlayerPosition(helper.readVector3f(buffer));
         packet.setClickPosition(helper.readVector3f(buffer));

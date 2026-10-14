@@ -30,7 +30,7 @@ public class StartGameSerializer_v2225 extends StartGameSerializer_v2168 {
         VarInts.writeInt(buffer, packet.getEditorWorldType().ordinal());
         buffer.writeBoolean(packet.isCreatedInEditor());
         buffer.writeBoolean(packet.isExportedFromEditor());
-        buffer.writeByte(packet.getEditorLevelMigrationVersion().ordinal()); //new
+        buffer.writeByte(packet.getEditorLevelMigrationVersion().ordinal());
         VarInts.writeInt(buffer, packet.getDayCycleStopTime());
         VarInts.writeUnsignedInt(buffer, packet.getEduEditionOffers());
         buffer.writeBoolean(packet.isEduFeaturesEnabled());
@@ -90,7 +90,7 @@ public class StartGameSerializer_v2225 extends StartGameSerializer_v2168 {
         packet.setEditorWorldType(WorldType.values()[VarInts.readInt(buffer)]);
         packet.setCreatedInEditor(buffer.readBoolean());
         packet.setExportedFromEditor(buffer.readBoolean());
-        packet.setEditorLevelMigrationVersion(EditorLevelMigrationVersion.values()[buffer.readByte()]); //new
+        packet.setEditorLevelMigrationVersion(EditorLevelMigrationVersion.values()[buffer.readByte()]);
         packet.setDayCycleStopTime(VarInts.readInt(buffer));
         packet.setEduEditionOffers(VarInts.readUnsignedInt(buffer));
         packet.setEduFeaturesEnabled(buffer.readBoolean());

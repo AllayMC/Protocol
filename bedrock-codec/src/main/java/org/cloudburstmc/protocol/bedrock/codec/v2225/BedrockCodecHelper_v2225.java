@@ -178,7 +178,8 @@ public class BedrockCodecHelper_v2225 extends BedrockCodecHelper_v2193 {
                 descriptor = InvalidDescriptor.INSTANCE;
                 break;
             case DEFAULT:
-                String id = AUX_SUFFIX.matcher(this.readString(buffer)).replaceFirst(""); // wtf why does it put aux here
+                // The descriptor carries the auxiliary value both as a suffix and as a separate field.
+                String id = AUX_SUFFIX.matcher(this.readString(buffer)).replaceFirst("");
                 int aux = VarInts.readInt(buffer);
                 ItemDefinition definition = this.itemDefinitions.getDefinition(id);
                 if (definition == null && log.isDebugEnabled()) {

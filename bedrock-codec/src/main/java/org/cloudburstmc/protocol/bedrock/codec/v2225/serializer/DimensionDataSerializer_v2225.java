@@ -28,8 +28,8 @@ public class DimensionDataSerializer_v2225 extends DimensionDataSerializer_v2193
         int dimensionType = VarInts.readInt(buffer);
         UUID packId = helper.readUuid(buffer);
         String defaultBiome = helper.readString(buffer);
-        int cloudHeight = VarInts.readInt(buffer); //new
-        boolean isRenderClouds = buffer.readBoolean(); //new
+        int cloudHeight = VarInts.readInt(buffer);
+        boolean isRenderClouds = buffer.readBoolean();
         return new DimensionDefinition(id, maximumHeight, minimumHeight, generatorType, dimensionType, packId, defaultBiome, cloudHeight, isRenderClouds);
     }
 }

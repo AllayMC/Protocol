@@ -19,7 +19,7 @@ public class PlayerListSerializer_v2225 extends PlayerListSerializer_v2168 {
         VarInts.writeLong(buffer, entry.getEntityId());
         helper.writeString(buffer, entry.getName());
         helper.writeString(buffer, entry.getXuid());
-        helper.writeString(buffer, entry.getSkin().getPlayFabId()); //new
+        helper.writeString(buffer, entry.getSkin().getPlayFabId());
         helper.writeString(buffer, entry.getPlatformChatId());
         buffer.writeIntLE(entry.getBuildPlatform().getId());
         helper.writeSkin(buffer, entry.getSkin());

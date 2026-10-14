@@ -20,7 +20,6 @@ public class ClientboundAttributeLayerSyncSerializer_v2225 extends ClientboundAt
         List<AttributeLayerData> layers = data.attributeLayers();
         helper.writeArray(buf, layers, (b, layer) -> {
             helper.writeString(b, layer.layerName());
-            //revert noise
             VarInts.writeInt(b, layer.dimension());
             writeAttributeLayerSettings(b, helper, layer.settings());
             helper.writeArray(b, layer.attributes(), (bb, attr) ->
@@ -33,7 +32,6 @@ public class ClientboundAttributeLayerSyncSerializer_v2225 extends ClientboundAt
         List<AttributeLayerData> layers = new ArrayList<>();
         helper.readArray(buf, layers, b -> {
             String name = helper.readStringMaxLen(buf, 128);
-            //revert noise
             int dim = VarInts.readInt(b);
             AttributeLayerSettings settings = readAttributeLayerSettings(b, helper);
 

@@ -42,7 +42,7 @@ public class Bedrock_v2225 extends Bedrock_v2193 {
             .insert(13, ItemStackRequestActionType.CRAFT_RECIPE_OPTIONAL)
             .insert(14, ItemStackRequestActionType.CRAFT_REPAIR_AND_DISENCHANT)
             .insert(15, ItemStackRequestActionType.CRAFT_LOOM)
-            .insert(16, ItemStackRequestActionType.RESERVED) //new
+            .insert(16, ItemStackRequestActionType.RESERVED)
             .insert(17, ItemStackRequestActionType.CRAFT_NON_IMPLEMENTED_DEPRECATED)
             .insert(18, ItemStackRequestActionType.CRAFT_RESULTS_DEPRECATED)
             .build();
