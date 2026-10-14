@@ -116,5 +116,3 @@ This library supports multiple Bedrock protocol versions. The table below lists 
 |     Bedrock_v2225    |    1.26.60 (in progress)    |
 
 </details>
-
-See [upstream synchronization](UPSTREAM_SYNC.md) for the imported commits and fork adaptations.
