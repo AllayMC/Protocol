@@ -49,6 +49,7 @@ public class ClientboundMatchmakingStatePacket implements BedrockPacket {
         REQUEUE_AS_PARTY,
     }
 
-    public record MatchmakingStateOptions(String triggeringPlayerName, boolean triggeredByLocalPlayer) {
+    public record MatchmakingStateOptions(@Nullable String triggeringPlayerName,
+                                          @Nullable Boolean triggeredByLocalPlayer) {
     }
 }

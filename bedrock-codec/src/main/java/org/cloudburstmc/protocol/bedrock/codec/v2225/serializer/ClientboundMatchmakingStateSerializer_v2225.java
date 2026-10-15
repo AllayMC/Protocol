@@ -14,8 +14,8 @@ public class ClientboundMatchmakingStateSerializer_v2225 implements BedrockPacke
         buffer.writeByte(packet.getState().ordinal());
         helper.writeString(buffer, packet.getDestinationName());
         helper.writeOptionalNull(buffer, packet.getOptions(), (buf, opt) -> {
-            helper.writeString(buf, opt.triggeringPlayerName());
-            buf.writeBoolean(opt.triggeredByLocalPlayer());
+            helper.writeOptionalNull(buf, opt.triggeringPlayerName(), helper::writeString);
+            helper.writeOptionalNull(buf, opt.triggeredByLocalPlayer(), ByteBuf::writeBoolean);
         });
     }
 
@@ -24,6 +24,8 @@ public class ClientboundMatchmakingStateSerializer_v2225 implements BedrockPacke
         packet.setState(ClientboundMatchmakingStatePacket.MatchmakingState.values()[buffer.readUnsignedByte()]);
         packet.setDestinationName(helper.readString(buffer));
         packet.setOptions(helper.readOptional(buffer, null, (buf) ->
-                new ClientboundMatchmakingStatePacket.MatchmakingStateOptions(helper.readString(buf), buf.readBoolean())));
+                new ClientboundMatchmakingStatePacket.MatchmakingStateOptions(
+                        helper.readOptional(buf, null, helper::readString),
+                        helper.readOptional(buf, null, ByteBuf::readBoolean))));
     }
 }
