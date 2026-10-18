@@ -237,8 +237,7 @@ public class SerializedSkin {
                                     boolean trusted, String profileHash) {
         Color color = null;
         if (skinColor != null && !skinColor.isEmpty()) {
-            color = "#0".equals(skinColor) ? new Color(0, true) :
-                    new Color((int) Long.parseLong(skinColor.startsWith("#") ? skinColor.substring(1) : skinColor, 16), true);
+            color = parseColor(skinColor);
         }
         return new SerializedSkin(skinId, null, skinData, capeData, geometryData, premium, skinResourcePatch,
                 Collections.unmodifiableList(new ObjectArrayList<>(animations)), animationData, persona, capeOnClassic,
@@ -257,6 +256,15 @@ public class SerializedSkin {
                 Collections.unmodifiableList(new ObjectArrayList<>(animations)), animationData, persona, capeOnClassic,
                 capeId, fullSkinId, armSize, null, color, personaPieces, tintColors, playFabId,
                 geometryDataEngineVersion, primaryUser, overridingPlayerAppearance, trusted, profileHash);
+    }
+
+    /**
+     * Parses a skin colour as clients send it: {@code #RRGGBB} is opaque, {@code #AARRGGBB} keeps its alpha.
+     */
+    private static Color parseColor(String skinColor) {
+        String value = skinColor.startsWith("#") ? skinColor.substring(1) : skinColor;
+        int argb = (int) Long.parseLong(value, 16);
+        return new Color(value.length() == 6 ? argb | 0xFF000000 : argb, true);
     }
 
     public static Builder builder() {
@@ -345,11 +353,7 @@ public class SerializedSkin {
      */
     public Color getColor() {
         if (color == null && skinColor != null && !skinColor.isEmpty()) {
-            if (skinColor.equals("#0")) {
-                return new Color(0, true);
-            } else {
-                return new Color((int) Long.parseLong(skinColor.startsWith("#") ? skinColor.substring(1) : skinColor, 16), true);
-            }
+            return parseColor(skinColor);
         }
         return color;
     }
@@ -428,8 +432,7 @@ public class SerializedSkin {
 
             Color resolvedColor = color;
             if (resolvedColor == null) {
-                resolvedColor = "#0".equals(skinColor) ? new Color(0, true) :
-                        new Color((int) Long.parseLong(skinColor.startsWith("#") ? skinColor.substring(1) : skinColor, 16), true);
+                resolvedColor = parseColor(skinColor);
             }
             if (skinResourcePatch == null) {
                 return new SerializedSkin(skinId, geometryName, skinData, capeData, geometryData, premium, null,

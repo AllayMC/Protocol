@@ -126,7 +126,7 @@ public class BedrockCodecHelper_v2225 extends BedrockCodecHelper_v2193 {
         this.writeString(buffer, skin.getFullSkinId());
 
         buffer.writeByte("slim".equalsIgnoreCase(skin.getArmSize()) ? 0 : 1);
-        buffer.writeIntLE(parseSkinColor(skin.getSkinColor()));
+        buffer.writeIntLE(skinColorArgb(skin));
 
         List<PersonaPieceData> pieces = skin.getPersonaPieces();
         VarInts.writeUnsignedInt(buffer, pieces.size());
@@ -141,7 +141,7 @@ public class BedrockCodecHelper_v2225 extends BedrockCodecHelper_v2193 {
         List<PersonaPieceTintData> tints = skin.getTintColors();
         VarInts.writeUnsignedInt(buffer, tints.size());
         for (PersonaPieceTintData tint : tints) {
-            this.writeString(buffer, tint.type());
+            this.writeString(buffer, PersonaPieceType.fromName(tint.type()).getSerializeName());
             List<String> colors = tint.colors();
             if (colors.size() != 4) {
                 throw new IllegalArgumentException("Expected 4 colors in PersonaPieceTintData");

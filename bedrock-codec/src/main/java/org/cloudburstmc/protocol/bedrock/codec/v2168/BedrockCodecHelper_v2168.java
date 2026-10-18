@@ -752,7 +752,7 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         this.writeString(buffer, skin.getFullSkinId());
 
         buffer.writeByte("slim".equalsIgnoreCase(skin.getArmSize()) ? 0 : 1);
-        buffer.writeIntLE(parseSkinColor(skin.getSkinColor()));
+        buffer.writeIntLE(skinColorArgb(skin));
 
         List<PersonaPieceData> pieces = skin.getPersonaPieces();
         VarInts.writeUnsignedInt(buffer, pieces.size());
@@ -767,7 +767,8 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         List<PersonaPieceTintData> tints = skin.getTintColors();
         VarInts.writeUnsignedInt(buffer, tints.size());
         for (PersonaPieceTintData tint : tints) {
-            this.writeString(buffer, tint.type());
+            // BDS writes the canonical name ("mouth"), while clients send the persona_ form in their login data.
+            this.writeString(buffer, PersonaPieceType.fromName(tint.type()).getSerializeName());
             List<String> colors = tint.colors();
             if (colors.size() != 4) {
                 throw new IllegalArgumentException("Expected 4 colors in PersonaPieceTintData");
@@ -1252,12 +1253,9 @@ public class BedrockCodecHelper_v2168 extends BedrockCodecHelper_v975 {
         }
     }
 
-    protected static int parseSkinColor(String color) {
-        if (color == null || color.isBlank()) {
-            return 0;
-        }
-        String value = color.charAt(0) == '#' ? color.substring(1) : color;
-        return (int) Long.parseLong(value, 16);
+    protected static int skinColorArgb(SerializedSkin skin) {
+        var color = skin.getColor();
+        return color == null ? 0 : color.getRGB();
     }
 
     @Override
