@@ -113,6 +113,6 @@ This library supports multiple Bedrock protocol versions. The table below lists 
 | Bedrock_v2168_hotfix4 |          1.26.44           |
 |     Bedrock_v2169    |           1.26.45           |
 |     Bedrock_v2193    |           1.26.50           |
-|     Bedrock_v2225    |    1.26.60 (in progress)    |
+|     Bedrock_v2225    |           1.26.60           |
 
 </details>
