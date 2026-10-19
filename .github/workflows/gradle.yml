@@ -28,7 +28,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 40
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -60,8 +60,7 @@ jobs:
       - name: Publish to Maven Central
         if: success() && github.event_name == 'push' && github.repository == 'AllayMC/Protocol' && github.ref_name == 'main'
         run: |
-          ./gradlew :bedrock-codec:publishToMavenCentral
-          ./gradlew :bedrock-connection:publishToMavenCentral
+          ./gradlew :bedrock-codec:publishAndReleaseToMavenCentral :bedrock-connection:publishAndReleaseToMavenCentral
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
