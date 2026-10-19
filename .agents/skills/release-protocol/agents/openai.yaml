@@ -1,0 +1,3 @@
+interface:
+  display_name: "Release Protocol"
+  short_description: "Publish Protocol releases and advance the next snapshot"
