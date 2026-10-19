@@ -197,7 +197,6 @@ public class EntityDataTypes {
     /**
      * @deprecated since v685
      */
-    @Deprecated
     public static final EntityDataType<Integer> AREA_EFFECT_CLOUD_SPAWN_TIME = new EntityDataType<>(Integer.class, "AREA_EFFECT_CLOUD_SPAWN_TIME");
     public static final EntityDataType<Float> AREA_EFFECT_CLOUD_CHANGE_RATE = new EntityDataType<>(Float.class, "AREA_EFFECT_CLOUD_CHANGE_RATE");
     public static final EntityDataType<Float> AREA_EFFECT_CLOUD_CHANGE_ON_PICKUP = new EntityDataType<>(Float.class, "AREA_EFFECT_CLOUD_CHANGE_ON_PICKUP");

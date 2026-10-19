@@ -5,15 +5,17 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import java.util.List;
 
 /**
- * Represents a complete attribute layer.
+ * A complete environment attribute layer.
  *
- * @param layerName  The layer name.
- * @param noiseName  The optional name of the noise used by the layer since v1001.
- * @param dimension  The dimension.
- * @param settings   The layer's settings.
- * @param attributes The attributes.
+ * @param layerName  the layer identifier
+ * @param noiseName  the optional layer noise name, since v1001; deprecated since v2225,
+ *                   when noise names are carried by individual {@link EnvironmentAttributeData} entries
+ * @param dimension the dimension containing the layer
+ * @param settings  the layer settings
+ * @param attributes the attributes belonging to the layer
+ * @since v944
  */
-public record AttributeLayerData(String layerName, @Deprecated @Nullable String noiseName, int dimension,
+public record AttributeLayerData(String layerName, @Nullable String noiseName, int dimension,
                                  AttributeLayerSettings settings, List<EnvironmentAttributeData> attributes) {
 
     public AttributeLayerData(String layerName, int dimension, AttributeLayerSettings settings,

@@ -12,6 +12,8 @@ import java.util.Set;
 /**
  * Sent by the client to the server periodically if the client has received movement corrections
  * from the server, containing information about client-predictions that are relevant to movement.
+ *
+ * @since v776
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
@@ -22,11 +24,17 @@ public class MovementPredictionSyncPacket implements BedrockPacket {
      */
     private long uniqueEntityId;
 
+    /**
+     * @deprecated Use {@link #getUniqueEntityId()}; the wire field is a signed unique ID, not a runtime ID.
+     */
     @Deprecated
     public long getRuntimeEntityId() {
         return uniqueEntityId;
     }
 
+    /**
+     * @deprecated Use {@link #setUniqueEntityId(long)} with a signed unique ID.
+     */
     @Deprecated
     public void setRuntimeEntityId(long runtimeEntityId) {
         this.uniqueEntityId = runtimeEntityId;

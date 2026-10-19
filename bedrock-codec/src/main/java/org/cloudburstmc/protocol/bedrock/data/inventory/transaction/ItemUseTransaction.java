@@ -48,6 +48,8 @@ public class ItemUseTransaction {
      */
     private int hotbarSlot;
     /**
+     * The hand used for this item interaction in PlayerAuthInput.
+     *
      * @since v2192
      */
     private HandSlot hand = HandSlot.MAINHAND;

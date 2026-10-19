@@ -7,8 +7,9 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.cloudburstmc.protocol.bedrock.data.sound.*;
 
 /**
- * Sent by the server to update the state of a server-controlled sound.
- * Since v2168, each update is represented by an optional Cereal union slot.
+ * Updates a server-controlled sound. The v1001 format carries a fixed stop action.
+ * Codecs from v2168 through v2193 carry seven operation slots, using STOP for an
+ * unused slot. Since v2225 a packet carries one operation in {@link #event}.
  *
  * @since v1001
  */
@@ -22,58 +23,72 @@ public class ClientboundUpdateSoundDataPacket implements BedrockPacket {
      */
     private long serverSoundHandle;
     /**
-     * The legacy textual sound action, which is no longer serialized in v2168 and newer.
+     * The legacy textual sound action. Current v1001 encoding always writes "stop"
+     * and ignores this property; decoding represents that action as {@link StopSoundData} in {@link #event}.
      *
-     * @deprecated since v2168
+     * @deprecated since v2168; operation slots replace the textual wire action.
      */
     private String type;
+    /**
+     * The single sound operation encoded from v2225. The v1001 decoder also sets this
+     * to {@link StopSoundData}; codecs from v2168 through v2193 use the separate operation fields.
+     *
+     * @since v2225
+     */
     private SoundData event;
     /**
-     * The optional Cereal slot that fades the sound to a new volume.
+     * The operation slot that fades the sound to a new volume. A null value writes a STOP placeholder.
      *
      * @since v2168
+     * @deprecated since v2225; use {@link #event}. Older codecs still use the separate slots.
      */
     @Nullable
     private FadeSoundData fade;
     /**
-     * The optional Cereal slot that pauses the sound.
+     * The operation slot that pauses playback. A null value writes a STOP placeholder.
      *
      * @since v2168
+     * @deprecated since v2225; use {@link #event}. Older codecs still use the separate slots.
      */
     @Nullable
     private PauseSoundData pause;
     /**
-     * The optional Cereal slot that resumes the sound.
+     * The operation slot that resumes playback. A null value writes a STOP placeholder.
      *
      * @since v2168
+     * @deprecated since v2225; use {@link #event}. Older codecs still use the separate slots.
      */
     @Nullable
     private ResumeSoundData resume;
     /**
-     * The optional Cereal slot that changes the sound playback position.
+     * The operation slot that changes the playback position. A null value writes a STOP placeholder.
      *
      * @since v2168
+     * @deprecated since v2225; use {@link #event}. Older codecs still use the separate slots.
      */
     @Nullable
     private SeekToSoundData seekTo;
     /**
-     * The optional Cereal slot that changes the sound pitch.
+     * The operation slot that changes the pitch. A null value writes a STOP placeholder.
      *
      * @since v2168
+     * @deprecated since v2225; use {@link #event}. Older codecs still use the separate slots.
      */
     @Nullable
     private SetPitchSoundData pitch;
     /**
-     * The optional Cereal slot that changes the sound volume.
+     * The operation slot that changes the volume. A null value writes a STOP placeholder.
      *
      * @since v2168
+     * @deprecated since v2225; use {@link #event}. Older codecs still use the separate slots.
      */
     @Nullable
     private SetVolumeSoundData volume;
     /**
-     * The optional Cereal slot that stops the sound.
+     * The decoded first operation slot. Codecs from v2168 through v2193 always write STOP here.
      *
      * @since v2168
+     * @deprecated since v2225; use {@link #event}. Older codecs still use the separate slots.
      */
     @Nullable
     private StopSoundData stop;

@@ -75,6 +75,12 @@ public class ImageData {
         }
     }
 
+    /**
+     * Accepts an empty image or an RGBA byte array matching a supported skin size.
+     *
+     * @param image the image bytes, possibly null
+     * @return false for null or an unsupported byte count
+     */
     public static boolean isValidImage(byte[] image) {
         if (image == null) {
             return false;

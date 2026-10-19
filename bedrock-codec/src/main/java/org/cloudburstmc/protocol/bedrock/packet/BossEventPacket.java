@@ -24,10 +24,11 @@ public class BossEventPacket implements BedrockPacket {
      */
     private Action action;
     /**
-     * The unique ID of the player to register to or unregister from the boss fight. This field is
-     * @deprecated since v2192
-     * only relevant for {@link Action#REGISTER_PLAYER}, {@link Action#UNREGISTER_PLAYER}, and
-     * {@link Action#QUERY}.
+     * The unique ID of the player to register to or unregister from the boss fight.
+     * Before v1001 this is sent for {@link Action#REGISTER_PLAYER},
+     * {@link Action#UNREGISTER_PLAYER}, and {@link Action#QUERY}. The v1001 format always includes it.
+     *
+     * @deprecated since v2192; newer codecs omit this field.
      */
     private long playerUniqueEntityId;
     /**
@@ -41,8 +42,9 @@ public class BossEventPacket implements BedrockPacket {
      */
     private float healthPercentage;
     /**
-     * Controls how much the screen should darken while the boss bar is visible. This field
-     * currently appears to have little or no visible effect.
+     * Controls how much the screen should darken while the boss bar is visible in older codecs.
+     *
+     * @deprecated since v1001; newer codecs omit this field.
      */
     private int darkenSky;
     /**

@@ -127,7 +127,8 @@ public class SerializedSkin {
      */
     private final List<PersonaPieceTintData> tintColors;
     /**
-     * The PlayFab identifier associated with the skin.
+     * The PlayFab identifier associated with the skin. Since v2225 it is encoded in
+     * the PlayerList entry before the skin payload, rather than inside that payload.
      *
      * @since v428
      */

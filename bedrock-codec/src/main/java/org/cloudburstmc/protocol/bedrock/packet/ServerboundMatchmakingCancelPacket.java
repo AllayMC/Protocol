@@ -6,6 +6,7 @@ import lombok.ToString;
 
 /**
  * Requests cancellation of the sending player's matchmaking ticket.
+ *
  * @since v2225
  */
 @Data

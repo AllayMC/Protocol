@@ -7,6 +7,8 @@ import org.cloudburstmc.protocol.bedrock.data.FurnaceOptions;
 import org.cloudburstmc.protocol.bedrock.packet.PacketSignal;
 
 /**
+ * Exchanges furnace screen preferences between the client and server.
+ *
  * @since v2192
  */
 @Data
@@ -35,6 +37,11 @@ public class SetPlayerFurnaceOptionsPacket implements BedrockPacket {
         }
     }
 
+    /**
+     * Furnace variants associated with the screen options.
+     *
+     * @since v2192
+     */
     public enum FurnaceType {
         NONE,
         FURNACE,

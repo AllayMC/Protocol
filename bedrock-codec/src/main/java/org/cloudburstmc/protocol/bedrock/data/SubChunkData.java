@@ -30,7 +30,8 @@ public class SubChunkData extends AbstractReferenceCounted {
      */
     private HeightMapDataType heightMapType;
     /**
-     * The serialized height map buffer.
+     * The height map bytes. Since v2192 the serializer frames these bytes in 16-byte
+     * segments on the wire; this buffer contains the concatenated map bytes.
      */
     private ByteBuf heightMapData;
     /**
@@ -51,7 +52,8 @@ public class SubChunkData extends AbstractReferenceCounted {
      */
     private HeightMapDataType renderHeightMapType;
     /**
-     * The serialized render height map buffer.
+     * The render height map bytes. Since v2192 the serializer frames them in 16-byte
+     * segments on the wire; this buffer contains the concatenated map bytes.
      *
      * @since v818
      */

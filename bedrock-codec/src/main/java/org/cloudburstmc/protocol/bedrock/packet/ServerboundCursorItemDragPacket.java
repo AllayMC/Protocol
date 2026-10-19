@@ -6,6 +6,7 @@ import lombok.ToString;
 
 /**
  * Sent from the client when a cursor item split drag starts or stops.
+ *
  * @since v2225
  */
 @Data
@@ -33,6 +34,11 @@ public class ServerboundCursorItemDragPacket implements BedrockPacket {
         }
     }
 
+    /**
+     * Cursor item split-drag transitions.
+     *
+     * @since v2225
+     */
     public enum State {
         START,
         STOP

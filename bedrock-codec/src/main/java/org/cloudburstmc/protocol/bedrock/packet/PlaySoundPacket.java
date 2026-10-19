@@ -35,7 +35,8 @@ public class PlaySoundPacket implements BedrockPacket {
      */
     private float pitch;
     /**
-     * The number of additional times the sound should loop.
+     * The number of additional times the sound should loop. Encoded as an unsigned VarInt
+     * in v2168 and as a signed VarInt from v2193.
      *
      * @since v2168
      */
@@ -47,10 +48,15 @@ public class PlaySoundPacket implements BedrockPacket {
      */
     private Long serverSoundHandle;
     /**
+     * Whether playback bypasses the listener range check.
+     *
      * @since v2192
      */
     private boolean bypassListenerRangeCheck;
     /**
+     * The optional playback position in seconds; null omits the position, while zero
+     * explicitly selects the start of the sound.
+     *
      * @since v2192
      */
     @Nullable

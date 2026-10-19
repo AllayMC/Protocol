@@ -49,6 +49,8 @@ public class AnimatePacket implements BedrockPacket {
      */
     private SwingSource swingSource = SwingSource.NONE;
     /**
+     * The hand performing the animation.
+     *
      * @since v2225
      */
     private HandSlot hand = HandSlot.MAINHAND;

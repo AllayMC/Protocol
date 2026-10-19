@@ -43,7 +43,8 @@ public class ItemStackResponseSlot {
      */
     private int durabilityCorrection;
     /**
-     * The filtered custom name.
+     * The filtered custom name. Since v2168 the wire field is optional: null means
+     * absent, while an empty string is a present name. Earlier codecs require a string.
      *
      * @since v766
      */

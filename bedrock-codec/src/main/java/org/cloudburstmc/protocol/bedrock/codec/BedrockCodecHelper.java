@@ -275,7 +275,17 @@ public interface BedrockCodecHelper {
 
     GatheringsConfigurationJoinInfo readGatheringsConfiguration(ByteBuf byteBuf, BedrockCodecHelper bedrockCodecHelper);
 
+    /**
+     * Writes block attachment and pose data. The containing packet encodes the optional presence flag.
+     *
+     * @since v2225
+     */
     void writePassengerOfBlockArguments(ByteBuf buf, PassengerOfBlockArguments passengerOfBlockArguments);
 
+    /**
+     * Reads block attachment and pose data after the containing packet's presence flag.
+     *
+     * @since v2225
+     */
     PassengerOfBlockArguments readPassengerOfBlockArguments(ByteBuf buf);
 }

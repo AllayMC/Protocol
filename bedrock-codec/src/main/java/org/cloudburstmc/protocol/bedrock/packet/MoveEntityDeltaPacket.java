@@ -98,6 +98,8 @@ public class MoveEntityDeltaPacket implements BedrockPacket {
     private boolean forceCompletion;
 
     /**
+     * The tick value accompanying this movement update, encoded as an unsigned VarLong.
+     *
      * @since v2192
      */
     private long ticks;

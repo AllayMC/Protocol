@@ -20,6 +20,11 @@ public final class PrimitiveText extends PrimitiveShape {
      * The text.
      */
     private final String text;
+    /**
+     * The gap between lines of text. Earlier codecs omit it and decode it as zero.
+     *
+     * @since v2192
+     */
     private final float lineGapHeight;
     /**
      * Whether the text uses the shape rotation.

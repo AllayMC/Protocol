@@ -5,12 +5,11 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 /**
  * Optional presence metadata advertised by the server.
  *
- * @param experienceName The optional experience name.
- * @param worldName The optional world name.
- * @param richPresenceId The rich presence identifier.
- *
+ * @param experienceName the optional experience name; deprecated since v2168 and ignored by newer codecs
+ * @param worldName      the optional world name; deprecated since v2168 and ignored by newer codecs
+ * @param richPresenceId the rich presence identifier; required in v1001, optional since v2168
  * @since v1001
  */
-public record PresenceConfiguration(@Deprecated @Nullable String experienceName, @Deprecated @Nullable String worldName,
+public record PresenceConfiguration(@Nullable String experienceName, @Nullable String worldName,
                                     String richPresenceId) {
 }

@@ -123,6 +123,9 @@ public class InventoryTransactionPacket implements BedrockPacket {
      */
     private int clientCooldownState;
     /**
+     * The hand used by an item-use transaction. Since v2225 it is also encoded for
+     * item-use-on-entity and item-release transactions.
+     *
      * @since v2192
      */
     private HandSlot hand = HandSlot.MAINHAND;

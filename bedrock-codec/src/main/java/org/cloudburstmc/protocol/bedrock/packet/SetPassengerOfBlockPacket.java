@@ -8,6 +8,7 @@ import org.cloudburstmc.protocol.bedrock.data.PassengerOfBlockArguments;
 
 /**
  * Sent when an actor starts or stops riding a block.
+ *
  * @since v2225
  */
 @Data
@@ -16,6 +17,9 @@ import org.cloudburstmc.protocol.bedrock.data.PassengerOfBlockArguments;
 public class SetPassengerOfBlockPacket implements BedrockPacket {
 
     private long entityUniqueId;
+    /**
+     * The block attachment and pose, or null when the actor stops riding the block.
+     */
     @Nullable
     private PassengerOfBlockArguments data;
 

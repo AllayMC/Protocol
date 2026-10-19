@@ -9,6 +9,8 @@ import java.util.UUID;
 /**
  * Sent by the client to the server when it changes a setting for a specific pack in the pack
  * settings UI.
+ *
+ * @since v844
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
@@ -24,7 +26,8 @@ public class ServerboundPackSettingChangePacket implements BedrockPacket {
      */
     private String packSettingName;
     /**
-     * The new value applied to {@link #packSettingName}.
+     * The new value applied to {@link #packSettingName}: a Float, Boolean, or String.
+     * Since v2192 a list of strings is also supported.
      */
     private Object packSettingValue;
 

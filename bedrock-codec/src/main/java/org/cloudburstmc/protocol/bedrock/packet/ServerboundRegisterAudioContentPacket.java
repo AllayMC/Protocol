@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Registers signed audio content for the sending player.
+ *
  * @since v2225
  */
 @Data
@@ -36,6 +37,15 @@ public class ServerboundRegisterAudioContentPacket implements BedrockPacket {
         }
     }
 
+    /**
+     * Signed content and metadata for one audio registration.
+     *
+     * @param audioContentID  the audio content identifier
+     * @param sharedMetadata  metadata shared by the server and playback consumers
+     * @param serverContent   content supplied to the server
+     * @param playbackContent content used for playback
+     * @since v2225
+     */
     public record AudioContentRegistrationEntry(String audioContentID, String sharedMetadata,
                                                 String serverContent, String playbackContent) {
     }

@@ -7,6 +7,7 @@ import lombok.ToString;
 
 /**
  * Provides signed audio content and requests playback.
+ *
  * @since v2225
  */
 @Data
@@ -17,6 +18,10 @@ public class ClientboundPlayAudioContentPacket implements BedrockPacket {
     private String sharedMetadata;
     private String playbackContent;
     private AudioContentPlaybackType playbackType;
+    /**
+     * Playback settings encoded with the v2193 PlaySound layout, including loop count
+     * and optional sound handle and playback position.
+     */
     private PlaySoundPacket playSound;
 
     @Override
@@ -37,6 +42,11 @@ public class ClientboundPlayAudioContentPacket implements BedrockPacket {
         }
     }
 
+    /**
+     * Playback categories for signed audio content.
+     *
+     * @since v2225
+     */
     public enum AudioContentPlaybackType {
         MUSIC("Music"),
         SOUND("Sound");

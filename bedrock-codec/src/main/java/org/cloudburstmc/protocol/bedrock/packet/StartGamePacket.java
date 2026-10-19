@@ -527,6 +527,8 @@ public class StartGamePacket implements BedrockPacket {
      */
     private boolean allowAnonymousBlockDropsInEditorWorlds;
     /**
+     * The editor world migration state sent with the level settings.
+     *
      * @since v2225
      */
     private EditorLevelMigrationVersion editorLevelMigrationVersion = EditorLevelMigrationVersion.LEGACY;

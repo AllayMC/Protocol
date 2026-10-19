@@ -14,6 +14,8 @@ import java.util.List;
  * Sent by the client to tell the server about the performance diagnostics of the client. It is sent
  * by the client roughly every 500ms or 10 in-game ticks when the "Creator &gt; Enable Client
  * Diagnostics" setting is enabled.
+ *
+ * @since v712
  */
 @Data
 @EqualsAndHashCode(doNotUseGetters = true)
@@ -105,6 +107,11 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
         }
     }
 
+    /**
+     * Timing information for an entity.
+     *
+     * @since v975
+     */
     @Data
     @EqualsAndHashCode(doNotUseGetters = true)
     @ToString(doNotUseGetters = true)
@@ -113,10 +120,25 @@ public class ServerboundDiagnosticsPacket implements BedrockPacket {
         private String entity;
         private long timeInNs;
         private int percentOfTotal;
+        /**
+         * The entity position reported with this timing entry.
+         *
+         * @since v2192
+         */
         private org.cloudburstmc.math.vector.Vector3f position;
+        /**
+         * The identifier of the dimension containing the entity.
+         *
+         * @since v2192
+         */
         private String dimension;
     }
 
+    /**
+     * Timing information for a client system.
+     *
+     * @since v975
+     */
     @Data
     @EqualsAndHashCode(doNotUseGetters = true)
     @ToString(doNotUseGetters = true)

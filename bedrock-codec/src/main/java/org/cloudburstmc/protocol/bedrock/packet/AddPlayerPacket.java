@@ -124,6 +124,8 @@ public class AddPlayerPacket implements BedrockPacket, PlayerAbilityHolder {
      */
     private final EntityProperties properties = new EntityProperties();
     /**
+     * Optional placement and pose when the actor is riding a block.
+     *
      * @since v2225
      */
     @Nullable

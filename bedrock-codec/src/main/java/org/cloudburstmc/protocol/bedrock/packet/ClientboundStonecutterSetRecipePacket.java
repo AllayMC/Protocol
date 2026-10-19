@@ -6,6 +6,7 @@ import lombok.ToString;
 
 /**
  * When the server updates a recipe in the stonecutter UI model, the server sends this packet. Then the client synchronizes the selected recipe in the client-side stonecutter model.
+ *
  * @since v2225
  */
 @Data

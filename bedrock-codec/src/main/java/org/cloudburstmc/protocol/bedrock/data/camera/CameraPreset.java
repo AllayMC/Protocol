@@ -155,10 +155,14 @@ public class CameraPreset {
     @Nullable
     private ControlScheme controlScheme;
     /**
+     * Whether to apply the starting rotation inherited from the parent preset.
+     *
      * @since v2192
      */
     private boolean applyInheritedStartingRotation;
     /**
+     * The optional starting rotation. A null value leaves this override absent.
+     *
      * @since v2192
      */
     @Nullable

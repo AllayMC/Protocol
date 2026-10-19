@@ -34,7 +34,7 @@ public enum ItemStackRequestActionType {
     CRAFT_REPAIR_AND_DISENCHANT,
     CRAFT_LOOM,
     /**
-     * @since 2223
+     * @since v2225
      */
     RESERVED,
     CRAFT_NON_IMPLEMENTED_DEPRECATED,
